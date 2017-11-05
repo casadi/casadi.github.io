@@ -1,0 +1,100 @@
+{{ partial "header.html" . }}
+{{ partial "top-block.html" . }}
+  {{ range $index, $element :=  .Data.Pages.ByWeight }}{{ if eq .Section "home" }}
+
+    <div id="main">
+        <!-- Intro -->
+        {{ if modBool $index 2 }}
+          <div id="intro" class="point">
+            <!-- <div id="intro" class="point"> -->
+            <div class="container">
+              <div class="row">
+                <div class="col-md-2 col-md-offset-1 text-center">
+                  {{ if ne .Params.icon "none" }}
+                      <!-- <i class="lead-icon icon-{{ .Params.icon }}"></i> -->
+                      <!-- <i class="lead-icon fa fa-{{ .Params.icon }}" aria-hidden="true"></i> -->
+                      <i class="fa fa-{{ .Params.icon }} lead-icon" aria-hidden="true"></i>
+                  {{ end }}
+                </div>
+                <div class="col-md-8 text-center">
+                  <h2>{{ .Title }}</h2>
+                  <p class="lead">
+                      {{ .Content }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        {{ else }}
+          <div id="intro" class="counterpoint">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-8 col-md-offset-1 text-center">
+                  <h2>{{ .Title }}</h2>
+                  <p class="lead">
+                      {{ .Content }}
+                  </p>
+                </div>
+                <div class="col-md-2 text-center">
+                  {{ if ne .Params.icon "none" }}
+                      <!-- <i class="lead-icon icon-{{ .Params.icon }}"></i> -->
+                      <!-- <i class="lead-icon fa fa-{{ .Params.icon }}" aria-hidden="true"></i> -->
+                      <i class="fa fa-{{ .Params.icon }} lead-icon" aria-hidden="true"></i>
+                  {{ end }}
+                </div>
+              </div>
+            </div>
+          </div>
+        {{ end}}
+
+        <!-- /Intro -->
+      {{ end }}
+      {{ if eq .Section "carousel" }}
+      <!-- /Point -->
+        <div class="callout">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12 text-center">
+                  {{ if (isset .Params "icon") }}
+                      <i class="callout-icon icon-{{ .Params.icon }}"></i>
+                  {{ end }}
+                  <p>{{ .Content }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 text-center">
+                  <!-- Wrapper for slides -->
+                  <div class="carousel-inner owl-carousel">
+                      {{ range .Params.carousel }}
+                        <div class="item"> <blockquote><p>{{ .quote }}</p>&mdash; {{ .author }} <a href="{{ .url }}">{{ .quote_date }}</a></blockquote> </div>
+                      {{ end }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!-- /Point -->
+      {{ end }}
+    {{ end }}
+
+    </div>
+
+        <!-- Call to Action -->
+        <!-- <div id="action" class="call-to-action">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-10 col-md-offset-1 text-center">
+                <h1 style="padding-bottom:.5em;">Getting Started</h1>
+                <a href="https://github.com/spf13/hugo/releases" class="btn btn-lg btn-primary">Download <i class="icon-arrow-down"></i></a>
+                <a href="/overview/quickstart" style="color:white;font-weight:300;">Quickstart Guide</a>
+                <p>&nbsp;</p>
+                <h4>Using Homebrew?</h4>
+                <pre><code>brew install hugo</code></pre>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <!-- /Call to Action -->
+
+{{ partial "footer.html" . }}
