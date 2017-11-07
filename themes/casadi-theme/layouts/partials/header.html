@@ -9,18 +9,86 @@
     <title>{{ .Title }}</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{{ .Site.BaseURL }}css/bootstrap-theme.css" rel="stylesheet">
+    <!-- <link href="{{ .Site.BaseURL }}css/bootstrap-theme.css" rel="stylesheet"> -->
 
-    <link href='http://fonts.googleapis.com/css?family=Arbutus+Slab&family=Cabin:600&family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-    <!-- Add custom CSS here -->
+    <!-- <link href='http://fonts.googleapis.com/css?family=Arbutus+Slab&family=Cabin:600&family=Source+Code+Pro' rel='stylesheet' type='text/css'> -->
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Font awesome -->
     <link href="{{ .Site.BaseURL }}assets/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="{{ .Site.BaseURL }}css/HPstyles.css" rel="stylesheet">
-    <link href="{{ .Site.BaseURL }}css/hugofont.css" rel="stylesheet">
-    <link href="{{ .Site.BaseURL }}css/owl.carousel.css" rel="stylesheet">
-    <link href="{{ .Site.BaseURL }}css/owl.theme.default.css" rel="stylesheet">
+
+    <!-- Bootstrap 3 -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- Custom CSS -->
+    <link href="{{ .Site.BaseURL }}css/landing.css" rel="stylesheet">
+    <!-- <link href="{{ .Site.BaseURL }}css/owl.carousel.css" rel="stylesheet">
+    <link href="{{ .Site.BaseURL }}css/owl.theme.default.css" rel="stylesheet"> -->
     <link href="{{ .Site.BaseURL }}css/fa-extensions.css" rel="stylesheet">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   </head>
 
   <body>
+    <!-- <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="collapse navbar-collapse">
+          {{ if .Site.Menus.main }}
+            <ul class="nav navbar-nav">
+              {{ range sort .Site.Menus.main }}
+                <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+              {{ end }}
+            </ul>
+          {{ end }}
+          {{ if .Site.Menus.icon }}
+            <ul class="nav navbar-nav navbar-right">
+              {{ range sort .Site.Menus.icon }}
+                <li class="navbar-icon"><a href="{{ .URL }}"><i class="fa fa-{{ .Name }}"></i></a></li>
+              {{ end }}
+            </ul>
+          {{ end }}
+        </div>
+      </div>
+    </nav> -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>

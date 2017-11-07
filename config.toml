@@ -1,13 +1,15 @@
 baseURL = "http://www.casadi.org/"
 languageCode = "en-us"
 title = "CasADi"
-theme = "casadi-theme"
+theme = "casadi-theme" #"casadi-theme"
 googleAnalytics = ""
 
 [permalinks]
   singles = "/:title/"
 
 [params]
+  # Style options: default (light-blue), blue, green, marsala, pink, red, turquoise, violet
+  # style = "red"
     author = "Joris Gillis, Armin Steinhauser"
     copyright = "Copyright 2017."
     description = "Peak performance, automatically."
@@ -20,21 +22,21 @@ googleAnalytics = ""
     # highlightStyle = "solarized-dark"
     # highlightLanguages = ["go", "haskell", "kotlin", "scala", "swift"]
     mainIcon = "/img/casadi.svg"
-    accent_color = "rgba(0,0,0,0)"
 
 [[menu.main]]
     url = "/"
     name = "Home"
     weight = 1
-
-[[menu.main]]
-    url = "/what-is-casadi/"
-    name = "What is CasADi?"
-    weight = 2
+    icon = "none"
 
 [[menu.main]]
     url = "/get-casadi/"
     name = "Get CasADi"
+    weight = 2
+
+[[menu.main]]
+    url = "/blog/"
+    name = "Blog"
     weight = 3
 
 [[menu.main]]
@@ -42,10 +44,19 @@ googleAnalytics = ""
     name = "Docs"
     weight = 4
 
+[[menu.main]]
+    url = "/about/"
+    name = "About"
+    weight = 5
+
+[[menu.main]]
+    url = "/support/"
+    name = "Support"
+    weight = 6
+
 # Social icons to be shown on the right-hand side of the navigation bar
 # The "name" field should match the name of the icon to be used
 # The list of available icons can be found at http://fontawesome.io/icons/
-
 [[menu.icon]]
     url = "mailto:me@example.com"
     name = "envelope-o"
@@ -55,18 +66,3 @@ googleAnalytics = ""
     url = "https://github.com/username/"
     name = "github"
     weight = 2
-
-# [[menu.icon]]
-#     url = "https://twitter.com/username/"
-#     name = "twitter"
-#     weight = 3
-#
-# [[menu.icon]]
-#     url = "https://www.linkedin.com/in/username/"
-#     name = "linkedin"
-#     weight = 4
-#
-# [[menu.icon]]
-#     url = "https://www.stackoverflow.com/username/"
-#     name = "stack-overflow"
-#     weight = 5
