@@ -4,7 +4,7 @@ draft: false
 title: "Welcome to CasADi"
 description: "no description"
 weight: 1
-icon: "handshake-o"
+img: "none"
 ---
 
-CasADi is free, open-source and awesome. No questions about that.
+CasADi is a highly <emph>scalable</emph> tool for <emph>AD</emph>, open-source, multilingual, etc.

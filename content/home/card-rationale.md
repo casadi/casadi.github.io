@@ -3,8 +3,8 @@ date: 2014-10-13T20:07:19Z
 draft: false
 title: "Get CasADi"
 description: "no description"
-weight: 2
-icon: "download"
+weight: 3
+img: "none"
 ---
 
 Get the latest source or binaries of CasADi

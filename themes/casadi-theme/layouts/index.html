@@ -3,49 +3,45 @@
   {{ range $index, $element :=  .Data.Pages.ByWeight }}{{ if eq .Section "home" }}
 
     <div id="main">
-        <!-- Intro -->
-        {{ if modBool $index 2 }}
-          <div id="intro" class="point">
-            <!-- <div id="intro" class="point"> -->
-            <div class="container">
-              <div class="row">
-                <div class="col-md-2 col-md-offset-1 text-center">
-                  {{ if ne .Params.icon "none" }}
-                      <!-- <i class="lead-icon icon-{{ .Params.icon }}"></i> -->
-                      <!-- <i class="lead-icon fa fa-{{ .Params.icon }}" aria-hidden="true"></i> -->
-                      <i class="fa fa-{{ .Params.icon }} lead-icon" aria-hidden="true"></i>
-                  {{ end }}
-                </div>
-                <div class="col-md-8 text-center">
-                  <h2>{{ .Title }}</h2>
-                  <p class="lead">
-                      {{ .Content }}
-                  </p>
-                </div>
+      {{ if modBool $index 2 }}
+        <div id="intro" class="point">
+          <!-- <div id="intro" class="point"> -->
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4">
+                <!-- {{ if ne .Params.img "none" }}
+                    <img src="{{ .Site.BaseURL }}{{ .Site.Params.mainIcon }}" class="left-of-card">
+                {{ end }} -->
+                <div style="width: 100%; height: 200px; background-color: #000;">&nbsp;</div>
+              </div>
+              <div class="col-md-8 text-left">
+                <!-- <h2>{{ .Title }}</h2> -->
+                <p class="lead">
+                    {{ .Content }}
+                </p>
               </div>
             </div>
           </div>
-        {{ else }}
-          <div id="intro" class="counterpoint">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-8 col-md-offset-1 text-center">
-                  <h2>{{ .Title }}</h2>
-                  <p class="lead">
-                      {{ .Content }}
-                  </p>
-                </div>
-                <div class="col-md-2 text-center">
-                  {{ if ne .Params.icon "none" }}
-                      <!-- <i class="lead-icon icon-{{ .Params.icon }}"></i> -->
-                      <!-- <i class="lead-icon fa fa-{{ .Params.icon }}" aria-hidden="true"></i> -->
-                      <i class="fa fa-{{ .Params.icon }} lead-icon" aria-hidden="true"></i>
-                  {{ end }}
-                </div>
+        </div>
+      {{ else }}
+        <div id="intro" class="counterpoint">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-1 text-right">
+                <h2>{{ .Title }}</h2>
+                <p class="lead">
+                    {{ .Content }}
+                </p>
+              </div>
+              <div class="col-md-2">
+                {{ if ne .Params.img "none" }}
+                    <img src="{{ .Site.BaseURL }}{{ .Site.Params.mainIcon }}" class="right-of-card">
+                {{ end }}
               </div>
             </div>
           </div>
-        {{ end}}
+        </div>
+      {{ end}}
 
         <!-- /Intro -->
       {{ end }}

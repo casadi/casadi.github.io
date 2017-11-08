@@ -15,45 +15,29 @@
 </footer>
 <!-- /Footer -->
 
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- Bootstrap core JavaScript -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="{{ .Site.BaseURL }}js/jquery-2.1.1.min.js"></script>
-<script src="{{ .Site.BaseURL }}js/owl.carousel.min.js"></script>
-<!--<script src="/js/bootstrap.min.js"></script>-->
-<script>
-$(function() {
-$('a[href*=#]:not([href=#])').click(function() {
-  if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
-      || location.hostname == this.hostname) {
+<script src="{{ .Site.BaseURL }}js/bootstrap-3.3.7/bootstrap.min.js"></script>
 
-    var target = $(this.hash);
-    target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-    if (target.length) {
-      $('html,body').animate({
-        scrollTop: target.offset().top
-      }, 1000);
-      return false;
-    }
-  }
-});
-});
-$('.owl-carousel').owlCarousel({
-loop:true,
-margin:10,
-nav:true,
-autoplay:true,
-autoplayHoverPause:true,
-autoplayTimeout:3000,
-responsive:{
-    0:{
-        items:1
-    },
-    1000:{
-        items:3
-    },
-}
-})
-</script>
+<!-- <script>
+  $(function() {
+    $('a[href*=#]:not([href=#])').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+          || location.hostname == this.hostname) {
+
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+        if (target.length) {
+          $('html,body').animate({
+            scrollTop: target.offset().top
+          }, 1000);
+          return false;
+        }
+      }
+    });
+  });
+</script> -->
 
 {{ partial "analytics.html" . }}
 </body>
