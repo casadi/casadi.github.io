@@ -4,7 +4,7 @@ draft: false
 title: "Get CasADi"
 description: "no description"
 weight: 3
-img: "none"
+image: "none"
 ---
 
 Get the latest source or binaries of CasADi

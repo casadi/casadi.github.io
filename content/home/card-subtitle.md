@@ -4,7 +4,6 @@ draft: false
 title: "Welcome to CasADi"
 description: "no description"
 weight: 1
-img: "none"
 ---
 
-CasADi is a highly <emph>scalable</emph> tool for <emph>AD</emph>, open-source, multilingual, etc.
+CasADi is a highly <em>scalable</em> tool for <em>AD</em>; <em>open-source</em>; <em>multilingual</em> --- simply put: it's awesome.

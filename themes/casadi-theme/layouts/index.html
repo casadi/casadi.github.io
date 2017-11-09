@@ -1,96 +1,63 @@
 {{ partial "header.html" . }}
+{{ partial "nav.html" . }}
 {{ partial "top-block.html" . }}
-  {{ range $index, $element :=  .Data.Pages.ByWeight }}{{ if eq .Section "home" }}
 
+{{ range $index, $element :=  .Data.Pages.ByWeight }}
+  {{ if eq .Section "home" }}
     <div id="main">
-      {{ if modBool $index 2 }}
-        <div id="intro" class="point">
-          <!-- <div id="intro" class="point"> -->
-          <div class="container">
-            <div class="row">
-              <div class="col-md-4">
-                <!-- {{ if ne .Params.img "none" }}
-                    <img src="{{ .Site.BaseURL }}{{ .Site.Params.mainIcon }}" class="left-of-card">
-                {{ end }} -->
-                <div style="width: 100%; height: 200px; background-color: #000;">&nbsp;</div>
-              </div>
-              <div class="col-md-8 text-left">
-                <!-- <h2>{{ .Title }}</h2> -->
-                <p class="lead">
-                    {{ .Content }}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      {{ else }}
-        <div id="intro" class="counterpoint">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-1 text-right">
-                <h2>{{ .Title }}</h2>
-                <p class="lead">
-                    {{ .Content }}
-                </p>
-              </div>
-              <div class="col-md-2">
-                {{ if ne .Params.img "none" }}
-                    <img src="{{ .Site.BaseURL }}{{ .Site.Params.mainIcon }}" class="right-of-card">
+      <div id="intro" class="card">
+        <div class="container">
+          {{ if modBool $index 2 }}
+            {{ if (isset .Params "mode") and (eq .Params.mode "manual") }}
+              {{ .Content }}
+            {{ else }}
+              <div class="row">
+                {{ if (isset .Params "image") and (ne .Params.image "") }}
+                  <div class="col-md-4">
+                    <img src="{{ .Site.BaseURL }}img/{{ .Params.image }}">
+                  </div>
+                  <div class="col-md-8 text-left">
+                    <p class="lead">
+                      {{ .Content }}
+                    </p>
+                  </div>
+                {{ else }}
+                  <div class="col-md-12 text-center">
+                    <p class="lead">
+                      {{ .Content }}
+                    </p>
+                  </div>
                 {{ end }}
               </div>
-            </div>
-          </div>
-        </div>
-      {{ end}}
-
-        <!-- /Intro -->
-      {{ end }}
-      {{ if eq .Section "carousel" }}
-      <!-- /Point -->
-        <div class="callout">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-12 text-center">
-                  {{ if (isset .Params "icon") }}
-                      <i class="callout-icon icon-{{ .Params.icon }}"></i>
-                  {{ end }}
-                  <p>{{ .Content }}</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12 text-center">
-                  <!-- Wrapper for slides -->
-                  <div class="carousel-inner owl-carousel">
-                      {{ range .Params.carousel }}
-                        <div class="item"> <blockquote><p>{{ .quote }}</p>&mdash; {{ .author }} <a href="{{ .url }}">{{ .quote_date }}</a></blockquote> </div>
-                      {{ end }}
+            {{ end }}
+          {{ else }}
+            {{ if (isset .Params "mode") and (eq .Params.mode "manual") }}
+              {{ .Content }}
+            {{ else }}
+              <div class="row">
+                {{ if (not (isset .Params "image")) or (eq .Params.image "") }}
+                  <div class="col-md-12 text-center">
+                    <p class="lead">
+                      {{ .Content }}
+                    </p>
                   </div>
-                </div>
+                {{ else }}
+                  <div class="col-md-8 text-right">
+                    <p class="lead">
+                      {{ .Content }}
+                    </p>
+                  </div>
+                  <div class="col-md-4">
+                    <img src="{{ .Site.BaseURL }}img/{{ .Params.image }}">
+                  </div>
+                {{ end }}
               </div>
-            </div>
-          </div>
+            {{ end }}
+          {{ end }}
         </div>
-      <!-- /Point -->
-      {{ end }}
-    {{ end }}
-
+      </div>
     </div>
-
-        <!-- Call to Action -->
-        <!-- <div id="action" class="call-to-action">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-10 col-md-offset-1 text-center">
-                <h1 style="padding-bottom:.5em;">Getting Started</h1>
-                <a href="https://github.com/spf13/hugo/releases" class="btn btn-lg btn-primary">Download <i class="icon-arrow-down"></i></a>
-                <a href="/overview/quickstart" style="color:white;font-weight:300;">Quickstart Guide</a>
-                <p>&nbsp;</p>
-                <h4>Using Homebrew?</h4>
-                <pre><code>brew install hugo</code></pre>
-              </div>
-            </div>
-          </div>
-        </div> -->
-        <!-- /Call to Action -->
+  {{ end }}
+{{ end }}
 
 {{ partial "footer.html" . }}
