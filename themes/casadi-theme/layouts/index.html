@@ -2,10 +2,10 @@
 {{ partial "nav.html" . }}
 {{ partial "top-block.html" . }}
 
-{{ range $index, $element :=  .Data.Pages.ByWeight }}
-  {{ if eq .Section "home" }}
-    <div id="main">
-      <div id="intro" class="card">
+<div id="main">
+  {{ range $index, $element :=  .Data.Pages.ByWeight }}
+    {{ if eq .Section "home" }}
+      <div class="card">
         <div class="container">
           {{ if modBool $index 2 }}
             {{ if (isset .Params "mode") and (eq .Params.mode "manual") }}
@@ -56,8 +56,8 @@
           {{ end }}
         </div>
       </div>
-    </div>
+    {{ end }}
   {{ end }}
-{{ end }}
+</div>
 
 {{ partial "footer.html" . }}
