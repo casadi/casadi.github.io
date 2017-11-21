@@ -1,4 +1,4 @@
 {{ partial "header.html" . }}
 {{ partial "nav.html" . }}
-{{ .Content }}
+{{ .Content | markdownify }}
 {{ partial "footer.html" . }}
