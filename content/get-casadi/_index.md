@@ -4,6 +4,18 @@ description: "no description"
 type: singles
 ---
 
-Here you can easily get your personal copy of CasADi... congrats!
+# Get CasADi
 
-#blabla
+Here you can easily get your personal copy of CasADi.
+
+Choose your *desired version and platform* from the matrix below.
+
+### Latest
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  printVMatrix(getLatestRelease());
+});
+</script>
+
+### All

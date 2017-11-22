@@ -1,4 +1,14 @@
 {{ partial "header.html" . }}
 {{ partial "nav.html" . }}
-{{ .Content | markdownify }}
+<div id="main">
+  <div class="card">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          {{ .Content }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {{ partial "footer.html" . }}
