@@ -1,47 +1,52 @@
 pre {
-  /*width: 100%;*/
   margin: 0;
-  /*padding: 0;*/
+  border: 0px;
+  border-radius: 0px;
 }
-
-/*pre.tabbed {
-
-}
-
-pre.tabbed tab {
-  width: auto;
-  height: 24px;
-  background-color: #fff;
-  color: #000;
-}*/
 
 multisnip {
-  /*width: 250px;*/
   visibility: hidden;
 }
 
 multisnip ul.nav-tabs-multisnip {
+  font-size: 12px;
   border: none;
-  background-color: rgb(240,240,240);
 }
 
-multisnip ul.nav-tabs-multisnip li {
-  margin: 0px !important;
+multisnip ul.nav-tabs-multisnip>:first-child {
+  border-top-left-radius: 5px !important;
 }
 
-multisnip ul.nav-tabs-multisnip li a {
+multisnip ul.nav-tabs-multisnip>:last-child {
+  border-top-right-radius: 5px !important;
+}
+
+multisnip ul.nav-tabs-multisnip>li {
+  color: #000;
+  margin: 0px;
+  background-color: rgb(248, 248, 248);
+}
+
+multisnip ul.nav-tabs-multisnip>li.isshown {
+  color: #fff !important;
+  background-color: rgb(220,0,0) !important;
+}
+
+multisnip ul.nav-tabs-multisnip>li>a {
   line-height: 1em;
   padding: 5px 10px;
-  color: #000 !important;
   border: 0px !important;
-  border-radius: 0px;
   margin: 0px;
 }
-multisnip ul.nav-tabs-multisnip li a:hover {
-  background-color: rgb(220,0,0);
+
+/*multisnip ul.nav-tabs-multisnip>li>a:focus,*/
+multisnip ul.nav-tabs-multisnip>li>a:hover {
+  color: #000;
+  box-shadow: 0 -2px 0 0 rgb(220,0,0) inset;
+  background-color: inherit;
 }
 
-/*multisnip pre {
-  width: 500px;
-  border: none;
-}*/
+multisnip ul.nav-tabs-multisnip>li.isshown>a:hover {
+  color: #fff !important;
+  background-color: rgb(220,0,0) !important;
+}

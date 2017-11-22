@@ -8,9 +8,10 @@ $(document).ready(function() {
     $(block).prepend("<ul class='nav nav-tabs nav-tabs-multisnip'></ul>");
     $(block).children().each(function(ii, pre) {
       if($(pre).is("pre")) {
+        $(pre).addClass('hljs');
         $(pre).children().each(function(iii, code) {
           if(iii == 0) {
-            var $li = $("<li>", {"class": "active"});
+            var $li = $("<li>", {"class": "isshown"});
           } else {
             $(code).hide();
             var $li = $("<li>");
@@ -29,9 +30,9 @@ $(document).ready(function() {
 function makeActive(el) {
   // console.log(el);
   $(el).parent().children().each(function(i, chel) {
-    $(chel).removeClass("active");
+    $(chel).removeClass("isshown");
   });
-  $(el).addClass("active");
+  $(el).addClass("isshown");
   $(el).parent().parent().find("code").hide();
   $(el).parent().parent().find("code[language="+$(el).text()+"]").show();
 }
