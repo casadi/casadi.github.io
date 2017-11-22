@@ -7,15 +7,12 @@ type: singles
 # Get CasADi
 
 Here you can easily get your personal copy of CasADi.
+Choose your *desired version and platform* below.
 
-Choose your *desired version and platform* from the matrix below.
+### Get the latest release
 
-### Latest
+<table id="latest-release" class="release"></table>
 
-<script>
-document.addEventListener("DOMContentLoaded", function(){
-  printVMatrix(getLatestRelease());
-});
-</script>
+### All releases
 
-### All
+<table id="all-releases" class="release"></table>
