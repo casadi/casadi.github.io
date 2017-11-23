@@ -15,8 +15,8 @@ body {
 }
 
 body nav {
-  font-size: 0.75em;
-  line-height: 1em;
+  font-size: 20px;
+  line-height: 40px;
 }
 
 em {
@@ -34,17 +34,19 @@ a:hover, a:focus {
   color: rgb(220, 0, 0);
 }
 
-.navbar-default {
+.navbar {
   border: none;
+  padding: 0;
 }
 
-.navbar-default {
-  /*background-color: rgb(255,255,255) !important;*/
+.navbar .navbar-nav>li>a {
+  padding: 0;
+  line-height: 56px;
 }
 
-.navbar-default .navbar-nav>li>a:focus,
-.navbar-default .navbar-nav>li>a:hover {
-  color: #000;
+.navbar .navbar-nav>li>a:focus,
+.navbar .navbar-nav>li>a:hover {
+  color: #000 !important;
   box-shadow: 0 -3px 0 0 rgb(220,0,0) inset;
 }
 
@@ -53,10 +55,11 @@ a:hover, a:focus {
   height: auto;
 }
 
-.navbar-brand {
+nav a.navbar-brand {
   width: 75px;
-  height: 44px;
-  margin: 3px 0;
+  height: 40px;
+  margin: 8px 0;
+  padding: 0;
   background: url('../img/logo_2017.svg') no-repeat center;
   background-size: contain;
 }
