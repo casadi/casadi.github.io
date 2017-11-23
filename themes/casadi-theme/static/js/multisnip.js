@@ -16,7 +16,7 @@ $(document).ready(function() {
             $(code).hide();
             var $li = $("<li>");
           }
-          console.log(code);
+          // console.log(code);
           $li.append("<a>" + $(code).attr("language") + "</a>");
           $li.click(function(){ makeActive($(this)) });
           $(block).find("ul.nav-tabs-multisnip").append($li);

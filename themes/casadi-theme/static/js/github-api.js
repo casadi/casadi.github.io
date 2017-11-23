@@ -1,55 +1,20 @@
 var releases = undefined;
 var gh = undefined;
 
-document.addEventListener("DOMContentLoaded", function() {
-  gh = new GitHub({ token: 'f17675f2f0578a5bfde132ee479a95b1150324af' });
-  printRateInfo();
-  getAllReleases().then(function(rel) {
-    console.log(rel);
-    releases = rel;
-    printReleaseTables(rel);
-  });
-});
-
-function printReleaseTables(relArray) {
-  // print the latest release table
-  var latest = relArray.data[0];
-  var th = "<thead><tr><th>Version</th><th>Release date</th><th>Links</th></tr></thead>";
-  $("table#latest-release").append(th);
-  var tb = "<tbody><tr><td>" + latest.tag_name + "</td><td>" + latest.published_at + "</td><td><a href=\"" + latest.html_url + "\" target=\"_blank\">Github</a></td></tr></tbody>";
-  $("table#latest-release").append(tb);
-
-  // print the remaining releases
-  var rest = relArray.data.slice(1);
-  // var th = "<tr><th>Version</th><th>Release date</th><th>Links</th></tr>";
-  $("table#all-releases").append(th);
-  $("table#all-releases").append("<tbody>");
-  $.each(rest, function(index, value) {
-    var tr = "<tr><td>" + value.tag_name + "</td><td>" + value.published_at + "</td><td><a href=\"" + value.html_url + "\" target=\"_blank\">Github</a></td></tr>";
-    $("table#all-releases").append(tr);
-  });
-  $("table#all-releases").append("</tbody>");
-}
-
-// call-intensive !
-function getLatestRelease() {
+function getReleasesSorted() {
   var dfd = $.Deferred();
-  // getAllReleases().then(function(data) {
-  //   dfd.resolve(data[0]);
-  // }).catch(function(err) {
-  //   console.log(err);
-  //   dfd.reject(err.message);
-  // });
-  dfd.resolve("No. Sorry, but no.");
-  return dfd.promise();
-}
-
-function getAllReleases() {
-  var dfd = $.Deferred();
-  gh.getRepo('casadi','casadi').listReleases().then(function(resp) {
+  gh.getRepo('meco-group','gilc').listReleases().then(function(resp) {
+  // gh.getRepo('casadi','casadi').listReleases().then(function(resp) {
+    // sort by created_at key
+    resp.data.sort(function(a, b){
+      var keyA = new Date(a.created_at);
+      var keyB = new Date(b.created_at);
+      if(keyA < keyB) return 1;
+      if(keyA > keyB) return -1;
+      return 0;
+    });
     dfd.resolve(resp);
   }).catch(function(err) {
-    console.log(err);
     dfd.reject(err.message);
   });
   return dfd.promise();
@@ -92,4 +57,33 @@ function getDownloadStats() {
   xmlHttp.open("GET", "https://sourceforge.net/projects/casadi/files/stats/json?start_date=2014-10-29&end_date=2017-11-22", true); // false for synchronous request
   xmlHttp.send(null);
   return dfd.promise();
+}
+
+// MOCK-UP function
+function showReleases(relData) {
+  // print the release table
+  var release = relData.data;
+  $(release).each(function(nr, rel) {
+    // console.log(rel);
+    if(nr == 0) var panel = "<div class=\"panel panel-success\">";
+    else var panel = "<div class=\"panel panel-default\">";
+
+    panel +=  "<div class=\"panel-heading\" data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse" + nr + "\">" +
+                "<h4 class=\"panel-title pull-left\">" + rel.tag_name + "</h4>" +
+                "<h6 class=\"panel-title pull-right\">" + new Date(rel.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) + "</h6>" +
+                "<div class=\"clearfix\"></div>" +
+              "</div>";
+    if(nr == 0) panel += "<div id=\"collapse" + nr + "\" class=\"panel-collapse collapse in\">";
+    else panel += "<div id=\"collapse" + nr + "\" class=\"panel-collapse collapse\">";
+    // panel +=
+    panel += "<div class=\"panel-body\">" +
+    "<ul class=\"nav nav-pills\">" +
+              "<li class=\"active\"><a href=\"#tab1default\" data-toggle=\"tab\">Download</a></li>" +
+              "<li><a href=\"#tab2default\" data-toggle=\"tab\">Changelog</a></li>" +
+              "<li><a href=\"#tab3default\" data-toggle=\"tab\">Instructions</a></li>" +
+              "</ul>" + rel.body + "</div>" +
+              "</div></div>";
+
+    $("div#accordion").append(panel);
+  });
 }

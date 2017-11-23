@@ -30,7 +30,7 @@ a {
   color: inherit;
 }
 
-a:hover {
+a:hover, a:focus {
   color: rgb(220, 0, 0);
 }
 
@@ -78,6 +78,10 @@ footer .copyright {
   font-size: 0.5em;
 }
 
+#main .panel {
+  text-align: left;
+}
+
 table.release {
   width: 100%;
 }
@@ -87,4 +91,19 @@ table.release th {
 }
 table.release tbody {
   text-align: right;
+}
+
+table#overview-releases {
+  width: 80%;
+  margin: auto;
+}
+table#overview-releases col.binary {
+  width: auto;
+}
+
+table#overview-releases .btn-download-binaries:hover {
+  color: rgb(220,0,0);
+}
+table#overview-releases .btn-download-binaries>.fa {
+  font-size: 20px;
 }
