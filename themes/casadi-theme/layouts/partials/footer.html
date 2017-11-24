@@ -1,31 +1,32 @@
-    <!-- Footer -->
-    <footer id="footer">
+    <footer>
       <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-md-offset-3 text-center">
+        <div class="row justify-content-md-center">
+          <div class="col-md-auto text-center">
             <ul class="list-inline">
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-github"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+              {{ range .Site.Menus.footer }}
+                <li class="list-inline-item">
+                  <a href="{{ .URL }}" title="{{ .Name }}">
+                    <i class="fa fa-{{ .Name }}"></i>
+                  </a>
+                </li>
+              {{ end }}
             </ul>
-            <!-- <hr> -->
             <p class="copyright">{{ markdownify .Site.Params.copyright }}</p>
           </div>
         </div>
       </div>
     </footer>
-    <!-- /Footer -->
 
+    <!-- TODO get rid of CDNs? -->
     <!-- jQuery -->
-    <!-- TODO include in repo -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script src="{{ .Site.BaseURL }}js/bootstrap-3.3.7/bootstrap.min.js"></script>
 
+    <!-- Highlight JS -->
     <script src="{{ .Site.BaseURL }}js/highlight.pack.js"></script>
+
+    <!-- Multisnip -->
     <script src="{{ .Site.BaseURL }}js/multisnip.js"></script>
 
     <!-- Github API -->

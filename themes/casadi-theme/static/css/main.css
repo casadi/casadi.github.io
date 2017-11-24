@@ -1,22 +1,17 @@
-/* Global Styles */
+/* GLOBAL */
 html,
 body {
   height: 100%;
   width: 100%;
-  letter-spacing: 0.5px;
   font-family: "Source Sans Pro", Helvetica, sans-serif;
-}
-
-body {
   font-weight: 300;
   font-size: 24px;
-  line-height: 1.6em;
-  padding-top: 50px;
-}
-
-body nav {
-  font-size: 20px;
+  letter-spacing: 0.5px;
   line-height: 40px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: rgb(248,249,250);
 }
 
 em {
@@ -34,25 +29,23 @@ a:hover, a:focus {
   color: rgb(220, 0, 0);
 }
 
-.navbar {
+/* NAVIGATION */
+nav.navbar {
   border: none;
   padding: 0;
+  font-size: 20px;
+  line-height: 40px;
 }
 
-.navbar .navbar-nav>li>a {
+nav.navbar .navbar-nav>li>a {
   padding: 0;
   line-height: 56px;
 }
 
-.navbar .navbar-nav>li>a:focus,
-.navbar .navbar-nav>li>a:hover {
+nav.navbar .navbar-nav>li>a:focus,
+nav.navbar .navbar-nav>li>a:hover {
   color: #000 !important;
   box-shadow: 0 -3px 0 0 rgb(220,0,0) inset;
-}
-
-.nav i {
-  width: auto;
-  height: auto;
 }
 
 nav a.navbar-brand {
@@ -64,36 +57,79 @@ nav a.navbar-brand {
   background-size: contain;
 }
 
-/* Footer */
+/* TOP */
+#top {
+  display: table;
+  height: 100%;
+  width: 100%;
+  min-height: 70%;
+  position: relative;
+  background: url(../img/scott-webb-260726-2.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  z-index: 2;
+  color: #000;
+  margin-top: 56px;
+}
+
+#top .vert-text {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+#top .logo {
+  max-width: 30em;
+  width: 100%;
+  padding: 2em;
+}
+
+/* MAIN */
+#main {
+  background-color: #fff;
+}
+nav+#main {
+  margin-top: 56px;
+}
+
+#main .container {
+  padding: 40px 0;
+}
+
+#main hr.sep {
+  margin: 40px auto;
+}
+
+/* FOOTER */
 footer {
-  padding: 100px 0;
-}
-
-footer a {
-  color: black;
-}
-
-footer ul {
+  color: #000;
   font-size: 1.25em;
+  padding: 50px 0;
 }
 
 footer .copyright {
-  font-size: 0.5em;
+  font-size: 0.6em;
+  margin: 0;
 }
 
-#main .panel {
-  text-align: left;
+footer .list-inline-item:not(:last-child) {
+  margin-right: 10px;
 }
 
+/* ***********************
+ *  SITE SPECIFIC STYLES
+ * *********************** */
+
+/* GET CASADI */
 table.release {
   width: 100%;
+    text-align: right;
 }
 
 table.release th {
   text-align: center;
-}
-table.release tbody {
-  text-align: right;
 }
 
 table#overview-releases {

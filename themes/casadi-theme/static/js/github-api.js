@@ -60,6 +60,41 @@ function getDownloadStats() {
 }
 
 // MOCK-UP function
+function showLatestStable() {
+  var latest = releases.data[0];
+  var html = "";
+  html += "  <div id=\"latest-stable-release\" class=\"card text-left border-success\">" +
+          "    <div class=\"card-header\">" +
+          "      <h4 class=\"text-success\">" + latest.tag_name + " <span class=\"badge badge-success\">latest</span></h4>" +
+          "      <ul class=\"nav nav-tabs card-header-tabs nav-fill\" role=\"tablist\">" +
+          "        <li class=\"nav-item\">" +
+          "          <a class=\"nav-link active\" href=\"#downloadTab\" role=\"tab\" data-toggle=\"tab\">Download</a>" +
+          "        </li>" +
+          "        <li class=\"nav-item\">" +
+          "          <a class=\"nav-link\" href=\"#changelogTab\" role=\"tab\" data-toggle=\"tab\">Changelog</a>" +
+          "        </li>" +
+          "        <li class=\"nav-item\">" +
+          "          <a class=\"nav-link\" href=\"#instructionsTab\" role=\"tab\" data-toggle=\"tab\">Instructions</a>" +
+          "        </li>" +
+          "      </ul>" +
+          "    </div>" +
+          "    <div class=\"card-body tab-content\">" +
+          "      <div id=\"downloadTab\" role=\"tabpanel\" class=\"tab-pane fade active show\">" +
+          "        " + latest.body +
+          "      </div>" +
+          "      <div id=\"changelogTab\" role=\"tabpanel\" class=\"tab-pane fade\">" +
+          "        " + latest.body +
+          "      </div>" +
+          "      <div id=\"instructionsTab\" role=\"tabpanel\" class=\"tab-pane fade\">" +
+          "        " + latest.body +
+          "      </div>" +
+          "    </div>" +
+          "    <div class=\"card-footer text-right\">" +
+          "      released " + new Date(latest.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) +
+          "    </div>" +
+          "  </div>";
+  $('#latest-stable-release').append(html);
+}
 function showReleases(relData) {
   // print the release table
   var release = relData.data;

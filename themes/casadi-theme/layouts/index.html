@@ -3,61 +3,60 @@
 {{ partial "top-block.html" . }}
 
 <div id="main">
-  {{ range $index, $element :=  .Data.Pages.ByWeight }}
-    {{ if eq .Section "home" }}
-      <div class="card">
-        <div class="container">
-          {{ if modBool $index 2 }}
-            {{ if (isset .Params "mode") and (eq .Params.mode "manual") }}
-              {{ .Content }}
-            {{ else }}
-              <div class="row">
-                {{ if (isset .Params "image") and (ne .Params.image "") }}
-                  <div class="col-md-4">
-                    <img src="{{ .Site.BaseURL }}img/{{ .Params.image }}">
-                  </div>
-                  <div class="col-md-8 text-left">
-                    <p class="lead">
-                      {{ .Content }}
-                    </p>
-                  </div>
-                {{ else }}
-                  <div class="col-md-12 text-center">
-                    <p class="lead">
-                      {{ .Content }}
-                    </p>
-                  </div>
-                {{ end }}
-              </div>
-            {{ end }}
+  <div class="container">
+    {{ range $index, $element :=  .Data.Pages.ByWeight }}
+      {{ if ne $index 0 }} <hr class="sep"> {{ end }}
+      {{ if eq .Section "home" }}
+        {{ if modBool $index 2 }}
+          {{ if (isset .Params "mode") and (eq .Params.mode "manual") }}
+            {{ .Content }}
           {{ else }}
-            {{ if (isset .Params "mode") and (eq .Params.mode "manual") }}
-              {{ .Content }}
-            {{ else }}
-              <div class="row">
-                {{ if (not (isset .Params "image")) or (eq .Params.image "") }}
-                  <div class="col-md-12 text-center">
-                    <p class="lead">
-                      {{ .Content }}
-                    </p>
-                  </div>
-                {{ else }}
-                  <div class="col-md-8 text-right">
-                    <p class="lead">
-                      {{ .Content }}
-                    </p>
-                  </div>
-                  <div class="col-md-4">
-                    <img src="{{ .Site.BaseURL }}img/{{ .Params.image }}">
-                  </div>
-                {{ end }}
-              </div>
-            {{ end }}
+            <div class="row">
+              {{ if (isset .Params "image") and (ne .Params.image "") }}
+                <div class="col-4">
+                  <img src="{{ .Site.BaseURL }}img/{{ .Params.image }}">
+                </div>
+                <div class="col-8 text-left">
+                  <p class="lead">
+                    {{ .Content }}
+                  </p>
+                </div>
+              {{ else }}
+                <div class="col text-center">
+                  <p class="lead">
+                    {{ .Content }}
+                  </p>
+                </div>
+              {{ end }}
+            </div>
           {{ end }}
-        </div>
-      </div>
+        {{ else }}
+          {{ if (isset .Params "mode") and (eq .Params.mode "manual") }}
+            {{ .Content }}
+          {{ else }}
+            <div class="row">
+              {{ if (not (isset .Params "image")) or (eq .Params.image "") }}
+                <div class="col text-center">
+                  <p class="lead">
+                    {{ .Content }}
+                  </p>
+                </div>
+              {{ else }}
+                <div class="col-8 text-right">
+                  <p class="lead">
+                    {{ .Content }}
+                  </p>
+                </div>
+                <div class="col-4">
+                  <img src="{{ .Site.BaseURL }}img/{{ .Params.image }}">
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+        {{ end }}
+      {{ end }}
     {{ end }}
-  {{ end }}
+  </div>
 </div>
 
 <a href="https://github.com/you"><img style="position: absolute; top: 56px; right: 0; border: 0; z-index: 1000" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
