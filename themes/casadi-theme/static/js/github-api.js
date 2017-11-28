@@ -95,6 +95,7 @@ function showLatestStable() {
           "  </div>";
   $('#latest-stable-release').append(html);
 }
+
 function showReleases(relData) {
   // print the release table
   var release = relData.data;

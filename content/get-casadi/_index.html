@@ -52,7 +52,72 @@ Choose your <em>desired version and platform</em> below.</p>
   </div> -->
 </div>
 
-<div id="all-releases"></div>
+<br />
+
+<div class="card text-left mb-3" id="V320">
+  <a class="card-header collapsed" id="header-V320" data-toggle="collapse" href="#body-V320" aria-expanded="true" aria-controls="body-V320">
+    <h3 style="display: inline-block;">v3.2.0</h3>
+    <span title="Total downloads" class="badge badge-pill badge-secondary pull-right">100k</span>
+    <div class="clearfix"></div>
+    <small>released February 31, 2019</small>
+  </a>
+  <div class="collapse" id="body-V320">
+    <div class="card-body">
+      <p>This is v3.2.0...</p>
+      <h4>The binary matrix</h4>
+      <p>...</p>
+      <h4>Changelog</h4>
+      <ul id="changelog">
+        <li>...</li>
+      </ul>
+      Follow the instructions...
+    </div>
+  </div>
+</div>
+
+<div class="card text-left border-danger mb-3" id="V310">
+  <a class="card-header collapsed bg-danger text-white" id="header-V310" data-toggle="collapse" href="#body-V310" aria-expanded="true" aria-controls="body-V310">
+    <h3 style="display: inline-block;">v3.1.0</h3>
+    <span title="Total downloads" class="badge badge-pill badge-secondary pull-right">100k</span>
+    <div class="clearfix"></div>
+    <small>released February 31, 2019</small>
+  </a>
+  <div class="collapse" id="body-V310">
+    <div class="card-body">
+      <p>This is v3.1.0...</p>
+      <h4>The binary matrix</h4>
+      <p>...</p>
+      <h4>Changelog</h4>
+      <ul id="changelog">
+        <li>...</li>
+      </ul>
+      Follow the instructions...
+    </div>
+  </div>
+</div>
+
+<div class="card text-left mb-3" id="V300">
+  <a class="card-header collapsed" id="header-V300" data-toggle="collapse" href="#body-V300" aria-expanded="true" aria-controls="body-V300">
+    <h3 style="display: inline-block;">v3.0.0</h3>
+    <span title="Total downloads" class="badge badge-pill badge-secondary pull-right">100k</span>
+    <div class="clearfix"></div>
+    <small>released February 31, 2019</small>
+  </a>
+  <div class="collapse" id="body-V300">
+    <div class="card-body">
+      <p>This is v3.0.0...</p>
+      <h4>The binary matrix</h4>
+      <p>...</p>
+      <h4>Changelog</h4>
+      <ul id="changelog">
+        <li>...</li>
+      </ul>
+      Follow the instructions...
+    </div>
+  </div>
+</div>
+
+<!-- <div id="all-releases"></div> -->
 
 <!-- <div id="accordion" role="tablist">
   <div class="card">
@@ -99,15 +164,28 @@ Choose your <em>desired version and platform</em> below.</p>
   </div>
 </div> -->
 
-<!-- <script>
+<script>
   document.addEventListener("DOMContentLoaded", function() {
-    gh = new GitHub({ token: 'f17675f2f0578a5bfde132ee479a95b1150324af' });
-    printRateInfo();
-    getReleasesSorted().then(function(rel) {
-      console.log(rel);
-      releases = rel;
-      // showReleases(rel);
-      showLatestStable();
-    });
+    if(typeof(directLink) != "undefined") {
+      console.log(directLink);
+      console.log($(directLink));
+      if($(directLink).length != 0) {
+        console.log(directLink);
+        $('html, body').animate({
+          scrollTop: $(directLink).offset().top
+        }, 2000);
+      }
+    }
   });
-</script> -->
+
+  // document.addEventListener("DOMContentLoaded", function() {
+  //   gh = new GitHub({ token: 'f17675f2f0578a5bfde132ee479a95b1150324af' });
+  //   printRateInfo();
+  //   getReleasesSorted().then(function(rel) {
+  //     console.log(rel);
+  //     releases = rel;
+  //     // showReleases(rel);
+  //     showLatestStable();
+  //   });
+  // });
+</script>
