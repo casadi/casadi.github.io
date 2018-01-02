@@ -7,62 +7,56 @@
   <div class="container">
     <div class="row">
       <div class="col">
-
+        <p>Go ahead, fetch a <em>CasADi release</em> from below!</p>
         {{ $url := (printf "https://sourceforge.net/projects/casadi/files/CasADi/stats/json?start_date=1970-01-01&end_date=%s" (now.Format "2006-01-02")) }}
         <!-- {{ $url }} -->
         {{ $stats := getJSON $url }}
-        <ul>
-        {{ range $idx,$sm := $stats }}
-          <li>{{ $sm }}</li>
-        {{ end }}
-        </ul>
+        <!-- <ul>
+          {{ range $idx,$sm := $stats }}
+            <li>{{ $sm }}</li>
+          {{ end }}
+        </ul> -->
+        <!-- {{ $stats.total }} -->
 
         {{ $releases := getJSON "https://api.github.com/repos/casadi/casadi/releases" }}
-        {{ range $index, $element := sort $releases }}
-          <ul>
-            <li>{{ $element.tag_name }}</li>
-            <!-- {{ range $index2, $element2 := $element }}
+        {{ range $index, $release := sort $releases }}
+          <!-- <ul>
+            {{ range $index2, $element2 := $release }}
               <li>{{ $index2 }}</li>
-            {{ end }} -->
-          </ul>
-          <!-- little workaround to avoid syntax highlighting confusion in Atom... -->
-          {{ $url := (printf "https://sourceforge.net/projects/casadi/files/CasADi/%s/stats/json?start_date=1970-01-01%send_date=%s" $element.tag_name "&" (now.Format "2006-01-02")) }}
-          {{ $url }}
-          {{ $statistics := getJSON $url }}
-          {{ if $statistics }}
-
-        <!-- {{ range $index, $element := sort $sectionPages ".Params.releasedate" "desc" }}
-          {{ if eq $element.Type "release" }} -->
-            <!-- {{ $statistics.total }} -->
-
-
-            <!-- {{ if eq $index 0 }} -->
-              <!-- <h4><a href="{{ .Params.githublink }}" target="_blank">{{ .Params.Title }}</a></h4>
-              {{ .Params.releasedate }}<br />
-              {{ .Content }} -->
-
-              <!-- <div class="card text-left border-success">
-                <div class="card-header">
-                  <h3 class="text-success" style="display: inline-block; margin-bottom: 0;">{{ .Params.Title }}</h3>
-                  <span title="Latest" class="badge badge-success" style="font-size: 0.5em; vertical-align: top;">latest</span>
-                  <span title="Downloads" class="badge badge-pill badge-secondary pull-right">{{ $statistics.total }}</span>
-                </div>
-                <div class="card-body">
-                  {{ .Content }}
+            {{ end }}
+          </ul> -->
+          <a class="offset-anchor" id="{{ $release.tag_name }}"></a>
+          {{ if eq $index 0 }}
+            <div class="card text-left border-success">
+              <a class="card-header" id="header-{{ $index }}" data-toggle="collapse" href="#body-{{ $index }}" aria-expanded="true" aria-controls="body-{{ $index }}">
+                <h3 class="text-success" style="display: inline-block; margin: 0;">CasADi v{{ $release.tag_name }}</h3>
+                <span class="badge badge-success" style="font-size: 0.5em; vertical-align: top;">latest</span>
+                <!-- <span title="Total downloads" class="badge badge-pill badge-secondary pull-right">12k</span> -->
+              </a>
+              <div class="collapse show" id="body-{{ $index }}">
+                <div class="card-body tab-content">
+                  {{ $release.body }}
                 </div>
                 <div class="card-footer text-right">
-                  <small>released {{ (time .Params.releasedate).Format "January 2, 2006" }}</small>
+                  <small>released {{ dateFormat "January 2, 2006" $release.published_at }}</small>
                 </div>
-              </div> -->
-
-            <!-- {{ else }}
-              <h4><a href="{{ .Params.githublink }}" target="_blank">{{ .Params.Title }}</a></h4>
-              {{ .Params.releasedate }}<br />
-              {{ .Content }}
-            {{ end }} -->
-          <!-- {{ end }} -->
-        <!-- {{ end }} -->
-
+              </div>
+            </div>
+          {{ else }}
+            <div class="card text-left border-default">
+              <a class="card-header collapsed" id="header-{{ $index }}" data-toggle="collapse" href="#body-{{ $index }}" aria-expanded="true" aria-controls="body-{{ $index }}">
+                <h3 class="text-default" style="display: inline-block; margin: 0;">CasADi v{{ $release.tag_name }}</h3>
+                <!-- <span title="Total downloads" class="badge badge-pill badge-secondary pull-right">12k</span> -->
+              </a>
+              <div class="collapse" id="body-{{ $index }}">
+                <div class="card-body">
+                  {{ $release.body }}
+                </div>
+                <div class="card-footer text-right">
+                  <small>released {{ dateFormat "January 2, 2006" $release.published_at }}</small>
+                </div>
+              </div>
+            </div>
           {{ end }}
         {{ end }}
       </div>
@@ -70,107 +64,3 @@
   </div>
 </div>
 {{ partial "footer.html" . }}
-
-
-<!-- <div class="card text-left border-success">
-  <div class="card-header">
-    <h3 class="text-success" style="display: inline-block;">v4.0.0</h3>
-    <span class="badge badge-success" style="font-size: 0.5em; vertical-align: top;">latest</span>
-    <span title="Total downloads" class="badge badge-pill badge-secondary pull-right">12k</span>
-    <div class="clearfix"></div>
-    <small>released February 31, 2019</small>
-    <ul class="nav nav-tabs card-header-tabs pull-right" role="tablist">
-      <li class="nav-item">
-        <a class="nav-link active" href="#downloadTab" role="tab" data-toggle="tab" aria-selected="true">Download</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#changelogTab" role="tab" data-toggle="tab" aria-selected="false">Changelog</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#instructionsTab" role="tab" data-toggle="tab" aria-selected="false">Instructions</a>
-      </li>
-    </ul>
-  </div>
-  <div class="card-body tab-content">
-    <div id="downloadTab" role="tabpanel" class="tab-pane fade active show">
-      <p>This is CasADi v4.0.0 - not available - neither for C++, Python nor Matlab.</p>
-      <h4>The binary matrix</h4>
-      <p>...</p>
-    </div>
-    <div id="changelogTab" role="tabpanel" class="tab-pane fade">
-      <h4>Changelog</h4>
-      <ul id="changelog">
-        <li>Significant increase (33%) of major version number.</li>
-        <li>...</li>
-      </ul>
-    </div>
-    <div id="instructionsTab" role="tabpanel" class="tab-pane fade">
-      Follow the instructions...
-    </div>
-  </div>
-</div>
-
-<br />
-
-<div class="card text-left mb-3" id="V320">
-  <a class="card-header collapsed" id="header-V320" data-toggle="collapse" href="#body-V320" aria-expanded="true" aria-controls="body-V320">
-    <h3 style="display: inline-block;">v3.2.0</h3>
-    <span title="Total downloads" class="badge badge-pill badge-secondary pull-right">100k</span>
-    <div class="clearfix"></div>
-    <small>released February 31, 2019</small>
-  </a>
-  <div class="collapse" id="body-V320">
-    <div class="card-body">
-      <p>This is v3.2.0...</p>
-      <h4>The binary matrix</h4>
-      <p>...</p>
-      <h4>Changelog</h4>
-      <ul id="changelog">
-        <li>...</li>
-      </ul>
-      Follow the instructions...
-    </div>
-  </div>
-</div>
-
-<div class="card text-left border-danger mb-3" id="V310">
-  <a class="card-header collapsed bg-danger text-white" id="header-V310" data-toggle="collapse" href="#body-V310" aria-expanded="true" aria-controls="body-V310">
-    <h3 style="display: inline-block;">v3.1.0</h3>
-    <span title="Total downloads" class="badge badge-pill badge-secondary pull-right">100k</span>
-    <div class="clearfix"></div>
-    <small>released February 31, 2019</small>
-  </a>
-  <div class="collapse" id="body-V310">
-    <div class="card-body">
-      <p>This is v3.1.0...</p>
-      <h4>The binary matrix</h4>
-      <p>...</p>
-      <h4>Changelog</h4>
-      <ul id="changelog">
-        <li>...</li>
-      </ul>
-      Follow the instructions...
-    </div>
-  </div>
-</div>
-
-<div class="card text-left mb-3" id="V300">
-  <a class="card-header collapsed" id="header-V300" data-toggle="collapse" href="#body-V300" aria-expanded="true" aria-controls="body-V300">
-    <h3 style="display: inline-block;">v3.0.0</h3>
-    <span title="Total downloads" class="badge badge-pill badge-secondary pull-right">100k</span>
-    <div class="clearfix"></div>
-    <small>released February 31, 2019</small>
-  </a>
-  <div class="collapse" id="body-V300">
-    <div class="card-body">
-      <p>This is v3.0.0...</p>
-      <h4>The binary matrix</h4>
-      <p>...</p>
-      <h4>Changelog</h4>
-      <ul id="changelog">
-        <li>...</li>
-      </ul>
-      Follow the instructions...
-    </div>
-  </div>
-</div> -->

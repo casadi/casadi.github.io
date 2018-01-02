@@ -1,0 +1,7 @@
+{{ $releases := getJSON "https://api.github.com/repos/casadi/casadi/releases" }}
+{{ range $index, $element := sort $releases }}
+  {{ $url := (printf "https://sourceforge.net/projects/casadi/files/CasADi/%s/stats/json?start_date=1970-01-01&end_date=%s" $element.tag_name "&" (now.Format "2006-01-02")) }}
+  <!-- {{ $url }} -->
+  {{ $statistics := getJSON $url }}
+  {{ $statistics.total }}
+{{ end }}

@@ -31,6 +31,13 @@ a:hover, a:focus {
   /*color: rgb(220, 0, 0);*/
   color: #0366d6;
 }
+/* compensating for fixed-height header */
+a.offset-anchor {
+  display: block;
+  position: relative;
+  top: -66px;
+  visibility: hidden;
+}
 
 /* NAVIGATION */
 nav.navbar {
@@ -154,6 +161,9 @@ table#overview-releases .btn-download-binaries>.fa {
   font-size: 20px;
 }
 
+div.card {
+  margin-bottom: 10px;
+}
 .card-header.collapsed {
   border-bottom: 0px;
 }
