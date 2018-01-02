@@ -5,18 +5,8 @@
     <div class="row">
       <div class="col">
         <h1>{{ .Title }}</h1>
-        {{ .Content }}
+        <p>{{ .Content }}</p>
       </div>
-      {{ $sectionPages := where .Site.Pages "Section" .Section }}
-      {{ if ge (len $sectionPages) 1 }}
-        <div class="col-3">
-          <ul>
-            {{ range $sectionPages }}
-              <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
-            {{ end }}
-          </ul>
-        </div>
-      {{ end }}
     </div>
   </div>
 </div>
