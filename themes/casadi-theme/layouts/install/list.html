@@ -1,25 +1,16 @@
 {{ partial "header.html" . }}
 {{ partial "nav.html" . }}
 
-{{ $sectionPages := where .Site.Pages "Section" "install" }}
-
 <div id="main">
   <div class="container">
     <div class="row">
       <div class="col">
         {{ $url := (printf "https://sourceforge.net/projects/casadi/files/CasADi/stats/json?start_date=1970-01-01&end_date=%s" (now.Format "2006-01-02")) }}
         {{ $stats := getJSON $url }}
-        <!-- <script type="text/javascript">
-          console.log({{ $stats }});
-        </script> -->
 
         <!-- cache busting -->
         {{ $url := (printf "%s%s" "https://api.github.com/repos/casadi/casadi/releases?" (string now.Unix)) }}
         {{ $releases := getJSON $url }}
-
-        <!-- <script type="text/javascript">
-          console.log({{ $releases }});
-        </script> -->
 
         <p>Get the <em>latest release</em>:</p>
 
@@ -28,9 +19,21 @@
           {{ $isPrerelease := $release.prerelease }}
           {{ $isDraft := $release.draft }}
 
+          <!-- TODO ad-hoc solution, filtering for exact tags -->
+          {{ $htmlBody := $release.body | markdownify }}
+          {{ $htmlBody := split $htmlBody "<h1 id=\"binaries\">Binaries</h1>" }}
+          {{ $htmlBody := index $htmlBody 1 }}
+          {{ $htmlBody := split $htmlBody "<h1 id=\"install\">Install</h1>" }}
+          {{ $htmlBinaries := index $htmlBody 0 }}
+          {{ $htmlBody := index $htmlBody 1 }}
+          {{ $htmlBody := split $htmlBody "<h1 id=\"release-notes\">Release notes</h1>" }}
+          {{ $htmlInstall := index $htmlBody 0 }}
+          {{ $htmlRelease := index $htmlBody 1 }}
+
           <a class="offset-anchor" id="{{ $release.tag_name }}"></a>
+          <a class="offset-anchor" id="v{{ $release.tag_name }}"></a>
           {{ if $isLatest }}
-          <div class="card text-left border-success mb-2">
+          <div class="card text-left border-success mb-3">
           {{ else }}
           <div class="card text-left border-default mb-2">
           {{ end }}
@@ -58,8 +61,27 @@
             {{ else }}
             <div class="collapse" id="body-{{ $index }}">
             {{ end }}
+              <div class="nav justify-content-center" role="tablist">
+                <a class="nav-link active" href="#downloadTab-{{ $index }}" role="tab" data-toggle="tab" aria-selected="true">Download</a>
+                <a class="nav-link" href="#notesTab-{{ $index }}" role="tab" data-toggle="tab" aria-selected="false">Notes</a>
+                <a class="nav-link" href="#installTab-{{ $index }}" role="tab" data-toggle="tab" aria-selected="false">Instructions</a>
+              </div>
               <div class="card-body tab-content">
-                {{ $release.body | markdownify }}
+                <div id="downloadTab-{{ $index }}" role="tabpanel" class="tab-pane fade active show">
+                  {{ if $htmlBinaries }}
+                    {{ $htmlBinaries | markdownify }}
+                  {{ end }}
+                </div>
+                <div id="notesTab-{{ $index }}" role="tabpanel" class="tab-pane fade">
+                  {{ if $htmlRelease }}
+                    {{ $htmlRelease | markdownify }}
+                  {{ end }}
+                </div>
+                <div id="installTab-{{ $index }}" role="tabpanel" class="tab-pane fade">
+                  {{ if $htmlInstall }}
+                    {{ $htmlInstall | markdownify }}
+                  {{ end }}
+                </div>
               </div>
               <div class="card-footer text-muted text-right">
                 released {{ dateFormat "January 2, 2006" $release.created_at }}
