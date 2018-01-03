@@ -1,0 +1,20 @@
+{{ partial "header.html" . }}
+{{ partial "nav.html" . }}
+
+{{ $sectionPages := where .Site.Pages "Section" "blog" }}
+
+<div id="main">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <p>CasADi labs is an open-ended platform for <em>sharing knowledge</em> about CasADi. Any user can guest-post by making pull-requests to the blogging repo.</p>
+        <ul>
+        {{ range $index, $post := $sectionPages }}
+          <li><a href="{{ $post.Permalink }}">{{ $post.Title }}</a></li>
+        {{ end }}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{{ partial "footer.html" . }}

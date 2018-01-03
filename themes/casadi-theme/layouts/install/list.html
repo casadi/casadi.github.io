@@ -7,7 +7,7 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        <p>Go ahead, fetch a <em>CasADi release</em> from below!</p>
+        <!-- <p>Go ahead, fetch a <em>CasADi release</em> from below!</p> -->
         {{ $url := (printf "https://sourceforge.net/projects/casadi/files/CasADi/stats/json?start_date=1970-01-01&end_date=%s" (now.Format "2006-01-02")) }}
         <!-- {{ $url }} -->
         {{ $stats := getJSON $url }}
@@ -25,11 +25,12 @@
               <li>{{ $index2 }}</li>
             {{ end }}
           </ul> -->
-          <a class="offset-anchor" id="{{ $release.tag_name }}"></a>
           {{ if eq $index 0 }}
+            <p>Get the <em>latest release</em>:</p>
+            <a class="offset-anchor" id="{{ $release.tag_name }}"></a>
             <div class="card text-left border-success">
               <a class="card-header" id="header-{{ $index }}" data-toggle="collapse" href="#body-{{ $index }}" aria-expanded="true" aria-controls="body-{{ $index }}">
-                <h3 class="text-success" style="display: inline-block; margin: 0;">CasADi v{{ $release.tag_name }}</h3>
+                <h4 class="text-success" style="display: inline-block; margin: 0;">CasADi v{{ $release.tag_name }}</h4>
                 <span class="badge badge-success" style="font-size: 0.5em; vertical-align: top;">latest</span>
                 <!-- <span title="Total downloads" class="badge badge-pill badge-secondary pull-right">12k</span> -->
               </a>
@@ -42,10 +43,12 @@
                 </div>
               </div>
             </div>
+            <p style="margin-top: 25px;">Or get one of the <em>earlier releases</em>:</p>
           {{ else }}
+            <a class="offset-anchor" id="{{ $release.tag_name }}"></a>
             <div class="card text-left border-default">
               <a class="card-header collapsed" id="header-{{ $index }}" data-toggle="collapse" href="#body-{{ $index }}" aria-expanded="true" aria-controls="body-{{ $index }}">
-                <h3 class="text-default" style="display: inline-block; margin: 0;">CasADi v{{ $release.tag_name }}</h3>
+                <h4 class="text-default" style="display: inline-block; margin: 0;">CasADi v{{ $release.tag_name }}</h4>
                 <!-- <span title="Total downloads" class="badge badge-pill badge-secondary pull-right">12k</span> -->
               </a>
               <div class="collapse" id="body-{{ $index }}">
