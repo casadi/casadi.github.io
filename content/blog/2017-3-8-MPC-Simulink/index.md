@@ -1,14 +1,16 @@
 ---
-layout: post
 title: CasADi-driven MPC in Simulink (part 1)
 author: jg
 tags: MPC simulink
+date: 2017-03-08
 ---
 
 CasADi is not a monolithic tool. We can easily couple it to other software to have more fun.
 Today we'll be exploring a _simple_ coupling with Simulink. We'll be showing off nonlinear MPC (NMPC).
 
-![Simulink block diagram](/assets/post1/simulink_block.png)
+<!--more-->
+
+![Simulink block diagram](simulink_block.png)
 
 # The details
 
@@ -81,7 +83,7 @@ solver = nlpsol('solver', 'ipopt', prob);
 
 Recall from that example the solution plot:
 
-![Reference solution from multiple shooting example](/assets/post1/reference.png).
+![Reference solution from multiple shooting example](reference.png).
 
 As we all know, CasADi makes an important distinction between _initialisation_ and _evaluation_ steps.
 We would not want to construct an NLP afresh at every sampling time!
@@ -131,16 +133,16 @@ We used option 1 here. It's the most simple way. Obviously this is not the most 
 but since all of CasADi's number-crunching happens in compiled libraries, `interpreted Matlab code` is not as bad as it sounds perhaps.
 Anyway, make sure that you indicate to Simulink that the code is `interpreted`:
 
-![Simulink block diagram](/assets/post1/interpreted.png)
+![Simulink block diagram](interpreted.png)
 
 Let's jump to results.
 
 # The results
 MPC control signal:
-![MPC control signal](/assets/post1/simulink_control.png)
+![MPC control signal](simulink_control.png)
 
 State evolution:
-![State evolution](/assets/post1/simulink_state.png)
+![State evolution](simulink_state.png)
 
 Note how the control trajectory (up to t=10s) matches the reference solution further up in this post.
 The state trajectory matches too, but Simulink shows you more detail: you see the smooth time-evolution of the system in-between the sampling times.
@@ -150,4 +152,4 @@ Just for fun, I dropped in some noised at around t=10s. The MPC controller manag
 This post showed a quick way to drop your CasADi code into Simulink.
 We're curious what you'll cook up based on this example. Enjoy!
 
-Downloads: [casadi_block.m](/assets/post1/casadi_block.m), [mpc_demo.slx](/assets/post1/mpc_demo.slx)
+Downloads: [casadi_block.m](casadi_block.m), [mpc_demo.slx](mpc_demo.slx)

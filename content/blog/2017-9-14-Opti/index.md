@@ -1,13 +1,15 @@
 ---
-layout: post
 title: Easy NLP modeling in CasADi with Opti
 author: jg
 tags: NLP opti
+date: 2017-09-14
 ---
 
 [Release 3.3.0](http://install33.casadi.org) of CasADi introduced a compact syntax for NLP modeling, using a set of helper classes, collectively known as 'Opti stack'.
 
 In this post, we briefly demonstrates this functionality.
+
+<!--more-->
 
 # Rosenbrock problem
 
@@ -35,7 +37,7 @@ sol = opti.solve();
 plot(sol.value(x),sol.value(y),'o');
 ```
 
-![Solution of uncosntrained Rosenbrock problem](/assets/post2/rosenbrock1.png)
+![Solution of uncosntrained Rosenbrock problem](rosenbrock1.png)
 
 Let's make a variation on the problem by adding an equality constraint:
 
@@ -55,7 +57,7 @@ opti.solver('ipopt');
 sol = opti.solve();
 ```
 
-![Solution of constrained Rosenbrock problem](/assets/post2/rosenbrock2.png)
+![Solution of constrained Rosenbrock problem](rosenbrock2.png)
 
 We may add in fact any number of equality/inequality constraints:
 
@@ -77,7 +79,7 @@ opti.solver('ipopt');
 sol = opti.solve();
 ```
 
-![Solution of constrained Rosenbrock problem](/assets/post2/rosenbrock3.png)
+![Solution of constrained Rosenbrock problem](rosenbrock3.png)
 
 We can also create a parametric NLP, were a parameter is getting fixed at solution time:
 
@@ -106,10 +108,10 @@ sol.value(opti.dual(con))
 ```
 
 The Lagrange multiplier can be interpreted as the sensitivity of the optimal cost with respect to the relaxation of the constraint. We plotted the slope given by the Langrange multiplier in red in the figure below.
-![Solution of constrained Rosenbrock problem](/assets/post2/rosenbrock4.png)
+![Solution of constrained Rosenbrock problem](rosenbrock4.png)
 
 
-Download code: [rosenbrock.m](/assets/post2/rosenbrock.m)
+Download code: [rosenbrock.m](rosenbrock.m)
 
 
 # Hanging chain problem
@@ -152,7 +154,7 @@ sol = opti.solve();
 plot(sol.value(x),sol.value(y),'-o')
 ```
 
-![Solution of unconstrained hanging chain](/assets/post2/chain1.png)
+![Solution of unconstrained hanging chain](chain1.png)
 
 After a first solve, further constraints can be added, e.g. a ground constrained
 ```matlab
@@ -160,7 +162,7 @@ opti.subject_to(y>=cos(0.1*x)-0.5);
 sol = opti.solve();
 ```
 
-![Solution of constrained hanging chain](/assets/post2/chain2.png)
+![Solution of constrained hanging chain](chain2.png)
 
 We can make the problem more numerically challenging by setting a nonzero restlength for the spring:
 ```matlab
@@ -176,7 +178,7 @@ opti.set_initial(x,linspace(-2,2,N));
 opti.set_initial(y,1);
 ```
 
-![Solution of nonlinear constrained hanging chain](/assets/post2/chain3.png)
+![Solution of nonlinear constrained hanging chain](chain3.png)
 
 When the going get's tough, you may find it helpful to plot the intermediate solution
 for each iteration of the solver:
@@ -184,14 +186,13 @@ for each iteration of the solver:
 ```matlab
 opti.callback(@(i) plot(opti.debug.value(x),opti.debug.value(y),'DisplayName',num2str(i)))
 ```
-![Solution of nonlinear constrained hanging chain](/assets/post2/chain4.png)
+![Solution of nonlinear constrained hanging chain](chain4.png)
 
 (Credits to Milan Vukov for delivering this problem)
 
-Download code: [chain.m](/assets/post2/chain.m)
+Download code: [chain.m](chain.m)
 
 
-For more details about Opti, see Chapter 9 of the [users guide](http://docs.casadi.org/v3.3.0/users_guide/casadi-users_guide.pdf). For an optimal control example, see [the race car example]({% post_url 2017-9-15-OCP %}#coding).
+For more details about Opti, see Chapter 9 of the [users guide](http://docs.casadi.org/v3.3.0/users_guide/casadi-users_guide.pdf). For an optimal control example, see [the race car example]({{< ref "blog/2017-9-15-OCP/index.md" >}}#coding).
 
 Using Opti, you have the scalability of CasADi algorithmic differentiation available, in a user friendly packaging. Ideal for teaching!
- 

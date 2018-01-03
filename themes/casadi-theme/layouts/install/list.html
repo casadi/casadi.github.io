@@ -28,7 +28,7 @@
           {{ if eq $index 0 }}
             <p>Get the <em>latest release</em>:</p>
             <a class="offset-anchor" id="{{ $release.tag_name }}"></a>
-            <div class="card text-left border-success">
+            <div class="card text-left border-success mb-3">
               <a class="card-header" id="header-{{ $index }}" data-toggle="collapse" href="#body-{{ $index }}" aria-expanded="true" aria-controls="body-{{ $index }}">
                 <h4 class="text-success" style="display: inline-block; margin: 0;">CasADi v{{ $release.tag_name }}</h4>
                 <span class="badge badge-success" style="font-size: 0.5em; vertical-align: top;">latest</span>
@@ -38,15 +38,15 @@
                 <div class="card-body tab-content">
                   {{ $release.body }}
                 </div>
-                <div class="card-footer text-right">
-                  <small>released {{ dateFormat "January 2, 2006" $release.published_at }}</small>
+                <div class="card-footer text-muted text-right">
+                  released {{ dateFormat "January 2, 2006" $release.published_at }}
                 </div>
               </div>
             </div>
-            <p style="margin-top: 25px;">Or get one of the <em>earlier releases</em>:</p>
+            <p>Or get one of the <em>earlier releases</em>:</p>
           {{ else }}
             <a class="offset-anchor" id="{{ $release.tag_name }}"></a>
-            <div class="card text-left border-default">
+            <div class="card text-left border-default mb-2">
               <a class="card-header collapsed" id="header-{{ $index }}" data-toggle="collapse" href="#body-{{ $index }}" aria-expanded="true" aria-controls="body-{{ $index }}">
                 <h4 class="text-default" style="display: inline-block; margin: 0;">CasADi v{{ $release.tag_name }}</h4>
                 <!-- <span title="Total downloads" class="badge badge-pill badge-secondary pull-right">12k</span> -->
@@ -55,8 +55,8 @@
                 <div class="card-body">
                   {{ $release.body }}
                 </div>
-                <div class="card-footer text-right">
-                  <small>released {{ dateFormat "January 2, 2006" $release.published_at }}</small>
+                <div class="card-footer text-muted text-right">
+                  released {{ dateFormat "January 2, 2006" $release.published_at }}
                 </div>
               </div>
             </div>

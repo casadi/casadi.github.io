@@ -1,11 +1,10 @@
 ---
-layout: post
 title: Optimal control problems in a nutshell
 author: jg
 tags: OCP opti
+date: 2017-09-15
+aliases: [/blog/ocp/]
 ---
-
-
 Optimization.
 There's a mathematical term that sounds familiar to the general public.
 Everyone can imagine engineers working hard to make your car run 1% more fuel-efficient,
@@ -14,15 +13,17 @@ That sounds rather dull; an icing on the cake at best.
 
 Optimization can be more than this. I'd argue that optimization can deliver intelligence or creativity.
 
+<!--more-->
+
 Consider that finding your next chess move amounts to optimization. Consider the results of [topology optimization](http://www.altairhyperworks.com/industry/Architecture)
-![Topology optimization](/assets/post3/hyperworks-industries-architecture-screen-capture-6-726x383.jpg),
+![Topology optimization](hyperworks-industries-architecture-screen-capture-6-726x383.jpg),
 or [evolving artificial life](https://youtu.be/CXTZHHQ7ZiQ?t=1m5s):
-![Evolving artificial life](/assets/post3/evo.png)
+![Evolving artificial life](evo.png)
 
 Our field of research is optimal control, in which we seek time-trajectories for control signals that make a dynamic system carry out a task in an optimal way.
 
 In many cases, like for a [double pendulum swing-up](https://youtu.be/B6vr1x6KDaY?t=5s)
-![Evolving artificial life](/assets/post3/doublependulum.png)
+![Evolving artificial life](doublependulum.png)
 the most exciting part of optimal control is not that it can spot the optimum out of many valid trajectories.
 It's that it can find valid trajectories at all, out of the blue.
 
@@ -31,7 +32,7 @@ It's that it can find valid trajectories at all, out of the blue.
 Let's get concrete and solve an actual optimal control problem, using CasADi.
 We will go racing a toy slot car.
 
-![Race track](/assets/post3/racetrack.png)
+![Race track](racetrack.png)
 
 The task is to finish 1 lap as fast as possible, starting from standstill.
 Go too fast, and the car will fly out of its slot.
@@ -67,19 +68,19 @@ $$
 
 Note our decision variables $x(\cdot)$ and $u(\cdot)$: the result of the optimization should be functions, i.e. infinitely detailed descriptions of how the states and control should move over time from $0$ to $T$:
 
-![Continuous-time states and controls](/assets/post3/xu_cont.png)
+![Continuous-time states and controls](xu_cont.png)
 
 # Multiple-shooting
 
 Computers don't like infinities. Therefore, let's discretize the problem in time.
 Choose a number $N$ of control intervals in which the control effort is kept constant:
 
-![Discretized controls](/assets/post3/u_disc.png)
+![Discretized controls](u_disc.png)
 
 We now have decision variables $u_1,u_2,\ldots,u_{N}$ instead of function $u(\cdot)$.
 
 For the state trajectory, let's consider the states at the boundaries of each control interval:
-![Discretized states and controls](/assets/post3/xu_disc.png)
+![Discretized states and controls](xu_disc.png)
 
 We now have decision variables $x_1,x_2,\ldots,x_{N+1}$ instead of function $x(\cdot)$.
 
@@ -94,7 +95,7 @@ $$
 For each interval the integrator predicts were our system will end up at the end of that interval.
 Starting our numerical optimization with putting all states at a constant location, the picture may look like:
 
-![Gaps](/assets/post3/xu_gap.png)
+![Gaps](xu_gap.png)
 
 We notice gaps here; there's a mismatch between were the integrator says we will end up and where our state decision variables think we are.
 What we do is add constraints that make the gap zero.
@@ -117,8 +118,8 @@ $$
 
 # Coding
 
-Let's get coding, using CasADi's [Opti]({% post_url 2017-9-14-Opti %}) functionality.
- 
+Let's get coding, using CasADi's [Opti]({{< ref "blog/2017-9-14-Opti/index.md" >}}) functionality.
+
 Set up the problem
 ```matlab
 N = 100; % number of control intervals
@@ -156,7 +157,7 @@ for k=1:N % loop over control intervals
    k2 = f(X(:,k)+dt/2*k1, U(:,k));
    k3 = f(X(:,k)+dt/2*k2, U(:,k));
    k4 = f(X(:,k)+dt*k3,   U(:,k));
-   x_next = X(:,k) + dt/6*(k1+2*k2+2*k3+k4); 
+   x_next = X(:,k) + dt/6*(k1+2*k2+2*k3+k4);
    opti.subject_to(X(:,k+1)==x_next); % close the gaps
 end
 ```
@@ -171,7 +172,7 @@ opti.subject_to(0<=U<=1);           % control is limited
 Set boundary conditions.
 ```matlab
 opti.subject_to(pos(1)==0);   % start at position 0 ...
-opti.subject_to(speed(1)==0); % ... from stand-still 
+opti.subject_to(speed(1)==0); % ... from stand-still
 opti.subject_to(pos(N+1)==1); % finish line at position 1
 ```
 
@@ -199,7 +200,7 @@ Post processing of the optimal values.
 plot(sol.value(speed));
 plot(sol.value(pos));
 ```
-![Solution of race car problem](/assets/post3/OCP_sol.png)
+![Solution of race car problem](OCP_sol.png)
 
 The solution is intuitive: we give 100% throttle, until we hit the speed limit. Next, we gradually inrease throttle again as the speed limit is raised.
 
@@ -212,12 +213,11 @@ Indeed, have a look at the sparsity of the constraint Jacobian:
 spy(sol.value(jacobian(opti.g,opti.x)))
 ```
 
-![Sparsity of constraint jacobian](/assets/post3/jac_sp.png)
+![Sparsity of constraint jacobian](jac_sp.png)
 
 
 
 This structure is automatically detected and exploited by CasADi.
 
 
-Download code: [race_car.m](/assets/post3/race_car.m)
-
+Download code: [race_car.m](race_car.m)

@@ -5,7 +5,7 @@ body {
   width: 100%;
   font-family: "Source Sans Pro", Helvetica, sans-serif;
   font-weight: 300;
-  font-size: 24px;
+  font-size: 20px;
   letter-spacing: 0.5px;
   line-height: 40px;
   margin: 0;
@@ -137,7 +137,7 @@ footer .list-inline-item:not(:last-child) {
  * *********************** */
 
 /* GET CASADI */
-table.release {
+/* table.release {
   width: 100%;
     text-align: right;
 }
@@ -159,19 +159,21 @@ table#overview-releases .btn-download-binaries:hover {
 }
 table#overview-releases .btn-download-binaries>.fa {
   font-size: 20px;
-}
+} */
 
-div.card {
+/* CARD LAYOUTS */
+.card {
   margin-bottom: 10px;
 }
 .card-header.collapsed {
   border-bottom: 0px;
 }
 .card-footer {
-  line-height: 0.5em;
+  line-height: 0.7em;
 }
 .card-footer small {
-  font-size: 0.5em;
+  font-size: 0.7em;
+  font-weight: 300;
 }
 
 a.card-header {
@@ -181,4 +183,14 @@ a.card-header:hover,
 a.card-header:focus {
   color: #000;
   text-decoration: none;
+}
+
+/* CODE STYLES */
+/* inline code */
+code.hljs {
+  display: inline;
+}
+/* code blocks */
+pre>code.hljs {
+  display: block;
 }

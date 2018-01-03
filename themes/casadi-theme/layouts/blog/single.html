@@ -1,10 +1,13 @@
 {{ partial "header.html" . }}
 {{ partial "nav.html" . }}
-
 <div id="main">
   <div class="container">
-    ne sorry - that's a custom 404!
+    <div class="row">
+      <div class="col">
+        <h1>{{ .Title }}</h1>
+        <p>{{ .Content }}</p>
+      </div>
+    </div>
   </div>
 </div>
-
 {{ partial "footer.html" . }}

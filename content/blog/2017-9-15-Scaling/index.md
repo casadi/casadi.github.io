@@ -1,23 +1,25 @@
 ---
-layout: post
 title: On the importance of NLP scaling
 author: jg
 tags: OCP scaling opti
+date: 2017-09-15
 ---
 
 During my master's thesis at KULeuven on optimal control,
 one of the take-aways were that it's important to scale your variables.
 It helps convergence if the variables are in the order of 0.01 to 100.
 
+<!--more-->
+
 Master student Thomas Durbin stumbled upon a dramatic example of bad scaling in practice.
-He works on [optimal control]({% post_url 2017-9-15-OCP %}) for rockets.
+He works on [optimal control]({{< ref "blog/2017-9-15-OCP/index.md" >}}) for rockets.
 
 As a first toy problem, he studied a 1D rocket the must attain a certain height at $t=100\,\mathrm{s}$, with minimal expenditure of fuel.
 
 Following good engineering practice, he used SI base units to write the code.
 
 
-The gist of the code is as follows (complete code [here](/assets/post4/rocket.m)): 
+The gist of the code is as follows (complete code [here](rocket.m)):
 ```matlab
 m0 = 500000; % start mass [kg]
 yT = 100000; % final height [m]
@@ -46,8 +48,8 @@ opti.subject_to(y(N+1) == yT);
 ```
 
 The solution is quite interesting:
-![optimal controls of rocket problem](/assets/post4/controls.png)
-![optimal states of rocket problem](/assets/post4/states.png)
+![optimal controls of rocket problem](controls.png)
+![optimal states of rocket problem](states.png)
 
 But the focus is here on convergence. It's pretty lousy.
 
@@ -55,8 +57,8 @@ But the focus is here on convergence. It's pretty lousy.
 semilogy(sol.stats.iterations.inf_du)
 semilogy(sol.stats.iterations.inf_pr)
 ```
-![Convergence](/assets/post4/conv.png)
-Then, introduce a simple scaling of variables (complete code [here](/assets/post4/rocket_scaled.m))
+![Convergence](conv.png)
+Then, introduce a simple scaling of variables (complete code [here](rocket_scaled.m))
 
 ```matlab
 x =  repmat([1e5;2000;300e3],1,N+1).*opti.variable(3,N+1);
@@ -64,7 +66,6 @@ u = 1e8*opti.variable(1,N); % Control vector
 ```
 
 Exact same solution, wildly different convergence:
-![Convergence](/assets/post4/conv_scaled.png)
+![Convergence](conv_scaled.png)
 
 In conclusion, even if you are using an exact Hessian (which is default in CasADi), and even with a numerical backend (IPOPT) that [provides auto-scaling](https://www.coin-or.org/Ipopt/documentation/node43.html), it's still good practice to scale your NLP!
-
