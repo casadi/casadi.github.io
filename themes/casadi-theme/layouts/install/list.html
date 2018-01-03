@@ -7,59 +7,67 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        <!-- <p>Go ahead, fetch a <em>CasADi release</em> from below!</p> -->
         {{ $url := (printf "https://sourceforge.net/projects/casadi/files/CasADi/stats/json?start_date=1970-01-01&end_date=%s" (now.Format "2006-01-02")) }}
-        <!-- {{ $url }} -->
         {{ $stats := getJSON $url }}
-        <!-- <ul>
-          {{ range $idx,$sm := $stats }}
-            <li>{{ $sm }}</li>
-          {{ end }}
-        </ul> -->
-        <!-- {{ $stats.total }} -->
+        <!-- <script type="text/javascript">
+          console.log({{ $stats }});
+        </script> -->
 
-        {{ $releases := getJSON "https://api.github.com/repos/casadi/casadi/releases" }}
+        <!-- cache busting -->
+        {{ $url := (printf "%s%s" "https://api.github.com/repos/casadi/casadi/releases?" (string now.Unix)) }}
+        {{ $releases := getJSON $url }}
+
+        <!-- <script type="text/javascript">
+          console.log({{ $releases }});
+        </script> -->
+
+        <p>Get the <em>latest release</em>:</p>
+
         {{ range $index, $release := sort $releases }}
-          <!-- <ul>
-            {{ range $index2, $element2 := $release }}
-              <li>{{ $index2 }}</li>
-            {{ end }}
-          </ul> -->
-          {{ if eq $index 0 }}
-            <p>Get the <em>latest release</em>:</p>
-            <a class="offset-anchor" id="{{ $release.tag_name }}"></a>
-            <div class="card text-left border-success mb-3">
-              <a class="card-header" id="header-{{ $index }}" data-toggle="collapse" href="#body-{{ $index }}" aria-expanded="true" aria-controls="body-{{ $index }}">
-                <h4 class="text-success" style="display: inline-block; margin: 0;">CasADi v{{ $release.tag_name }}</h4>
-                <span class="badge badge-success" style="font-size: 0.5em; vertical-align: top;">latest</span>
-                <!-- <span title="Total downloads" class="badge badge-pill badge-secondary pull-right">12k</span> -->
-              </a>
-              <div class="collapse show" id="body-{{ $index }}">
-                <div class="card-body tab-content">
-                  {{ $release.body }}
-                </div>
-                <div class="card-footer text-muted text-right">
-                  released {{ dateFormat "January 2, 2006" $release.published_at }}
-                </div>
-              </div>
-            </div>
-            <p>Or get one of the <em>earlier releases</em>:</p>
+          {{ $isLatest := (eq $index 0) }}
+          {{ $isPrerelease := $release.prerelease }}
+          {{ $isDraft := $release.draft }}
+
+          <a class="offset-anchor" id="{{ $release.tag_name }}"></a>
+          {{ if $isLatest }}
+          <div class="card text-left border-success mb-2">
           {{ else }}
-            <a class="offset-anchor" id="{{ $release.tag_name }}"></a>
-            <div class="card text-left border-default mb-2">
-              <a class="card-header collapsed" id="header-{{ $index }}" data-toggle="collapse" href="#body-{{ $index }}" aria-expanded="true" aria-controls="body-{{ $index }}">
-                <h4 class="text-default" style="display: inline-block; margin: 0;">CasADi v{{ $release.tag_name }}</h4>
-                <!-- <span title="Total downloads" class="badge badge-pill badge-secondary pull-right">12k</span> -->
-              </a>
-              <div class="collapse" id="body-{{ $index }}">
-                <div class="card-body">
-                  {{ $release.body }}
-                </div>
-                <div class="card-footer text-muted text-right">
-                  released {{ dateFormat "January 2, 2006" $release.published_at }}
-                </div>
+          <div class="card text-left border-default mb-2">
+          {{ end }}
+            {{ if $isLatest }}
+            <a class="card-header" id="header-{{ $index }}" data-toggle="collapse" href="#body-{{ $index }}" aria-expanded="true" aria-controls="body-{{ $index }}">
+            {{ else }}
+            <a class="card-header collapsed" id="header-{{ $index }}" data-toggle="collapse" href="#body-{{ $index }}" aria-expanded="true" aria-controls="body-{{ $index }}">
+            {{ end }}
+              {{ if $isLatest }}
+              <h4 class="text-success" style="display: inline-block; margin: 0;">CasADi v{{ $release.tag_name }}</h4>
+              <span class="badge badge-success" style="font-size: 0.5em; vertical-align: top;">latest</span>
+              {{ else }}
+              <h4 class="text-default" style="display: inline-block; margin: 0;">CasADi v{{ $release.tag_name }}</h4>
+              {{ end }}
+              {{ if $isPrerelease }}
+              <span class="badge badge-warning text-white" style="font-size: 0.5em; vertical-align: top;">prerelease</span>
+              {{ end }}
+              {{ if $isDraft }}
+              <span class="badge badge-danger text-white" style="font-size: 0.5em; vertical-align: top;">draft</span>
+              {{ end }}
+              <!-- <span title="Total downloads" class="badge badge-pill badge-secondary pull-right">12k</span> -->
+            </a>
+            {{ if $isLatest }}
+            <div class="collapse show" id="body-{{ $index }}">
+            {{ else }}
+            <div class="collapse" id="body-{{ $index }}">
+            {{ end }}
+              <div class="card-body tab-content">
+                {{ $release.body | markdownify }}
+              </div>
+              <div class="card-footer text-muted text-right">
+                released {{ dateFormat "January 2, 2006" $release.created_at }}
               </div>
             </div>
+          </div>
+          {{ if $isLatest }}
+            <p>Or get one of the <em>earlier releases</em>:</p>
           {{ end }}
         {{ end }}
       </div>
