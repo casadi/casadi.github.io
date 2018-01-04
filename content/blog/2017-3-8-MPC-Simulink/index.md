@@ -3,6 +3,7 @@ title: CasADi-driven MPC in Simulink (part 1)
 author: jg
 tags: MPC simulink
 date: 2017-03-08
+image: simulink_block.png
 ---
 
 CasADi is not a monolithic tool. We can easily couple it to other software to have more fun.

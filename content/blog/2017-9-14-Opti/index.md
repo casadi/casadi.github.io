@@ -3,6 +3,7 @@ title: Easy NLP modeling in CasADi with Opti
 author: jg
 tags: NLP opti
 date: 2017-09-14
+image: rosenbrock1.png
 ---
 
 [Release 3.3.0](http://install33.casadi.org) of CasADi introduced a compact syntax for NLP modeling, using a set of helper classes, collectively known as 'Opti stack'.

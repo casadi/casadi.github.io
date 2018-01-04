@@ -3,6 +3,7 @@ title: On the importance of NLP scaling
 author: jg
 tags: OCP scaling opti
 date: 2017-09-15
+image: conv.png
 ---
 
 During my master's thesis at KULeuven on optimal control,

@@ -3,17 +3,18 @@ title: Optimal control problems in a nutshell
 author: jg
 tags: OCP opti
 date: 2017-09-15
+image: hyperworks-industries-architecture-screen-capture-6-726x383.jpg
 aliases: [/blog/ocp/]
 ---
 Optimization.
 There's a mathematical term that sounds familiar to the general public.
 Everyone can imagine engineers working hard to make your car run 1% more fuel-efficient,
 or to slightly increase profit margins for a chemical company.
-That sounds rather dull; an icing on the cake at best.
-
-Optimization can be more than this. I'd argue that optimization can deliver intelligence or creativity.
 
 <!--more-->
+
+That sounds rather dull; an icing on the cake at best.
+Optimization can be more than this. I'd argue that optimization can deliver intelligence or creativity.
 
 Consider that finding your next chess move amounts to optimization. Consider the results of [topology optimization](http://www.altairhyperworks.com/industry/Architecture)
 ![Topology optimization](hyperworks-industries-architecture-screen-capture-6-726x383.jpg),
