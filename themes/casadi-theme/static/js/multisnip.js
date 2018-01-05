@@ -1,20 +1,21 @@
+/* This is multisnip */
+
 $(document).ready(function() {
   $('code').each(function(i, block) {
     hljs.highlightBlock(block);
   });
 
-  // $('multisnip').wrap("<multisnip></multisnip>");
   $('multisnip').each(function(i, block) {
-    $(block).prepend("<ul class='nav nav-tabs nav-tabs-multisnip'></ul>");
+    $(block).prepend("<ul class='nav nav-fill nav-tabs-multisnip'></ul>");
     $(block).children().each(function(ii, pre) {
       if($(pre).is("pre")) {
         $(pre).addClass('hljs');
         $(pre).children().each(function(iii, code) {
           if(iii == 0) {
-            var $li = $("<li>", {"class": "isshown"});
+            var $li = $("<li>", {"class": "nav-item isshown"});
           } else {
             $(code).hide();
-            var $li = $("<li>");
+            var $li = $("<li>", {"class": "nav-item"});
           }
           // console.log(code);
           $li.append("<a>" + $(code).attr("language") + "</a>");

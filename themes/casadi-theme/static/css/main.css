@@ -13,19 +13,16 @@ body {
   border: none;
   background-color: rgb(248,249,250);
 }
-
 em {
   font-style: normal;
   /*font-weight: 400;*/
   color: rgb(220, 0, 0);
 }
-
 a {
   text-decoration: none;
   /*color: rgb(220, 0, 0);*/
   color: #0366d6;
 }
-
 a:hover, a:focus {
   text-decoration: underline;
   /*color: rgb(220, 0, 0);*/
@@ -38,26 +35,22 @@ a.offset-anchor {
   top: -66px;
   visibility: hidden;
 }
-
 /* NAVIGATION */
 nav.navbar {
   border: none;
   padding: 0;
-  font-size: 24px;
+  font-size: 25px;
   line-height: 40px;
 }
-
 nav.navbar .navbar-nav>li>a {
   padding: 0;
   line-height: 56px;
 }
-
 nav.navbar .navbar-nav>li>a:focus,
 nav.navbar .navbar-nav>li>a:hover {
   color: #000 !important;
   box-shadow: 0 -3px 0 0 rgb(220,0,0) inset;
 }
-
 nav a.navbar-brand {
   width: 75px;
   height: 40px;
@@ -66,13 +59,6 @@ nav a.navbar-brand {
   background: url('../img/logo_2017.svg') no-repeat center;
   background-size: contain;
 }
-
-/* a.nav-link:hover,
-a.nav-link:focus,
-a.nav-link.active {
-  text-decoration: underline;
-} */
-
 .nav.card-header {
   margin: 0;
   padding: 0;
@@ -94,13 +80,11 @@ a.nav-link.active {
   color: #000;
   margin-top: 56px;
 }
-
 #top .vert-text {
   display: table-cell;
   vertical-align: middle;
   text-align: center;
 }
-
 #top .logo {
   max-width: 30em;
   width: 100%;
@@ -115,10 +99,15 @@ nav+#main {
   margin-top: 56px;
 }
 #main .container {
-  padding: 40px 0;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 #main hr.sep {
   margin: 40px auto;
+}
+#main.landing {
+  font-size: 1.25em;
+  line-height: 45px;
 }
 
 /* FOOTER */
@@ -127,16 +116,13 @@ footer {
   font-size: 1.25em;
   padding: 50px 0;
 }
-
 footer .copyright {
   font-size: 0.6em;
   margin: 0;
 }
-
 footer .list-inline-item a {
   color: #000;
 }
-
 footer .list-inline-item:not(:last-child) {
   margin-right: 10px;
 }
@@ -145,30 +131,9 @@ footer .list-inline-item:not(:last-child) {
  *  SITE SPECIFIC STYLES
  * *********************** */
 
-/* GET CASADI */
-/* table.release {
-  width: 100%;
-    text-align: right;
+.container p:last-child {
+  margin-bottom: 0;
 }
-
-table.release th {
-  text-align: center;
-}
-
-table#overview-releases {
-  width: 80%;
-  margin: auto;
-}
-table#overview-releases col.binary {
-  width: auto;
-}
-
-table#overview-releases .btn-download-binaries:hover {
-  color: rgb(220,0,0);
-}
-table#overview-releases .btn-download-binaries>.fa {
-  font-size: 20px;
-} */
 
 /* CARD LAYOUTS */
 .card {
@@ -189,9 +154,15 @@ a.card-header:focus {
   color: #000;
   text-decoration: none;
 }
-/* a.card-header.collapsed {
-  border-bottom: 0px;
-} */
+.card-header .release-info {
+  float: right;
+  font-size: 15px;
+  color: gray;
+}
+.card-footer.release-info {
+  font-size: 15px;
+  color: gray;
+}
 
 /* CODE STYLES */
 /* inline code */
@@ -201,14 +172,4 @@ code.hljs {
 /* code blocks */
 pre>code.hljs {
   display: block;
-}
-
-.card-header .release-info {
-  float: right;
-  font-size: 15px;
-  color: gray;
-}
-.card-footer.release-info {
-  font-size: 15px;
-  color: gray;
 }

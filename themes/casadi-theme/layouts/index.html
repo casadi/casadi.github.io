@@ -2,11 +2,11 @@
 {{ partial "nav.html" . }}
 {{ partial "top-block.html" . }}
 
-<div id="main">
+<div id="main" class="landing">
   <div class="container">
     {{ range $index, $element :=  .Data.Pages.ByWeight }}
-      {{ if ne $index 0 }} <hr class="sep"> {{ end }}
       {{ if eq .Section "home" }}
+        {{ if ne $index 0 }} <hr class="sep"> {{ end }}
         {{ if modBool $index 2 }}
           {{ if (isset .Params "mode") and (eq .Params.mode "manual") }}
             {{ .Content }}
@@ -17,13 +17,13 @@
                   <img src="{{ .Site.BaseURL }}img/{{ .Params.image }}">
                 </div>
                 <div class="col-8 text-left">
-                  <p class="lead">
+                  <p>
                     {{ .Content }}
                   </p>
                 </div>
               {{ else }}
                 <div class="col text-center">
-                  <p class="lead">
+                  <p>
                     {{ .Content }}
                   </p>
                 </div>
@@ -37,13 +37,13 @@
             <div class="row">
               {{ if (not (isset .Params "image")) or (eq .Params.image "") }}
                 <div class="col text-center">
-                  <p class="lead">
+                  <p>
                     {{ .Content }}
                   </p>
                 </div>
               {{ else }}
                 <div class="col-8 text-right">
-                  <p class="lead">
+                  <p>
                     {{ .Content }}
                   </p>
                 </div>

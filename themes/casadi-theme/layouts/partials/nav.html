@@ -7,10 +7,15 @@
     <ul class="navbar-nav">
       {{ $currentPage := . }}
       {{ range .Site.Menus.main }}
-        <li class="nav-item{{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} active{{end}}">
+        {{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.InSection ($currentPage.Site.GetPage "section" .Identifier)) }}
+        <li class="nav-item active">
+        {{ else }}
+        <li class="nav-item">
+        {{ end }}
           <a class="nav-link" href="{{ .URL }}">{{ .Name }}</a>
         </li>
       {{ end }}
     </ul>
   </div>
+
 </nav>
