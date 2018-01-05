@@ -20,7 +20,7 @@
           {{ $isDraft := $release.draft }}
 
           <!-- TODO ad-hoc solution, filtering for exact tags -->
-          {{ $htmlBody := $release.body | markdownify }}
+          {{ $htmlBody := (safeHTML $release.body) | markdownify }}
           {{ $htmlBody := split $htmlBody "<h1 id=\"binaries\">Binaries</h1>" }}
           {{ $htmlBody := index $htmlBody 1 }}
           {{ $htmlBody := split $htmlBody "<h1 id=\"install\">Install</h1>" }}
