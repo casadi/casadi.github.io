@@ -1,0 +1,35 @@
+<!-- {{ range $idx, $sec := .Sections }}
+  <script>console.log({{ . }});</script>
+{{ end }} -->
+
+<!-- {{ $theSec := .Section }} -->
+<script>console.log({{ .Sections }});</script>
+<nav class="col-nav">
+  <div id="sidebar-nav" class="sidebar hidden-sm hidden-xs">
+    <div id="navbar" class="nav-sidebar">
+      <ul class="nav" id="someID">
+        <li>
+          <!-- {{ range $idx, $sec := .Sections }}
+            <a href="#{{$sec.Title | urlize}}" data-target="#{{$sec.Title | urlize}}" data-toggle="collapse" aria-expanded="false" aria-controls="{{$sec.Title | urlize}}" role="button">{{$sec.Title}}<span class="caret arrow"></span></a>
+            <ul class="nav collapse" id="{{$sec.Title | urlize}}">
+              {{ range $idx2, $page := .Pages }}
+              <li>
+                <a href="{{$page.Permalink}}">{{$page.Title}}</a>
+              </li>
+              {{ end }}
+            </ul>
+          {{ end }} -->
+          {{ $currentPage := . }}
+          {{ range .Site.Menus.docs }}
+            <a href="#{{.Name | urlize}}" data-target="#{{.Name | urlize}}" data-toggle="collapse" aria-expanded="false" aria-controls="{{.Name | urlize}}" role="button">{{.Name}}<span class="caret arrow"></span></a>
+            <ul class="nav collapse" id="{{.Name | urlize}}">
+              <li>
+                <a href="#">nuffin</a>
+              </li>
+            </ul>
+          {{ end }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

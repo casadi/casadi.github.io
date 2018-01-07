@@ -1,6 +1,10 @@
 ---
 title: "Docs"
 description: "no description"
-type: singles
+menu:
+  docs:
+    name: 'Hola'
+    parent: 'Get started'
+    weight: 20
 ---
-Soon *to come* ...
+Soon to come ...
