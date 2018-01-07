@@ -1,5 +1,9 @@
 ---
 title: Citing CasADi
-weight: 4
+menu:
+  docs:
+    name: 'Citing CasADi'
+    parent: 'get-started'
+    weight: 4
 ---
-# Citing CasADi
+Citing CasADi

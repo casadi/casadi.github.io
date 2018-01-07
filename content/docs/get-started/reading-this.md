@@ -1,5 +1,9 @@
 ---
 title: Reading this document
-weight: 5
+menu:
+  docs:
+    name: 'Reading this document'
+    parent: 'get-started'
+    weight: 5
 ---
-# Reading this document
+Reading this document

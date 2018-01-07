@@ -1,10 +1,4 @@
 ---
-title: "Docs"
-description: "no description"
-menu:
-  docs:
-    name: 'Hola'
-    parent: 'Get started'
-    weight: 20
+title: "Welcome to the docs"
 ---
-Soon to come ...
+Hey there - looking for some documentation? Treat yourself!

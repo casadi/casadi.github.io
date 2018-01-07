@@ -1,5 +1,9 @@
 ---
 title: Obtaining and installing CasADi
-weight: 6
+menu:
+  docs:
+    name: 'Get CasADi'
+    parent: 'get-started'
+    weight: 6
 ---
-# Obtaining and installing CasADi
+Obtaining and installing CasADi

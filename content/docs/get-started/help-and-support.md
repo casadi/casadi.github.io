@@ -1,5 +1,9 @@
 ---
 title: Help and support
-weight: 3
+menu:
+  docs:
+    name: 'Help and support'
+    parent: 'get-started'
+    weight: 3
 ---
-# Help and support
+Help and support

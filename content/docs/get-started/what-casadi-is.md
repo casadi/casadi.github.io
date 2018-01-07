@@ -1,5 +1,9 @@
 ---
 title: What CasADi is and what it is not
-weight: 2
+menu:
+  docs:
+    name: 'What CasADi is'
+    parent: 'get-started'
+    weight: 2
 ---
-# What CasADi is and what it is not
+What CasADi is and what it is not

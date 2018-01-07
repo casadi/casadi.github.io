@@ -5,9 +5,9 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-body">
-        <div class="col-content content">
-          <h1>List template</h1>
-          {{ .Title }} / {{ .Content }}
+        <div class="col-content container">
+          <h1>{{ .Title }}</h1><span class="badge badge-warning" style="font-size: 0.5em; vertical-align: top;">list</span>
+          {{ .Content }}
         </div>
         {{ partial "sidebar.html" . }}
       </div>
