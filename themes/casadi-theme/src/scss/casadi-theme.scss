@@ -4,7 +4,7 @@
 html,
 body {
   height: 100%;
-  width: 100%; 
+  width: 100%;
   font-family: $font-family-base;
   font-weight: 300;
   font-size: 20px;
@@ -13,85 +13,26 @@ body {
   margin: 0;
   padding: 0;
   border: none;
-  background-color: rgb(248,249,250);
+  background-color: $casadi-color-background;
 }
 em {
   font-style: normal;
-  /*font-weight: 400;*/
-  color: rgb(220, 0, 0);
+  color: $casadi-color-accent;
 }
 a {
   text-decoration: none;
-  /*color: rgb(220, 0, 0);*/
-  color: #0366d6;
+  color: $casadi-color-hyperlink;
 }
 a:hover, a:focus {
   text-decoration: underline;
-  /*color: rgb(220, 0, 0);*/
-  color: #0366d6;
+  color: $casadi-color-hyperlink;
 }
 /* compensating for fixed-height header */
 a.offset-anchor {
   display: block;
   position: relative;
-  top: -60px;
+  top: -($casadi-top-nav-height)-10px;
   visibility: hidden;
-}
-/* NAVIGATION */
-nav#top-nav.navbar {
-  border: none;
-  padding: 0;
-  font-size: 14px;
-  line-height: 20px;
-  /* background-color: rgb(220,0,0); */
-}
-nav#top-nav.navbar .navbar-nav>li>a {
-  padding: 5px 20px;
-  line-height: 56px;
-}
-nav#top-nav.navbar .navbar-nav>li>a:focus,
-nav#top-nav.navbar .navbar-nav>li>a:hover {
-  color: #000 !important;
-  box-shadow: 0 -3px 0 0 rgb(220,0,0) inset;
-}
-nav#top-nav a.navbar-brand {
-  width: 75px;
-  height: 40px;
-  margin: 8px 0;
-  padding: 0;
-  background: url('../img/logo_2017.svg') no-repeat center;
-  background-size: contain;
-}
-.nav.card-header {
-  margin: 0;
-  padding: 0;
-}
-
-/* TOP */
-#top {
-  display: table;
-  height: 100%;
-  width: 100%;
-  min-height: 70%;
-  position: relative;
-  background: url(../img/scott-webb-260726-2.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  z-index: 2;
-  color: #000;
-  margin-top: 56px;
-}
-#top .vert-text {
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-}
-#top .logo {
-  max-width: 30em;
-  width: 100%;
-  padding: 2em;
 }
 
 /* MAIN */
@@ -111,23 +52,6 @@ nav#top-nav+#main {
 #main.landing {
   font-size: 1.25em;
   line-height: 45px;
-}
-
-/* FOOTER */
-footer {
-  color: #000;
-  font-size: 1.25em;
-  padding: 50px 0;
-}
-footer .copyright {
-  font-size: 0.6em;
-  margin: 0;
-}
-footer .list-inline-item a {
-  color: #000;
-}
-footer .list-inline-item:not(:last-child) {
-  margin-right: 10px;
 }
 
 /* ***********************
@@ -167,12 +91,7 @@ a.card-header:focus {
   color: gray;
 }
 
-/* CODE STYLES */
-/* inline code */
-code.hljs {
-  display: inline;
-}
-/* code blocks */
-pre>code.hljs {
-  display: block;
-}
+@import 'navs';
+@import 'landing';
+@import 'footer';
+@import 'code';

@@ -1,3 +1,5 @@
+/* Custom variables */
+/* overload bootstrap variables */
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600");
 /* GLOBAL */
 html,
@@ -16,17 +18,14 @@ body {
 
 em {
   font-style: normal;
-  /*font-weight: 400;*/
   color: #dc0000; }
 
 a {
   text-decoration: none;
-  /*color: rgb(220, 0, 0);*/
   color: #0366d6; }
 
 a:hover, a:focus {
   text-decoration: underline;
-  /*color: rgb(220, 0, 0);*/
   color: #0366d6; }
 
 /* compensating for fixed-height header */
@@ -35,61 +34,6 @@ a.offset-anchor {
   position: relative;
   top: -60px;
   visibility: hidden; }
-
-/* NAVIGATION */
-nav#top-nav.navbar {
-  border: none;
-  padding: 0;
-  font-size: 14px;
-  line-height: 20px;
-  /* background-color: rgb(220,0,0); */ }
-
-nav#top-nav.navbar .navbar-nav > li > a {
-  padding: 5px 20px;
-  line-height: 56px; }
-
-nav#top-nav.navbar .navbar-nav > li > a:focus,
-nav#top-nav.navbar .navbar-nav > li > a:hover {
-  color: #000 !important;
-  -webkit-box-shadow: 0 -3px 0 0 #dc0000 inset;
-          box-shadow: 0 -3px 0 0 #dc0000 inset; }
-
-nav#top-nav a.navbar-brand {
-  width: 75px;
-  height: 40px;
-  margin: 8px 0;
-  padding: 0;
-  background: url("../img/logo_2017.svg") no-repeat center;
-  -webkit-background-size: contain;
-          background-size: contain; }
-
-.nav.card-header {
-  margin: 0;
-  padding: 0; }
-
-/* TOP */
-#top {
-  display: table;
-  height: 100%;
-  width: 100%;
-  min-height: 70%;
-  position: relative;
-  background: url(../img/scott-webb-260726-2.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  background-size: cover;
-  z-index: 2;
-  color: #000;
-  margin-top: 56px; }
-
-#top .vert-text {
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center; }
-
-#top .logo {
-  max-width: 30em;
-  width: 100%;
-  padding: 2em; }
 
 /* MAIN */
 #main {
@@ -108,22 +52,6 @@ nav#top-nav + #main {
 #main.landing {
   font-size: 1.25em;
   line-height: 45px; }
-
-/* FOOTER */
-footer {
-  color: #000;
-  font-size: 1.25em;
-  padding: 50px 0; }
-
-footer .copyright {
-  font-size: 0.6em;
-  margin: 0; }
-
-footer .list-inline-item a {
-  color: #000; }
-
-footer .list-inline-item:not(:last-child) {
-  margin-right: 10px; }
 
 /* ***********************
  *  SITE SPECIFIC STYLES
@@ -159,6 +87,76 @@ a.card-header:focus {
   font-size: 15px;
   color: gray; }
 
+/* NAVIGATION */
+nav#top-nav.navbar {
+  border: none;
+  padding: 0;
+  font-size: 14px;
+  line-height: 20px; }
+
+nav#top-nav.navbar .navbar-nav > li > a {
+  padding: 5px 20px;
+  line-height: 56px; }
+
+nav#top-nav.navbar .navbar-nav > li > a:focus,
+nav#top-nav.navbar .navbar-nav > li > a:hover {
+  color: #000 !important;
+  -webkit-box-shadow: 0 -3px 0 0 #dc0000 inset;
+          box-shadow: 0 -3px 0 0 #dc0000 inset; }
+
+nav#top-nav a.navbar-brand {
+  width: 75px;
+  height: 40px;
+  margin: 8px 0;
+  padding: 0;
+  background: url("../img/logo_2017.svg") no-repeat center;
+  -webkit-background-size: contain;
+          background-size: contain; }
+
+.nav.card-header {
+  margin: 0;
+  padding: 0; }
+
+/* LANDING PAGE STYLE */
+#top {
+  display: table;
+  height: 100%;
+  width: 100%;
+  min-height: 70%;
+  position: relative;
+  background: url(../img/scott-webb-260726-2.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  background-size: cover;
+  z-index: 2;
+  color: #000;
+  margin-top: 56px; }
+
+#top .vert-text {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center; }
+
+#top .logo {
+  max-width: 30em;
+  width: 100%;
+  padding: 2em; }
+
+/* FOOTER */
+footer {
+  color: #dc0000;
+  font-size: 1.25em;
+  padding: 50px 0; }
+
+footer .copyright {
+  font-size: 0.6em;
+  margin: 0; }
+
+footer .list-inline-item a {
+  color: #000; }
+
+footer .list-inline-item:not(:last-child) {
+  margin-right: 10px; }
+
 /* CODE STYLES */
 /* inline code */
 code.hljs {
@@ -167,3 +165,47 @@ code.hljs {
 /* code blocks */
 pre > code.hljs {
   display: block; }
+
+/* MULTISNIP EXTENSION */
+multisnip {
+  visibility: hidden; }
+
+multisnip pre,
+multisnip pre.hljs {
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+  /* padding: 0; */
+  /* border: 0px; */
+  border-top: #dc0000 1px solid;
+  /* border-radius: 0px; */ }
+
+multisnip ul.nav-tabs-multisnip > :first-child,
+multisnip ul.nav-tabs-multisnip > :first-child > a:hover {
+  -webkit-border-top-left-radius: 10px;
+          border-top-left-radius: 10px; }
+
+multisnip ul.nav-tabs-multisnip > :last-child,
+multisnip ul.nav-tabs-multisnip > :last-child > a:hover {
+  -webkit-border-top-right-radius: 10px;
+          border-top-right-radius: 10px; }
+
+multisnip ul.nav-tabs-multisnip > li {
+  color: #000;
+  background-color: #f8f8f8;
+  cursor: default; }
+
+multisnip ul.nav-tabs-multisnip > li.isshown {
+  color: #fff;
+  font-weight: 400;
+  background-color: #dc0000; }
+
+multisnip ul.nav-tabs-multisnip > li > a {
+  display: block;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 16px; }
+
+multisnip ul.nav-tabs-multisnip > li > a:hover {
+  -webkit-box-shadow: 0 -2px 0 0 #dc0000 inset;
+          box-shadow: 0 -2px 0 0 #dc0000 inset; }
