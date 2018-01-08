@@ -6,7 +6,7 @@ echo "+ Starting build script."
 
 # checking dependencies
 echo "Checking dependencies: "
-declare -a dep=("hugo" "npm" "bower")
+declare -a dep=("hugo" "npm")
 for i in "${dep[@]}"
 do
   {
@@ -21,8 +21,17 @@ done
 # goto theme folder and run npm/gulp
 cd themes/casadi-theme/
 
-bower install # assuming that "bower.json" and ".bowerrc" are given
-# npm install gulp gulp-sass gulp-autoprefixer
-npm install gulp gulp-sass gulp-notify gulp-bower --save-dev
+# bower install # assuming that "bower.json" and ".bowerrc" are given
+npm install gulp gulp-sass gulp-autoprefixer gulp-rename gulp-bower gulp-minifier --save
+
+# run bower
+gulp bower
+# copy font-awesome fontawesome
+gulp icons
+# run live scss-compiler
+gulp &
+# run hugo server
+cd ../..
+hugo server
 
 echo "+ Build script finished."

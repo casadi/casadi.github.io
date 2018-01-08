@@ -1,0 +1,169 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600");
+/* GLOBAL */
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+  line-height: 40px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: #f8f9fa; }
+
+em {
+  font-style: normal;
+  /*font-weight: 400;*/
+  color: #dc0000; }
+
+a {
+  text-decoration: none;
+  /*color: rgb(220, 0, 0);*/
+  color: #0366d6; }
+
+a:hover, a:focus {
+  text-decoration: underline;
+  /*color: rgb(220, 0, 0);*/
+  color: #0366d6; }
+
+/* compensating for fixed-height header */
+a.offset-anchor {
+  display: block;
+  position: relative;
+  top: -60px;
+  visibility: hidden; }
+
+/* NAVIGATION */
+nav#top-nav.navbar {
+  border: none;
+  padding: 0;
+  font-size: 14px;
+  line-height: 20px;
+  /* background-color: rgb(220,0,0); */ }
+
+nav#top-nav.navbar .navbar-nav > li > a {
+  padding: 5px 20px;
+  line-height: 56px; }
+
+nav#top-nav.navbar .navbar-nav > li > a:focus,
+nav#top-nav.navbar .navbar-nav > li > a:hover {
+  color: #000 !important;
+  -webkit-box-shadow: 0 -3px 0 0 #dc0000 inset;
+          box-shadow: 0 -3px 0 0 #dc0000 inset; }
+
+nav#top-nav a.navbar-brand {
+  width: 75px;
+  height: 40px;
+  margin: 8px 0;
+  padding: 0;
+  background: url("../img/logo_2017.svg") no-repeat center;
+  -webkit-background-size: contain;
+          background-size: contain; }
+
+.nav.card-header {
+  margin: 0;
+  padding: 0; }
+
+/* TOP */
+#top {
+  display: table;
+  height: 100%;
+  width: 100%;
+  min-height: 70%;
+  position: relative;
+  background: url(../img/scott-webb-260726-2.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  background-size: cover;
+  z-index: 2;
+  color: #000;
+  margin-top: 56px; }
+
+#top .vert-text {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center; }
+
+#top .logo {
+  max-width: 30em;
+  width: 100%;
+  padding: 2em; }
+
+/* MAIN */
+#main {
+  background-color: #fff; }
+
+nav#top-nav + #main {
+  margin-top: 56px; }
+
+#main .container {
+  padding-top: 40px;
+  padding-bottom: 40px; }
+
+#main hr.sep {
+  margin: 40px auto; }
+
+#main.landing {
+  font-size: 1.25em;
+  line-height: 45px; }
+
+/* FOOTER */
+footer {
+  color: #000;
+  font-size: 1.25em;
+  padding: 50px 0; }
+
+footer .copyright {
+  font-size: 0.6em;
+  margin: 0; }
+
+footer .list-inline-item a {
+  color: #000; }
+
+footer .list-inline-item:not(:last-child) {
+  margin-right: 10px; }
+
+/* ***********************
+ *  SITE SPECIFIC STYLES
+ * *********************** */
+.container p:last-child {
+  margin-bottom: 0; }
+
+/* CARD LAYOUTS */
+.card {
+  margin-bottom: 10px; }
+
+.card-footer {
+  line-height: 0.7em; }
+
+.card-footer small {
+  font-size: 0.7em;
+  font-weight: 300; }
+
+a.card-header {
+  color: #000; }
+
+a.card-header:hover,
+a.card-header:focus {
+  color: #000;
+  text-decoration: none; }
+
+.card-header .release-info {
+  float: right;
+  font-size: 15px;
+  color: gray; }
+
+.card-footer.release-info {
+  font-size: 15px;
+  color: gray; }
+
+/* CODE STYLES */
+/* inline code */
+code.hljs {
+  display: inline; }
+
+/* code blocks */
+pre > code.hljs {
+  display: block; }
