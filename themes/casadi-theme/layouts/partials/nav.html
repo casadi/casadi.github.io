@@ -1,4 +1,4 @@
-<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+<nav id="top-nav" class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
   <a class="navbar-brand" href="/"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -15,6 +15,16 @@
           <a class="nav-link" href="{{ .URL }}">{{ .Name }}</a>
         </li>
       {{ end }}
+      <li class="nav-item">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Search casadi.org" aria-label="Search casadi.org">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </li>
     </ul>
   </div>
 </nav>
