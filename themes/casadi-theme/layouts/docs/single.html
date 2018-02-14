@@ -4,16 +4,14 @@
 {{ partial "header.html" . }}
 {{ partial "nav.html" . }}
 
-<div id="main" class="wrapper">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-body">
-        <div class="col-content container">
-          <h1>{{ .Title }}</h1>
-          {{ .Content }}
-        </div>
-        {{ partial "sidebar.html" . }}
+<div id="main" class="container-fluid">
+  <div class="row">
+    <div class="col-body">
+      <div class="col-content container">
+        <h1>{{ .Title }}</h1>
+        {{ .Content }}
       </div>
+      {{ partial "sidebar.html" . }}
     </div>
   </div>
 </div>

@@ -63,12 +63,12 @@ h6 {
 nav#top-nav + #main {
   margin-top: 51px; }
 
-#main.container {
+#main.container, #main.container-fluid {
   background-color: white;
   padding: 2rem 1rem; }
 
 #main hr.sep {
-  margin: 40px auto; }
+  margin: 2rem auto; }
 
 /* ***********************
  *  SITE SPECIFIC STYLES
@@ -301,3 +301,143 @@ multisnip ul.nav-tabs-multisnip > li > a {
 multisnip ul.nav-tabs-multisnip > li > a:hover {
   -webkit-box-shadow: 0 -2px 0 0 #dc0000 inset;
           box-shadow: 0 -2px 0 0 #dc0000 inset; }
+
+#docs {
+  background-color: #fff;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch; }
+
+nav#top-nav + #docs {
+  margin-top: 51px; }
+
+#docs.container {
+  background-color: green;
+  padding: 0 1rem; }
+
+#docs main .page-header {
+  font-weight: 400; }
+
+#sidebar {
+  overflow: hidden;
+  z-index: 1; }
+
+#sidebar .list-group {
+  max-width: 300px;
+  background-color: #dc0000;
+  white-space: nowrap;
+  border-color: #fff;
+  min-height: 500px; }
+
+#sidebar .list-group-item {
+  color: #fff;
+  border-color: #fff;
+  background: none;
+  border: none; }
+
+#sidebar .list-group-header {
+  font-size: 1.25em;
+  font-weight: 300; }
+
+/* highlight active menu */
+/* closed state */
+#sidebar .list-group .list-group-item[aria-expanded="false"]::after {
+  content: " \f0d7";
+  font-family: FontAwesome;
+  display: inline;
+  text-align: right;
+  padding-left: 5px; }
+
+/* open state */
+#sidebar .list-group .list-group-item[aria-expanded="true"] {
+  background-color: #222; }
+
+#sidebar .list-group .list-group-item[aria-expanded="true"]::after {
+  content: " \f0da";
+  font-family: FontAwesome;
+  display: inline;
+  text-align: right;
+  padding-left: 5px; }
+
+/* level 1*/
+#sidebar .list-group .collapse .list-group-item,
+#sidebar .list-group .collapsing .list-group-item {
+  padding-left: 20px; }
+
+/* level 2*/
+#sidebar .list-group .collapse > .collapse .list-group-item,
+#sidebar .list-group .collapse > .collapsing .list-group-item {
+  padding-left: 30px; }
+
+/* level 3*/
+#sidebar .list-group .collapse > .collapse > .collapse .list-group-item {
+  padding-left: 40px; }
+
+@media (max-width: 768px) {
+  #sidebar {
+    min-width: 35px;
+    max-width: 40px;
+    overflow-y: auto;
+    overflow-x: visible;
+    -webkit-transition: all 0.25s ease;
+    -o-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+    -webkit-transform: translateX(-45px);
+        -ms-transform: translateX(-45px);
+            transform: translateX(-45px);
+    position: fixed; }
+  #sidebar.show {
+    -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+            transform: translateX(0); }
+  #sidebar::-webkit-scrollbar {
+    width: 0px; }
+  #sidebar, #sidebar .list-group {
+    min-width: 35px;
+    overflow: visible; }
+  /* overlay sub levels on small screens */
+  #sidebar .list-group .collapse.show, #sidebar .list-group .collapsing {
+    position: relative;
+    z-index: 1;
+    width: 190px;
+    top: 0; }
+  #sidebar .list-group > .list-group-item {
+    text-align: center;
+    padding: .75rem .5rem; }
+  /* hide caret icons of top level when collapsed */
+  #sidebar .list-group > .list-group-item[aria-expanded="true"]::after,
+  #sidebar .list-group > .list-group-item[aria-expanded="false"]::after {
+    display: none; } }
+
+.collapse.show {
+  visibility: visible; }
+
+.collapsing {
+  visibility: visible;
+  height: 0;
+  -webkit-transition-property: height, visibility;
+  -o-transition-property: height, visibility;
+  transition-property: height, visibility;
+  -webkit-transition-timing-function: ease-out;
+  -o-transition-timing-function: ease-out;
+     transition-timing-function: ease-out; }
+
+.collapsing.width {
+  -webkit-transition-property: width, visibility;
+  -o-transition-property: width, visibility;
+  transition-property: width, visibility;
+  width: 0;
+  height: 100%;
+  -webkit-transition-timing-function: ease-out;
+  -o-transition-timing-function: ease-out;
+     transition-timing-function: ease-out; }

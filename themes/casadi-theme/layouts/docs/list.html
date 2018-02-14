@@ -1,20 +1,52 @@
 <!-- insert additional CSS file -->
-{{ .Scratch.Add "css" "css/docs.min.css" }}
+<!-- {{ .Scratch.Add "css" "css/docs.min.css" }} -->
 
 {{ partial "header.html" . }}
 {{ partial "nav.html" . }}
 
-<div id="main" class="wrapper">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-body">
-        <div class="col-content container">
-          <h1>{{ .Title }}</h1><span class="badge badge-warning" style="font-size: 0.5em; vertical-align: top;">list</span>
-          {{ .Content }}
+<!-- <div id="main" class="container-fluid">
+  <div class="row">
+    <div class="col-body">
+      <div class="col-content container">
+        <h1>{{ .Title }}</h1><span class="badge badge-warning" style="font-size: 0.5em; vertical-align: top;">list</span>
+        {{ .Content }}
+      </div>
+      {{ partial "sidebar.html" . }}
+    </div>
+  </div>
+</div> -->
+
+<div id="docs" class="container">
+  <div class="row d-flex d-md-block flex-nowrap wrapper">
+    <div class="col-md-3 float-left p-0 collapse width show" id="sidebar">
+      <div class="list-group border-0 p-0 m-0 card text-center text-md-left">
+        <span class="list-group-header list-group-item d-inline-block text-center">Docs v3.3.0</span>
+        <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">Get started</a>
+        <a href="#menu1" class="list-group-item d-inline-block collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><span class="d-none d-md-inline">Item</span></a>
+        <div class="collapse" id="menu1">
+            <a href="#" class="list-group-item" data-parent="#menu1">3.1</a>
+            <a href="#menu1sub2" class="list-group-item" data-toggle="collapse" aria-expanded="false">3.2 </a>
+            <div class="collapse" id="menu1sub2">
+                <a href="#" class="list-group-item" data-parent="#menu1sub2">3.2 a</a>
+                <a href="#" class="list-group-item" data-parent="#menu1sub2">3.2 b</a>
+                <a href="#" class="list-group-item" data-parent="#menu1sub2">3.2 c</a>
+            </div>
+            <a href="#" class="list-group-item" data-parent="#menu1">3.3</a>
         </div>
-        {{ partial "sidebar.html" . }}
+        <!-- <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-star"></i><span class="d-none d-md-inline">Link</span></a> -->
       </div>
     </div>
+    <main class="col-md-9 float-left main">
+      <!-- <a href="#" data-target="#sidebar" data-toggle="collapse"><i class="fa fa-navicon fa-2x py-2 p-1"></i></a> -->
+      <a class="page-header" href="#" data-target="#sidebar" data-toggle="collapse">
+        <h2>{{ .Title }}</h2>
+      </a>
+      <!-- <p class="lead">Subtitle</p>
+      <hr> -->
+      <div class="row">
+        {{ .Content | markdownify }}
+      </div>
+    </main>
   </div>
 </div>
 
