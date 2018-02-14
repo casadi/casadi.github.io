@@ -194,6 +194,6 @@ opti.callback(@(i) plot(opti.debug.value(x),opti.debug.value(y),'DisplayName',nu
 Download code: [chain.m](chain.m)
 
 
-For more details about Opti, see Chapter 9 of the [users guide](http://docs.casadi.org/v3.3.0/users_guide/casadi-users_guide.pdf). For an optimal control example, see [the race car example]({{< ref "blog/2017-9-15-OCP/index.md" >}}#coding).
+For more details about Opti, see Chapter 9 of the [users guide](http://docs.casadi.org/v3.3.0/users_guide/casadi-users_guide.pdf). For an optimal control example, see [the race car example]({{< ref "blog/ocp/index.md" >}}#coding).
 
 Using Opti, you have the scalability of CasADi algorithmic differentiation available, in a user friendly packaging. Ideal for teaching!

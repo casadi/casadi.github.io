@@ -4,7 +4,6 @@ author: jg
 tags: OCP opti
 date: 2017-09-15
 image: hyperworks-industries-architecture-screen-capture-6-726x383.jpg
-aliases: [/blog/ocp/]
 ---
 Optimization.
 There's a mathematical term that sounds familiar to the general public.
@@ -119,7 +118,7 @@ $$
 
 # Coding
 
-Let's get coding, using CasADi's [Opti]({{< ref "blog/2017-9-14-Opti/index.md" >}}) functionality.
+Let's get coding, using CasADi's [Opti]({{< ref "blog/opti/index.md" >}}) functionality.
 
 Set up the problem
 ```matlab

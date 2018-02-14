@@ -10,7 +10,7 @@ During my master's thesis at KULeuven on optimal control, one of the take-aways 
 
 <!--more-->
 
-Master student Thomas Durbin stumbled upon a dramatic example of bad scaling in practice. He works on [optimal control]({{% ref "blog/2017-9-15-OCP/index.md" %}}) for rockets. As a first toy problem, he studied a 1D rocket the must attain a certain height at $t=100\,\mathrm{s}$, with minimal expenditure of fuel. Following good engineering practice, he used SI base units to write the code.
+Master student Thomas Durbin stumbled upon a dramatic example of bad scaling in practice. He works on [optimal control]({{% ref "blog/ocp/index.md" %}}) for rockets. As a first toy problem, he studied a 1D rocket the must attain a certain height at $t=100\,\mathrm{s}$, with minimal expenditure of fuel. Following good engineering practice, he used SI base units to write the code.
 
 The gist of the code is as follows (complete code [here](rocket.m)):
 ```matlab
@@ -41,21 +41,21 @@ opti.subject_to(y(N+1) == yT);
 ```
 
 The solution is quite interesting:
-{{< figure src="controls.png" title="optimal controls of rocket problem" width="50%" >}}
-{{< figure src="states.png" title="optimal states of rocket problem" width="50%" >}}
+{{< figure src="controls.png" title="Optimal control of rocket problem." >}}
+{{< figure src="states.png" title="optimal states of rocket problem" >}}
 
 But the focus is here on convergence. It's pretty lousy.
 ```matlab
 semilogy(sol.stats.iterations.inf_du)
 semilogy(sol.stats.iterations.inf_pr)
 ```
-{{< figure src="conv.png" title="Convergence" width="50%" >}}
+{{< figure src="conv.png" title="Convergence" >}}
 Then, introduce a simple scaling of variables (complete code [here](rocket_scaled.m))
 ```matlab
 x =  repmat([1e5;2000;300e3],1,N+1).*opti.variable(3,N+1);
 u = 1e8*opti.variable(1,N); % Control vector
 ```
 Exact same solution, wildly different convergence:
-{{< figure src="conv_scaled.png" title="Convergence scaled" width="50%" >}}
+{{< figure src="conv_scaled.png" title="Convergence scaled" >}}
 
 In conclusion, even if you are using an exact Hessian (which is default in CasADi), and even with a numerical backend (IPOPT) that [provides auto-scaling](https://www.coin-or.org/Ipopt/documentation/node43.html), it's still good practice to scale your NLP!

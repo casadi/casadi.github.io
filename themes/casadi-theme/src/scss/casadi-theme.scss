@@ -3,17 +3,17 @@
 /* GLOBAL */
 html,
 body {
-  height: 100%;
+  // height: 100%;
   width: 100%;
   font-family: $font-family-base;
   font-weight: 300;
-  font-size: 20px;
+  font-size: 16px;
   letter-spacing: 0.5px;
   line-height: 30px;
   margin: 0;
   padding: 0;
   border: none;
-  background-color: $casadi-color-background;
+  background-color: $casadi-color-body-background;
   font-smooth: always;
   -webkit-font-smoothing: antialiased;
 }
@@ -37,29 +37,46 @@ a.offset-anchor {
   visibility: hidden;
 }
 
+h1 {
+  font-size: 2.00rem;
+}
+h2 {
+  font-size: 1.75rem;
+}
+h3 {
+  font-size: 1.5rem;
+}
+h4 {
+  font-size: 1.25rem;
+}
+h5 {
+  font-size: 1.10rem;
+}
+h6 {
+  font-size: 1.00rem;
+}
+
 /* MAIN */
 #main {
   background-color: #fff;
 }
 nav#top-nav+#main {
-  margin-top: 56px;
+  margin-top: $casadi-top-nav-height + 1px;
 }
-#main .container {
-  padding-top: 40px;
-  padding-bottom: 40px;
+#main.container {
+  background-color: $casadi-color-container-background;
+  padding: 2rem 1rem;
 }
 #main hr.sep {
   margin: 40px auto;
-}
-#main.landing {
-  font-size: 1.25em;
-  line-height: 45px;
 }
 
 /* ***********************
  *  SITE SPECIFIC STYLES
  * *********************** */
-
+.container table+p {
+  margin-top: 1rem;
+}
 .container p:last-child {
   margin-bottom: 0;
 }
@@ -68,6 +85,12 @@ nav#top-nav+#main {
 .card {
   margin-bottom: 10px;
 }
+a.card-header,
+a.card-header:hover,
+a.card-header:focus {
+  color: #000;
+  text-decoration: none;
+}
 .card-footer {
   line-height: 0.7em;
 }
@@ -75,13 +98,29 @@ nav#top-nav+#main {
   font-size: 0.7em;
   font-weight: 300;
 }
-a.card-header {
+.nav.card-header {
   color: #000;
+  padding: 0;
+  font-size: 16px;
+  background-color: $casadi-color-navbar-background;
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  border-color: $casadi-color-accent;
+  margin: 0;
+  line-height: 50px;
 }
-a.card-header:hover,
-a.card-header:focus {
+.nav.card-header a {
   color: #000;
-  text-decoration: none;
+  // border-radius: 10px;
+  margin: 0;
+  padding: 0 20px;
+}
+.nav.card-header a.nav-link.active {
+  background-color: inherit;
+  color: $casadi-color-accent;
+}
+.nav.card-header a.nav-link:hover {
+  box-shadow: 0 -3px 0 0 rgb(220,0,0) inset;
 }
 .card-header .release-info {
   float: right;
@@ -93,6 +132,8 @@ a.card-header:focus {
   color: gray;
 }
 
+@import 'figure';
+@import 'table';
 @import 'navs';
 @import 'landing';
 @import 'footer';
