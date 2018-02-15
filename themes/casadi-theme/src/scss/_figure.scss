@@ -1,18 +1,19 @@
 figure {
   width: 100%;
-}
-figure img {
-  width: 100%;
-  margin: 0;
-}
-figure figcaption h4 {
-  font-size: 1rem;
-  font-weight: 300;
   text-align: center;
 }
-@media (min-width: 768px) {
-  figure img {
-    width: 50%;
-    margin: 0 25%;
+figure.default img {
+  max-width: 100%;
+  max-height: 100vh;
+  margin: 0;
+}
+figure figcaption h1 {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 10px;
+}
+@media (min-width: 1000px) {
+  figure.default img {
+    max-width: 50%;
   }
 }

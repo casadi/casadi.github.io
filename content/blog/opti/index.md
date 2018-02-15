@@ -38,7 +38,7 @@ sol = opti.solve();
 plot(sol.value(x),sol.value(y),'o');
 ```
 
-![Solution of uncosntrained Rosenbrock problem](rosenbrock1.png)
+{{% figure src="rosenbrock1.png" title="Solution of unconstrained Rosenbrock problem" %}}
 
 Let's make a variation on the problem by adding an equality constraint:
 
@@ -58,7 +58,7 @@ opti.solver('ipopt');
 sol = opti.solve();
 ```
 
-![Solution of constrained Rosenbrock problem](rosenbrock2.png)
+{{% figure src="rosenbrock2.png" title="Solution of constrained Rosenbrock problem" %}}
 
 We may add in fact any number of equality/inequality constraints:
 
@@ -80,7 +80,7 @@ opti.solver('ipopt');
 sol = opti.solve();
 ```
 
-![Solution of constrained Rosenbrock problem](rosenbrock3.png)
+{{% figure src="rosenbrock3.png" title="Solution of constrained Rosenbrock problem" %}}
 
 We can also create a parametric NLP, were a parameter is getting fixed at solution time:
 
@@ -109,7 +109,7 @@ sol.value(opti.dual(con))
 ```
 
 The Lagrange multiplier can be interpreted as the sensitivity of the optimal cost with respect to the relaxation of the constraint. We plotted the slope given by the Langrange multiplier in red in the figure below.
-![Solution of constrained Rosenbrock problem](rosenbrock4.png)
+{{% figure src="rosenbrock4.png" title="Solution of constrained Rosenbrock problem" %}}
 
 
 Download code: [rosenbrock.m](rosenbrock.m)
@@ -155,7 +155,7 @@ sol = opti.solve();
 plot(sol.value(x),sol.value(y),'-o')
 ```
 
-![Solution of unconstrained hanging chain](chain1.png)
+{{% figure src="chain1.png" title="Solution of unconstrained hanging chain problem" %}}
 
 After a first solve, further constraints can be added, e.g. a ground constrained
 ```matlab
@@ -163,7 +163,7 @@ opti.subject_to(y>=cos(0.1*x)-0.5);
 sol = opti.solve();
 ```
 
-![Solution of constrained hanging chain](chain2.png)
+{{% figure src="chain2.png" title="Solution of constrained hanging chain problem" %}}
 
 We can make the problem more numerically challenging by setting a nonzero restlength for the spring:
 ```matlab
@@ -179,7 +179,7 @@ opti.set_initial(x,linspace(-2,2,N));
 opti.set_initial(y,1);
 ```
 
-![Solution of nonlinear constrained hanging chain](chain3.png)
+{{% figure src="chain3.png" title="Solution of nonlinear constrained hanging chain problem" %}}
 
 When the going get's tough, you may find it helpful to plot the intermediate solution
 for each iteration of the solver:
@@ -187,7 +187,7 @@ for each iteration of the solver:
 ```matlab
 opti.callback(@(i) plot(opti.debug.value(x),opti.debug.value(y),'DisplayName',num2str(i)))
 ```
-![Solution of nonlinear constrained hanging chain](chain4.png)
+{{% figure src="chain4.png" title="Solution of nonlinear constrained hanging chain problem" %}}
 
 (Credits to Milan Vukov for delivering this problem)
 

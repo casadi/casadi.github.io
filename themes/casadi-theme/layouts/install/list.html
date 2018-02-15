@@ -11,6 +11,12 @@
       {{ $url := (printf "%s%s" "https://api.github.com/repos/casadi/casadi/releases?" (string now.Unix)) }}
       {{ $releases := getJSON $url }}
 
+      <!-- {{ $latest := (index $releases 0) }} -->
+      <!-- <script>
+        console.log({{ $latest.body | markdownify }});
+        console.log({{ (safeHTML $latest.body) | markdownify }});
+      </script> -->
+
       <!-- <p>Get the <em>latest release</em>:</p> -->
 
       {{ range $index, $release := sort $releases }}
@@ -19,7 +25,7 @@
         {{ $isDraft := $release.draft }}
 
         <!-- TODO ad-hoc solution, filtering for exact tags -->
-        {{ $htmlBody := (safeHTML $release.body) | markdownify }}
+        {{ $htmlBody := $release.body | markdownify }}
         {{ $htmlBody := split $htmlBody "<h1 id=\"binaries\">Binaries</h1>" }}
         {{ $htmlBody := index $htmlBody 1 }}
         {{ $htmlBody := split $htmlBody "<h1 id=\"install\">Install</h1>" }}
@@ -28,6 +34,10 @@
         {{ $htmlBody := split $htmlBody "<h1 id=\"release-notes\">Release notes</h1>" }}
         {{ $htmlInstall := index $htmlBody 0 }}
         {{ $htmlRelease := index $htmlBody 1 }}
+
+        <script>
+          console.log({{ $htmlBody }});
+        </script>
 
         <a class="offset-anchor" id="{{ $release.tag_name }}"></a>
         <a class="offset-anchor" id="v{{ $release.tag_name }}"></a>

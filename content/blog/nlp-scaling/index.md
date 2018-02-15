@@ -41,8 +41,8 @@ opti.subject_to(y(N+1) == yT);
 ```
 
 The solution is quite interesting:
-{{< figure src="controls.png" title="Optimal control of rocket problem." >}}
-{{< figure src="states.png" title="optimal states of rocket problem" >}}
+{{% figure src="controls.png" title="Optimal control of rocket problem." %}}
+{{% figure src="states.png" title="optimal states of rocket problem" %}}
 
 But the focus is here on convergence. It's pretty lousy.
 ```matlab

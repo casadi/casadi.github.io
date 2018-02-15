@@ -11,7 +11,7 @@ Today we'll be exploring a _simple_ coupling with Simulink. We'll be showing off
 
 <!--more-->
 
-![Simulink block diagram](simulink_block.png)
+{{% figure src="simulink_block.png" title="Simulink block diagram" %}}
 
 # The details
 
@@ -84,7 +84,7 @@ solver = nlpsol('solver', 'ipopt', prob);
 
 Recall from that example the solution plot:
 
-![Reference solution from multiple shooting example](reference.png).
+{{% figure src="reference.png" title="Reference solution from multiple shooting example" %}}
 
 As we all know, CasADi makes an important distinction between _initialisation_ and _evaluation_ steps.
 We would not want to construct an NLP afresh at every sampling time!
@@ -134,16 +134,16 @@ We used option 1 here. It's the most simple way. Obviously this is not the most 
 but since all of CasADi's number-crunching happens in compiled libraries, `interpreted Matlab code` is not as bad as it sounds perhaps.
 Anyway, make sure that you indicate to Simulink that the code is `interpreted`:
 
-![Simulink block diagram](interpreted.png)
+{{% figure src="interpreted.png" title="Simulink block diagram" %}}
 
 Let's jump to results.
 
 # The results
 MPC control signal:
-![MPC control signal](simulink_control.png)
+{{% figure src="simulink_control.png" title="MPC control signal" %}}
 
 State evolution:
-![State evolution](simulink_state.png)
+{{% figure src="simulink_state.png" title="State evolution"%}}
 
 Note how the control trajectory (up to t=10s) matches the reference solution further up in this post.
 The state trajectory matches too, but Simulink shows you more detail: you see the smooth time-evolution of the system in-between the sampling times.

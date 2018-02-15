@@ -16,14 +16,14 @@ That sounds rather dull; an icing on the cake at best.
 Optimization can be more than this. I'd argue that optimization can deliver intelligence or creativity.
 
 Consider that finding your next chess move amounts to optimization. Consider the results of [topology optimization](http://www.altairhyperworks.com/industry/Architecture)
-![Topology optimization](hyperworks-industries-architecture-screen-capture-6-726x383.jpg),
+{{% figure src="hyperworks-industries-architecture-screen-capture-6-726x383.jpg" title="Topology optimization" %}}
 or [evolving artificial life](https://youtu.be/CXTZHHQ7ZiQ?t=1m5s):
-![Evolving artificial life](evo.png)
+{{% figure src="evo.png" title="Evolving artificial life" %}}
 
 Our field of research is optimal control, in which we seek time-trajectories for control signals that make a dynamic system carry out a task in an optimal way.
 
 In many cases, like for a [double pendulum swing-up](https://youtu.be/B6vr1x6KDaY?t=5s)
-![Evolving artificial life](doublependulum.png)
+{{% figure src="doublependulum.png" title="Double pendulum" %}}
 the most exciting part of optimal control is not that it can spot the optimum out of many valid trajectories.
 It's that it can find valid trajectories at all, out of the blue.
 
@@ -32,7 +32,7 @@ It's that it can find valid trajectories at all, out of the blue.
 Let's get concrete and solve an actual optimal control problem, using CasADi.
 We will go racing a toy slot car.
 
-![Race track](racetrack.png)
+{{% figure src="racetrack.png" title="Race track" %}}
 
 The task is to finish 1 lap as fast as possible, starting from standstill.
 Go too fast, and the car will fly out of its slot.
@@ -68,19 +68,19 @@ $$
 
 Note our decision variables $x(\cdot)$ and $u(\cdot)$: the result of the optimization should be functions, i.e. infinitely detailed descriptions of how the states and control should move over time from $0$ to $T$:
 
-![Continuous-time states and controls](xu_cont.png)
+{{% figure src="xu_cont.png" title="Continuous-time states and controls" %}}
 
 # Multiple-shooting
 
 Computers don't like infinities. Therefore, let's discretize the problem in time.
 Choose a number $N$ of control intervals in which the control effort is kept constant:
 
-![Discretized controls](u_disc.png)
+{{% figure src="u_disc.png" title="Discretized controls" %}}
 
 We now have decision variables $u_1,u_2,\ldots,u_{N}$ instead of function $u(\cdot)$.
 
 For the state trajectory, let's consider the states at the boundaries of each control interval:
-![Discretized states and controls](xu_disc.png)
+{{% figure src="xu_disc.png" title="Discretized states and controls" %}}
 
 We now have decision variables $x_1,x_2,\ldots,x_{N+1}$ instead of function $x(\cdot)$.
 
@@ -95,7 +95,7 @@ $$
 For each interval the integrator predicts were our system will end up at the end of that interval.
 Starting our numerical optimization with putting all states at a constant location, the picture may look like:
 
-![Gaps](xu_gap.png)
+{{% figure src="xu_gap.png" title="Gaps" %}}
 
 We notice gaps here; there's a mismatch between were the integrator says we will end up and where our state decision variables think we are.
 What we do is add constraints that make the gap zero.
@@ -200,7 +200,8 @@ Post processing of the optimal values.
 plot(sol.value(speed));
 plot(sol.value(pos));
 ```
-![Solution of race car problem](OCP_sol.png)
+
+{{% figure src="OCP_sol.png" title="Solution of race car problem" %}}
 
 The solution is intuitive: we give 100% throttle, until we hit the speed limit. Next, we gradually inrease throttle again as the speed limit is raised.
 
@@ -213,11 +214,8 @@ Indeed, have a look at the sparsity of the constraint Jacobian:
 spy(sol.value(jacobian(opti.g,opti.x)))
 ```
 
-![Sparsity of constraint jacobian](jac_sp.png)
-
-
+{{% figure src="jac_sp.png" title="Sparsity of constraint jacobian" %}}
 
 This structure is automatically detected and exploited by CasADi.
-
 
 Download code: [race_car.m](race_car.m)
