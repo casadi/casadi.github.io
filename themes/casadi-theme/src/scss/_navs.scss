@@ -1,8 +1,13 @@
 /* NAVIGATION */
 nav#top-nav {
-  // margin-bottom: 5px;
-  // text-align: center;
   background-color: $casadi-color-navbar-background;
+}
+nav#top-nav .container {
+  background-image: url('../img/bg_header.svg');
+  background-repeat: repeat-x;
+  // background-size: auto 50px;
+  background-size: cover;
+  background-position: left;
 }
 nav#top-nav.navbar {
   border: none;
@@ -10,28 +15,28 @@ nav#top-nav.navbar {
   font-size: 15px;
   line-height: $casadi-top-nav-height;
   z-index: 2;
-  border-width: 0 0 1px 0;
-  border-style: solid;
-  border-color: $casadi-color-accent;
-  justify-content: space-between;
+}
+nav#top-nav.navbar .navbar-collapse {
+  justify-content: flex-end
 }
 nav#top-nav.navbar .navbar-nav>li>a {
   padding: 0px 20px;
-  color: #000;
+  color: #fff;
 }
 nav#top-nav.navbar .navbar-nav>li.active>a {
-  color: $casadi-color-accent;
+  // color: $casadi-color-accent;
+  font-weight: 500;
 }
 nav#top-nav.navbar .navbar-nav>li>a:focus,
 nav#top-nav.navbar .navbar-nav>li>a:hover {
-  box-shadow: 0 -3px 0 0 rgb(220,0,0) inset;
+  box-shadow: 0 -3px 0 0 #fff inset;
 }
 nav#top-nav a.navbar-brand {
-  width: 75px;
-  height: ($casadi-top-nav-height) - 10px;
-  margin: 0 25px;
+  width: 100px;
+  height: ($casadi-top-nav-height) - 14px;
+  margin: 7px 25px;
   padding: 0;
-  background: url('../img/logo_2017.svg') no-repeat center;
+  background: url('../img/logo_2017_horizontal_white.svg') no-repeat center;
   background-size: contain;
 }
 // nav#top-nav #btn-search {

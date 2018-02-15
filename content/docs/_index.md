@@ -1,5 +1,5 @@
 ---
-title: "Welcome to the docs"
+title: "CasADi Documentation"
 ---
 
 Hey there - looking for some documentation? Treat yourself!

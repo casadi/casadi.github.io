@@ -107,8 +107,8 @@ a.card-header:focus {
   color: #000;
   padding: 0;
   font-size: 16px;
-  background-color: $casadi-color-navbar-background;
-  border-width: 0 0 1px 0;
+  background-color: #fff;
+  border-width: 0 0 0px 0;
   border-style: solid;
   border-color: $casadi-color-accent;
   margin: 0;
@@ -119,13 +119,16 @@ a.card-header:focus {
   // border-radius: 10px;
   margin: 0;
   padding: 0 20px;
+  transition: all .1s cubic-bezier(0.42,0,0.58,1);
 }
 .nav.card-header a.nav-link.active {
   background-color: inherit;
   color: $casadi-color-accent;
+  box-shadow: 0 -3px 0 0 rgb(220,0,0) inset;
 }
 .nav.card-header a.nav-link:hover {
-  box-shadow: 0 -3px 0 0 rgb(220,0,0) inset;
+  // box-shadow: 0 -3px 0 0 rgb(220,0,0) inset;
+  color: $casadi-color-accent;
 }
 .card-header .release-info {
   float: right;
