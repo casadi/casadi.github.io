@@ -1,17 +1,21 @@
-<!-- insert additional CSS file -->
-{{ .Scratch.Add "css" "css/docs.min.css" }}
-
 {{ partial "header.html" . }}
 {{ partial "nav.html" . }}
 
-<div id="main" class="container-fluid">
+<div id="main" class="docs container">
   <div class="row">
-    <div class="col-body">
-      <div class="col-content container">
+    <div class="drawer">
+      <div class="header">
+        {{ .Site.Params.DocsHeader }}
+      </div>
+      {{ partial "nav_docs" . }}
+      <span class="hint">single view</span>
+    </div>
+
+    <div class="content d-flex">
+      <div class="col p-4">
         <h1>{{ .Title }}</h1>
         {{ .Content }}
       </div>
-      {{ partial "sidebar.html" . }}
     </div>
   </div>
 </div>

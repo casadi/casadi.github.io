@@ -1,0 +1,174 @@
+// .drawer {
+//   width: 200px;
+// }
+
+// taken from material-docs
+// #toggle-drawer:checked~.overlay,
+// .toggle-drawer .overlay {
+//     -webkit-transition: opacity .25s, width 0s, height 0s;
+//     transition: opacity .25s, width 0s, height 0s
+// }
+// #toggle-drawer:checked~.overlay,
+// .toggle-drawer .overlay {
+//     opacity: 1
+// }
+// #toggle-drawer:checked~.main .drawer,
+// .toggle-drawer .drawer {
+//     -webkit-transform: translateZ(0);
+//     transform: translateZ(0)
+// }
+// .no-csstransforms3d #toggle-drawer:checked~.main .drawer,
+// .no-csstransforms3d .toggle-drawer .drawer {
+//     display: block
+// }
+// .drawer .toc a.current,
+// .drawer .toc a:focus,
+// .drawer .toc a:hover {
+//     color: #e84e40
+// }
+
+// .drawer .anchor a {
+//     border-left: 2px solid #e84e40
+// }
+
+// .drawer .section {
+//     color: rgba(0, 0, 0, .54)
+// }
+.drawer {
+  // width: 250px;
+  // font-size: 13px;
+  // line-height: 1em;
+  background-color: $casadi-color-accent-gray;
+  flex: 0 0 250px;
+  // position: -webkit-sticky;
+  // position: sticky;
+  // top: 0;
+  // align-self: flex-start;
+  position: sticky;
+  // top: 100px;
+  color: #000;
+  z-index: 1;
+}
+
+.drawer .header {
+  width: 100%;
+  text-align: center;
+  padding: .5em;
+  font-weight: 500;
+}
+
+// .drawer .toc li a {
+//     display: block;
+//     padding: 14.5px 24px;
+//     white-space: nowrap;
+//     overflow: hidden;
+//     text-overflow: ellipsis
+// }
+
+// .drawer .toc li.anchor a {
+//     margin-left: 12px;
+//     padding: 10px 24px 10px 12px
+// }
+
+// .drawer .toc li ul {
+//     margin-left: 12px
+// }
+
+// .drawer .current+ul {
+//     margin-bottom: 9px
+// }
+
+// .drawer .section {
+//     display: block;
+//     padding: 14.5px 24px
+// }
+
+// .drawer .scrollable {
+//     top: 104px;
+//     z-index: -1
+// }
+
+// .drawer .scrollable .wrapper {
+//     height: auto;
+//     min-height: 100%
+// }
+//
+// .drawer .scrollable .wrapper hr {
+//     margin: 12px 0;
+//     margin-right: auto
+// }
+//
+// .drawer .scrollable .wrapper .toc {
+//     margin: 12px 0
+// }
+// .drawer .toc li a {
+//     font-weight: 700
+// }
+//
+// .drawer .toc li.anchor a {
+//     font-weight: 400
+// }
+//
+// .drawer .section,
+// .repo a {
+//     font-weight: 700
+// }
+
+@media only screen and (min-width:960px) {
+  // .drawer {
+      // float: left;
+      // height: 100%;
+      // margin-bottom: 96px;
+      // padding-top: 80px
+  // }
+  // .drawer,
+  // .drawer .scrollable {
+  //     position: static
+  // }
+}
+@media only screen and (max-width:959px) {
+  #toggle-drawer:checked~.overlay,
+  .toggle-drawer .overlay {
+    width: 100%;
+    height: 100%
+  }
+  .drawer {
+    -webkit-transform: translate3d(-262px, 0, 0);
+    transform: translate3d(-262px, 0, 0);
+    -webkit-transition: -webkit-transform .25s cubic-bezier(.4, 0, .2, 1);
+    transition: -webkit-transform .25s cubic-bezier(.4, 0, .2, 1);
+    transition: transform .25s cubic-bezier(.4, 0, .2, 1);
+    transition: transform .25s cubic-bezier(.4, 0, .2, 1), -webkit-transform .25s cubic-bezier(.4, 0, .2, 1)
+  }
+  .no-csstransforms3d .drawer {
+    display: none
+  }
+  .drawer {
+    background: #fff
+  }
+  // .drawer {
+  //   position: fixed;
+  //   z-index: 4
+  // }
+  #toggle-search:checked~.main .results,
+  .drawer,
+  .toggle-search .results {
+    height: 100%
+  }
+}
+
+@media only screen and (min-width:1200px) {
+  .drawer .scrollable .wrapper hr {
+    width: 48px
+  }
+}
+@media only screen and (orientation:portrait) {
+  .ios.standalone .drawer .scrollable {
+    top: 124px
+  }
+}
+@media print {
+  .drawer {
+    display: none
+  }
+}

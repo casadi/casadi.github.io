@@ -1,0 +1,28 @@
+{{ $currentNode := . }}
+
+{{ range .Site.Menus.docs.ByWeight }}
+
+  {{ $.Scratch.Set "currentMenuEntry" . }}
+  <ul>
+    <li>
+      {{ if .HasChildren }}
+      <a href="#{{ .Name | urlize }}" data-target="#{{ .Name | urlize }}" data-toggle="collapse" aria-expanded="false" aria-controls="{{ .Name | urlize }}">
+        {{ .Name }}<span class="caret arrow"></span>
+      </a>
+      <div class="collapse" id="{{ .Name | urlize }}">
+        <ul>
+          {{ range .Children }}
+            <li>
+              {{ $.Scratch.Set "currentMenuEntry" . }}
+              {{ partial "nav_docs_link" $currentNode }}
+            </li>
+          {{ end }}
+        </ul>
+      </div>
+      {{ else }}
+        {{ partial "nav_docs_link" $currentNode }}
+      {{ end }}
+    </li>
+  </ul>
+
+{{ end }}
