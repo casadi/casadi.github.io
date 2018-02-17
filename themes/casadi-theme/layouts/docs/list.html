@@ -14,6 +14,7 @@
     <div class="content d-flex">
       <div class="col p-4">
         <h1>{{ .Title }}</h1>
+        <span class="reading-time">Estimated reading time: {{.Page.ReadingTime }} minute{{ if (gt .Page.ReadingTime 1) }}s{{ end }}</span>
         {{ .Content }}
       </div>
     </div>

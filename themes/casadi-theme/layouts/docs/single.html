@@ -2,7 +2,7 @@
 {{ partial "nav.html" . }}
 
 <div id="main" class="docs container">
-  <div class="row">
+  <div class="row flex-nowrap">
     <div class="drawer">
       <div class="header">
         {{ .Site.Params.DocsHeader }}
@@ -11,10 +11,11 @@
       <span class="hint">single view</span>
     </div>
 
-    <div class="content d-flex">
+    <div class="content">
       <div class="col p-4">
         <h1>{{ .Title }}</h1>
-        {{ .Content }}
+        <span class="reading-time">Estimated reading time: {{.Page.ReadingTime }} minute{{ if (gt .Page.ReadingTime 1) }}s{{ end }}</span>
+        {{ .Content | markdownify }}
       </div>
     </div>
   </div>
