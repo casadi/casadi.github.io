@@ -1,63 +1,65 @@
-// .drawer {
+// .menu {
 //   width: 200px;
 // }
 
 // taken from material-docs
-// #toggle-drawer:checked~.overlay,
-// .toggle-drawer .overlay {
+// #toggle-menu:checked~.overlay,
+// .toggle-menu .overlay {
 //     -webkit-transition: opacity .25s, width 0s, height 0s;
 //     transition: opacity .25s, width 0s, height 0s
 // }
-// #toggle-drawer:checked~.overlay,
-// .toggle-drawer .overlay {
+// #toggle-menu:checked~.overlay,
+// .toggle-menu .overlay {
 //     opacity: 1
 // }
-// #toggle-drawer:checked~.main .drawer,
-// .toggle-drawer .drawer {
+// #toggle-menu:checked~.main .menu,
+// .toggle-menu .menu {
 //     -webkit-transform: translateZ(0);
 //     transform: translateZ(0)
 // }
-// .no-csstransforms3d #toggle-drawer:checked~.main .drawer,
-// .no-csstransforms3d .toggle-drawer .drawer {
+// .no-csstransforms3d #toggle-menu:checked~.main .menu,
+// .no-csstransforms3d .toggle-menu .menu {
 //     display: block
 // }
-// .drawer .toc a.current,
-// .drawer .toc a:focus,
-// .drawer .toc a:hover {
+// .menu .toc a.current,
+// .menu .toc a:focus,
+// .menu .toc a:hover {
 //     color: #e84e40
 // }
 
-// .drawer .anchor a {
+// .menu .anchor a {
 //     border-left: 2px solid #e84e40
 // }
 
-// .drawer .section {
+// .menu .section {
 //     color: rgba(0, 0, 0, .54)
 // }
-.drawer {
+.menu {
   // width: 250px;
   // font-size: 13px;
   // line-height: 1em;
-  background-color: $casadi-color-accent-gray;
+  // background-color: $casadi-color-accent-gray;
+  background-color: rgba(100,0,0,0.5);
   flex: 0 0 250px;
   // position: -webkit-sticky;
   // position: sticky;
   // top: 0;
   // align-self: flex-start;
-  position: sticky;
+  // position: sticky;
   // top: 100px;
   color: #000;
   z-index: 1;
+  min-height: 75vh;
 }
 
-.drawer .header {
+.menu .header {
   width: 100%;
   text-align: center;
   padding: .5em;
   font-weight: 500;
 }
 
-// .drawer .toc li a {
+// .menu .toc li a {
 //     display: block;
 //     padding: 14.5px 24px;
 //     white-space: nowrap;
@@ -65,74 +67,74 @@
 //     text-overflow: ellipsis
 // }
 
-// .drawer .toc li.anchor a {
+// .menu .toc li.anchor a {
 //     margin-left: 12px;
 //     padding: 10px 24px 10px 12px
 // }
 
-// .drawer .toc li ul {
+// .menu .toc li ul {
 //     margin-left: 12px
 // }
 
-// .drawer .current+ul {
+// .menu .current+ul {
 //     margin-bottom: 9px
 // }
 
-// .drawer .section {
+// .menu .section {
 //     display: block;
 //     padding: 14.5px 24px
 // }
 
-// .drawer .scrollable {
+// .menu .scrollable {
 //     top: 104px;
 //     z-index: -1
 // }
 
-// .drawer .scrollable .wrapper {
+// .menu .scrollable .wrapper {
 //     height: auto;
 //     min-height: 100%
 // }
 //
-// .drawer .scrollable .wrapper hr {
+// .menu .scrollable .wrapper hr {
 //     margin: 12px 0;
 //     margin-right: auto
 // }
 //
-// .drawer .scrollable .wrapper .toc {
+// .menu .scrollable .wrapper .toc {
 //     margin: 12px 0
 // }
-// .drawer .toc li a {
+// .menu .toc li a {
 //     font-weight: 700
 // }
 //
-// .drawer .toc li.anchor a {
+// .menu .toc li.anchor a {
 //     font-weight: 400
 // }
 //
-// .drawer .section,
+// .menu .section,
 // .repo a {
 //     font-weight: 700
 // }
 
 @media only screen and (min-width:960px) {
-  // .drawer {
+  // .menu {
       // float: left;
       // height: 100%;
       // margin-bottom: 96px;
       // padding-top: 80px
   // }
-  // .drawer,
-  // .drawer .scrollable {
+  // .menu,
+  // .menu .scrollable {
   //     position: static
   // }
 }
 @media only screen and (max-width:959px) {
-  #toggle-drawer:checked~.overlay,
-  .toggle-drawer .overlay {
+  #toggle-menu:checked~.overlay,
+  .toggle-menu .overlay {
     width: 100%;
     height: 100%
   }
-  .drawer {
+  .menu {
     -webkit-transform: translate3d(-262px, 0, 0);
     transform: translate3d(-262px, 0, 0);
     -webkit-transition: -webkit-transform .25s cubic-bezier(.4, 0, .2, 1);
@@ -140,35 +142,35 @@
     transition: transform .25s cubic-bezier(.4, 0, .2, 1);
     transition: transform .25s cubic-bezier(.4, 0, .2, 1), -webkit-transform .25s cubic-bezier(.4, 0, .2, 1)
   }
-  .no-csstransforms3d .drawer {
+  .no-csstransforms3d .menu {
     display: none
   }
-  .drawer {
+  .menu {
     background: #fff
   }
-  // .drawer {
+  // .menu {
   //   position: fixed;
   //   z-index: 4
   // }
   #toggle-search:checked~.main .results,
-  .drawer,
+  .menu,
   .toggle-search .results {
     height: 100%
   }
 }
 
 @media only screen and (min-width:1200px) {
-  .drawer .scrollable .wrapper hr {
+  .menu .scrollable .wrapper hr {
     width: 48px
   }
 }
 @media only screen and (orientation:portrait) {
-  .ios.standalone .drawer .scrollable {
+  .ios.standalone .menu .scrollable {
     top: 124px
   }
 }
 @media print {
-  .drawer {
+  .menu {
     display: none
   }
 }

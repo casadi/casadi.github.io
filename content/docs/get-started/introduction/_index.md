@@ -7,4 +7,4 @@ menu:
     parent: 'get-started'
     weight: 1
 ---
-This is an introductory text...
+test

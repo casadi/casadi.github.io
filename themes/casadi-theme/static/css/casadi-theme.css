@@ -331,29 +331,28 @@ multisnip ul.nav-tabs-multisnip > li > a:hover {
   -webkit-box-shadow: 0 -2px 0 0 #dc0000 inset;
           box-shadow: 0 -2px 0 0 #dc0000 inset; }
 
-.drawer {
-  background-color: #f8f8f8;
+.menu {
+  background-color: rgba(100, 0, 0, 0.5);
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 250px;
       -ms-flex: 0 0 250px;
           flex: 0 0 250px;
-  position: -webkit-sticky;
-  position: sticky;
   color: #000;
-  z-index: 1; }
+  z-index: 1;
+  min-height: 75vh; }
 
-.drawer .header {
+.menu .header {
   width: 100%;
   text-align: center;
   padding: .5em;
   font-weight: 500; }
 
 @media only screen and (max-width: 959px) {
-  #toggle-drawer:checked ~ .overlay,
-  .toggle-drawer .overlay {
+  #toggle-menu:checked ~ .overlay,
+  .toggle-menu .overlay {
     width: 100%;
     height: 100%; }
-  .drawer {
+  .menu {
     -webkit-transform: translate3d(-262px, 0, 0);
     transform: translate3d(-262px, 0, 0);
     -webkit-transition: -webkit-transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -361,25 +360,25 @@ multisnip ul.nav-tabs-multisnip > li > a:hover {
     -o-transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
-  .no-csstransforms3d .drawer {
+  .no-csstransforms3d .menu {
     display: none; }
-  .drawer {
+  .menu {
     background: #fff; }
   #toggle-search:checked ~ .main .results,
-  .drawer,
+  .menu,
   .toggle-search .results {
     height: 100%; } }
 
 @media only screen and (min-width: 1200px) {
-  .drawer .scrollable .wrapper hr {
+  .menu .scrollable .wrapper hr {
     width: 48px; } }
 
 @media only screen and (orientation: portrait) {
-  .ios.standalone .drawer .scrollable {
+  .ios.standalone .menu .scrollable {
     top: 124px; } }
 
 @media print {
-  .drawer {
+  .menu {
     display: none; } }
 
 .content {
@@ -406,7 +405,7 @@ multisnip ul.nav-tabs-multisnip > li > a:hover {
   margin-bottom: 2em; }
 
 @media (max-width: 768px) {
-  #main.docs .drawer {
+  #main.docs .menu {
     display: none; } }
 
 /* highlight active menu */

@@ -1,0 +1,26 @@
+{{ $currentNode := . }}
+{{ $currentMenuEntry := .Scratch.Get "currentMenuEntry" }}
+{{ $isCurrent := eq .Permalink ($currentMenuEntry.URL | absURL | printf "%s") }}
+
+{{ if $currentMenuEntry.HasChildren }}
+  <a href="#{{ $currentMenuEntry.Name | urlize }}" data-target="#{{ $currentMenuEntry.Name | urlize }}" data-toggle="collapse" aria-expanded="false" aria-controls="{{ $currentMenuEntry.Name | urlize }}">
+    {{ $currentMenuEntry.Name }}<span class="caret arrow"></span>
+  </a>
+  <div class="collapse show" id="{{ $currentMenuEntry.Name | urlize }}">
+    <ul>
+      {{ range $currentMenuEntry.Children }}
+        <li>
+          {{ $.Scratch.Set "currentMenuEntry" . }}
+          {{ partial "nav_docs_recursive" $currentNode }}
+        </li>
+      {{ end }}
+    </ul>
+  </div>
+{{ else }}
+
+  <a {{ if $isCurrent }}class="current"{{ end }} href="{{ $currentMenuEntry.URL }}">{{ $currentMenuEntry.Name }}</a>
+  {{ if $isCurrent }}
+    <ul id="scrollspy"></ul>
+  {{ end }}
+
+{{ end }}
