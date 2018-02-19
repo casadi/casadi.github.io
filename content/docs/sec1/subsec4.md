@@ -3,7 +3,7 @@ title: Reading this document
 menu:
   docs:
     name: 'Reading this document'
-    parent: 'get-started'
-    weight: 5
+    parent: 'sec1'
+    weight: 4
 ---
-Reading this document
+...

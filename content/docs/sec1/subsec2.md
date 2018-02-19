@@ -3,7 +3,7 @@ title: Help and support
 menu:
   docs:
     name: 'Help and support'
-    parent: 'get-started'
-    weight: 3
+    parent: 'sec1'
+    weight: 2
 ---
-Help and support
+...

@@ -3,7 +3,6 @@ title: Introduction
 menu:
   docs:
     name: 'Introduction'
-    identifier: 'introduction'
-    parent: 'get-started'
+    identifier: 'sec1'
     weight: 1
 ---

@@ -3,7 +3,7 @@ title: Citing CasADi
 menu:
   docs:
     name: 'Citing CasADi'
-    parent: 'get-started'
-    weight: 4
+    parent: 'sec1'
+    weight: 3
 ---
-Citing CasADi
+...
