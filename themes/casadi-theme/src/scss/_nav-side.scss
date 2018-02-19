@@ -61,11 +61,8 @@ nav.nav-side ul a:hover {
 // style upmost list level
 nav.nav-side ul.entries {
   font-size: 0.9em;
+  line-height: 2rem;
   margin: 1.5em 1em;
-}
-nav.nav-side ul.entries li {
-  line-height: 20px;
-  padding: 6px 0;
 }
 nav.nav-side ul.entries li.active a {
   color: $casadi-color-accent;
@@ -80,15 +77,7 @@ nav.nav-side ul.entries ul li.current {
   font-weight: 400;
   border-left: 2px solid $casadi-color-accent;
 }
-nav.nav-side i.fa-clone {
-  font-size: 0.75em;
-  line-height: inherit;
-  vertical-align: top;
-}
-nav.nav-side a+a {
-  margin-left: 1rem;
-}
-nav.nav-side i.fa-caret-down {
+nav.nav-side a i.fa-caret-down {
   float: right;
   line-height: inherit;
   -webkit-transform: rotate(0deg);
@@ -98,7 +87,7 @@ nav.nav-side i.fa-caret-down {
   transform: rotate(0deg);
   transition: all .15s ease-in;
 }
-nav.nav-side a.collapsed+a+i.fa-caret-down {
+nav.nav-side a.collapsed i.fa-caret-down {
   -webkit-transform: rotate(90deg);
   -moz-transform: rotate(90deg);
   -o-transform: rotate(90deg);

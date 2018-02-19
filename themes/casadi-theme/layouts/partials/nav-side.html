@@ -21,9 +21,8 @@
   {{ if $currentMenuEntry.HasChildren }}
     <li class="fold-out {{ if $isActive }}active{{ end }}">
       <a href="#{{ $currentMenuEntry.Name | urlize }}" {{ if not $isActive }}class="collapsed"{{ end }} data-target="#{{ $currentMenuEntry.Name | urlize }}" data-toggle="collapse" aria-expanded="false" aria-controls="{{ $currentMenuEntry.Name | urlize }}">
-        {{ $currentMenuEntry.Name }}</a>
-      <a href="{{ $currentMenuEntry.URL }}" title="Show on single page"><i class="fa fa-clone"></i></a>
-      <i class="fa fa-caret-down"></i>
+        {{ $currentMenuEntry.Name }}<i class="fa fa-caret-down"></i>
+      </a>
     </li>
     <div class="collapse{{ if $isActive }} show{{ end }}" id="{{ $currentMenuEntry.Name | urlize }}">
       <ul>
