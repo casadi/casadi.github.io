@@ -1,0 +1,157 @@
+// taken from material-docs
+// #toggle#menu:checked~.overlay,
+// .toggle#menu .overlay {
+//     -webkit-transition: opacity .25s, width 0s, height 0s;
+//     transition: opacity .25s, width 0s, height 0s
+// }
+// #toggle#menu:checked~.overlay,
+// .toggle#menu .overlay {
+//     opacity: 1
+// }
+// #toggle#menu:checked~.main #menu,
+// .toggle#menu #menu {
+//     -webkit-transform: translateZ(0);
+//     transform: translateZ(0)
+// }
+// .no-csstransforms3d #toggle#menu:checked~.main #menu,
+// .no-csstransforms3d .toggle#menu #menu {
+//     display: block
+// }
+// #menu .toc a.current,
+// #menu .toc a:focus,
+// #menu .toc a:hover {
+//     color: #e84e40
+// }
+
+// #menu .anchor a {
+//     border-left: 2px solid #e84e40
+// }
+
+// #menu .section {
+//     color: rgba(0, 0, 0, .54)
+// }
+nav.nav-side {
+  background-color: $casadi-color-accent-gray;
+  flex: 0 0 250px;
+  color: #000;
+  z-index: 1;
+  min-height: 75vh;
+}
+nav.nav-side .header {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 0 1em;
+  margin: 1.5em 0;
+  font-weight: 500;
+}
+nav.nav-side ul {
+  list-style: none;
+  padding: 0;
+  margin-left: 1em;
+  font-size: 0.9em;
+}
+nav.nav-side ul a, nav.nav-side ul a:focus, nav.nav-side ul a:active {
+  color: #000;
+  text-decoration: none;
+}
+nav.nav-side ul a:hover {
+  color: $casadi-color-accent;
+}
+// style upmost list level
+nav.nav-side ul.entries {
+  font-size: 0.9em;
+  line-height: 2rem;
+  margin: 1.5em 1em;
+}
+nav.nav-side ul.entries li.active a {
+  color: $casadi-color-accent;
+}
+nav.nav-side ul.entries ul li {
+  padding-left: 0.5em;
+}
+nav.nav-side ul.entries ul li:not(.fold-out) {
+  border-left: 1px solid #000;
+}
+nav.nav-side ul.entries ul li.current {
+  font-weight: 400;
+  border-left: 2px solid $casadi-color-accent;
+}
+nav.nav-side a i.fa-caret-down {
+  float: right;
+  line-height: inherit;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  transition: all .15s ease-in;
+}
+nav.nav-side a.collapsed i.fa-caret-down {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  transition: all .15s ease-in;
+}
+
+// IMPORTED TODO
+@media only screen and (min-width:960px) {
+  // #menu {
+      // float: left;
+      // height: 100%;
+      // margin-bottom: 96px;
+      // padding-top: 80px
+  // }
+  // #menu,
+  // #menu .scrollable {
+  //     position: static
+  // }
+}
+// @media only screen and (max-width:959px) {
+//   #toggle#menu:checked~.overlay,
+//   .toggle#menu .overlay {
+//     width: 100%;
+//     height: 100%
+//   }
+//   #menu {
+//     -webkit-transform: translate3d(-262px, 0, 0);
+//     transform: translate3d(-262px, 0, 0);
+//     -webkit-transition: -webkit-transform .25s cubic-bezier(.4, 0, .2, 1);
+//     transition: -webkit-transform .25s cubic-bezier(.4, 0, .2, 1);
+//     transition: transform .25s cubic-bezier(.4, 0, .2, 1);
+//     transition: transform .25s cubic-bezier(.4, 0, .2, 1), -webkit-transform .25s cubic-bezier(.4, 0, .2, 1)
+//   }
+//   .no-csstransforms3d #menu {
+//     display: none
+//   }
+//   #menu {
+//     background: #fff
+//   }
+//   // #menu {
+//   //   position: fixed;
+//   //   z-index: 4
+//   // }
+//   #toggle-search:checked~.main .results,
+//   #menu,
+//   .toggle-search .results {
+//     height: 100%
+//   }
+// }
+//
+// @media only screen and (min-width:1200px) {
+//   #menu .scrollable .wrapper hr {
+//     width: 48px
+//   }
+// }
+// @media only screen and (orientation:portrait) {
+//   .ios.standalone #menu .scrollable {
+//     top: 124px
+//   }
+// }
+// @media print {
+//   #menu {
+//     display: none
+//   }
+// }

@@ -38,7 +38,7 @@ a:hover, a:focus {
 a.offset-anchor {
   display: block;
   position: relative;
-  top: -($casadi-top-nav-height)-10px;
+  top: -($casadi-nav-top-height)-10px;
   visibility: hidden;
 }
 
@@ -78,8 +78,8 @@ h6 {
 #main {
   background-color: #fff;
 }
-nav#top-nav+#main {
-  margin-top: $casadi-top-nav-height;
+nav.nav-top+#main {
+  margin-top: $casadi-nav-top-height;
 }
 #main.container, #main.container-fluid {
   background-color: $casadi-color-container-background;
@@ -157,8 +157,9 @@ a.card-header:focus {
 
 @import 'figure';
 @import 'table';
-@import 'navs';
+@import 'nav-top';
+@import 'nav-side';
 @import 'landing';
 @import 'footer';
 @import 'code';
-@import 'docs/docs';
+@import 'docs';

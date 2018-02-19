@@ -1,0 +1,32 @@
+
+
+<nav class="navbar fixed-top navbar-expand-lg nav-top">
+  <div class="container">
+    <a class="navbar-brand" href="{{ .Site.BaseURL }}"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        {{ $currentPage := . }}
+        {{ range .Site.Menus.main }}
+          {{ if (hasPrefix $currentPage.Permalink (absURL .URL)) }}
+          <li class="nav-item active">
+          {{ else }}
+          <li class="nav-item">
+          {{ end }}
+            <a class="nav-link" href="{{ .URL }}">{{ .Name }}</a>
+          </li>
+        {{ end }}
+        <!-- <li class="nav-item">
+          <button id="btn-search" class="btn btn-outline-primary" type="button">
+            <i class="fa fa-search"></i>
+          </button>
+        </li>
+        <li class="nav-item">
+          <input id="field-search" type="text" class="form-control" placeholder="">
+        </li> -->
+      </ul>
+    </div>
+  </div>
+</nav>

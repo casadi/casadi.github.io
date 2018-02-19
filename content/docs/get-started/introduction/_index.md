@@ -7,4 +7,3 @@ menu:
     parent: 'get-started'
     weight: 1
 ---
-test

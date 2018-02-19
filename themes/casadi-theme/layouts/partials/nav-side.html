@@ -1,0 +1,13 @@
+{{ $currentNode := . }}
+
+<nav class="nav-side">
+  <span class="header">
+    {{ .Site.Params.DocsHeader }}
+  </span>
+  <ul class="entries">
+    {{ range .Site.Menus.docs.ByWeight }}
+      {{ $.Scratch.Set "currentMenuEntry" . }}
+      {{ partial "nav-side-recursive" $currentNode }}
+    {{ end }}
+  </ul>
+</nav>

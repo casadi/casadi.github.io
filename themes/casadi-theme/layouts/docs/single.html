@@ -1,24 +1,17 @@
-{{ partial "header.html" . }}
-{{ partial "nav.html" . }}
+{{ partial "header" . }}
+{{ partial "nav-top" . }}
 
 <div id="main" class="docs container">
   <div class="row flex-nowrap">
-    <div class="menu">
-      <div class="header">
-        {{ .Site.Params.DocsHeader }}
-      </div>
-      {{ partial "nav_docs" . }}
-      <span class="hint">single view</span>
-    </div>
-
-    <div class="content">
+    {{ partial "nav-side" . }}
+    <div class="content d-flex">
       <div class="col p-4">
         <h1>{{ .Title }}</h1>
-        <span class="reading-time">Estimated reading time: {{.Page.ReadingTime }} minute{{ if (gt .Page.ReadingTime 1) }}s{{ end }}</span>
+        <span class="reading-time">{{ partial "reading-time" . }}</span>
         {{ .Content | markdownify }}
       </div>
     </div>
   </div>
 </div>
 
-{{ partial "footer.html" . }}
+{{ partial "footer" . }}
