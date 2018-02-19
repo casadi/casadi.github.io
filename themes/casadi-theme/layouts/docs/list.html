@@ -11,12 +11,7 @@
           <span class="reading-time">{{ partial "reading-time" . }}</span>
           {{ .Content }}
         {{ else }}
-          {{ $.Scratch.Set "topURL" .Permalink }}
-          {{ $rootNode := . }}
-          {{ range .Site.Menus.docs.ByWeight }}
-            {{ $.Scratch.Set "currentMenuEntry" . }}
-            {{ template "recursive-nodes" $rootNode }}
-          {{ end }}
+          {{ .Summary }}
         {{ end }}
       </div>
     </div>
@@ -24,21 +19,3 @@
 </div>
 
 {{ partial "footer" . }}
-
-{{ define "recursive-nodes" }}
-  {{ $rootNode := . }}
-  {{ $currentMenuEntry := .Scratch.Get "currentMenuEntry" }}
-
-  {{ if (hasPrefix (absURL $currentMenuEntry.URL) (.Scratch.Get "topURL")) }}
-    {{ if $currentMenuEntry.HasChildren }}
-      <!-- concat this content -->
-      {{ range $currentMenuEntry.Children }}
-        <!-- <p>{{ . }}</p> -->
-        {{ $.Scratch.Set "currentMenuEntry" . }}
-        {{ template "recursive-nodes" $rootNode }}
-      {{ end }}
-    {{ else }}
-      {{ $currentMenuEntry.Page.Render "single" }}
-    {{ end }}
-  {{ end }}
-{{ end }}
