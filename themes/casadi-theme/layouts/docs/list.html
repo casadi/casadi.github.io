@@ -7,20 +7,11 @@
     <div class="content d-flex">
       <div class="col p-4">
         <h1>{{ .Title }}</h1>
-        {{ if eq (countrunes .Content) 0 }}
-          <p>You've hit an index page. Pages in this category:</p>
-          {{ range .Page.Menus }}
-            <ul>
-              {{ range .Children }}
-                <li>
-                  <a href="{{ .URL }}">{{ .Name }}</a>
-                </li>
-              {{ end }}
-            </ul>
-          {{ end }}
-        {{ else }}
+        {{ if eq .Params.layout "page" }}
           <span class="reading-time">{{ partial "reading-time" . }}</span>
           {{ .Content }}
+        {{ else }}
+          {{ .Summary }}
         {{ end }}
       </div>
     </div>
