@@ -1,12 +1,13 @@
 {{ $currentNode := . }}
 {{ $currentMenuEntry := .Scratch.Get "currentMenuEntry" }}
 {{ $isCurrent := eq .Permalink ($currentMenuEntry.URL | absURL | printf "%s") }}
+{{ $isActive := hasPrefix .Permalink (absURL $currentMenuEntry.URL) }}
 
 {{ if $currentMenuEntry.HasChildren }}
   <a href="#{{ $currentMenuEntry.Name | urlize }}" data-target="#{{ $currentMenuEntry.Name | urlize }}" data-toggle="collapse" aria-expanded="false" aria-controls="{{ $currentMenuEntry.Name | urlize }}">
-    {{ $currentMenuEntry.Name }}<span class="caret arrow"></span>
+    {{ $currentMenuEntry.Name }}<i class="fa fa-caret-down"></i>
   </a>
-  <div class="collapse show" id="{{ $currentMenuEntry.Name | urlize }}">
+  <div class="collapse{{ if $isActive }} show{{ end }}" id="{{ $currentMenuEntry.Name | urlize }}">
     <ul>
       {{ range $currentMenuEntry.Children }}
         <li>
