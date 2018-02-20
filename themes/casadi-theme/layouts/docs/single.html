@@ -8,7 +8,9 @@
       <div class="col p-4">
         <h1>{{ .Title }}</h1>
         <span class="reading-time">{{ partial "reading-time" . }}</span>
-        {{ .Content | markdownify }}
+        <!-- <span class="summary">{{ .Summary }}</span> -->
+        <!-- <hr> -->
+        {{ .Content }}
       </div>
     </div>
   </div>

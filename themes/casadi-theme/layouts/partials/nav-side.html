@@ -10,6 +10,11 @@
       {{ template "nav-side-entry" $currentNode }}
     {{ end }}
   </ul>
+  <span class="footer">
+    <p>Matlab <a href="#" title="Toggle code language"><i class="fa fa-toggle-on"></i></a> Python</p>
+    <a href="#" title="Show on one page"><i class="fa fa-align-justify bigger"></i></a>
+    <a href="#" title="Download as PDF"><i class="fa fa-download bigger"></i></a>
+  </span>
 </nav>
 
 {{ define "nav-side-entry" }}
@@ -20,7 +25,9 @@
 
   {{ if $currentMenuEntry.HasChildren }}
     <li class="fold-out {{ if $isActive }}active{{ end }}">
-      <a href="#{{ $currentMenuEntry.Name | urlize }}" {{ if not $isActive }}class="collapsed"{{ end }} data-target="#{{ $currentMenuEntry.Name | urlize }}" data-toggle="collapse" aria-expanded="false" aria-controls="{{ $currentMenuEntry.Name | urlize }}">
+      <!-- <a href="#{{ $currentMenuEntry.Name | urlize }}" {{ if not $isActive }}class="collapsed"{{ end }} data-target="#{{ $currentMenuEntry.Name | urlize }}" data-toggle="collapse" aria-expanded="false" aria-controls="{{ $currentMenuEntry.Name | urlize }}"> -->
+      <a href="{{ $currentMenuEntry.URL }}" {{ if not $isActive }}class="collapsed"{{ end }}>
+
         {{ $currentMenuEntry.Name }}<i class="fa fa-caret-down"></i>
       </a>
     </li>
