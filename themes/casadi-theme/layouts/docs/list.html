@@ -19,7 +19,7 @@
             </ul>
           {{ end }}
         {{ else }}
-          <span class="reading-time">{{ partial "reading-time" . }}</span>
+          {{ partial "reading-time" .Page }}
           {{ .Content }}
         {{ end }}
       </div>

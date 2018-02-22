@@ -1,5 +1,10 @@
+.card table {
+  width: 100%;
+}
 table {
   width: 100%;
+  max-width: 100%;
+  margin: auto;
 }
 table, th, td {
   padding: .5rem;
@@ -9,4 +14,10 @@ table thead {
 }
 table tbody tr:nth-child(odd) {
   background-color: $casadi-color-accent-gray;
+}
+
+@media (min-width: 1000px) {
+  table {
+    max-width: 50%;
+  }
 }

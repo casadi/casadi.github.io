@@ -5,7 +5,11 @@ $(document).ready(function() {
     hljs.highlightBlock(block);
   });
 
-  $('multisnip').each(function(i, block) {
+  // $('code.hljs').each(function(i, block) {
+  //   hljs.lineNumbersBlock(block);
+  // });
+
+  $('div.multisnip').each(function(i, block) {
     $(block).prepend("<ul class='nav nav-fill nav-tabs-multisnip'></ul>");
     $(block).children().each(function(ii, pre) {
       if($(pre).is("pre")) {
@@ -37,3 +41,5 @@ function makeActive(el) {
   $(el).parent().parent().find("code").hide();
   $(el).parent().parent().find("code[language="+$(el).text()+"]").show();
 }
+
+var snipLanguage = "python";

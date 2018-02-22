@@ -7,6 +7,16 @@ figure.default img {
   max-height: 100vh;
   margin: 0;
 }
+img {
+  width: 100%;
+  max-width: 100%;
+  max-height: 100vh;
+  margin: auto;
+  display: block;
+}
+img.card-img-top {
+  width: 100%;
+}
 figure figcaption h1 {
   font-size: 1rem;
   font-weight: 400;
@@ -14,6 +24,9 @@ figure figcaption h1 {
 }
 @media (min-width: 1000px) {
   figure.default img {
+    max-width: 50%;
+  }
+  img:not(.card-img-top) {
     max-width: 50%;
   }
 }

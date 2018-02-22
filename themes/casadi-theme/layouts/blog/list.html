@@ -17,10 +17,11 @@
             {{ end }}
             <div class="card-body">
               <h5 class="card-title">{{ $post.Title }}</h5>
-              <p class="card-text">{{ $post.Summary }}</p>
+              {{ $post.Summary }}
               <a href="{{ $post.Permalink }}" class="btn btn-primary">Read more</a>
             </div>
             <div class="card-footer text-muted text-right">
+              {{ partial "reading-time-short" $post }}
               posted {{ dateFormat "January 2, 2006" $post.Date }}
             </div>
           </div>

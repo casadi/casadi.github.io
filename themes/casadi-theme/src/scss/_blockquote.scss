@@ -1,0 +1,19 @@
+/* BLOCKQUOTE */
+blockquote {
+  margin-left: 2rem;
+  padding: 1rem 2rem 1rem 100px;
+  position: relative;
+  color: $casadi-color-text;
+  background-color: $casadi-color-accent-gray;
+}
+blockquote::before {
+  content: "\201C"; /*Unicode for Left Double Quote*/
+  color: $casadi-color-text-secondary;
+  position: absolute;
+  left: 25px;
+  top: 17px;
+  font-family: serif;
+  font-size: 100px;
+  line-height: 60px;
+  font-weight: bold;
+}

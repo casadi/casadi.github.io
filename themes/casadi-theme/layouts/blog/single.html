@@ -4,7 +4,8 @@
   <div class="row">
     <div class="col">
       <h1>{{ .Title }}</h1>
-      <p>{{ .Content }}</p>
+      {{ partial "reading-time" .Page }}
+      {{ .Content }}
     </div>
   </div>
 </div>

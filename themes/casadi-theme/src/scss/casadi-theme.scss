@@ -61,19 +61,6 @@ h6 {
   font-size: 1.00rem;
 }
 
-// .container {
-//   padding-left: 2rem;
-//   padding-right: 2rem;
-// }
-// .row {
-//   margin-left: -2rem;
-//   margin-right: -2rem;
-// }
-// .col {
-//   padding-left: 2rem;
-//   padding-right: 2rem;
-// }
-
 /* MAIN */
 #main {
   background-color: #fff;
@@ -108,7 +95,7 @@ nav.nav-top+#main {
 a.card-header,
 a.card-header:hover,
 a.card-header:focus {
-  color: #000;
+  color: $casadi-color-text;
   text-decoration: none;
 }
 .card-footer {
@@ -119,7 +106,7 @@ a.card-header:focus {
   font-weight: 300;
 }
 .nav.card-header {
-  color: #000;
+  color: $casadi-color-text;
   padding: 0;
   font-size: 16px;
   background-color: #fff;
@@ -130,7 +117,7 @@ a.card-header:focus {
   line-height: 50px;
 }
 .nav.card-header a {
-  color: #000;
+  color: $casadi-color-text;
   // border-radius: 10px;
   margin: 0;
   padding: 0 20px;
@@ -139,7 +126,7 @@ a.card-header:focus {
 .nav.card-header a.nav-link.active {
   background-color: inherit;
   color: $casadi-color-accent;
-  box-shadow: 0 -3px 0 0 rgb(220,0,0) inset;
+  box-shadow: 0 -3px 0 0 $casadi-color-accent inset;
 }
 .nav.card-header a.nav-link:hover {
   // box-shadow: 0 -3px 0 0 rgb(220,0,0) inset;
@@ -148,11 +135,29 @@ a.card-header:focus {
 .card-header .release-info {
   float: right;
   font-size: 15px;
-  color: gray;
+}
+.card-body .card-title {
+  margin-bottom: .5em;
+}
+.reading-time-short>i {
+  margin-right: 5px;
+}
+.card-footer .reading-time-short {
+  float: left;
+}
+.reading-time {
+  display: block;
+  font-style: italic;
+  font-size: 0.75em;
+  line-height: 1em;
+  margin-bottom: 2em;
 }
 .card-footer.release-info {
   font-size: 15px;
-  color: gray;
+}
+
+.text-muted {
+  color: $casadi-color-text-secondary !important;
 }
 
 @import 'figure';
@@ -163,3 +168,4 @@ a.card-header:focus {
 @import 'footer';
 @import 'code';
 @import 'docs';
+@import 'blockquote';
