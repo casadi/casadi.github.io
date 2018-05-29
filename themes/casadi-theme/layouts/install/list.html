@@ -12,32 +12,33 @@
       {{ $releases := getJSON $url }}
 
       <!-- {{ $latest := (index $releases 0) }} -->
-      <!-- <script>
-        console.log({{ $latest.body | markdownify }});
-        console.log({{ (safeHTML $latest.body) | markdownify }});
-      </script> -->
+      <script>
+        console.log({{ $releases }});
+      </script>
 
       <!-- <p>Get the <em>latest release</em>:</p> -->
 
-      {{ range $index, $release := sort $releases }}
+      {{ range $index, $release := sort $releases ".created_at" "desc"}}
         {{ $isLatest := (eq $index 0) }}
         {{ $isPrerelease := $release.prerelease }}
         {{ $isDraft := $release.draft }}
 
         <!-- TODO ad-hoc solution, filtering for exact tags -->
-        {{ $htmlBody := $release.body | markdownify }}
-        {{ $htmlBody := split $htmlBody "<h1 id=\"binaries\">Binaries</h1>" }}
-        {{ $htmlBody := index $htmlBody 1 }}
-        {{ $htmlBody := split $htmlBody "<h1 id=\"install\">Install</h1>" }}
-        {{ $htmlBinaries := index $htmlBody 0 }}
-        {{ $htmlBody := index $htmlBody 1 }}
-        {{ $htmlBody := split $htmlBody "<h1 id=\"release-notes\">Release notes</h1>" }}
-        {{ $htmlInstall := index $htmlBody 0 }}
-        {{ $htmlRelease := index $htmlBody 1 }}
+        {{ $htmlBinaries := 0 }}
+        {{ $htmlInstall := 0 }}
+        {{ $htmlRelease := 0 }}
 
-        <script>
-          console.log({{ $htmlBody }});
-        </script>
+        {{ if $release.body }}
+          {{ $htmlBody := $release.body | markdownify }}
+          {{ $htmlBody := split $htmlBody "<h1 id=\"binaries\">Binaries</h1>" }}
+          {{ $htmlBody := index $htmlBody 1 }}
+          {{ $htmlBody := split $htmlBody "<h1 id=\"install\">Install</h1>" }}
+          {{ $htmlBinaries := index $htmlBody 0 }}
+          {{ $htmlBody := index $htmlBody 1 }}
+          {{ $htmlBody := split $htmlBody "<h1 id=\"release-notes\">Release notes</h1>" }}
+          {{ $htmlInstall := index $htmlBody 0 }}
+          {{ $htmlRelease := index $htmlBody 1 }}
+        {{ end }}
 
         <a class="offset-anchor" id="{{ $release.tag_name }}"></a>
         <a class="offset-anchor" id="v{{ $release.tag_name }}"></a>
