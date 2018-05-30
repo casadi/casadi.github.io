@@ -3,16 +3,16 @@
 
 <div id="main" class="docs container">
   <div class="row flex-nowrap">
-    {{ partial "nav-side" . }}
+    <nav class="nav-side">
+      {{ partial "docs-sidebar" . }}
+    </nav>
     <div class="content d-flex">
       <div class="col p-4">
         <!-- <h1>{{ .Title }}</h1> -->
 
-        {{ partial "reading-time" .Page }}
+        <!-- {{ partial "reading-time" .Page }} -->
 
-        {{ $file := .Get "docs-body.html" | readFile }}
-
-        {{ printf $file }}
+        {{ .Content }}
 
       </div>
     </div>
