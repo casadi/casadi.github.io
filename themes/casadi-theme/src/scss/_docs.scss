@@ -12,6 +12,37 @@
   font-size: 1.1em;
 }
 
+a.headerlink {
+  opacity: 0.1;
+  transition: visibility 1s;
+  color: $casadi-color-text-secondary;
+}
+
+#main.docs .content {
+  p {
+    clear: both;
+  },
+
+  h2, h3, h4, h5, h6 {
+    margin-top: 1em;
+
+    &:hover a.headerlink {
+      opacity: 1.0;
+    }
+  }
+}
+
+#main.docs .content .sidebyside-master {
+  margin: 0;
+  padding: 0;
+
+  &>.sidebyside {
+    width: 50%;
+    float: left;
+    padding: 0 1em;
+  }
+}
+
 @media (max-width: 768px) {
   #main.docs .menu {
     display: none;
