@@ -8,6 +8,9 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, .25);
   z-index: 2;
 }
+#main.docs .content p {
+  clear: both;
+}
 #main.docs .content .summary {
   font-size: 1.1em;
 }
@@ -16,17 +19,22 @@ a.headerlink {
   opacity: 0.1;
   transition: visibility 1s;
   color: $casadi-color-text-secondary;
+  margin-left: 5px;
 }
 
 #main.docs .content {
-  p {
-    clear: both;
-  } &
-  h2, h3, h4, h5, h6 {
+  h1, h2, h3, h4, h5, h6 {
     margin-top: 1em;
 
     &:hover a.headerlink {
       opacity: 1.0;
+    }
+
+    &:before {
+      display: block;
+      content: "";
+      height: $casadi-link-offset;
+      margin: -$casadi-link-offset 0 0;
     }
   }
 }

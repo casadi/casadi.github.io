@@ -465,6 +465,9 @@ div.multisnip ul.nav-tabs-multisnip > li > a:hover {
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
   z-index: 2; }
 
+#main.docs .content p {
+  clear: both; }
+
 #main.docs .content .summary {
   font-size: 1.1em; }
 
@@ -473,15 +476,18 @@ a.headerlink {
   -webkit-transition: visibility 1s;
   -o-transition: visibility 1s;
   transition: visibility 1s;
-  color: rgba(0, 0, 0, 0.6); }
+  color: rgba(0, 0, 0, 0.6);
+  margin-left: 5px; }
 
-#main.docs .content p {
-  clear: both; }
-
-#main.docs .content h2, #main.docs .content h3, #main.docs .content h4, #main.docs .content h5, #main.docs .content h6 {
+#main.docs .content h1, #main.docs .content h2, #main.docs .content h3, #main.docs .content h4, #main.docs .content h5, #main.docs .content h6 {
   margin-top: 1em; }
-  #main.docs .content h2:hover a.headerlink, #main.docs .content h3:hover a.headerlink, #main.docs .content h4:hover a.headerlink, #main.docs .content h5:hover a.headerlink, #main.docs .content h6:hover a.headerlink {
+  #main.docs .content h1:hover a.headerlink, #main.docs .content h2:hover a.headerlink, #main.docs .content h3:hover a.headerlink, #main.docs .content h4:hover a.headerlink, #main.docs .content h5:hover a.headerlink, #main.docs .content h6:hover a.headerlink {
     opacity: 1.0; }
+  #main.docs .content h1:before, #main.docs .content h2:before, #main.docs .content h3:before, #main.docs .content h4:before, #main.docs .content h5:before, #main.docs .content h6:before {
+    display: block;
+    content: "";
+    height: 65px;
+    margin: -65px 0 0; }
 
 #main.docs .content .sidebyside-master {
   margin: 0;
