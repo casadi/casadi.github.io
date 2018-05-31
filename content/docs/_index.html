@@ -5282,7 +5282,7 @@ To plot the progress of the solver, you may access the non-converged solution th
 </div>
 </td>
 <td><div class="first last highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">res</span> <span class="o">=</span>\
-<span class="n">f</span><span class="p">({{</span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="n">x</span><span class="p">},{</span><span class="s">&quot;y&quot;</span><span class="p">,</span><span class="n">y</span><span class="p">}});</span>
+<span class="n">f</span><span class="p">({&lbrace;</span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="n">x</span><span class="p">},{</span><span class="s">&quot;y&quot;</span><span class="p">,</span><span class="n">y</span><span class="p">&rbrace;});</span>
 <span class="n">res</span><span class="p">[</span><span class="s">&quot;z&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -5300,7 +5300,7 @@ To plot the progress of the solver, you may access the non-converged solution th
 </div>
 </td>
 <td><div class="first last highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">MXDict</span> <span class="n">nlp</span> <span class="o">=</span>\
-<span class="p">{{</span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="n">x</span><span class="p">},{</span><span class="s">&quot;f&quot;</span><span class="p">,</span><span class="n">f</span><span class="p">}};</span>
+<span class="p">{&lbrace;</span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="n">x</span><span class="p">},{</span><span class="s">&quot;f&quot;</span><span class="p">,</span><span class="n">f</span><span class="p">&rbrace;};</span>
 <span class="n">nlpsol</span><span class="p">(</span><span class="s">&quot;S&quot;</span><span class="p">,</span><span class="s">&quot;ipopt&quot;</span><span class="p">,</span><span class="n">nlp</span><span class="p">);</span>
 </pre></div>
 </div>
