@@ -14,16 +14,61 @@
 <li class="toctree-l2"><a class="reference internal" href="index.html#dm">3.2. <code class="docutils literal notranslate"><span class="pre">DM</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#the-mx-symbolics">3.3. The <code class="docutils literal notranslate"><span class="pre">MX</span></code> symbolics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#mixing-sx-and-mx">3.4. Mixing <code class="docutils literal notranslate"><span class="pre">SX</span></code> and <code class="docutils literal notranslate"><span class="pre">MX</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#the-sparsity-class">3.5. The <code class="docutils literal notranslate"><span class="pre">Sparsity</span></code> class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#arithmetic-operations">3.6. Arithmetic operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#querying-properties">3.7. Querying properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#linear-algebra">3.8. Linear algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#calculus-algorithmic-differentiation">3.9. Calculus – algorithmic differentiation</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="index.html#document-function">4. Function objects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html#document-ccode">5. Generating C-code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html#document-custom">6. User-defined function objects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html#document-daebuilder">7. The <code class="docutils literal notranslate"><span class="pre">DaeBuilder</span></code> class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html#document-ocp">8. Optimal control with <code class="docutils literal notranslate"><span class="pre">CasADi</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html#document-opti">9. Opti</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-function">4. Function objects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#calling-function-objects">4.1. Calling function objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#converting-mx-to-sx">4.2. Converting <code class="docutils literal notranslate"><span class="pre">MX</span></code> to <code class="docutils literal notranslate"><span class="pre">SX</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#nonlinear-root-finding-problems">4.3. Nonlinear root-finding problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#initial-value-problems-and-sensitivity-analysis">4.4. Initial-value problems and sensitivity analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#nonlinear-programming">4.5. Nonlinear programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#quadratic-programming">4.6. Quadratic programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#for-loop-equivalents">4.7. For-loop equivalents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-ccode">5. Generating C-code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#syntax-for-generating-code">5.1. Syntax for generating code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#using-the-generated-code">5.2. Using the generated code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#api-of-the-generated-code">5.3. API of the generated code</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-custom">6. User-defined function objects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#subclassing-functioninternal">6.1. Subclassing <code class="docutils literal notranslate"><span class="pre">FunctionInternal</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#subclassing-callback">6.2. Subclassing <code class="docutils literal notranslate"><span class="pre">Callback</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#importing-a-function-with-external">6.3. Importing a function with <code class="docutils literal notranslate"><span class="pre">external</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#just-in-time-compile-a-c-language-string">6.4. Just-in-time compile a C language string</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#using-lookup-tables">6.5. Using lookup-tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#id1">6.6. 2D lookup tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#derivative-calculation-using-finite-differences">6.7. Derivative calculation using finite differences</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-daebuilder">7. The <code class="docutils literal notranslate"><span class="pre">DaeBuilder</span></code> class</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#mathematical-formulation">7.1. Mathematical formulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#constructing-a-daebuilder-instance">7.2. Constructing a <code class="docutils literal notranslate"><span class="pre">DaeBuilder</span></code> instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#import-of-ocps-from-modelica">7.3. Import of OCPs from Modelica</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#symbolic-reformulation">7.4. Symbolic reformulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#function-factory">7.5. Function factory</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-ocp">8. Optimal control with <code class="docutils literal notranslate"><span class="pre">CasADi</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#a-simple-test-problem">8.1. A simple test problem</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-opti">9. Opti stack</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#problem-specification">9.1. Problem specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#problem-solving-and-retrieving">9.2. Problem solving and retrieving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#extras">9.3. Extras</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="index.html#document-usage">10. Difference in usage from different languages</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="index.html#general-usage">10.1. General usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#list-of-operations">10.2. List of operations</a></li>
 </ul>
 </li>
 </ul>
+
