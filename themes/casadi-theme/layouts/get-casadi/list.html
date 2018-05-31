@@ -8,37 +8,14 @@
       {{ $stats := getJSON $url }}
 
       <!-- cache busting -->
-      {{ $url := (printf "%s%s" "https://api.github.com/repos/casadi/casadi/releases?" (string now.Unix)) }}
+      {{ $url := (printf "%s%s" "https://api.github.com/repos/casadi/casadi/releases?per_page=100&" (string now.Unix)) }}
       {{ $releases := getJSON $url }}
 
-      <!-- {{ $latest := (index $releases 0) }} -->
-      <!-- <script>
-        console.log({{ $releases }});
-      </script> -->
-
-      <!-- <p>Get the <em>latest release</em>:</p> -->
-
       {{ range $index, $release := sort $releases ".created_at" "desc"}}
+
         {{ $isLatest := (eq $index 0) }}
         {{ $isPrerelease := $release.prerelease }}
         {{ $isDraft := $release.draft }}
-
-        <!-- TODO ad-hoc solution, filtering for exact tags -->
-        {{ $htmlBinaries := 0 }}
-        {{ $htmlInstall := 0 }}
-        {{ $htmlRelease := 0 }}
-
-        {{ if $release.body }}
-          {{ $htmlBody := $release.body | markdownify }}
-          {{ $htmlBody := split $htmlBody "<h1 id=\"binaries\">Binaries</h1>" }}
-          {{ $htmlBody := index $htmlBody 1 }}
-          {{ $htmlBody := split $htmlBody "<h1 id=\"install\">Install</h1>" }}
-          {{ $htmlBinaries := index $htmlBody 0 }}
-          {{ $htmlBody := index $htmlBody 1 }}
-          {{ $htmlBody := split $htmlBody "<h1 id=\"release-notes\">Release notes</h1>" }}
-          {{ $htmlInstall := index $htmlBody 0 }}
-          {{ $htmlRelease := index $htmlBody 1 }}
-        {{ end }}
 
         <a class="" id="{{ $release.tag_name }}"></a>
         <a class="" id="v{{ $release.tag_name }}"></a>
@@ -72,34 +49,55 @@
           {{ else }}
           <div class="collapse" id="body-{{ $index }}">
           {{ end }}
-            <div class="nav nav-pills card-header justify-content-center" role="tablist">
-              {{ if $htmlBinaries }}
-              <a class="nav-link active" href="#downloadTab-{{ $index }}" role="tab" data-toggle="tab" aria-selected="true">Download</a>
+
+            <!-- TODO ad-hoc solution, filtering for exact tags -->
+            {{ if gt ( countrunes $release.body ) 0 }}
+              {{ $htmlBody := $release.body | markdownify }}
+              {{ $htmlBody := split $htmlBody "<h1 id=\"binaries\">Binaries</h1>" }}
+              {{ $htmlBody := index $htmlBody 1 }}
+              {{ $htmlBody := split $htmlBody "<h1 id=\"install\">Install</h1>" }}
+              {{ $htmlBinaries := index $htmlBody 0 }}
+              {{ $htmlBody := index $htmlBody 1 }}
+              {{ $htmlBody := split $htmlBody "<h1 id=\"release-notes\">Release notes</h1>" }}
+              {{ $htmlInstall := index $htmlBody 0 }}
+              {{ $htmlRelease := index $htmlBody 1 }}
+
+              {{ if eq ( countrunes ( print $htmlBinaries $htmlRelease $htmlInstall ) ) 0 }}
+                <div class="card-body tab-content">
+                  {{ $release.body | markdownify }}
+                </div>
+              {{ else }}
+                <div class="nav nav-pills card-header justify-content-center" role="tablist">
+                  {{ if gt ( countrunes $htmlBinaries ) 0 }}
+                  <a class="nav-link active" href="#downloadTab-{{ $index }}" role="tab" data-toggle="tab" aria-selected="true">Download</a>
+                  {{ end }}
+                  {{ if gt ( countrunes $htmlRelease ) 0 }}
+                  <a class="nav-link" href="#notesTab-{{ $index }}" role="tab" data-toggle="tab" aria-selected="false">Notes</a>
+                  {{ end }}
+                  {{ if gt ( countrunes $htmlInstall ) 0 }}
+                  <a class="nav-link" href="#installTab-{{ $index }}" role="tab" data-toggle="tab" aria-selected="false">Instructions</a>
+                  {{ end }}
+                </div>
+                <div class="card-body tab-content">
+                  <div id="downloadTab-{{ $index }}" role="tabpanel" class="tab-pane fade active show">
+                    {{ if gt ( countrunes $htmlBinaries ) 0 }}
+                      {{ $htmlBinaries | markdownify }}
+                    {{ end }}
+                  </div>
+                  <div id="notesTab-{{ $index }}" role="tabpanel" class="tab-pane fade">
+                    {{ if gt ( countrunes $htmlRelease ) 0 }}
+                      {{ $htmlRelease | markdownify }}
+                    {{ end }}
+                  </div>
+                  <div id="installTab-{{ $index }}" role="tabpanel" class="tab-pane fade">
+                    {{ if gt ( countrunes $htmlInstall ) 0 }}
+                      {{ $htmlInstall | markdownify }}
+                    {{ end }}
+                  </div>
+                </div>
               {{ end }}
-              {{ if $htmlRelease }}
-              <a class="nav-link" href="#notesTab-{{ $index }}" role="tab" data-toggle="tab" aria-selected="false">Notes</a>
-              {{ end }}
-              {{ if $htmlInstall }}
-              <a class="nav-link" href="#installTab-{{ $index }}" role="tab" data-toggle="tab" aria-selected="false">Instructions</a>
-              {{ end }}
-            </div>
-            <div class="card-body tab-content">
-              <div id="downloadTab-{{ $index }}" role="tabpanel" class="tab-pane fade active show">
-                {{ if $htmlBinaries }}
-                  {{ $htmlBinaries | markdownify }}
-                {{ end }}
-              </div>
-              <div id="notesTab-{{ $index }}" role="tabpanel" class="tab-pane fade">
-                {{ if $htmlRelease }}
-                  {{ $htmlRelease | markdownify }}
-                {{ end }}
-              </div>
-              <div id="installTab-{{ $index }}" role="tabpanel" class="tab-pane fade">
-                {{ if $htmlInstall }}
-                  {{ $htmlInstall | markdownify }}
-                {{ end }}
-              </div>
-            </div>
+            {{ end }}
+
             <div class="card-footer release-info text-muted">
               <a href="{{ $release.html_url }}" target="_blank" title="Link to the tag published on GitHub">This tag on GitHub</a>,
               <span title="Number of attached assets">{{ len $release.assets }}</span>,
