@@ -1,11 +1,17 @@
+{{ .Scratch.Set "Title" ( printf "%s - Docs" .Site.Title ) }}
+
 {{ partial "header" . }}
 {{ partial "nav-top" . }}
 
 <div id="main" class="docs container">
   <div class="row flex-nowrap">
-    <nav class="nav-side">
-      {{ partial "docs-sidebar" . }}
-    </nav>
+    <div class="sidebar">
+      <div class="sticky-top sticky-offset">
+        <nav class="nav-side">
+          {{ partial "docs-sidebar" . }}
+        </nav>
+      </div>
+    </div>
     <div class="content d-flex">
       <div class="col p-4">
         <!-- <h1>{{ .Title }}</h1> -->

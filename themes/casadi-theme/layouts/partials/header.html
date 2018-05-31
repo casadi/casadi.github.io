@@ -6,7 +6,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{{ .Site.Title }} - {{ .Title }}</title>
+    {{ if (.Scratch.Get "Title") }}
+      <title>{{ .Scratch.Get "Title" }}</title>
+    {{ else if (eq .Title "") }}
+      <title>{{ .Site.Title }}</title>
+    {{ else }}
+      <title>{{ .Site.Title }} - {{ .Title }}</title>
+    {{ end }}
 
     <!-- Font awesome 4.7.0 -->
     <link href="{{ .Site.BaseURL }}css/font-awesome.min.css" rel="stylesheet">

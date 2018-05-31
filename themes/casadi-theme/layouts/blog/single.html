@@ -1,3 +1,5 @@
+{{ .Scratch.Set "Title" ( printf "%s - Blog - %s" .Site.Title .Title ) }}
+
 {{ partial "header" . }}
 {{ partial "nav-top" . }}
 <div id="main" class="container">

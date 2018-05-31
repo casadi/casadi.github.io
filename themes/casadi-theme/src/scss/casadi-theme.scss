@@ -18,6 +18,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 body {
+  padding-top: $casadi-nav-top-height;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -33,13 +34,6 @@ a {
 a:hover, a:focus {
   text-decoration: underline;
   color: $casadi-color-hyperlink;
-}
-/* compensating for fixed-height header */
-a.offset-anchor {
-  display: block;
-  position: relative;
-  top: -($casadi-nav-top-height)-10px;
-  visibility: hidden;
 }
 
 h1 {
@@ -66,7 +60,7 @@ h6 {
   background-color: #fff;
 }
 nav.nav-top+#main {
-  margin-top: $casadi-nav-top-height;
+  // margin-top: $casadi-nav-top-height;
 }
 #main.container, #main.container-fluid {
   background-color: $casadi-color-container-background;

@@ -12,9 +12,9 @@
       {{ $releases := getJSON $url }}
 
       <!-- {{ $latest := (index $releases 0) }} -->
-      <script>
+      <!-- <script>
         console.log({{ $releases }});
-      </script>
+      </script> -->
 
       <!-- <p>Get the <em>latest release</em>:</p> -->
 
@@ -40,8 +40,8 @@
           {{ $htmlRelease := index $htmlBody 1 }}
         {{ end }}
 
-        <a class="offset-anchor" id="{{ $release.tag_name }}"></a>
-        <a class="offset-anchor" id="v{{ $release.tag_name }}"></a>
+        <a class="" id="{{ $release.tag_name }}"></a>
+        <a class="" id="v{{ $release.tag_name }}"></a>
         {{ if $isLatest }}
         <div class="card text-left border-success mb-2">
         {{ else }}
