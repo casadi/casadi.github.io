@@ -1,29 +1,39 @@
 /* CODE STYLES */
 pre {
   // width: 100%;
-  // display: block;
+  display: block;
   margin: 0 0 1em 0;
-  padding: 1em;
+  padding: .5em 1em;
   background-color: $casadi-color-accent-gray;
   color: #000;
   font-size: .85em;
   line-height: 1.75em;
 }
 code {
+  background-color: $casadi-color-accent-gray;
   color: #000;
   display: inline;
   margin: 0;
   padding: 0;
-  background-color: rgba(0,0,0,0.5); //$casadi-color-accent-gray;
   padding: 5px 10px;
 }
 
-div.sidebyside .exec-block-output pre {
-  // margin: 1em 0 0 0;
-  padding: 0 0 0 2em;
+.exec-block-output pre {
+  padding: .5em 0 .5em 1em;
   border: 0;
-  border-left: 1px double #000;
-  // font-size: .8em;
+  border-left: 2px double $casadi-color-accent;
+}
+
+.sidebyside-master {
+margin: 0;
+padding: 0;
+display: block;
+
+  &>.sidebyside {
+    width: 50%;
+    float: left;
+    padding: 0 .5em;
+  }
 }
 
 // /* MULTISNIP EXTENSION */

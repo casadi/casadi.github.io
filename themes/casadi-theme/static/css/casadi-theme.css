@@ -70,6 +70,9 @@ h6 {
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
   padding-top: 2rem;
   padding-bottom: 2rem; }
+  @media (max-width: 991.98px) {
+    #main.container, #main.container-fluid {
+      max-width: 100%; } }
 
 #main hr.sep {
   margin: 2rem auto; }
@@ -215,6 +218,9 @@ nav.nav-top .container {
   -webkit-background-size: cover;
           background-size: cover;
   background-position: left; }
+  @media (max-width: 991.98px) {
+    nav.nav-top .container {
+      max-width: 100%; } }
 
 nav.nav-top.navbar {
   border: none;
@@ -368,25 +374,35 @@ footer .list-inline-item:not(:last-child) {
 
 /* CODE STYLES */
 pre {
+  display: block;
   margin: 0 0 1em 0;
-  padding: 1em;
+  padding: .5em 1em;
   background-color: #f8f8f8;
   color: #000;
   font-size: .85em;
   line-height: 1.75em; }
 
 code {
+  background-color: #f8f8f8;
   color: #000;
   display: inline;
   margin: 0;
   padding: 0;
-  background-color: rgba(0, 0, 0, 0.5);
   padding: 5px 10px; }
 
-div.sidebyside .exec-block-output pre {
-  padding: 0 0 0 2em;
+.exec-block-output pre {
+  padding: .5em 0 .5em 1em;
   border: 0;
-  border-left: 1px double #000; }
+  border-left: 2px double #dc0000; }
+
+.sidebyside-master {
+  margin: 0;
+  padding: 0;
+  display: block; }
+  .sidebyside-master > .sidebyside {
+    width: 50%;
+    float: left;
+    padding: 0 .5em; }
 
 #main.docs {
   padding-top: 0;
@@ -432,17 +448,8 @@ a.headerlink {
   height: 65px;
   margin-top: -65px; }
 
-#main.docs .content .sidebyside-master {
-  margin: 0;
-  padding: 0;
-  display: block; }
-  #main.docs .content .sidebyside-master > .sidebyside {
-    width: 50%;
-    float: left;
-    padding: 0 1em; }
-
 #main.docs .content table {
-  font-size: .75em; }
+  font-size: .8em; }
 
 #main.docs .content table pre {
   padding: 0; }
