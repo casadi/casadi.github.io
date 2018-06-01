@@ -387,8 +387,11 @@ code {
   color: #000;
   display: inline;
   margin: 0;
-  padding: 0;
   padding: 5px 10px; }
+
+pre code {
+  padding: 0;
+  margin: 0; }
 
 .exec-block-output pre {
   padding: .5em 0 .5em 1em;
@@ -403,6 +406,49 @@ code {
     width: 50%;
     float: left;
     padding: 0 .5em; }
+
+div.multisnip {
+  visibility: visible; }
+
+div.multisnip pre {
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+  height: auto;
+  border-top: #dc0000 1px solid; }
+
+div.multisnip pre > code {
+  display: block; }
+
+div.multisnip ul.nav-tabs-multisnip > :first-child,
+div.multisnip ul.nav-tabs-multisnip > :first-child > a:hover {
+  -webkit-border-top-left-radius: 10px;
+          border-top-left-radius: 10px; }
+
+div.multisnip ul.nav-tabs-multisnip > :last-child,
+div.multisnip ul.nav-tabs-multisnip > :last-child > a:hover {
+  -webkit-border-top-right-radius: 10px;
+          border-top-right-radius: 10px; }
+
+div.multisnip ul.nav-tabs-multisnip > li {
+  color: #000;
+  background-color: #f8f8f8;
+  cursor: default; }
+
+div.multisnip ul.nav-tabs-multisnip > li.isshown {
+  color: #fff;
+  font-weight: 400;
+  background-color: #dc0000; }
+
+div.multisnip ul.nav-tabs-multisnip > li > a {
+  display: block;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 16px; }
+
+div.multisnip ul.nav-tabs-multisnip > li > a:hover {
+  -webkit-box-shadow: 0 -2px 0 0 #dc0000 inset;
+          box-shadow: 0 -2px 0 0 #dc0000 inset; }
 
 #main.docs {
   padding-top: 0;

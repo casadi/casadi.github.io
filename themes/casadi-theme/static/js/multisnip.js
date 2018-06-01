@@ -1,30 +1,30 @@
 /* This is multisnip */
 
 $(document).ready(function() {
-  $('code').each(function(i, block) {
-    hljs.highlightBlock(block);
-  });
-
-  // $('code.hljs').each(function(i, block) {
-  //   hljs.lineNumbersBlock(block);
-  // });
-
   $('div.multisnip').each(function(i, block) {
     $(block).prepend("<ul class='nav nav-fill nav-tabs-multisnip'></ul>");
-    $(block).children().each(function(ii, pre) {
-      if($(pre).is("pre")) {
-        $(pre).addClass('hljs');
-        $(pre).children().each(function(iii, code) {
-          if(iii == 0) {
-            var $li = $("<li>", {"class": "nav-item isshown"});
-          } else {
-            $(code).hide();
-            var $li = $("<li>", {"class": "nav-item"});
+    var allHighlights = $(block).children();
+    $(allHighlights).each(function(ii, highlight) {
+      if(ii == 0) {
+        $(highlight).addClass("isshown");
+        console.log(highlight);
+      }
+      if($(highlight).is("div.highlight")) {
+        $(highlight).children().each(function(iii, pre) {
+          if($(pre).is("pre")) {
+            $(pre).children().each(function(iv, code) {
+              var lang = $(code).attr("data-lang");
+              if(iv == 0) {
+                var li = $("<li>", {"class": "nav-item isshown"});
+              } else {
+                $(code).hide();
+                var li = $("<li>", {"class": "nav-item"});
+              }
+              li.append("<a>" + lang + "</a>");
+              li.click(function(){ makeActive(highlight) });
+              $(block).find("ul.nav-tabs-multisnip").append(li);
+            });
           }
-          // console.log(code);
-          $li.append("<a>" + $(code).attr("language") + "</a>");
-          $li.click(function(){ makeActive($(this)) });
-          $(block).find("ul.nav-tabs-multisnip").append($li);
         });
       }
     });
@@ -32,14 +32,7 @@ $(document).ready(function() {
   });
 });
 
-function makeActive(el) {
-  // console.log(el);
-  $(el).parent().children().each(function(i, chel) {
-    $(chel).removeClass("isshown");
-  });
-  $(el).addClass("isshown");
-  $(el).parent().parent().find("code").hide();
-  $(el).parent().parent().find("code[language="+$(el).text()+"]").show();
+function makeActive(hl) {
+  $(hl).parent().children().each(function(i, el) { $(el).removeClass("isshown"); });
+  $(hl).addClass("isshown");
 }
-
-var snipLanguage = "python";
