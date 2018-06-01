@@ -3,7 +3,7 @@
 {{ partial "header" . }}
 {{ partial "nav-top" . }}
 
-<div id="main" class="docs container">
+<div id="main" class="docs container-fluid">
   <div class="row flex-nowrap">
     <div class="sidebar">
       <div class="sticky-top sticky-offset">
@@ -12,15 +12,13 @@
         </nav>
       </div>
     </div>
-    <div class="content">
-      <div class="col p-4">
+    <div class="col content p-4">
         <!-- <h1>{{ .Title }}</h1> -->
 
         <!-- {{ partial "reading-time" .Page }} -->
 
         {{ .Content }}
 
-      </div>
     </div>
   </div>
 </div>

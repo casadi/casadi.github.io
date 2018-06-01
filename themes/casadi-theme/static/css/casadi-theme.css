@@ -255,7 +255,11 @@ nav.nav-top a.navbar-brand {
   -webkit-flex: 0 0 250px;
       -ms-flex: 0 0 250px;
           flex: 0 0 250px;
-  z-index: 1; }
+  z-index: 1;
+  padding: 0; }
+  @media (max-width: 991.98px) {
+    .sidebar {
+      display: none; } }
   .sidebar .sticky-offset {
     top: 50px; }
   .sidebar nav {
@@ -368,7 +372,7 @@ pre {
   padding: 1em;
   background-color: #f8f8f8;
   color: #000;
-  font-size: 1em;
+  font-size: .85em;
   line-height: 1.75em; }
 
 code {
@@ -393,13 +397,15 @@ div.sidebyside .exec-block-output pre {
 #main.docs .content {
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-  z-index: 2; }
+  z-index: 2;
+  max-width: 100%; }
+  @media (min-width: 992px) {
+    #main.docs .content {
+      max-width: -webkit-calc(100% - 250px);
+      max-width: calc(100% - 250px); } }
 
 #main.docs .content p {
   clear: both; }
-
-#main.docs .content .summary {
-  font-size: 1.1em; }
 
 a.headerlink {
   opacity: 0;
@@ -440,10 +446,6 @@ a.headerlink {
 
 #main.docs .content table pre {
   padding: 0; }
-
-@media (max-width: 768px) {
-  #main.docs .menu {
-    display: none; } }
 
 /* BLOCKQUOTE */
 blockquote {

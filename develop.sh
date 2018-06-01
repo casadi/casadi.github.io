@@ -6,7 +6,7 @@ echo "+ Starting build script."
 
 # checking dependencies
 echo "Checking dependencies: "
-declare -a dep=("hugo" "npm" "gulp")
+declare -a dep=("hugo" "npm")
 for i in "${dep[@]}"
 do
   {
