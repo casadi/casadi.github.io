@@ -7,24 +7,85 @@ weight: 2
 mode: "manual"
 ---
 
+Efficient nonlinear programming at your fingertips, in your favourite language.
+
 <div class="row">
   <div class="col-md-5">
-<div class="multisnip"><pre><code language="Cpp">#include &lt;casadi/casadi.hpp&gt;
+<div class="multisnip">
+<pre>
+<code language="Matlab">
+opti = casadi.Opti();
 
-using namespace casadi;
-using namespace std;
+u = opti.variable(5,1);
 
-int main() {
-  // lala
-}</code><code language="Matlab">import casadi.∗
-x = MX.sym('x');
-f = xˆ2 + 10;
-f = sqrt(f);
-display(f);</code><code language="Python">some python</code></pre></div>
+opti.minimize(u'*u);
+opti.subject_to(u<=2);
+
+x = 1;
+for i=1:5
+  x = x+cos(x)+u(i);
+end
+opti.subject_to(x==6);
+
+opti.solver('ipopt');
+sol = opti.solve();
+
+plot(sol.value(u))
+</code>
+<code language="Python">
+from casadi import *
+
+opti = Opti()
+
+u = opti.variable(5,1)
+
+opti.minimize(dot(u,u))
+opti.subject_to(u<=2)
+
+x = 1
+for i in range(5):
+  x = x+cos(x)+u[i]
+
+opti.subject_to(x==6)
+
+opti.solver('ipopt')
+sol = opti.solve()
+
+plot(sol.value(u))
+</code>
+<code language="Cpp">
+#include &lt;casadi/casadi.hpp&gt;
+
+auto opti = casadi::Opti();
+
+auto u = opti.variable(5,1);
+
+opti.minimize(dot(u,u));
+opti.subject_to(u<=2);
+
+decltype(u) x = 1;
+for (int i=0;i&lt;5;++i) {
+  x = x+cos(x)+u(i);
+}
+opti.subject_to(x==6);
+
+opti.solver("ipopt");
+auto sol = opti.solve();
+
+std::cout &lt;&lt; sol.value(u) &lt;&lt; std::endl;
+
+</code>
+</pre>
+</div>
   </div>
   <div class="col-md-7 text-left">
-    <p>CasADi is available for <em>C++</em>, <em>Python</em> and <em>MATLAB/Octave</em> with little or no difference
-in performance. Just a few lines of code will get you started...
-    </p>
+    <ol>
+       <li>Create symbols</li>
+       <li>Compose expressions</li>
+       <li>Specify objective and constraints</li>
+       <li>Solve!</li>
+    </ol>
+    <img src="conv.png"/>
+  <div class="col-md-4">
   </div>
 </div>
