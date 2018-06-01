@@ -6,11 +6,14 @@ type: singles
 # Support
 
 ## Community
-If you find simple bugs or lack some feature that you think would be relatively easy for us to add, the simplest thing is simply to write to the [forum](https://groups.google.com/forum/?fromgroups=#!forum/casadi-users). We read the forum post regularly and try to respond as soon as possible. The only thing we expect for this kind of support is that you *cite us*, whenever you use CasADi in scientific work.
+If you find simple bugs or lack some feature that you think would be relatively easy for us to add, the simplest thing is simply to write to the [forum](https://groups.google.com/forum/?fromgroups=#!forum/casadi-users). We read the forum post regularly and try to respond as soon as possible. The only thing we expect for this kind of support is that you [cite us](../about#citing), whenever you use CasADi in scientific work.
 
-## Cooperation
-If you want more help, we are always open for *academic or industrial cooperation*. An academic cooperation usually take the form of a co-authorship of a journal paper, and an industrial cooperation involves a negotiated consulting contract. Please contact us directly if you are interested in this.
+## Academic cooperation
+If you want more help, we are always open for *academic* cooperation. An academic cooperation usually take the form of a co-authorship of a journal paper. Please contact us directly if you are interested in this.
 
-## Professional
-Contact details for professional support:
-Joris Gillis works via a Belgian BVBA company [yacoda](http://www.yacoda.com/)
+## Professional cooperation
+Both main developers offer professional CasADi-related consulting (teaching, problem solving, adding features).
+
+ * Joris Gillis (joris@casadi.org) is registered in Europe ([yacoda, Belgium](http://www.yacoda.com/)).
+ * Joel Andersson (joel@casadi.org) is registered in the United States.
+

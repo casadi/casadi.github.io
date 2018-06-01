@@ -7,32 +7,85 @@ weight: 2
 mode: "manual"
 ---
 
+Efficient nonlinear programming at your fingertips, in your favourite language.
+
 <div class="row">
   <div class="col-md-4">
 {{< highlight cpp >}}
+
 #include <casadi/casadi.hpp>
 
-using namespace casadi;
-using namespace std;
+auto opti = casadi::Opti();
 
-int main() {
-  // lala
+auto u = opti.variable(5,1);
+
+opti.minimize(dot(u,u));
+opti.subject_to(u<=2);
+
+decltype(u) x = 1;
+for (int i=0;i<5;++i) {
+  x = x+cos(x)+u(i);
 }
+opti.subject_to(x==6);
+
+opti.solver("ipopt");
+auto sol = opti.solve();
+
+std::cout << sol.value(u) << std::endl;
 {{< /highlight >}}
   </div>
   <div class="col-md-4">
 {{< highlight octave >}}
-import casadi.∗
+opti = casadi.Opti();
 
-x = MX.sym('x');
-f = xˆ2 + 10;
-f = sqrt(f);
-display(f);
+u = opti.variable(5,1);
+
+opti.minimize(u'*u);
+opti.subject_to(u<=2);
+
+x = 1;
+for i=1:5
+  x = x+cos(x)+u(i);
+end
+opti.subject_to(x==6);
+
+opti.solver('ipopt');
+sol = opti.solve();
+
+plot(sol.value(u))
 {{< /highlight >}}
   </div>
   <div class="col-md-4">
 {{< highlight python >}}
-...
+from casadi import *
+
+opti = Opti()
+
+u = opti.variable(5,1)
+
+opti.minimize(dot(u,u))
+opti.subject_to(u<=2)
+
+x = 1
+for i in range(5):
+  x = x+cos(x)+u[i]
+
+opti.subject_to(x==6)
+
+opti.solver('ipopt')
+sol = opti.solve()
+
+plot(sol.value(u))
 {{< /highlight >}}
+</div>
+
+  <div class="col-md-7 text-left">
+    <ol>
+       <li>Create symbols</li>
+       <li>Compose expressions</li>
+       <li>Specify objective and constraints</li>
+       <li>Solve!</li>
+    </ol>
+    <img src="conv.png"/>
   </div>
 </div>

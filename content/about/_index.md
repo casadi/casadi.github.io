@@ -13,3 +13,17 @@ It is developed by Joel Andersson and Joris Gillis at the Optimization in Engine
 
 ## License
 CasADi is distributed under the LGPL license, meaning the code can be used royalty-free even in commercial applications.
+
+## Citing
+
+If you enjoy CasADi, do cite our <a href="http://paper.casadi.org">journal publication</a>:
+```
+@Article{Andersson2018,
+  Author = {Joel A E Andersson and Joris Gillis and Greg Horn
+            and James B Rawlings and Moritz Diehl},
+  Title = {{CasADi} -- {A} software framework for nonlinear optimization
+           and optimal control},
+  Journal = {Mathematical Programming Computation},
+  Year = {In Press, 2018},
+}
+```
