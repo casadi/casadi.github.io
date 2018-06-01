@@ -1,55 +1,69 @@
 /* CODE STYLES */
-/* inline code */
-code, code.hljs {
-  display: inline;
+pre {
+  // width: 100%;
+  // display: block;
+  margin: 0 0 1em 0;
+  padding: 1em;
   background-color: $casadi-color-accent-gray;
+  color: #000;
+  font-size: 1em;
+  line-height: 1.75em;
+}
+code {
+  color: #000;
+  display: inline;
+  margin: 0;
+  padding: 0;
+  background-color: rgba(0,0,0,0.5); //$casadi-color-accent-gray;
   padding: 5px 10px;
 }
-/* code blocks */
-pre>code, pre>code.hljs {
-  // width: 100%;
-  display: block;
-  padding: 0;
+
+div.sidebyside .exec-block-output pre {
+  // margin: 1em 0 0 0;
+  padding: 0 0 0 2em;
+  border: 0;
+  border-left: 1px double #000;
+  // font-size: .8em;
 }
 
-/* MULTISNIP EXTENSION */
-div.multisnip {
-  visibility: visible;
-}
-div.multisnip pre {
-  margin: 0;
-  font-size: 16px;
-  line-height: 24px;
-  height: auto;
-  border-top: rgb(220,0,0) 1px solid;
-}
-div.multisnip pre>code {
-  display: block;
-}
-div.multisnip ul.nav-tabs-multisnip>:first-child,
-div.multisnip ul.nav-tabs-multisnip>:first-child>a:hover  {
-  border-top-left-radius: 10px;
-}
-div.multisnip ul.nav-tabs-multisnip>:last-child,
-div.multisnip ul.nav-tabs-multisnip>:last-child>a:hover {
-  border-top-right-radius: 10px;
-}
-div.multisnip ul.nav-tabs-multisnip>li {
-  color: #000;
-  background-color: rgb(248, 248, 248);
-  cursor: default;
-}
-div.multisnip ul.nav-tabs-multisnip>li.isshown {
-  color: #fff;
-  font-weight: 400;
-  background-color: rgb(220,0,0);
-}
-div.multisnip ul.nav-tabs-multisnip>li>a {
-  display: block;
-  padding: 10px;
-  font-size: 16px;
-  line-height: 16px;
-}
-div.multisnip ul.nav-tabs-multisnip>li>a:hover {
-  box-shadow: 0 -2px 0 0 rgb(220,0,0) inset;
-}
+// /* MULTISNIP EXTENSION */
+// div.multisnip {
+//   visibility: visible;
+// }
+// div.multisnip pre {
+//   margin: 0;
+//   font-size: 16px;
+//   line-height: 24px;
+//   height: auto;
+//   border-top: rgb(220,0,0) 1px solid;
+// }
+// div.multisnip pre>code {
+//   display: block;
+// }
+// div.multisnip ul.nav-tabs-multisnip>:first-child,
+// div.multisnip ul.nav-tabs-multisnip>:first-child>a:hover  {
+//   border-top-left-radius: 10px;
+// }
+// div.multisnip ul.nav-tabs-multisnip>:last-child,
+// div.multisnip ul.nav-tabs-multisnip>:last-child>a:hover {
+//   border-top-right-radius: 10px;
+// }
+// div.multisnip ul.nav-tabs-multisnip>li {
+//   color: #000;
+//   background-color: rgb(248, 248, 248);
+//   cursor: default;
+// }
+// div.multisnip ul.nav-tabs-multisnip>li.isshown {
+//   color: #fff;
+//   font-weight: 400;
+//   background-color: rgb(220,0,0);
+// }
+// div.multisnip ul.nav-tabs-multisnip>li>a {
+//   display: block;
+//   padding: 10px;
+//   font-size: 16px;
+//   line-height: 16px;
+// }
+// div.multisnip ul.nav-tabs-multisnip>li>a:hover {
+//   box-shadow: 0 -2px 0 0 rgb(220,0,0) inset;
+// }

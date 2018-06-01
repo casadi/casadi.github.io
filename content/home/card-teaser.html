@@ -8,23 +8,31 @@ mode: "manual"
 ---
 
 <div class="row">
-  <div class="col-md-5">
-<div class="multisnip"><pre><code language="Cpp">#include &lt;casadi/casadi.hpp&gt;
+  <div class="col-md-4">
+{{< highlight cpp >}}
+#include <casadi/casadi.hpp>
 
 using namespace casadi;
 using namespace std;
 
 int main() {
   // lala
-}</code><code language="Matlab">import casadi.∗
+}
+{{< /highlight >}}
+  </div>
+  <div class="col-md-4">
+{{< highlight octave >}}
+import casadi.∗
+
 x = MX.sym('x');
 f = xˆ2 + 10;
 f = sqrt(f);
-display(f);</code><code language="Python">some python</code></pre></div>
+display(f);
+{{< /highlight >}}
   </div>
-  <div class="col-md-7 text-left">
-    <p>CasADi is available for <em>C++</em>, <em>Python</em> and <em>MATLAB/Octave</em> with little or no difference
-in performance. Just a few lines of code will get you started...
-    </p>
+  <div class="col-md-4">
+{{< highlight python >}}
+...
+{{< /highlight >}}
   </div>
 </div>

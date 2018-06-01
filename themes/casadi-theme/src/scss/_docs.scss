@@ -4,7 +4,7 @@
   box-shadow: none;
 }
 #main.docs .content {
-  flex-grow: 1;
+  // flex-grow: 1;
   box-shadow: 0 0 10px rgba(0, 0, 0, .25);
   z-index: 2;
 }
@@ -16,13 +16,15 @@
 }
 
 a.headerlink {
-  opacity: 0.1;
-  transition: visibility 1s;
+  opacity: 0;
+  transition: all .1s linear;
   color: $casadi-color-text-secondary;
   margin-left: 5px;
 }
 
 #main.docs .content {
+  // max-width: 50%;
+
   h1, h2, h3, h4, h5, h6 {
     margin-bottom: .5em;
 
@@ -35,6 +37,7 @@ a.headerlink {
     margin-bottom: 1em;
     position: relative;
     display: block;
+    clear: both;
   }
 
   :target:before {
@@ -47,12 +50,21 @@ a.headerlink {
   .sidebyside-master {
   margin: 0;
   padding: 0;
+  display: block;
 
     &>.sidebyside {
       width: 50%;
       float: left;
       padding: 0 1em;
     }
+  }
+
+  table {
+    font-size: .75em;
+  }
+
+  table pre {
+    padding: 0;
   }
 }
 

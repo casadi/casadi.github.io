@@ -10,7 +10,7 @@
       {{ if ne $index 0 }} <hr class="sep"> {{ end }}
       {{ if modBool $index 2 }}
         {{ if (isset .Params "mode") and (eq .Params.mode "manual") }}
-          {{ .Content }}
+          {{ .Content | markdownify }}
         {{ else }}
           <div class="row">
             {{ if (isset .Params "image") and (ne .Params.image "") }}
@@ -19,13 +19,13 @@
               </div>
               <div class="col-8 text-left">
                 <p>
-                  {{ .Content }}
+                  {{ .Content | markdownify }}
                 </p>
               </div>
             {{ else }}
               <div class="col text-center">
                 <p>
-                  {{ .Content }}
+                  {{ .Content | markdownify }}
                 </p>
               </div>
             {{ end }}
@@ -33,19 +33,19 @@
         {{ end }}
       {{ else }}
         {{ if (isset .Params "mode") and (eq .Params.mode "manual") }}
-          {{ .Content }}
+          {{ .Content | markdownify }}
         {{ else }}
           <div class="row">
             {{ if (not (isset .Params "image")) or (eq .Params.image "") }}
               <div class="col text-center">
                 <p>
-                  {{ .Content }}
+                  {{ .Content | markdownify }}
                 </p>
               </div>
             {{ else }}
               <div class="col-8 text-right">
                 <p>
-                  {{ .Content }}
+                  {{ .Content | markdownify }}
                 </p>
               </div>
               <div class="col-4">

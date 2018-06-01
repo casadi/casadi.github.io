@@ -3,24 +3,24 @@ $(document).ready(function() {
   //   $('#field-search').fadeToggle(200);
   // });
 
-  $('div.highlight-python').each(function(i, block) {
-    $(block).addClass('hljs').addClass('python');
-    $(block).find('div.highlight').addClass('hljs');
-    $(block).find('pre').addClass('hljs');
-    hljs.highlightBlock(block);
-  });
-  $('div.highlight-octave').each(function(i, block) {
-    $(block).addClass('hljs').addClass('matlab');
-    $(block).find('div.highlight').addClass('hljs');
-    $(block).find('pre').addClass('hljs');
-    hljs.highlightBlock(block);
-  });
-  $('div.highlight-cpp').each(function(i, block) {
-    $(block).addClass('hljs').addClass('cpp');
-    $(block).find('div.highlight').addClass('hljs');
-    $(block).find('pre').addClass('hljs');
-    hljs.highlightBlock(block);
-  });
+  // $('div.highlight-python').each(function(i, block) {
+  //   $(block).addClass('hljs').addClass('python');
+  //   $(block).find('div.highlight').addClass('hljs');
+  //   $(block).find('pre').addClass('hljs');
+  //   hljs.highlightBlock(block);
+  // });
+  // $('div.highlight-octave').each(function(i, block) {
+  //   $(block).addClass('hljs').addClass('matlab');
+  //   $(block).find('div.highlight').addClass('hljs');
+  //   $(block).find('pre').addClass('hljs');
+  //   hljs.highlightBlock(block);
+  // });
+  // $('div.highlight-cpp').each(function(i, block) {
+  //   $(block).addClass('hljs').addClass('cpp');
+  //   $(block).find('div.highlight').addClass('hljs');
+  //   $(block).find('pre').addClass('hljs');
+  //   hljs.highlightBlock(block);
+  // });
 
   // var href = $(this).attr('href');
   $("a.reference.internal").each(function(i, k) {
