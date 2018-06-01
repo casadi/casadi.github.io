@@ -53,35 +53,36 @@
             <!-- TODO ad-hoc solution, filtering for exact tags -->
             {{ if gt ( countrunes $release.body ) 0 }}
               {{ $htmlBody := $release.body | markdownify }}
-              {{ $htmlBody := split $htmlBody "<h1 id=\"binaries\">Binaries</h1>" }}
-              {{ $htmlBody := index $htmlBody 1 }}
               {{ $htmlBody := split $htmlBody "<h1 id=\"install\">Install</h1>" }}
-              {{ $htmlBinaries := index $htmlBody 0 }}
+              {{ $htmlBody := index $htmlBody 1 }}
+              {{ $htmlBody := split $htmlBody "<h1 id=\"troubleshooting\">Troubleshooting</h1>" }}
+              {{ $htmlInstall := index $htmlBody 0 }}
               {{ $htmlBody := index $htmlBody 1 }}
               {{ $htmlBody := split $htmlBody "<h1 id=\"release-notes\">Release notes</h1>" }}
-              {{ $htmlInstall := index $htmlBody 0 }}
+              {{ $htmlTroubleShooting := index $htmlBody 0 }}
               {{ $htmlRelease := index $htmlBody 1 }}
 
-              {{ if eq ( countrunes ( print $htmlBinaries $htmlRelease $htmlInstall ) ) 0 }}
+              {{ if eq ( countrunes ( print $htmlInstall $htmlRelease $htmlTroubleShooting ) ) 0 }}
                 <div class="card-body tab-content">
                   {{ $release.body | markdownify }}
                 </div>
               {{ else }}
                 <div class="nav nav-pills card-header justify-content-center" role="tablist">
-                  {{ if gt ( countrunes $htmlBinaries ) 0 }}
-                  <a class="nav-link active" href="#downloadTab-{{ $index }}" role="tab" data-toggle="tab" aria-selected="true">Download</a>
+                  {{ if gt ( countrunes $htmlInstall ) 0 }}
+                  <a class="nav-link active" href="#downloadTab-{{ $index }}" role="tab" data-toggle="tab" aria-selected="true">Install</a>
+                  {{ end }}
+                  {{ if gt ( countrunes $htmlTroubleShooting ) 0 }}
+                  <a class="nav-link" href="#installTab-{{ $index }}" role="tab" data-toggle="tab" aria-selected="false">Troubleshooting</a>
                   {{ end }}
                   {{ if gt ( countrunes $htmlRelease ) 0 }}
-                  <a class="nav-link" href="#notesTab-{{ $index }}" role="tab" data-toggle="tab" aria-selected="false">Notes</a>
+                  <a class="nav-link" href="#notesTab-{{ $index }}" role="tab" data-toggle="tab" aria-selected="false">Release notes</a>
                   {{ end }}
-                  {{ if gt ( countrunes $htmlInstall ) 0 }}
-                  <a class="nav-link" href="#installTab-{{ $index }}" role="tab" data-toggle="tab" aria-selected="false">Instructions</a>
-                  {{ end }}
+
                 </div>
                 <div class="card-body tab-content">
                   <div id="downloadTab-{{ $index }}" role="tabpanel" class="tab-pane fade active show">
-                    {{ if gt ( countrunes $htmlBinaries ) 0 }}
-                      {{ $htmlBinaries | markdownify }}
+                    {{ if gt ( countrunes $htmlInstall ) 0 }}
+                      {{ $htmlInstall | markdownify }}
                     {{ end }}
                   </div>
                   <div id="notesTab-{{ $index }}" role="tabpanel" class="tab-pane fade">
@@ -90,8 +91,8 @@
                     {{ end }}
                   </div>
                   <div id="installTab-{{ $index }}" role="tabpanel" class="tab-pane fade">
-                    {{ if gt ( countrunes $htmlInstall ) 0 }}
-                      {{ $htmlInstall | markdownify }}
+                    {{ if gt ( countrunes $htmlTroubleShooting ) 0 }}
+                      {{ $htmlTroubleShooting | markdownify }}
                     {{ end }}
                   </div>
                 </div>
