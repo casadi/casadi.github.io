@@ -15,7 +15,14 @@ $(document).ready(function() {
         } else {
           var li = $("<li>", {"class": "nav-item"});
         }
+        if (lang=="octave") {
+          lang = lang + "/Matlab";
+        }
+        if (lang=="cpp") {
+          lang = "C++";
+        }
         li.append("<a>" + lang + "</a>");
+    
         li.click(function(){ makeActive(highlight, li) });
         $(block).find("ul.nav-tabs-multisnip").append(li);
       });
