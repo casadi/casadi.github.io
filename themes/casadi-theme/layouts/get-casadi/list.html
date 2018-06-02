@@ -4,6 +4,9 @@
 <div id="main" class="container">
   <div class="row">
     <div class="col">
+
+      {{ .Content }}
+
       {{ $url := (printf "https://sourceforge.net/projects/casadi/files/CasADi/stats/json?start_date=1970-01-01&end_date=%s" (now.Format "2006-01-02")) }}
       {{ $stats := getJSON $url }}
 
