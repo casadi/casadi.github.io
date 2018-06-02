@@ -14,8 +14,7 @@ gulp.task('scss', function () {
   gulp.src(config.scssPath + '/**/*.scss')
     .pipe(sass({
       includePaths: [
-        config.scssPath,
-        config.bowerDir
+        config.scssPath
       ]
     }))
     .pipe(autoprefixer({
@@ -34,7 +33,7 @@ gulp.task('scss', function () {
 
 // Watch asset folder for changes
 gulp.task('watch', ['scss'], function () {
-    gulp.watch(config.scssPath + '/**/*', ['scss'])
+  gulp.watch(config.scssPath + '/**/*', ['scss'])
 });
 
 // Set watch as default task

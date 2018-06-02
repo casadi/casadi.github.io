@@ -25,7 +25,7 @@ cd themes/casadi-theme/
 npm update
 
 # run gulp to build static files and collect them for deploying
-node node_modules/gulp/
+gulp watch &
 
 # run hugo server
 cd ../..
