@@ -17,7 +17,7 @@ opti = casadi.Opti();
 
 u = opti.variable(5,1);
 
-opti.minimize(u'*u);
+opti.minimize(dot(u,u));
 opti.subject_to(u<=2);
 
 x = 1;
