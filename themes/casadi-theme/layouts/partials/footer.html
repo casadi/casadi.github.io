@@ -17,22 +17,20 @@
       </div>
     </footer>
 
-    <!-- TODO get rid of CDNs? -->
     <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script> -->
+    <script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <!-- Bootstrap -->
-    <script src="{{ .Site.BaseURL }}assets/bootstrap-4.0.0-beta.3-dist/js/bootstrap.min.js"></script>
-
-    <!-- Multisnip -->
-    <script src="{{ .Site.BaseURL }}js/multisnip.js"></script>
+    <script src="{{ .Site.BaseURL }}_js/bootstrap.min.js"></script>
 
     <!-- Custom scripts -->
-    <script src="{{ .Site.BaseURL }}js/scripts.js"></script>
+    <script src="{{ .Site.BaseURL }}_js/scripts.js"></script>
 
     <!-- MathJax -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script>
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML">
+</script>
 
     {{ partial "analytics" . }}
   </body>

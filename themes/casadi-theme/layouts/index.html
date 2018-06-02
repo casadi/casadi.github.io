@@ -15,7 +15,7 @@
           <div class="row">
             {{ if (isset .Params "image") and (ne .Params.image "") }}
               <div class="col-4">
-                <img src="{{ .Site.BaseURL }}img/{{ .Params.image }}">
+                <img src="{{ .Site.BaseURL }}_img/{{ .Params.image }}">
               </div>
               <div class="col-8 text-left">
                 <p>
@@ -49,7 +49,7 @@
                 </p>
               </div>
               <div class="col-4">
-                <img src="{{ .Site.BaseURL }}img/{{ .Params.image }}">
+                <img src="{{ .Site.BaseURL }}_img/{{ .Params.image }}">
               </div>
             {{ end }}
           </div>

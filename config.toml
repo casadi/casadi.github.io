@@ -2,21 +2,24 @@ baseURL = "https://u0102655.pages.mech.kuleuven.be/hugo-casadi/"
 languageCode = "en-us"
 title = "CasADi"
 theme = "casadi-theme"
+
 googleAnalytics = ""
+
 pygmentsCodefences = true
 pygmentsUseClasses = true
 pygmentsCodefencesGuessSyntax = true
 
-# [permalinks]
-#   singles = "/:title/"
+publishDir = "build"
 
-[permalinks]
-  # blog = "/blog/:year/:month/:day/:title/"
+[taxonomies]
+  tag = ""
+  group = ""
+  category = ""
 
 [params]
   author = "Joris Gillis, Armin Steinhauser"
   copyright = "Copyright 2018."
-  logo = "/img/logo_2017_horizontal.svg"
+  logo = "/_img/logo_2017_horizontal.svg"
   motto = "Rapid prototyping for nonlinear optimization."
   DocsHeader = "Docs v3.3.0"
 
@@ -26,12 +29,6 @@ pygmentsCodefencesGuessSyntax = true
   # extensionsmask = ["autoHeaderIds"]
 
 [menu]
-  # [[menu.main]]
-  #   url = "/"
-  #   name = "Home"
-  #   identifier = "home"
-  #   weight = 1
-
   [[menu.main]]
     url = "/get-casadi/"
     name = "Get CasADi"
@@ -61,18 +58,6 @@ pygmentsCodefencesGuessSyntax = true
     name = "Blog"
     identifier = "blog"
     weight = 6
-
-  # docs
-  # [[menu.docs]]
-  #   url = "/docs/get-casadi/"
-  #   name = "Get CasADi"
-  #   identifier = "get-casadi"
-  #   weight = 1
-  # [[menu.docs]]
-  #   url = "/docs/get-started/"
-  #   name = "Get started"
-  #   identifier = "get-started"
-  #   weight = 1
 
   # Footer
   # [[menu.footer]]

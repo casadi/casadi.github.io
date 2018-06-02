@@ -21,18 +21,15 @@ done
 # goto theme folder and run npm/gulp
 cd themes/casadi-theme/
 
-# bower install # assuming that "bower.json" and ".bowerrc" are given
-# npm install gulp gulp-sass gulp-autoprefixer gulp-rename gulp-bower gulp-minifier --save
+# get/update npm packages
 npm update
 
-# run bower
-gulp bower
-# copy font-awesome fontawesome
-gulp icons
-# run live scss-compiler
-gulp &
+# run gulp to build static files and collect them for deploying
+node node_modules/gulp/
+
 # run hugo server
 cd ../..
+
 hugo server
 
 echo "+ Build script finished."
