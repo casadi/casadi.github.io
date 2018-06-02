@@ -29,5 +29,4 @@ If you enjoy CasADi, do cite our <a href="http://paper.casadi.org">journal publi
 ```
 
 ## Web
-Web site design by [Armin Steinhauser](https://www.mech.kuleuven.be/en/pma/research/meco/people/00102655)
-
+Website design by [Armin Steinhauser](https://www.mech.kuleuven.be/en/pma/research/meco/people/00102655). Background image by [Scott Webb](https://unsplash.com/photos/E0f9iLMTuVQ) on [Unsplash](https://unsplash.com/).
