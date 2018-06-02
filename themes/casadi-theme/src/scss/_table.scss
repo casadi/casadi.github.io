@@ -1,5 +1,7 @@
 .card table {
-  width: 100%;
+  @include media-breakpoint-up(lg) {
+    max-width: 75%;
+  }
 }
 table {
   width: 100%;
@@ -14,10 +16,4 @@ table thead {
 }
 table tbody tr:nth-child(odd) {
   background-color: $casadi-color-accent-gray;
-}
-
-@media (min-width: 1000px) {
-  table {
-    max-width: 50%;
-  }
 }

@@ -29,7 +29,7 @@ $(document).ready(function() {
   });
 });
 
-function scrollTo(id) {
-  console.log(id);
-  $('html,body').animate({scrollTop: $(id).offset().top - 65}, 'slow');
-}
+// function scrollTo(id) {
+//   console.log(id);
+//   $('html,body').animate({scrollTop: $(id).offset().top - 65}, 'slow');
+// }

@@ -5,6 +5,14 @@
 
 @import 'bootstrap/scss/mixins/breakpoints';
 
+// Fix top-navbar offset on id-links
+:target:before {
+  content: "";
+  display: block;
+  height: $casadi-link-offset;
+  margin-top: -$casadi-link-offset;
+}
+
 /* GLOBAL */
 html,
 body {
@@ -34,11 +42,11 @@ em {
 }
 a {
   text-decoration: none;
-  color: $casadi-color-hyperlink;
+  color: $casadi-color-text-hyperlink;
 }
 a:hover, a:focus {
   text-decoration: underline;
-  color: $casadi-color-hyperlink;
+  color: $casadi-color-text-hyperlink;
 }
 
 h1 {
@@ -159,9 +167,9 @@ a.card-header:focus {
   font-size: 15px;
 }
 
-.text-muted {
-  color: $casadi-color-text-secondary !important;
-}
+// .text-muted {
+//   color: $casadi-color-text-muted;
+// }
 
 @import 'figure';
 @import 'table';

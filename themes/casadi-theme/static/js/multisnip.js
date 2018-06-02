@@ -1,38 +1,36 @@
 /* This is multisnip */
 
 $(document).ready(function() {
-  $('div.multisnip').each(function(i, block) {
+  $('div.multisnip').each(function(ib, block) {
     $(block).prepend("<ul class='nav nav-fill nav-tabs-multisnip'></ul>");
-    var allHighlights = $(block).children();
-    $(allHighlights).each(function(ii, highlight) {
-      if(ii == 0) {
-        $(highlight).addClass("isshown");
-        console.log(highlight);
-      }
-      if($(highlight).is("div.highlight")) {
-        $(highlight).children().each(function(iii, pre) {
-          if($(pre).is("pre")) {
-            $(pre).children().each(function(iv, code) {
-              var lang = $(code).attr("data-lang");
-              if(iv == 0) {
-                var li = $("<li>", {"class": "nav-item isshown"});
-              } else {
-                $(code).hide();
-                var li = $("<li>", {"class": "nav-item"});
-              }
-              li.append("<a>" + lang + "</a>");
-              li.click(function(){ makeActive(highlight) });
-              $(block).find("ul.nav-tabs-multisnip").append(li);
-            });
-          }
-        });
-      }
+
+    $(block).children('div.highlight').each(function(ih, highlight) {
+      if(ih == 0) $(highlight).show();
+      else $(highlight).hide();
+
+      $(highlight).find('pre code').each(function(ic, code) {
+        var lang = $(code).attr("data-lang");
+        if(ih == 0) {
+          var li = $("<li>", {"class": "nav-item isshown"});
+        } else {
+          var li = $("<li>", {"class": "nav-item"});
+        }
+        li.append("<a>" + lang + "</a>");
+        li.click(function(){ makeActive(highlight, li) });
+        $(block).find("ul.nav-tabs-multisnip").append(li);
+      });
     });
-    $(block).css("visibility", "visible");
+
+    // $(block).css("visibility", "visible");
   });
 });
 
-function makeActive(hl) {
-  $(hl).parent().children().each(function(i, el) { $(el).removeClass("isshown"); });
-  $(hl).addClass("isshown");
+function makeActive(hl, li) {
+  // $(hl).parent().children().each(function(i, el) { $(el).removeClass("isshown"); });
+  // $(hl).addClass("isshown");
+  $(hl).parent().children('div.highlight').hide();
+  $(hl).show();
+
+  $(li).parent().children().each(function(i, el) { $(el).removeClass("isshown"); });
+  $(li).addClass("isshown");
 }

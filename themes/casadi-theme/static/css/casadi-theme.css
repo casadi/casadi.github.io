@@ -1,6 +1,12 @@
 /* Custom variables */
 /* overload bootstrap variables */
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
+:target:before {
+  content: "";
+  display: block;
+  height: 65px;
+  margin-top: -65px; }
+
 /* GLOBAL */
 html,
 body {
@@ -154,9 +160,6 @@ a.card-header:focus {
 .card-footer.release-info {
   font-size: 15px; }
 
-.text-muted {
-  color: rgba(0, 0, 0, 0.6) !important; }
-
 figure {
   width: 100%;
   text-align: center; }
@@ -187,8 +190,9 @@ figure figcaption h1 {
   img:not(.card-img-top) {
     max-width: 50%; } }
 
-.card table {
-  width: 100%; }
+@media (min-width: 992px) {
+  .card table {
+    max-width: 75%; } }
 
 table {
   width: 100%;
@@ -203,10 +207,6 @@ table thead {
 
 table tbody tr:nth-child(odd) {
   background-color: #f8f8f8; }
-
-@media (min-width: 1000px) {
-  table {
-    max-width: 50%; } }
 
 /* NAVIGATION */
 nav.nav-top {
@@ -229,6 +229,9 @@ nav.nav-top.navbar {
   line-height: 50px;
   z-index: 5; }
 
+nav.nav-top.navbar .navbar-toggler {
+  color: white; }
+
 nav.nav-top.navbar .navbar-collapse {
   -webkit-box-pack: end;
   -webkit-justify-content: flex-end;
@@ -237,7 +240,7 @@ nav.nav-top.navbar .navbar-collapse {
 
 nav.nav-top.navbar .navbar-nav > li > a {
   padding: 0px 20px;
-  color: #fff; }
+  color: white; }
 
 nav.nav-top.navbar .navbar-nav > li.active > a {
   font-weight: 500; }
@@ -378,13 +381,13 @@ pre {
   margin: 0 0 1em 0;
   padding: .5em 1em;
   background-color: #f8f8f8;
-  color: #000;
-  font-size: .85em;
-  line-height: 1.75em; }
+  color: black;
+  font-size: .85rem;
+  line-height: 1.4rem; }
 
 code {
   background-color: #f8f8f8;
-  color: #000;
+  color: black;
   display: inline;
   margin: 0;
   padding: 5px 10px; }
@@ -407,18 +410,12 @@ pre code {
     float: left;
     padding: 0 .5em; }
 
-div.multisnip {
-  visibility: visible; }
+div.multisnip div:not(:first-child) {
+  display: none; }
 
 div.multisnip pre {
   margin: 0;
-  font-size: 16px;
-  line-height: 24px;
-  height: auto;
   border-top: #dc0000 1px solid; }
-
-div.multisnip pre > code {
-  display: block; }
 
 div.multisnip ul.nav-tabs-multisnip > :first-child,
 div.multisnip ul.nav-tabs-multisnip > :first-child > a:hover {
@@ -431,12 +428,12 @@ div.multisnip ul.nav-tabs-multisnip > :last-child > a:hover {
           border-top-right-radius: 10px; }
 
 div.multisnip ul.nav-tabs-multisnip > li {
-  color: #000;
   background-color: #f8f8f8;
-  cursor: default; }
+  cursor: default;
+  text-transform: capitalize; }
 
 div.multisnip ul.nav-tabs-multisnip > li.isshown {
-  color: #fff;
+  color: #f8f8f8;
   font-weight: 400;
   background-color: #dc0000; }
 
@@ -474,7 +471,7 @@ a.headerlink {
   -webkit-transition: all .1s linear;
   -o-transition: all .1s linear;
   transition: all .1s linear;
-  color: rgba(0, 0, 0, 0.6);
+  color: white;
   margin-left: 5px; }
 
 #main.docs .content h1, #main.docs .content h2, #main.docs .content h3, #main.docs .content h4, #main.docs .content h5, #main.docs .content h6 {
@@ -486,19 +483,15 @@ a.headerlink {
   margin-bottom: 1em;
   position: relative;
   display: block;
-  clear: both; }
+  clear: both;
+  width: 100%; }
 
-#main.docs .content :target:before {
-  content: "";
-  display: block;
-  height: 65px;
-  margin-top: -65px; }
+#main.docs .content .toctree-wrapper.compound {
+  width: 100%; }
 
 #main.docs .content table {
-  font-size: .8em; }
-
-#main.docs .content table pre {
-  padding: 0; }
+  font-size: .8em;
+  table-layout: fixed; }
 
 /* BLOCKQUOTE */
 blockquote {
@@ -511,7 +504,7 @@ blockquote {
 blockquote::before {
   content: "\201C";
   /*Unicode for Left Double Quote*/
-  color: rgba(0, 0, 0, 0.6);
+  color: white;
   position: absolute;
   left: 25px;
   top: 17px;
