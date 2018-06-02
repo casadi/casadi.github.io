@@ -13,7 +13,8 @@ before_script:
   - git submodule update --init --recursive
   - cd themes/casadi-theme
   - apk add --update nodejs
-  - npm update
+  - npm install -g gulp && npm link gulp
+  - npm install gulp-sass gulp-autoprefixer gulp-rename gulp-minifier --save
   - gulp scss
   - cd ../..
 
