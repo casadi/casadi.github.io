@@ -124,13 +124,13 @@ We seek the rest position of the system, obtained by minimizing the total energy
 Consider that point mass $i$ has position $(x_i,y_i)$, we can write the gravitational potential energy as
 
 $$
-V_g = g m \sum_{i=1}^N y_i,
+V\_g = g m \sum\_{i=1}^N y\_i,
 $$
 
 and the total spring potential energy as:
 
 $$
-V_s = \frac{1}{2} \sum_{i=1}^{N-1} D \left((x_i-x_{i+1})^2+(y_i-y_{i+1})^2\right).
+V\_s = \frac{1}{2} \sum\_{i=1}^{N-1} D \left((x\_i-x\_{i+1})^2+(y\_i-y\_{i+1})^2\right).
 $$
 
 We can do this in Opti using a oneliner, or a for loop:

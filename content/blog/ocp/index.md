@@ -77,16 +77,16 @@ Choose a number $N$ of control intervals in which the control effort is kept con
 
 {{% figure src="u_disc.png" title="Discretized controls" %}}
 
-We now have decision variables $u_1,u_2,\ldots,u_{N}$ instead of function $u(\cdot)$.
+We now have decision variables $u\_1,u\_2,\ldots,u\_{N}$ instead of function $u(\cdot)$.
 
 For the state trajectory, let's consider the states at the boundaries of each control interval:
 {{% figure src="xu_disc.png" title="Discretized states and controls" %}}
 
-We now have decision variables $x_1,x_2,\ldots,x_{N+1}$ instead of function $x(\cdot)$.
+We now have decision variables $x\_1,x\_2,\ldots,x\_{N+1}$ instead of function $x(\cdot)$.
 
-In each control interval $k$, we now have a start state $x_k$ and a fixed control signal $u_k$.
+In each control interval $k$, we now have a start state $x\_k$ and a fixed control signal $u\_k$.
 Over this interval, we may perform a time integration of our ODE.
-For example, using explicit euler: $x_{k+1} \approx x_{k} + \frac{T}{N} f(x_k,u_k)$, in general:
+For example, using explicit euler: $x\_{k+1} \approx x\_{k} + \frac{T}{N} f(x\_k,u\_k)$, in general:
 
 $$
 x_{k+1} = F(x_k,u_k).
@@ -104,15 +104,15 @@ The result is a multiple-shooting transcription of the original OCP:
 
 $$
 \begin{align}
-  \displaystyle \underset{u_1,u_2,\ldots,u_{N},x_1,x_2,\ldots,x_{N+1}}
-  {\text{minimize}}\quad &\displaystyle T \\
+  \displaystyle \underset{u\_1,u\_2,\ldots,u\_{N},x\_1,x\_2,\ldots,x\_{N+1}}
+  {\text{minimize}}\quad &\displaystyle T \newline
   \text{subject to} \, \quad
-  & x_{k+1} = F(x_k,u_k) \quad  k=1 \ldots N, & \textrm{dynamic constraints a.k.a. gap closing} \\
-  & p_1 = 0, & \textrm{boundary condition: start at position 0}  \\
-  & v_1 = 0, & \textrm{boundary condition: start with zero speed}\\
-  & p_{N+1} = 1, & \textrm{boundary condition: the finish line is at position 1}\\
-  & 0 \leq u_k \leq 1, \quad  k=1 \ldots N , & \textrm{path constraint: throttle is limited} \\
-  & v_k \leq L(p_k). \quad  k=1 \ldots N+1 & \textrm{path constraint: speed limit varying along the track} \\
+  & x\_{k+1} = F(x\_k,u\_k) \quad  k=1 \ldots N, & \textrm{dynamic constraints a.k.a. gap closing} \newline
+  & p\_1 = 0, & \textrm{boundary condition: start at position 0}  \newline
+  & v\_1 = 0, & \textrm{boundary condition: start with zero speed}\newline
+  & p\_{N+1} = 1, & \textrm{boundary condition: the finish line is at position 1}\newline
+  & 0 \leq u\_k \leq 1, \quad  k=1 \ldots N , & \textrm{path constraint: throttle is limited} \newline
+  & v\_k \leq L(p\_k). \quad  k=1 \ldots N+1 & \textrm{path constraint: speed limit varying along the track} \newline
 \end{align}
 $$
 
