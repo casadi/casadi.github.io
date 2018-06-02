@@ -32,18 +32,18 @@ The `casadi_block` computes the discrete control signal by solving an Optimal Co
 The act of closing the loop with the continuous plant makes our setup effectively an MPC controller.
 
 The OCP problem here simply drives the states to zero:
+
 $$
 \begin{align}
-  \displaystyle \underset{\begin{array}{c}x(\cdot), u(\cdot)\end{array}}
-  {\text{minimize}}\quad &\displaystyle \int_{0}^{T}{ \left( x_1(t)^2 + x_2(t)^2 + u(t)^2 \right) \, dt} \\
+  \underset{\begin{array}{c}x(\cdot), u(\cdot)\end{array}}
+  {\text{minimize}}\quad & \int_{0}^{T}{ \left( x_1(t)^2 + x_2(t)^2 + u(t)^2 \right) \, dt} \newline
   \text{subject to} \, \quad
-  & \left\{
-  \begin{array}{l}
-    \dot{x}_1(t) = (1-x_2(t)^2) \, x_1(t) - x_2(t) + u(t) \\
-    \dot{x}_2(t) = x_1(t) \\
+  & \left\\{\begin{array}{l}
+    \dot{x}_1(t) = (1-x_2(t)^2) \, x_1(t) - x_2(t) + u(t) \newline
+    \dot{x}_2(t) = x_1(t) \newline
     -1.0 \le u(t) \le 1.0, \quad x_1(t) \ge -0.25
-  \end{array}
-  \right. \quad  t \in [0,T] \\
+  \end{array}\right.
+  \quad  t \in [0,T] \newline
   & x_1(0)=\bar{x}_1, \quad x_2(0)=\bar{x}_2
 \end{align}
 $$

@@ -1,32 +1,39 @@
 figure {
-  width: 100%;
+  // width: 100%;
   text-align: center;
+
+  &.default img {
+    max-width: 100%;
+    margin: auto;
+    @include media-breakpoint-up(lg) {
+      max-width: 75%;
+    }
+  }
+
+  &.default figcaption {
+    display: none;
+  }
 }
-figure.default img {
-  max-width: 100%;
-  max-height: 100vh;
-  margin: 0;
-}
+
 img {
-  width: 100%;
+  // width: 100%;
   max-width: 100%;
-  max-height: 100vh;
   margin: auto;
   display: block;
+
+  &.card-img-top {
+    width: 100%;
+  }
+
+  &:not(.card-img-top) {
+    @include media-breakpoint-down(md) {
+      max-width: 75%;
+    }
+  }
 }
-img.card-img-top {
-  width: 100%;
-}
+
 figure figcaption h1 {
   font-size: 1rem;
   font-weight: 400;
   margin-top: 10px;
-}
-@media (min-width: 1000px) {
-  figure.default img {
-    max-width: 50%;
-  }
-  img:not(.card-img-top) {
-    max-width: 50%;
-  }
 }

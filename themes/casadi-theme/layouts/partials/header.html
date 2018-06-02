@@ -27,7 +27,12 @@
     <link href="{{ .Site.BaseURL }}_css/casadi-theme.min.css" rel="stylesheet">
 
     <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+          displayMath: [ ['$$','$$'], ['\[','\]'] ]
+        }
+      });
     </script>
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />

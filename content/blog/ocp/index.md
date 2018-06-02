@@ -55,14 +55,14 @@ Next, we encode the the task definition in a continuous-time optimal control pro
 $$
 \begin{align}
   \displaystyle \underset{\begin{array}{c}x(\cdot), u(\cdot)\end{array}}
-  {\text{minimize}}\quad &\displaystyle T \\
+  {\text{minimize}}\quad &\displaystyle T \newline
   \text{subject to} \, \quad
-  & \dot{x}(t) = f(x(t),u(t)) \quad  t \in [0,T], & \textrm{dynamic constraints} \\
-  & p(0) = 0, & \textrm{boundary condition: start at position 0}  \\
-  & v(0) = 0, & \textrm{boundary condition: start with zero speed}\\
-  & p(T) = 1, & \textrm{boundary condition: the finish line is at position 1}\\
-  & 0 \leq u(t) \leq 1, & \textrm{path constraint: throttle is limited} \\
-  & v(t) \leq L(p(t)). & \textrm{path constraint: speed limit varying along the track} \\
+  & \dot{x}(t) = f(x(t),u(t)) \quad  t \in [0,T], & \textrm{dynamic constraints} \newline
+  & p(0) = 0, & \textrm{boundary condition: start at position 0}  \newline
+  & v(0) = 0, & \textrm{boundary condition: start with zero speed}\newline
+  & p(T) = 1, & \textrm{boundary condition: the finish line is at position 1}\newline
+  & 0 \leq u(t) \leq 1, & \textrm{path constraint: throttle is limited} \newline
+  & v(t) \leq L(p(t)). & \textrm{path constraint: speed limit varying along the track} \newline
 \end{align}
 $$
 
