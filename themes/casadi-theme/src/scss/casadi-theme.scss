@@ -8,9 +8,12 @@
 // Fix top-navbar offset on id-links
 *[id]:before {
   content: " ";
-  display: block;
   height: $casadi-link-offset;
   margin-top: -$casadi-link-offset;
+  display: block;
+  vertical-align: top;
+  position: relative;
+  z-index: -1;
   visibility: hidden;
 }
 

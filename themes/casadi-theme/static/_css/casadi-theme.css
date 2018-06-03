@@ -3,9 +3,12 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
 *[id]:before {
   content: " ";
+  height: 70px;
+  margin-top: -70px;
   display: block;
-  height: 65px;
-  margin-top: -65px;
+  vertical-align: top;
+  position: relative;
+  z-index: -1;
   visibility: hidden; }
 
 /* GLOBAL */
@@ -509,7 +512,6 @@ a.headerlink {
     opacity: 1.0; }
 
 #main.docs .content .section {
-  margin-bottom: 1em;
   position: relative;
   display: block;
   clear: both;

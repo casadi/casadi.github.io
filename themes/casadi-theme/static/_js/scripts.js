@@ -44,6 +44,13 @@ $(document).ready(function() {
       });
     }
   }
+
+  // $('a[href*=\\#]').on('click', function(event){
+  //   if(this.hash) {
+  //     event.preventDefault();
+  //     $('html,body').animate({scrollTop: $(this.hash).offset().top - 50}, 500);
+  //   }
+  // });
 });
 
 function makeActive(hl, li) {
