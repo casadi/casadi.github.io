@@ -38,15 +38,16 @@ body {
 
 em {
   font-style: normal;
-  color: #dc0000; }
+  font-weight: 400;
+  color: inherit; }
 
 a {
   text-decoration: none;
-  color: #0366d6; }
+  color: #dc0000; }
 
 a:hover, a:focus {
   text-decoration: underline;
-  color: #0366d6; }
+  color: #dc0000; }
 
 h1 {
   font-size: 2.00rem; }
@@ -186,14 +187,11 @@ figure figcaption h1 {
   font-weight: 400;
   margin-top: 10px; }
 
-@media (min-width: 992px) {
-  .card table {
-    max-width: 75%; } }
-
 table {
   width: 100%;
   max-width: 100%;
-  margin: auto; }
+  margin: auto;
+  table-layout: fixed; }
 
 table, th, td {
   padding: .5rem; }
@@ -279,42 +277,33 @@ nav.nav-top a.navbar-brand {
       background-color: #F5F5F5; }
     .sidebar nav::-webkit-scrollbar-thumb {
       background-color: #dc0000; }
-
-nav.nav-side {
-  background-color: #f8f8f8;
-  color: black;
-  min-height: 75vh;
-  padding: 1em 0; }
-
-nav.nav-side .caption {
-  display: block;
-  width: 100%;
-  text-align: center;
-  padding: .5em 1em;
-  margin: 0;
-  font-weight: 500; }
-
-nav.nav-side ul {
-  list-style: none;
-  padding: 0;
-  margin-left: 1em;
-  font-size: 0.9em; }
-
-nav.nav-side a,
-nav.nav-side a:focus,
-nav.nav-side a:active,
-nav.nav-side pre,
-nav.nav-side code,
-nav.nav-side em {
-  color: unset;
-  text-decoration: none;
-  font-family: inherit;
-  font-size: inherit;
-  padding: 0;
-  margin: 0; }
-
-nav.nav-side a:hover {
-  color: #dc0000; }
+    .sidebar nav.nav-side {
+      background-color: #f8f8f8;
+      color: black;
+      min-height: 75vh;
+      padding: 1em 0; }
+      .sidebar nav.nav-side .caption {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: .5em 1em;
+        margin: 0;
+        font-weight: 500; }
+      .sidebar nav.nav-side ul {
+        list-style: none;
+        padding: 0;
+        margin-left: 1em;
+        font-size: 0.9em; }
+      .sidebar nav.nav-side a, .sidebar nav.nav-side a:focus, .sidebar nav.nav-side a:active,
+      .sidebar nav.nav-side pre, .sidebar nav.nav-side code, .sidebar nav.nav-side em {
+        color: unset;
+        text-decoration: none;
+        font-family: inherit;
+        font-size: inherit;
+        padding: 0;
+        margin: 0; }
+      .sidebar nav.nav-side a:hover {
+        color: #dc0000; }
 
 /* LANDING PAGE STYLE */
 #landing-cover {
@@ -489,8 +478,7 @@ a.headerlink {
   width: 100%; }
 
 #main.docs .content table {
-  font-size: .8em;
-  table-layout: fixed; }
+  font-size: .8em; }
 
 /* BLOCKQUOTE */
 blockquote {
