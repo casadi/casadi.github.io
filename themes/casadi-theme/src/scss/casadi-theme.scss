@@ -6,11 +6,15 @@
 @import '../../assets/bootstrap-4.1.0/scss/mixins/breakpoints';
 
 // Fix top-navbar offset on id-links
-:target:before {
-  content: "";
-  display: block;
+*[id]:before {
+  content: " ";
   height: $casadi-link-offset;
   margin-top: -$casadi-link-offset;
+  display: block;
+  vertical-align: top;
+  position: relative;
+  z-index: -1;
+  visibility: hidden;
 }
 
 /* GLOBAL */
@@ -38,7 +42,8 @@ body {
 }
 em {
   font-style: normal;
-  color: $casadi-color-accent;
+  font-weight: 400;
+  color: inherit;
 }
 a {
   text-decoration: none;
@@ -72,9 +77,6 @@ h6 {
 #main {
   background-color: #fff;
 }
-nav.nav-top+#main {
-  // margin-top: $casadi-nav-top-height;
-}
 #main.container, #main.container-fluid {
   background-color: $casadi-color-container-background;
   box-shadow: 0 0 10px rgba(0, 0, 0, .25);
@@ -97,6 +99,10 @@ nav.nav-top+#main {
 }
 .container p:last-child {
   margin-bottom: 0;
+}
+
+.text-muted {
+  color: $casadi-color-text-muted !important;
 }
 
 /* CARD LAYOUTS */
@@ -166,10 +172,6 @@ a.card-header:focus {
 .card-footer.release-info {
   font-size: 15px;
 }
-
-// .text-muted {
-//   color: $casadi-color-text-muted;
-// }
 
 @import 'figure';
 @import 'table';

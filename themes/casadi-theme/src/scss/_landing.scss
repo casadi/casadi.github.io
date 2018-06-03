@@ -1,7 +1,7 @@
 /* LANDING PAGE STYLE */
 #landing-cover {
   display: table;
-  height: 100vh;
+  height: calc(100vh - #{$casadi-nav-top-height});
   width: 100%;
   position: relative;
   background: url(../_img/scott-webb-260726-2.jpg) no-repeat center center fixed;
@@ -10,7 +10,6 @@
   -o-background-size: cover;
   background-size: cover;
   z-index: 1;
-  // color: #000;
 }
 #landing-cover .vert-text {
   display: table-cell;
@@ -25,6 +24,66 @@
 #landing-cover+#main {
   font-size: 1.1em;
   line-height: 45px;
-  // position: absolute;
-  // top: 0;
+}
+
+// pulse animation
+#landing-cover .scroll {
+  position: absolute;
+  bottom: 3%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  margin-left: -25px;
+  text-align: center;
+
+  & i {
+    font-size: 50px;
+    color: $casadi-color-accent;
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property: -moz-transform;
+    -moz-transition-duration: 1s;
+    -webkit-animation-name: pulse;
+    -moz-animation-name: pulse;
+    -webkit-animation-duration: 1.5s;
+    -moz-animation-duration: 1.5s;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+  }
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+  50% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@-moz-keyframes pulse {
+  0% {
+    -moz-transform: scale(1);
+    transform: scale(1);
+  }
+
+  50% {
+    -moz-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+
+  100% {
+    -moz-transform: scale(1);
+    transform: scale(1);
+  }
 }
