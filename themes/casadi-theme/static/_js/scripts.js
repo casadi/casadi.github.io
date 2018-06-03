@@ -23,12 +23,27 @@ $(document).ready(function() {
           lang = "C++";
         }
         li.append("<a>" + lang + "</a>");
-    
+
         li.click(function(){ makeActive(highlight, li) });
         $(block).find("ul.nav-tabs-multisnip").append(li);
       });
     });
   });
+
+  var hash = window.location.hash;
+  if(hash) {
+    var id = hash.substr(1);
+    var card = $("[id="+id+"]")[0];
+    if(typeof card !== "undefined") {
+      $(card).find('a.card-header.collapsed').each(function(i, a) {
+        $(a).removeClass('collapsed');
+        $(a).attr("aria-expanded", "true");
+      });
+      $(card).find('div.collapse').each(function(i, d) {
+        $(d).addClass('show');
+      });
+    }
+  }
 });
 
 function makeActive(hl, li) {

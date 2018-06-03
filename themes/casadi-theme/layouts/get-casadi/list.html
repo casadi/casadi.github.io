@@ -35,14 +35,14 @@
               {{ $isDraft := $release.draft }}
 
               {{ if $isLatest }}
-              <div class="card text-left border-success mb-2">
+              <div class="card text-left border-success mb-2" id="{{ $tag }}">
               {{ else }}
-              <div class="card text-left border-default mb-2">
+              <div class="card text-left border-default mb-2" id="{{ $tag }}">
               {{ end }}
                 {{ if $isLatest }}
-                <a class="card-header bg-white border-success" id="header-{{ $tag }}" data-toggle="collapse" href="#{{ $tag }}" aria-expanded="true" aria-controls="{{ $tag }}">
+                <a class="card-header bg-white border-success" data-toggle="collapse" href="#body-{{ $tag }}" aria-expanded="true" aria-controls="body-{{ $tag }}">
                 {{ else }}
-                <a class="card-header bg-white collapsed" id="header-{{ $tag }}" data-toggle="collapse" href="#{{ $tag }}" aria-expanded="true" aria-controls="{{ $tag }}">
+                <a class="card-header bg-white collapsed" data-toggle="collapse" href="#body-{{ $tag }}" aria-expanded="false" aria-controls="body-{{ $tag }}">
                 {{ end }}
                   {{ if $isLatest }}
                   <h4 class="text-success" style="display: inline-block; margin: 0;">CasADi v{{ $release.tag_name }}</h4>
@@ -60,9 +60,9 @@
                   <span class="release-info text-muted">released {{ dateFormat "January 2, 2006" $release.created_at }}</span>
                 </a>
                 {{ if $isLatest }}
-                <div class="collapse show" id="{{ $tag }}">
+                <div class="collapse show" id="body-{{ $tag }}">
                 {{ else }}
-                <div class="collapse" id="{{ $tag }}">
+                <div class="collapse" id="body-{{ $tag }}">
                 {{ end }}
 
                   <!-- TODO ad-hoc solution, filtering for exact tags -->
@@ -120,7 +120,7 @@
                 </div>
               </div>
             {{ end }}
-          {{ end }}      
+          {{ end }}
         {{ end }}
       {{ end }}
     </div>
@@ -128,15 +128,3 @@
 </div>
 
 {{ partial "footer" . }}
-
-<!--<script type="text/javascript">
-
-  $( document ).ready(function() {
-     if (window.location.hash) {
-        var $target = $('body').find(window.location.hash);
-        if ($target.hasClass('collapse')) {
-            target.collapse('show');
-        }
-     }
-  });
-</script>-->
