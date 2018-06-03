@@ -12,8 +12,9 @@ If you find simple bugs or lack some feature that you think would be relatively 
 If you want more help, we are always open for *academic* cooperation. An academic cooperation usually take the form of a co-authorship of a journal paper. Please contact us directly if you are interested in this.
 
 ## Professional cooperation
-Both main developers offer professional CasADi-related consulting (teaching, problem solving, adding features).
+Both main developers offer professional CasADi-related consulting (e.g. teaching, problem solving, adding features).
+Contact us at consulting@casadi.org
 
- * Joris Gillis (joris@casadi.org) is registered in Europe ([yacoda, Belgium](http://www.yacoda.com/)).
- * Joel Andersson (joel@casadi.org) is registered in the United States.
+ * Joris Gillis is registered in Belgium ([Yacoda](http://www.yacoda.com/)).
+ * Joel Andersson is registered in the United States (JAE ANDERSSON CONSULTING LLC) and in Sweden (JOEL ANDERSSON, EF)
 
