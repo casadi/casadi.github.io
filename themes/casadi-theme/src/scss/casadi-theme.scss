@@ -6,8 +6,8 @@
 @import '../../assets/bootstrap-4.1.0/scss/mixins/breakpoints';
 
 // Fix top-navbar offset on id-links
-:target:before {
-  content: "";
+*[id]:before {
+  content: " ";
   display: block;
   height: $casadi-link-offset;
   margin-top: -$casadi-link-offset;
@@ -98,6 +98,10 @@ h6 {
   margin-bottom: 0;
 }
 
+.text-muted {
+  color: $casadi-color-text-muted !important;
+}
+
 /* CARD LAYOUTS */
 .card {
   margin-bottom: 10px;
@@ -165,10 +169,6 @@ a.card-header:focus {
 .card-footer.release-info {
   font-size: 15px;
 }
-
-// .text-muted {
-//   color: $casadi-color-text-muted;
-// }
 
 @import 'figure';
 @import 'table';

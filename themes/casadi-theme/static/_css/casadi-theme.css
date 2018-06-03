@@ -1,8 +1,8 @@
 /* Custom variables */
 /* overload bootstrap variables */
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
-:target:before {
-  content: "";
+*[id]:before {
+  content: " ";
   display: block;
   height: 65px;
   margin-top: -65px;
@@ -93,6 +93,9 @@ h6 {
 
 .container p:last-child {
   margin-bottom: 0; }
+
+.text-muted {
+  color: #7d7d7d !important; }
 
 /* CARD LAYOUTS */
 .card {
@@ -191,8 +194,7 @@ figure figcaption h1 {
 table {
   width: 100%;
   max-width: 100%;
-  margin: auto;
-  table-layout: fixed; }
+  margin: auto; }
 
 table, th, td {
   padding: .5rem; }
@@ -309,7 +311,8 @@ nav.nav-top a.navbar-brand {
 /* LANDING PAGE STYLE */
 #landing-cover {
   display: table;
-  height: 100vh;
+  height: -webkit-calc(100vh - 50px);
+  height: calc(100vh - 50px);
   width: 100%;
   position: relative;
   background: url(../_img/scott-webb-260726-2.jpg) no-repeat center center fixed;
@@ -330,6 +333,41 @@ nav.nav-top a.navbar-brand {
 #landing-cover + #main {
   font-size: 1.1em;
   line-height: 45px; }
+
+#landing-cover .scroll {
+  position: absolute;
+  bottom: 3%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  margin-left: -25px;
+  text-align: center; }
+  #landing-cover .scroll i {
+    font-size: 50px;
+    color: #dc0000;
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property: -moz-transform;
+    -moz-transition-duration: 1s;
+    -webkit-animation-name: pulse;
+    -moz-animation-name: pulse;
+    -webkit-animation-duration: 1.5s;
+    -moz-animation-duration: 1.5s;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear; }
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1); }
+  50% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2); }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1); } }
 
 /* FOOTER */
 footer {
@@ -393,11 +431,13 @@ pre code {
 .sidebyside-master {
   margin: 0;
   padding: 0;
-  display: block; }
+  display: block;
+  overflow: auto; }
   .sidebyside-master > .sidebyside {
     width: 50%;
     float: left;
-    padding: 0 .5em; }
+    padding: 0 .5em;
+    display: block; }
 
 div.multisnip div:not(:first-child) {
   display: none; }
@@ -460,7 +500,7 @@ a.headerlink {
   -webkit-transition: all .1s linear;
   -o-transition: all .1s linear;
   transition: all .1s linear;
-  color: white;
+  color: #7d7d7d;
   margin-left: 5px; }
 
 #main.docs .content h1, #main.docs .content h2, #main.docs .content h3, #main.docs .content h4, #main.docs .content h5, #main.docs .content h6 {
