@@ -42,6 +42,8 @@ $(document).ready(function() {
       $(card).find('div.collapse').each(function(i, d) {
         $(d).addClass('show');
       });
+      $('html,body').animate({scrollTop: $(card).offset().top - 70});
+      event.preventDefault();
     }
   }
 
