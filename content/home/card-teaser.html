@@ -7,82 +7,91 @@ weight: 2
 mode: "manual"
 ---
 
-Efficient nonlinear programming at your fingertips, in your favourite language.
 
 <div class="row">
   <div class="col-md-6">
+
+    Single-shooting optimal control example:
     <div class="multisnip">
 {{< highlight octave >}}
 import casadi.*
 
-opti = Opti();
 
-u = opti.variable(5,1);
+% control vector
+u = MX.sym('u',5,1);
 
-opti.minimize(dot(u,u));
-opti.subject_to(u<=2);
-
-x = 1;
+x = 1 % initial state
 for i=1:5
-  x = x+cos(x)+u(i);
+  % propagate state with u[i]
+  x = x+cos(x)+2*tanh(u(i));
 end
-opti.subject_to(x==6);
 
-opti.solver('ipopt');
-sol = opti.solve();
+nlp = struct;
+nlp.x = u;       % decision vars
+nlp.f = dot(u,u);% objective
+nlp.g = x;       % constraints
 
-plot(sol.value(u))
+solver = nlpsol('solver','ipopt',nlp);
+res = solver('x0',1,'lbg',6,'ubg',6);
+
+plot(full(res.x))
 {{< /highlight >}}
 {{< highlight python >}}
 from casadi import *
 
-opti = Opti()
 
-u = opti.variable(5,1)
+# control vector
+u = MX.sym('u',5,1)
 
-opti.minimize(dot(u,u))
-opti.subject_to(u<=2)
-
-x = 1
+x = 1 # initial state
 for i in range(5):
-  x = x+cos(x)+u[i]
+  # propagate state with u[i]
+  x = x+cos(x)+2*tanh(u[i])
 
-opti.subject_to(x==6)
 
-opti.solver('ipopt')
-sol = opti.solve()
+nlp = {}
+nlp['x'] = u        # decision vars
+nlp['f'] = dot(u,u) # objective
+nlp['g'] = x        # constraints
 
-plot(sol.value(u))
+solver = nlpsol('solver','ipopt',nlp)
+res = solver(x0=1,lbg=6,ubg=6)
+
+plot(res["x"])
 {{< /highlight >}}
 {{< highlight cpp >}}
 #include <casadi/casadi.hpp>
+using namespace casadi;
 
-auto opti = casadi::Opti();
+// control vector
+MX u = MX::sym("u",5,1);
 
-auto u = opti.variable(5,1);
-
-opti.minimize(dot(u,u));
-opti.subject_to(u<=2);
-
-decltype(u) x = 1;
+MX x = 1; // initial state
 for (int i=0;i<5;++i) {
-  x = x+cos(x)+u(i);
+  // propagate state with u[i]
+  x = x+cos(x)+2*tanh(u(i));
 }
-opti.subject_to(x==6);
 
-opti.solver("ipopt");
-auto sol = opti.solve();
+MXDict nlp;    
+nlp["x"] = u;       // decision vars
+nlp["f"] = dot(u,u);// objective
+nlp["g"] = x;       // constraints
 
-std::cout << sol.value(u) << std::endl;
+Function solver = nlpsol("solver","ipopt",nlp);
+auto res = solver(DMDict{{"x0",1},{"lbg",6},{"ubg",6}});
+
+std::cout << res["x"] << std::endl;
+
 {{< /highlight >}}
 </div></div>
 
   <div class="col-md-6 text-left">
+Basic CasADi workflow:
     <ol>
        <li>Create scalar/matrix symbols</li>
        <li>Compose into expressions</li>
-       <li>Specify objective and constraints</li>
-       <li>Solve!</li>
+       <li>Specify objective and constraint expressions</li>
+       <li>Solve! (Jacobian & Hessian computed by CasADi)</li>
     </ol>
     {{< figure src="../conv.png" >}}
   </div>
