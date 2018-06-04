@@ -9,7 +9,7 @@ mode: "manual"
 
 ## Executive summary of CasADi
 
-CasADi [^1] is a general-purpose tool for quick, yet highly efficient implementation of algorithms for numerical optimization in general and numerical optimal control in particular.
+CasADi [1] is a general-purpose tool for quick, yet highly efficient implementation of algorithms for numerical optimization in general and numerical optimal control in particular.
 
 ### Symbolic framework with algorithmic differentiation (AD)
 A state-of-the-art implementation of algorithmic differentiation (AD), implemented within a symbolic framework, forms the backbone of CasADi. Users construct directed acyclic expression graphs using an _everything-is-a-sparse-matrix_ syntax and expressions for derivatives are generated automatically using AD via _source-code-transformation_. CasADi implements the forward and reverse modes of AD and uses a graph coloring approach to construct large-and-sparse Jacobians and Hessians. Generated expressions are encapsulated in function objects that can be evaluated in virtual machines (VMs).
@@ -29,25 +29,27 @@ A large subset of expressions can be exported as self-contained C code without m
 The core of CasADi supports a number of standard problems in numerical optimization, including initial-value problems in ODE or DAE, linear and nonlinear systems of equations, NLPs and QPs. The user specifies such problems in an uniform way and the solution is delegated to a solver _plugin_, loaded as a dynamically linked library (DLL) at runtime. Solver plugins include solvers that are distributed with CasADi and interfaces to third-party software packages. We detail some of these plugins in the following.
 
 ### Linear systems of equations
-Linear systems of equations can be embedded into symbolic expressions via differentiable `backslash` nodes. Supported plugins include LDLT and QR [^3] as well as interfaces to CSPARSE and LAPACK.
+Linear systems of equations can be embedded into symbolic expressions via differentiable `backslash` nodes. Supported plugins include LDLT and QR [3] as well as interfaces to CSPARSE and LAPACK.
 
 ### Nonlinear systems of equations
 Nonlinear systems of equations can be formulated and solved by defining `rootfinder` instances in CasADi. Derivatives of such objects are calculated automatically using the implicit function theorem (IFT). Supported plugins include standard Newton methods and KINSOL from the SUNDIALS suite.
 
 ### Initial-value problems in ODE/DAE with automatic sensitivity analysis
-Initial-value problems in ordinary or differential-algebraic equations (ODE/DAE) can be calculated using explicit or implicit Runge-Kutta methods or interfaces to IDAS/CVODES from the SUNDIALS suite. Derivatives are calculated using automatically generated forward and adjoint sensitivity equations [^2].
+Initial-value problems in ordinary or differential-algebraic equations (ODE/DAE) can be calculated using explicit or implicit Runge-Kutta methods or interfaces to IDAS/CVODES from the SUNDIALS suite. Derivatives are calculated using automatically generated forward and adjoint sensitivity equations [2].
 
 ### Quadratic programming
-Quadratic programs (QPs), possibly with integer variables (MIQP), can be solved using a primal-dual active-set method \cite{Andersson2018b} or interfaces to CPLEX, GUROBI, HPMPC, OOQP or qpOASES.
+Quadratic programs (QPs), possibly with integer variables (MIQP), can be solved using a primal-dual active-set method [3] or interfaces to CPLEX, GUROBI, HPMPC, OOQP or qpOASES.
 
 ### Nonlinear programming with automatic sensitivity analysis, Opti stack
-Nonlinear programs (NLPs), possibly with integer variables (MINLP), can be solved using block structure or general sparsity exploiting sequential quadratic programming (SQP) or interfaces to IPOPT/BONMIN, BlockSQP, WORHP, KNITRO and SNOPT. Solution sensitivities can be calculated analytically [^3].
+Nonlinear programs (NLPs), possibly with integer variables (MINLP), can be solved using block structure or general sparsity exploiting sequential quadratic programming (SQP) or interfaces to IPOPT/BONMIN, BlockSQP, WORHP, KNITRO and SNOPT. Solution sensitivities can be calculated analytically [3].
 
 Opti stack, a simple but powerful abstraction layer can be used for convenience.
 It manages the creation and optimal-value retrieval of decision variables, allows a mathematical notation to specify constraints, and may identify problematic constraints when a solver reports infeasibity.
 
 ### References
 
-[^1] Andersson, J.: A General-Purpose Software Framework for Dynamic Optimization. PhD thesis, Arenberg Doctoral School, KU Leuven (2013)
-[^2] Andersson, J.A.E., Gillis, J., Horn, G., Rawlings, J.B., Diehl, M.: CasADi – A software framework for nonlinear optimization and optimal control. Math. Prog. Comp. (Accepted for publication, 2018)
-[^3] Andersson, J.A.E., Rawlings, J.B.: Sensitivity Analysis for Nonlinear Programming in CasADi (2018). URL www.optimization-online.org/DB_HTML/2018/05/6642.html. Submitted to NMPC 2018
+[1] Andersson, J.: A General-Purpose Software Framework for Dynamic Optimization. PhD thesis, Arenberg Doctoral School, KU Leuven (2013)
+
+[2] Andersson, J.A.E., Gillis, J., Horn, G., Rawlings, J.B., Diehl, M.: CasADi – A software framework for nonlinear optimization and optimal control. Math. Prog. Comp. (Accepted for publication, 2018)
+
+[3] Andersson, J.A.E., Rawlings, J.B.: Sensitivity Analysis for Nonlinear Programming in CasADi (2018). URL www.optimization-online.org/DB_HTML/2018/05/6642.html. Submitted to NMPC 2018
