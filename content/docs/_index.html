@@ -240,8 +240,7 @@ The commands above would be equivalent to:</p>
 </div>
 </div>
 </div>
-<p>TODO
-More usage examples for <code class="xref py py-class docutils literal notranslate"><span class="pre">SX</span></code> can be found in the tutorials at <a class="reference external" href="http://docs.casadi.org/">http://docs.casadi.org/</a>. For documentation of particular functions of this class (and others), find the “C++ API docs” on the website and search for information about <code class="docutils literal notranslate"><span class="pre">casadi::Matrix</span></code>.</p>
+<p>More usage examples for <code class="xref py py-class docutils literal notranslate"><span class="pre">SX</span></code> can be found in the example pack at <a class="reference external" href="http://install.casadi.org/">http://install.casadi.org/</a>. For documentation of particular functions of this class (and others), find the “C++ API” on <a class="reference external" href="http://docs.casadi.org/">http://docs.casadi.org/</a> and search for information about <code class="docutils literal notranslate"><span class="pre">casadi::Matrix</span></code>.</p>
 </div>
 <div class="section" id="the-mx-symbolics">
 <h3>3.3. The <code class="xref py py-class docutils literal notranslate"><span class="pre">MX</span></code> symbolics<a class="headerlink" href="#the-mx-symbolics" title="Permalink to this headline">¶</a></h3>
@@ -897,7 +896,6 @@ x[0]
 </div>
 </div>
 <p>Many of the above operations are also defined for the <code class="xref py py-class docutils literal notranslate"><span class="pre">Sparsity</span></code> class (<a class="reference internal" href="#sec-sparsity-class"><span class="std std-numref">Section 3.5</span></a>), e.g. <code class="docutils literal notranslate"><span class="pre">vertcat</span></code>, <code class="docutils literal notranslate"><span class="pre">horzsplit</span></code>, transposing, addition (which returns the <em>union</em> of two sparsity patterns) and multiplication (which returns the <em>intersection</em> of two sparsity patterns).</p>
-<p>TODO link to API</p>
 </div>
 <div class="section" id="querying-properties">
 <h3>3.7. Querying properties<a class="headerlink" href="#querying-properties" title="Permalink to this headline">¶</a></h3>
@@ -1710,7 +1708,6 @@ EXIT: Optimal Solution Found.
 </div>
 </div>
 </div>
-<p>TODO make tiny</p>
 </div>
 </div>
 <div class="section" id="quadratic-programming">
@@ -1821,7 +1818,7 @@ x_opt:  [5, 5]
     a_{\textrm{lb}} \le &amp; A \, x&amp; \le a_{\textrm{ub}}
   \end{array}
   \end{array}\end{split}\]</div>
-<p>Encoding problem :eq`simple_qp` in this form, omitting bounds that are infinite, is straightforward:</p>
+<p>Encoding problem <a class="reference internal" href="#equation-simple-qp">(4.6.1)</a> in this form, omitting bounds that are infinite, is straightforward:</p>
 <div class="sidebyside-master docutils container">
 <div class="sidebyside docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">H</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">DM</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -2061,7 +2058,6 @@ F:(i0[1x4])-&gt;(o0[1x4]) MXFunction
 <p>The <code class="docutils literal notranslate"><span class="pre">fold</span></code>/<code class="docutils literal notranslate"><span class="pre">mapaccum</span></code> operation supports primitive functions <span class="math notranslate nohighlight">\(f\)</span> with multiple inputs/outputs which can also be matrices.
 The first input and output are used for accumulating, while the remainder inputs are read column-wise over the iterations.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">map</span></code>/<code class="docutils literal notranslate"><span class="pre">mapaccum</span></code> operation exhibits a graph size and initialization time that scales logarithmically with <span class="math notranslate nohighlight">\(n\)</span>.</p>
-<p>TODO remove empty lines in front of code</p>
 <p class="rubric">Footnotes</p>
 <table class="docutils footnote" frame="void" id="f1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
@@ -2408,9 +2404,6 @@ described in <a class="reference internal" href="#sec-c-api"><span class="std st
 <span class="n">C</span><span class="o">.</span><span class="n">generate</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 </div>
 <div class="sidebyside docutils container">
 <div class="highlight-octave notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="p">=</span> <span class="n">Function</span><span class="p">(</span><span class="s">&#39;f&#39;</span><span class="p">,{</span><span class="n">x</span><span class="p">},{</span><span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)});</span>
@@ -2419,9 +2412,6 @@ described in <a class="reference internal" href="#sec-c-api"><span class="std st
 <span class="n">C</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
 <span class="n">C</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">g</span><span class="p">);</span>
 <span class="n">C</span><span class="p">.</span><span class="n">generate</span><span class="p">();</span>
-</pre></div>
-</div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -2438,18 +2428,12 @@ which generates a <em>mexFunction</em> entry point:</p>
 <span class="n">f</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="s1">&#39;gen.c&#39;</span><span class="p">,</span><span class="n">opts</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 </div>
 <div class="sidebyside docutils container">
 <div class="highlight-octave notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="p">=</span> <span class="n">Function</span><span class="p">(</span><span class="s">&#39;f&#39;</span><span class="p">,{</span><span class="n">x</span><span class="p">},{</span><span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)});</span>
 <span class="n">opts</span> <span class="p">=</span> <span class="nb">struct</span><span class="p">(</span><span class="s">&#39;main&#39;</span><span class="p">,</span> <span class="nb">true</span><span class="p">,...</span>
               <span class="s">&#39;mex&#39;</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
 <span class="n">f</span><span class="p">.</span><span class="n">generate</span><span class="p">(</span><span class="s">&#39;gen.c&#39;</span><span class="p">,</span><span class="n">opts</span><span class="p">);</span>
-</pre></div>
-</div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -2824,9 +2808,7 @@ Python, MATLAB/Octave or C++.</p>
 <li>A function for numerical evaluation.</li>
 <li>Optional functions for derivatives. You can choose to supply a full Jacobian (<code class="docutils literal notranslate"><span class="pre">has_jacobian</span></code>, <code class="docutils literal notranslate"><span class="pre">get_jacobian</span></code>), or choose to supply forward/reverse sensitivities (<code class="docutils literal notranslate"><span class="pre">has_forward</span></code>, <code class="docutils literal notranslate"><span class="pre">get_forward</span></code>,  <code class="docutils literal notranslate"><span class="pre">has_reverse</span></code>, <code class="docutils literal notranslate"><span class="pre">get_reverse</span></code>).</li>
 </ul>
-<p>For a complete list of functions, see the C++ API documentation for
-<code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code>.</p>
-<p>TODO link</p>
+<p>For a complete list of functions, see the C++ API documentation for <code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code>.</p>
 <p>The usage from the different languages are described in the following.</p>
 <div class="section" id="python">
 <h4>6.2.1. Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h4>
@@ -2849,9 +2831,6 @@ Python, MATLAB/Octave or C++.</p>
     <span class="n">x</span> <span class="o">=</span> <span class="n">arg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">f</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">f</span><span class="p">]</span>
-</pre></div>
-</div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 <p>The implementation should include a constructor, which should begin with a call to
@@ -3362,9 +3341,6 @@ as follows.</p>
 <span class="n">dae</span><span class="o">.</span><span class="n">set_unit</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">,</span><span class="s1">&#39;kg&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 </div>
 <div class="sidebyside docutils container">
 <div class="highlight-octave notranslate"><div class="highlight"><pre><span></span><span class="n">dae</span> <span class="p">=</span> <span class="n">DaeBuilder</span><span class="p">;</span>
@@ -3390,9 +3366,6 @@ as follows.</p>
 <span class="n">dae</span><span class="p">.</span><span class="n">set_unit</span><span class="p">(</span><span class="s">&#39;h&#39;</span><span class="p">,</span><span class="s">&#39;m&#39;</span><span class="p">);</span>
 <span class="n">dae</span><span class="p">.</span><span class="n">set_unit</span><span class="p">(</span><span class="s">&#39;v&#39;</span><span class="p">,</span><span class="s">&#39;m/s&#39;</span><span class="p">);</span>
 <span class="n">dae</span><span class="p">.</span><span class="n">set_unit</span><span class="p">(</span><span class="s">&#39;m&#39;</span><span class="p">,</span><span class="s">&#39;kg&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -3747,16 +3720,10 @@ You may perform any CasADi MX operations on them, e.g. embedding integrator call
 <span class="n">opti</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 </div>
 <div class="sidebyside docutils container">
 <div class="highlight-octave notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="p">=</span> <span class="n">opti</span><span class="p">.</span><span class="n">parameter</span><span class="p">();</span>
 <span class="n">opti</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -3767,15 +3734,9 @@ You may perform any CasADi MX operations on them, e.g. embedding integrator call
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">opti</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span>   <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">p</span><span class="p">))</span>   <span class="p">)</span>
 </pre></div>
 </div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 </div>
 <div class="sidebyside docutils container">
 <div class="highlight-octave notranslate"><div class="highlight"><pre><span></span><span class="n">opti</span><span class="p">.</span><span class="n">minimize</span><span class="p">(</span>   <span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">p</span><span class="p">))</span>   <span class="p">)</span>
-</pre></div>
-</div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -3793,15 +3754,9 @@ You may perform any CasADi MX operations on them, e.g. embedding integrator call
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">opti</span><span class="o">.</span><span class="n">subject_to</span><span class="p">([</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">&gt;=</span><span class="mi">1</span><span class="p">,</span><span class="n">x</span><span class="o">==</span><span class="mi">3</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 </div>
 <div class="sidebyside docutils container">
 <div class="highlight-octave notranslate"><div class="highlight"><pre><span></span><span class="n">opti</span><span class="p">.</span><span class="n">subject_to</span><span class="p">({</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">&gt;</span><span class="p">=</span><span class="mi">1</span><span class="p">,</span><span class="n">x</span><span class="o">==</span><span class="mi">3</span><span class="p">});</span>
-</pre></div>
-</div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -3812,15 +3767,9 @@ You may perform any CasADi MX operations on them, e.g. embedding integrator call
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">opti</span><span class="o">.</span><span class="n">subject_to</span><span class="p">(</span> <span class="n">opti</span><span class="o">.</span><span class="n">bounded</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">)</span>
 </pre></div>
 </div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 </div>
 <div class="sidebyside docutils container">
 <div class="highlight-octave notranslate"><div class="highlight"><pre><span></span><span class="n">opti</span><span class="p">.</span><span class="n">subject_to</span><span class="p">(</span> <span class="mi">0</span><span class="o">&lt;</span><span class="p">=</span><span class="n">x</span><span class="o">&lt;</span><span class="p">=</span><span class="mi">1</span> <span class="p">);</span>
-</pre></div>
-</div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -3834,17 +3783,11 @@ You may perform any CasADi MX operations on them, e.g. embedding integrator call
 <span class="n">opti</span><span class="o">.</span><span class="n">subject_to</span><span class="p">(</span> <span class="n">x</span><span class="o">*</span><span class="n">p</span><span class="o">&lt;=</span><span class="mi">3</span> <span class="p">)</span>
 </pre></div>
 </div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 </div>
 <div class="sidebyside docutils container">
 <div class="highlight-octave notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="p">=</span> <span class="n">opti</span><span class="p">.</span><span class="n">variable</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
 
 <span class="n">opti</span><span class="p">.</span><span class="n">subject_to</span><span class="p">(</span> <span class="n">x</span><span class="o">*</span><span class="n">p</span><span class="o">&lt;</span><span class="p">=</span><span class="mi">3</span> <span class="p">)</span>
-</pre></div>
-</div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -3858,16 +3801,10 @@ The workaround is to vectorize first:</p>
 <span class="n">opti</span><span class="o">.</span><span class="n">subject_to</span><span class="p">(</span> <span class="n">vec</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">&lt;=</span><span class="mi">3</span> <span class="p">)</span>
 </pre></div>
 </div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 </div>
 <div class="sidebyside docutils container">
 <div class="highlight-octave notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="p">=</span> <span class="n">opti</span><span class="p">.</span><span class="n">variable</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
 <span class="n">opti</span><span class="p">.</span><span class="n">subject_to</span><span class="p">(</span> <span class="n">A</span><span class="p">(:)</span><span class="o">&lt;</span><span class="p">=</span><span class="mi">3</span> <span class="p">);</span>
-</pre></div>
-</div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -3886,18 +3823,12 @@ An optional dictionary of <code class="docutils literal notranslate"><span class
                     <span class="n">s_opts</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 </div>
 <div class="sidebyside docutils container">
 <div class="highlight-octave notranslate"><div class="highlight"><pre><span></span><span class="n">p_opts</span> <span class="p">=</span> <span class="nb">struct</span><span class="p">(</span><span class="s">&#39;expand&#39;</span><span class="p">,</span><span class="nb">true</span><span class="p">);</span>
 <span class="n">s_opts</span> <span class="p">=</span> <span class="nb">struct</span><span class="p">(</span><span class="s">&#39;max_iter&#39;</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
 <span class="n">opti</span><span class="p">.</span><span class="n">solver</span><span class="p">(</span><span class="s">&#39;ipopt&#39;</span><span class="p">,</span><span class="n">p_opts</span><span class="p">,</span>
                     <span class="n">s_opts</span><span class="p">);</span>
-</pre></div>
-</div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -3910,16 +3841,10 @@ You may provide initial guesses for decision variables (or simple mappings of de
 <span class="n">opti</span><span class="o">.</span><span class="n">set_initial</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 </div>
 <div class="sidebyside docutils container">
 <div class="highlight-octave notranslate"><div class="highlight"><pre><span></span><span class="n">opti</span><span class="p">.</span><span class="n">set_initial</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
 <span class="n">opti</span><span class="p">.</span><span class="n">set_initial</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="n">x</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
