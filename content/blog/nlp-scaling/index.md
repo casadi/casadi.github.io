@@ -59,3 +59,20 @@ Exact same solution, wildly different convergence:
 {{< figure src="conv_scaled.png" title="Convergence scaled" >}}
 
 In conclusion, even if you are using an exact Hessian (which is default in CasADi), and even with a numerical backend (IPOPT) that [provides auto-scaling](https://www.coin-or.org/Ipopt/documentation/node43.html), it's still good practice to scale your NLP!
+
+## Addendum 2018-04-09
+
+[Guidelines for scaling](http://homes.esat.kuleuven.be/~optec/events/courses/JohnBetts_coursept1brf.pdf) involve more than just scaling of the variables.
+In IPOPT, objective and constraints (but not variables) are scaled automatically, using first-order sensitivities at the initial guess.
+This is vital for the above example to work. Without it, we need to scale objective and constraints ourselves:
+
+```matlab
+for k = 1:N
+    opti.subject_to(x(:,k+1)./x_nom == (x(:,k) + rocket_ode(x(:,k),u(:,k))*dt)./x_nom);
+end
+...
+opti.minimize((m(1)-m(N+1))/m_nom); % minimize fuel consumption
+```
+
+(complete code [here](rocket_scaled2.m))
+
