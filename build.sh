@@ -30,6 +30,6 @@ gulp scss
 # run hugo server
 cd ../..
 
-rm -rf build && hugo
+rm -rf public && hugo
 
 echo "+ Build script finished."
