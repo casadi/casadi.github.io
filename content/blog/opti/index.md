@@ -45,7 +45,7 @@ Let's make a variation on the problem by adding an equality constraint:
 $$
 \begin{align}
   \displaystyle \underset{x,y}
-  {\text{minimize}}\quad &\displaystyle (1-x)^2+(y-x^2)^2 \\
+  {\text{minimize}}\quad &\displaystyle (1-x)^2+(y-x^2)^2 \newline
     \text{subject to} \, \quad & x^2+y^2=1
 \end{align}
 $$
@@ -65,8 +65,8 @@ We may add in fact any number of equality/inequality constraints:
 $$
 \begin{align}
   \displaystyle \underset{x,y}
-  {\text{minimize}}\quad &\displaystyle (1-x)^2+(y-x^2)^2 \\
-    \text{subject to} \, \quad & x^2+y^2=1 \\
+  {\text{minimize}}\quad &\displaystyle (1-x)^2+(y-x^2)^2 \newline
+    \text{subject to} \, \quad & x^2+y^2=1 \newline
       & y\geq x
 \end{align}
 $$
