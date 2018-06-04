@@ -4,12 +4,15 @@ draft: false
 title: "Extended description"
 description: "no description"
 weight: 6
-mode: "manual"
+colclass: "text-left"
+concise: true
 ---
 
 ## Executive summary of CasADi
 
 CasADi [1] is a general-purpose tool for quick, yet highly efficient implementation of algorithms for numerical optimization in general and numerical optimal control in particular.
+
+<!--more-->
 
 ### Symbolic framework with algorithmic differentiation (AD)
 A state-of-the-art implementation of algorithmic differentiation (AD), implemented within a symbolic framework, forms the backbone of CasADi. Users construct directed acyclic expression graphs using an _everything-is-a-sparse-matrix_ syntax and expressions for derivatives are generated automatically using AD via _source-code-transformation_. CasADi implements the forward and reverse modes of AD and uses a graph coloring approach to construct large-and-sparse Jacobians and Hessians. Generated expressions are encapsulated in function objects that can be evaluated in virtual machines (VMs).

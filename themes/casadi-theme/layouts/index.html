@@ -7,54 +7,44 @@
 <div id="main" class="container">
   {{ range $index, $element :=  .Data.Pages.ByWeight }}
     {{ if eq .Section "home" }}
+
       {{ if ne $index 0 }} <hr class="sep"> {{ end }}
-      {{ if modBool $index 2 }}
-        {{ if (isset .Params "mode") and (eq .Params.mode "manual") }}
-          {{ .Content | markdownify }}
-        {{ else }}
-          <div class="row">
-            {{ if (isset .Params "image") and (ne .Params.image "") }}
-              <div class="col-4">
-                <img src="{{ .Site.BaseURL }}_img/{{ .Params.image }}">
-              </div>
-              <div class="col-8 text-left">
-                <p>
-                  {{ .Content | markdownify }}
-                </p>
-              </div>
-            {{ else }}
-              <div class="col text-center">
-                <p>
-                  {{ .Content | markdownify }}
-                </p>
-              </div>
-            {{ end }}
-          </div>
-        {{ end }}
+
+      {{ if (isset .Params "mode") and (eq .Params.mode "manual") }}
+        {{ .Content | markdownify }}
       {{ else }}
-        {{ if (isset .Params "mode") and (eq .Params.mode "manual") }}
-          {{ .Content | markdownify }}
-        {{ else }}
-          <div class="row">
-            {{ if (not (isset .Params "image")) or (eq .Params.image "") }}
-              <div class="col text-center">
-                <p>
-                  {{ .Content | markdownify }}
-                </p>
-              </div>
-            {{ else }}
-              <div class="col-8 text-right">
-                <p>
-                  {{ .Content | markdownify }}
-                </p>
-              </div>
-              <div class="col-4">
-                <img src="{{ .Site.BaseURL }}_img/{{ .Params.image }}">
-              </div>
-            {{ end }}
+        <div class="row">
+          {{ if (isset .Params "colclass") }}
+          <div class="col {{ .Params.colclass }}">
+          {{ else }}
+          <div class="col text-center">
+          {{ end }}
+            <p>
+              {{ if (isset .Params "concise")}}
+                <div class="collapse-switch">
+                  <div class="collapse" id="{{ . | urlize }}">
+                    {{ .Content }}
+
+                    <!-- <a data-toggle="collapse" href="#{{ . | urlize }}" role="button" aria-expanded="false" aria-controls="{{ . | urlize }}">
+                      Show less ...
+                    </a> -->
+                  </div>
+                  <div class="bait">
+                    {{ .Summary }}
+
+                    <a data-toggle="collapse" href="#{{ . | urlize }}" role="button" aria-expanded="false" aria-controls="{{ . | urlize }}">
+                      Show more ...
+                    </a>
+                  </div>
+                </div>
+              {{ else }}
+                {{ .Content | markdownify }}
+              {{ end }}
+            </p>
           </div>
-        {{ end }}
+        </div>
       {{ end }}
+
     {{ end }}
   {{ end }}
 </div>

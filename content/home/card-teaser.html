@@ -7,11 +7,10 @@ weight: 2
 mode: "manual"
 ---
 
-
 <div class="row">
   <div class="col-md-6">
 
-    Single-shooting optimal control example:
+    <p>Single-shooting optimal control example:</p>
     <div class="multisnip">
 {{< highlight octave >}}
 import casadi.*
@@ -72,7 +71,7 @@ for (int i=0;i<5;++i) {
   x = x+cos(x)+2*tanh(u(i));
 }
 
-MXDict nlp;    
+MXDict nlp;
 nlp["x"] = u;       // decision vars
 nlp["f"] = dot(u,u);// objective
 nlp["g"] = x;       // constraints
@@ -86,7 +85,7 @@ std::cout << res["x"] << std::endl;
 </div></div>
 
   <div class="col-md-6 text-left">
-Basic CasADi workflow:
+    <p>Basic CasADi workflow:</p>
     <ol>
        <li>Create scalar/matrix symbols</li>
        <li>Compose into expressions</li>
