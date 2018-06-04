@@ -4,6 +4,7 @@ draft: false
 title: "Extended description"
 description: "no description"
 weight: 6
+mode: "manual"
 ---
 
 ## Executive summary of CasADi
