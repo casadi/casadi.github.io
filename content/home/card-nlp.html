@@ -1,0 +1,60 @@
+---
+date: 2014-10-13T20:07:19Z
+draft: false
+title: "Features"
+description: "no description"
+weight: 4
+---
+
+<h2>Nonlinear programming</h2>
+
+<div class="row">
+  <div class="col-md-6  text-left">
+<a href="docs/#nonlinear-programming">Nonlinear programs</a> (NLPs), possibly with integer variables (MINLP), can be solved using block structure or general sparsity exploiting sequential quadratic programming (SQP) or interfaces to IPOPT/BONMIN, BlockSQP, WORHP, KNITRO and SNOPT. <a href="docs/#quadratic-programming">Quadratic programs</a> (QPs), possibly with integer variables (MIQP), can be solved using a primal-dual active-set method [3] or interfaces to CPLEX, GUROBI, HPMPC, OOQP or qpOASES.<br/>
+
+Code snippet for:
+
+\begin{equation}
+  \underset{\begin{array}{c}x, y\end{array}}{\text{minimize}} \quad   x^2 + 100 \, (y-(1-x)^2)^2
+  \label{eq:rosenbrock}
+\end{equation}
+
+</div>
+
+<div class="col-md-6">
+
+<div class="multisnip text-left">
+{{< highlight octave >}}
+import casadi.*
+
+
+% Symbols/expressions
+x = MX.sym('x');
+y = SX.sym('y');
+z = y-(1-x)^2;
+f = x^2+100*z^2;
+
+nlp = struct  % NLP declaration
+nlp.x = [x;y] % decision vars
+nlp.f = f;    % objective
+
+% Create solver instance
+F = nlpsol('F','ipopt',nlp);
+
+% Solve the problem using a guess
+res = F('x0',[2.5 3.0])
+{{< /highlight >}}
+{{< highlight python >}}
+
+....
+
+{{< /highlight >}}
+{{< highlight cpp >}}
+
+000
+
+{{< /highlight >}}
+</div>
+
+  </div>
+</div>

@@ -1,0 +1,65 @@
+---
+date: 2014-10-13T20:07:19Z
+draft: false
+title: "Features"
+description: "no description"
+weight: 3
+---
+
+<h2>Dynamic systems</h2>
+
+<div class="row">
+  <div class="col-md-6  text-left">
+<a href="docs/#initial-value-problems-and-sensitivity-analysis">Initial value problems</a> in ordinary or differential-algebraic equations (ODE/DAE) can be calculated using explicit or implicit Runge-Kutta methods or interfaces to IDAS/CVODES from the SUNDIALS suite.<br/>
+
+Code snippet for:
+
+\begin{align}
+\left\{
+  \begin{array}{ccll}
+    \dot{x}_1 &=& (1-x_2^2) \, x_1 - x_2, \quad &x_1(0)=0 \\
+    \dot{x}_2 &=& x_1, \quad &x_2(0)=1
+  \end{array}
+  \right.
+  \label{eq:vdp_dae}
+\end{align}
+
+  </div>
+
+<div class="col-md-6">
+
+<div class="multisnip text-left">
+{{< highlight octave >}}
+import casadi.*
+
+
+x = MX.sym('x',2); % Two states
+
+% Expression for ODE right-hand side
+z = 1-x(2)^2;
+rhs = [z*x(1)-x(2);x(1)];
+
+ode = struct   % ODE declaration
+ode.x   = x;   % states
+ode.ode = rhs; % right-hand side
+
+% Construct a Function that integrates over 1s
+F = integrator('F','cvodes',ode,struct('tf',1));
+
+% Start from x=[0;1]
+F('x0',[0;1])
+{{< /highlight >}}
+{{< highlight python >}}
+
+....
+
+{{< /highlight >}}
+{{< highlight cpp >}}
+
+000
+
+{{< /highlight >}}
+</div>
+
+  </div>
+</div>

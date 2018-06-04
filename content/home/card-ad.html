@@ -1,0 +1,54 @@
+---
+date: 2014-10-13T20:07:19Z
+draft: false
+title: "Features"
+description: "no description"
+weight: 2
+---
+<h2>Algorithmic Differentation (AD)</h2>
+
+
+<div class="row">
+  <div class="col-md-6  text-left">
+CasADi's backbone is a <a href="docs/#document-symbolic">symbolic framework</a> implementing forward and reverse mode of <a href="docs/#calculus-algorithmic differentiation">AD</a> on expression graphs to construct large-and-sparse Jacobians and Hessians.
+
+These expression graphs, encapsulated in <a href="docs/#calling-function-objects">Function</a> objects, can be evaluated in a virtual machine or be <a href="docs/#generating-c-code">exported</a> to stand-alone C code.
+
+  </div>
+
+<div class="col-md-6">
+
+<div class="multisnip text-left">
+{{< highlight octave >}}
+import casadi.*
+
+
+% Create scalar/matrix symbols
+x = MX.sym('x',5);
+
+% Compose into expressions
+y = norm(x,2);
+
+% Sensitivity of expression -> new expression
+grad_y = gradient(y,x)
+
+% Create a Function to evaluate expression
+f = Function('f',{x},{grad_y});
+
+% Evaluate numerically
+grad_y_num = f([1;2;3;4;5])
+{{< /highlight >}}
+{{< highlight python >}}
+
+....
+
+{{< /highlight >}}
+{{< highlight cpp >}}
+
+000
+
+{{< /highlight >}}
+</div>
+
+  </div>
+</div>
