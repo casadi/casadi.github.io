@@ -23,7 +23,7 @@ u = MX.sym('u',5,1);
 x = 1 % initial state
 for i=1:5
   % propagate discrete state
-  % (can embed an integrator here instead)
+  % (can embed an integrator call instead)
   x = x+cos(x)+2*tanh(u(i));
 end
 
@@ -47,7 +47,7 @@ u = MX.sym('u',5,1)
 x = 1 # initial state
 for i in range(5):
   # propagate discrete state
-  # (can embed an integrator here instead)
+  # (can embed an integrator call instead)
   x = x+cos(x)+2*tanh(u[i])
 
 
@@ -71,7 +71,7 @@ MX u = MX::sym("u",5,1);
 MX x = 1; // initial state
 for (int i=0;i<5;++i) {
   // propagate discrete state
-  // (can embed an integrator here instead)
+  // (can embed an integrator call instead)
   x = x+cos(x)+2*tanh(u(i));
 }
 
