@@ -21,15 +21,17 @@ u = MX.sym('u',5,1);
 
 x = 1 % initial state
 for i=1:5
-  % propagate state with u[i]
+  % propagate discrete state
+  % (can embed an integrator call instead)
   x = x+cos(x)+2*tanh(u(i));
 end
 
-nlp = struct;
-nlp.x = u;       % decision vars
-nlp.f = dot(u,u);% objective
-nlp.g = x;       % constraints
+nlp = struct;       %  NLP structure
+nlp.x = u;          %  decision vars
+nlp.f = dot(u,u);   %  objective
+nlp.g = x;          %  constraints
 
+% solve using IPOPT
 solver = nlpsol('solver','ipopt',nlp);
 res = solver('x0',1,'lbg',6,'ubg',6);
 
@@ -44,15 +46,17 @@ u = MX.sym('u',5,1)
 
 x = 1 # initial state
 for i in range(5):
-  # propagate state with u[i]
+  # propagate discrete state
+  # (can embed an integrator call instead)
   x = x+cos(x)+2*tanh(u[i])
 
 
-nlp = {}
-nlp['x'] = u        # decision vars
-nlp['f'] = dot(u,u) # objective
-nlp['g'] = x        # constraints
+nlp = {}            #  NLP structure
+nlp['x'] = u        #  decision vars
+nlp['f'] = dot(u,u) #  objective
+nlp['g'] = x        #  constraints
 
+# solve using IPOPT
 solver = nlpsol('solver','ipopt',nlp)
 res = solver(x0=1,lbg=6,ubg=6)
 
@@ -67,15 +71,21 @@ MX u = MX::sym("u",5,1);
 
 MX x = 1; // initial state
 for (int i=0;i<5;++i) {
-  // propagate state with u[i]
+  // propagate discrete state
+  // (can embed an integrator call instead)
   x = x+cos(x)+2*tanh(u(i));
 }
 
+<<<<<<< HEAD
 MXDict nlp;
+=======
+MXDict nlp;         // NLP structure
+>>>>>>> edd2e187f50cb356eaeb4303658704625ce14a26
 nlp["x"] = u;       // decision vars
 nlp["f"] = dot(u,u);// objective
 nlp["g"] = x;       // constraints
 
+// solve using IPOPT
 Function solver = nlpsol("solver","ipopt",nlp);
 auto res = solver(DMDict{{"x0",1},{"lbg",6},{"ubg",6}});
 

@@ -8,7 +8,7 @@ colclass: "text-left"
 concise: true
 ---
 
-## Executive summary of CasADi
+## Learn more?
 
 CasADi [1] is a general-purpose tool for quick, yet highly efficient implementation of algorithms for numerical optimization in general and numerical optimal control in particular.
 
