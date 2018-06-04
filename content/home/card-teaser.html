@@ -27,11 +27,12 @@ for i=1:5
   x = x+cos(x)+2*tanh(u(i));
 end
 
-nlp = struct;
-nlp.x = u;       % decision vars
-nlp.f = dot(u,u);% objective
-nlp.g = x;       % constraints
+nlp = struct;       %  NLP structure
+nlp.x = u;          %  decision vars
+nlp.f = dot(u,u);   %  objective
+nlp.g = x;          %  constraints
 
+% solve using IPOPT
 solver = nlpsol('solver','ipopt',nlp);
 res = solver('x0',1,'lbg',6,'ubg',6);
 
@@ -51,11 +52,12 @@ for i in range(5):
   x = x+cos(x)+2*tanh(u[i])
 
 
-nlp = {}
-nlp['x'] = u        # decision vars
-nlp['f'] = dot(u,u) # objective
-nlp['g'] = x        # constraints
+nlp = {}            #  NLP structure
+nlp['x'] = u        #  decision vars
+nlp['f'] = dot(u,u) #  objective
+nlp['g'] = x        #  constraints
 
+# solve using IPOPT
 solver = nlpsol('solver','ipopt',nlp)
 res = solver(x0=1,lbg=6,ubg=6)
 
@@ -75,11 +77,12 @@ for (int i=0;i<5;++i) {
   x = x+cos(x)+2*tanh(u(i));
 }
 
-MXDict nlp;    
+MXDict nlp;         // NLP structure
 nlp["x"] = u;       // decision vars
 nlp["f"] = dot(u,u);// objective
 nlp["g"] = x;       // constraints
 
+// solve using IPOPT
 Function solver = nlpsol("solver","ipopt",nlp);
 auto res = solver(DMDict{{"x0",1},{"lbg",6},{"ubg",6}});
 
