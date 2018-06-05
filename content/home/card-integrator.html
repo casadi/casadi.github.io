@@ -12,6 +12,20 @@ mode: "manual"
 <div class="row">
 <div class="col-md-6">
 <div class="multisnip text-left">
+<div class="highlight">
+<pre><code data-lang="example"></code></pre>
+{{< figure src="../integration.png" >}}
+$$
+\begin{align}
+\left\{
+  \begin{array}{ccll}
+    \dot{x}_1 &=& (1-x_2^2) \, x_1 - x_2, \quad &x_1(0)=0 \\
+    \dot{x}_2 &=& x_1, \quad &x_2(0)=1
+  \end{array}
+  \right.
+\end{align}
+$$
+</div>
 {{< highlight octave >}}
 import casadi.*
 
@@ -48,18 +62,13 @@ F('x0',[0;1])
 <div class="col-md-6  text-left">
 <p><a href="docs/#initial-value-problems-and-sensitivity-analysis">Initial value problems</a> in ordinary or differential-algebraic equations (ODE/DAE) can be calculated using explicit or implicit Runge-Kutta methods or interfaces to IDAS/CVODES from the SUNDIALS suite.</p>
 
-<p>Code snippet for:</p>
+<em>Problem class:</em>
 
 $$
-\begin{align}
-\left\{
-  \begin{array}{ccll}
-    \dot{x}_1 &=& (1-x_2^2) \, x_1 - x_2, \quad &x_1(0)=0 \\
-    \dot{x}_2 &=& x_1, \quad &x_2(0)=1
-  \end{array}
-  \right.
-  \label{eq:vdp_dae}
-\end{align}
+\begin{aligned}
+ \dot{x} &= f_{\text{ode}}(t,x,z,p), \qquad x(0) = x_0 \\
+      0  &= f_{\text{alg}}(t,x,z,p)
+\end{aligned}
 $$
 
 </div>

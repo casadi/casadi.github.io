@@ -12,41 +12,72 @@ mode: "manual"
 <div class="row">
   <div class="col-md-6  text-left">
 <p><a href="docs/#nonlinear-programming">Nonlinear programs</a> (NLPs), possibly with integer variables (MINLP), can be solved using block structure or general sparsity exploiting sequential quadratic programming (SQP) or interfaces to IPOPT/BONMIN, BlockSQP, WORHP, KNITRO and SNOPT. <a href="docs/#quadratic-programming">Quadratic programs</a> (QPs), possibly with integer variables (MIQP), can be solved using a primal-dual active-set method [3] or interfaces to CPLEX, GUROBI, HPMPC, OOQP or qpOASES.<br />
-Code snippet for:</p>
+
+
+<em>Problem class:</em>
 $$
-\begin{equation}
-  \underset{\begin{array}{c}x, y\end{array}}{\text{minimize}} \quad   x^2 + 100 \, (y-(1-x)^2)^2
-  \label{eq:rosenbrock}
-\end{equation}
+\begin{array}{cc}
+\begin{array}{c}
+\text{minimize:} \\
+x
+\end{array}
+&
+f(x,p)
+\\
+\begin{array}{c}
+\text{subject to:}
+\end{array}
+&
+\begin{array}{rcl}
+  x_{\textrm{lb}} \le &  x   & \le x_{\textrm{ub}} \\
+  g_{\textrm{lb}} \le &g(x,p)& \le g_{\textrm{ub}}
+\end{array}
+\end{array}
 $$
+
+</p>
+
+
 </div>
 
 <div class="col-md-6">
 
 <div class="multisnip text-left">
+<div class="highlight">
+<pre><code data-lang="example"></code></pre>
+
+$$
+\begin{equation}
+  \begin{array}{cl}
+    \underset{\begin{array}{c}x, y, z\end{array}}{\text{minimize}} \quad &  x^2 + 100 \, z^2 \\
+    \text{subject to} \quad &  z+(1-x)^2 - y = 0.
+  \end{array}
+\end{equation}
+$$
+</div>
 {{< highlight octave >}}
 import casadi.*
 
 
 % Symbols/expressions
 x = MX.sym('x');
-y = SX.sym('y');
-z = y-(1-x)^2;
+y = MX.sym('y');
+z = MX.sym('z');
 f = x^2+100*z^2;
+g = z+(1-x)**2-y;
 
-nlp = struct  % NLP declaration
-nlp.x = [x;y] % decision vars
-nlp.f = f;    % objective
+nlp = struct    % NLP declaration
+nlp.x = [x;y;z] % decision vars
+nlp.f = f;      % objective
+nlp.g = g;      % constraints
 
 % Create solver instance
 F = nlpsol('F','ipopt',nlp);
 
 % Solve the problem using a guess
-res = F('x0',[2.5 3.0])
+res = F('x0',[2.5 3.0],ubg=0,lbg=0)
 {{< /highlight >}}
 {{< highlight python >}}
-
-....
 
 {{< /highlight >}}
 {{< highlight cpp >}}

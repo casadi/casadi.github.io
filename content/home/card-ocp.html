@@ -12,6 +12,11 @@ mode: "manual"
 <div class="row">
 <div class="col-md-6">
 <div class="multisnip text-left">
+<div class="highlight">
+<pre><code data-lang="example"></code></pre>
+{{< figure src="../composition.png" >}}
+{{< figure src="../ocp.png" >}}
+</div>
 {{< highlight octave >}}
 import casadi.*
 
@@ -67,8 +72,6 @@ plot(full(res.x))
     <p>CasADi offers a rich set of <em>differentiable</em> operations for its matrix-valued expression graphs, including common <a href="docs/#arithmetic-operations">matrix-valued operations</a>, <a href="docs/#calling-function-objects">serial</a> or <a href="docs/#for-loop-equivalents">parallel</a> function calls, <a href="docs/#non-linear-rootfinding-problems">implicit functions</a>, <a href="docs/#initial-value-problems-and-sensitivity-analysis">integrators</a>, spline-based <a href="docs/#using-lookup-tables">lookup tables</a>, and <a href="docs/#document-custom">external codes</a>.</p>
     <p>These building blocks allow the user to code a wide variety of <a href="docs/#document-ocp">optimal control</a> (OCP) formulations.</p>
     <p>For example, a single shooting code can be created by embedding a call to an integrator in an NLP declaration.</p>
-
-    {{< figure src="../conv.png" >}}
 
   </div>
 </div>

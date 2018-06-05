@@ -11,7 +11,7 @@ mode: "manual"
 
 <div class="row">
   <div class="col-md-6  text-left">
-CasADi's backbone is a <a href="docs/#document-symbolic">symbolic framework</a> implementing forward and reverse mode of <a href="docs/#calculus-algorithmic differentiation">AD</a> on expression graphs to construct large-and-sparse Jacobians and Hessians.
+CasADi's backbone is a <a href="docs/#document-symbolic">symbolic framework</a> implementing forward and reverse mode of <a href="docs/#calculus-algorithmic differentiation">AD</a> on expression graphs to construct gradients, large-and-sparse Jacobians and Hessians.
 
 These expression graphs, encapsulated in <a href="docs/#calling-function-objects">Function</a> objects, can be evaluated in a virtual machine or be <a href="docs/#generating-c-code">exported</a> to stand-alone C code.
 
@@ -20,6 +20,10 @@ These expression graphs, encapsulated in <a href="docs/#calling-function-objects
 <div class="col-md-6">
 
 <div class="multisnip text-left">
+<div class="highlight">
+<pre><code data-lang="example"></code></pre>
+{{< figure src="../ad.png" >}}
+</div>
 {{< highlight octave >}}
 import casadi.*
 
