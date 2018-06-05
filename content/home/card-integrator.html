@@ -36,25 +36,59 @@ x = MX.sym('x',2); % Two states
 z = 1-x(2)^2;
 rhs = [z*x(1)-x(2);x(1)];
 
-ode = struct   % ODE declaration
-ode.x   = x;   % states
-ode.ode = rhs; % right-hand side
+ode = struct;    % ODE declaration
+ode.x   = x;     % states
+ode.ode = rhs;   % right-hand side
 
-% Construct a Function that integrates over 1s
-F = integrator('F','cvodes',ode,struct('tf',1));
+% Construct a Function that integrates over 4s
+F = integrator('F','cvodes',ode,struct('tf',4));
 
 % Start from x=[0;1]
-F('x0',[0;1])
+res = F('x0',[0;1]);
+
+print(res.xf)
 {{< /highlight >}}
 {{< highlight python >}}
+from casadi import *
 
-....
 
+x = MX.sym('x',2); # Two states
+
+# Expression for ODE right-hand side
+z = 1-x[1]**2
+rhs = vertcat(z*x[0]-x[1],x[0])
+
+ode = {}         # ODE declaration
+ode['x']   = x   # states
+ode['ode'] = rhs # right-hand side
+
+# Construct a Function that integrates over 4s
+F = integrator('F','cvodes',ode,{'tf':4})
+
+# Start from x=[0;1]
+res = F(x0=[0,1])
+
+print(res["xf"])
 {{< /highlight >}}
 {{< highlight cpp >}}
+#include <casadi/casadi.hpp>
+using namespace casadi;
 
-000
+MX x = MX::sym("x",2); // Two states
 
+// Expression for ODE right-hand side
+MX z = 1-pow(x(1),2);
+MX rhs = vertcat(z*x(0)-x(1),x(0));
+
+MXDict ode;         // ODE declaration
+ode["x"]   = x;     // states
+ode["ode"] = rhs;   // right-hand side
+
+// Construct a Function that integrates over 4s
+Function F = integrator("F","cvodes",ode,{{"tf",4}});
+
+// Start from x=[0;1]
+DMDict res = F(DMDict{{"x0",std::vector<double>{0,1}}});
 {{< /highlight >}}
 </div>
 </div>

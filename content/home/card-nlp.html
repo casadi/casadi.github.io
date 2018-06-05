@@ -64,26 +64,62 @@ x = MX.sym('x');
 y = MX.sym('y');
 z = MX.sym('z');
 f = x^2+100*z^2;
-g = z+(1-x)**2-y;
+g = z+(1-x)^2-y;
 
-nlp = struct    % NLP declaration
-nlp.x = [x;y;z] % decision vars
-nlp.f = f;      % objective
-nlp.g = g;      % constraints
+nlp = struct;            % NLP declaration
+nlp.x = [x;y;z];         % decision vars
+nlp.f = f;               % objective
+nlp.g = g;               % constraints
 
 % Create solver instance
 F = nlpsol('F','ipopt',nlp);
 
 % Solve the problem using a guess
-res = F('x0',[2.5 3.0],ubg=0,lbg=0)
+F('x0',[2.5 3.0 0.75],'ubg',0,'lbg',0)
 {{< /highlight >}}
 {{< highlight python >}}
+from casadi import *
 
+
+# Symbols/expressions
+x = MX.sym('x')
+y = MX.sym('y')
+z = MX.sym('z')
+f = x**2+100*z**2
+g = z+(1-x)**2-y
+
+nlp = {}                 # NLP declaration
+nlp['x']= vertcat(x,y,z) # decision vars
+nlp['f'] = f             # objective
+nlp['g'] = g             # constraints
+
+# Create solver instance
+F = nlpsol('F','ipopt',nlp);
+
+# Solve the problem using a guess
+F(x0=[2.5,3.0,0.75],ubg=0,lbg=0)
 {{< /highlight >}}
 {{< highlight cpp >}}
+#include <casadi/casadi.hpp>
+using namespace casadi;
 
-000
+// Symbols/expressions
+MX x = MX::sym("x");
+MX y = MX::sym("y");
+MX z = MX::sym("z");
+MX f = pow(x,2)+100*pow(z,2);
+MX g = z+pow(1-x,2)-y;
 
+MXDict nlp;                 // NLP declaration
+nlp["x"]= vertcat(x,y,z);   // decision vars
+nlp["f"] = f;               // objective
+nlp["g"] = g;               // constraints
+
+// Create solver instance
+Function F = nlpsol("F","ipopt",nlp);
+
+// Solve the problem using a guess
+F(DMDict{{"x0",DM({2.5,3.0,0.75})},{"ubg",0},{"lbg",0}});
 {{< /highlight >}}
 </div>
 
