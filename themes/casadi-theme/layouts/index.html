@@ -4,7 +4,7 @@
 {{ partial "nav-top" . }}
 {{ partial "landing" . }}
 
-<div id="main" class="container">
+<div id="main" class="container landing">
   {{ range $index, $element :=  .Data.Pages.ByWeight }}
     {{ if eq .Section "home" }}
 
@@ -19,8 +19,8 @@
           {{ else }}
           <div class="col text-center">
           {{ end }}
-            <p>
-              {{ if (isset .Params "concise")}}
+            {{ if (isset .Params "concise")}}
+              <p>
                 <div class="collapse-switch">
                   <div class="collapse" id="{{ . | urlize }}">
                     {{ .Content }}
@@ -37,10 +37,10 @@
                     </a>
                   </div>
                 </div>
-              {{ else }}
-                {{ .Content | markdownify }}
-              {{ end }}
-            </p>
+              </p>
+            {{ else }}
+              {{ .Content | markdownify }}
+            {{ end }}
           </div>
         </div>
       {{ end }}

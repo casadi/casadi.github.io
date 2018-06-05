@@ -10,6 +10,9 @@
   -o-background-size: cover;
   background-size: cover;
   z-index: 1;
+  -webkit-box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.25);
+     -moz-box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.25);
 }
 #landing-cover .vert-text {
   display: table-cell;
@@ -53,6 +56,31 @@
     -moz-animation-timing-function: linear;
   }
 }
+
+#main.landing {
+  padding-top: 0;
+
+  h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 2rem;
+  }
+  .subtitle {
+    font-size: 1.6rem;
+    text-align: center;
+    padding: 2em 1em 2em 1em;
+    margin-bottom: 3rem;
+    background-color: $casadi-color-accent;
+    color: #fff;
+
+    & p { width: 100%; }
+    &+.sep { display: none; }
+
+    -webkit-box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.5);
+       -moz-box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.5);
+  }
+}
+
+
 
 @-webkit-keyframes pulse {
   0% {

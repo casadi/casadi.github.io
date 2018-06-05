@@ -4,25 +4,13 @@ draft: false
 title: "Features"
 description: "no description"
 weight: 5
+mode: "manual"
 ---
 
-<h2>Composition of the above</h2>
+<h2 class="text-center">Composition of the above</h2>
 
 <div class="row">
-  <div class="col-md-6  text-left">
-
-CasADi offers a rich set of <em>differentiable</em> operations for its matrix-valued expression graphs, including common <a href="docs/#arithmetic-operations">matrix-valued operations</a>, <a href="docs/#calling-function-objects">serial</a> or <a href="doc/#for-loop-equivalents">parallel</a> function calls, <a href="docs/#non-linear-rootfinding-problems">implicit functions</a>, <a href="docs/#initial-value-problems-and-sensitivity-analysis">integrators</a>, spline-based <a href="doc/#using-lookup-tables">lookup tables</a>, and <a href="doc/#document-custom">external codes</a>.<br/>
-
-These building blocks allow the user to code a wide variety of <a href="doc/#document-ocp">optimal control</a> (OCP) formulations.<br/>
-
-For example, a single shooting code can be created by embedding a call to an integrator in an NLP declaration.
-
-{{< figure src="../conv.png" >}}
-
-</div>
-
 <div class="col-md-6">
-
 <div class="multisnip text-left">
 {{< highlight octave >}}
 import casadi.*
@@ -72,6 +60,15 @@ plot(full(res.x))
 
 {{< /highlight >}}
 </div>
+</div>
+
+
+  <div class="col-md-6 text-left">
+    <p>CasADi offers a rich set of <em>differentiable</em> operations for its matrix-valued expression graphs, including common <a href="docs/#arithmetic-operations">matrix-valued operations</a>, <a href="docs/#calling-function-objects">serial</a> or <a href="docs/#for-loop-equivalents">parallel</a> function calls, <a href="docs/#non-linear-rootfinding-problems">implicit functions</a>, <a href="docs/#initial-value-problems-and-sensitivity-analysis">integrators</a>, spline-based <a href="docs/#using-lookup-tables">lookup tables</a>, and <a href="docs/#document-custom">external codes</a>.</p>
+    <p>These building blocks allow the user to code a wide variety of <a href="docs/#document-ocp">optimal control</a> (OCP) formulations.</p>
+    <p>For example, a single shooting code can be created by embedding a call to an integrator in an NLP declaration.</p>
+
+    {{< figure src="../conv.png" >}}
 
   </div>
 </div>
