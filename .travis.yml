@@ -7,4 +7,16 @@ before_install:
   - docker pull jgillis/hugo:latest
 
 script:
-  - docker run -v `pwd`:/src jgillis/hugo /bin/bash build.sh
+  - docker run -v `pwd`:/src -w /src jgillis/hugo /bin/bash build.sh
+
+deploy:
+  provider: pages
+  # publish the "public" folder, where hugo builds by default
+  local_dir: public
+  skip_cleanup: true
+  # use the github token stored in the environment, which is
+  # securely encrypted in `matrix.secure` above
+  github_token: "$GITHUB_TOKEN"
+  # only publish on master branch builds
+  on:
+    branch: master
