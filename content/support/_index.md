@@ -17,4 +17,3 @@ Contact us at consulting@casadi.org
 
  * Joris Gillis is registered in Belgium ([Yacoda](http://www.yacoda.com/)).
  * Joel Andersson is registered in the United States (JAE ANDERSSON CONSULTING LLC) and in Sweden (JOEL ANDERSSON, EF)
-

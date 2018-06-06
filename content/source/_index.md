@@ -3,8 +3,9 @@ title: "Source"
 description: "no description"
 type: singles
 ---
+# Source
 
-## Source outline
+## Outline
 
 CasADi is written in modern C++ code, and licensed under the LGPL, meaning the code can be used royalty-free even in commercial applications.
 Interfaces to other Python, Octave, Matlab are provided through [SWIG](http://www.swig.org).
