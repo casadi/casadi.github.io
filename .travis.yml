@@ -8,7 +8,9 @@ before_install:
 
 script:
   - docker run -v `pwd`:/src -w /src -e GITHUB_TOKEN=$GITHUB_TOKEN jgillis/hugo /bin/bash build.sh
-  - sudo touch public/.nojekyll # To make sure files with leading _udnerscore are served on github pages
+  - sudo touch public/.nojekyll # To make sure files with leading _underscore are served on github pages
+  - echo "web.casadi.org" > CNAME
+  - sudo cp CNAME public
 
 deploy:
   provider: pages
