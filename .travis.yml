@@ -8,6 +8,7 @@ before_install:
 
 script:
   - docker run -v `pwd`:/src -w /src -e GITHUB_TOKEN=$GITHUB_TOKEN jgillis/hugo /bin/bash build.sh
+  - touch public/.nojekyll # To make sure files with leading _udnerscore are served on github pages
 
 deploy:
   provider: pages
