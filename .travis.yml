@@ -7,4 +7,4 @@ before_install:
   - docker pull jgillis/hugo:latest
 
 script:
-  - docker run -v .:/src jgillis/hugo /bin/sh build.sh
+  - docker run -v `pwd`:/src jgillis/hugo /bin/sh build.sh
