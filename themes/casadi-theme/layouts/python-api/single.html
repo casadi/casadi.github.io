@@ -1,0 +1,21 @@
+{{ .Scratch.Set "Title" "SINGLE DOCS" }}
+
+{{ partial "header" . }}
+{{ partial "nav-top" . }}
+
+<div id="main" class="docs container">
+  <div class="row flex-nowrap">
+    {{ partial "nav-side" . }}
+    <div class="content d-flex">
+      <div class="col p-4">
+        <h1>[SINGLE] {{ .Title }}</h1>
+        {{ partial "reading-time" .Page }}
+        <!-- <span class="summary">{{ .Summary }}</span> -->
+        <!-- <hr> -->
+        <!-- {{ .Content }} -->
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ partial "footer" . }}

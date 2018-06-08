@@ -1,0 +1,26 @@
+{{ .Scratch.Set "Title" ( printf "%s - Docs" .Site.Title ) }}
+
+{{ partial "header" . }}
+{{ partial "nav-top" . }}
+
+<div id="main" class="docs container-fluid">
+  <div class="row flex-nowrap">
+    <div class="sidebar">
+      <div class="sticky-top sticky-offset">
+        <nav class="nav-side">
+          {{ partial "python-api-sidebar" . }}
+        </nav>
+      </div>
+    </div>
+    <div class="col content p-4">
+        <!-- <h1>{{ .Title }}</h1> -->
+
+        <!-- {{ partial "reading-time" .Page }} -->
+
+        {{ .Content }}
+
+    </div>
+  </div>
+</div>
+
+{{ partial "footer" . }}
