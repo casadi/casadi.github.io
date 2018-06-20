@@ -196,4 +196,6 @@ Download code: [chain.m](chain.m)
 
 For more details about Opti, see Chapter 9 of the [users guide](http://web.casadi.org/docs/#document-opti). For an optimal control example, see [the race car example]({{< ref "blog/ocp/index.md" >}}#coding).
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7iQKhmx7gQA?ecver=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 Using Opti, you have the scalability of CasADi algorithmic differentiation available, in a user friendly packaging. Ideal for teaching!
