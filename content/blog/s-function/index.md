@@ -3,6 +3,7 @@ title: CasADi codegen and S-Functions
 author: jg
 tags: NLP simulink 
 date: 2018-07-13
+image: simulink.png
 ---
 
 
@@ -140,6 +141,12 @@ To actually run the block, we need to compile our S-Function:
 mex s_function.c f.c
 ```
 
+{{% figure src="simulink.png" title="View of simulink diagram with our S-Function block in it" %}}
+{{% figure src="scope.png" title="Numeric simulation result" %}}
+
+
+
 Download code: [do_demo.m](do_demo.m), [s_function.c](s_function.c), [demo.slx](demo.slx).
 
+In summary, we've shown how to use CasADi codegen in general, and in the setting of Simulink S-Functions specifically.
 
