@@ -33,7 +33,7 @@ $(document).ready(function() {
   var hash = window.location.hash;
   if(hash) {
     var id = hash.substr(1);
-    var card = $("[id="+id+"]")[0];
+    var card = $(".card[id="+id+"]")[0];
     if(typeof card !== "undefined") {
       $(card).find('a.card-header.collapsed').each(function(i, a) {
         $(a).removeClass('collapsed');
@@ -43,17 +43,18 @@ $(document).ready(function() {
         $(d).addClass('show');
       });
       $('html,body').animate({scrollTop: $(card).offset().top - 70});
-      event.preventDefault();
     }
   }
 
-  // $('a[href*=\\#]').on('click', function(event){
-  //   if(this.hash) {
-  //     event.preventDefault();
-  //     $('html,body').animate({scrollTop: $(this.hash).offset().top - 50}, 500);
-  //   }
-  // });
 });
+
+(function addAnchorElements() {
+  console.log('running addAnchorElements');
+  $('.content [id]').each(function(i, el) {
+    $('<div class="anchor" id="' + el.id + '"></div>').insertBefore(el);
+    $(el).attr("id", el.id + '-sub');
+  });
+})();
 
 function makeActive(hl, li) {
   $(hl).parent().children('div.highlight').hide();
