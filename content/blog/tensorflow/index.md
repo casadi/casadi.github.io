@@ -67,7 +67,7 @@ res = solver(x0=5)
 
 {{% figure src="gpflow1d_min.png" title="1D regression example with GPflow" %}}
 
-Download code: [gpflow1d_example.py](gpflow1d_example.py)
+Download code: [gpflow_example.py](gpflow_example.py)
 
 # Optimal control example (slow)
 
