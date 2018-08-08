@@ -6,7 +6,7 @@ date: 2018-07-30
 image: gpflow1d_min.png
 ---
 In this post we'll explore how to couple [Tensorflow](https://www.tensorflow.org) and CasADi.
-Thanks to Jonas for delivering inspiration and example code.
+Thanks to Jonas Koch (student @ Applied Mathematics WWU Muenster) for delivering inspiration and example code.
 
 # One-dimensional regression with GPflow
 
