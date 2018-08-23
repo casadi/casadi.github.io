@@ -25,11 +25,11 @@ cd themes/casadi-theme/
 npm update
 
 # run gulp to build static files and collect them for deploying
-gulp --verbose scss
+gulp scss
 
 # run hugo server
 cd ../..
 
-rm -rf public && hugo -v
+rm -rf public && hugo
 
 echo "+ Build script finished."
