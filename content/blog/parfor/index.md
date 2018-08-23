@@ -173,4 +173,4 @@ Download code: [casadi_multiprocessing.py](casadi_multiprocessing.py)
 
 
 In conclusion, we demonstrated a new way to solve NLPs in parallel with CasADi.
-Finally, note that we have an unrelated parallelization mechanism ( [map](https://web.casadi.org/docs/#map) ) to evaluate e.g. constraints of a single NLP in parallel.
+Finally, note that we have an unrelated [parallelization mechanism](https://web.casadi.org/docs/#map) to evaluate e.g. constraints of a single NLP in parallel.
