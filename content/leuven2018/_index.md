@@ -11,6 +11,7 @@ Download the [flyer](leuven2018.pdf) for a description of the course.
 ## Registration
 
 Register before November 1, 2018 on the [google form](https://goo.gl/forms/MsgP4QzpuGbBTt633).
+Organizer: Joris Gillis, Yacoda BVBA, Glabbeeksestraat 37, 3300 Vissenaken, Belgium. BE0642979742
 
 ## Park inn discount rates
 
