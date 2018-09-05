@@ -14,4 +14,4 @@ Register before November 1, 2018 on the [google form](https://goo.gl/forms/MsgP4
 
 ## Park inn discount rates
 
-To be added very soon.
+Fill in the [Park Inn form](parkinn.pdf) for a discount rate.
