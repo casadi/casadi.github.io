@@ -8,7 +8,7 @@ This an overview of past and future workshops/courses involving CasADi:
 
 ## Future events
 
- * Mini-course on optimal control with CasADi, Leuven, 19-21 November 2018, [registration](http://leuven2018.casadi.org)
+ * Mini-course on optimal control with CasADi, Leuven, 19-21 November 2018, [announcement](http://leuven2018.casadi.org)
 
 ## Past events
 

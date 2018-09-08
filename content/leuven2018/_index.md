@@ -14,7 +14,8 @@ type: singles
 Academic/industrial researchers or tool-developers that seek practical ways to tackle large/complex continuous optimization problems, and optimal control problems in particular.
 
 ### CasADi?
-Originating from KU Leuven’s “Optimization in Engineering Center” under guidance of prof. Moritz Diehl, [CasADi](http://casadi.org) [1] is an open-source software framework for algorithmic differentiation, nonlinear optimization and optimal control.
+Originating from KU Leuven’s “Optimization in Engineering Center” under guidance of prof. Moritz Diehl, [CasADi](http://casadi.org) [1] is an open-source software framework for nonlinear optimization and algorithmic differentiation. It facilitates rapid - yet efficient - implementation of different methods for numerical optimal control, both in an offline context and for nonlinear model predictive control.
+
 
 ### Format
 Seminars (40%) paired with computer exercises (60%). The seminars provide a bird’s-eye view on optimal control, serving as teaser for further study or as recap for the experienced. The computer exercises aim to deepen understanding of the theory, and leave the participants well-equipped to solve a broad range of problems using CasADi by themselves.
