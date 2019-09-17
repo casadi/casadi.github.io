@@ -22,16 +22,16 @@ static void mdlInitializeSizes(SimStruct *S)
     if (!ssSetNumInputPorts(S, n_in)) return;
     for (i=0;i<n_in;++i) {
       const int_T* sp = f_sparsity_in(i);
-      /* Dense vector inputs assumed here */
-      ssSetInputPortWidth(S, i, sp[0]);
+      /* Dense inputs assumed here */
       ssSetInputPortDirectFeedThrough(S, i, 1);
+      ssSetInputPortMatrixDimensions(S, i, sp[0], sp[1]);
     }
 
     if (!ssSetNumOutputPorts(S, n_out)) return;
     for (i=0;i<n_out;++i) {
       const int_T* sp = f_sparsity_out(i);
-      /* Dense vector outputs assumed here */
-      ssSetOutputPortWidth(S, i, sp[0]);
+      /* Dense outputs assumed here */
+      ssSetOutputPortMatrixDimensions(S, i, sp[0], sp[1]);
     }
 
     ssSetNumSampleTimes(S, 1);
