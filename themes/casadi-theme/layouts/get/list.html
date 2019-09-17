@@ -17,7 +17,7 @@
 
       {{ range $index, $release := sort $releases ".created_at" "desc"}}
 
-        {{ if in $release.tag_name "-" }}
+        {{ if in $release.tag_name "-" || in $release.tag_name "ge" }}
 
         {{ else }}
 
