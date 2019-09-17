@@ -16,7 +16,7 @@
 
       {{ $v1 := where $releases .Site.Pages "Params.a" "v1" }}
 
-      {{ $isLatest := 1 }} 
+      {{ $isLatest := true }} 
       {{ range $release := sort $releases ".created_at" "desc"}}
 
         {{ if in $release.tag_name "-" }}
@@ -124,7 +124,7 @@
                 </div>
               {{ end }}
             {{ end }}
-            {{ $isLatest := 0}}
+            {{ $isLatest := false}}
           {{ end }}
         {{ end }}
       {{ end }}
