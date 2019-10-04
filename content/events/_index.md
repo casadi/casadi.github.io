@@ -10,6 +10,8 @@ This an overview of past and future workshops/courses involving CasADi:
 
  * Hands-on CasADi course on optimal control, Hasselt, Belgium, 18-20 November 2019, [announcement](http://hasselt2019.casadi.org)
 
+Keep informed about future events via our <a href="https://forms.gle/9v1HKPYZDHcBYMXNA">newsletter</a>.
+
 
 ## Past events
  * Mini-course on optimal control with CasADi, Leuven, 19-21 November 2018, [announcement](http://leuven2018.casadi.org)
