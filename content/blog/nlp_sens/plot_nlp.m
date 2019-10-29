@@ -12,7 +12,7 @@ function plot_nlp(ab,xy)
     ts = linspace(0,2*pi,100);
     fill(b/2*cos(ts)-0.5,b/2*sin(ts),'r','FaceAlpha',0.2);
     
-    fill([b*cos(ts)-0.5 10*cos(2*pi-ts)-0.5],[b*sin(ts) 10*sin(2*pi-ts)],'r','FaceAlpha',0.2);
+    fill([b*cos(ts-pi)-0.5 10*cos(pi-ts)-0.5],[b*sin(ts-pi) 10*sin(pi-ts)],'r','FaceAlpha',0.2);
     fill([-1.5 0 0 -1.5],[-1.5 -1.5 2 2],'r','FaceAlpha',0.2)
     xlabel('x');
     ylabel('y');

@@ -7,7 +7,7 @@ image: nlp_1d.png
 ---
 
 In this post, we explore the parametric sensitivities of a nonlinear program (NLP).
-We will use 'Opti stack' syntax for modeling, differentiability of NLP solvers works all the same without Opti.
+While we use 'Opti stack' syntax for modeling, differentiability of NLP solvers works all the same without Opti.
 
 # Parametric nonlinear programming
 
@@ -16,7 +16,7 @@ $$
 \begin{align}
   \displaystyle \underset{x,y}
   {\text{minimize}}\quad &\displaystyle (1-x)^2+0.2(y-x^2)^2 \newline
-    \text{subject to} \, \quad & \frac{p^2}{4} \leq (x+0.5)^2+y^2 \leq p^ \newline
+    \text{subject to} \, \quad & \frac{p^2}{4} \leq (x+0.5)^2+y^2 \leq p^2 \newline
       & x\geq 0
 \end{align}
 $$
@@ -39,12 +39,12 @@ M(p):=
 \begin{align}
   \displaystyle \underset{x,y}
   {\text{argmin}}\quad &\displaystyle (1-x)^2+0.2(y-x^2)^2 \newline
-    \text{subject to} \, \quad & \frac{p^2}{4} \leq (x+0.5)^2+y^2 \leq p^ \newline
+    \text{subject to} \, \quad & \frac{p^2}{4} \leq (x+0.5)^2+y^2 \leq p^2 \newline
       & x\geq 0
 \end{align}
 $$
 
-For a range of different `p` values, we consider $z(M(p))$:
+For a range of different $p$ values, we consider $z(M(p))$:
 
 {{% figure src="nlp_sampled_1d.png" title="Parametric solution curve for sampled in p" %}}
 
@@ -69,7 +69,7 @@ opti.subject_to(x>=0);
 opti.subject_to((p/2)^2 <= (x+0.5)^2+y^2 <= p^2);
 ```
 
-We use `to_function` to represent the parametric solution function $M as a regular CasADi Function.
+We use `to_function` to represent the parametric solution function $M$ as a regular CasADi Function.
 This Function has an Ipopt solver embedded.
 
 ```matlab
@@ -100,7 +100,6 @@ SQPMethod+QRQP is more fragile, but delivers more accuracy in dual variables whe
 
 Let's create a CasADi Function `Z` that computes the projected solution given `p` and an initial guess for decision variables.
 ```matlab
-% Use SQPmethod + QRQP for accurate multipliers
 opts = struct;
 opts.qpsol = 'qrqp';
 opti.solver('sqpmethod',opts);
@@ -111,7 +110,6 @@ Z = opti.to_function('Z',{p,xy},{z(xy)});
 Calling that Function `Z` symbolically allows us to perform algorithmic differentiation on the resultant expression:
 
 ```matlab
-
 zp = Z(p,xy);
 j = jacobian(zp,p);
 h = hessian(zp,p);
@@ -119,10 +117,9 @@ h = hessian(zp,p);
 Z_taylor = Function('Z_taylor',{p,xy},{zp,j,h});
 ```
 
-
-Let's plot some second-order approximation of t
+Evaluate `Z_taylor` numerically to be able to plot some nice second-order approximations onto the previous plot:
 ```matlab
-for p0 =  [1.25,1.4,1.9]
+for p0 =  [1.25,1.4,2]
     [F,J,H] = Z_taylor(p0,M(p0));
     plot(p_lin,full(F),'x');
     plot(t,full(F+J*(t-p0)+1/2*H*(t-p0).^2));
