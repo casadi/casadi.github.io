@@ -27,7 +27,7 @@ The figure below visualizes this problem and its solution pair for three differe
 
 {{% figure src="nlp_1d.png" title="Parametric NLP visualized for different p" %}}
 
-We'd like to investigate how the NLP solution varies with $p$. To simplify notation, let's consider a projection of the solution pair to a scalar:
+We'd like to investigate how the NLP solution varies with $p$. To simplify visualization, let's consider a projection of the solution pair to a scalar:
 
 $$
 z: (x,y) \mapsto y-x
