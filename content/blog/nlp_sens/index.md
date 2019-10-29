@@ -11,7 +11,7 @@ While we use 'Opti stack' syntax for modeling, differentiability of NLP solvers 
 
 # Parametric nonlinear programming
 
-Let's start by defining an NLP that depends on a parameter `p` that should not be optimized for:
+Let's start by defining an NLP that depends on a parameter $p \in \mathbb{R}$ that should not be optimized for:
 $$
 \begin{align}
   \displaystyle \underset{x,y}
@@ -21,7 +21,7 @@ $$
 \end{align}
 $$
 
-For each $p \in \mathbb{R}$, we have a slighty different optimization problem, with a corresponding solution pair $(x^\star(p),y^\star(p))$.
+For each choice of $p$, we have a different optimization problem, with a corresponding solution pair $(x^\star(p),y^\star(p))$.
 
 The figure below visualizes this problem and its solution pair for three different values of $p$:
 
@@ -81,7 +81,7 @@ opti.solver('ipopt',opts);
 M = opti.to_function('M',{p},{xy});
 ```
 
-With `M`, we can easily recreate the figure above:
+With `M` in place, we can easily recreate the figure above by solving 100 Ipopt problems:
 
 ```matlab
 z = @(xy) xy(2,:)-xy(1,:);
@@ -131,9 +131,10 @@ end
 # Conclusion
 
 We showed how to obtain first and second order sensitivities of the solution of a parametric NLP with respect to the parameter.
-The example used a single scalar parameter, but can easily be extended to multiple parameters. Only the plotting gets a bit tricky.
+The example used a single scalar parameter, but can easily be extended to multiple parameters.
+The rules of algorithmic differentiation apply: CasADi will just use one adjoint sweep to compute the full gradient for multiple parameters.
 
-See [our paper](https://www.sciencedirect.com/science/article/pii/S2405896318327137) for more details on the method used for sensitivity analysis internally.
+See [our paper](https://www.sciencedirect.com/science/article/pii/S2405896318327137) for mathematical details on sensitivity analysis.
 
-Download code: [code_1d.m](code_1d.m) [plot_nlp.m](plot_nlp.m)
+Download code: [code_1d.m](code_1d.m), [plot_nlp.m](plot_nlp.m)
 
