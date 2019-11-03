@@ -39,7 +39,7 @@ Participants are required to bring their own laptops (Linux/Windows/Mac); no sof
 
 ### Registration
 
-Register before November 1, 2019, on the [google form](https://forms.gle/Xos6Nyrn3d469MkHA) – the event is limited to 50 participants.
+Register before November 11, 2019, on the [google form](https://forms.gle/Xos6Nyrn3d469MkHA) – the event is limited to 50 participants.
 
 Organizer: Joris Gillis, [joris@yacoda.com](mailto:joris@yacoda.com), +32496432937, Yacoda BVBA, Glabbeeksestraat 37, 3300 Vissenaken, Belgium. BE0642979742
 
