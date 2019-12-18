@@ -4,22 +4,19 @@
 {{ partial "nav-top" . }}
 
 <div id="main" class="docs container-fluid">
-  <div class="row flex-nowrap">
-    <div class="sidebar">
-      <div class="sticky-top sticky-offset">
-        <nav class="nav-side">
-          {{ partial "docs-sidebar" . }}
-        </nav>
+  <div class="row">
+    <div class="col content p-4">
+      <div class="section" id="welcome-to-casadi-s-documentation">
+        {{ .Content }}
       </div>
     </div>
-    <div class="col content p-4">
-        <!-- <h1>{{ .Title }}</h1> -->
-
-        <!-- {{ partial "reading-time" .Page }} -->
-
-        {{ .Content }}
-
-    </div>
+  </div>
+  <div class="row flex-nowrap">
+    {{ $html := "./content.html" }}
+    {{ $absfile := path.Join .Page.File.Dir $html }}
+    {{ if fileExists $absfile }}
+    {{ $absfile | readFile | safeHTML }}
+    {{ end }}
   </div>
 </div>
 

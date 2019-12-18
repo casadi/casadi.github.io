@@ -1,19 +1,36 @@
-{{ .Scratch.Set "Title" "SINGLE DOCS" }}
+{{ .Scratch.Set "Title" ( printf "%s - Docs %s" .Site.Title .Title ) }}
 
 {{ partial "header" . }}
 {{ partial "nav-top" . }}
 
-<div id="main" class="docs container">
+<div id="main" class="docs container-fluid">
   <div class="row flex-nowrap">
-    {{ partial "nav-side" . }}
-    <div class="content d-flex">
-      <div class="col p-4">
-        <h1>[SINGLE] {{ .Title }}</h1>
-        {{ partial "reading-time" .Page }}
-        <!-- <span class="summary">{{ .Summary }}</span> -->
-        <!-- <hr> -->
-        <!-- {{ .Content }} -->
+    <div class="sidebar">
+      <div class="sticky-top sticky-offset">
+        <nav class="nav-side">
+          {{ partial "docs-version-dropdown.html" . }}
+
+          <p class="caption"><span class="caption-text">See also:</span></p>
+          <ul>
+          {{ range sort (.Params.links) "weight" "desc" }}
+            <li><a href="{{ .href }}">{{ .title }}</a></li>
+          {{ end }}
+          </ul>
+
+          {{ $sidebar := "./sidebar.html" }}
+          {{ $abs_sidebar := path.Join .Page.File.Dir $sidebar }}
+          {{ if fileExists $abs_sidebar }}
+          {{ $abs_sidebar | readFile | safeHTML }}
+          {{ end }}
+        </nav>
       </div>
+    </div>
+    <div class="col content p-4">
+      {{ $content := "./content.html" }}
+      {{ $abs_content := path.Join .Page.File.Dir $content }}
+      {{ if fileExists $abs_content }}
+      {{ $abs_content | readFile | safeHTML }}
+      {{ end }}
     </div>
   </div>
 </div>
