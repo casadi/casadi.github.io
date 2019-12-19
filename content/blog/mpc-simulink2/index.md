@@ -48,7 +48,7 @@ Next, we save the Function to the disk. It should be noted that the steps up to 
 f.save('f.casadi');
 ```
 
-## C API in Simulink
+## C API
 
 Classic CasADi codegen gives you an API with C functions for querying dimensions of inputs and outputs and evaluating. Those C functions are prefixed with the CasADi Function name:
 
