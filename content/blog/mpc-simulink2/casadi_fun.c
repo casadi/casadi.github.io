@@ -5,21 +5,28 @@
 
 #include "simstruc.h"
 
-static int id;
+static int id = -1;
+static int ret = -1;
 
 static casadi_int n_in, n_out;
 static casadi_int sz_arg, sz_res, sz_iw, sz_w;
 
 static int mem;
 
+
+void cleanup() {
+  if (ret==0) {
+    casadi_c_pop();
+    ret = -1;
+  }
+}
+
 static void mdlInitializeSizes(SimStruct *S)
 {
-    int ret;
     int_T i;
     const casadi_int* sp;
     const char *file_name;
     const char *function_name;
-
     ssSetNumSFcnParams(S, 2);
     if (ssGetNumSFcnParams(S) != ssGetSFcnParamsCount(S)) {
         return; /* Parameter mismatch will be reported by Simulink */
@@ -45,13 +52,32 @@ static void mdlInitializeSizes(SimStruct *S)
       mexErrMsgIdAndTxt( "MATLAB:s_function:invalidParameter",
                          "function name must be a string.");
     }
-    
+
+    // Simulink does not provide a cleanup-hook when parameters are changed
+    cleanup();
+
+    // Load file
+    mexPrintf("Loading file '%s'...", file_name);
     ret = casadi_c_push_file(file_name);
-
-    id = casadi_c_id(function_name);
-
     mxFree(file_name);
+
+    if (ret) {
+      mexErrMsgIdAndTxt( "MATLAB:s_function:Load",
+                         "Failed to load file.");
+    }
+    mexPrintf("success\n");
+
+    // Load function
+    mexPrintf("Locating function '%s'...", function_name);
+    id = casadi_c_id(function_name);
     mxFree(function_name);
+    if (id<0) {
+      casadi_c_pop();
+      mexErrMsgIdAndTxt( "MATLAB:s_function:Load",
+                         "Failed to locate function in loaded file.");
+    }
+    mexPrintf("success\n");
+
 
     /* Read in CasADi function dimensions */
     n_in = casadi_c_n_in_id(id);
@@ -66,6 +92,7 @@ static void mdlInitializeSizes(SimStruct *S)
       ssSetInputPortDirectFeedThrough(S, i, 1);
       casadi_int nnz = sp[2+sp[1]];
       if (nnz!=sp[0]*sp[1]) {
+        casadi_c_pop();
         mexErrMsgIdAndTxt( "MATLAB:s_function:sparsity",
                          "This example only supports dense inputs.");
       }
@@ -78,6 +105,7 @@ static void mdlInitializeSizes(SimStruct *S)
       casadi_int nnz = sp[2+sp[1]];
       /* Dense outputs assumed here */
       if (nnz!=sp[0]*sp[1]) {
+        casadi_c_pop();
         mexErrMsgIdAndTxt( "MATLAB:s_function:sparsity",
                          "This example only supports dense outputs. Use 'densify'.");
       }
@@ -95,19 +123,12 @@ static void mdlInitializeSizes(SimStruct *S)
     /* specify the sim state compliance to be same as a built-in block */
     ssSetSimStateCompliance(S, USE_DEFAULT_SIM_STATE);
 
+    // Make sure mdlTerminate is called on error
     ssSetOptions(S,
                  SS_OPTION_WORKS_WITH_CODE_REUSE |
                  SS_OPTION_EXCEPTION_FREE_CODE |
                  SS_OPTION_USE_TLC_WITH_ACCELERATOR);
-
-  // Allocate memory (thread-safe)
-  casadi_c_incref_id(id);
-
-
-  // Checkout thread-local memory (not thread-safe)
-  mem = casadi_c_checkout_id(id);
 }
-
 
 /* Function: mdlInitializeSampleTimes =========================================
  * Abstract:
@@ -151,14 +172,21 @@ static void mdlOutputs(SimStruct *S, int_T tid)
     }
 }
 
+static void mdlStart(SimStruct *S)
+{
+    // Allocate memory (thread-safe)
+    casadi_c_incref_id(id);
+    // Checkout thread-local memory (not thread-safe)
+    mem = casadi_c_checkout_id(id);
+}
+
 static void mdlTerminate(SimStruct *S) {
+  /* Free memory (thread-safe) */
+  casadi_c_decref_id(id);
   // Release thread-local (not thread-safe)
   casadi_c_release_id(id, mem);
 
-  /* Free memory (thread-safe) */
-  casadi_c_decref_id(id);
-
-  casadi_c_pop();
+  cleanup();
 }
 
 

@@ -98,4 +98,4 @@ mex('-v',['-I' inc_path],['-L' lib_path],'-lcasadi', 'casadi_fun.c')
 
 # Conclusion
 
-With the above ingredients, one can embed arbitrary CasADi Functions into Simulink with minimal overhead. A fully functional example is available: [do_demo.m](do_demo.m), [casadi_fun.c](casadi_fun.c), [mpc_demo.slx](mpc_demo.slx)
+With the above ingredients, one can embed arbitrary CasADi Functions into Simulink with minimal overhead. A fully functional example is available: [do_demo.m](do_demo.m) (run this file first), [casadi_fun.c](casadi_fun.c), [mpc_demo.slx](mpc_demo.slx)
