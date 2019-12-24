@@ -1,23 +1,5 @@
 {{ .Scratch.Set "Title" ( printf "%s - Docs" .Site.Title ) }}
 
-{{ partial "header" . }}
-{{ partial "nav-top" . }}
-
-<div id="main" class="docs container-fluid">
-  <div class="row">
-    <div class="col content p-4">
-      <div class="section" id="welcome-to-casadi-s-documentation">
-        {{ .Content }}
-      </div>
-    </div>
-  </div>
-  <div class="row flex-nowrap">
-    {{ $html := "./content.html" }}
-    {{ $absfile := path.Join .Page.File.Dir $html }}
-    {{ if fileExists $absfile }}
-    {{ $absfile | readFile | safeHTML }}
-    {{ end }}
-  </div>
-</div>
-
-{{ partial "footer" . }}
+{{ $versions := (where (where $.Site.Pages.ByTitle.Reverse "Section" "docs") ".Params.layout" "single") }}
+{{ $latest := index $versions 0 }}
+{{ $latest.Render }}

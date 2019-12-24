@@ -5,46 +5,43 @@
 {{ partial "landing" . }}
 
 <div id="main" class="container landing">
-  {{ range $index, $element :=  .Data.Pages.ByWeight }}
-    {{ if eq .Section "home" }}
+  {{ range $index, $element := (where .Site.Pages.ByWeight "Section" "home" ) }}
+    {{ .Title }}
+    {{ if ne $index 0 }} <hr class="sep"> {{ end }}
 
-      {{ if ne $index 0 }} <hr class="sep"> {{ end }}
+    {{ if (isset .Params "mode") and (eq .Params.mode "manual") }}
+      {{ .Content | markdownify }}
+    {{ else }}
+      <div class="row">
+        {{ if (isset .Params "colclass") }}
+        <div class="col {{ .Params.colclass }}">
+        {{ else }}
+        <div class="col text-center">
+        {{ end }}
+          {{ if (isset .Params "concise")}}
+            <p>
+              <div class="collapse-switch">
+                <div class="collapse" id="{{ . | urlize }}">
+                  {{ .Content }}
 
-      {{ if (isset .Params "mode") and (eq .Params.mode "manual") }}
-        {{ .Content | markdownify }}
-      {{ else }}
-        <div class="row">
-          {{ if (isset .Params "colclass") }}
-          <div class="col {{ .Params.colclass }}">
-          {{ else }}
-          <div class="col text-center">
-          {{ end }}
-            {{ if (isset .Params "concise")}}
-              <p>
-                <div class="collapse-switch">
-                  <div class="collapse" id="{{ . | urlize }}">
-                    {{ .Content }}
-
-                    <!-- <a data-toggle="collapse" href="#{{ . | urlize }}" role="button" aria-expanded="false" aria-controls="{{ . | urlize }}">
-                      Show less ...
-                    </a> -->
-                  </div>
-                  <div class="bait">
-                    {{ .Summary }}
-
-                    <a data-toggle="collapse" href="#{{ . | urlize }}" role="button" aria-expanded="false" aria-controls="{{ . | urlize }}">
-                      Show more ...
-                    </a>
-                  </div>
+                  <!-- <a data-toggle="collapse" href="#{{ . | urlize }}" role="button" aria-expanded="false" aria-controls="{{ . | urlize }}">
+                    Show less ...
+                  </a> -->
                 </div>
-              </p>
-            {{ else }}
-              {{ .Content | markdownify }}
-            {{ end }}
-          </div>
-        </div>
-      {{ end }}
+                <div class="bait">
+                  {{ .Summary }}
 
+                  <a data-toggle="collapse" href="#{{ . | urlize }}" role="button" aria-expanded="false" aria-controls="{{ . | urlize }}">
+                    Show more ...
+                  </a>
+                </div>
+              </div>
+            </p>
+          {{ else }}
+            {{ .Content | markdownify }}
+          {{ end }}
+        </div>
+      </div>
     {{ end }}
   {{ end }}
 </div>
