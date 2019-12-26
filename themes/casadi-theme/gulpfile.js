@@ -11,7 +11,7 @@ var config = {
 
 // Compile SCSS files to CSS, minified and readable
 gulp.task('scss', function () {
-  gulp.src(config.scssPath + '/**/*.scss')
+  return gulp.src(config.scssPath + '/**/*.scss')
     .pipe(sass({
       includePaths: [
         config.scssPath
@@ -28,13 +28,13 @@ gulp.task('scss', function () {
       minifyCSS: true
     }))
     .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest(config.staticDir + '/_css'))
+    .pipe(gulp.dest(config.staticDir + '/_css'));
 });
 
 // Watch asset folder for changes
-gulp.task('watch', ['scss'], function () {
-  gulp.watch(config.scssPath + '/**/*', ['scss'])
+gulp.task('watch', function () {
+  return gulp.watch(config.scssPath + '/**/*', gulp.series('scss'));
 });
 
 // Set watch as default task
-gulp.task('default', ['watch'])
+gulp.task('default', gulp.series('watch'));

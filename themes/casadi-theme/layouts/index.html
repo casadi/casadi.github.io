@@ -5,12 +5,12 @@
 {{ partial "landing" . }}
 
 <div id="main" class="container landing">
-  {{ range $index, $element := (where .Site.Pages.ByWeight "Section" "home" ) }}
-    {{ .Title }}
+  {{ $home := (where .Site.Pages "Section" "home") }}
+  {{ range $index, $element := $home }}
     {{ if ne $index 0 }} <hr class="sep"> {{ end }}
 
     {{ if (isset .Params "mode") and (eq .Params.mode "manual") }}
-      {{ .Content | markdownify }}
+      {{ .Content | safeHTML }}
     {{ else }}
       <div class="row">
         {{ if (isset .Params "colclass") }}
@@ -18,34 +18,11 @@
         {{ else }}
         <div class="col text-center">
         {{ end }}
-          {{ if (isset .Params "concise")}}
-            <p>
-              <div class="collapse-switch">
-                <div class="collapse" id="{{ . | urlize }}">
-                  {{ .Content }}
-
-                  <!-- <a data-toggle="collapse" href="#{{ . | urlize }}" role="button" aria-expanded="false" aria-controls="{{ . | urlize }}">
-                    Show less ...
-                  </a> -->
-                </div>
-                <div class="bait">
-                  {{ .Summary }}
-
-                  <a data-toggle="collapse" href="#{{ . | urlize }}" role="button" aria-expanded="false" aria-controls="{{ . | urlize }}">
-                    Show more ...
-                  </a>
-                </div>
-              </div>
-            </p>
-          {{ else }}
-            {{ .Content | markdownify }}
-          {{ end }}
+        {{ .Content | safeHTML }}
         </div>
       </div>
     {{ end }}
   {{ end }}
 </div>
-
-<!-- <a href="https://github.com/you"><img style="position: absolute; bottom: 0; right: 0; border: 0; z-index: 1000" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a> -->
 
 {{ partial "footer" . }}

@@ -8,4 +8,4 @@ weight: 8
 
 ## Keep informed
 
-Subscribe to our <a href="https://forms.gle/9v1HKPYZDHcBYMXNA">newsletter</a> or follow us on the social media links below.
+Subscribe to our [newsletter](https://forms.gle/9v1HKPYZDHcBYMXNA) or follow us on the social media links below.

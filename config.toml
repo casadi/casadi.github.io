@@ -3,12 +3,6 @@ languageCode = "en-us"
 title = "CasADi"
 theme = "casadi-theme"
 
-googleAnalytics = ""
-
-pygmentsCodefences = true
-pygmentsUseClasses = true
-pygmentsCodefencesGuessSyntax = true
-
 publishDir = "public"
 
 [taxonomies]
@@ -18,18 +12,43 @@ publishDir = "public"
 
 [params]
   author = "Joris Gillis, Armin Steinhauser"
-  copyright = "Copyright 2020."
   logo = "_img/logo_2017_horizontal.png"
   motto = ""
 
-[blackfriday]
-  smartypants = false
-  extensions = ["noIntraEmphasis"]
-  # extensions = ["hardLineBreak"]
-  # extensionsmask = ["autoHeaderIds"]
+[markup]
+  defaultMarkdownHandler = "goldmark"
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      definitionList = true
+      footnote = true
+      linkify = true
+      strikethrough = true
+      table = true
+      taskList = true
+      typographer = true
+    [markup.goldmark.parser]
+      attribute = true
+      autoHeadingID = false
+    [markup.goldmark.renderer]
+      hardWraps = false
+      unsafe = true
+      xHTML = false
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    style = "monokai"
+    tabWidth = 4
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 2
 
 [menu]
-
   [[menu.main]]
     url = "/"
     name = "Home"
@@ -43,40 +62,34 @@ publishDir = "public"
     weight = 2
 
   [[menu.main]]
+    url = "/blog/"
+    name = "Blog"
+    identifier = "blog"
+    weight = 3
+
+  [[menu.main]]
     url = "/docs/"
     name = "Docs"
     identifier = "docs"
     weight = 3
 
   [[menu.main]]
-    url = "/support/"
-    name = "Support"
-    identifier = "support"
-    weight = 4
-
-  [[menu.main]]
-    url = "/source/"
-    name = "Source"
-    identifier = "source"
-    weight = 5
-
-  [[menu.main]]
-    url = "/publications/"
-    name = "Publications"
-    identifier = "publications"
-    weight = 6
-
-  [[menu.main]]
     url = "/events/"
     name = "Workshops"
     identifier = "events"
-    weight = 7
+    weight = 8
 
   [[menu.main]]
-    url = "/blog/"
-    name = "Blog"
-    identifier = "blog"
-    weight = 8
+    url = "/support/"
+    name = "Support"
+    identifier = "support"
+    weight = 9
+
+  [[menu.main]]
+    url = "/about/"
+    name = "About"
+    identifier = "about"
+    weight = 10
 
   # Footer
   # [[menu.footer]]

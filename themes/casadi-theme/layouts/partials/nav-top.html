@@ -10,7 +10,7 @@
       <ul class="navbar-nav">
         {{ $currentPage := . }}
         {{ range .Site.Menus.main }}
-          {{ if (hasPrefix $currentPage.Permalink (absURL .URL)) }}
+          {{ if or (eq $currentPage.Section .Identifier) (and ($currentPage.IsHome) (eq .Identifier "home")) }}
           <li class="nav-item active">
           {{ else }}
           <li class="nav-item">
