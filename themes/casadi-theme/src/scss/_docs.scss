@@ -53,3 +53,33 @@ a.headerlink {
   //   padding: 0;
   // }
 }
+
+#main.docs .sidebar {
+
+  .casadi-versions {
+    border-top: #fff 1px solid;
+    &+.nav-side {
+      padding-top: 0;
+    }
+    & .dropdown-menu {
+      width: 100%;
+      margin: 0;
+    }
+    & .dropdown-item {
+      font-size: .875rem;
+      font-weight: 300;
+      padding: 0 1em;
+      width: 100%;
+    }
+  }
+  .casadi-versions, button {
+    width: 100%;
+    font-weight: 400;
+
+    .btn:focus,
+    .btn.active:focus {
+        outline: none!important;
+        box-shadow: none;
+    }
+  }
+}

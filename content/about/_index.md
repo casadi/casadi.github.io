@@ -12,7 +12,7 @@ Interfaces to other Python, Octave, Matlab are provided through [SWIG](http://ww
 The source code is hosted on [Github](https://github.com/casadi/casadi).
 While the core depends only on the C++ Standard Library, [source builds](https://github.com/casadi/casadi/wiki/SourceBuild) can be daunting because of the interfaces to numerical codes. We highly recommend following the [Try/install page](../get) instead.
 
-## Referencing
+## Publication
 If you use CasADi in your academic work, please cite the following article:
 ```
 @Article{Andersson2019,

@@ -7,12 +7,10 @@
   <div class="row flex-nowrap">
     <div class="sidebar">
       <div class="sticky-top sticky-offset">
-        <nav class="nav-side">
-          <p class="caption">Pick a version:</p>
-          <div class="text-center mb-4">
-            {{ partial "docs-version-dropdown.html" . }}
-          </div>
 
+        {{ partial "docs-version-dropdown.html" . }}
+
+        <nav class="nav-side">
           <p class="caption"><span class="caption-text">See also:</span></p>
           <ul>
           {{ range sort (.Params.links) "weight" "desc" }}

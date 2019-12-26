@@ -307,7 +307,7 @@ nav.nav-top a.navbar-brand {
       .sidebar nav.nav-side ul {
         list-style: none;
         padding: 0;
-        margin-left: 1em;
+        margin: 0 0 0 1em;
         font-size: 0.9em; }
       .sidebar nav.nav-side a, .sidebar nav.nav-side a:focus, .sidebar nav.nav-side a:active,
       .sidebar nav.nav-side pre, .sidebar nav.nav-side code, .sidebar nav.nav-side em {
@@ -578,6 +578,29 @@ a.headerlink {
 
 #main.docs .content table {
   font-size: .8em; }
+
+#main.docs .sidebar .casadi-versions {
+  border-top: #fff 1px solid; }
+  #main.docs .sidebar .casadi-versions + .nav-side {
+    padding-top: 0; }
+  #main.docs .sidebar .casadi-versions .dropdown-menu {
+    width: 100%;
+    margin: 0; }
+  #main.docs .sidebar .casadi-versions .dropdown-item {
+    font-size: .875rem;
+    font-weight: 300;
+    padding: 0 1em;
+    width: 100%; }
+
+#main.docs .sidebar .casadi-versions, #main.docs .sidebar button {
+  width: 100%;
+  font-weight: 400; }
+  #main.docs .sidebar .casadi-versions .btn:focus,
+  #main.docs .sidebar .casadi-versions .btn.active:focus, #main.docs .sidebar button .btn:focus,
+  #main.docs .sidebar button .btn.active:focus {
+    outline: none !important;
+    -webkit-box-shadow: none;
+            box-shadow: none; }
 
 /* BLOCKQUOTE */
 blockquote {
