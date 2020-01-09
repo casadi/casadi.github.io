@@ -11,7 +11,7 @@ type: singles
 (download this description as [flyer](master2020.pdf))
 
 ### Target audience
-Academic/industrial CasADi users that want to get a deeper understanding of CasADi, in order to speed up existing applications or create advanced implementations. Unlike the [fall course](ocp2020), there is no focus on mathematics.
+Academic/industrial CasADi users that want to get a deeper understanding of CasADi, in order to speed up existing applications or create advanced implementations. Unlike the [fall course](../ocp2020), there is no focus on mathematics.
 
 ### CasADi?
 Originating from KU Leuven’s “Optimization in Engineering Center” under guidance of prof. Moritz Diehl, [CasADi](http://casadi.org) [1] is an open-source software framework for nonlinear optimization and algorithmic differentiation. It facilitates rapid - yet efficient - implementation of different methods for numerical optimal control, both in an offline context and for nonlinear model predictive control.
