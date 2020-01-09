@@ -8,12 +8,15 @@ This an overview of past and future workshops/courses involving CasADi:
 
 ## Future events
 
- * Hands-on CasADi course on optimal control, Hasselt, Belgium, 18-20 November 2019, [announcement](http://hasselt2019.casadi.org)
+ * CasADi master class, Leuven, Belgium, 16-18 March 2020, [announcement](http://master2020.casadi.org)
+ * Hands-on CasADi course on optimal control, Leuven, Belgium, 16-18 November 2020, [announcement](http://ocp2020.casadi.org)
 
 Keep informed about future events via our <a href="https://forms.gle/9v1HKPYZDHcBYMXNA">newsletter</a>.
 
 
 ## Past events
+ * Hands-on CasADi course on optimal control, Hasselt, Belgium, 18-20 November 2019, [announcement](http://hasselt2019.casadi.org)
+
  * Mini-course on optimal control with CasADi, Leuven, 19-21 November 2018, [announcement](http://leuven2018.casadi.org)
  * Winter School on Numerical Optimal Control with Differential Algebraic Equations, Freiburg, 15 - 26 February 2016 [course material](http://www.syscop.de/teaching/ws2015/nocdae)
  * Spring School on Theory and Numerics for Nonlinear Model Predictive Control, Freiburg, 26 March - 2 April 2015 [course material](https://www.syscop.de/event/tempo-spring-school/)
