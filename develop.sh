@@ -1,35 +1,32 @@
 #!/bin/bash
 
-# clear
-
-echo "+ Starting build script."
+echo "=========== DEVELOP STARTED ============"
 
 # checking dependencies
-echo "Checking dependencies: "
 declare -a dep=("hugo" "npm")
 for i in "${dep[@]}"
 do
   {
-    command -v $i > /dev/null 2>&1 &&
-    echo "  $i - yep"
+    command -v $i > /dev/null 2>&1 && true
   } || {
-    echo >&2 "  $i - nope, aborting."
+    echo >&2 "  .. couldn't find $i, aborting."
     exit 1
   }
 done
+printf "node @ $(node --version)\n"
+printf "npm @ $(npm --version)\n"
+printf "gulp @\n$(gulp -v)\n"
 
-# goto theme folder and run npm/gulp
-cd themes/casadi-theme/
+echo "-------------- GULP THEME --------------"
 
-# get/update npm packages
-npm update
 
-# run gulp to build static files and collect them for deploying
-gulp watch &
+cd themes/casadi-theme/ # goto theme folder and run npm/gulp
+npm update # get/update npm packages
+gulp watch & # run watch-task of gulp to constantly sync
 
-# run hugo server
+echo "------------- SERVE PAGES --------------"
+
 cd ../..
+hugo server -b http://localhost:1313 --bind=0.0.0.0 # serve pages
 
-hugo server
-
-echo "+ Build script finished."
+echo "=========== DEVELOP FINISHED ==========="
