@@ -1,21 +1,14 @@
-# Locally host website
+# casadi.github.io
 
-Requires: `hugo` > v0.32.2
+Requires `docker`
 
-1. [Get Hugo](https://gohugo.io/getting-started/installing/)
-2. Clone this repo
-3. Run `hugo server` in root directory of repo
-4. Open your browser and go to `http://localhost:1313` (or as indicated by `hugo server` terminal output)
+1. Clone this repo
+2. Run `docker run --rm --volume "$(pwd):/src" -it -p 1313:1313 jgillis/hugo /bin/bash`
+3. Choose a mode:
+  - **Development**
 
-# Build website
+    Run `develop.sh` for a development mode, i.e. continuously synchronizing and rebuilding the pages. Goto `http://localhost:1313` in your browser to see the pages being served.
 
-Requires: `npm`
+  - **Deploy**
 
-- Run the `develop.sh` script
-
-or  the following steps manually
-  1. Go to `themes/casadi-theme`
-  2. Run: `npm install gulp gulp-sass gulp-autoprefixer gulp-rename gulp-bower gulp-minifier --save`
-  3. Run: `gulp bower` (simple script to fetch dependencies with bower)
-  4. Run: `gulp icons` (copy font-awesome fonts into static directory)
-  5. Compile with `gulp scss` or compile and live reload with `gulp`
+    Run `build.sh` to build the website with the generated files placed in `public/`.
