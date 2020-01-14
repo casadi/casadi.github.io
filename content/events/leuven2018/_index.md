@@ -1,7 +1,6 @@
 ---
 title: "Mini-course on optimal control with CasADi"
 description: "no description"
-type: singles
 ---
 
 ## Mini-course on optimal control with CasADi
@@ -48,6 +47,3 @@ Organizer: Joris Gillis, [joris@yacoda.com](mailto:joris@yacoda.com), +324964329
 
 
 [1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, M. Diehl, “CasADi – A software framework for nonlinear optimization and optimal control,” Mathematical Programming Computation, 2018.
-
-
-

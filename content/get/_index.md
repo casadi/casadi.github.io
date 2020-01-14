@@ -1,6 +1,5 @@
 ---
 title: Get CasADi
-type: singles
 ---
 
 # Install CasADi? Pick a version from below...

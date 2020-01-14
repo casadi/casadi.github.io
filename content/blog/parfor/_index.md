@@ -8,6 +8,7 @@ image: parfor1.png
 
 In this post we'll explore how to use Matlab's parfor with a CasADi nonlinear program.
 
+<!--more-->
 
 The nonlinear program (NLP) of interest is the following:
 $$
@@ -17,6 +18,7 @@ $$
     \text{subject to} \, \quad & x^2+y^2 \leq r
 \end{align}
 $$
+
 Note that $r$ is a free parameter.
 Our goal is to collect each solution of the NLP as we loop over $r$.
 We could imagine performing such task when tracing a pareto front of a multi-objective optimization, for which the parameter would be the a weight to combine those objectives.
@@ -52,8 +54,8 @@ parfor i=1:N
                'ubx',  inf,...           % upper bound on x
                'lbg', -inf,...           % lower bound on g
                'ubg',  r);               % upper bound on g
-   
-  
+
+
   % Store the solution
   fsol(i) = full(res.f);
 end
@@ -98,8 +100,8 @@ parfor i=1:N
                'ubx',  inf,...           % upper bound on x
                'lbg', -inf,...           % lower bound on g
                'ubg',  rs(i));           % upper bound on g
-   
-  
+
+
   % Store the solution
   fsol(i) = full(res.f);
 end
@@ -111,7 +113,7 @@ plot(rs,fsol,'o')
 Download code: [casadi_parfor2.m](casadi_parfor2.m)
 
 Note 1: for this example the parameter entered trivially through 'ubg'.
-In general, you may need to work with a parametric NLP: 
+In general, you may need to work with a parametric NLP:
 
 ```octave
 p = casadi.SX.sym('p');
@@ -161,8 +163,8 @@ def optimize(r):
                ubx=inf,           # upper bound on x
                lbg=-inf,          # lower bound on g
                ubg=r)         # upper bound on g
-   
-  
+
+
   return float(res["f"])
 
 b = Pool(2)

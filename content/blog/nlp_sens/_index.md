@@ -9,6 +9,8 @@ image: nlp_1d.png
 In this post, we explore the parametric sensitivities of a nonlinear program (NLP).
 While we use 'Opti stack' syntax for modeling, differentiability of NLP solvers works all the same without Opti.
 
+<!--more-->
+
 # Parametric nonlinear programming
 
 Let's start by defining an NLP that depends on a parameter $p \in \mathbb{R}$ that should not be optimized for:
@@ -94,7 +96,7 @@ plot(pvec,z(S));
 
 # Parametric sensitivities
 
-Ipopt is a very robust nonlinear optimizer: it finds solutions from bad initial guesses. 
+Ipopt is a very robust nonlinear optimizer: it finds solutions from bad initial guesses.
 SQPMethod+QRQP is more fragile, but delivers more accuracy in dual variables when it converges. We make a combination of the two to obtain accurate sensitivity information.
 
 
@@ -137,4 +139,3 @@ The rules of algorithmic differentiation apply: CasADi will just use one adjoint
 See [our paper](https://www.sciencedirect.com/science/article/pii/S2405896318327137) for mathematical details on sensitivity analysis.
 
 Download code: [code_1d.m](code_1d.m), [plot_nlp.m](plot_nlp.m)
-

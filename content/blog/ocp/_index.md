@@ -118,7 +118,7 @@ $$
 
 # Coding
 
-Let's get coding, using CasADi's [Opti]({{< ref "blog/opti/index.md" >}}) functionality.
+Let's get coding, using CasADi's [Opti](../opti/) functionality.
 
 Set up the problem
 ```matlab

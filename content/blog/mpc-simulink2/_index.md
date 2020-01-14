@@ -9,6 +9,7 @@ image: mpc_diagram.png
 
 In this post, we have a new take on nonlinear MPC in Simulink using CasADi.
 
+<!--more-->
 
 # Interpreter mode
 

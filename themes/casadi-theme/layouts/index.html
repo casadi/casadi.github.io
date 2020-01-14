@@ -7,7 +7,7 @@
 <div id="main" class="container landing">
   {{ $home := (where .Site.Pages "Section" "home") }}
   {{ range $index, $element := $home }}
-    {{ if ne $index 0 }} <hr class="sep"> {{ end }}
+    {{ if ne $index 0 }}<hr class="sep">{{ end }}
 
     {{ if (isset .Params "mode") and (eq .Params.mode "manual") }}
       {{ .Content | safeHTML }}

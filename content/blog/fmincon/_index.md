@@ -1,7 +1,7 @@
 ---
 title: Breaking free of CasADi's solvers
 author: jg
-tags: NLP fmincon 
+tags: NLP fmincon
 date: 2018-07-13
 ---
 
@@ -9,6 +9,8 @@ Once you've modeled your optimization problem in CasADi,
 you don't have to stick to the solvers we interface.
 
 In this post, we briefly demonstrate how we can make CasADi and Matlab's `fmincon` cooperate.
+
+<!--more-->
 
 # Trivial unconstrained problem
 
@@ -54,7 +56,7 @@ fminunc(@(x) fg_full(x), 0.1, options)
 Note the `returntypes` helper such that you don't need to explicitly convert from a CasADi numeric matrix to a Matlab matrix.
 
 For this scalar example, you will hardly see any speed-up.
-For a decision space of size $n$, the default finite differences approach will cost you `n` times the cost of the objective function evaluation: 
+For a decision space of size $n$, the default finite differences approach will cost you `n` times the cost of the objective function evaluation:
 `O(n cost(f))`
 The algorithmic differentation approach will just cost you `O(cost(f))`. There's a screencast available to learn [more about this aspect](https://www.youtube.com/watch?v=mYOkLkS5yqc).
 
@@ -62,7 +64,7 @@ Download code: [demo1.m](demo1.m)
 
 # Optimal control problem
 
-Next, we will consider the [the race car example]({{< ref "blog/ocp/index.md" >}}#coding).
+Next, we will consider the [the race car example](../ocp/#coding).
 
 We assume we have modeled the problem as NLP:
 $$
@@ -116,19 +118,19 @@ function [c,ceq,gradc,gradceq]=nonlin_casadi(g_function,x,p)
   lbg = full(lbg);
   ubg = full(ubg);
   J = sparse(J);
-  
+
   % Classify into eq/ineq
   eq = lbg==ubg;
   ineq = lbg~=ubg;
-  
+
   % Classify into free/fixed
   lbg_fixed = lbg~=-inf;
   ubg_fixed = ubg~=inf;
-  
+
   % Constraint vector
   c = [lbg(ineq&lbg_fixed)-g(ineq&lbg_fixed);g(ineq&ubg_fixed)-ubg(ineq&ubg_fixed)];
   ceq = g(eq)-lbg(eq);
-  
+
   % Constraint Jacobian tranposed
   gradc = [-J(ineq&lbg_fixed,:);J(ineq&ubg_fixed,:)]';
   gradceq = J(eq,:)';
@@ -146,4 +148,3 @@ In conclusion, choosing to model a problem in CasADi does not lock you in with o
 We've seen how you can embed calls to CasADi function evaluations into third-party codes.
 
 Download code: [demo.m](demo.m), [nonlin_casadi.m](nonlin_casadi.m), [obj_casadi.m](obj_casadi.m),
-

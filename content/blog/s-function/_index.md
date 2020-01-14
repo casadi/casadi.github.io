@@ -1,7 +1,7 @@
 ---
 title: CasADi codegen and S-Functions
 author: jg
-tags: NLP simulink 
+tags: NLP simulink
 date: 2018-07-13
 image: simulink.png
 ---
@@ -9,6 +9,8 @@ image: simulink.png
 
 While the [user guide](http://docs.casadi.org) does explain code-generation in full detail,
 it is handy to have a demonstration in a real environment like Matlab's S-functions.
+
+<!--more-->
 
 # The problem
 
@@ -114,16 +116,16 @@ For `arg` and `res` we have to perform arithmatic and casting from `void**` to t
     p += sz_arg;
     real_T** res = (real_T**) p;
 ```
-    
+
 Next, make `arg` point to the input data:
-```matlab 
+```matlab
     for (i=0; i<n_in;++i) {
       arg[i] = *ssGetInputPortRealSignalPtrs(S,i);
     }
 ```
 
 Make `res` point to the output data:
-```matlab 
+```matlab
     for (i=0; i<n_out;++i) {
       res[i] = ssGetOutputPortRealSignal(S,i);
     }
@@ -149,4 +151,3 @@ mex s_function.c f.c
 Download code: [do_demo.m](do_demo.m), [s_function.c](s_function.c), [demo.slx](demo.slx).
 
 In summary, we've shown how to use CasADi codegen in general, and in the setting of Simulink S-Functions specifically.
-

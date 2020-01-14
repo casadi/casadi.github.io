@@ -27,6 +27,6 @@ gulp watch & # run watch-task of gulp to constantly sync
 echo "------------- SERVE PAGES --------------"
 
 cd ../..
-hugo server -b http://localhost:1313 --bind=0.0.0.0 # serve pages
+hugo server --disableFastRender -b http://localhost:1313 --bind=0.0.0.0 # serve pages
 
 echo "=========== DEVELOP FINISHED ==========="

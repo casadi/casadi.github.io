@@ -8,6 +8,8 @@ image: gpflow1d_min.png
 In this post we'll explore how to couple [Tensorflow](https://www.tensorflow.org) and CasADi.
 Thanks to Jonas Koch (student @ Applied Mathematics WWU Muenster) for delivering inspiration and example code.
 
+<!--more-->
+
 # One-dimensional regression with GPflow
 
 An important part of machine learning is about regression: fitting a (non-)linear model through sparse data.
@@ -180,5 +182,3 @@ In conclusion, we've shown how to embed calls to foreign code in CasADi graphs.
 Though the optimal control example is contrived, it conveys how such coupling can be made efficient.
 
 To learn more ways to endow sensitivity-information on a Callback, see the [callback.py example](https://github.com/casadi/casadi/blob/develop/docs/examples/python/callback.py).
-
-

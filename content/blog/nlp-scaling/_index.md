@@ -10,7 +10,7 @@ During my master's thesis at KULeuven on optimal control, one of the take-aways 
 
 <!--more-->
 
-Master student Thomas Durbin stumbled upon a dramatic example of bad scaling in practice. He works on [optimal control]({{% ref "blog/ocp/index.md" %}}) for rockets. As a first toy problem, he studied a 1D rocket the must attain a certain height at $t=100\,\mathrm{s}$, with minimal expenditure of fuel. Following good engineering practice, he used SI base units to write the code.
+Master student Thomas Durbin stumbled upon a dramatic example of bad scaling in practice. He works on [optimal control](../ocp/) for rockets. As a first toy problem, he studied a 1D rocket the must attain a certain height at $t=100\,\mathrm{s}$, with minimal expenditure of fuel. Following good engineering practice, he used SI base units to write the code.
 
 The gist of the code is as follows (complete code [here](rocket.m)):
 ```matlab
@@ -75,4 +75,3 @@ opti.minimize((m(1)-m(N+1))/m_nom); % minimize fuel consumption
 ```
 
 (complete code [here](rocket_scaled2.m))
-
