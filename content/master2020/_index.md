@@ -6,7 +6,9 @@ type: singles
 
 ## CasADi master class
 
-**16-18 March 2020 – Leuven, Belgium**
+** ~~16-18 March 2020~~ – Leuven, Belgium**
+
+Due to COVID-19, **rescheduled to 27-29 July 2020**.
 
 (download this description as [flyer](master2020.pdf))
 
@@ -38,7 +40,7 @@ Participants are required to bring their own laptops (Linux/Windows/Mac). A work
 
 ### Registration
 
-Register before March 1, 2020, on the [google form](https://forms.gle/CWy6Zz3YU8UD7mXi9) – the event is limited to 30 participants.
+Register before ~~March 1~~ July 10, 2020, on the [google form](https://forms.gle/CWy6Zz3YU8UD7mXi9) – the event is limited to 30 participants.
 
 Organizer: Joris Gillis, [joris@yacoda.com](mailto:joris@yacoda.com), +32496432937, Yacoda BVBA, Glabbeeksestraat 37, 3300 Vissenaken, Belgium. BE0642979742
 

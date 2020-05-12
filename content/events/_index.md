@@ -8,7 +8,7 @@ This an overview of past and future workshops/courses involving CasADi:
 
 ## Future events
 
- * CasADi master class, Leuven, Belgium, 16-18 March 2020, [announcement](http://master2020.casadi.org)
+ * CasADi master class, Leuven, Belgium, ~~16-18 March~~ 27-29 July 2020, [announcement](http://master2020.casadi.org) --
  * Hands-on CasADi course on optimal control, Leuven, Belgium, 16-18 November 2020, [announcement](http://ocp2020.casadi.org)
 
 Keep informed about future events via our <a href="https://forms.gle/9v1HKPYZDHcBYMXNA">newsletter</a>.
