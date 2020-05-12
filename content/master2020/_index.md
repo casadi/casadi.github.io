@@ -6,7 +6,7 @@ type: singles
 
 ## CasADi master class
 
-** ~~16-18 March 2020~~ – Leuven, Belgium**
+**~~16-18 March 2020~~ – Leuven, Belgium**
 
 Due to COVID-19, **rescheduled to 27-29 July 2020**.
 
