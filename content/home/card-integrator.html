@@ -46,12 +46,15 @@ F = integrator('F','cvodes',ode,struct('tf',4));
 % Start from x=[0;1]
 res = F('x0',[0;1]);
 
-print(res.xf)
+disp(res.xf)
+
+% Sensitivity wrt initial state
+res = F('x0',x);
+S = Function('S',{x},{jacobian(res.xf,x)});
+
+disp(S([0;1]))
 {{< /highlight >}}
 {{< highlight python >}}
-from casadi import *
-
-
 x = MX.sym('x',2); # Two states
 
 # Expression for ODE right-hand side
@@ -69,6 +72,11 @@ F = integrator('F','cvodes',ode,{'tf':4})
 res = F(x0=[0,1])
 
 print(res["xf"])
+
+# Sensitivity wrt initial state
+res = F(x0=x)
+S = Function('S',[x],[jacobian(res["xf"],x)])
+print(S([0,1]))
 {{< /highlight >}}
 {{< highlight cpp >}}
 #include <casadi/casadi.hpp>
@@ -89,6 +97,11 @@ Function F = integrator("F","cvodes",ode,{{"tf",4}});
 
 // Start from x=[0;1]
 DMDict res = F(DMDict{{"x0",std::vector<double>{0,1}}});
+
+// Sensitivity wrt initial state
+MXDict ress = F(MXDict{{"x0",x}});
+Function S("S",{x},{jacobian(ress["xf"],x)});
+std::cout << S(DM(std::vector<double>{0,1}));
 {{< /highlight >}}
 </div>
 </div>
