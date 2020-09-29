@@ -8,6 +8,8 @@ type: singles
 
 **16-18 November 2020 – Leuven, Belgium**
 
+_As of September 29, the class is expected to go through physically in a COVID safe manner (distancing+masks), but we mighgt be forced to switch to a remote event. We will postpone sending invoices until we are reasonable sure_
+
 (download this description as [flyer](ocp2020.pdf))
 
 ### Target audience
