@@ -6,7 +6,7 @@ type: singles
 
 ## Hands-on CasADi course on optimal control
 
-**16-18 November 2020 – Leuven, Belgium**
+**16-18 November 2020 – ~~Leuven, Belgium~~ online live event**
 
 (download this description as [flyer](ocp2020.pdf))
 
@@ -32,14 +32,17 @@ Basic mathematical skills (analysis, calculus, linear algebra) are required. Exp
 Joris Gillis obtained his PhD in electrical engineering at KU Leuven in 2015. Currently a post-doc at MECO, KU Leuven and part-time freelancer, he pursues large-scale applications in optimal control and is highly active as a main developer of CasADi since 2010.
 
 ### Practicalities
-The course will take place at the Park Inn hotel, Martelarenlaan 36, 3010 Leuven, Belgium, starting each day at 9:00 and ending on 18:00.
-The registration fee amounts to 750 EUR excl. VAT (450 EUR for PhD students). This includes lunches and a social dinner on November 17. Lodging is not included.
+The course will take place in an online setting, starting each day at 9:00 CET and ending at 18:00 CET.
+The registration fee amounts to 550 EUR excl. VAT (350 EUR for PhD students).
+
+~~The course will take place at the Park Inn hotel, Martelarenlaan 36, 3010 Leuven, Belgium, starting each day at 9:00 and ending on 18:00.
+The registration fee amounts to 750 EUR excl. VAT (450 EUR for PhD students). This includes lunches and a social dinner on November 17. Lodging is not included.~~
 
 Participants are required to bring their own laptops (Linux/Windows/Mac); no software is needed besides a working installation of MATLAB/Octave or Python.
 
 ### Registration
 
-Register before November 1, 2020, on the [google form](https://forms.gle/5fBHDpLaPUNehPFU8) – the event is limited to 50 participants.
+Register before November ~~1~~ 14, 2020, on the [google form](https://forms.gle/5fBHDpLaPUNehPFU8) – the event is limited to ~~50~~ 30 participants.
 
 Organizer: Joris Gillis, [joris@yacoda.com](mailto:joris@yacoda.com), +32496432937, Yacoda BVBA, Glabbeeksestraat 37, 3300 Vissenaken, Belgium. BE0642979742
 
