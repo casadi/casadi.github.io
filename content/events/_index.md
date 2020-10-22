@@ -7,14 +7,14 @@ type: singles
 This an overview of past and future workshops/courses involving CasADi:
 
 ## Future events
-
  * Hands-on CasADi course on optimal control, ~~Leuven, Belgium~~ online live event, 16-18 November 2020, [announcement](http://ocp2020.casadi.org)
 
 Keep informed about future events and the launch of a self-paced learning platform via our <a href="https://forms.gle/9v1HKPYZDHcBYMXNA">newsletter</a>.
 
 
 ## Past events
- * CasADi master class, Leuven, Belgium, ~~16-18 March~~ 27-29 July 2020, [announcement](http://master2020.casadi.org) -- rescheduled due to COVID-19.
+ * CasADi master class, Leuven, Belgium, ~~16-18 March~~ 27-29 July 2020, [announcement](http://master2020.casadi.org) -- rescheduled and made remote due to COVID-19.
+
  * Hands-on CasADi course on optimal control, Hasselt, Belgium, 18-20 November 2019, [announcement](http://hasselt2019.casadi.org)
 
  * Mini-course on optimal control with CasADi, Leuven, 19-21 November 2018, [announcement](http://leuven2018.casadi.org)
