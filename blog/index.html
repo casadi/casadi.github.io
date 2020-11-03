@@ -1,0 +1,376 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+      <title>CasADi - Blog</title>
+    
+
+    
+    <link href="https://web.casadi.org/_css/font-awesome.min.css" rel="stylesheet">
+
+    
+    <link href="https://web.casadi.org/_css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <link href="https://web.casadi.org/_css/pygments-default.css" rel="stylesheet">
+
+    
+    <link href="https://web.casadi.org/_css/casadi-theme.min.css" rel="stylesheet">
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+          displayMath: [ ['$$','$$'], ['\\[','\\]'] ],
+          processEnvironments: false
+        }
+      });
+    </script>
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+
+  <body>
+
+
+
+<nav class="navbar fixed-top navbar-expand-lg nav-top">
+  <div class="container">
+    <a class="navbar-brand" href="https://web.casadi.org/"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        
+        
+          
+          <li class="nav-item active">
+          
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/get/">Try/Install</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/docs/">Docs</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/support/">Support</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/source/">Source</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/publications/">Publications</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/events/">Workshops</a>
+          </li>
+        
+          
+          <li class="nav-item active">
+          
+            <a class="nav-link" href="/blog/">Blog</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div id="main" class="container">
+  <div class="row">
+    <div class="col">
+      <p>CasADi labs is an open-ended platform for <em>sharing knowledge</em> about CasADi. Any user can guest-post by making pull-requests to the <a href="https://github.com/casadi/casadi.github.io/tree/main/content/blog">blogging repo</a>.</p>
+      <div class="card-columns">
+        
+          
+          <div class="card border-success">
+          
+            
+              <img class="card-img-top" src="https://web.casadi.org/blog/mpc-simulink2/mpc_diagram.png" alt="Card image cap" />
+            
+            <div class="card-body">
+              <h5 class="card-title">CasADi-driven MPC in Simulink (part 2)</h5>
+              In this post, we have a new take on nonlinear MPC in Simulink using CasADi.
+Interpreter mode In an earlier post on MPC in Simulink, we used an interpreted 'Matlab system' block in the simulink diagram. This is flexible, but slow because of interpreter overhead.
+code-generation mode In an earlier post on S-Functions, we showed how Casadi-generated C code can be embedded efficiently in a Simulink diagram using S-functions. The result is fast, but has restrictions: only SqpMethod combined with Qrqp or Osqp solver can be code-generated (as of 3.
+              <a href="https://web.casadi.org/blog/mpc-simulink2/" class="btn btn-primary">Read more</a>
+            </div>
+            <div class="card-footer text-muted text-right">
+              <span class="reading-time-short text-muted"><i class="fa fa-clock-o"></i>3 mins</span>
+
+              posted December 19, 2019
+            </div>
+          </div>
+        
+          
+          <div class="card">
+          
+            
+              <img class="card-img-top" src="https://web.casadi.org/blog/nlp_sens/nlp_1d.png" alt="Card image cap" />
+            
+            <div class="card-body">
+              <h5 class="card-title">Sensitivities of parametric NLP</h5>
+              In this post, we explore the parametric sensitivities of a nonlinear program (NLP). While we use 'Opti stack' syntax for modeling, differentiability of NLP solvers works all the same without Opti.
+Parametric nonlinear programming Let's start by defining an NLP that depends on a parameter $p \in \mathbb{R}$ that should not be optimized for: $$ \begin{align} \displaystyle \underset{x,y} {\text{minimize}}\quad &amp;\displaystyle (1-x)^2+0.2(y-x^2)^2 \newline \text{subject to} \, \quad &amp; \frac{p^2}{4} \leq (x+0.
+              <a href="https://web.casadi.org/blog/nlp_sens/" class="btn btn-primary">Read more</a>
+            </div>
+            <div class="card-footer text-muted text-right">
+              <span class="reading-time-short text-muted"><i class="fa fa-clock-o"></i>3 mins</span>
+
+              posted October 28, 2019
+            </div>
+          </div>
+        
+          
+          <div class="card">
+          
+            
+              <img class="card-img-top" src="https://web.casadi.org/blog/parfor/parfor1.png" alt="Card image cap" />
+            
+            <div class="card-body">
+              <h5 class="card-title">Parfor</h5>
+              In this post we'll explore how to use Matlab's parfor with a CasADi nonlinear program.
+The nonlinear program (NLP) of interest is the following: $$ \begin{align} \displaystyle \underset{x,y} {\text{minimize}}\quad &amp;\displaystyle (1-x)^2+(y-x^2)^2 \newline \text{subject to} \, \quad &amp; x^2+y^2 \leq r \end{align} $$ Note that $r$ is a free parameter. Our goal is to collect each solution of the NLP as we loop over $r$. We could imagine performing such task when tracing a pareto front of a multi-objective optimization, for which the parameter would be the a weight to combine those objectives.
+              <a href="https://web.casadi.org/blog/parfor/" class="btn btn-primary">Read more</a>
+            </div>
+            <div class="card-footer text-muted text-right">
+              <span class="reading-time-short text-muted"><i class="fa fa-clock-o"></i>3 mins</span>
+
+              posted August 23, 2018
+            </div>
+          </div>
+        
+          
+          <div class="card">
+          
+            
+              <img class="card-img-top" src="https://web.casadi.org/blog/tensorflow/gpflow1d_min.png" alt="Card image cap" />
+            
+            <div class="card-body">
+              <h5 class="card-title">Tensorflow and CasADi</h5>
+              In this post we'll explore how to couple Tensorflow and CasADi. Thanks to Jonas Koch (student @ Applied Mathematics WWU Muenster) for delivering inspiration and example code.
+One-dimensional regression with GPflow An important part of machine learning is about regression: fitting a (non-)linear model through sparse data. This is an unconstrained optimization problem for which dedicated algorithms and software are readily available.
+Let's create some datapoints to fit, a perturbed sine.
+              <a href="https://web.casadi.org/blog/tensorflow/" class="btn btn-primary">Read more</a>
+            </div>
+            <div class="card-footer text-muted text-right">
+              <span class="reading-time-short text-muted"><i class="fa fa-clock-o"></i>5 mins</span>
+
+              posted July 30, 2018
+            </div>
+          </div>
+        
+          
+          <div class="card">
+          
+            
+            <div class="card-body">
+              <h5 class="card-title">Breaking free of CasADi&#39;s solvers</h5>
+              Once you've modeled your optimization problem in CasADi, you don't have to stick to the solvers we interface.
+In this post, we briefly demonstrate how we can make CasADi and Matlab's fmincon cooperate.
+Trivial unconstrained problem Let's consider a very simple scalar unconstrained optimization:
+$$ \begin{align} \displaystyle \underset{x} {\text{minimize}}\quad &amp; \sin(x)^2 \end{align} $$
+You can solve this with fminunc:
+fminunc(@(x) sin(x)^2, 0.1) The first argument, an anonymous function, can contain any code, including CasADi code.
+              <a href="https://web.casadi.org/blog/fmincon/" class="btn btn-primary">Read more</a>
+            </div>
+            <div class="card-footer text-muted text-right">
+              <span class="reading-time-short text-muted"><i class="fa fa-clock-o"></i>3 mins</span>
+
+              posted July 13, 2018
+            </div>
+          </div>
+        
+          
+          <div class="card">
+          
+            
+              <img class="card-img-top" src="https://web.casadi.org/blog/s-function/simulink.png" alt="Card image cap" />
+            
+            <div class="card-body">
+              <h5 class="card-title">CasADi codegen and S-Functions</h5>
+              While the user guide does explain code-generation in full detail, it is handy to have a demonstration in a real environment like Matlab's S-functions.
+The problem We will design a Simulink block that implements a nonlinear mapping from ($\mathbf{R}^2$, $\mathbf{R}$) to ($\mathbf{R}$,$\mathbf{R}^2$):
+import casadi.* x = MX.sym(&#39;x&#39;,2); y = MX.sym(&#39;y&#39;); w = dot(x,y*x); z = sin(x)+y+w; f = Function(&#39;f&#39;,{x,y},{w,z}); Code-generating You may generate code from this with:
+f.generate(&#39;f.c&#39;) However, we'll use the more advanced syntax since we have advanced requirements.
+              <a href="https://web.casadi.org/blog/s-function/" class="btn btn-primary">Read more</a>
+            </div>
+            <div class="card-footer text-muted text-right">
+              <span class="reading-time-short text-muted"><i class="fa fa-clock-o"></i>3 mins</span>
+
+              posted July 13, 2018
+            </div>
+          </div>
+        
+          
+          <div class="card">
+          
+            
+              <img class="card-img-top" src="https://web.casadi.org/blog/nlp-scaling/conv.png" alt="Card image cap" />
+            
+            <div class="card-body">
+              <h5 class="card-title">On the importance of NLP scaling</h5>
+              <p>During my master's thesis at KULeuven on optimal control, one of the take-aways were that it's important to scale your variables. It helps convergence if the variables are in the order of 0.01 to 100.</p>
+
+<p></p>
+              <a href="https://web.casadi.org/blog/nlp-scaling/" class="btn btn-primary">Read more</a>
+            </div>
+            <div class="card-footer text-muted text-right">
+              <span class="reading-time-short text-muted"><i class="fa fa-clock-o"></i>2 mins</span>
+
+              posted September 15, 2017
+            </div>
+          </div>
+        
+          
+          <div class="card">
+          
+            
+              <img class="card-img-top" src="https://web.casadi.org/blog/ocp/hyperworks-industries-architecture-screen-capture-6-726x383.jpg" alt="Card image cap" />
+            
+            <div class="card-body">
+              <h5 class="card-title">Optimal control problems in a nutshell</h5>
+              <p>Optimization.
+There's a mathematical term that sounds familiar to the general public.
+Everyone can imagine engineers working hard to make your car run 1% more fuel-efficient,
+or to slightly increase profit margins for a chemical company.</p>
+
+<p></p>
+              <a href="https://web.casadi.org/blog/ocp/" class="btn btn-primary">Read more</a>
+            </div>
+            <div class="card-footer text-muted text-right">
+              <span class="reading-time-short text-muted"><i class="fa fa-clock-o"></i>5 mins</span>
+
+              posted September 15, 2017
+            </div>
+          </div>
+        
+          
+          <div class="card">
+          
+            
+              <img class="card-img-top" src="https://web.casadi.org/blog/opti/rosenbrock1.png" alt="Card image cap" />
+            
+            <div class="card-body">
+              <h5 class="card-title">Easy NLP modeling in CasADi with Opti</h5>
+              <p><a href="http://install33.casadi.org">Release 3.3.0</a> of CasADi introduced a compact syntax for NLP modeling, using a set of helper classes, collectively known as 'Opti stack'.</p>
+
+<p>In this post, we briefly demonstrates this functionality.</p>
+
+<p></p>
+              <a href="https://web.casadi.org/blog/opti/" class="btn btn-primary">Read more</a>
+            </div>
+            <div class="card-footer text-muted text-right">
+              <span class="reading-time-short text-muted"><i class="fa fa-clock-o"></i>3 mins</span>
+
+              posted September 14, 2017
+            </div>
+          </div>
+        
+          
+          <div class="card">
+          
+            
+              <img class="card-img-top" src="https://web.casadi.org/blog/mpc-simulink/simulink_block.png" alt="Card image cap" />
+            
+            <div class="card-body">
+              <h5 class="card-title">CasADi-driven MPC in Simulink (part 1)</h5>
+              <p>CasADi is not a monolithic tool. We can easily couple it to other software to have more fun.
+Today we'll be exploring a <em>simple</em> coupling with Simulink. We'll be showing off nonlinear MPC (NMPC).</p>
+
+<p></p>
+              <a href="https://web.casadi.org/blog/mpc-simulink/" class="btn btn-primary">Read more</a>
+            </div>
+            <div class="card-footer text-muted text-right">
+              <span class="reading-time-short text-muted"><i class="fa fa-clock-o"></i>4 mins</span>
+
+              posted March 8, 2017
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer>
+      <div class="container">
+        <div class="row justify-content-md-center">
+          <div class="col-md-auto text-center">
+            <ul id="social" class="list-inline">
+              
+                <li class="list-inline-item">
+                  <a href="https://github.com/casadi/casadi" title="github">
+                    <i class="fa fa-github"></i>
+                  </a>
+                </li>
+              
+                <li class="list-inline-item">
+                  <a href="https://twitter.com/casadi_software" title="twitter">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                </li>
+              
+                <li class="list-inline-item">
+                  <a href="https://www.youtube.com/channel/UC3VDpv5Pi3R-a2VkcJN1RLw" title="youtube">
+                    <i class="fa fa-youtube"></i>
+                  </a>
+                </li>
+              
+            </ul>
+            <p class="copyright">Copyright 2018.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    
+    <script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    
+    <script src="https://web.casadi.org/_js/bootstrap.min.js"></script>
+
+    
+    <script src="https://web.casadi.org/_js/scripts.js"></script>
+
+    
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+
+    
+  </body>
+
+</html>
+
