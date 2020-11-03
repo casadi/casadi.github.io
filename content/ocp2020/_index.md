@@ -42,7 +42,7 @@ Participants are required to bring their own laptops (Linux/Windows/Mac); no sof
 
 ### Registration
 
-Register before November ~~1~~ 14, 2020, on the [google form](https://forms.gle/5fBHDpLaPUNehPFU8) – the event is limited to ~~50~~ 30 participants.
+__Registrations have closed on November 3 after the limit of 30 participants was reached. Subscribe to the [newsletter](https://forms.gle/9v1HKPYZDHcBYMXNA) if you wish to be kept up to date of further courses.__
 
 Organizer: Joris Gillis, [joris@yacoda.com](mailto:joris@yacoda.com), +32496432937, Yacoda BVBA, Glabbeeksestraat 37, 3300 Vissenaken, Belgium. BE0642979742
 
