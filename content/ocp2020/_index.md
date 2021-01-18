@@ -6,6 +6,8 @@ type: singles
 
 ## Hands-on CasADi course on optimal control
 
+(This event is in the past. Check the [workshop page](../events) for future events)
+
 **16-18 November 2020 – ~~Leuven, Belgium~~ online live event**
 
 (download this description as [flyer](ocp2020.pdf))
