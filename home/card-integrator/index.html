@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+      <title>CasADi - Features</title>
+    
+
+    
+    <link href="https://web.casadi.org/_css/font-awesome.min.css" rel="stylesheet">
+
+    
+    <link href="https://web.casadi.org/_css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <link href="https://web.casadi.org/_css/pygments-default.css" rel="stylesheet">
+
+    
+    <link href="https://web.casadi.org/_css/casadi-theme.min.css" rel="stylesheet">
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+          displayMath: [ ['$$','$$'], ['\\[','\\]'] ],
+          processEnvironments: false
+        }
+      });
+    </script>
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+
+  <body>
+
+
+
+<nav class="navbar fixed-top navbar-expand-lg nav-top">
+  <div class="container">
+    <a class="navbar-brand" href="https://web.casadi.org/"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        
+        
+          
+          <li class="nav-item active">
+          
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/get/">Try/Install</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/docs/">Docs</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/support/">Support</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/source/">Source</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/publications/">Publications</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/events/">Workshops</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/blog/">Blog</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<h2 class="text-center">Dynamic systems</h2>
+
+<div class="row">
+<div class="col-md-6">
+<div class="multisnip text-left">
+<div class="highlight">
+<pre><code data-lang="example"></code></pre>
+
+<figure class=" default">
+  <a href="https://web.casadi.org/home/card-integrator/../integration.png" target="_blank">
+  
+    <img src="https://web.casadi.org/home/card-integrator/../integration.png"  />
+  </a>
+  
+</figure>
+
+
+$$
+\begin{align}
+\left\{
+  \begin{array}{ccll}
+    \dot{x}_1 &=& (1-x_2^2) \, x_1 - x_2, \quad &x_1(0)=0 \\
+    \dot{x}_2 &=& x_1, \quad &x_2(0)=1
+  \end{array}
+  \right.
+\end{align}
+$$
+</div>
+<div class="highlight"><pre class="chroma"><code class="language-octave" data-lang="octave"><span class="n">import</span> <span class="n">casadi</span><span class="o">.*</span><span class="err">
+</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="n">x</span> <span class="p">=</span> <span class="n">MX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span> <span class="c">% Two states</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c">% Expression for ODE right-hand side</span><span class="err">
+</span><span class="err"></span><span class="n">z</span> <span class="p">=</span> <span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>^<span class="mi">2</span><span class="p">;</span><span class="err">
+</span><span class="err"></span><span class="n">rhs</span> <span class="p">=</span> <span class="p">[</span><span class="n">z</span><span class="o">*</span><span class="n">x</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="n">x</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="n">x</span><span class="p">(</span><span class="mi">1</span><span class="p">)];</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="n">ode</span> <span class="p">=</span> <span class="nb">struct</span><span class="p">;</span>    <span class="c">% ODE declaration</span><span class="err">
+</span><span class="err"></span><span class="n">ode</span><span class="p">.</span><span class="n">x</span>   <span class="p">=</span> <span class="n">x</span><span class="p">;</span>     <span class="c">% states</span><span class="err">
+</span><span class="err"></span><span class="n">ode</span><span class="p">.</span><span class="n">ode</span> <span class="p">=</span> <span class="n">rhs</span><span class="p">;</span>   <span class="c">% right-hand side</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c">% Construct a Function that integrates over 4s</span><span class="err">
+</span><span class="err"></span><span class="n">F</span> <span class="p">=</span> <span class="n">integrator</span><span class="p">(</span><span class="s">&#39;F&#39;</span><span class="p">,</span><span class="s">&#39;cvodes&#39;</span><span class="p">,</span><span class="n">ode</span><span class="p">,</span><span class="nb">struct</span><span class="p">(</span><span class="s">&#39;tf&#39;</span><span class="p">,</span><span class="mi">4</span><span class="p">));</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c">% Start from x=[0;1]</span><span class="err">
+</span><span class="err"></span><span class="n">res</span> <span class="p">=</span> <span class="n">F</span><span class="p">(</span><span class="s">&#39;x0&#39;</span><span class="p">,[</span><span class="mi">0</span><span class="p">;</span><span class="mi">1</span><span class="p">]);</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">disp</span><span class="p">(</span><span class="n">res</span><span class="p">.</span><span class="n">xf</span><span class="p">)</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c">% Sensitivity wrt initial state</span><span class="err">
+</span><span class="err"></span><span class="n">res</span> <span class="p">=</span> <span class="n">F</span><span class="p">(</span><span class="s">&#39;x0&#39;</span><span class="p">,</span><span class="n">x</span><span class="p">);</span><span class="err">
+</span><span class="err"></span><span class="n">S</span> <span class="p">=</span> <span class="n">Function</span><span class="p">(</span><span class="s">&#39;S&#39;</span><span class="p">,{</span><span class="n">x</span><span class="p">},{</span><span class="n">jacobian</span><span class="p">(</span><span class="n">res</span><span class="p">.</span><span class="n">xf</span><span class="p">,</span><span class="n">x</span><span class="p">)});</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="nb">disp</span><span class="p">(</span><span class="n">S</span><span class="p">([</span><span class="mi">0</span><span class="p">;</span><span class="mi">1</span><span class="p">]))</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">x</span> <span class="o">=</span> <span class="n">MX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span> <span class="c1"># Two states</span>
+
+<span class="c1"># Expression for ODE right-hand side</span>
+<span class="n">z</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">rhs</span> <span class="o">=</span> <span class="n">vertcat</span><span class="p">(</span><span class="n">z</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">ode</span> <span class="o">=</span> <span class="p">{}</span>         <span class="c1"># ODE declaration</span>
+<span class="n">ode</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>   <span class="o">=</span> <span class="n">x</span>   <span class="c1"># states</span>
+<span class="n">ode</span><span class="p">[</span><span class="s1">&#39;ode&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rhs</span> <span class="c1"># right-hand side</span>
+
+<span class="c1"># Construct a Function that integrates over 4s</span>
+<span class="n">F</span> <span class="o">=</span> <span class="n">integrator</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">,</span><span class="s1">&#39;cvodes&#39;</span><span class="p">,</span><span class="n">ode</span><span class="p">,{</span><span class="s1">&#39;tf&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">})</span>
+
+<span class="c1"># Start from x=[0;1]</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="n">x0</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s2">&#34;xf&#34;</span><span class="p">])</span>
+
+<span class="c1"># Sensitivity wrt initial state</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="n">x0</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s1">&#39;S&#39;</span><span class="p">,[</span><span class="n">x</span><span class="p">],[</span><span class="n">jacobian</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s2">&#34;xf&#34;</span><span class="p">],</span><span class="n">x</span><span class="p">)])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">S</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]))</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;casadi/casadi.hpp&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">casadi</span><span class="p">;</span>
+
+<span class="n">MX</span> <span class="n">x</span> <span class="o">=</span> <span class="n">MX</span><span class="o">::</span><span class="n">sym</span><span class="p">(</span><span class="s">&#34;x&#34;</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span> <span class="c1">// Two states
+</span><span class="c1"></span>
+<span class="c1">// Expression for ODE right-hand side
+</span><span class="c1"></span><span class="n">MX</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="n">pow</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">MX</span> <span class="n">rhs</span> <span class="o">=</span> <span class="n">vertcat</span><span class="p">(</span><span class="n">z</span><span class="o">*</span><span class="n">x</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">-</span><span class="n">x</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="n">x</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
+
+<span class="n">MXDict</span> <span class="n">ode</span><span class="p">;</span>         <span class="c1">// ODE declaration
+</span><span class="c1"></span><span class="n">ode</span><span class="p">[</span><span class="s">&#34;x&#34;</span><span class="p">]</span>   <span class="o">=</span> <span class="n">x</span><span class="p">;</span>     <span class="c1">// states
+</span><span class="c1"></span><span class="n">ode</span><span class="p">[</span><span class="s">&#34;ode&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rhs</span><span class="p">;</span>   <span class="c1">// right-hand side
+</span><span class="c1"></span>
+<span class="c1">// Construct a Function that integrates over 4s
+</span><span class="c1"></span><span class="n">Function</span> <span class="n">F</span> <span class="o">=</span> <span class="n">integrator</span><span class="p">(</span><span class="s">&#34;F&#34;</span><span class="p">,</span><span class="s">&#34;cvodes&#34;</span><span class="p">,</span><span class="n">ode</span><span class="p">,{{</span><span class="s">&#34;tf&#34;</span><span class="p">,</span><span class="mi">4</span><span class="p">}});</span>
+
+<span class="c1">// Start from x=[0;1]
+</span><span class="c1"></span><span class="n">DMDict</span> <span class="n">res</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="n">DMDict</span><span class="p">{{</span><span class="s">&#34;x0&#34;</span><span class="p">,</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">}}});</span>
+
+<span class="c1">// Sensitivity wrt initial state
+</span><span class="c1"></span><span class="n">MXDict</span> <span class="n">ress</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="n">MXDict</span><span class="p">{{</span><span class="s">&#34;x0&#34;</span><span class="p">,</span><span class="n">x</span><span class="p">}});</span>
+<span class="n">Function</span> <span class="nf">S</span><span class="p">(</span><span class="s">&#34;S&#34;</span><span class="p">,{</span><span class="n">x</span><span class="p">},{</span><span class="n">jacobian</span><span class="p">(</span><span class="n">ress</span><span class="p">[</span><span class="s">&#34;xf&#34;</span><span class="p">],</span><span class="n">x</span><span class="p">)});</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">S</span><span class="p">(</span><span class="n">DM</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">}));</span>
+</code></pre></div>
+</div>
+</div>
+
+<div class="col-md-6  text-left">
+<p><a href="docs/#initial-value-problems-and-sensitivity-analysis">Initial value problems</a> in ordinary or differential-algebraic equations (ODE/DAE) can be calculated using explicit or implicit Runge-Kutta methods or interfaces to IDAS/CVODES from the SUNDIALS suite. Derivatives are calculated using <em>sensitivity equations</em>, up to arbitrary order.</p>
+
+<em>Problem class:</em>
+
+$$
+\begin{aligned}
+ \dot{x} &= f_{\text{ode}}(t,x,z,p), \qquad x(0) = x_0 \\
+      0  &= f_{\text{alg}}(t,x,z,p)
+\end{aligned}
+$$
+
+</div>
+</div> 
+
+    <footer>
+      <div class="container">
+        <div class="row justify-content-md-center">
+          <div class="col-md-auto text-center">
+            <ul id="social" class="list-inline">
+              
+                <li class="list-inline-item">
+                  <a href="https://github.com/casadi/casadi" title="github">
+                    <i class="fa fa-github"></i>
+                  </a>
+                </li>
+              
+                <li class="list-inline-item">
+                  <a href="https://twitter.com/casadi_software" title="twitter">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                </li>
+              
+                <li class="list-inline-item">
+                  <a href="https://www.youtube.com/channel/UC3VDpv5Pi3R-a2VkcJN1RLw" title="youtube">
+                    <i class="fa fa-youtube"></i>
+                  </a>
+                </li>
+              
+            </ul>
+            <p class="copyright">Copyright 2018.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    
+    <script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    
+    <script src="https://web.casadi.org/_js/bootstrap.min.js"></script>
+
+    
+    <script src="https://web.casadi.org/_js/scripts.js"></script>
+
+    
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+
+    
+  </body>
+
+</html>
+

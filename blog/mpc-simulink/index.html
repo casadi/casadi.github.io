@@ -1,0 +1,376 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+      <title>CasADi - Blog - CasADi-driven MPC in Simulink (part 1)</title>
+    
+
+    
+    <link href="https://web.casadi.org/_css/font-awesome.min.css" rel="stylesheet">
+
+    
+    <link href="https://web.casadi.org/_css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <link href="https://web.casadi.org/_css/pygments-default.css" rel="stylesheet">
+
+    
+    <link href="https://web.casadi.org/_css/casadi-theme.min.css" rel="stylesheet">
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+          displayMath: [ ['$$','$$'], ['\\[','\\]'] ],
+          processEnvironments: false
+        }
+      });
+    </script>
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+
+  <body>
+
+
+
+<nav class="navbar fixed-top navbar-expand-lg nav-top">
+  <div class="container">
+    <a class="navbar-brand" href="https://web.casadi.org/"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        
+        
+          
+          <li class="nav-item active">
+          
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/get/">Try/Install</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/docs/">Docs</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/support/">Support</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/source/">Source</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/publications/">Publications</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/events/">Workshops</a>
+          </li>
+        
+          
+          <li class="nav-item active">
+          
+            <a class="nav-link" href="/blog/">Blog</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div id="main" class="container">
+  <div class="row">
+    <div class="col">
+      <h1>CasADi-driven MPC in Simulink (part 1)</h1>
+      <span class="reading-time text-muted">Estimated reading time: 4 minutes</span>
+
+      <p>CasADi is not a monolithic tool. We can easily couple it to other software to have more fun.
+Today we'll be exploring a <em>simple</em> coupling with Simulink. We'll be showing off nonlinear MPC (NMPC).</p>
+
+<p></p>
+
+
+<figure class=" default">
+  <a href="https://web.casadi.org/blog/mpc-simulink/simulink_block.png" target="_blank">
+  
+    <img src="https://web.casadi.org/blog/mpc-simulink/simulink_block.png"  />
+  </a>
+  
+  <figcaption>
+    <h1>Simulink block diagram</h1>
+    
+  </figcaption>
+  
+</figure>
+
+
+
+<h1 id="the-details">The details</h1>
+
+<p>For plant model, we'll be using the familiar <a href="https://en.wikipedia.org/wiki/Van_der_Pol_oscillator">Van der Pol oscillator</a> ode:</p>
+
+<p>$$
+\frac{d\begin{bmatrix}x_1\ x_2\end{bmatrix}}{dt} = \begin{bmatrix}(1-x_2^2)\, x_1-x_2+u\ x_1\end{bmatrix}.
+$$</p>
+
+<p>In the above Simulink block diagram, the <code>rhs</code> MATLAB function block encodes this ode:</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">function y = rhs(x,u)
+  y = [(1-x(2)^2)*x(1) - x(2) + u; x(1)];
+end</code></pre></div>
+<p>The <code>casadi_block</code> computes the discrete control signal by solving an Optimal Control Problem (OCP).
+The act of closing the loop with the continuous plant makes our setup effectively an MPC controller.</p>
+
+<p>The OCP problem here simply drives the states to zero:</p>
+
+<p>$$
+\begin{align}
+  \underset{\begin{array}{c}x(\cdot), u(\cdot)\end{array}}
+  {\text{minimize}}\quad &amp; \int_{0}^{T}{ \left( x_1(t)^2 + x_2(t)^2 + u(t)^2 \right) \, dt} \newline
+  \text{subject to} \, \quad
+  &amp; \left\{\begin{array}{l}
+    \dot{x}_1(t) = (1-x_2(t)^2) \, x_1(t) - x_2(t) + u(t) \newline
+    \dot{x}_2(t) = x_1(t) \newline
+    -1.0 \le u(t) \le 1.0, \quad x_1(t) \ge -0.25
+  \end{array}\right.
+  \quad  t \in [0,T] \newline
+  &amp; x_1(0)=\bar{x}_1, \quad x_2(0)=\bar{x}_2
+\end{align}
+$$</p>
+
+<p>We will use the <a href="https://github.com/casadi/casadi/blob/3.1.0/docs/examples/matlab/direct_multiple_shooting.m">multiple shooting transcription from the CasADi examples</a> to cast the OCP to an NLP problem. In short, the multiple shooting code reads like:</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">w = {}; % decision variables
+g = {}; % cosntraints
+J = 0; % objective
+
+% Initial conditions
+X0 = MX.sym(&#39;X0&#39;, 2);
+
+% Formulate the NLP
+Xk = X0;
+for k=0:N-1
+    % New NLP variable for the control
+    Uk = MX.sym(&#39;U&#39;);
+    w = {w{:}, Uk};
+
+    % Integrate till the end of the interval
+    Fk = F(&#39;x0&#39;, Xk, &#39;p&#39;, Uk);
+    Xk_end = Fk.xf;
+    J=J+Fk.qf;
+
+    % New NLP variable for state at end of interval
+    Xk = MX.sym(&#39;X&#39;, 2);
+    w = {w{:}, Xk};
+
+    % Add equality constraint
+    g = {g{:}, Xk_end-Xk};
+end
+
+% Create an NLP solver
+prob = struct(&#39;f&#39;, J, &#39;x&#39;, vertcat(w{:}), &#39;g&#39;, vertcat(g{:}));
+solver = nlpsol(&#39;solver&#39;, &#39;ipopt&#39;, prob);</code></pre></div>
+<p>Recall from that example the solution plot:</p>
+
+
+<figure class=" default">
+  <a href="https://web.casadi.org/blog/mpc-simulink/reference.png" target="_blank">
+  
+    <img src="https://web.casadi.org/blog/mpc-simulink/reference.png"  />
+  </a>
+  
+  <figcaption>
+    <h1>Reference solution from multiple shooting example</h1>
+    
+  </figcaption>
+  
+</figure>
+
+
+
+<p>As we all know, CasADi makes an important distinction between <em>initialisation</em> and <em>evaluation</em> steps.
+We would not want to construct an NLP afresh at every sampling time!
+Rather, we'd like to construct the NLP once, and simply evaluate it repeatedly using slightly different numerical inputs.
+For this purpose, we chose a <code>MATLAB System</code> block in Simulink.</p>
+
+<p>In abbreviated form, the code in that block reads:</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">classdef casadi_block &lt; matlab.System
+    properties (Access = private)
+        casadi_solver
+        lbx
+        ubx
+    end
+    methods (Access = protected)
+        function setupImpl(obj,~,~)
+            obj.casadi_solver = nlpsol(&#39;solver&#39;, &#39;ipopt&#39;, prob, options);
+            obj.lbx = lbw;
+            obj.ubx = ubw;
+        end
+
+        function u = stepImpl(obj,x,t)
+            lbw = obj.lbx;
+            ubw = obj.ubx;
+            solver = obj.casadi_solver;
+            lbw(1:2) = x;
+            ubw(1:2) = x;
+            sol = solver(&#39;x0&#39;, w0, &#39;lbx&#39;, lbw, &#39;ubx&#39;, ubw,...
+                        &#39;lbg&#39;, obj.lbg, &#39;ubg&#39;, obj.ubg);
+
+            u = full(sol.x(3));
+        end
+
+    end
+end</code></pre></div>
+<p>As you can see, <code>setupImpl</code> takes care of constructing the NLP, and <code>stepImpl</code> solves the actual NLP while constraining $x_1(0)$ and $x_2(0)$ to the state <em>measurement</em> coming in from Simulink.</p>
+
+<p>In general, you may distinguish several approaches to bring CasADi computations into simulink:
+ 1. write CasADi-Matlab code, and use an <code>interpreted Matlab code</code> in Simulink
+ 2. write CasADi-Matlab code, and use CasADi's codegenerator to spit out a pure c function (or mex file). Then, interface that pure c function in simulink
+ 3. write a mex file from scratch using CasADi-C++ code</p>
+
+<p>We used option 1 here. It's the most simple way. Obviously this is not the most efficient way,
+but since all of CasADi's number-crunching happens in compiled libraries, <code>interpreted Matlab code</code> is not as bad as it sounds perhaps.
+Anyway, make sure that you indicate to Simulink that the code is <code>interpreted</code>:</p>
+
+
+<figure class=" default">
+  <a href="https://web.casadi.org/blog/mpc-simulink/interpreted.png" target="_blank">
+  
+    <img src="https://web.casadi.org/blog/mpc-simulink/interpreted.png"  />
+  </a>
+  
+  <figcaption>
+    <h1>Simulink block diagram</h1>
+    
+  </figcaption>
+  
+</figure>
+
+
+
+<p>Let's jump to results.</p>
+
+<h1 id="the-results">The results</h1>
+
+<p>MPC control signal:
+
+<figure class=" default">
+  <a href="https://web.casadi.org/blog/mpc-simulink/simulink_control.png" target="_blank">
+  
+    <img src="https://web.casadi.org/blog/mpc-simulink/simulink_control.png"  />
+  </a>
+  
+  <figcaption>
+    <h1>MPC control signal</h1>
+    
+  </figcaption>
+  
+</figure>
+
+</p>
+
+<p>State evolution:
+
+<figure class=" default">
+  <a href="https://web.casadi.org/blog/mpc-simulink/simulink_state.png" target="_blank">
+  
+    <img src="https://web.casadi.org/blog/mpc-simulink/simulink_state.png"  />
+  </a>
+  
+  <figcaption>
+    <h1>State evolution</h1>
+    
+  </figcaption>
+  
+</figure>
+
+</p>
+
+<p>Note how the control trajectory (up to t=10s) matches the reference solution further up in this post.
+The state trajectory matches too, but Simulink shows you more detail: you see the smooth time-evolution of the system in-between the sampling times.
+Pretty neat, huh?
+Just for fun, I dropped in some noised at around t=10s. The MPC controller manages to recover from this.</p>
+
+<p>This post showed a quick way to drop your CasADi code into Simulink.
+We're curious what you'll cook up based on this example. Enjoy!</p>
+
+<p>Downloads: <a href="casadi_block.m">casadi_block.m</a>, <a href="mpc_demo.slx">mpc_demo.slx</a></p>
+    </div>
+  </div>
+</div>
+    <footer>
+      <div class="container">
+        <div class="row justify-content-md-center">
+          <div class="col-md-auto text-center">
+            <ul id="social" class="list-inline">
+              
+                <li class="list-inline-item">
+                  <a href="https://github.com/casadi/casadi" title="github">
+                    <i class="fa fa-github"></i>
+                  </a>
+                </li>
+              
+                <li class="list-inline-item">
+                  <a href="https://twitter.com/casadi_software" title="twitter">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                </li>
+              
+                <li class="list-inline-item">
+                  <a href="https://www.youtube.com/channel/UC3VDpv5Pi3R-a2VkcJN1RLw" title="youtube">
+                    <i class="fa fa-youtube"></i>
+                  </a>
+                </li>
+              
+            </ul>
+            <p class="copyright">Copyright 2018.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    
+    <script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    
+    <script src="https://web.casadi.org/_js/bootstrap.min.js"></script>
+
+    
+    <script src="https://web.casadi.org/_js/scripts.js"></script>
+
+    
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+
+    
+  </body>
+
+</html>
+

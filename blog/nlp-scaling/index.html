@@ -1,0 +1,281 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+      <title>CasADi - Blog - On the importance of NLP scaling</title>
+    
+
+    
+    <link href="https://web.casadi.org/_css/font-awesome.min.css" rel="stylesheet">
+
+    
+    <link href="https://web.casadi.org/_css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <link href="https://web.casadi.org/_css/pygments-default.css" rel="stylesheet">
+
+    
+    <link href="https://web.casadi.org/_css/casadi-theme.min.css" rel="stylesheet">
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+          displayMath: [ ['$$','$$'], ['\\[','\\]'] ],
+          processEnvironments: false
+        }
+      });
+    </script>
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+
+  <body>
+
+
+
+<nav class="navbar fixed-top navbar-expand-lg nav-top">
+  <div class="container">
+    <a class="navbar-brand" href="https://web.casadi.org/"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        
+        
+          
+          <li class="nav-item active">
+          
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/get/">Try/Install</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/docs/">Docs</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/support/">Support</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/source/">Source</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/publications/">Publications</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/events/">Workshops</a>
+          </li>
+        
+          
+          <li class="nav-item active">
+          
+            <a class="nav-link" href="/blog/">Blog</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div id="main" class="container">
+  <div class="row">
+    <div class="col">
+      <h1>On the importance of NLP scaling</h1>
+      <span class="reading-time text-muted">Estimated reading time: 2 minutes</span>
+
+      <p>During my master's thesis at KULeuven on optimal control, one of the take-aways were that it's important to scale your variables. It helps convergence if the variables are in the order of 0.01 to 100.</p>
+
+<p></p>
+
+<p>Master student Thomas Durbin stumbled upon a dramatic example of bad scaling in practice. He works on <a href="https://web.casadi.org/blog/ocp/">optimal control</a> for rockets. As a first toy problem, he studied a 1D rocket the must attain a certain height at $t=100\,\mathrm{s}$, with minimal expenditure of fuel. Following good engineering practice, he used SI base units to write the code.</p>
+
+<p>The gist of the code is as follows (complete code <a href="rocket.m">here</a>):</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">m0 = 500000; % start mass [kg]
+yT = 100000; % final height [m]
+g = 9.81; % gravity 9.81 [m/s^2]
+alpha = 1/(300*g); % kg/(N*s);
+
+opti = casadi.Opti();
+
+% Decision variables [height;velocity;mass]
+x = opti.variable(3,N+1);
+y = x(1,:); % height
+v = x(2,:); % velocity
+m = x(3,:); % mass
+u = opti.variable(1,N); % Control vector
+
+% Dynamic constraints
+rocket_ode = @(x,u) [x(2);u/x(3)-g;-alpha*u];
+
+for k = 1:N
+    opti.subject_to(x(:,k+1) == x(:,k) + rocket_ode(x(:,k),u(:,k))*dt);
+end
+
+% Boundary conditions
+opti.subject_to(x(:,1) == [0;0;m0]);
+opti.subject_to(y(N+1) == yT);</code></pre></div>
+<p>The solution is quite interesting:
+
+<figure class=" default">
+  <a href="https://web.casadi.org/blog/nlp-scaling/controls.png" target="_blank">
+  
+    <img src="https://web.casadi.org/blog/nlp-scaling/controls.png"  />
+  </a>
+  
+  <figcaption>
+    <h1>Optimal control of rocket problem.</h1>
+    
+  </figcaption>
+  
+</figure>
+
+
+
+<figure class=" default">
+  <a href="https://web.casadi.org/blog/nlp-scaling/states.png" target="_blank">
+  
+    <img src="https://web.casadi.org/blog/nlp-scaling/states.png"  />
+  </a>
+  
+  <figcaption>
+    <h1>optimal states of rocket problem</h1>
+    
+  </figcaption>
+  
+</figure>
+
+</p>
+
+<p>But the focus is here on convergence. It's pretty lousy.</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">semilogy(sol.stats.iterations.inf_du)
+semilogy(sol.stats.iterations.inf_pr)</code></pre></div>
+<p>
+<figure class=" default">
+  <a href="https://web.casadi.org/blog/nlp-scaling/conv.png" target="_blank">
+  
+    <img src="https://web.casadi.org/blog/nlp-scaling/conv.png"  />
+  </a>
+  
+  <figcaption>
+    <h1>Convergence</h1>
+    
+  </figcaption>
+  
+</figure>
+
+
+Then, introduce a simple scaling of variables (complete code <a href="rocket_scaled.m">here</a>)</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">x =  repmat([1e5;2000;300e3],1,N+1).*opti.variable(3,N+1);
+u = 1e8*opti.variable(1,N); % Control vector</code></pre></div>
+<p>Exact same solution, wildly different convergence:
+
+<figure class=" default">
+  <a href="https://web.casadi.org/blog/nlp-scaling/conv_scaled.png" target="_blank">
+  
+    <img src="https://web.casadi.org/blog/nlp-scaling/conv_scaled.png"  />
+  </a>
+  
+  <figcaption>
+    <h1>Convergence scaled</h1>
+    
+  </figcaption>
+  
+</figure>
+
+</p>
+
+<p>In conclusion, even if you are using an exact Hessian (which is default in CasADi), and even with a numerical backend (IPOPT) that <a href="https://www.coin-or.org/Ipopt/documentation/node43.html">provides auto-scaling</a>, it's still good practice to scale your NLP!</p>
+
+<h2 id="addendum-2018-04-09">Addendum 2018-04-09</h2>
+
+<p><a href="http://homes.esat.kuleuven.be/~optec/events/courses/JohnBetts_coursept1brf.pdf">Guidelines for scaling</a> involve more than just scaling of the variables.
+In IPOPT, objective and constraints (but not variables) are scaled automatically, using first-order sensitivities at the initial guess.
+This is vital for the above example to work. Without it, we need to scale objective and constraints ourselves:</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">for k = 1:N
+    opti.subject_to(x(:,k+1)./x_nom == (x(:,k) + rocket_ode(x(:,k),u(:,k))*dt)./x_nom);
+end
+...
+opti.minimize((m(1)-m(N+1))/m_nom); % minimize fuel consumption</code></pre></div>
+<p>(complete code <a href="rocket_scaled2.m">here</a>)</p>
+    </div>
+  </div>
+</div>
+    <footer>
+      <div class="container">
+        <div class="row justify-content-md-center">
+          <div class="col-md-auto text-center">
+            <ul id="social" class="list-inline">
+              
+                <li class="list-inline-item">
+                  <a href="https://github.com/casadi/casadi" title="github">
+                    <i class="fa fa-github"></i>
+                  </a>
+                </li>
+              
+                <li class="list-inline-item">
+                  <a href="https://twitter.com/casadi_software" title="twitter">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                </li>
+              
+                <li class="list-inline-item">
+                  <a href="https://www.youtube.com/channel/UC3VDpv5Pi3R-a2VkcJN1RLw" title="youtube">
+                    <i class="fa fa-youtube"></i>
+                  </a>
+                </li>
+              
+            </ul>
+            <p class="copyright">Copyright 2018.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    
+    <script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    
+    <script src="https://web.casadi.org/_js/bootstrap.min.js"></script>
+
+    
+    <script src="https://web.casadi.org/_js/scripts.js"></script>
+
+    
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+
+    
+  </body>
+
+</html>
+

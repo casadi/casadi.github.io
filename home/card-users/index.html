@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+      <title>CasADi - Get started</title>
+    
+
+    
+    <link href="https://web.casadi.org/_css/font-awesome.min.css" rel="stylesheet">
+
+    
+    <link href="https://web.casadi.org/_css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <link href="https://web.casadi.org/_css/pygments-default.css" rel="stylesheet">
+
+    
+    <link href="https://web.casadi.org/_css/casadi-theme.min.css" rel="stylesheet">
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+          displayMath: [ ['$$','$$'], ['\\[','\\]'] ],
+          processEnvironments: false
+        }
+      });
+    </script>
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+
+  <body>
+
+
+
+<nav class="navbar fixed-top navbar-expand-lg nav-top">
+  <div class="container">
+    <a class="navbar-brand" href="https://web.casadi.org/"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        
+        
+          
+          <li class="nav-item active">
+          
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/get/">Try/Install</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/docs/">Docs</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/support/">Support</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/source/">Source</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/publications/">Publications</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/events/">Workshops</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/blog/">Blog</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<h2>Applications</h2>
+
+<p>CasADi saves time <em>prototyping</em> formulations, <em>solving</em> complex engineering problems, and <em>building</em> professional optimization tools.<br/>
+The landscape of its <em>academic</em> and <em>industrial</em> applications is diverse:</p>
+
+<figure class=" default">
+  <a href="https://web.casadi.org/home/card-users/../wordcloud.png" target="_blank">
+  
+    <img src="https://web.casadi.org/home/card-users/../wordcloud.png"  />
+  </a>
+  
+</figure>
+
+<ul class="wordcloud">
+<!--<li>thermal control</li>-->
+<!--<li>wind turbine</li>-->
+<!--<li>airborne wind</li>-->
+<!--<li>solar thermal</li>-->
+<!--<li>fossil fuel</li>-->
+<!--<li>renewables</li>-->
+<!--<li>grid balance</li>-->
+<li>trajectory optimization</li>
+<li>optimal control</li>
+<li>OCP</li>
+<li>moving horizon estimation</li>
+<li>MHE</li>
+<li>model predictive control</li>
+<li>MPC</li>
+<li>NLP</li>
+<li>MINLP</li>
+<li>ODE</li>
+<li>differential equations</li>
+<li>algebraic loops</li>
+<li>DAE</li>
+<!--<li>bio-reactors</li>-->
+<!--<li>autonomous vehicles</li>-->
+<!--<li>iceberg drift</li>-->
+<li>optimal experiment</li>
+<li>OED</li>
+<!--<li>steam power</li>-->
+<li>pseudo spectral</li>
+<li>direct collocation</li>
+<li>single shooting</li>
+<li>multiple shooting</li>
+<li>indirect methods</li>
+<li>machine learning</li>
+<!--<li>serial robots</li>-->
+<!--<li>dual control</li>-->
+<li>distributed MPC</li>
+<li>multi-objective</li>
+<li>pareto front</li>
+<li>robust optimization</li>
+<li>scenario tree</li>
+<li>hierarchical control</li>
+<li>sigma points</li>
+<!--<li>gearbox synthesis</li>-->
+<!--<li>artificial pancreas</li>-->
+<!--<li>polynomial chaos</li>-->
+<!--<li>traffic control</li>-->
+<!--<li>MEMS</li>-->
+<!--<li>walking robot</li>-->
+<li>design</li>
+<li>control</li>
+<li>co-design</li>
+<li>stochastic optimization</li>
+<!--<li>spline-relaxations</li>-->
+<li>multi-level MPC</li>
+<!--<li>tube following</li>-->
+<li>time optimal</li>
+<li>path following</li>
+<li>iterative learning</li>
+<li>Gauss-Newton</li>
+<li>energy</li>
+<li>medical</li>
+<!--<li>fixed-bed reactor</li>-->
+<!--<li>chemical reactor</li>-->
+<li>stabilization</li>
+<li>cost curves</li>
+<li>grey-box model</li>
+<li>Collision Avoidance</li>
+<li>Lagrangian Duality</li>
+<li>economic MPC</li>
+<li>NMPC</li>
+<li>self-reflective</li>
+<li>real-time</li>
+<li>offline</li>
+<li>online</li>
+<!--<li>mesh refinement</li>-->
+<!--<li>pose estimation</li>
+<li>heart model</li>-->
+<li>Lagrange mechanics</li>
+<!--<li>Baumgarte</li>-->
+<!--<li>invariants</li>-->
+<!--<li>atomic layer deposition</li>-->
+<!--<li> well network</li>-->
+<li>object-oriented</li>
+<li>multi-stage</li>
+<li>path constraints</li>
+<!--<li>pharmacokinetic</li>-->
+<li>non-steady</li>
+<li>periodic</li>
+<li>cyclic</li>
+<li>feasibility study</li>
+<!--<li>air conditioning</li>-->
+<!--<li>powertrain</li>-->
+<!--<li>diesel</li>-->
+<!--<li>biological networks</li>-->
+<li>offset-free mpc</li>
+<li>Gaussian</li>
+<li>belief space</li>
+<li>continuous systems</li>
+<li>discrete systems</li>
+<li>redundant manipulators</li>
+<li>inverse kinematics</li>
+<!--<li>marine vessel</li>-->
+<!--<li>confidence interval</li>-->
+<!--<li>agriculture</li>-->
+<!--<li>B-spline</li>-->
+<!--<li>path-parametric</li>-->
+<!--<li>invariant description</li>-->
+<!--<li>heat exchangers</li>-->
+<li>Jacobian</li>
+<li>Hessian</li>
+<li>gradient</li>
+<li>Lyapunov</li>
+</ul>
+
+<p>Examples of software with a CasADi backend: <a href="http://www.modelon.com/products/jmodelicaorg/">JModelica.org</a>, <a href="https://github.com/meco-group/omg-tools">omg-tools</a>, <a href="https://bitbucket.org/rawlings-group/mpc-tools-casadi">MPC-tools</a>, <a href="https://www.deltares.nl/nl/software/rtc-tools-2/">RTC-tools</a>, <a href="http://openocl.org">openocl.org</a>, <a href="https://gitlab.kuleuven.be/meco-software/rockit">rockit</a>, <a href="https://www.yoptimization.com">yop</a>, <a href="https://www.do-mpc.com">do-mpc</a>, <a href="https://github.com/chenyutao36/MATMPC">MATMPC</a>, <a href="https://alphaville.github.io/optimization-engine/">Optimization Engine</a>, <a href="http://acados.org">acados</a>.</p>
+
+    <footer>
+      <div class="container">
+        <div class="row justify-content-md-center">
+          <div class="col-md-auto text-center">
+            <ul id="social" class="list-inline">
+              
+                <li class="list-inline-item">
+                  <a href="https://github.com/casadi/casadi" title="github">
+                    <i class="fa fa-github"></i>
+                  </a>
+                </li>
+              
+                <li class="list-inline-item">
+                  <a href="https://twitter.com/casadi_software" title="twitter">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                </li>
+              
+                <li class="list-inline-item">
+                  <a href="https://www.youtube.com/channel/UC3VDpv5Pi3R-a2VkcJN1RLw" title="youtube">
+                    <i class="fa fa-youtube"></i>
+                  </a>
+                </li>
+              
+            </ul>
+            <p class="copyright">Copyright 2018.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    
+    <script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    
+    <script src="https://web.casadi.org/_js/bootstrap.min.js"></script>
+
+    
+    <script src="https://web.casadi.org/_js/scripts.js"></script>
+
+    
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+
+    
+  </body>
+
+</html>
+
