@@ -1,0 +1,480 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+      <title>CasADi - Blog - Optimal control problems in a nutshell</title>
+    
+
+    
+    <link href="https://web.casadi.org/_css/font-awesome.min.css" rel="stylesheet">
+
+    
+    <link href="https://web.casadi.org/_css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <link href="https://web.casadi.org/_css/pygments-default.css" rel="stylesheet">
+
+    
+    <link href="https://web.casadi.org/_css/casadi-theme.min.css" rel="stylesheet">
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+          displayMath: [ ['$$','$$'], ['\\[','\\]'] ],
+          processEnvironments: false
+        }
+      });
+    </script>
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+
+  <body>
+
+
+
+<nav class="navbar fixed-top navbar-expand-lg nav-top">
+  <div class="container">
+    <a class="navbar-brand" href="https://web.casadi.org/"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        
+        
+          
+          <li class="nav-item active">
+          
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/get/">Try/Install</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/docs/">Docs</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/support/">Support</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/source/">Source</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/publications/">Publications</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/events/">Workshops</a>
+          </li>
+        
+          
+          <li class="nav-item active">
+          
+            <a class="nav-link" href="/blog/">Blog</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div id="main" class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Optimal control problems in a nutshell</h1>
+      <span class="reading-time text-muted">Estimated reading time: 5 minutes</span>
+
+      <p>Optimization.
+There's a mathematical term that sounds familiar to the general public.
+Everyone can imagine engineers working hard to make your car run 1% more fuel-efficient,
+or to slightly increase profit margins for a chemical company.</p>
+
+<p></p>
+
+<p>That sounds rather dull; an icing on the cake at best.
+Optimization can be more than this. I'd argue that optimization can deliver intelligence or creativity.</p>
+
+<p>Consider that finding your next chess move amounts to optimization. Consider the results of <a href="http://www.altairhyperworks.com/industry/Architecture">topology optimization</a>
+
+<figure class=" default">
+  <a href="https://web.casadi.org/blog/ocp/hyperworks-industries-architecture-screen-capture-6-726x383.jpg" target="_blank">
+  
+    <img src="https://web.casadi.org/blog/ocp/hyperworks-industries-architecture-screen-capture-6-726x383.jpg"  />
+  </a>
+  
+  <figcaption>
+    <h1>Topology optimization</h1>
+    
+  </figcaption>
+  
+</figure>
+
+
+or <a href="https://youtu.be/CXTZHHQ7ZiQ?t=1m5s">evolving artificial life</a>:
+
+<figure class=" default">
+  <a href="https://web.casadi.org/blog/ocp/evo.png" target="_blank">
+  
+    <img src="https://web.casadi.org/blog/ocp/evo.png"  />
+  </a>
+  
+  <figcaption>
+    <h1>Evolving artificial life</h1>
+    
+  </figcaption>
+  
+</figure>
+
+</p>
+
+<p>Our field of research is optimal control, in which we seek time-trajectories for control signals that make a dynamic system carry out a task in an optimal way.</p>
+
+<p>In many cases, like for a <a href="https://youtu.be/B6vr1x6KDaY?t=5s">double pendulum swing-up</a>
+
+<figure class=" default">
+  <a href="https://web.casadi.org/blog/ocp/doublependulum.png" target="_blank">
+  
+    <img src="https://web.casadi.org/blog/ocp/doublependulum.png"  />
+  </a>
+  
+  <figcaption>
+    <h1>Double pendulum</h1>
+    
+  </figcaption>
+  
+</figure>
+
+
+the most exciting part of optimal control is not that it can spot the optimum out of many valid trajectories.
+It's that it can find valid trajectories at all, out of the blue.</p>
+
+<h1 id="slot-car-racing-problem">Slot car racing problem</h1>
+
+<p>Let's get concrete and solve an actual optimal control problem, using CasADi.
+We will go racing a toy slot car.</p>
+
+
+<figure class=" default">
+  <a href="https://web.casadi.org/blog/ocp/racetrack.png" target="_blank">
+  
+    <img src="https://web.casadi.org/blog/ocp/racetrack.png"  />
+  </a>
+  
+  <figcaption>
+    <h1>Race track</h1>
+    
+  </figcaption>
+  
+</figure>
+
+
+
+<p>The task is to finish 1 lap as fast as possible, starting from standstill.
+Go too fast, and the car will fly out of its slot.
+There is just one way to control the system: pick the amount of throttle $u(t)$ at any give time.</p>
+
+<p>First, we encode the knowledge we have about the system dynamics in a differential equation (ODE):</p>
+
+<p>$$
+\frac{d \begin{bmatrix} p(t) \ v(t) \end{bmatrix}}{dt} = \begin{bmatrix} v(t) \ u(t)-v(t) \end{bmatrix},
+$$
+where $p(t)$ is position and $v(t)$ is speed.</p>
+
+<p>Summarizing the system states in one vector $x(t) = [p(t);v(t)]$, we have:
+$$
+\dot{x}(t) = f(x(t),u(t)).
+$$</p>
+
+<p>Next, we encode the the task definition in a continuous-time optimal control problem (OCP).</p>
+
+<p>$$
+\begin{align}
+  \displaystyle \underset{\begin{array}{c}x(\cdot), u(\cdot)\end{array}}
+  {\text{minimize}}\quad &amp;\displaystyle T \newline
+  \text{subject to} \, \quad
+  &amp; \dot{x}(t) = f(x(t),u(t)) \quad  t \in [0,T], &amp; \textrm{dynamic constraints} \newline
+  &amp; p(0) = 0, &amp; \textrm{boundary condition: start at position 0}  \newline
+  &amp; v(0) = 0, &amp; \textrm{boundary condition: start with zero speed}\newline
+  &amp; p(T) = 1, &amp; \textrm{boundary condition: the finish line is at position 1}\newline
+  &amp; 0 \leq u(t) \leq 1, &amp; \textrm{path constraint: throttle is limited} \newline
+  &amp; v(t) \leq L(p(t)). &amp; \textrm{path constraint: speed limit varying along the track} \newline
+\end{align}
+$$</p>
+
+<p>Note our decision variables $x(\cdot)$ and $u(\cdot)$: the result of the optimization should be functions, i.e. infinitely detailed descriptions of how the states and control should move over time from $0$ to $T$:</p>
+
+
+<figure class=" default">
+  <a href="https://web.casadi.org/blog/ocp/xu_cont.png" target="_blank">
+  
+    <img src="https://web.casadi.org/blog/ocp/xu_cont.png"  />
+  </a>
+  
+  <figcaption>
+    <h1>Continuous-time states and controls</h1>
+    
+  </figcaption>
+  
+</figure>
+
+
+
+<h1 id="multiple-shooting">Multiple-shooting</h1>
+
+<p>Computers don't like infinities. Therefore, let's discretize the problem in time.
+Choose a number $N$ of control intervals in which the control effort is kept constant:</p>
+
+
+<figure class=" default">
+  <a href="https://web.casadi.org/blog/ocp/u_disc.png" target="_blank">
+  
+    <img src="https://web.casadi.org/blog/ocp/u_disc.png"  />
+  </a>
+  
+  <figcaption>
+    <h1>Discretized controls</h1>
+    
+  </figcaption>
+  
+</figure>
+
+
+
+<p>We now have decision variables $u_1,u_2,\ldots,u_{N}$ instead of function $u(\cdot)$.</p>
+
+<p>For the state trajectory, let's consider the states at the boundaries of each control interval:
+
+<figure class=" default">
+  <a href="https://web.casadi.org/blog/ocp/xu_disc.png" target="_blank">
+  
+    <img src="https://web.casadi.org/blog/ocp/xu_disc.png"  />
+  </a>
+  
+  <figcaption>
+    <h1>Discretized states and controls</h1>
+    
+  </figcaption>
+  
+</figure>
+
+</p>
+
+<p>We now have decision variables $x_1,x_2,\ldots,x_{N+1}$ instead of function $x(\cdot)$.</p>
+
+<p>In each control interval $k$, we now have a start state $x_k$ and a fixed control signal $u_k$.
+Over this interval, we may perform a time integration of our ODE.
+For example, using explicit euler: $x_{k+1} \approx x_{k} + \frac{T}{N} f(x_k,u_k)$, in general:</p>
+
+<p>$$
+x_{k+1} = F(x_k,u_k).
+$$</p>
+
+<p>For each interval the integrator predicts were our system will end up at the end of that interval.
+Starting our numerical optimization with putting all states at a constant location, the picture may look like:</p>
+
+
+<figure class=" default">
+  <a href="https://web.casadi.org/blog/ocp/xu_gap.png" target="_blank">
+  
+    <img src="https://web.casadi.org/blog/ocp/xu_gap.png"  />
+  </a>
+  
+  <figcaption>
+    <h1>Gaps</h1>
+    
+  </figcaption>
+  
+</figure>
+
+
+
+<p>We notice gaps here; there's a mismatch between were the integrator says we will end up and where our state decision variables think we are.
+What we do is add constraints that make the gap zero.</p>
+
+<p>The result is a multiple-shooting transcription of the original OCP:</p>
+
+<p>$$
+\begin{align}
+  \displaystyle \underset{u_1,u_2,\ldots,u_{N},x_1,x_2,\ldots,x_{N+1}}
+  {\text{minimize}}\quad &amp;\displaystyle T \newline
+  \text{subject to} \, \quad
+  &amp; x_{k+1} = F(x_k,u_k) \quad  k=1 \ldots N, &amp; \textrm{dynamic constraints a.k.a. gap closing} \newline
+  &amp; p_1 = 0, &amp; \textrm{boundary condition: start at position 0}  \newline
+  &amp; v_1 = 0, &amp; \textrm{boundary condition: start with zero speed}\newline
+  &amp; p_{N+1} = 1, &amp; \textrm{boundary condition: the finish line is at position 1}\newline
+  &amp; 0 \leq u_k \leq 1, \quad  k=1 \ldots N , &amp; \textrm{path constraint: throttle is limited} \newline
+  &amp; v_k \leq L(p_k). \quad  k=1 \ldots N+1 &amp; \textrm{path constraint: speed limit varying along the track} \newline
+\end{align}
+$$</p>
+
+<h1 id="coding">Coding</h1>
+
+<p>Let's get coding, using CasADi's <a href="https://web.casadi.org/blog/opti/">Opti</a> functionality.</p>
+
+<p>Set up the problem</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">N = 100; % number of control intervals
+
+opti = casadi.Opti(); % Optimization problem</code></pre></div>
+<p>Declare decision variables.</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">X = opti.variable(2,N+1); % state trajectory
+pos   = X(1,:);
+speed = X(2,:);
+U = opti.variable(1,N);   % control trajectory (throttle)
+T = opti.variable();      % final time</code></pre></div>
+<p>Set the objective.</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">opti.minimize(T); % race in minimal time</code></pre></div>
+<p>Specify system dynamics.</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">f = @(x,u) [x(2);u-x(2)]; % dx/dt = f(x,u)</code></pre></div>
+<p>Create gap closing constraints, picking Runge-Kutta as integration method.</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">dt = T/N; % length of a control interval
+for k=1:N % loop over control intervals
+   % Runge-Kutta 4 integration
+   k1 = f(X(:,k),         U(:,k));
+   k2 = f(X(:,k)+dt/2*k1, U(:,k));
+   k3 = f(X(:,k)+dt/2*k2, U(:,k));
+   k4 = f(X(:,k)+dt*k3,   U(:,k));
+   x_next = X(:,k) + dt/6*(k1+2*k2+2*k3+k4);
+   opti.subject_to(X(:,k+1)==x_next); % close the gaps
+end</code></pre></div>
+<p>Set path constraints.</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">limit = @(pos) 1-sin(2*pi*pos)/2;
+opti.subject_to(speed&lt;=limit(pos)); % track speed limit
+opti.subject_to(0&lt;=U&lt;=1);           % control is limited</code></pre></div>
+<p>Set boundary conditions.</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">opti.subject_to(pos(1)==0);   % start at position 0 ...
+opti.subject_to(speed(1)==0); % ... from stand-still
+opti.subject_to(pos(N+1)==1); % finish line at position 1</code></pre></div>
+<p>One extra constraint.</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">opti.subject_to(T&gt;=0); % Time must be positive</code></pre></div>
+<p>Provide initial guesses for the solver:</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">opti.set_initial(speed, 1);
+opti.set_initial(T, 1);</code></pre></div>
+<p>Solve the NLP using IPOPT</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">opti.solver(&#39;ipopt&#39;); % set numerical backend
+sol = opti.solve();   % actual solve</code></pre></div>
+<p>Post processing of the optimal values.</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">plot(sol.value(speed));
+plot(sol.value(pos));</code></pre></div>
+
+<figure class=" default">
+  <a href="https://web.casadi.org/blog/ocp/OCP_sol.png" target="_blank">
+  
+    <img src="https://web.casadi.org/blog/ocp/OCP_sol.png"  />
+  </a>
+  
+  <figcaption>
+    <h1>Solution of race car problem</h1>
+    
+  </figcaption>
+  
+</figure>
+
+
+
+<p>The solution is intuitive: we give 100% throttle, until we hit the speed limit. Next, we gradually inrease throttle again as the speed limit is raised.</p>
+
+<p>A characteristic of the multiple-shooting approach is that there are many optimization variables (much more than in single-shooting),
+but there is a lot of sparsity in the problem.</p>
+
+<p>Indeed, have a look at the sparsity of the constraint Jacobian:</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">spy(sol.value(jacobian(opti.g,opti.x)))</code></pre></div>
+
+<figure class=" default">
+  <a href="https://web.casadi.org/blog/ocp/jac_sp.png" target="_blank">
+  
+    <img src="https://web.casadi.org/blog/ocp/jac_sp.png"  />
+  </a>
+  
+  <figcaption>
+    <h1>Sparsity of constraint jacobian</h1>
+    
+  </figcaption>
+  
+</figure>
+
+
+
+<p>This structure is automatically detected and exploited by CasADi.</p>
+
+<p>Download code: <a href="race_car.m">race_car.m</a></p>
+    </div>
+  </div>
+</div>
+    <footer>
+      <div class="container">
+        <div class="row justify-content-md-center">
+          <div class="col-md-auto text-center">
+            <ul id="social" class="list-inline">
+              
+                <li class="list-inline-item">
+                  <a href="https://github.com/casadi/casadi" title="github">
+                    <i class="fa fa-github"></i>
+                  </a>
+                </li>
+              
+                <li class="list-inline-item">
+                  <a href="https://twitter.com/casadi_software" title="twitter">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                </li>
+              
+                <li class="list-inline-item">
+                  <a href="https://www.youtube.com/channel/UC3VDpv5Pi3R-a2VkcJN1RLw" title="youtube">
+                    <i class="fa fa-youtube"></i>
+                  </a>
+                </li>
+              
+            </ul>
+            <p class="copyright">Copyright 2018.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    
+    <script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    
+    <script src="https://web.casadi.org/_js/bootstrap.min.js"></script>
+
+    
+    <script src="https://web.casadi.org/_js/scripts.js"></script>
+
+    
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+
+    
+  </body>
+
+</html>
+

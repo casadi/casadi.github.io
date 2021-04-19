@@ -1,0 +1,436 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+      <title>CasADi - Blog - Easy NLP modeling in CasADi with Opti</title>
+    
+
+    
+    <link href="https://web.casadi.org/_css/font-awesome.min.css" rel="stylesheet">
+
+    
+    <link href="https://web.casadi.org/_css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <link href="https://web.casadi.org/_css/pygments-default.css" rel="stylesheet">
+
+    
+    <link href="https://web.casadi.org/_css/casadi-theme.min.css" rel="stylesheet">
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+          displayMath: [ ['$$','$$'], ['\\[','\\]'] ],
+          processEnvironments: false
+        }
+      });
+    </script>
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+
+  <body>
+
+
+
+<nav class="navbar fixed-top navbar-expand-lg nav-top">
+  <div class="container">
+    <a class="navbar-brand" href="https://web.casadi.org/"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        
+        
+          
+          <li class="nav-item active">
+          
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/get/">Try/Install</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/docs/">Docs</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/support/">Support</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/source/">Source</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/publications/">Publications</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/events/">Workshops</a>
+          </li>
+        
+          
+          <li class="nav-item active">
+          
+            <a class="nav-link" href="/blog/">Blog</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div id="main" class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Easy NLP modeling in CasADi with Opti</h1>
+      <span class="reading-time text-muted">Estimated reading time: 3 minutes</span>
+
+      <p><a href="http://install33.casadi.org">Release 3.3.0</a> of CasADi introduced a compact syntax for NLP modeling, using a set of helper classes, collectively known as 'Opti stack'.</p>
+
+<p>In this post, we briefly demonstrates this functionality.</p>
+
+<p></p>
+
+<h1 id="rosenbrock-problem">Rosenbrock problem</h1>
+
+<p>Let's consider the classic Rosenbrock problem to begin with:</p>
+
+<p>$$
+\begin{align}
+  \displaystyle \underset{x,y}
+  {\text{minimize}}\quad &amp;\displaystyle (1-x)^2+(y-x^2)^2 <br />
+\end{align}
+$$</p>
+
+<p>In CasADi's Opti syntax, we can easily transcribe this to computer code:</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">opti = casadi.Opti();
+
+x = opti.variable();
+y = opti.variable();
+
+opti.minimize((1-x)^2+(y-x^2)^2);
+
+opti.solver(&#39;ipopt&#39;);
+sol = opti.solve();
+
+plot(sol.value(x),sol.value(y),&#39;o&#39;);</code></pre></div>
+
+<figure class=" default">
+  <a href="https://web.casadi.org/blog/opti/rosenbrock1.png" target="_blank">
+  
+    <img src="https://web.casadi.org/blog/opti/rosenbrock1.png"  />
+  </a>
+  
+  <figcaption>
+    <h1>Solution of unconstrained Rosenbrock problem</h1>
+    
+  </figcaption>
+  
+</figure>
+
+
+
+<p>Let's make a variation on the problem by adding an equality constraint:</p>
+
+<p>$$
+\begin{align}
+  \displaystyle \underset{x,y}
+  {\text{minimize}}\quad &amp;\displaystyle (1-x)^2+(y-x^2)^2 \newline
+    \text{subject to} \, \quad &amp; x^2+y^2=1
+\end{align}
+$$</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">opti.minimize((1-x)^2+(y-x^2)^2);
+opti.subject_to(x^2+y^2==1);
+
+opti.solver(&#39;ipopt&#39;);
+sol = opti.solve();</code></pre></div>
+
+<figure class=" default">
+  <a href="https://web.casadi.org/blog/opti/rosenbrock2.png" target="_blank">
+  
+    <img src="https://web.casadi.org/blog/opti/rosenbrock2.png"  />
+  </a>
+  
+  <figcaption>
+    <h1>Solution of constrained Rosenbrock problem</h1>
+    
+  </figcaption>
+  
+</figure>
+
+
+
+<p>We may add in fact any number of equality/inequality constraints:</p>
+
+<p>$$
+\begin{align}
+  \displaystyle \underset{x,y}
+  {\text{minimize}}\quad &amp;\displaystyle (1-x)^2+(y-x^2)^2 \newline
+    \text{subject to} \, \quad &amp; x^2+y^2=1 \newline
+      &amp; y\geq x
+\end{align}
+$$</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">opti.minimize((1-x)^2+(y-x^2)^2);
+opti.subject_to(x^2+y^2==1);
+opti.subject_to(y&gt;=x);
+
+opti.solver(&#39;ipopt&#39;);
+sol = opti.solve();</code></pre></div>
+
+<figure class=" default">
+  <a href="https://web.casadi.org/blog/opti/rosenbrock3.png" target="_blank">
+  
+    <img src="https://web.casadi.org/blog/opti/rosenbrock3.png"  />
+  </a>
+  
+  <figcaption>
+    <h1>Solution of constrained Rosenbrock problem</h1>
+    
+  </figcaption>
+  
+</figure>
+
+
+
+<p>We can also create a parametric NLP, were a parameter is getting fixed at solution time:</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">opti = casadi.Opti();
+
+x = opti.variable();
+y = opti.variable();
+r = opti.parameter();
+
+opti.minimize((1-x)^2+(y-x^2)^2);
+con = x^2+y^2&lt;=r;
+opti.subject_to(con);
+opti.solver(&#39;ipopt&#39;);
+
+for r_value=linspace(1,3,25)
+    opti.set_value(r,r_value)
+    sol = opti.solve();
+    plot(r_value,sol.value(f),&#39;ko&#39;)
+end</code></pre></div>
+<p>We may access the value of the Lagrange multiplier associated with the constraint using:</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">sol.value(opti.dual(con))</code></pre></div>
+<p>The Lagrange multiplier can be interpreted as the sensitivity of the optimal cost with respect to the relaxation of the constraint. We plotted the slope given by the Langrange multiplier in red in the figure below.
+
+<figure class=" default">
+  <a href="https://web.casadi.org/blog/opti/rosenbrock4.png" target="_blank">
+  
+    <img src="https://web.casadi.org/blog/opti/rosenbrock4.png"  />
+  </a>
+  
+  <figcaption>
+    <h1>Solution of constrained Rosenbrock problem</h1>
+    
+  </figcaption>
+  
+</figure>
+
+</p>
+
+<p>Download code: <a href="rosenbrock.m">rosenbrock.m</a></p>
+
+<h1 id="hanging-chain-problem">Hanging chain problem</h1>
+
+<p>Next, we will visit the hanging chain problem. We consider $N$ point masses, connected by springs, hung from two fixed points at $(-2,1)$ and $(2,1)$, subject to gravity.</p>
+
+<p>We seek the rest position of the system, obtained by minimizing the total energy in the system.</p>
+
+<p>Consider that point mass $i$ has position $(x_i,y_i)$, we can write the gravitational potential energy as</p>
+
+<p>$$
+V_g = g m \sum_{i=1}^N y_i,
+$$</p>
+
+<p>and the total spring potential energy as:</p>
+
+<p>$$
+V_s = \frac{1}{2} \sum_{i=1}^{N-1} D \left((x_i-x_{i+1})^2+(y_i-y_{i+1})^2\right).
+$$</p>
+
+<p>We can do this in Opti using a oneliner, or a for loop:</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">opti = casadi.Opti();
+
+p = opti.variable(2,N);
+x = p(1,:);
+y = p(2,:);
+
+V = 0.5*D*sum((x(1:N-1)-x(2:N)).^2+(y(1:N-1)-y(2:N)).^2);
+V = V + g*sum(m*y);
+
+opti.minimize(V);
+
+opti.subject_to(p(:,1)==[-2;1])
+opti.subject_to(p(:,end)==[2;1])
+
+opti.solver(&#39;ipopt&#39;);
+sol = opti.solve();
+
+plot(sol.value(x),sol.value(y),&#39;-o&#39;)</code></pre></div>
+
+<figure class=" default">
+  <a href="https://web.casadi.org/blog/opti/chain1.png" target="_blank">
+  
+    <img src="https://web.casadi.org/blog/opti/chain1.png"  />
+  </a>
+  
+  <figcaption>
+    <h1>Solution of unconstrained hanging chain problem</h1>
+    
+  </figcaption>
+  
+</figure>
+
+
+
+<p>After a first solve, further constraints can be added, e.g. a ground constrained</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">opti.subject_to(y&gt;=cos(0.1*x)-0.5);
+sol = opti.solve();</code></pre></div>
+
+<figure class=" default">
+  <a href="https://web.casadi.org/blog/opti/chain2.png" target="_blank">
+  
+    <img src="https://web.casadi.org/blog/opti/chain2.png"  />
+  </a>
+  
+  <figcaption>
+    <h1>Solution of constrained hanging chain problem</h1>
+    
+  </figcaption>
+  
+</figure>
+
+
+
+<p>We can make the problem more numerically challenging by setting a nonzero restlength for the spring:</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">V = 0.5*sum(D*(sqrt((x(1:N-1)-x(2:N)).^2+(y(1:N-1)-y(2:N)).^2)-L/N).^2);
+V = V + g*sum(m*y);
+
+opti.minimize(V);</code></pre></div>
+<p>When the problem is nonconvex it's always a good idea to provide initial guesses for your decision variables:</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">opti.set_initial(x,linspace(-2,2,N));
+opti.set_initial(y,1);</code></pre></div>
+
+<figure class=" default">
+  <a href="https://web.casadi.org/blog/opti/chain3.png" target="_blank">
+  
+    <img src="https://web.casadi.org/blog/opti/chain3.png"  />
+  </a>
+  
+  <figcaption>
+    <h1>Solution of nonlinear constrained hanging chain problem</h1>
+    
+  </figcaption>
+  
+</figure>
+
+
+
+<p>When the going get's tough, you may find it helpful to plot the intermediate solution
+for each iteration of the solver:</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">opti.callback(@(i) plot(opti.debug.value(x),opti.debug.value(y),&#39;DisplayName&#39;,num2str(i)))</code></pre></div>
+
+<figure class=" default">
+  <a href="https://web.casadi.org/blog/opti/chain4.png" target="_blank">
+  
+    <img src="https://web.casadi.org/blog/opti/chain4.png"  />
+  </a>
+  
+  <figcaption>
+    <h1>Solution of nonlinear constrained hanging chain problem</h1>
+    
+  </figcaption>
+  
+</figure>
+
+
+
+<p>(Credits to Milan Vukov for delivering this problem)</p>
+
+<p>Download code: <a href="chain.m">chain.m</a></p>
+
+<p>For more details about Opti, see Chapter 9 of the <a href="http://web.casadi.org/docs/#document-opti">users guide</a>. For an optimal control example, see <a href="https://web.casadi.org/blog/ocp/#coding">the race car example</a>.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7iQKhmx7gQA?ecver=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+<p>Using Opti, you have the scalability of CasADi algorithmic differentiation available, in a user friendly packaging. Ideal for teaching!</p>
+    </div>
+  </div>
+</div>
+    <footer>
+      <div class="container">
+        <div class="row justify-content-md-center">
+          <div class="col-md-auto text-center">
+            <ul id="social" class="list-inline">
+              
+                <li class="list-inline-item">
+                  <a href="https://github.com/casadi/casadi" title="github">
+                    <i class="fa fa-github"></i>
+                  </a>
+                </li>
+              
+                <li class="list-inline-item">
+                  <a href="https://twitter.com/casadi_software" title="twitter">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                </li>
+              
+                <li class="list-inline-item">
+                  <a href="https://www.youtube.com/channel/UC3VDpv5Pi3R-a2VkcJN1RLw" title="youtube">
+                    <i class="fa fa-youtube"></i>
+                  </a>
+                </li>
+              
+            </ul>
+            <p class="copyright">Copyright 2018.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    
+    <script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    
+    <script src="https://web.casadi.org/_js/bootstrap.min.js"></script>
+
+    
+    <script src="https://web.casadi.org/_js/scripts.js"></script>
+
+    
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+
+    
+  </body>
+
+</html>
+

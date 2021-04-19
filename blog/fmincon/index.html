@@ -1,0 +1,291 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+      <title>CasADi - Blog - Breaking free of CasADi&#39;s solvers</title>
+    
+
+    
+    <link href="https://web.casadi.org/_css/font-awesome.min.css" rel="stylesheet">
+
+    
+    <link href="https://web.casadi.org/_css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <link href="https://web.casadi.org/_css/pygments-default.css" rel="stylesheet">
+
+    
+    <link href="https://web.casadi.org/_css/casadi-theme.min.css" rel="stylesheet">
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+          displayMath: [ ['$$','$$'], ['\\[','\\]'] ],
+          processEnvironments: false
+        }
+      });
+    </script>
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+
+  <body>
+
+
+
+<nav class="navbar fixed-top navbar-expand-lg nav-top">
+  <div class="container">
+    <a class="navbar-brand" href="https://web.casadi.org/"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        
+        
+          
+          <li class="nav-item active">
+          
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/get/">Try/Install</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/docs/">Docs</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/support/">Support</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/source/">Source</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/publications/">Publications</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/events/">Workshops</a>
+          </li>
+        
+          
+          <li class="nav-item active">
+          
+            <a class="nav-link" href="/blog/">Blog</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div id="main" class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Breaking free of CasADi&#39;s solvers</h1>
+      <span class="reading-time text-muted">Estimated reading time: 3 minutes</span>
+
+      
+
+<p>Once you've modeled your optimization problem in CasADi,
+you don't have to stick to the solvers we interface.</p>
+
+<p>In this post, we briefly demonstrate how we can make CasADi and Matlab's <code>fmincon</code> cooperate.</p>
+
+<h1 id="trivial-unconstrained-problem">Trivial unconstrained problem</h1>
+
+<p>Let's consider a very simple scalar unconstrained optimization:</p>
+
+<p>$$
+\begin{align}
+  \displaystyle \underset{x}
+  {\text{minimize}}\quad &amp; \sin(x)^2 <br />
+\end{align}
+$$</p>
+
+<p>You can solve this with <code>fminunc</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">fminunc(@(x) sin(x)^2, 0.1)</code></pre></div>
+<p>The first argument, an anonymous function, can contain any code, including CasADi code.</p>
+
+<p>Let's use CasADi to evaluate the objective:</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">import casadi.*
+x = MX.sym(&#39;x&#39;);
+f = Function(&#39;f&#39;,{x},{sin(x)^2});
+
+fminunc(@(x) full(f(x)), 0.1)</code></pre></div>
+<p>Simple enough, but do mind the <code>full</code> to go from CasADi numeric matrix type to a Matlab matrix.</p>
+
+<p>As is, <code>fminunc</code> will perform finite differences under the hood.
+That's a shame since CasADi can do algorithmic differentiation.</p>
+
+<p>Let's supply the gradient of the objective, computed by CasADi, as well:</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">fg = Function(&#39;fg&#39;,{x},{y,gradient(y,x)});
+fg_full = returntypes(&#39;full&#39;,fg);
+
+options = optimoptions(&#39;fminunc&#39;,&#39;SpecifyObjectiveGradient&#39;,true);
+fminunc(@(x) fg_full(x), 0.1, options)</code></pre></div>
+<p>Note the <code>returntypes</code> helper such that you don't need to explicitly convert from a CasADi numeric matrix to a Matlab matrix.</p>
+
+<p>For this scalar example, you will hardly see any speed-up.
+For a decision space of size $n$, the default finite differences approach will cost you <code>n</code> times the cost of the objective function evaluation:
+<code>O(n cost(f))</code>
+The algorithmic differentation approach will just cost you <code>O(cost(f))</code>. There's a screencast available to learn <a href="https://www.youtube.com/watch?v=mYOkLkS5yqc">more about this aspect</a>.</p>
+
+<p>Download code: <a href="demo1.m">demo1.m</a></p>
+
+<h1 id="optimal-control-problem">Optimal control problem</h1>
+
+<p>Next, we will consider the <a href="https://web.casadi.org/blog/ocp/#coding">the race car example</a>.</p>
+
+<p>We assume we have modeled the problem as NLP:
+$$
+\begin{align}
+  \displaystyle \underset{x}
+  {\text{minimize}}\quad &amp; f(x,p) \newline
+    \text{subject to} \, \quad &amp; \textrm{lbg} \leq g(x,p) \leq \textrm{ubg} \newline
+\end{align}
+$$</p>
+
+<p>We will solve this problem using <code>fmincon</code>.
+We just need to construct CasADi functions to compute the objective and constraints and their sensitivities,
+and massage them to match the API of <code>fmincon</code>.
+Again, you can omit the sensitivities and rely on (much slower!) finite differences.</p>
+<div class="highlight"><pre class="chroma">% Function to compute objective and its gradient
+f = casadi.Function(&#39;f&#39;,{x,p},{f,gradient(f,x)});
+
+% Function to compute constraint vector, its Jacobian, and bounds
+g = casadi.Function(&#39;g&#39;,{x,p},{g,jacobian(g,x),lbg,ubg});
+
+options = optimoptions(&#39;fmincon&#39;,...
+                       &#39;Display&#39;,&#39;iter&#39;,...
+                       &#39;Algorithm&#39;,&#39;sqp&#39;,...
+                       &#39;SpecifyObjectiveGradient&#39;,true,...
+                       &#39;SpecifyConstraintGradient&#39;,true);
+
+[x_opt,fval] = fmincon(@(x) obj_casadi(f,x,p),x0,[],[],[],[],[],[], @(x) nonlin_casadi(g,x,p),options);</pre></div>
+<p>Note the helper functions <code>obj_casadi</code> and <code>nonlin_casadi</code>.</p>
+
+<p>The first helper is simple enough, and could also be achieved with <code>returntypes</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">function [f,g]=obj_casadi(f_function,x,p)
+  [f,g] = f_function(x,p);
+  f = full(f);
+  g = full(g);
+end</code></pre></div>
+<p>The second helper is somewhat more involved since we need to separate out the equalities from the inequalities:</p>
+<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">function [c,ceq,gradc,gradceq]=nonlin_casadi(g_function,x,p)
+  % Morph the constraints into c&lt;=0, ceq==0
+  %
+  % CasADi way: lbg &lt;= g &lt;= ubg
+  [g,J,lbg,ubg] = g_function(x,p);
+  g = full(g);
+  lbg = full(lbg);
+  ubg = full(ubg);
+  J = sparse(J);
+  
+  % Classify into eq/ineq
+  eq = lbg==ubg;
+  ineq = lbg~=ubg;
+  
+  % Classify into free/fixed
+  lbg_fixed = lbg~=-inf;
+  ubg_fixed = ubg~=inf;
+  
+  % Constraint vector
+  c = [lbg(ineq&amp;lbg_fixed)-g(ineq&amp;lbg_fixed);g(ineq&amp;ubg_fixed)-ubg(ineq&amp;ubg_fixed)];
+  ceq = g(eq)-lbg(eq);
+  
+  % Constraint Jacobian tranposed
+  gradc = [-J(ineq&amp;lbg_fixed,:);J(ineq&amp;ubg_fixed,:)]&#39;;
+  gradceq = J(eq,:)&#39;;
+end</code></pre></div>
+<p>There's more options to go from here with <code>fmincon</code>.
+You may use <code>which_depends</code> to classify constraints into linear/nonlinear, you may specify a Hessian,
+or you can work with matrix-free (large-scale) methods that require the computation of a matrix-vector product instead of the matrix.</p>
+
+<p>And remember, you always have the code-generation option to speed up your problem if the bottleneck lies with the function evaluations.</p>
+
+<p>In conclusion, choosing to model a problem in CasADi does not lock you in with our solvers.
+We've seen how you can embed calls to CasADi function evaluations into third-party codes.</p>
+
+<p>Download code: <a href="demo.m">demo.m</a>, <a href="nonlin_casadi.m">nonlin_casadi.m</a>, <a href="obj_casadi.m">obj_casadi.m</a>,</p>
+
+    </div>
+  </div>
+</div>
+    <footer>
+      <div class="container">
+        <div class="row justify-content-md-center">
+          <div class="col-md-auto text-center">
+            <ul id="social" class="list-inline">
+              
+                <li class="list-inline-item">
+                  <a href="https://github.com/casadi/casadi" title="github">
+                    <i class="fa fa-github"></i>
+                  </a>
+                </li>
+              
+                <li class="list-inline-item">
+                  <a href="https://twitter.com/casadi_software" title="twitter">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                </li>
+              
+                <li class="list-inline-item">
+                  <a href="https://www.youtube.com/channel/UC3VDpv5Pi3R-a2VkcJN1RLw" title="youtube">
+                    <i class="fa fa-youtube"></i>
+                  </a>
+                </li>
+              
+            </ul>
+            <p class="copyright">Copyright 2018.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    
+    <script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    
+    <script src="https://web.casadi.org/_js/bootstrap.min.js"></script>
+
+    
+    <script src="https://web.casadi.org/_js/scripts.js"></script>
+
+    
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+
+    
+  </body>
+
+</html>
+
