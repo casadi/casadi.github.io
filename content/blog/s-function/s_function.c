@@ -49,6 +49,9 @@ static void mdlInitializeSizes(SimStruct *S)
                  SS_OPTION_WORKS_WITH_CODE_REUSE |
                  SS_OPTION_EXCEPTION_FREE_CODE |
                  SS_OPTION_USE_TLC_WITH_ACCELERATOR);
+
+    /* Signal that we want to use the CasADi Function */
+    f_incref();
 }
 
 
@@ -89,11 +92,23 @@ static void mdlOutputs(SimStruct *S, int_T tid)
     for (i=0; i<n_out;++i) {
       res[i] = ssGetOutputPortRealSignal(S,i);
     }
+
+    /* Get a hold on a location to read/write persistant internal memory
+    */
+
+    int mem = f_checkout();
+
     /* Run the CasADi function */
-    f(arg,res,iw,w,0);
+    f(arg,res,iw,w,mem);
+
+    /* Release hold */
+    f_release(mem);
 }
 
-static void mdlTerminate(SimStruct *S) {}
+static void mdlTerminate(SimStruct *S) {
+  /* Signal that we no longer want to use the CasADi Function */
+  f_decref();
+}
 
 
 #ifdef  MATLAB_MEX_FILE    /* Is this file being compiled as a MEX-file? */
