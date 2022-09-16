@@ -1,0 +1,34 @@
+name: compose
+
+on: push
+
+jobs:
+  main:
+    runs-on: ubuntu-20.04
+
+    steps:
+
+    - uses: actions/checkout@v2.4.0
+      with:
+        fetch-depth: 0 # for git-restore-mtime
+    
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v1
+      with:
+          registry: ghcr.io
+          username: jgillis
+          password: ${{ secrets.GITHUB_TOKEN }}
+            
+    - name: Setup dockcross
+      run: |
+        docker pull jgillis/hugo:latest
+
+    - name: script
+      run: |
+        docker run -v `pwd`:/src -w /src -e GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} jgillis/hugo /bin/bash build.sh
+        sudo touch public/.nojekyll # To make sure files with leading _underscore are served on github pages
+        echo "web.casadi.org" > CNAME
+        sudo cp CNAME public
+        
+
+          
