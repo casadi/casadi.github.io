@@ -6,8 +6,10 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
 
 RUN sudo apt update && sudo apt install nodejs npm -y
 
-RUN npm install -g gulp gulp-sass gulp-autoprefixer gulp-rename gulp-minifier
+RUN npm install -g sass gulp gulp-sass gulp-autoprefixer gulp-rename gulp-minifier
 
 RUN sudo apt update && sudo apt install hugo -y
 
 WORKDIR /local
+
+EXPOSE 1313/tcp

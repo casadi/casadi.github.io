@@ -21,8 +21,12 @@ done
 # goto theme folder and run npm/gulp
 cd themes/casadi-theme/
 
-# get/update npm packages
-npm update
+npm link sass
+npm link gulp
+npm link gulp-sass
+npm link gulp-autoprefixer
+npm link gulp-rename
+npm link gulp-minifier
 
 # run gulp to build static files and collect them for deploying
 gulp watch &
