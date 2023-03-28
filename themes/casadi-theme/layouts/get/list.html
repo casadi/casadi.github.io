@@ -11,7 +11,7 @@
       {{ $stats := getJSON $url }}
 
       <!-- cache busting -->
-      {{ $url := (printf "https://api.github.com/repos/casadi/casadi/releases?per_page=100&%s&access_token=%s" (string now.Unix) ( getenv "GITHUB_TOKEN" ) ) }}
+      {{ $url := (printf "https://api.github.com/repos/casadi/casadi/releases?per_page=100&%s" (string now.Unix) ) }}
       {{ $releases := getJSON $url }}
 
       {{ $v1 := where $releases .Site.Pages "Params.a" "v1" }}

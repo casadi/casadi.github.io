@@ -21,9 +21,6 @@ done
 # goto theme folder and run npm/gulp
 cd themes/casadi-theme/
 
-# get/update npm packages
-npm update
-
 # run gulp to build static files and collect them for deploying
 gulp scss
 

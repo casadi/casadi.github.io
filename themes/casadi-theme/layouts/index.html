@@ -10,7 +10,7 @@
 
       {{ if ne $index 0 }} <hr class="sep"> {{ end }}
 
-      {{ if (isset .Params "mode") and (eq .Params.mode "manual") }}
+      {{ if and (isset .Params "mode") (eq .Params.mode "manual") }}
         {{ .Content | markdownify }}
       {{ else }}
         <div class="row">
