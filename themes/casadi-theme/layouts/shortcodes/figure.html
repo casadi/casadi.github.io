@@ -3,7 +3,7 @@
   {{ if .Get "link"}}<a href="{{ .Get "link" }}" target="_blank">
   {{ else }}<a href="{{ .Page.Permalink }}{{ .Get "src" }}" target="_blank">
   {{ end }}
-    <img src="{{ .Page.Permalink }}{{ .Get "src" }}" {{ if or (.Get "alt") (.Get "caption") }}alt="{{ with .Get "alt"}}{{.}}{{else}}{{ .Get "caption" }}{{ end }}"{{ end }} />
+  <img src="{{ .Page.Permalink }}{{ .Get "src" }}" {{ if or (.Get "alt") (.Get "caption") }}alt="{{ with .Get "alt"}}{{.}}{{else}}{{ .Get "caption" }}{{ end }}"{{ end }} />
   </a>
   {{ if or (or (.Get "title") (.Get "caption")) (.Get "attr")}}
   <figcaption>{{ if isset .Params "title" }}

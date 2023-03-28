@@ -15,18 +15,20 @@ mode: "manual"
 <div class="highlight">
 <pre><code data-lang="example"></code></pre>
 {{< figure src="../integration.png" >}}
+
 $$
 \begin{align}
-\left\{
+\left\\{
   \begin{array}{ccll}
-    \dot{x}_1 &=& (1-x_2^2) \, x_1 - x_2, \quad &x_1(0)=0 \\
+    \dot{x}_1 &=& (1-x_2^2) \\, x_1 - x_2, \quad &x_1(0)=0 \\\\
     \dot{x}_2 &=& x_1, \quad &x_2(0)=1
   \end{array}
   \right.
 \end{align}
 $$
+
 </div>
-{{< highlight octave >}}
+{{% highlight octave %}}
 import casadi.*
 
 
@@ -113,7 +115,7 @@ std::cout << S(DM(std::vector<double>{0,1}));
 
 $$
 \begin{aligned}
- \dot{x} &= f_{\text{ode}}(t,x,z,p), \qquad x(0) = x_0 \\
+ \dot{x} &= f_{\text{ode}}(t,x,z,p), \qquad x(0) = x_0 \\\\
       0  &= f_{\text{alg}}(t,x,z,p)
 \end{aligned}
 $$

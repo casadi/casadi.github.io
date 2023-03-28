@@ -14,7 +14,7 @@ $$
 \begin{align}
   \displaystyle \underset{x,y}
   {\text{minimize}}\quad &\displaystyle (1-x)^2+(y-x^2)^2 \newline
-    \text{subject to} \, \quad & x^2+y^2 \leq r
+    \text{subject to} \\, \quad & x^2+y^2 \leq r
 \end{align}
 $$
 Note that $r$ is a free parameter.

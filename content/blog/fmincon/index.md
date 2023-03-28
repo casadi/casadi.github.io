@@ -69,7 +69,7 @@ $$
 \begin{align}
   \displaystyle \underset{x}
   {\text{minimize}}\quad & f(x,p) \newline
-    \text{subject to} \, \quad & \textrm{lbg} \leq g(x,p) \leq \textrm{ubg} \newline
+    \text{subject to} \\, \quad & \textrm{lbg} \leq g(x,p) \leq \textrm{ubg} \newline
 \end{align}
 $$
 

@@ -16,7 +16,7 @@ $$
 \begin{align}
   \displaystyle \underset{x,y}
   {\text{minimize}}\quad &\displaystyle (1-x)^2+0.2(y-x^2)^2 \newline
-    \text{subject to} \, \quad & \frac{p^2}{4} \leq (x+0.5)^2+y^2 \leq p^2 \newline
+    \text{subject to} \\, \quad & \frac{p^2}{4} \leq (x+0.5)^2+y^2 \leq p^2 \newline
       & x\geq 0
 \end{align}
 $$
@@ -39,7 +39,7 @@ M(p):=
 \begin{align}
   \displaystyle \underset{x,y}
   {\text{argmin}}\quad &\displaystyle (1-x)^2+0.2(y-x^2)^2 \newline
-    \text{subject to} \, \quad & \frac{p^2}{4} \leq (x+0.5)^2+y^2 \leq p^2 \newline
+    \text{subject to} \\, \quad & \frac{p^2}{4} \leq (x+0.5)^2+y^2 \leq p^2 \newline
       & x\geq 0
 \end{align}
 $$

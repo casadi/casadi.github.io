@@ -46,7 +46,7 @@ $$
 \begin{align}
   \displaystyle \underset{x,y}
   {\text{minimize}}\quad &\displaystyle (1-x)^2+(y-x^2)^2 \newline
-    \text{subject to} \, \quad & x^2+y^2=1
+    \text{subject to} \\, \quad & x^2+y^2=1
 \end{align}
 $$
 
@@ -66,7 +66,7 @@ $$
 \begin{align}
   \displaystyle \underset{x,y}
   {\text{minimize}}\quad &\displaystyle (1-x)^2+(y-x^2)^2 \newline
-    \text{subject to} \, \quad & x^2+y^2=1 \newline
+    \text{subject to} \\, \quad & x^2+y^2=1 \newline
       & y\geq x
 \end{align}
 $$

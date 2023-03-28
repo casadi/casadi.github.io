@@ -34,6 +34,6 @@ gulp scss
 # run hugo server
 cd ../..
 
-rm -rf public && hugo
+rm -rf public && hugo -v --debug
 
 echo "+ Build script finished."

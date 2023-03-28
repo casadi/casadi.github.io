@@ -18,7 +18,7 @@ Today we'll be exploring a _simple_ coupling with Simulink. We'll be showing off
 For plant model, we'll be using the familiar [Van der Pol oscillator](https://en.wikipedia.org/wiki/Van_der_Pol_oscillator) ode:
 
 $$
-\frac{d\begin{bmatrix}x_1\\ x_2\end{bmatrix}}{dt} = \begin{bmatrix}(1-x_2^2)\, x_1-x_2+u\\ x_1\end{bmatrix}.
+\frac{d\begin{bmatrix}x_1\\\\ x_2\end{bmatrix}}{dt} = \begin{bmatrix}(1-x_2^2)\\, x_1-x_2+u\\\\ x_1\end{bmatrix}.
 $$
 
 In the above Simulink block diagram, the `rhs` MATLAB function block encodes this ode:
@@ -36,10 +36,10 @@ The OCP problem here simply drives the states to zero:
 $$
 \begin{align}
   \underset{\begin{array}{c}x(\cdot), u(\cdot)\end{array}}
-  {\text{minimize}}\quad & \int_{0}^{T}{ \left( x_1(t)^2 + x_2(t)^2 + u(t)^2 \right) \, dt} \newline
-  \text{subject to} \, \quad
+  {\text{minimize}}\quad & \int_{0}^{T}{ \left( x_1(t)^2 + x_2(t)^2 + u(t)^2 \right) \\, dt} \newline
+  \text{subject to} \\, \quad
   & \left\\{\begin{array}{l}
-    \dot{x}_1(t) = (1-x_2(t)^2) \, x_1(t) - x_2(t) + u(t) \newline
+    \dot{x}_1(t) = (1-x_2(t)^2) \\, x_1(t) - x_2(t) + u(t) \newline
     \dot{x}_2(t) = x_1(t) \newline
     -1.0 \le u(t) \le 1.0, \quad x_1(t) \ge -0.25
   \end{array}\right.

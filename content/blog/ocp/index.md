@@ -56,7 +56,7 @@ $$
 \begin{align}
   \displaystyle \underset{\begin{array}{c}x(\cdot), u(\cdot)\end{array}}
   {\text{minimize}}\quad &\displaystyle T \newline
-  \text{subject to} \, \quad
+  \text{subject to} \\, \quad
   & \dot{x}(t) = f(x(t),u(t)) \quad  t \in [0,T], & \textrm{dynamic constraints} \newline
   & p(0) = 0, & \textrm{boundary condition: start at position 0}  \newline
   & v(0) = 0, & \textrm{boundary condition: start with zero speed}\newline
@@ -106,7 +106,7 @@ $$
 \begin{align}
   \displaystyle \underset{u\_1,u\_2,\ldots,u\_{N},x\_1,x\_2,\ldots,x\_{N+1}}
   {\text{minimize}}\quad &\displaystyle T \newline
-  \text{subject to} \, \quad
+  \text{subject to} \\, \quad
   & x\_{k+1} = F(x\_k,u\_k) \quad  k=1 \ldots N, & \textrm{dynamic constraints a.k.a. gap closing} \newline
   & p\_1 = 0, & \textrm{boundary condition: start at position 0}  \newline
   & v\_1 = 0, & \textrm{boundary condition: start with zero speed}\newline
