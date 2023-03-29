@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e -o pipefail
+
 sudo mkdir -p public
 docker run --rm -v `pwd`:/local ghcr.io/casadi/web:latest ./build.sh
 sudo chmod a+w -R public
