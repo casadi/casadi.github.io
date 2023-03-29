@@ -23,6 +23,11 @@ jobs:
         wget -q https://github.com/casadi/casadi/releases/download/nightly-release-${{ env.version }}/website_assets.zip
         unzip -oq website_assets.zip
         ./run_build.sh
+
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v1.0.8
+      with:
+        path: ./public
         
 
           
