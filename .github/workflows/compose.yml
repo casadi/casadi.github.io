@@ -20,8 +20,8 @@ jobs:
         sed -i "s/casadi_release = \"3.5.5\"/casadi_release = \"nightly-release-${{ env.version }}\"/" config.toml
         sed -i "s/casadi_version = \"3.5.5\"/casadi_version = \"${{ env.version }}\"/" config.toml
         cat config.toml
-        wget https://github.com/casadi/casadi/releases/download/nightly-release-${{ env.version }}/website_assets.zip
-        unzip -oq ~/programs/casadi/website_assets.zip
+        wget -q https://github.com/casadi/casadi/releases/download/nightly-release-${{ env.version }}/website_assets.zip
+        unzip -oq website_assets.zip
         ./run_build.sh
         
 
