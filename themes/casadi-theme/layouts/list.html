@@ -5,11 +5,9 @@
 {{ partial "landing" . }}
 
 <div id="main" class="container landing">
-  {{ range $index, $element :=  .Data.Pages.ByWeight }}
+  {{ range $index, $element :=  .Site.RegularPages.ByWeight }}
     {{ if eq .Section "home" }}
-
       {{ if ne $index 0 }} <hr class="sep"> {{ end }}
-
       {{ if and (isset .Params "mode") (eq .Params.mode "manual") }}
         {{ .Content | markdownify }}
       {{ else }}
