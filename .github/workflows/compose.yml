@@ -22,6 +22,7 @@ jobs:
         cat config.toml
         wget -q https://github.com/casadi/casadi/releases/download/nightly-release-${{ env.version }}/website_assets.zip
         unzip -oq website_assets.zip
+        ls -al
         ./run_build.sh
 
     - name: Upload artifact
