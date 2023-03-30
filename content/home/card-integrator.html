@@ -43,7 +43,7 @@ ode.x   = x;     % states
 ode.ode = rhs;   % right-hand side
 
 % Construct a Function that integrates over 4s
-F = integrator('F','cvodes',ode,struct('tf',4));
+F = integrator('F','cvodes',ode,0,4);
 
 % Start from x=[0;1]
 res = F('x0',[0;1]);
@@ -68,7 +68,7 @@ ode['x']   = x   # states
 ode['ode'] = rhs # right-hand side
 
 # Construct a Function that integrates over 4s
-F = integrator('F','cvodes',ode,{'tf':4})
+F = integrator('F','cvodes',ode,0,4)
 
 # Start from x=[0;1]
 res = F(x0=[0,1])
@@ -95,10 +95,11 @@ ode["x"]   = x;     // states
 ode["ode"] = rhs;   // right-hand side
 
 // Construct a Function that integrates over 4s
-Function F = integrator("F","cvodes",ode,{{"tf",4}});
+Function F = integrator("F","cvodes",ode,0,4);
 
 // Start from x=[0;1]
 DMDict res = F(DMDict{{"x0",std::vector<double>{0,1}}});
+std::cout << res["xf"] << std::endl;
 
 // Sensitivity wrt initial state
 MXDict ress = F(MXDict{{"x0",x}});
