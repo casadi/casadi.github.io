@@ -9,7 +9,7 @@ $(document).ready(function() {
     $(block).children('div.highlight').each(function(ih, highlight) {
       if(ih == 0) $(highlight).show();
       else $(highlight).hide();
-      $(highlight).find('pre code').each(function(ic, code) {
+      $(highlight).children('pre').children('code').each(function(ic, code) {
         var lang = $(code).attr("data-lang");
         if(ih == 0) {
           var li = $("<li>", {"class": "nav-item isshown"});

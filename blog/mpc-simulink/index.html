@@ -112,213 +112,157 @@
       <span class="reading-time text-muted">Estimated reading time: 4 minutes</span>
 
       <p>CasADi is not a monolithic tool. We can easily couple it to other software to have more fun.
-Today we'll be exploring a <em>simple</em> coupling with Simulink. We'll be showing off nonlinear MPC (NMPC).</p>
-
-<p></p>
-
-
+Today we&rsquo;ll be exploring a <em>simple</em> coupling with Simulink. We&rsquo;ll be showing off nonlinear MPC (NMPC).</p>
 <figure class=" default">
   <a href="https://web.casadi.org/blog/mpc-simulink/simulink_block.png" target="_blank">
-  
-    <img src="https://web.casadi.org/blog/mpc-simulink/simulink_block.png"  />
+  <img src="https://web.casadi.org/blog/mpc-simulink/simulink_block.png"  />
   </a>
-  
   <figcaption>
     <h1>Simulink block diagram</h1>
-    
   </figcaption>
-  
 </figure>
-
-
-
 <h1 id="the-details">The details</h1>
-
-<p>For plant model, we'll be using the familiar <a href="https://en.wikipedia.org/wiki/Van_der_Pol_oscillator">Van der Pol oscillator</a> ode:</p>
-
+<p>For plant model, we&rsquo;ll be using the familiar <a href="https://en.wikipedia.org/wiki/Van_der_Pol_oscillator">Van der Pol oscillator</a> ode:</p>
 <p>$$
-\frac{d\begin{bmatrix}x_1\ x_2\end{bmatrix}}{dt} = \begin{bmatrix}(1-x_2^2)\, x_1-x_2+u\ x_1\end{bmatrix}.
+\frac{d\begin{bmatrix}x_1\\ x_2\end{bmatrix}}{dt} = \begin{bmatrix}(1-x_2^2)\, x_1-x_2+u\\ x_1\end{bmatrix}.
 $$</p>
-
 <p>In the above Simulink block diagram, the <code>rhs</code> MATLAB function block encodes this ode:</p>
-<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">function y = rhs(x,u)
-  y = [(1-x(2)^2)*x(1) - x(2) + u; x(1)];
-end</code></pre></div>
-<p>The <code>casadi_block</code> computes the discrete control signal by solving an Optimal Control Problem (OCP).
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="k">function</span><span class="w"> </span>y <span class="p">=</span><span class="w"> </span><span class="nf">rhs</span><span class="p">(</span>x,u<span class="p">)</span><span class="w">
+</span><span class="w">  </span><span class="n">y</span> <span class="p">=</span> <span class="p">[(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>^<span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">x</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">u</span><span class="p">;</span> <span class="n">x</span><span class="p">(</span><span class="mi">1</span><span class="p">)];</span>
+<span class="k">end</span>
+</code></pre></div><p>The <code>casadi_block</code> computes the discrete control signal by solving an Optimal Control Problem (OCP).
 The act of closing the loop with the continuous plant makes our setup effectively an MPC controller.</p>
-
 <p>The OCP problem here simply drives the states to zero:</p>
-
 <p>$$
 \begin{align}
-  \underset{\begin{array}{c}x(\cdot), u(\cdot)\end{array}}
-  {\text{minimize}}\quad &amp; \int_{0}^{T}{ \left( x_1(t)^2 + x_2(t)^2 + u(t)^2 \right) \, dt} \newline
-  \text{subject to} \, \quad
-  &amp; \left\{\begin{array}{l}
-    \dot{x}_1(t) = (1-x_2(t)^2) \, x_1(t) - x_2(t) + u(t) \newline
-    \dot{x}_2(t) = x_1(t) \newline
-    -1.0 \le u(t) \le 1.0, \quad x_1(t) \ge -0.25
-  \end{array}\right.
-  \quad  t \in [0,T] \newline
-  &amp; x_1(0)=\bar{x}_1, \quad x_2(0)=\bar{x}_2
+\underset{\begin{array}{c}x(\cdot), u(\cdot)\end{array}}
+{\text{minimize}}\quad &amp; \int_{0}^{T}{ \left( x_1(t)^2 + x_2(t)^2 + u(t)^2 \right) \, dt} \newline
+\text{subject to} \, \quad
+&amp; \left\{\begin{array}{l}
+\dot{x}_1(t) = (1-x_2(t)^2) \, x_1(t) - x_2(t) + u(t) \newline
+\dot{x}_2(t) = x_1(t) \newline
+-1.0 \le u(t) \le 1.0, \quad x_1(t) \ge -0.25
+\end{array}\right.
+\quad  t \in [0,T] \newline
+&amp; x_1(0)=\bar{x}_1, \quad x_2(0)=\bar{x}_2
 \end{align}
 $$</p>
-
 <p>We will use the <a href="https://github.com/casadi/casadi/blob/3.1.0/docs/examples/matlab/direct_multiple_shooting.m">multiple shooting transcription from the CasADi examples</a> to cast the OCP to an NLP problem. In short, the multiple shooting code reads like:</p>
-<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">w = {}; % decision variables
-g = {}; % cosntraints
-J = 0; % objective
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="n">w</span> <span class="p">=</span> <span class="p">{};</span> <span class="c">% decision variables</span>
+<span class="n">g</span> <span class="p">=</span> <span class="p">{};</span> <span class="c">% cosntraints</span>
+<span class="n">J</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c">% objective</span>
 
-% Initial conditions
-X0 = MX.sym(&#39;X0&#39;, 2);
+<span class="c">% Initial conditions</span>
+<span class="n">X0</span> <span class="p">=</span> <span class="n">MX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;X0&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
 
-% Formulate the NLP
-Xk = X0;
-for k=0:N-1
-    % New NLP variable for the control
-    Uk = MX.sym(&#39;U&#39;);
-    w = {w{:}, Uk};
+<span class="c">% Formulate the NLP</span>
+<span class="n">Xk</span> <span class="p">=</span> <span class="n">X0</span><span class="p">;</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">=</span><span class="mi">0</span><span class="p">:</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span>
+    <span class="c">% New NLP variable for the control</span>
+    <span class="n">Uk</span> <span class="p">=</span> <span class="n">MX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;U&#39;</span><span class="p">);</span>
+    <span class="n">w</span> <span class="p">=</span> <span class="p">{</span><span class="n">w</span><span class="p">{:},</span> <span class="n">Uk</span><span class="p">};</span>
 
-    % Integrate till the end of the interval
-    Fk = F(&#39;x0&#39;, Xk, &#39;p&#39;, Uk);
-    Xk_end = Fk.xf;
-    J=J+Fk.qf;
+    <span class="c">% Integrate till the end of the interval</span>
+    <span class="n">Fk</span> <span class="p">=</span> <span class="n">F</span><span class="p">(</span><span class="s">&#39;x0&#39;</span><span class="p">,</span> <span class="n">Xk</span><span class="p">,</span> <span class="s">&#39;p&#39;</span><span class="p">,</span> <span class="n">Uk</span><span class="p">);</span>
+    <span class="n">Xk_end</span> <span class="p">=</span> <span class="n">Fk</span><span class="p">.</span><span class="n">xf</span><span class="p">;</span>
+    <span class="n">J</span><span class="p">=</span><span class="n">J</span><span class="o">+</span><span class="n">Fk</span><span class="p">.</span><span class="n">qf</span><span class="p">;</span>
 
-    % New NLP variable for state at end of interval
-    Xk = MX.sym(&#39;X&#39;, 2);
-    w = {w{:}, Xk};
+    <span class="c">% New NLP variable for state at end of interval</span>
+    <span class="n">Xk</span> <span class="p">=</span> <span class="n">MX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;X&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="n">w</span> <span class="p">=</span> <span class="p">{</span><span class="n">w</span><span class="p">{:},</span> <span class="n">Xk</span><span class="p">};</span>
 
-    % Add equality constraint
-    g = {g{:}, Xk_end-Xk};
-end
+    <span class="c">% Add equality constraint</span>
+    <span class="n">g</span> <span class="p">=</span> <span class="p">{</span><span class="n">g</span><span class="p">{:},</span> <span class="n">Xk_end</span><span class="o">-</span><span class="n">Xk</span><span class="p">};</span>
+<span class="k">end</span>
 
-% Create an NLP solver
-prob = struct(&#39;f&#39;, J, &#39;x&#39;, vertcat(w{:}), &#39;g&#39;, vertcat(g{:}));
-solver = nlpsol(&#39;solver&#39;, &#39;ipopt&#39;, prob);</code></pre></div>
-<p>Recall from that example the solution plot:</p>
-
-
+<span class="c">% Create an NLP solver</span>
+<span class="n">prob</span> <span class="p">=</span> <span class="n">struct</span><span class="p">(</span><span class="s">&#39;f&#39;</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="n">vertcat</span><span class="p">(</span><span class="n">w</span><span class="p">{:}),</span> <span class="s">&#39;g&#39;</span><span class="p">,</span> <span class="n">vertcat</span><span class="p">(</span><span class="n">g</span><span class="p">{:}));</span>
+<span class="n">solver</span> <span class="p">=</span> <span class="n">nlpsol</span><span class="p">(</span><span class="s">&#39;solver&#39;</span><span class="p">,</span> <span class="s">&#39;ipopt&#39;</span><span class="p">,</span> <span class="n">prob</span><span class="p">);</span>
+</code></pre></div><p>Recall from that example the solution plot:</p>
 <figure class=" default">
   <a href="https://web.casadi.org/blog/mpc-simulink/reference.png" target="_blank">
-  
-    <img src="https://web.casadi.org/blog/mpc-simulink/reference.png"  />
+  <img src="https://web.casadi.org/blog/mpc-simulink/reference.png"  />
   </a>
-  
   <figcaption>
     <h1>Reference solution from multiple shooting example</h1>
-    
   </figcaption>
-  
 </figure>
-
-
-
 <p>As we all know, CasADi makes an important distinction between <em>initialisation</em> and <em>evaluation</em> steps.
 We would not want to construct an NLP afresh at every sampling time!
-Rather, we'd like to construct the NLP once, and simply evaluate it repeatedly using slightly different numerical inputs.
+Rather, we&rsquo;d like to construct the NLP once, and simply evaluate it repeatedly using slightly different numerical inputs.
 For this purpose, we chose a <code>MATLAB System</code> block in Simulink.</p>
-
 <p>In abbreviated form, the code in that block reads:</p>
-<div class="highlight"><pre class="chroma"><code class="language-matlab" data-lang="matlab">classdef casadi_block &lt; matlab.System
-    properties (Access = private)
-        casadi_solver
-        lbx
-        ubx
-    end
-    methods (Access = protected)
-        function setupImpl(obj,~,~)
-            obj.casadi_solver = nlpsol(&#39;solver&#39;, &#39;ipopt&#39;, prob, options);
-            obj.lbx = lbw;
-            obj.ubx = ubw;
-        end
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="k">classdef</span> <span class="n">casadi_block</span> <span class="o">&lt;</span> <span class="n">matlab</span><span class="p">.</span><span class="n">System</span>
+    <span class="k">properties</span> <span class="p">(</span><span class="n">Access</span> <span class="p">=</span> <span class="n">private</span><span class="p">)</span>
+        <span class="n">casadi_solver</span>
+        <span class="n">lbx</span>
+        <span class="n">ubx</span>
+    <span class="k">end</span>
+    <span class="k">methods</span> <span class="p">(</span><span class="n">Access</span> <span class="p">=</span> <span class="n">protected</span><span class="p">)</span>
+<span class="k">        function</span><span class="w"> </span><span class="nf">setupImpl</span><span class="p">(</span>obj,~,~<span class="p">)</span><span class="w">
+</span><span class="w">            </span><span class="n">obj</span><span class="p">.</span><span class="n">casadi_solver</span> <span class="p">=</span> <span class="n">nlpsol</span><span class="p">(</span><span class="s">&#39;solver&#39;</span><span class="p">,</span> <span class="s">&#39;ipopt&#39;</span><span class="p">,</span> <span class="n">prob</span><span class="p">,</span> <span class="n">options</span><span class="p">);</span>
+            <span class="n">obj</span><span class="p">.</span><span class="n">lbx</span> <span class="p">=</span> <span class="n">lbw</span><span class="p">;</span>
+            <span class="n">obj</span><span class="p">.</span><span class="n">ubx</span> <span class="p">=</span> <span class="n">ubw</span><span class="p">;</span>
+        <span class="k">end</span>
 
-        function u = stepImpl(obj,x,t)
-            lbw = obj.lbx;
-            ubw = obj.ubx;
-            solver = obj.casadi_solver;
-            lbw(1:2) = x;
-            ubw(1:2) = x;
-            sol = solver(&#39;x0&#39;, w0, &#39;lbx&#39;, lbw, &#39;ubx&#39;, ubw,...
-                        &#39;lbg&#39;, obj.lbg, &#39;ubg&#39;, obj.ubg);
+<span class="k">        function</span><span class="w"> </span>u <span class="p">=</span><span class="w"> </span><span class="nf">stepImpl</span><span class="p">(</span>obj,x,t<span class="p">)</span><span class="w">
+</span><span class="w">            </span><span class="n">lbw</span> <span class="p">=</span> <span class="n">obj</span><span class="p">.</span><span class="n">lbx</span><span class="p">;</span>
+            <span class="n">ubw</span> <span class="p">=</span> <span class="n">obj</span><span class="p">.</span><span class="n">ubx</span><span class="p">;</span>
+            <span class="n">solver</span> <span class="p">=</span> <span class="n">obj</span><span class="p">.</span><span class="n">casadi_solver</span><span class="p">;</span>
+            <span class="n">lbw</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">)</span> <span class="p">=</span> <span class="n">x</span><span class="p">;</span>
+            <span class="n">ubw</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">)</span> <span class="p">=</span> <span class="n">x</span><span class="p">;</span>
+            <span class="n">sol</span> <span class="p">=</span> <span class="n">solver</span><span class="p">(</span><span class="s">&#39;x0&#39;</span><span class="p">,</span> <span class="n">w0</span><span class="p">,</span> <span class="s">&#39;lbx&#39;</span><span class="p">,</span> <span class="n">lbw</span><span class="p">,</span> <span class="s">&#39;ubx&#39;</span><span class="p">,</span> <span class="n">ubw</span><span class="p">,</span><span class="c">...</span>
+                        <span class="s">&#39;lbg&#39;</span><span class="p">,</span> <span class="n">obj</span><span class="p">.</span><span class="n">lbg</span><span class="p">,</span> <span class="s">&#39;ubg&#39;</span><span class="p">,</span> <span class="n">obj</span><span class="p">.</span><span class="n">ubg</span><span class="p">);</span>
 
-            u = full(sol.x(3));
-        end
+            <span class="n">u</span> <span class="p">=</span> <span class="n">full</span><span class="p">(</span><span class="n">sol</span><span class="p">.</span><span class="n">x</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span>
+        <span class="k">end</span>
 
-    end
-end</code></pre></div>
-<p>As you can see, <code>setupImpl</code> takes care of constructing the NLP, and <code>stepImpl</code> solves the actual NLP while constraining $x_1(0)$ and $x_2(0)$ to the state <em>measurement</em> coming in from Simulink.</p>
-
-<p>In general, you may distinguish several approaches to bring CasADi computations into simulink:
- 1. write CasADi-Matlab code, and use an <code>interpreted Matlab code</code> in Simulink
- 2. write CasADi-Matlab code, and use CasADi's codegenerator to spit out a pure c function (or mex file). Then, interface that pure c function in simulink
- 3. write a mex file from scratch using CasADi-C++ code</p>
-
-<p>We used option 1 here. It's the most simple way. Obviously this is not the most efficient way,
-but since all of CasADi's number-crunching happens in compiled libraries, <code>interpreted Matlab code</code> is not as bad as it sounds perhaps.
+    <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div><p>As you can see, <code>setupImpl</code> takes care of constructing the NLP, and <code>stepImpl</code> solves the actual NLP while constraining $x_1(0)$ and $x_2(0)$ to the state <em>measurement</em> coming in from Simulink.</p>
+<p>In general, you may distinguish several approaches to bring CasADi computations into simulink:</p>
+<ol>
+<li>write CasADi-Matlab code, and use an <code>interpreted Matlab code</code> in Simulink</li>
+<li>write CasADi-Matlab code, and use CasADi&rsquo;s codegenerator to spit out a pure c function (or mex file). Then, interface that pure c function in simulink</li>
+<li>write a mex file from scratch using CasADi-C++ code</li>
+</ol>
+<p>We used option 1 here. It&rsquo;s the most simple way. Obviously this is not the most efficient way,
+but since all of CasADi&rsquo;s number-crunching happens in compiled libraries, <code>interpreted Matlab code</code> is not as bad as it sounds perhaps.
 Anyway, make sure that you indicate to Simulink that the code is <code>interpreted</code>:</p>
-
-
 <figure class=" default">
   <a href="https://web.casadi.org/blog/mpc-simulink/interpreted.png" target="_blank">
-  
-    <img src="https://web.casadi.org/blog/mpc-simulink/interpreted.png"  />
+  <img src="https://web.casadi.org/blog/mpc-simulink/interpreted.png"  />
   </a>
-  
   <figcaption>
     <h1>Simulink block diagram</h1>
-    
   </figcaption>
-  
 </figure>
-
-
-
-<p>Let's jump to results.</p>
-
+<p>Let&rsquo;s jump to results.</p>
 <h1 id="the-results">The results</h1>
-
-<p>MPC control signal:
-
+<p>MPC control signal:</p>
 <figure class=" default">
   <a href="https://web.casadi.org/blog/mpc-simulink/simulink_control.png" target="_blank">
-  
-    <img src="https://web.casadi.org/blog/mpc-simulink/simulink_control.png"  />
+  <img src="https://web.casadi.org/blog/mpc-simulink/simulink_control.png"  />
   </a>
-  
   <figcaption>
     <h1>MPC control signal</h1>
-    
   </figcaption>
-  
 </figure>
-
-</p>
-
-<p>State evolution:
-
+<p>State evolution:</p>
 <figure class=" default">
   <a href="https://web.casadi.org/blog/mpc-simulink/simulink_state.png" target="_blank">
-  
-    <img src="https://web.casadi.org/blog/mpc-simulink/simulink_state.png"  />
+  <img src="https://web.casadi.org/blog/mpc-simulink/simulink_state.png"  />
   </a>
-  
   <figcaption>
     <h1>State evolution</h1>
-    
   </figcaption>
-  
 </figure>
-
-</p>
-
 <p>Note how the control trajectory (up to t=10s) matches the reference solution further up in this post.
 The state trajectory matches too, but Simulink shows you more detail: you see the smooth time-evolution of the system in-between the sampling times.
 Pretty neat, huh?
 Just for fun, I dropped in some noised at around t=10s. The MPC controller manages to recover from this.</p>
-
 <p>This post showed a quick way to drop your CasADi code into Simulink.
-We're curious what you'll cook up based on this example. Enjoy!</p>
-
+We&rsquo;re curious what you&rsquo;ll cook up based on this example. Enjoy!</p>
 <p>Downloads: <a href="casadi_block.m">casadi_block.m</a>, <a href="mpc_demo.slx">mpc_demo.slx</a></p>
     </div>
   </div>
@@ -348,7 +292,7 @@ We're curious what you'll cook up based on this example. Enjoy!</p>
                 </li>
               
             </ul>
-            <p class="copyright">Copyright 2018.</p>
+            <p class="copyright">Copyright 2023.</p>
           </div>
         </div>
       </div>

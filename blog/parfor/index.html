@@ -111,26 +111,21 @@
       <h1>Parfor</h1>
       <span class="reading-time text-muted">Estimated reading time: 3 minutes</span>
 
-      
-
-<p>In this post we'll explore how to use Matlab's parfor with a CasADi nonlinear program.</p>
-
+      <p>In this post we&rsquo;ll explore how to use Matlab&rsquo;s parfor with a CasADi nonlinear program.</p>
 <p>The nonlinear program (NLP) of interest is the following:
 $$
 \begin{align}
-  \displaystyle \underset{x,y}
-  {\text{minimize}}\quad &amp;\displaystyle (1-x)^2+(y-x^2)^2 \newline
-    \text{subject to} \, \quad &amp; x^2+y^2 \leq r
+\displaystyle \underset{x,y}
+{\text{minimize}}\quad &amp;\displaystyle (1-x)^2+(y-x^2)^2 \newline
+\text{subject to} \, \quad &amp; x^2+y^2 \leq r
 \end{align}
 $$
 Note that $r$ is a free parameter.
 Our goal is to collect each solution of the NLP as we loop over $r$.
 We could imagine performing such task when tracing a pareto front of a multi-objective optimization, for which the parameter would be the a weight to combine those objectives.</p>
-
 <h1 id="problem-construction-inside-the-loop">Problem construction inside the loop</h1>
-
 <p>The first way to work with parfor and CasADi is to do the problem construction entirely in the loop:</p>
-<div class="highlight"><pre class="chroma"><code class="language-octave" data-lang="octave"><span class="n">N</span> <span class="p">=</span> <span class="mi">250</span><span class="p">;</span><span class="err">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="n">N</span> <span class="p">=</span> <span class="mi">250</span><span class="p">;</span><span class="err">
 </span><span class="err">
 </span><span class="err"></span><span class="n">fsol</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">);</span><span class="err">
 </span><span class="err"></span><span class="n">rs</span> <span class="p">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">N</span><span class="p">);</span><span class="err">
@@ -160,36 +155,25 @@ We could imagine performing such task when tracing a pareto front of a multi-obj
 </span><span class="err"></span>  <span class="n">fsol</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">=</span> <span class="nb">full</span><span class="p">(</span><span class="n">res</span><span class="p">.</span><span class="n">f</span><span class="p">);</span><span class="err">
 </span><span class="err"></span><span class="k">end</span><span class="err">
 </span><span class="err">
-</span><span class="err"></span><span class="nb">plot</span><span class="p">(</span><span class="n">rs</span><span class="p">,</span><span class="n">fsol</span><span class="p">,</span><span class="s">&#39;o&#39;</span><span class="p">)</span></code></pre></div>
-<p>We obtain a nice plot:
-
+</span><span class="err"></span><span class="nb">plot</span><span class="p">(</span><span class="n">rs</span><span class="p">,</span><span class="n">fsol</span><span class="p">,</span><span class="s">&#39;o&#39;</span><span class="p">)</span><span class="err">
+</span></code></pre></div><p>We obtain a nice plot:</p>
 <figure class=" default">
   <a href="https://web.casadi.org/blog/parfor/parfor1.png" target="_blank">
-  
-    <img src="https://web.casadi.org/blog/parfor/parfor1.png"  />
+  <img src="https://web.casadi.org/blog/parfor/parfor1.png"  />
   </a>
-  
   <figcaption>
     <h1>NLP solution objective for different values of r</h1>
-    
   </figcaption>
-  
 </figure>
-
-</p>
-
 <p>Download code: <a href="casadi_parfor1.m">casadi_parfor1.m</a></p>
-
 <h1 id="problem-construction-outside-the-loop">Problem construction outside the loop</h1>
-
 <p>Constructing CasADi expressions and Functions incurs an initialization cost.
 Therefore, we always advise to construct the solver fully outside of the loop,
 and simply make numerical calls to it in the loop.</p>
-
 <p>This advice collided with our limited support for parfor so far.
 CasADi 3.5 comes with improved support.
 The loop body may now contain numerical calls to CasADi Functions defined outside that loop:</p>
-<div class="highlight"><pre class="chroma"><code class="language-octave" data-lang="octave"><span class="n">x</span> <span class="p">=</span> <span class="n">casadi</span><span class="p">.</span><span class="n">SX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">);</span><span class="err">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="n">x</span> <span class="p">=</span> <span class="n">casadi</span><span class="p">.</span><span class="n">SX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">);</span><span class="err">
 </span><span class="err"></span><span class="n">y</span> <span class="p">=</span> <span class="n">casadi</span><span class="p">.</span><span class="n">SX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;y&#39;</span><span class="p">);</span><span class="err">
 </span><span class="err">
 </span><span class="err"></span><span class="n">v</span> <span class="p">=</span> <span class="p">[</span><span class="n">x</span><span class="p">;</span><span class="n">y</span><span class="p">];</span><span class="err">
@@ -215,29 +199,25 @@ The loop body may now contain numerical calls to CasADi Functions defined outsid
 </span><span class="err"></span><span class="k">end</span><span class="err">
 </span><span class="err"></span><span class="nb">toc</span><span class="err">
 </span><span class="err">
-</span><span class="err"></span><span class="nb">plot</span><span class="p">(</span><span class="n">rs</span><span class="p">,</span><span class="n">fsol</span><span class="p">,</span><span class="s">&#39;o&#39;</span><span class="p">)</span></code></pre></div>
-<p>Download code: <a href="casadi_parfor2.m">casadi_parfor2.m</a></p>
-
-<p>Note 1: for this example the parameter entered trivially through 'ubg'.
+</span><span class="err"></span><span class="nb">plot</span><span class="p">(</span><span class="n">rs</span><span class="p">,</span><span class="n">fsol</span><span class="p">,</span><span class="s">&#39;o&#39;</span><span class="p">)</span><span class="err">
+</span></code></pre></div><p>Download code: <a href="casadi_parfor2.m">casadi_parfor2.m</a></p>
+<p>Note 1: for this example the parameter entered trivially through &lsquo;ubg&rsquo;.
 In general, you may need to work with a parametric NLP:</p>
-<div class="highlight"><pre class="chroma"><code class="language-octave" data-lang="octave"><span class="n">p</span> <span class="p">=</span> <span class="n">casadi</span><span class="p">.</span><span class="n">SX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;p&#39;</span><span class="p">);</span><span class="err">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="n">p</span> <span class="p">=</span> <span class="n">casadi</span><span class="p">.</span><span class="n">SX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;p&#39;</span><span class="p">);</span><span class="err">
 </span><span class="err"></span><span class="n">g</span> <span class="p">=</span> <span class="n">x</span>^<span class="mi">2</span><span class="o">+</span><span class="n">y</span>^<span class="mi">2</span><span class="o">-</span><span class="n">p</span><span class="p">;</span><span class="err">
 </span><span class="err"></span><span class="n">nlp</span> <span class="p">=</span> <span class="nb">struct</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="s">&#39;p&#39;</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="s">&#39;f&#39;</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="s">&#39;g&#39;</span><span class="p">,</span> <span class="n">g</span><span class="p">);</span><span class="err">
 </span><span class="err">
 </span><span class="err"></span>  <span class="n">res</span> <span class="p">=</span> <span class="n">solver</span><span class="p">(</span><span class="s">&#39;x0&#39;</span> <span class="p">,</span> <span class="p">[</span><span class="mf">2.5</span> <span class="mf">3.0</span><span class="p">],...</span>      <span class="c">% solution guess</span><span class="err">
 </span><span class="err"></span>               <span class="p">...</span><span class="err">
-</span><span class="err"></span>               <span class="s">&#39;p&#39;</span><span class="p">,</span>  <span class="n">rs</span><span class="p">(</span><span class="n">i</span><span class="p">));</span></code></pre></div>
-<p>Note 2: constructing CasADi Functions inside the loop with CasADi symbols declared outside the loop is forbidden, but inefficient anyway.</p>
-
+</span><span class="err"></span>               <span class="s">&#39;p&#39;</span><span class="p">,</span>  <span class="n">rs</span><span class="p">(</span><span class="n">i</span><span class="p">));</span><span class="err">
+</span></code></pre></div><p>Note 2: constructing CasADi Functions inside the loop with CasADi symbols declared outside the loop is forbidden, but inefficient anyway.</p>
 <h1 id="implementation-details-and-python">Implementation details and Python</h1>
-
 <p>We did not actually code anything parfor-specific in CasADi.
 The reason that CasADi 3.5 supports the construct above now is because we implemented serialization/deserialization of CasADi Functions.</p>
-
 <p>Parfor uses this under the hood to transfer problems/results to/from different threads.
-Such mechanism is often encounter for parallelization, for example in Python's multiprocessing module.
+Such mechanism is often encounter for parallelization, for example in Python&rsquo;s multiprocessing module.
 In fact, the above code can easily be rewritten for Python:</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span>
 
 <span class="kn">from</span> <span class="nn">casadi</span> <span class="kn">import</span> <span class="o">*</span>
 
@@ -266,9 +246,8 @@ In fact, the above code can easily be rewritten for Python:</p>
   <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s2">&#34;f&#34;</span><span class="p">])</span>
 
 <span class="n">b</span> <span class="o">=</span> <span class="n">Pool</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">fsol</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="n">optimize</span><span class="p">,</span> <span class="n">rs</span><span class="p">)</span></code></pre></div>
-<p>Download code: <a href="casadi_multiprocessing.py">casadi_multiprocessing.py</a></p>
-
+<span class="n">fsol</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">optimize</span><span class="p">,</span> <span class="n">rs</span><span class="p">)</span>
+</code></pre></div><p>Download code: <a href="casadi_multiprocessing.py">casadi_multiprocessing.py</a></p>
 <p>In conclusion, we demonstrated a new way to solve NLPs in parallel with CasADi.
 Finally, note that we have an unrelated <a href="https://web.casadi.org/docs/#map">parallelization mechanism</a> to evaluate e.g. constraints of a single NLP in parallel.</p>
 
@@ -300,7 +279,7 @@ Finally, note that we have an unrelated <a href="https://web.casadi.org/docs/#ma
                 </li>
               
             </ul>
-            <p class="copyright">Copyright 2018.</p>
+            <p class="copyright">Copyright 2023.</p>
           </div>
         </div>
       </div>

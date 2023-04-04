@@ -25,6 +25,7 @@ static void mdlInitializeSizes(SimStruct *S)
       /* Dense inputs assumed here */
       ssSetInputPortDirectFeedThrough(S, i, 1);
       ssSetInputPortMatrixDimensions(S, i, sp[0], sp[1]);
+      ssSetInputPortRequiredContiguous(S, i, 1);
     }
 
     if (!ssSetNumOutputPorts(S, n_out)) return;
@@ -52,6 +53,11 @@ static void mdlInitializeSizes(SimStruct *S)
 
     /* Signal that we want to use the CasADi Function */
     f_incref();
+}
+
+static void mdlStart(SimStruct *S) {
+  slDataTypeAccess *dta = ssGetDataTypeAccess(S);
+  DTypeId solver_stats_bus_id = ssGetDataTypeId(S, "solver_stats_bus");
 }
 
 
@@ -87,7 +93,7 @@ static void mdlOutputs(SimStruct *S, int_T tid)
     /* Point to input and output buffers */
     int_T i;   
     for (i=0; i<n_in;++i) {
-      arg[i] = *ssGetInputPortRealSignalPtrs(S,i);
+      arg[i] = ssGetInputPortRealSignal(S,i);
     }
     for (i=0; i<n_out;++i) {
       res[i] = ssGetOutputPortRealSignal(S,i);

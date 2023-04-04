@@ -121,7 +121,7 @@
             <div class="card-body">
               <h5 class="card-title">CasADi-driven MPC in Simulink (part 2)</h5>
               In this post, we have a new take on nonlinear MPC in Simulink using CasADi.
-Interpreter mode In an earlier post on MPC in Simulink, we used an interpreted 'Matlab system' block in the simulink diagram. This is flexible, but slow because of interpreter overhead.
+Interpreter mode In an earlier post on MPC in Simulink, we used an interpreted &lsquo;Matlab system&rsquo; block in the simulink diagram. This is flexible, but slow because of interpreter overhead.
 code-generation mode In an earlier post on S-Functions, we showed how Casadi-generated C code can be embedded efficiently in a Simulink diagram using S-functions. The result is fast, but has restrictions: only SqpMethod combined with Qrqp or Osqp solver can be code-generated (as of 3.
               <a href="https://web.casadi.org/blog/mpc-simulink2/" class="btn btn-primary">Read more</a>
             </div>
@@ -140,8 +140,8 @@ code-generation mode In an earlier post on S-Functions, we showed how Casadi-gen
             
             <div class="card-body">
               <h5 class="card-title">Sensitivities of parametric NLP</h5>
-              In this post, we explore the parametric sensitivities of a nonlinear program (NLP). While we use 'Opti stack' syntax for modeling, differentiability of NLP solvers works all the same without Opti.
-Parametric nonlinear programming Let's start by defining an NLP that depends on a parameter $p \in \mathbb{R}$ that should not be optimized for: $$ \begin{align} \displaystyle \underset{x,y} {\text{minimize}}\quad &amp;\displaystyle (1-x)^2+0.2(y-x^2)^2 \newline \text{subject to} \, \quad &amp; \frac{p^2}{4} \leq (x+0.
+              In this post, we explore the parametric sensitivities of a nonlinear program (NLP). While we use &lsquo;Opti stack&rsquo; syntax for modeling, differentiability of NLP solvers works all the same without Opti.
+Parametric nonlinear programming Let&rsquo;s start by defining an NLP that depends on a parameter $p \in \mathbb{R}$ that should not be optimized for: $$ \begin{align} \displaystyle \underset{x,y} {\text{minimize}}\quad &amp;\displaystyle (1-x)^2+0.2(y-x^2)^2 \newline \text{subject to} \, \quad &amp; \frac{p^2}{4} \leq (x+0.5)^2+y^2 \leq p^2 \newline &amp; x\geq 0 \end{align} $$
               <a href="https://web.casadi.org/blog/nlp_sens/" class="btn btn-primary">Read more</a>
             </div>
             <div class="card-footer text-muted text-right">
@@ -159,7 +159,7 @@ Parametric nonlinear programming Let's start by defining an NLP that depends on 
             
             <div class="card-body">
               <h5 class="card-title">Parfor</h5>
-              In this post we'll explore how to use Matlab's parfor with a CasADi nonlinear program.
+              In this post we&rsquo;ll explore how to use Matlab&rsquo;s parfor with a CasADi nonlinear program.
 The nonlinear program (NLP) of interest is the following: $$ \begin{align} \displaystyle \underset{x,y} {\text{minimize}}\quad &amp;\displaystyle (1-x)^2+(y-x^2)^2 \newline \text{subject to} \, \quad &amp; x^2+y^2 \leq r \end{align} $$ Note that $r$ is a free parameter. Our goal is to collect each solution of the NLP as we loop over $r$. We could imagine performing such task when tracing a pareto front of a multi-objective optimization, for which the parameter would be the a weight to combine those objectives.
               <a href="https://web.casadi.org/blog/parfor/" class="btn btn-primary">Read more</a>
             </div>
@@ -178,9 +178,9 @@ The nonlinear program (NLP) of interest is the following: $$ \begin{align} \disp
             
             <div class="card-body">
               <h5 class="card-title">Tensorflow and CasADi</h5>
-              In this post we'll explore how to couple Tensorflow and CasADi. Thanks to Jonas Koch (student @ Applied Mathematics WWU Muenster) for delivering inspiration and example code.
+              In this post we&rsquo;ll explore how to couple Tensorflow and CasADi. Thanks to Jonas Koch (student @ Applied Mathematics WWU Muenster) for delivering inspiration and example code.
 One-dimensional regression with GPflow An important part of machine learning is about regression: fitting a (non-)linear model through sparse data. This is an unconstrained optimization problem for which dedicated algorithms and software are readily available.
-Let's create some datapoints to fit, a perturbed sine.
+Let&rsquo;s create some datapoints to fit, a perturbed sine.
               <a href="https://web.casadi.org/blog/tensorflow/" class="btn btn-primary">Read more</a>
             </div>
             <div class="card-footer text-muted text-right">
@@ -196,10 +196,10 @@ Let's create some datapoints to fit, a perturbed sine.
             
             <div class="card-body">
               <h5 class="card-title">Breaking free of CasADi&#39;s solvers</h5>
-              Once you've modeled your optimization problem in CasADi, you don't have to stick to the solvers we interface.
-In this post, we briefly demonstrate how we can make CasADi and Matlab's fmincon cooperate.
-Trivial unconstrained problem Let's consider a very simple scalar unconstrained optimization:
-$$ \begin{align} \displaystyle \underset{x} {\text{minimize}}\quad &amp; \sin(x)^2 \end{align} $$
+              Once you&rsquo;ve modeled your optimization problem in CasADi, you don&rsquo;t have to stick to the solvers we interface.
+In this post, we briefly demonstrate how we can make CasADi and Matlab&rsquo;s fmincon cooperate.
+Trivial unconstrained problem Let&rsquo;s consider a very simple scalar unconstrained optimization:
+$$ \begin{align} \displaystyle \underset{x} {\text{minimize}}\quad &amp; \sin(x)^2 \ \end{align} $$
 You can solve this with fminunc:
 fminunc(@(x) sin(x)^2, 0.1) The first argument, an anonymous function, can contain any code, including CasADi code.
               <a href="https://web.casadi.org/blog/fmincon/" class="btn btn-primary">Read more</a>
@@ -219,10 +219,10 @@ fminunc(@(x) sin(x)^2, 0.1) The first argument, an anonymous function, can conta
             
             <div class="card-body">
               <h5 class="card-title">CasADi codegen and S-Functions</h5>
-              While the user guide does explain code-generation in full detail, it is handy to have a demonstration in a real environment like Matlab's S-functions.
+              While the user guide does explain code-generation in full detail, it is handy to have a demonstration in a real environment like Matlab&rsquo;s S-functions.
 The problem We will design a Simulink block that implements a nonlinear mapping from ($\mathbf{R}^2$, $\mathbf{R}$) to ($\mathbf{R}$,$\mathbf{R}^2$):
 import casadi.* x = MX.sym(&#39;x&#39;,2); y = MX.sym(&#39;y&#39;); w = dot(x,y*x); z = sin(x)+y+w; f = Function(&#39;f&#39;,{x,y},{w,z}); Code-generating You may generate code from this with:
-f.generate(&#39;f.c&#39;) However, we'll use the more advanced syntax since we have advanced requirements.
+f.generate(&#39;f.c&#39;) However, we&rsquo;ll use the more advanced syntax since we have advanced requirements.
               <a href="https://web.casadi.org/blog/s-function/" class="btn btn-primary">Read more</a>
             </div>
             <div class="card-footer text-muted text-right">
@@ -240,9 +240,7 @@ f.generate(&#39;f.c&#39;) However, we'll use the more advanced syntax since we h
             
             <div class="card-body">
               <h5 class="card-title">On the importance of NLP scaling</h5>
-              <p>During my master's thesis at KULeuven on optimal control, one of the take-aways were that it's important to scale your variables. It helps convergence if the variables are in the order of 0.01 to 100.</p>
-
-<p></p>
+              <p>During my master&rsquo;s thesis at KULeuven on optimal control, one of the take-aways were that it&rsquo;s important to scale your variables. It helps convergence if the variables are in the order of 0.01 to 100.</p>
               <a href="https://web.casadi.org/blog/nlp-scaling/" class="btn btn-primary">Read more</a>
             </div>
             <div class="card-footer text-muted text-right">
@@ -261,11 +259,9 @@ f.generate(&#39;f.c&#39;) However, we'll use the more advanced syntax since we h
             <div class="card-body">
               <h5 class="card-title">Optimal control problems in a nutshell</h5>
               <p>Optimization.
-There's a mathematical term that sounds familiar to the general public.
+There&rsquo;s a mathematical term that sounds familiar to the general public.
 Everyone can imagine engineers working hard to make your car run 1% more fuel-efficient,
 or to slightly increase profit margins for a chemical company.</p>
-
-<p></p>
               <a href="https://web.casadi.org/blog/ocp/" class="btn btn-primary">Read more</a>
             </div>
             <div class="card-footer text-muted text-right">
@@ -283,11 +279,8 @@ or to slightly increase profit margins for a chemical company.</p>
             
             <div class="card-body">
               <h5 class="card-title">Easy NLP modeling in CasADi with Opti</h5>
-              <p><a href="http://install33.casadi.org">Release 3.3.0</a> of CasADi introduced a compact syntax for NLP modeling, using a set of helper classes, collectively known as 'Opti stack'.</p>
-
+              <p><a href="http://install33.casadi.org">Release 3.3.0</a> of CasADi introduced a compact syntax for NLP modeling, using a set of helper classes, collectively known as &lsquo;Opti stack&rsquo;.</p>
 <p>In this post, we briefly demonstrates this functionality.</p>
-
-<p></p>
               <a href="https://web.casadi.org/blog/opti/" class="btn btn-primary">Read more</a>
             </div>
             <div class="card-footer text-muted text-right">
@@ -306,9 +299,7 @@ or to slightly increase profit margins for a chemical company.</p>
             <div class="card-body">
               <h5 class="card-title">CasADi-driven MPC in Simulink (part 1)</h5>
               <p>CasADi is not a monolithic tool. We can easily couple it to other software to have more fun.
-Today we'll be exploring a <em>simple</em> coupling with Simulink. We'll be showing off nonlinear MPC (NMPC).</p>
-
-<p></p>
+Today we&rsquo;ll be exploring a <em>simple</em> coupling with Simulink. We&rsquo;ll be showing off nonlinear MPC (NMPC).</p>
               <a href="https://web.casadi.org/blog/mpc-simulink/" class="btn btn-primary">Read more</a>
             </div>
             <div class="card-footer text-muted text-right">
@@ -348,7 +339,7 @@ Today we'll be exploring a <em>simple</em> coupling with Simulink. We'll be show
                 </li>
               
             </ul>
-            <p class="copyright">Copyright 2018.</p>
+            <p class="copyright">Copyright 2023.</p>
           </div>
         </div>
       </div>
