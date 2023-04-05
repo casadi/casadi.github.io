@@ -10,7 +10,7 @@ If you find simple bugs or lack some feature that you think would be relatively 
 There is also an onboarding guide with FAQ over at the [CasADi wiki](https://github.com/casadi/casadi/wiki)
 
 ## Academic cooperation
-If you want more help, we are always open for *academic* cooperation. An academic cooperation usually take the form of a co-authorship of a journal paper. Please contact us directly if you are interested in this.
+If you want more help, we are always open for *academic* cooperation. Please contact us directly if you want to include us in a grant proposal for academic research.
 
 ## Professional cooperation
 Both main developers offer professional CasADi-related consulting (e.g. teaching, problem solving, adding features).
