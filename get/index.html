@@ -333,6 +333,7 @@ output[0][0] = @1
 <li>The <code>backward states</code> are no longer part of the DAE formulation. They are now derived from a user specified number of sensitivity equations (<code>nadj</code>). This is a slight restriction in the possible problem formulations, but on the other hand allows for a much better exploitation of adjoint sensitivity structure. The the backward states remain in the integrator class function inputs and outputs, but have now been renamed to align with their meaning; <code>adj_xf</code> means the adjoint seeds corresponding to <code>xf</code> (before they were called <code>rx0</code>), <code>adj_p</code> are the adjoint sensitivities corresponding to <code>p</code> (before called <code>rqf</code> and so on.</li>
 <li>An option <code>scale_abstol</code> has been added to the Sundials integrators. If this is set to true, nominal values for the differential state and algebraic variables will be passed on to the solver. Cf. <a href="https://github.com/casadi/casadi/issues/3046">#3046</a></li>
 </ul>
+<p>See &ldquo;multipoint_simulation&rdquo; in the example pack for a good starting point.</p>
 <h2 id="function-factory">Function factory</h2>
 <ul>
 <li><strong>breaking</strong>* Hessian blocks are now symmetric by default instead of returning only the upper triangular part. Prefix with <code>triu:</code> to get the old behavior.</li>
