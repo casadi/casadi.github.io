@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/b1e3f3e25daebf40a945864108080a119efc7c93" id="b1e3f3e25daebf40a945864108080a119efc7c93" >revision 3.6.0</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/c8e83fba7071d6f020efa3046ea31e098c758ddd" id="c8e83fba7071d6f020efa3046ea31e098c758ddd" >revision 3.6.1</a></div>
   </td>
  </tr>
  </tbody>
@@ -66,6 +66,8 @@ $(function() {
 <td>ad_weight_sp</td><td>OT_DOUBLE</td><td>Weighting factor for sparsity pattern calculation calculation.Overrides default behavior. Set to 0 and 1 to force forward and reverse mode respectively. Cf. option "ad_weight". When set to -1, sparsity is completely ignored and dense matrices are used.</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
 <td>always_inline</td><td>OT_BOOL</td><td>Force inlining.</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
+<tr>
+<td>always_recalculate_jacobian</td><td>OT_BOOL</td><td>Recalculate Jacobian before factorizations, even if Jacobian is current [default: true]</td><td><a class="el" href="../../d2/d5f/classcasadi_1_1CvodesInterface.html" title="&#39;cvodes&#39; plugin for Integrator">casadi::CvodesInterface</a> </td></tr>
 <tr>
 <td>augmented_options</td><td>OT_DICT</td><td>Options to be passed down to the augmented integrator, if one is constructed.</td><td><a class="el" href="../../db/d3d/classcasadi_1_1Integrator.html" title="Internal storage for integrator related data.">casadi::Integrator</a> </td></tr>
 <tr>

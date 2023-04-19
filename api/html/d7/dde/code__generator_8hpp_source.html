@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/b1e3f3e25daebf40a945864108080a119efc7c93" id="b1e3f3e25daebf40a945864108080a119efc7c93" >revision 3.6.0</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/c8e83fba7071d6f020efa3046ea31e098c758ddd" id="c8e83fba7071d6f020efa3046ea31e098c758ddd" >revision 3.6.1</a></div>
   </td>
  </tr>
  </tbody>
@@ -489,152 +489,154 @@ $(function() {
 <div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;        <span class="keyword">const</span> std::string&amp; loc, casadi_int stride, casadi_int sz, casadi_int key_sz,</div>
 <div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;        <span class="keyword">const</span> std::string&amp; val);</div>
 <div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160; </div>
-<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> file_open(std::ofstream&amp; f, <span class="keyword">const</span> std::string&amp; name, <span class="keywordtype">bool</span> cpp);</div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;    <span class="keyword">static</span> std::string casadi_version();</div>
 <div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160; </div>
-<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> file_close(std::ofstream&amp; f, <span class="keywordtype">bool</span> cpp);</div>
+<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> file_open(std::ofstream&amp; f, <span class="keyword">const</span> std::string&amp; name, <span class="keywordtype">bool</span> cpp);</div>
 <div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160; </div>
-<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;    <span class="keywordtype">void</span> sz_work(<span class="keywordtype">size_t</span>&amp; sz_arg, <span class="keywordtype">size_t</span>&amp; sz_res, <span class="keywordtype">size_t</span>&amp; sz_iw, <span class="keywordtype">size_t</span>&amp; sz_w) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160; </div>
-<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160; </div>
-<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;    <span class="comment">// Generate casadi_real definition</span></div>
-<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;    <span class="keywordtype">void</span> generate_casadi_real(std::ostream &amp;s) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> file_close(std::ofstream&amp; f, <span class="keywordtype">bool</span> cpp);</div>
+<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160; </div>
+<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;    <span class="keywordtype">void</span> sz_work(<span class="keywordtype">size_t</span>&amp; sz_arg, <span class="keywordtype">size_t</span>&amp; sz_res, <span class="keywordtype">size_t</span>&amp; sz_iw, <span class="keywordtype">size_t</span>&amp; sz_w) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160; </div>
+<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;  <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160; </div>
-<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;    <span class="comment">// Generate casadi_int definition</span></div>
-<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;    <span class="keywordtype">void</span> generate_casadi_int(std::ostream &amp;s) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;    <span class="comment">// Generate casadi_real definition</span></div>
+<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;    <span class="keywordtype">void</span> generate_casadi_real(std::ostream &amp;s) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160; </div>
-<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;    <span class="comment">// Generate mex entry point</span></div>
-<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;    <span class="keywordtype">void</span> generate_mex(std::ostream &amp;s) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;    <span class="comment">// Generate casadi_int definition</span></div>
+<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;    <span class="keywordtype">void</span> generate_casadi_int(std::ostream &amp;s) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160; </div>
-<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;    <span class="comment">// Generate main entry point</span></div>
-<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;    <span class="keywordtype">void</span> generate_main(std::ostream &amp;s) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;    <span class="comment">// Generate mex entry point</span></div>
+<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;    <span class="keywordtype">void</span> generate_mex(std::ostream &amp;s) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160; </div>
-<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;    <span class="comment">// Generate export symbol macros</span></div>
-<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;    <span class="keywordtype">void</span> generate_export_symbol(std::ostream &amp;s) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;    <span class="comment">// Generate main entry point</span></div>
+<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;    <span class="keywordtype">void</span> generate_main(std::ostream &amp;s) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160; </div>
-<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;    <span class="comment">// Generate import symbol macros</span></div>
-<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;    <span class="keywordtype">void</span> generate_import_symbol(std::ostream &amp;s) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;    <span class="comment">// Generate export symbol macros</span></div>
+<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;    <span class="keywordtype">void</span> generate_export_symbol(std::ostream &amp;s) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160; </div>
-<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;    <span class="comment">//  private:</span></div>
-<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160; </div>
-<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;    <span class="comment">// Name of generated file</span></div>
-<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;    std::string name, suffix;</div>
+<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;    <span class="comment">// Generate import symbol macros</span></div>
+<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;    <span class="keywordtype">void</span> generate_import_symbol(std::ostream &amp;s) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160; </div>
+<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;    <span class="comment">//  private:</span></div>
+<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;  <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160; </div>
-<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;    <span class="comment">// Real-type used for the codegen</span></div>
-<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;    std::string casadi_real_type;</div>
+<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;    <span class="comment">// Name of generated file</span></div>
+<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;    std::string name, suffix;</div>
 <div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160; </div>
-<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;    <span class="comment">// Int-type used for the codegen</span></div>
-<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;    std::string casadi_int_type;</div>
+<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;    <span class="comment">// Real-type used for the codegen</span></div>
+<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;    std::string casadi_real_type;</div>
 <div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160; </div>
-<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;    <span class="comment">// Should we create a memory entry point?</span></div>
-<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;    <span class="keywordtype">bool</span> with_mem;</div>
+<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;    <span class="comment">// Int-type used for the codegen</span></div>
+<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;    std::string casadi_int_type;</div>
 <div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160; </div>
-<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;    <span class="comment">// Generate header file?</span></div>
-<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;    <span class="keywordtype">bool</span> with_header;</div>
+<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;    <span class="comment">// Should we create a memory entry point?</span></div>
+<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;    <span class="keywordtype">bool</span> with_mem;</div>
 <div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160; </div>
-<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;    <span class="comment">// Are we creating a MEX file?</span></div>
-<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;    <span class="keywordtype">bool</span> mex;</div>
+<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;    <span class="comment">// Generate header file?</span></div>
+<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;    <span class="keywordtype">bool</span> with_header;</div>
 <div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160; </div>
-<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;    <span class="comment">// Verbose codegen?</span></div>
-<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;    <span class="keywordtype">bool</span> verbose;</div>
+<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;    <span class="comment">// Are we creating a MEX file?</span></div>
+<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;    <span class="keywordtype">bool</span> mex;</div>
 <div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160; </div>
-<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;    <span class="comment">// Verbose runtime?</span></div>
-<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;    <span class="keywordtype">bool</span> verbose_runtime;</div>
+<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;    <span class="comment">// Verbose codegen?</span></div>
+<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;    <span class="keywordtype">bool</span> verbose;</div>
 <div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160; </div>
-<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;    <span class="comment">// Are we generating C++?</span></div>
-<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;    <span class="keywordtype">bool</span> cpp;</div>
+<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;    <span class="comment">// Verbose runtime?</span></div>
+<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;    <span class="keywordtype">bool</span> verbose_runtime;</div>
 <div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160; </div>
-<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;    <span class="comment">// Should we generate a main (allowing evaluation from command line)</span></div>
-<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;    <span class="keywordtype">bool</span> main;</div>
+<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;    <span class="comment">// Are we generating C++?</span></div>
+<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;    <span class="keywordtype">bool</span> cpp;</div>
 <div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160; </div>
-<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;    <span class="comment">// Should we include mayth library?</span></div>
-<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;    <span class="keywordtype">bool</span> include_math;</div>
+<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;    <span class="comment">// Should we generate a main (allowing evaluation from command line)</span></div>
+<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;    <span class="keywordtype">bool</span> main;</div>
 <div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160; </div>
-<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;    <span class="comment">// Do we want to be lean on stack usage?</span></div>
-<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;    <span class="keywordtype">bool</span> avoid_stack_;</div>
+<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;    <span class="comment">// Should we include mayth library?</span></div>
+<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;    <span class="keywordtype">bool</span> include_math;</div>
 <div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160; </div>
-<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;    std::string infinity, nan, real_min;</div>
-<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160; </div>
-<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;    <span class="keywordtype">bool</span> codegen_scalars;</div>
-<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160; </div>
-<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;    <span class="comment">// Have a flag for exporting/importing symbols</span></div>
-<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;    <span class="keywordtype">bool</span> with_export, with_import;</div>
+<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;    <span class="comment">// Do we want to be lean on stack usage?</span></div>
+<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;    <span class="keywordtype">bool</span> avoid_stack_;</div>
+<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160; </div>
+<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;    std::string infinity, nan, real_min;</div>
+<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160; </div>
+<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;    <span class="keywordtype">bool</span> codegen_scalars;</div>
 <div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160; </div>
-<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;    <span class="comment">// Prefix symbols in DLLs?</span></div>
-<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;    std::string dll_export, dll_import;</div>
+<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;    <span class="comment">// Have a flag for exporting/importing symbols</span></div>
+<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;    <span class="keywordtype">bool</span> with_export, with_import;</div>
 <div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160; </div>
-<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;    <span class="comment">// Prefix</span></div>
-<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;    std::string prefix;</div>
+<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;    <span class="comment">// Prefix symbols in DLLs?</span></div>
+<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;    std::string dll_export, dll_import;</div>
 <div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160; </div>
-<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;    <span class="comment">// std::stringstreams holding the different parts of the file being generated</span></div>
-<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;    std::stringstream includes;</div>
-<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;    std::stringstream auxiliaries;</div>
-<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;    std::stringstream body;</div>
-<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;    std::stringstream header;</div>
-<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;    std::stringstream buffer;</div>
-<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160; </div>
-<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;    <span class="comment">// Are we at a new line?</span></div>
-<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;    <span class="keywordtype">bool</span> newline_;</div>
+<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;    <span class="comment">// Prefix</span></div>
+<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;    std::string prefix;</div>
+<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160; </div>
+<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;    <span class="comment">// std::stringstreams holding the different parts of the file being generated</span></div>
+<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;    std::stringstream includes;</div>
+<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;    std::stringstream auxiliaries;</div>
+<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;    std::stringstream body;</div>
+<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;    std::stringstream header;</div>
+<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;    std::stringstream buffer;</div>
 <div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160; </div>
-<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;    <span class="comment">// Indentation</span></div>
-<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;    casadi_int indent_;</div>
-<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;    casadi_int current_indent_;</div>
-<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160; </div>
-<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;    <span class="comment">// Names of exposed functions</span></div>
-<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;    std::vector&lt;std::string&gt; exposed_fname;</div>
+<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;    <span class="comment">// Are we at a new line?</span></div>
+<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;    <span class="keywordtype">bool</span> newline_;</div>
+<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160; </div>
+<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;    <span class="comment">// Indentation</span></div>
+<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;    casadi_int indent_;</div>
+<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;    casadi_int current_indent_;</div>
 <div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160; </div>
-<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;    <span class="comment">// Code generated sparsities</span></div>
-<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;    std::set&lt;std::string&gt; sparsity_meta;</div>
+<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;    <span class="comment">// Names of exposed functions</span></div>
+<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;    std::vector&lt;std::string&gt; exposed_fname;</div>
 <div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160; </div>
-<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;    <span class="comment">// Set of already included header files</span></div>
-<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;    std::set&lt;std::string&gt; added_includes_;</div>
-<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;    std::set&lt;std::string&gt; added_externals_;</div>
-<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;    std::set&lt;std::string&gt; added_shorthands_;</div>
-<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;    std::multimap&lt;Auxiliary, std::vector&lt;std::string&gt;&gt; added_auxiliaries_;</div>
-<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;    std::multimap&lt;size_t, size_t&gt; added_double_constants_;</div>
-<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;    std::multimap&lt;size_t, size_t&gt; added_integer_constants_;</div>
-<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;    std::map&lt;std::string, std::pair&lt;std::string, std::string&gt; &gt; local_variables_;</div>
-<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;    std::map&lt;std::string, std::string&gt; local_default_;</div>
-<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;    std::map&lt;const void *, casadi_int&gt; file_scope_double_;</div>
-<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;    std::map&lt;const void *, casadi_int&gt; file_scope_integer_;</div>
-<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160; </div>
-<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;    <span class="comment">// Added functions</span></div>
-<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;    <span class="keyword">struct </span>FunctionMeta {</div>
-<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;      <span class="comment">// The function object</span></div>
-<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;      Function f;</div>
-<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;      <span class="comment">// Name in codegen</span></div>
-<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;      std::string codegen_name;</div>
-<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;    };</div>
-<div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;    std::vector&lt;FunctionMeta&gt; added_functions_;</div>
-<div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160; </div>
-<div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;    <span class="comment">// Constants</span></div>
-<div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;    std::vector&lt;std::vector&lt;double&gt; &gt; double_constants_;</div>
-<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;    std::vector&lt;std::vector&lt;casadi_int&gt; &gt; integer_constants_;</div>
-<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160; </div>
-<div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;    <span class="comment">// Does any function need thread-local memory?</span></div>
-<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;    <span class="keywordtype">bool</span> needs_mem_;</div>
+<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;    <span class="comment">// Code generated sparsities</span></div>
+<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;    std::set&lt;std::string&gt; sparsity_meta;</div>
+<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160; </div>
+<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;    <span class="comment">// Set of already included header files</span></div>
+<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;    std::set&lt;std::string&gt; added_includes_;</div>
+<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;    std::set&lt;std::string&gt; added_externals_;</div>
+<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;    std::set&lt;std::string&gt; added_shorthands_;</div>
+<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;    std::multimap&lt;Auxiliary, std::vector&lt;std::string&gt;&gt; added_auxiliaries_;</div>
+<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;    std::multimap&lt;size_t, size_t&gt; added_double_constants_;</div>
+<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;    std::multimap&lt;size_t, size_t&gt; added_integer_constants_;</div>
+<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;    std::map&lt;std::string, std::pair&lt;std::string, std::string&gt; &gt; local_variables_;</div>
+<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;    std::map&lt;std::string, std::string&gt; local_default_;</div>
+<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;    std::map&lt;const void *, casadi_int&gt; file_scope_double_;</div>
+<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;    std::map&lt;const void *, casadi_int&gt; file_scope_integer_;</div>
+<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160; </div>
+<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;    <span class="comment">// Added functions</span></div>
+<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;    <span class="keyword">struct </span>FunctionMeta {</div>
+<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;      <span class="comment">// The function object</span></div>
+<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;      Function f;</div>
+<div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;      <span class="comment">// Name in codegen</span></div>
+<div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;      std::string codegen_name;</div>
+<div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;    };</div>
+<div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;    std::vector&lt;FunctionMeta&gt; added_functions_;</div>
+<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160; </div>
+<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;    <span class="comment">// Constants</span></div>
+<div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;    std::vector&lt;std::vector&lt;double&gt; &gt; double_constants_;</div>
+<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;    std::vector&lt;std::vector&lt;casadi_int&gt; &gt; integer_constants_;</div>
 <div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160; </div>
-<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;    <span class="comment">// Hash a vector</span></div>
-<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">size_t</span> hash(<span class="keyword">const</span> std::vector&lt;double&gt;&amp; v);</div>
-<div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">size_t</span> hash(<span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; v);</div>
-<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160; </div>
-<div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;    <span class="comment">// Compare two vectors</span></div>
-<div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">bool</span> equal(<span class="keyword">const</span> std::vector&lt;T&gt;&amp; v1, <span class="keyword">const</span> std::vector&lt;T&gt;&amp; v2) {</div>
-<div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;      <span class="keywordflow">if</span> (v1.size()!=v2.size()) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160;      <span class="keywordflow">for</span> (casadi_int j=0; j&lt;v1.size(); ++j) {</div>
-<div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160;        <span class="keywordflow">if</span> (v1[j]!=v2[j]) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00895"></a><span class="lineno">  895</span>&#160;      }</div>
-<div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160;    }</div>
-<div class="line"><a name="l00899"></a><span class="lineno">  899</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// SWIG</span></div>
-<div class="line"><a name="l00900"></a><span class="lineno">  900</span>&#160;  };</div>
-<div class="line"><a name="l00901"></a><span class="lineno">  901</span>&#160; </div>
-<div class="line"><a name="l00902"></a><span class="lineno">  902</span>&#160; </div>
-<div class="line"><a name="l00903"></a><span class="lineno">  903</span>&#160;} <span class="comment">// namespace casadi</span></div>
+<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;    <span class="comment">// Does any function need thread-local memory?</span></div>
+<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;    <span class="keywordtype">bool</span> needs_mem_;</div>
+<div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160; </div>
+<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;    <span class="comment">// Hash a vector</span></div>
+<div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">size_t</span> hash(<span class="keyword">const</span> std::vector&lt;double&gt;&amp; v);</div>
+<div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">size_t</span> hash(<span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; v);</div>
+<div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160; </div>
+<div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;    <span class="comment">// Compare two vectors</span></div>
+<div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">bool</span> equal(<span class="keyword">const</span> std::vector&lt;T&gt;&amp; v1, <span class="keyword">const</span> std::vector&lt;T&gt;&amp; v2) {</div>
+<div class="line"><a name="l00895"></a><span class="lineno">  895</span>&#160;      <span class="keywordflow">if</span> (v1.size()!=v2.size()) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160;      <span class="keywordflow">for</span> (casadi_int j=0; j&lt;v1.size(); ++j) {</div>
+<div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160;        <span class="keywordflow">if</span> (v1[j]!=v2[j]) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160;      }</div>
+<div class="line"><a name="l00899"></a><span class="lineno">  899</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00900"></a><span class="lineno">  900</span>&#160;    }</div>
+<div class="line"><a name="l00902"></a><span class="lineno">  902</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// SWIG</span></div>
+<div class="line"><a name="l00903"></a><span class="lineno">  903</span>&#160;  };</div>
 <div class="line"><a name="l00904"></a><span class="lineno">  904</span>&#160; </div>
-<div class="line"><a name="l00905"></a><span class="lineno">  905</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_CODE_GENERATOR_HPP</span></div>
+<div class="line"><a name="l00905"></a><span class="lineno">  905</span>&#160; </div>
+<div class="line"><a name="l00906"></a><span class="lineno">  906</span>&#160;} <span class="comment">// namespace casadi</span></div>
+<div class="line"><a name="l00907"></a><span class="lineno">  907</span>&#160; </div>
+<div class="line"><a name="l00908"></a><span class="lineno">  908</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_CODE_GENERATOR_HPP</span></div>
 <div class="ttc" id="aclasscasadi_1_1CodeGenerator_html"><div class="ttname"><a href="../../d1/da2/classcasadi_1_1CodeGenerator.html">casadi::CodeGenerator</a></div><div class="ttdoc">Helper class for C code generation.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dde/code__generator_8hpp_source.html#l00043">code_generator.hpp:43</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1CodeGenerator_html_a1aeaa160c1dffd70eb19b023ee2a8cea"><div class="ttname"><a href="../../d1/da2/classcasadi_1_1CodeGenerator.html#a1aeaa160c1dffd70eb19b023ee2a8cea">casadi::CodeGenerator::dump</a></div><div class="ttdeci">std::string dump()</div><div class="ttdoc">Generate a file, return code as string.</div></div>
 <div class="ttc" id="aclasscasadi_1_1CodeGenerator_html_a31d74c1471903742fa6a0e00d1155209"><div class="ttname"><a href="../../d1/da2/classcasadi_1_1CodeGenerator.html#a31d74c1471903742fa6a0e00d1155209">casadi::CodeGenerator::add</a></div><div class="ttdeci">void add(const Function &amp;f, bool with_jac_sparsity=false)</div><div class="ttdoc">Add a function (name generated)</div></div>

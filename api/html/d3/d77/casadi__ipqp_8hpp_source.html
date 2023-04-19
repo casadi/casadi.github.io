@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/b1e3f3e25daebf40a945864108080a119efc7c93" id="b1e3f3e25daebf40a945864108080a119efc7c93" >revision 3.6.0</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/c8e83fba7071d6f020efa3046ea31e098c758ddd" id="c8e83fba7071d6f020efa3046ea31e098c758ddd" >revision 3.6.1</a></div>
   </td>
  </tr>
  </tbody>
@@ -867,61 +867,64 @@ $(function() {
 <div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;  casadi_copy(d-&gt;<a class="code" href="../../d9/dff/structcasadi__ipqp__data.html#a2660e8dfbd4b33276bde0b705dd3d1be">lam</a> + p-&gt;<a class="code" href="../../d5/d36/structcasadi__ipqp__prob.html#a5e8306130c2795ceeb0de8a733407822">nx</a>, p-&gt;<a class="code" href="../../d5/d36/structcasadi__ipqp__prob.html#ad7d7a04c6f93f1abc3a2d99a43f30960">na</a>, lam_a);</div>
 <div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;}</div>
 <div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160; </div>
-<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;<span class="comment">// The following routines require stdio</span></div>
-<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;<span class="preprocessor">#ifndef CASADI_PRINTF</span></div>
-<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160; </div>
-<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;<span class="comment">// SYMBOL &quot;ipqp_print_header&quot;</span></div>
-<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
-<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;<span class="keywordtype">int</span> casadi_ipqp_print_header(<a class="code" href="../../d9/dff/structcasadi__ipqp__data.html">casadi_ipqp_data&lt;T1&gt;</a>* d, <span class="keywordtype">char</span>* buf, <span class="keywordtype">size_t</span> buf_sz) {</div>
-<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;  <span class="keywordtype">int</span> flag;</div>
-<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;  <span class="comment">// Print to string</span></div>
-<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;  flag = snprintf(buf, buf_sz, <span class="stringliteral">&quot;%5s %9s %9s %5s %9s %5s &quot;</span></div>
-<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;          <span class="stringliteral">&quot;%9s %5s %9s %4s&quot;</span>,</div>
-<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;          <span class="stringliteral">&quot;Iter&quot;</span>, <span class="stringliteral">&quot;mu&quot;</span>, <span class="stringliteral">&quot;|pr|&quot;</span>, <span class="stringliteral">&quot;con&quot;</span>, <span class="stringliteral">&quot;|du|&quot;</span>, <span class="stringliteral">&quot;var&quot;</span>, <span class="stringliteral">&quot;|co|&quot;</span>, <span class="stringliteral">&quot;con&quot;</span>,</div>
-<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;          <span class="stringliteral">&quot;last_tau&quot;</span>, <span class="stringliteral">&quot;Note&quot;</span>);</div>
-<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;  <span class="comment">// Check if error</span></div>
-<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;  <span class="keywordflow">if</span> (flag &lt; 0) {</div>
-<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;    d-&gt;<a class="code" href="../../d9/dff/structcasadi__ipqp__data.html#a80e92241138aca2525b62a8d3b227ddb">status</a> = IPQP_PROGRESS_ERROR;</div>
-<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;    <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;  }</div>
-<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;  <span class="comment">// Successful return</span></div>
-<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;}</div>
-<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160; </div>
-<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;<span class="comment">// SYMBOL &quot;ipqp_print_iteration&quot;</span></div>
-<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
-<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;<span class="keywordtype">int</span> casadi_ipqp_print_iteration(<a class="code" href="../../d9/dff/structcasadi__ipqp__data.html">casadi_ipqp_data&lt;T1&gt;</a>* d, <span class="keywordtype">char</span>* buf, <span class="keywordtype">int</span> buf_sz) {</div>
-<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;  <span class="keywordtype">int</span> flag;</div>
-<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;  <span class="comment">// Print iteration data without note to string</span></div>
-<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;  flag = snprintf(buf, buf_sz,</div>
-<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;    <span class="stringliteral">&quot;%5d %9.2g %9.2g %5d %9.2g %5d %9.2g %5d %9.2g  &quot;</span>,</div>
-<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;    <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(d-&gt;<a class="code" href="../../d9/dff/structcasadi__ipqp__data.html#aefeac54b44da0d73b678a1af443b37e7">iter</a>), d-&gt;<a class="code" href="../../d9/dff/structcasadi__ipqp__data.html#ada12295dc70921c242ff5391d406bdc0">mu</a>,</div>
-<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;    d-&gt;<a class="code" href="../../d9/dff/structcasadi__ipqp__data.html#accc4feeee0b762fa3656c0a4d5ca7684">pr</a>, <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(d-&gt;<a class="code" href="../../d9/dff/structcasadi__ipqp__data.html#a8c68fade32dff68c70aede6f95772922">ipr</a>),</div>
-<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;    d-&gt;<a class="code" href="../../d9/dff/structcasadi__ipqp__data.html#a4aad7ab0ae911726376f44b56ac8f005">du</a>, <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(d-&gt;<a class="code" href="../../d9/dff/structcasadi__ipqp__data.html#ae294bc9f3178aefa310f226321069b8d">idu</a>),</div>
-<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;    d-&gt;<a class="code" href="../../d9/dff/structcasadi__ipqp__data.html#ad34a781faa04818baf0876f948ff2573">co</a>, <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(d-&gt;<a class="code" href="../../d9/dff/structcasadi__ipqp__data.html#a1fea28569863ea269f71b8546d3d6570">ico</a>),</div>
-<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;    d-&gt;<a class="code" href="../../d9/dff/structcasadi__ipqp__data.html#a5c15a7ed36d52bc5a036a7392b21277a">tau</a>);</div>
-<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;  <span class="comment">// Check if error</span></div>
-<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;  <span class="keywordflow">if</span> (flag &lt; 0) {</div>
-<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;    d-&gt;<a class="code" href="../../d9/dff/structcasadi__ipqp__data.html#a80e92241138aca2525b62a8d3b227ddb">status</a> = IPQP_PROGRESS_ERROR;</div>
-<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;    <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;  }</div>
-<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;  <span class="comment">// Rest of buffer reserved for iteration note</span></div>
-<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;  buf += flag;</div>
-<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;  buf_sz -= flag;</div>
-<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;  <span class="comment">// Print iteration note, if any</span></div>
-<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;  <span class="keywordflow">if</span> (d-&gt;<a class="code" href="../../d9/dff/structcasadi__ipqp__data.html#acee5d45e60daa60a4ec7e6ab7cf695eb">msg</a>) {</div>
-<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;    flag = snprintf(buf, buf_sz, <span class="stringliteral">&quot;%s&quot;</span>, d-&gt;<a class="code" href="../../d9/dff/structcasadi__ipqp__data.html#acee5d45e60daa60a4ec7e6ab7cf695eb">msg</a>);</div>
-<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;    <span class="comment">// Check if error</span></div>
-<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;    <span class="keywordflow">if</span> (flag &lt; 0) {</div>
-<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;      d-&gt;<a class="code" href="../../d9/dff/structcasadi__ipqp__data.html#a80e92241138aca2525b62a8d3b227ddb">status</a> = IPQP_PROGRESS_ERROR;</div>
-<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;      <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;    }</div>
-<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;  }</div>
-<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;  <span class="comment">// Successful return</span></div>
-<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;}</div>
-<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160; </div>
-<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// CASADI_PRINTF</span></div>
+<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;<span class="comment">// SYMBOL &quot;ipqp_print_header&quot;</span></div>
+<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
+<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;<span class="keywordtype">int</span> casadi_ipqp_print_header(<a class="code" href="../../d9/dff/structcasadi__ipqp__data.html">casadi_ipqp_data&lt;T1&gt;</a>* d, <span class="keywordtype">char</span>* buf, <span class="keywordtype">size_t</span> buf_sz) {</div>
+<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;<span class="preprocessor">#ifdef CASADI_SNPRINTF</span></div>
+<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;  <span class="keywordtype">int</span> flag;</div>
+<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;  <span class="comment">// Print to string</span></div>
+<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;  flag = CASADI_SNPRINTF(buf, buf_sz, <span class="stringliteral">&quot;%5s %9s %9s %5s %9s %5s &quot;</span></div>
+<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;          <span class="stringliteral">&quot;%9s %5s %9s %4s&quot;</span>,</div>
+<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;          <span class="stringliteral">&quot;Iter&quot;</span>, <span class="stringliteral">&quot;mu&quot;</span>, <span class="stringliteral">&quot;|pr|&quot;</span>, <span class="stringliteral">&quot;con&quot;</span>, <span class="stringliteral">&quot;|du|&quot;</span>, <span class="stringliteral">&quot;var&quot;</span>, <span class="stringliteral">&quot;|co|&quot;</span>, <span class="stringliteral">&quot;con&quot;</span>,</div>
+<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;          <span class="stringliteral">&quot;last_tau&quot;</span>, <span class="stringliteral">&quot;Note&quot;</span>);</div>
+<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;  <span class="comment">// Check if error</span></div>
+<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;  <span class="keywordflow">if</span> (flag &lt; 0) {</div>
+<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;    d-&gt;<a class="code" href="../../d9/dff/structcasadi__ipqp__data.html#a80e92241138aca2525b62a8d3b227ddb">status</a> = IPQP_PROGRESS_ERROR;</div>
+<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;  }</div>
+<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;  <span class="keywordflow">if</span> (buf_sz) buf[0] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;  <span class="comment">// Successful return</span></div>
+<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;}</div>
+<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160; </div>
+<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;<span class="comment">// SYMBOL &quot;ipqp_print_iteration&quot;</span></div>
+<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
+<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;<span class="keywordtype">int</span> casadi_ipqp_print_iteration(<a class="code" href="../../d9/dff/structcasadi__ipqp__data.html">casadi_ipqp_data&lt;T1&gt;</a>* d, <span class="keywordtype">char</span>* buf, <span class="keywordtype">int</span> buf_sz) {</div>
+<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;<span class="preprocessor">#ifdef CASADI_SNPRINTF</span></div>
+<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;  <span class="keywordtype">int</span> flag;</div>
+<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;  <span class="comment">// Print iteration data without note to string</span></div>
+<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;  flag = CASADI_SNPRINTF(buf, buf_sz,</div>
+<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;    <span class="stringliteral">&quot;%5d %9.2g %9.2g %5d %9.2g %5d %9.2g %5d %9.2g  &quot;</span>,</div>
+<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;    <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(d-&gt;<a class="code" href="../../d9/dff/structcasadi__ipqp__data.html#aefeac54b44da0d73b678a1af443b37e7">iter</a>), d-&gt;<a class="code" href="../../d9/dff/structcasadi__ipqp__data.html#ada12295dc70921c242ff5391d406bdc0">mu</a>,</div>
+<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;    d-&gt;<a class="code" href="../../d9/dff/structcasadi__ipqp__data.html#accc4feeee0b762fa3656c0a4d5ca7684">pr</a>, <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(d-&gt;<a class="code" href="../../d9/dff/structcasadi__ipqp__data.html#a8c68fade32dff68c70aede6f95772922">ipr</a>),</div>
+<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;    d-&gt;<a class="code" href="../../d9/dff/structcasadi__ipqp__data.html#a4aad7ab0ae911726376f44b56ac8f005">du</a>, <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(d-&gt;<a class="code" href="../../d9/dff/structcasadi__ipqp__data.html#ae294bc9f3178aefa310f226321069b8d">idu</a>),</div>
+<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;    d-&gt;<a class="code" href="../../d9/dff/structcasadi__ipqp__data.html#ad34a781faa04818baf0876f948ff2573">co</a>, <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(d-&gt;<a class="code" href="../../d9/dff/structcasadi__ipqp__data.html#a1fea28569863ea269f71b8546d3d6570">ico</a>),</div>
+<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;    d-&gt;<a class="code" href="../../d9/dff/structcasadi__ipqp__data.html#a5c15a7ed36d52bc5a036a7392b21277a">tau</a>);</div>
+<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;  <span class="comment">// Check if error</span></div>
+<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;  <span class="keywordflow">if</span> (flag &lt; 0) {</div>
+<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;    d-&gt;<a class="code" href="../../d9/dff/structcasadi__ipqp__data.html#a80e92241138aca2525b62a8d3b227ddb">status</a> = IPQP_PROGRESS_ERROR;</div>
+<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;  }</div>
+<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;  <span class="comment">// Rest of buffer reserved for iteration note</span></div>
+<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;  buf += flag;</div>
+<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;  buf_sz -= flag;</div>
+<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;  <span class="comment">// Print iteration note, if any</span></div>
+<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;  <span class="keywordflow">if</span> (d-&gt;<a class="code" href="../../d9/dff/structcasadi__ipqp__data.html#acee5d45e60daa60a4ec7e6ab7cf695eb">msg</a>) {</div>
+<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;    flag = CASADI_SNPRINTF(buf, buf_sz, <span class="stringliteral">&quot;%s&quot;</span>, d-&gt;<a class="code" href="../../d9/dff/structcasadi__ipqp__data.html#acee5d45e60daa60a4ec7e6ab7cf695eb">msg</a>);</div>
+<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;    <span class="comment">// Check if error</span></div>
+<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;    <span class="keywordflow">if</span> (flag &lt; 0) {</div>
+<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;      d-&gt;<a class="code" href="../../d9/dff/structcasadi__ipqp__data.html#a80e92241138aca2525b62a8d3b227ddb">status</a> = IPQP_PROGRESS_ERROR;</div>
+<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;      <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;    }</div>
+<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;  }</div>
+<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;  <span class="keywordflow">if</span> (buf_sz) buf[0] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;  <span class="comment">// Successful return</span></div>
+<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;}</div>
 <div class="ttc" id="astructcasadi__ipqp__data_html"><div class="ttname"><a href="../../d9/dff/structcasadi__ipqp__data.html">casadi_ipqp_data</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d77/casadi__ipqp_8hpp_source.html#l00095">casadi_ipqp.hpp:95</a></div></div>
 <div class="ttc" id="astructcasadi__ipqp__data_html_a068a9a9f65d32dc06a307071de335915"><div class="ttname"><a href="../../d9/dff/structcasadi__ipqp__data.html#a068a9a9f65d32dc06a307071de335915">casadi_ipqp_data::rlam_lbz</a></div><div class="ttdeci">T1 * rlam_lbz</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d77/casadi__ipqp_8hpp_source.html#l00128">casadi_ipqp.hpp:128</a></div></div>
 <div class="ttc" id="astructcasadi__ipqp__data_html_a0f5d937917a0be4049720363a94ad9f3"><div class="ttname"><a href="../../d9/dff/structcasadi__ipqp__data.html#a0f5d937917a0be4049720363a94ad9f3">casadi_ipqp_data::rlam</a></div><div class="ttdeci">T1 * rlam</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d77/casadi__ipqp_8hpp_source.html#l00128">casadi_ipqp.hpp:128</a></div></div>

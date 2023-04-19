@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/b1e3f3e25daebf40a945864108080a119efc7c93" id="b1e3f3e25daebf40a945864108080a119efc7c93" >revision 3.6.0</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/c8e83fba7071d6f020efa3046ea31e098c758ddd" id="c8e83fba7071d6f020efa3046ea31e098c758ddd" >revision 3.6.1</a></div>
   </td>
  </tr>
  </tbody>
@@ -66,6 +66,8 @@ $(function() {
 <td>ad_weight_sp</td><td>OT_DOUBLE</td><td>Weighting factor for sparsity pattern calculation calculation.Overrides default behavior. Set to 0 and 1 to force forward and reverse mode respectively. Cf. option "ad_weight". When set to -1, sparsity is completely ignored and dense matrices are used.</td><td>casadi::FunctionInternal </td></tr>
 <tr>
 <td>always_inline</td><td>OT_BOOL</td><td>Force inlining.</td><td>casadi::FunctionInternal </td></tr>
+<tr>
+<td>always_recalculate_jacobian</td><td>OT_BOOL</td><td>Recalculate Jacobian before factorizations, even if Jacobian is current [default: true]</td><td>casadi::CvodesInterface </td></tr>
 <tr>
 <td>augmented_options</td><td>OT_DICT</td><td>Options to be passed down to the augmented integrator, if one is constructed.</td><td>casadi::Integrator </td></tr>
 <tr>

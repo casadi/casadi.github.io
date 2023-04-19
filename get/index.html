@@ -144,13 +144,13 @@
                   <a class="card-header bg-white border-success" data-toggle="collapse" href="#body-36" aria-expanded="true" aria-controls="body-36">
                   
                     
-                    <h4 class="text-success" style="display: inline-block; margin: 0;">CasADi v3.6.0</h4>
+                    <h4 class="text-success" style="display: inline-block; margin: 0;">CasADi v3.6.1</h4>
                     <span class="badge badge-success" style="font-size: 0.5em; vertical-align: top;">latest</span>
                     
                     
                     
                     
-                    <span class="release-info text-muted">released April 4, 2023</span>
+                    <span class="release-info text-muted">released April 18, 2023</span>
                   </a>
                   
                   <div class="collapse show" id="body-36">
@@ -189,17 +189,17 @@
   <tr><th></th><th>Windows</th><th>Linux</th><th>Mac classic (High Sierra or above)</th><th>Mac M1</th></tr>
   <tr>
     <th>Matlab</th>
-    <td><a href="https://github.com/casadi/casadi/releases/download/3.6.0/casadi-3.6.0-windows64-matlab2018b.zip">R2018b</a> or later</td>
-    <td><a href="https://github.com/casadi/casadi/releases/download/3.6.0/casadi-3.6.0-linux64-matlab2018b.zip">R2018b</a> or later</td>
-    <td><a href="https://github.com/casadi/casadi/releases/download/3.6.0/casadi-3.6.0-osx64-matlab2018b.zip">R2018b</a> or later</td>
-    <td><a href="https://github.com/casadi/casadi/releases/download/3.6.0/casadi-3.6.0-osx64-matlab2018b.zip">R2020b</a> or later (Rosetta 2)</td>
+    <td><a href="https://github.com/casadi/casadi/releases/download/3.6.1/casadi-3.6.1-windows64-matlab2018b.zip">R2018b</a> or later</td>
+    <td><a href="https://github.com/casadi/casadi/releases/download/3.6.1/casadi-3.6.1-linux64-matlab2018b.zip">R2018b</a> or later</td>
+    <td><a href="https://github.com/casadi/casadi/releases/download/3.6.1/casadi-3.6.1-osx64-matlab2018b.zip">R2018b</a> or later</td>
+    <td><a href="https://github.com/casadi/casadi/releases/download/3.6.1/casadi-3.6.1-osx64-matlab2018b.zip">R2020b</a> or later (normal Matlab)<br/><a href="https://github.com/casadi/casadi/releases/download/3.6.1/casadi-3.6.1-osx_arm64-matlab2018b.zip">R2018b</a> or later (<a href="https://nl.mathworks.com/support/apple-silicon-r2022b-beta.html">Open Beta</>)</td>
   </tr>
   <tr>
     <th>Octave</th>
-    <td><a href="https://github.com/casadi/casadi/releases/download/3.6.0/casadi-3.6.0-windows64-octave7.3.0.zip">6.2.0</a> or later</td>
-    <td><a href="https://github.com/casadi/casadi/releases/download/3.6.0/casadi-3.6.0-linux64-octave7.3.0.zip">6.2.0</a> or later</td>
-    <td><a href="https://github.com/casadi/casadi/releases/download/3.6.0/casadi-3.6.0-osx64-octave7.3.0.zip">6.2.0</a> or later</td>
-    <td><a href="https://github.com/casadi/casadi/releases/download/3.6.0/casadi-3.6.0-osx_arm64-octave7.3.0.zip">6.2.0</a> or later</td>
+    <td><a href="https://github.com/casadi/casadi/releases/download/3.6.1/casadi-3.6.1-windows64-octave7.3.0.zip">6.2.0</a> or later</td>
+    <td><a href="https://github.com/casadi/casadi/releases/download/3.6.1/casadi-3.6.1-linux64-octave7.3.0.zip">6.2.0</a> or later</td>
+    <td><a href="https://github.com/casadi/casadi/releases/download/3.6.1/casadi-3.6.1-osx64-octave7.3.0.zip">6.2.0</a> or later</td>
+    <td><a href="https://github.com/casadi/casadi/releases/download/3.6.1/casadi-3.6.1-osx_arm64-octave7.3.0.zip">6.2.0</a> or later</td>
   </tr>
   <tr>
     <th>Python</th>
@@ -209,7 +209,7 @@
 <p>For Matlab/Octave, unzip in your home directory and adapt the path:</p>
 <pre>
 <code>
-addpath('&lt;yourpath>/casadi-3.6.0-windows64-matlab2018b')
+addpath('&lt;yourpath>/casadi-3.6.1-windows64-matlab2018b')
 </code>
 </pre>
 <p>Check your installation:</p>
@@ -233,7 +233,7 @@ print(jacobian(sin(x),x))
 </pre>
 </td></tr>
 </table>
-<p>Get started with the <a href="https://github.com/casadi/casadi/releases/download/3.6.0/casadi-example_pack-v3.6.0.zip">example pack</a>. Onboarding pointers have been gathered by the community at our <a href="https://github.com/casadi/casadi/wiki/Onboarding-Guide">wiki</a>.</p>
+<p>Get started with the <a href="https://github.com/casadi/casadi/releases/download/3.6.1/casadi-example_pack-v3.6.1.zip">example pack</a>. Onboarding pointers have been gathered by the community at our <a href="https://github.com/casadi/casadi/wiki/Onboarding-Guide">wiki</a>.</p>
 
                             
                           </div>
@@ -421,6 +421,12 @@ Cf. <a href="https://github.com/casadi/casadi/issues/2696">#2696</a>.</li>
 <li>proxqp-interface, Interface to QP solver PROXQP.</li>
 <li>ampl-interface, Interface to the AMPL solver library.</li>
 </ul>
+<h2 id="changes-in-361">Changes in 3.6.1</h2>
+<ul>
+<li>Various bugfixes and patches <a href="https://github.com/casadi/casadi/milestone/24?closed=1">https://github.com/casadi/casadi/milestone/24?closed=1</a></li>
+<li><strong>breaking</strong> serialization of integrator is not compatible with 3.6.0 due to bugfixes</li>
+<li>git: <code>master</code> branch has been renamed to <code>main</code>, and has different semantics: it will be the branch where new features are added regularly before they become an official release. Latest official release is available as <code>latest</code> branch.</li>
+</ul>
 
                             
                           </div>
@@ -438,7 +444,7 @@ Cf. <a href="https://github.com/casadi/casadi/issues/2696">#2696</a>.</li>
                     
 
                     <div class="card-footer release-info text-muted">
-                      <a href="https://github.com/casadi/casadi/releases/tag/3.6.0" target="_blank" title="Link to the tag published on GitHub">This tag on GitHub</a>
+                      <a href="https://github.com/casadi/casadi/releases/tag/3.6.1" target="_blank" title="Link to the tag published on GitHub">This tag on GitHub</a>
                     </div>
                   </div>
                 </div>
@@ -461,31 +467,16 @@ Cf. <a href="https://github.com/casadi/casadi/issues/2696">#2696</a>.</li>
 
         
 
-        
-      
+          
+            
 
-        
+            
 
-        
-      
+            
 
-        
-
-        
-      
-
-        
-
-        
-      
-
-        
-
-        
-      
-
-        
-
+            
+            
+          
         
       
 

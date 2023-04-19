@@ -13453,6 +13453,11 @@ constraints</p></td>
 <td><p>Options to be passed to
 KNITRO</p></td>
 </tr>
+<tr class="row-even"><td><p>options_file</p></td>
+<td><p>OT_STRING</p></td>
+<td><p>Read options from file
+(solver specific)</p></td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -16661,128 +16666,135 @@ series of</p>
 <td><p>Absolute tolerence for the IVP
 solution</p></td>
 </tr>
-<tr class="row-odd"><td><p>disable_internal_warnings</p></td>
+<tr class="row-odd"><td><p>always_recalculate_jacobian</p></td>
+<td><p>OT_BOOL</p></td>
+<td><p>Recalculate Jacobian before
+factorizations, even if
+Jacobian is current [default:
+true]</p></td>
+</tr>
+<tr class="row-even"><td><p>disable_internal_warnings</p></td>
 <td><p>OT_BOOL</p></td>
 <td><p>Disable SUNDIALS internal
 warning messages</p></td>
 </tr>
-<tr class="row-even"><td><p>fsens_all_at_once</p></td>
+<tr class="row-odd"><td><p>fsens_all_at_once</p></td>
 <td><p>OT_BOOL</p></td>
 <td><p>Calculate all right hand sides
-of the sensitivity equations at
-once</p></td>
+of the sensitivity equations
+at once</p></td>
 </tr>
-<tr class="row-odd"><td><p>fsens_err_con</p></td>
+<tr class="row-even"><td><p>fsens_err_con</p></td>
 <td><p>OT_BOOL</p></td>
 <td><p>include the forward
 sensitivities in all error
 controls</p></td>
 </tr>
-<tr class="row-even"><td><p>interpolation_type</p></td>
+<tr class="row-odd"><td><p>interpolation_type</p></td>
 <td><p>OT_STRING</p></td>
 <td><p>Type of interpolation for the
 adjoint sensitivities</p></td>
 </tr>
-<tr class="row-odd"><td><p>linear_multistep_method</p></td>
+<tr class="row-even"><td><p>linear_multistep_method</p></td>
 <td><p>OT_STRING</p></td>
 <td><p>Integrator scheme: BDF|adams</p></td>
 </tr>
-<tr class="row-even"><td><p>linear_solver</p></td>
+<tr class="row-odd"><td><p>linear_solver</p></td>
 <td><p>OT_STRING</p></td>
 <td><p>A custom linear solver creator
 function [default: qr]</p></td>
 </tr>
-<tr class="row-odd"><td><p>linear_solver_options</p></td>
+<tr class="row-even"><td><p>linear_solver_options</p></td>
 <td><p>OT_DICT</p></td>
 <td><p>Options to be passed to the
 linear solver</p></td>
 </tr>
-<tr class="row-even"><td><p>max_krylov</p></td>
+<tr class="row-odd"><td><p>max_krylov</p></td>
 <td><p>OT_INT</p></td>
 <td><p>Maximum Krylov subspace size</p></td>
 </tr>
-<tr class="row-odd"><td><p>max_multistep_order</p></td>
+<tr class="row-even"><td><p>max_multistep_order</p></td>
 <td><p>OT_INT</p></td>
 <td><p>Maximum order for the
 (variable-order) multistep
 method</p></td>
 </tr>
-<tr class="row-even"><td><p>max_num_steps</p></td>
+<tr class="row-odd"><td><p>max_num_steps</p></td>
 <td><p>OT_INT</p></td>
 <td><p>Maximum number of integrator
 steps</p></td>
 </tr>
-<tr class="row-odd"><td><p>max_order</p></td>
+<tr class="row-even"><td><p>max_order</p></td>
 <td><p>OT_DOUBLE</p></td>
 <td><p>Maximum order</p></td>
 </tr>
-<tr class="row-even"><td><p>max_step_size</p></td>
+<tr class="row-odd"><td><p>max_step_size</p></td>
 <td><p>OT_DOUBLE</p></td>
 <td><p>Max step size [default: 0/inf]</p></td>
 </tr>
-<tr class="row-odd"><td><p>min_step_size</p></td>
+<tr class="row-even"><td><p>min_step_size</p></td>
 <td><p>OT_DOUBLE</p></td>
 <td><p>Min step size [default: 0/0.0]</p></td>
 </tr>
-<tr class="row-even"><td><p>newton_scheme</p></td>
+<tr class="row-odd"><td><p>newton_scheme</p></td>
 <td><p>OT_STRING</p></td>
 <td><p>Linear solver scheme in the
 Newton method:
 DIRECT|gmres|bcgstab|tfqmr</p></td>
 </tr>
-<tr class="row-odd"><td><p>nonlin_conv_coeff</p></td>
+<tr class="row-even"><td><p>nonlin_conv_coeff</p></td>
 <td><p>OT_DOUBLE</p></td>
 <td><p>Coefficient in the nonlinear
 convergence test</p></td>
 </tr>
-<tr class="row-even"><td><p>nonlinear_solver_iteration</p></td>
+<tr class="row-odd"><td><p>nonlinear_solver_iteration</p></td>
 <td><p>OT_STRING</p></td>
 <td><p>Nonlinear solver type:
 NEWTON|functional</p></td>
 </tr>
-<tr class="row-odd"><td><p>quad_err_con</p></td>
+<tr class="row-even"><td><p>quad_err_con</p></td>
 <td><p>OT_BOOL</p></td>
 <td><p>Should the quadratures affect
 the step size control</p></td>
 </tr>
-<tr class="row-even"><td><p>reltol</p></td>
+<tr class="row-odd"><td><p>reltol</p></td>
 <td><p>OT_DOUBLE</p></td>
 <td><p>Relative tolerence for the IVP
 solution</p></td>
 </tr>
-<tr class="row-odd"><td><p>scale_abstol</p></td>
+<tr class="row-even"><td><p>scale_abstol</p></td>
 <td><p>OT_BOOL</p></td>
 <td><p>Scale absolute tolerance by
 nominal value</p></td>
 </tr>
-<tr class="row-even"><td><p>second_order_correction</p></td>
+<tr class="row-odd"><td><p>second_order_correction</p></td>
 <td><p>OT_BOOL</p></td>
 <td><p>Second order correction in the
 augmented system Jacobian
 [true]</p></td>
 </tr>
-<tr class="row-odd"><td><p>sensitivity_method</p></td>
+<tr class="row-even"><td><p>sensitivity_method</p></td>
 <td><p>OT_STRING</p></td>
 <td><p>Sensitivity method:
 SIMULTANEOUS|staggered</p></td>
 </tr>
-<tr class="row-even"><td><p>step0</p></td>
+<tr class="row-odd"><td><p>step0</p></td>
 <td><p>OT_DOUBLE</p></td>
 <td><p>initial step size [default:
 0/estimated]</p></td>
 </tr>
-<tr class="row-odd"><td><p>steps_per_checkpoint</p></td>
+<tr class="row-even"><td><p>steps_per_checkpoint</p></td>
 <td><p>OT_INT</p></td>
 <td><p>Number of steps between two
 consecutive checkpoints</p></td>
 </tr>
-<tr class="row-even"><td><p>stop_at_end</p></td>
+<tr class="row-odd"><td><p>stop_at_end</p></td>
 <td><p>OT_BOOL</p></td>
 <td><p>[DEPRECATED] Stop the
 integrator at the end of the
 interval</p></td>
 </tr>
-<tr class="row-odd"><td><p>use_preconditioner</p></td>
+<tr class="row-even"><td><p>use_preconditioner</p></td>
 <td><p>OT_BOOL</p></td>
 <td><p>Precondition the iterative
 solver [default: true]</p></td>
