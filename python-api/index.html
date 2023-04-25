@@ -8203,6 +8203,23 @@ ction</p></td>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="casadi.casadi.Function.assert_sparsity_out">
+<span class="sig-name descname"><span class="pre">assert_sparsity_out</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#casadi.casadi.Function.assert_sparsity_out" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>[INTERNAL]</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">assert_sparsity_out</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">Sparsity</span> <span class="n">sp</span><span class="p">,</span> <span class="nb">int</span> <span class="n">n</span><span class="p">,</span> <span class="nb">bool</span> <span class="n">allow_all_zero_sparse</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Assert that an output sparsity is a multiple of some given
+sparsity.</p>
+<p>Doc source:
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1195">https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1195</a></p>
+<p>Implementation:
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1738-L1747">https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1738-L1747</a></p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="casadi.casadi.Function.bspline">
 <em class="property"><span class="pre">static</span><span class="w">  </span></em><span class="sig-name descname"><span class="pre">bspline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#casadi.casadi.Function.bspline" title="Permalink to this definition">¶</a></dt>
 <dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bspline</span><span class="p">(</span><span class="nb">str</span> <span class="n">name</span><span class="p">,</span> <span class="p">[[</span><span class="nb">float</span><span class="p">]]</span> <span class="n">knots</span><span class="p">,</span> <span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="n">coeffs</span><span class="p">,</span> <span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="n">degree</span><span class="p">,</span> <span class="nb">int</span> <span class="n">m</span><span class="p">,</span> <span class="nb">dict</span> <span class="n">opts</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Function</span>
@@ -8228,9 +8245,9 @@ ction</p></td>
 <p>Get all functions in the cache.</p>
 <p>Extra doc: <a class="reference external" href="https://github.com/casadi/casadi/wiki/L_26i">https://github.com/casadi/casadi/wiki/L_26i</a></p>
 <p>Doc source:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1208">https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1208</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1212">https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1212</a></p>
 <p>Implementation:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1762-L1769">https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1762-L1769</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1773-L1780">https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1773-L1780</a></p>
 </dd></dl>
 
 <dl class="py method">
@@ -8370,7 +8387,7 @@ the numerical results of the computation, e.g. to enable a more</p>
 </div>
 <p>Checkout a memory object.</p>
 <p>Doc source:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1195">https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1195</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1199">https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1199</a></p>
 <p>Implementation:
 <a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1711-L1713">https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1711-L1713</a></p>
 </dd></dl>
@@ -8757,9 +8774,9 @@ Name of function needed</p>
 Maximum depth - a negative number indicates no maximum</p>
 <p>Extra doc: <a class="reference external" href="https://github.com/casadi/casadi/wiki/L_1y7">https://github.com/casadi/casadi/wiki/L_1y7</a></p>
 <p>Doc source:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1238">https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1238</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1242">https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1242</a></p>
 <p>Implementation:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1815-L1832">https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1815-L1832</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1826-L1843">https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1826-L1843</a></p>
 </section>
 </dd></dl>
 
@@ -8779,9 +8796,9 @@ Maximum depth - a negative number indicates no maximum</p>
 Maximum depth - a negative number indicates no maximum</p>
 <p>Extra doc: <a class="reference external" href="https://github.com/casadi/casadi/wiki/L_1y6">https://github.com/casadi/casadi/wiki/L_1y6</a></p>
 <p>Doc source:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1230">https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1230</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1234">https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1234</a></p>
 <p>Implementation:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1797-L1813">https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1797-L1813</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1808-L1824">https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1808-L1824</a></p>
 </section>
 </dd></dl>
 
@@ -9152,9 +9169,9 @@ Export an output file that can be checked with generated C code</p>
 <p>Get a dependency function.</p>
 <p>Extra doc: <a class="reference external" href="https://github.com/casadi/casadi/wiki/L_1y4">https://github.com/casadi/casadi/wiki/L_1y4</a></p>
 <p>Doc source:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1218">https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1218</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1222">https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1222</a></p>
 <p>Implementation:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1780-L1786">https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1780-L1786</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1791-L1797">https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1791-L1797</a></p>
 <hr class="docutils" />
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">get_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">str</span> <span class="n">name</span><span class="p">)</span>
 </pre></div>
@@ -9163,9 +9180,9 @@ Export an output file that can be checked with generated C code</p>
 Get a dependency function.</p>
 <p>Extra doc: <a class="reference external" href="https://github.com/casadi/casadi/wiki/L_1y4">https://github.com/casadi/casadi/wiki/L_1y4</a></p>
 <p>Doc source:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1218">https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1218</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1222">https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1222</a></p>
 <p>Implementation:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1780-L1786">https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1780-L1786</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1791-L1797">https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1791-L1797</a></p>
 <hr class="docutils" />
 <hr class="docutils" />
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">get_function</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
@@ -9175,9 +9192,9 @@ Get a dependency function.</p>
 Get a list of all functions.</p>
 <p>Extra doc: <a class="reference external" href="https://github.com/casadi/casadi/wiki/L_1y3">https://github.com/casadi/casadi/wiki/L_1y3</a></p>
 <p>Doc source:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1213">https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1213</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1217">https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1217</a></p>
 <p>Implementation:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1771-L1778">https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1771-L1778</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1782-L1789">https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1782-L1789</a></p>
 </dd></dl>
 
 <hr class="docutils" />
@@ -9210,9 +9227,9 @@ Get a list of all functions.</p>
 <p>Check if a particular dependency exists.</p>
 <p>Extra doc: <a class="reference external" href="https://github.com/casadi/casadi/wiki/L_1y5">https://github.com/casadi/casadi/wiki/L_1y5</a></p>
 <p>Doc source:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1223">https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1223</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1227">https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1227</a></p>
 <p>Implementation:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1788-L1795">https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1788-L1795</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1799-L1806">https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1799-L1806</a></p>
 </dd></dl>
 
 <dl class="py method">
@@ -9347,9 +9364,9 @@ adheres to SCHEME_NLPINput</p>
 </div>
 <p>Obtain information about function</p>
 <p>Doc source:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1241">https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1241</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1245">https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1245</a></p>
 <p>Implementation:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1861-L1863">https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1861-L1863</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1872-L1874">https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1872-L1874</a></p>
 </dd></dl>
 
 <dl class="py method">
@@ -10931,7 +10948,7 @@ Get number of output elements.</p>
 <p>Doc source:
 <a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L407">https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L407</a></p>
 <p>Implementation:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1835-L1841">https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1835-L1841</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1846-L1852">https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1846-L1852</a></p>
 </dd></dl>
 
 <dl class="py method">
@@ -10996,7 +11013,7 @@ Get number of output elements.</p>
 </div>
 <p>Release a memory object.</p>
 <p>Doc source:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1198">https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1198</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1202">https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L1202</a></p>
 <p>Implementation:
 <a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1715-L1717">https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1715-L1717</a></p>
 </dd></dl>
@@ -11737,7 +11754,7 @@ Flip the relationship. Return which expressions contain the variables</p>
 <p>Doc source:
 <a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L425">https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L425</a></p>
 <p>Implementation:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1753-L1760">https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1753-L1760</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1764-L1771">https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1764-L1771</a></p>
 </section>
 </dd></dl>
 
@@ -11755,7 +11772,7 @@ Flip the relationship. Return which expressions contain the variables</p>
 <p>Doc source:
 <a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L412">https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L412</a></p>
 <p>Implementation:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1843-L1845">https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1843-L1845</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1854-L1856">https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1854-L1856</a></p>
 </dd></dl>
 
 <dl class="py method">
@@ -11772,7 +11789,7 @@ Flip the relationship. Return which expressions contain the variables</p>
 <p>Doc source:
 <a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L417">https://github.com/casadi/casadi/blob/develop/casadi/core/function.hpp#L417</a></p>
 <p>Implementation:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1847-L1849">https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1847-L1849</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1858-L1860">https://github.com/casadi/casadi/blob/develop/casadi/core/function.cpp#L1858-L1860</a></p>
 </dd></dl>
 
 </dd></dl>
