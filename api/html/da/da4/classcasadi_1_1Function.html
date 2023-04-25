@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/c8e83fba7071d6f020efa3046ea31e098c758ddd" id="c8e83fba7071d6f020efa3046ea31e098c758ddd" >revision 3.6.1</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/896ebb1083311cfdb392f411ba83385080a05ed3" id="896ebb1083311cfdb392f411ba83385080a05ed3" >revision 3.6.2</a></div>
   </td>
  </tr>
  </tbody>
@@ -386,6 +386,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aeec190b7f6a30fed13897fe704f7dbf1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/da4/classcasadi_1_1Function.html#aeec190b7f6a30fed13897fe704f7dbf1">assert_size_out</a> (casadi_int i, casadi_int nrow, casadi_int ncol) const</td></tr>
 <tr class="memdesc:aeec190b7f6a30fed13897fe704f7dbf1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assert that an output dimension is equal so some given value.  <a href="../../da/da4/classcasadi_1_1Function.html#aeec190b7f6a30fed13897fe704f7dbf1">More...</a><br /></td></tr>
 <tr class="separator:aeec190b7f6a30fed13897fe704f7dbf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b34efa0642a01d7cac3e1182fa0a08d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/da4/classcasadi_1_1Function.html#a8b34efa0642a01d7cac3e1182fa0a08d">assert_sparsity_out</a> (casadi_int i, const <a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html">Sparsity</a> &amp;sp, casadi_int n=1, bool allow_all_zero_sparse=true) const</td></tr>
+<tr class="memdesc:a8b34efa0642a01d7cac3e1182fa0a08d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assert that an output sparsity is a multiple of some given sparsity.  <a href="../../da/da4/classcasadi_1_1Function.html#a8b34efa0642a01d7cac3e1182fa0a08d">More...</a><br /></td></tr>
+<tr class="separator:a8b34efa0642a01d7cac3e1182fa0a08d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76c4c92d700cf9f0167dbf82f15a4578"><td class="memItemLeft" align="right" valign="top">casadi_int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/da4/classcasadi_1_1Function.html#a76c4c92d700cf9f0167dbf82f15a4578">checkout</a> () const</td></tr>
 <tr class="memdesc:a76c4c92d700cf9f0167dbf82f15a4578"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checkout a memory object.  <a href="../../da/da4/classcasadi_1_1Function.html#a76c4c92d700cf9f0167dbf82f15a4578">More...</a><br /></td></tr>
 <tr class="separator:a76c4c92d700cf9f0167dbf82f15a4578"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1222,6 +1225,46 @@ Static Public Member Functions</h2></td></tr>
           <td></td>
           <td class="paramtype">casadi_int&#160;</td>
           <td class="paramname"><em>ncol</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8b34efa0642a01d7cac3e1182fa0a08d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b34efa0642a01d7cac3e1182fa0a08d">&#9670;&nbsp;</a></span>assert_sparsity_out()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void casadi::Function::assert_sparsity_out </td>
+          <td>(</td>
+          <td class="paramtype">casadi_int&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html">Sparsity</a> &amp;&#160;</td>
+          <td class="paramname"><em>sp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">casadi_int&#160;</td>
+          <td class="paramname"><em>n</em> = <code>1</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>allow_all_zero_sparse</em> = <code>true</code>&#160;</td>
         </tr>
         <tr>
           <td></td>

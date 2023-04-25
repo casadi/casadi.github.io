@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/c8e83fba7071d6f020efa3046ea31e098c758ddd" id="c8e83fba7071d6f020efa3046ea31e098c758ddd" >revision 3.6.1</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/896ebb1083311cfdb392f411ba83385080a05ed3" id="896ebb1083311cfdb392f411ba83385080a05ed3" >revision 3.6.2</a></div>
   </td>
  </tr>
  </tbody>
@@ -790,459 +790,463 @@ $(function() {
 <div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;      std::vector&lt;MatType&gt; ret_out(onames.size());</div>
 <div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;      <span class="keywordflow">for</span> (casadi_int i=0; i&lt;n_out_; ++i) {</div>
 <div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;        <span class="keywordflow">if</span> (is_diff_out_[i]) {</div>
-<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;          <span class="keywordflow">for</span> (casadi_int d=0; d&lt;nfwd; ++d) v[d] = fsens[d][i];</div>
-<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;          ret_out.at(i) = horzcat(v);</div>
-<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;          ret_out.at(i) = MatType(size1_out(i), size2_out(i)*nfwd);</div>
-<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;        }</div>
-<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;      }</div>
-<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160; </div>
-<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;      <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> options = opts;</div>
-<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;      <span class="keywordflow">if</span> (opts.find(<span class="stringliteral">&quot;is_diff_in&quot;</span>)==opts.end())</div>
-<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;        options[<span class="stringliteral">&quot;is_diff_in&quot;</span>] = join(is_diff_in_, is_diff_out_, is_diff_in_);</div>
-<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;      <span class="keywordflow">if</span> (opts.find(<span class="stringliteral">&quot;is_diff_out&quot;</span>)==opts.end())</div>
-<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;        options[<span class="stringliteral">&quot;is_diff_out&quot;</span>] = is_diff_out_;</div>
-<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;      options[<span class="stringliteral">&quot;allow_duplicate_io_names&quot;</span>] = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;      <span class="comment">// Assemble function and return</span></div>
-<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;      <span class="keywordflow">return</span> Function(name, ret_in, ret_out, inames, onames, options);</div>
-<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;    } <span class="keywordflow">catch</span> (std::exception&amp; e) {</div>
-<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;      CASADI_THROW_ERROR(<span class="stringliteral">&quot;get_forward&quot;</span>, e.what());</div>
-<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;    }</div>
-<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;  }</div>
-<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160; </div>
-<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> DerivedType, <span class="keyword">typename</span> MatType, <span class="keyword">typename</span> NodeType&gt;</div>
-<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;  Function XFunction&lt;DerivedType, MatType, NodeType&gt;</div>
-<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;  ::get_reverse(casadi_int nadj, <span class="keyword">const</span> std::string&amp; name,</div>
-<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;                <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; inames,</div>
-<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;                <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; onames,</div>
-<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;                <span class="keyword">const</span> Dict&amp; opts)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;    <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;      <span class="comment">// Seeds</span></div>
-<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;      std::vector&lt;std::vector&lt;MatType&gt; &gt; aseed = symbolicAdjSeed(nadj, out_), asens;</div>
-<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160; </div>
-<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;      <span class="comment">// Evaluate symbolically</span></div>
-<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;      <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>DerivedType*<span class="keyword">&gt;</span>(<span class="keyword">this</span>)-&gt;ad_reverse(aseed, asens);</div>
-<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160; </div>
-<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;      <span class="comment">// All inputs of the return function</span></div>
-<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;      std::vector&lt;MatType&gt; ret_in(inames.size());</div>
-<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;      std::copy(in_.begin(), in_.end(), ret_in.begin());</div>
-<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;      <span class="keywordflow">for</span> (casadi_int i=0; i&lt;n_out_; ++i) {</div>
-<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;        ret_in.at(n_in_ + i) = MatType::sym(inames[n_in_+i], Sparsity(out_.at(i).size()));</div>
-<div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;      }</div>
-<div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;      std::vector&lt;MatType&gt; v(nadj);</div>
-<div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;      <span class="keywordflow">for</span> (casadi_int i=0; i&lt;n_out_; ++i) {</div>
-<div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;        <span class="keywordflow">for</span> (casadi_int d=0; d&lt;nadj; ++d) v[d] = aseed[d][i];</div>
-<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;        ret_in.at(n_in_ + n_out_ + i)  = horzcat(v);</div>
-<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;      }</div>
-<div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160; </div>
-<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;      <span class="comment">// All outputs of the return function</span></div>
-<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;      std::vector&lt;MatType&gt; ret_out(onames.size());</div>
-<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;      <span class="keywordflow">for</span> (casadi_int i=0; i&lt;n_in_; ++i) {</div>
-<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;        <span class="keywordflow">if</span> (is_diff_in_[i]) {</div>
-<div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;          <span class="keywordflow">for</span> (casadi_int d=0; d&lt;nadj; ++d) v[d] = asens[d][i];</div>
-<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;          ret_out.at(i) = horzcat(v);</div>
-<div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160;          ret_out.at(i) = MatType(size1_in(i), size2_in(i)*nadj);</div>
-<div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160;        }</div>
-<div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;      }</div>
-<div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160; </div>
-<div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160;      <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> options = opts;</div>
-<div class="line"><a name="l00895"></a><span class="lineno">  895</span>&#160;      <span class="keywordflow">if</span> (opts.find(<span class="stringliteral">&quot;is_diff_in&quot;</span>)==opts.end())</div>
-<div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160;        options[<span class="stringliteral">&quot;is_diff_in&quot;</span>] = join(is_diff_in_, is_diff_out_, is_diff_out_);</div>
-<div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160;      <span class="keywordflow">if</span> (opts.find(<span class="stringliteral">&quot;is_diff_out&quot;</span>)==opts.end())</div>
-<div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160;        options[<span class="stringliteral">&quot;is_diff_out&quot;</span>] = is_diff_in_;</div>
-<div class="line"><a name="l00899"></a><span class="lineno">  899</span>&#160; </div>
-<div class="line"><a name="l00900"></a><span class="lineno">  900</span>&#160;      options[<span class="stringliteral">&quot;allow_duplicate_io_names&quot;</span>] = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00901"></a><span class="lineno">  901</span>&#160;      <span class="comment">// Assemble function and return</span></div>
-<div class="line"><a name="l00902"></a><span class="lineno">  902</span>&#160;      <span class="keywordflow">return</span> Function(name, ret_in, ret_out, inames, onames, options);</div>
-<div class="line"><a name="l00903"></a><span class="lineno">  903</span>&#160;    } <span class="keywordflow">catch</span> (std::exception&amp; e) {</div>
-<div class="line"><a name="l00904"></a><span class="lineno">  904</span>&#160;      CASADI_THROW_ERROR(<span class="stringliteral">&quot;get_reverse&quot;</span>, e.what());</div>
-<div class="line"><a name="l00905"></a><span class="lineno">  905</span>&#160;    }</div>
-<div class="line"><a name="l00906"></a><span class="lineno">  906</span>&#160;  }</div>
-<div class="line"><a name="l00907"></a><span class="lineno">  907</span>&#160; </div>
-<div class="line"><a name="l00908"></a><span class="lineno">  908</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> DerivedType, <span class="keyword">typename</span> MatType, <span class="keyword">typename</span> NodeType&gt;</div>
-<div class="line"><a name="l00909"></a><span class="lineno">  909</span>&#160;  Function XFunction&lt;DerivedType, MatType, NodeType&gt;</div>
-<div class="line"><a name="l00910"></a><span class="lineno">  910</span>&#160;  ::get_jacobian(<span class="keyword">const</span> std::string&amp; name,</div>
-<div class="line"><a name="l00911"></a><span class="lineno">  911</span>&#160;                 <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; inames,</div>
-<div class="line"><a name="l00912"></a><span class="lineno">  912</span>&#160;                 <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; onames,</div>
-<div class="line"><a name="l00913"></a><span class="lineno">  913</span>&#160;                 <span class="keyword">const</span> Dict&amp; opts)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00914"></a><span class="lineno">  914</span>&#160;    <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00915"></a><span class="lineno">  915</span>&#160;      <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> tmp_options = generate_options(<span class="stringliteral">&quot;tmp&quot;</span>);</div>
-<div class="line"><a name="l00916"></a><span class="lineno">  916</span>&#160;      tmp_options[<span class="stringliteral">&quot;allow_free&quot;</span>] = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00917"></a><span class="lineno">  917</span>&#160;      tmp_options[<span class="stringliteral">&quot;allow_duplicate_io_names&quot;</span>] = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00918"></a><span class="lineno">  918</span>&#160;      <span class="comment">// Temporary single-input, single-output function FIXME(@jaeandersson)</span></div>
-<div class="line"><a name="l00919"></a><span class="lineno">  919</span>&#160;      Function tmp(<span class="stringliteral">&quot;flattened_&quot;</span> + name, {veccat(in_)}, {veccat(out_)}, tmp_options);</div>
-<div class="line"><a name="l00920"></a><span class="lineno">  920</span>&#160; </div>
-<div class="line"><a name="l00921"></a><span class="lineno">  921</span>&#160;      <span class="comment">// Expression for the extended Jacobian</span></div>
-<div class="line"><a name="l00922"></a><span class="lineno">  922</span>&#160;      MatType J = tmp.get&lt;DerivedType&gt;()-&gt;jac(<a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>()).at(0);</div>
-<div class="line"><a name="l00923"></a><span class="lineno">  923</span>&#160; </div>
-<div class="line"><a name="l00924"></a><span class="lineno">  924</span>&#160;      <span class="comment">// Split up extended Jacobian</span></div>
-<div class="line"><a name="l00925"></a><span class="lineno">  925</span>&#160;      std::vector&lt;casadi_int&gt; r_offset = {0}, c_offset = {0};</div>
-<div class="line"><a name="l00926"></a><span class="lineno">  926</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; e : out_) r_offset.push_back(r_offset.back() + e.numel());</div>
-<div class="line"><a name="l00927"></a><span class="lineno">  927</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; e : in_) c_offset.push_back(c_offset.back() + e.numel());</div>
-<div class="line"><a name="l00928"></a><span class="lineno">  928</span>&#160;      <span class="keyword">auto</span> Jblocks = MatType::blocksplit(J, r_offset, c_offset);</div>
-<div class="line"><a name="l00929"></a><span class="lineno">  929</span>&#160; </div>
-<div class="line"><a name="l00930"></a><span class="lineno">  930</span>&#160;      <span class="comment">// Collect all outputs</span></div>
-<div class="line"><a name="l00931"></a><span class="lineno">  931</span>&#160;      std::vector&lt;MatType&gt; ret_out;</div>
-<div class="line"><a name="l00932"></a><span class="lineno">  932</span>&#160;      ret_out.reserve(onames.size());</div>
-<div class="line"><a name="l00933"></a><span class="lineno">  933</span>&#160;      <span class="keywordflow">for</span> (casadi_int i = 0; i &lt; n_out_; ++i) {</div>
-<div class="line"><a name="l00934"></a><span class="lineno">  934</span>&#160;        <span class="keywordflow">for</span> (casadi_int j = 0; j &lt; n_in_; ++j) {</div>
-<div class="line"><a name="l00935"></a><span class="lineno">  935</span>&#160;          MatType b = Jblocks.at(i).at(j);</div>
-<div class="line"><a name="l00936"></a><span class="lineno">  936</span>&#160;          <span class="keywordflow">if</span> (!is_diff_out_.at(i) || !is_diff_in_.at(j)) {</div>
-<div class="line"><a name="l00937"></a><span class="lineno">  937</span>&#160;            b = MatType(b.size());</div>
-<div class="line"><a name="l00938"></a><span class="lineno">  938</span>&#160;          }</div>
-<div class="line"><a name="l00939"></a><span class="lineno">  939</span>&#160;          ret_out.push_back(b);</div>
-<div class="line"><a name="l00940"></a><span class="lineno">  940</span>&#160;        }</div>
-<div class="line"><a name="l00941"></a><span class="lineno">  941</span>&#160;      }</div>
-<div class="line"><a name="l00942"></a><span class="lineno">  942</span>&#160; </div>
-<div class="line"><a name="l00943"></a><span class="lineno">  943</span>&#160;      <span class="comment">// All inputs of the return function</span></div>
-<div class="line"><a name="l00944"></a><span class="lineno">  944</span>&#160;      std::vector&lt;MatType&gt; ret_in(inames.size());</div>
-<div class="line"><a name="l00945"></a><span class="lineno">  945</span>&#160;      std::copy(in_.begin(), in_.end(), ret_in.begin());</div>
-<div class="line"><a name="l00946"></a><span class="lineno">  946</span>&#160;      <span class="keywordflow">for</span> (casadi_int i=0; i&lt;n_out_; ++i) {</div>
-<div class="line"><a name="l00947"></a><span class="lineno">  947</span>&#160;        ret_in.at(n_in_+i) = MatType::sym(inames[n_in_+i], Sparsity(out_.at(i).size()));</div>
-<div class="line"><a name="l00948"></a><span class="lineno">  948</span>&#160;      }</div>
-<div class="line"><a name="l00949"></a><span class="lineno">  949</span>&#160; </div>
-<div class="line"><a name="l00950"></a><span class="lineno">  950</span>&#160;      <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> options = opts;</div>
-<div class="line"><a name="l00951"></a><span class="lineno">  951</span>&#160;      options[<span class="stringliteral">&quot;allow_free&quot;</span>] = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00952"></a><span class="lineno">  952</span>&#160;      options[<span class="stringliteral">&quot;allow_duplicate_io_names&quot;</span>] = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;          <span class="comment">// Concatenate sensitivities, correct sparsity pattern if needed</span></div>
+<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;          <span class="keywordflow">for</span> (casadi_int d=0; d&lt;nfwd; ++d) v[d] = fsens[d][i];</div>
+<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;          ret_out.at(i) = ensure_stacked(horzcat(v), sparsity_out(i), nfwd);</div>
+<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;          <span class="comment">// Output is non-differentable</span></div>
+<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;          ret_out.at(i) = MatType(size1_out(i), size2_out(i) * nfwd);</div>
+<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;        }</div>
+<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;      }</div>
+<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160; </div>
+<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;      <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> options = opts;</div>
+<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;      <span class="keywordflow">if</span> (opts.find(<span class="stringliteral">&quot;is_diff_in&quot;</span>)==opts.end())</div>
+<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;        options[<span class="stringliteral">&quot;is_diff_in&quot;</span>] = join(is_diff_in_, is_diff_out_, is_diff_in_);</div>
+<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;      <span class="keywordflow">if</span> (opts.find(<span class="stringliteral">&quot;is_diff_out&quot;</span>)==opts.end())</div>
+<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;        options[<span class="stringliteral">&quot;is_diff_out&quot;</span>] = is_diff_out_;</div>
+<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;      options[<span class="stringliteral">&quot;allow_duplicate_io_names&quot;</span>] = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;      <span class="comment">// Assemble function and return</span></div>
+<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;      <span class="keywordflow">return</span> Function(name, ret_in, ret_out, inames, onames, options);</div>
+<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;    } <span class="keywordflow">catch</span> (std::exception&amp; e) {</div>
+<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;      CASADI_THROW_ERROR(<span class="stringliteral">&quot;get_forward&quot;</span>, e.what());</div>
+<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;    }</div>
+<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;  }</div>
+<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160; </div>
+<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> DerivedType, <span class="keyword">typename</span> MatType, <span class="keyword">typename</span> NodeType&gt;</div>
+<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;  Function XFunction&lt;DerivedType, MatType, NodeType&gt;</div>
+<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;  ::get_reverse(casadi_int nadj, <span class="keyword">const</span> std::string&amp; name,</div>
+<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;                <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; inames,</div>
+<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;                <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; onames,</div>
+<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;                <span class="keyword">const</span> Dict&amp; opts)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;    <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;      <span class="comment">// Seeds</span></div>
+<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;      std::vector&lt;std::vector&lt;MatType&gt; &gt; aseed = symbolicAdjSeed(nadj, out_), asens;</div>
+<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160; </div>
+<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;      <span class="comment">// Evaluate symbolically</span></div>
+<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;      <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>DerivedType*<span class="keyword">&gt;</span>(<span class="keyword">this</span>)-&gt;ad_reverse(aseed, asens);</div>
+<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160; </div>
+<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;      <span class="comment">// All inputs of the return function</span></div>
+<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;      std::vector&lt;MatType&gt; ret_in(inames.size());</div>
+<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;      std::copy(in_.begin(), in_.end(), ret_in.begin());</div>
+<div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;      <span class="keywordflow">for</span> (casadi_int i=0; i&lt;n_out_; ++i) {</div>
+<div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;        ret_in.at(n_in_ + i) = MatType::sym(inames[n_in_+i], Sparsity(out_.at(i).size()));</div>
+<div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;      }</div>
+<div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;      std::vector&lt;MatType&gt; v(nadj);</div>
+<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;      <span class="keywordflow">for</span> (casadi_int i=0; i&lt;n_out_; ++i) {</div>
+<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;        <span class="keywordflow">for</span> (casadi_int d=0; d&lt;nadj; ++d) v[d] = aseed[d][i];</div>
+<div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;        ret_in.at(n_in_ + n_out_ + i)  = horzcat(v);</div>
+<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;      }</div>
+<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160; </div>
+<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;      <span class="comment">// All outputs of the return function</span></div>
+<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;      std::vector&lt;MatType&gt; ret_out(onames.size());</div>
+<div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;      <span class="keywordflow">for</span> (casadi_int i=0; i&lt;n_in_; ++i) {</div>
+<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;        <span class="keywordflow">if</span> (is_diff_in_[i]) {</div>
+<div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;          <span class="comment">// Concatenate sensitivities, correct sparsity pattern if needed</span></div>
+<div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160;          <span class="keywordflow">for</span> (casadi_int d=0; d&lt;nadj; ++d) v[d] = asens[d][i];</div>
+<div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160;          ret_out.at(i) = ensure_stacked(horzcat(v), sparsity_in(i), nadj);</div>
+<div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160;          <span class="comment">// Input is non-differentable</span></div>
+<div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160;          ret_out.at(i) = MatType(size1_in(i), size2_in(i) * nadj);</div>
+<div class="line"><a name="l00895"></a><span class="lineno">  895</span>&#160;        }</div>
+<div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160;      }</div>
+<div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160; </div>
+<div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160;      <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> options = opts;</div>
+<div class="line"><a name="l00899"></a><span class="lineno">  899</span>&#160;      <span class="keywordflow">if</span> (opts.find(<span class="stringliteral">&quot;is_diff_in&quot;</span>)==opts.end())</div>
+<div class="line"><a name="l00900"></a><span class="lineno">  900</span>&#160;        options[<span class="stringliteral">&quot;is_diff_in&quot;</span>] = join(is_diff_in_, is_diff_out_, is_diff_out_);</div>
+<div class="line"><a name="l00901"></a><span class="lineno">  901</span>&#160;      <span class="keywordflow">if</span> (opts.find(<span class="stringliteral">&quot;is_diff_out&quot;</span>)==opts.end())</div>
+<div class="line"><a name="l00902"></a><span class="lineno">  902</span>&#160;        options[<span class="stringliteral">&quot;is_diff_out&quot;</span>] = is_diff_in_;</div>
+<div class="line"><a name="l00903"></a><span class="lineno">  903</span>&#160; </div>
+<div class="line"><a name="l00904"></a><span class="lineno">  904</span>&#160;      options[<span class="stringliteral">&quot;allow_duplicate_io_names&quot;</span>] = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00905"></a><span class="lineno">  905</span>&#160;      <span class="comment">// Assemble function and return</span></div>
+<div class="line"><a name="l00906"></a><span class="lineno">  906</span>&#160;      <span class="keywordflow">return</span> Function(name, ret_in, ret_out, inames, onames, options);</div>
+<div class="line"><a name="l00907"></a><span class="lineno">  907</span>&#160;    } <span class="keywordflow">catch</span> (std::exception&amp; e) {</div>
+<div class="line"><a name="l00908"></a><span class="lineno">  908</span>&#160;      CASADI_THROW_ERROR(<span class="stringliteral">&quot;get_reverse&quot;</span>, e.what());</div>
+<div class="line"><a name="l00909"></a><span class="lineno">  909</span>&#160;    }</div>
+<div class="line"><a name="l00910"></a><span class="lineno">  910</span>&#160;  }</div>
+<div class="line"><a name="l00911"></a><span class="lineno">  911</span>&#160; </div>
+<div class="line"><a name="l00912"></a><span class="lineno">  912</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> DerivedType, <span class="keyword">typename</span> MatType, <span class="keyword">typename</span> NodeType&gt;</div>
+<div class="line"><a name="l00913"></a><span class="lineno">  913</span>&#160;  Function XFunction&lt;DerivedType, MatType, NodeType&gt;</div>
+<div class="line"><a name="l00914"></a><span class="lineno">  914</span>&#160;  ::get_jacobian(<span class="keyword">const</span> std::string&amp; name,</div>
+<div class="line"><a name="l00915"></a><span class="lineno">  915</span>&#160;                 <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; inames,</div>
+<div class="line"><a name="l00916"></a><span class="lineno">  916</span>&#160;                 <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; onames,</div>
+<div class="line"><a name="l00917"></a><span class="lineno">  917</span>&#160;                 <span class="keyword">const</span> Dict&amp; opts)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00918"></a><span class="lineno">  918</span>&#160;    <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00919"></a><span class="lineno">  919</span>&#160;      <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> tmp_options = generate_options(<span class="stringliteral">&quot;tmp&quot;</span>);</div>
+<div class="line"><a name="l00920"></a><span class="lineno">  920</span>&#160;      tmp_options[<span class="stringliteral">&quot;allow_free&quot;</span>] = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00921"></a><span class="lineno">  921</span>&#160;      tmp_options[<span class="stringliteral">&quot;allow_duplicate_io_names&quot;</span>] = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00922"></a><span class="lineno">  922</span>&#160;      <span class="comment">// Temporary single-input, single-output function FIXME(@jaeandersson)</span></div>
+<div class="line"><a name="l00923"></a><span class="lineno">  923</span>&#160;      Function tmp(<span class="stringliteral">&quot;flattened_&quot;</span> + name, {veccat(in_)}, {veccat(out_)}, tmp_options);</div>
+<div class="line"><a name="l00924"></a><span class="lineno">  924</span>&#160; </div>
+<div class="line"><a name="l00925"></a><span class="lineno">  925</span>&#160;      <span class="comment">// Expression for the extended Jacobian</span></div>
+<div class="line"><a name="l00926"></a><span class="lineno">  926</span>&#160;      MatType J = tmp.get&lt;DerivedType&gt;()-&gt;jac(<a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>()).at(0);</div>
+<div class="line"><a name="l00927"></a><span class="lineno">  927</span>&#160; </div>
+<div class="line"><a name="l00928"></a><span class="lineno">  928</span>&#160;      <span class="comment">// Split up extended Jacobian</span></div>
+<div class="line"><a name="l00929"></a><span class="lineno">  929</span>&#160;      std::vector&lt;casadi_int&gt; r_offset = {0}, c_offset = {0};</div>
+<div class="line"><a name="l00930"></a><span class="lineno">  930</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; e : out_) r_offset.push_back(r_offset.back() + e.numel());</div>
+<div class="line"><a name="l00931"></a><span class="lineno">  931</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; e : in_) c_offset.push_back(c_offset.back() + e.numel());</div>
+<div class="line"><a name="l00932"></a><span class="lineno">  932</span>&#160;      <span class="keyword">auto</span> Jblocks = MatType::blocksplit(J, r_offset, c_offset);</div>
+<div class="line"><a name="l00933"></a><span class="lineno">  933</span>&#160; </div>
+<div class="line"><a name="l00934"></a><span class="lineno">  934</span>&#160;      <span class="comment">// Collect all outputs</span></div>
+<div class="line"><a name="l00935"></a><span class="lineno">  935</span>&#160;      std::vector&lt;MatType&gt; ret_out;</div>
+<div class="line"><a name="l00936"></a><span class="lineno">  936</span>&#160;      ret_out.reserve(onames.size());</div>
+<div class="line"><a name="l00937"></a><span class="lineno">  937</span>&#160;      <span class="keywordflow">for</span> (casadi_int i = 0; i &lt; n_out_; ++i) {</div>
+<div class="line"><a name="l00938"></a><span class="lineno">  938</span>&#160;        <span class="keywordflow">for</span> (casadi_int j = 0; j &lt; n_in_; ++j) {</div>
+<div class="line"><a name="l00939"></a><span class="lineno">  939</span>&#160;          MatType b = Jblocks.at(i).at(j);</div>
+<div class="line"><a name="l00940"></a><span class="lineno">  940</span>&#160;          <span class="keywordflow">if</span> (!is_diff_out_.at(i) || !is_diff_in_.at(j)) {</div>
+<div class="line"><a name="l00941"></a><span class="lineno">  941</span>&#160;            b = MatType(b.size());</div>
+<div class="line"><a name="l00942"></a><span class="lineno">  942</span>&#160;          }</div>
+<div class="line"><a name="l00943"></a><span class="lineno">  943</span>&#160;          ret_out.push_back(b);</div>
+<div class="line"><a name="l00944"></a><span class="lineno">  944</span>&#160;        }</div>
+<div class="line"><a name="l00945"></a><span class="lineno">  945</span>&#160;      }</div>
+<div class="line"><a name="l00946"></a><span class="lineno">  946</span>&#160; </div>
+<div class="line"><a name="l00947"></a><span class="lineno">  947</span>&#160;      <span class="comment">// All inputs of the return function</span></div>
+<div class="line"><a name="l00948"></a><span class="lineno">  948</span>&#160;      std::vector&lt;MatType&gt; ret_in(inames.size());</div>
+<div class="line"><a name="l00949"></a><span class="lineno">  949</span>&#160;      std::copy(in_.begin(), in_.end(), ret_in.begin());</div>
+<div class="line"><a name="l00950"></a><span class="lineno">  950</span>&#160;      <span class="keywordflow">for</span> (casadi_int i=0; i&lt;n_out_; ++i) {</div>
+<div class="line"><a name="l00951"></a><span class="lineno">  951</span>&#160;        ret_in.at(n_in_+i) = MatType::sym(inames[n_in_+i], Sparsity(out_.at(i).size()));</div>
+<div class="line"><a name="l00952"></a><span class="lineno">  952</span>&#160;      }</div>
 <div class="line"><a name="l00953"></a><span class="lineno">  953</span>&#160; </div>
-<div class="line"><a name="l00954"></a><span class="lineno">  954</span>&#160;      <span class="comment">// Assemble function and return</span></div>
-<div class="line"><a name="l00955"></a><span class="lineno">  955</span>&#160;      <span class="keywordflow">return</span> Function(name, ret_in, ret_out, inames, onames, options);</div>
-<div class="line"><a name="l00956"></a><span class="lineno">  956</span>&#160;    } <span class="keywordflow">catch</span> (std::exception&amp; e) {</div>
-<div class="line"><a name="l00957"></a><span class="lineno">  957</span>&#160;      CASADI_THROW_ERROR(<span class="stringliteral">&quot;get_jacobian&quot;</span>, e.what());</div>
-<div class="line"><a name="l00958"></a><span class="lineno">  958</span>&#160;    }</div>
-<div class="line"><a name="l00959"></a><span class="lineno">  959</span>&#160;  }</div>
-<div class="line"><a name="l00960"></a><span class="lineno">  960</span>&#160; </div>
-<div class="line"><a name="l00961"></a><span class="lineno">  961</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> DerivedType, <span class="keyword">typename</span> MatType, <span class="keyword">typename</span> NodeType&gt;</div>
-<div class="line"><a name="l00962"></a><span class="lineno">  962</span>&#160;  Function XFunction&lt;DerivedType, MatType, NodeType&gt;</div>
-<div class="line"><a name="l00963"></a><span class="lineno">  963</span>&#160;  ::slice(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; order_in,</div>
-<div class="line"><a name="l00964"></a><span class="lineno">  964</span>&#160;          <span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; order_out, <span class="keyword">const</span> Dict&amp; opts)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00965"></a><span class="lineno">  965</span>&#160;    <span class="comment">// Return expressions</span></div>
-<div class="line"><a name="l00966"></a><span class="lineno">  966</span>&#160;    std::vector&lt;MatType&gt; ret_in, ret_out;</div>
-<div class="line"><a name="l00967"></a><span class="lineno">  967</span>&#160;    std::vector&lt;std::string&gt; ret_in_name, ret_out_name;</div>
-<div class="line"><a name="l00968"></a><span class="lineno">  968</span>&#160; </div>
-<div class="line"><a name="l00969"></a><span class="lineno">  969</span>&#160;    <span class="comment">// Reorder inputs</span></div>
-<div class="line"><a name="l00970"></a><span class="lineno">  970</span>&#160;    <span class="keywordflow">for</span> (casadi_int k : order_in) {</div>
-<div class="line"><a name="l00971"></a><span class="lineno">  971</span>&#160;      ret_in.push_back(in_.at(k));</div>
-<div class="line"><a name="l00972"></a><span class="lineno">  972</span>&#160;      ret_in_name.push_back(name_in_.at(k));</div>
-<div class="line"><a name="l00973"></a><span class="lineno">  973</span>&#160;    }</div>
-<div class="line"><a name="l00974"></a><span class="lineno">  974</span>&#160; </div>
-<div class="line"><a name="l00975"></a><span class="lineno">  975</span>&#160;    <span class="comment">// Reorder outputs</span></div>
-<div class="line"><a name="l00976"></a><span class="lineno">  976</span>&#160;    <span class="keywordflow">for</span> (casadi_int k : order_out) {</div>
-<div class="line"><a name="l00977"></a><span class="lineno">  977</span>&#160;      ret_out.push_back(out_.at(k));</div>
-<div class="line"><a name="l00978"></a><span class="lineno">  978</span>&#160;      ret_out_name.push_back(name_out_.at(k));</div>
-<div class="line"><a name="l00979"></a><span class="lineno">  979</span>&#160;    }</div>
-<div class="line"><a name="l00980"></a><span class="lineno">  980</span>&#160; </div>
-<div class="line"><a name="l00981"></a><span class="lineno">  981</span>&#160;    <span class="comment">// Assemble function</span></div>
-<div class="line"><a name="l00982"></a><span class="lineno">  982</span>&#160;    <span class="keywordflow">return</span> Function(name, ret_in, ret_out,</div>
-<div class="line"><a name="l00983"></a><span class="lineno">  983</span>&#160;                    ret_in_name, ret_out_name, opts);</div>
-<div class="line"><a name="l00984"></a><span class="lineno">  984</span>&#160;  }</div>
-<div class="line"><a name="l00985"></a><span class="lineno">  985</span>&#160; </div>
-<div class="line"><a name="l00986"></a><span class="lineno">  986</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> DerivedType, <span class="keyword">typename</span> MatType, <span class="keyword">typename</span> NodeType&gt;</div>
-<div class="line"><a name="l00987"></a><span class="lineno">  987</span>&#160;  <span class="keywordtype">void</span> XFunction&lt;DerivedType, MatType, NodeType&gt;</div>
-<div class="line"><a name="l00988"></a><span class="lineno">  988</span>&#160;  ::export_code(<span class="keyword">const</span> std::string&amp; lang, std::ostream &amp;stream, <span class="keyword">const</span> Dict&amp; options)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00954"></a><span class="lineno">  954</span>&#160;      <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> options = opts;</div>
+<div class="line"><a name="l00955"></a><span class="lineno">  955</span>&#160;      options[<span class="stringliteral">&quot;allow_free&quot;</span>] = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00956"></a><span class="lineno">  956</span>&#160;      options[<span class="stringliteral">&quot;allow_duplicate_io_names&quot;</span>] = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00957"></a><span class="lineno">  957</span>&#160; </div>
+<div class="line"><a name="l00958"></a><span class="lineno">  958</span>&#160;      <span class="comment">// Assemble function and return</span></div>
+<div class="line"><a name="l00959"></a><span class="lineno">  959</span>&#160;      <span class="keywordflow">return</span> Function(name, ret_in, ret_out, inames, onames, options);</div>
+<div class="line"><a name="l00960"></a><span class="lineno">  960</span>&#160;    } <span class="keywordflow">catch</span> (std::exception&amp; e) {</div>
+<div class="line"><a name="l00961"></a><span class="lineno">  961</span>&#160;      CASADI_THROW_ERROR(<span class="stringliteral">&quot;get_jacobian&quot;</span>, e.what());</div>
+<div class="line"><a name="l00962"></a><span class="lineno">  962</span>&#160;    }</div>
+<div class="line"><a name="l00963"></a><span class="lineno">  963</span>&#160;  }</div>
+<div class="line"><a name="l00964"></a><span class="lineno">  964</span>&#160; </div>
+<div class="line"><a name="l00965"></a><span class="lineno">  965</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> DerivedType, <span class="keyword">typename</span> MatType, <span class="keyword">typename</span> NodeType&gt;</div>
+<div class="line"><a name="l00966"></a><span class="lineno">  966</span>&#160;  Function XFunction&lt;DerivedType, MatType, NodeType&gt;</div>
+<div class="line"><a name="l00967"></a><span class="lineno">  967</span>&#160;  ::slice(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; order_in,</div>
+<div class="line"><a name="l00968"></a><span class="lineno">  968</span>&#160;          <span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; order_out, <span class="keyword">const</span> Dict&amp; opts)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00969"></a><span class="lineno">  969</span>&#160;    <span class="comment">// Return expressions</span></div>
+<div class="line"><a name="l00970"></a><span class="lineno">  970</span>&#160;    std::vector&lt;MatType&gt; ret_in, ret_out;</div>
+<div class="line"><a name="l00971"></a><span class="lineno">  971</span>&#160;    std::vector&lt;std::string&gt; ret_in_name, ret_out_name;</div>
+<div class="line"><a name="l00972"></a><span class="lineno">  972</span>&#160; </div>
+<div class="line"><a name="l00973"></a><span class="lineno">  973</span>&#160;    <span class="comment">// Reorder inputs</span></div>
+<div class="line"><a name="l00974"></a><span class="lineno">  974</span>&#160;    <span class="keywordflow">for</span> (casadi_int k : order_in) {</div>
+<div class="line"><a name="l00975"></a><span class="lineno">  975</span>&#160;      ret_in.push_back(in_.at(k));</div>
+<div class="line"><a name="l00976"></a><span class="lineno">  976</span>&#160;      ret_in_name.push_back(name_in_.at(k));</div>
+<div class="line"><a name="l00977"></a><span class="lineno">  977</span>&#160;    }</div>
+<div class="line"><a name="l00978"></a><span class="lineno">  978</span>&#160; </div>
+<div class="line"><a name="l00979"></a><span class="lineno">  979</span>&#160;    <span class="comment">// Reorder outputs</span></div>
+<div class="line"><a name="l00980"></a><span class="lineno">  980</span>&#160;    <span class="keywordflow">for</span> (casadi_int k : order_out) {</div>
+<div class="line"><a name="l00981"></a><span class="lineno">  981</span>&#160;      ret_out.push_back(out_.at(k));</div>
+<div class="line"><a name="l00982"></a><span class="lineno">  982</span>&#160;      ret_out_name.push_back(name_out_.at(k));</div>
+<div class="line"><a name="l00983"></a><span class="lineno">  983</span>&#160;    }</div>
+<div class="line"><a name="l00984"></a><span class="lineno">  984</span>&#160; </div>
+<div class="line"><a name="l00985"></a><span class="lineno">  985</span>&#160;    <span class="comment">// Assemble function</span></div>
+<div class="line"><a name="l00986"></a><span class="lineno">  986</span>&#160;    <span class="keywordflow">return</span> Function(name, ret_in, ret_out,</div>
+<div class="line"><a name="l00987"></a><span class="lineno">  987</span>&#160;                    ret_in_name, ret_out_name, opts);</div>
+<div class="line"><a name="l00988"></a><span class="lineno">  988</span>&#160;  }</div>
 <div class="line"><a name="l00989"></a><span class="lineno">  989</span>&#160; </div>
-<div class="line"><a name="l00990"></a><span class="lineno">  990</span>&#160;    casadi_assert(!has_free(), <span class="stringliteral">&quot;export_code needs a Function without free variables&quot;</span>);</div>
-<div class="line"><a name="l00991"></a><span class="lineno">  991</span>&#160; </div>
-<div class="line"><a name="l00992"></a><span class="lineno">  992</span>&#160;    casadi_assert(lang==<span class="stringliteral">&quot;matlab&quot;</span>, <span class="stringliteral">&quot;Only matlab language supported for now.&quot;</span>);</div>
+<div class="line"><a name="l00990"></a><span class="lineno">  990</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> DerivedType, <span class="keyword">typename</span> MatType, <span class="keyword">typename</span> NodeType&gt;</div>
+<div class="line"><a name="l00991"></a><span class="lineno">  991</span>&#160;  <span class="keywordtype">void</span> XFunction&lt;DerivedType, MatType, NodeType&gt;</div>
+<div class="line"><a name="l00992"></a><span class="lineno">  992</span>&#160;  ::export_code(<span class="keyword">const</span> std::string&amp; lang, std::ostream &amp;stream, <span class="keyword">const</span> Dict&amp; options)<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00993"></a><span class="lineno">  993</span>&#160; </div>
-<div class="line"><a name="l00994"></a><span class="lineno">  994</span>&#160;    <span class="comment">// start function</span></div>
-<div class="line"><a name="l00995"></a><span class="lineno">  995</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;function [varargout] = &quot;</span> &lt;&lt; name_ &lt;&lt; <span class="stringliteral">&quot;(varargin)&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00996"></a><span class="lineno">  996</span>&#160; </div>
-<div class="line"><a name="l00997"></a><span class="lineno">  997</span>&#160;    <span class="comment">// Allocate space for output argument (segments)</span></div>
-<div class="line"><a name="l00998"></a><span class="lineno">  998</span>&#160;    <span class="keywordflow">for</span> (casadi_int i=0;i&lt;n_out_;++i) {</div>
-<div class="line"><a name="l00999"></a><span class="lineno">  999</span>&#160;      stream &lt;&lt; <span class="stringliteral">&quot;  argout_&quot;</span> &lt;&lt; i &lt;&lt;  <span class="stringliteral">&quot; = cell(&quot;</span> &lt;&lt; nnz_out(i) &lt;&lt; <span class="stringliteral">&quot;,1);&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01000"></a><span class="lineno"> 1000</span>&#160;    }</div>
-<div class="line"><a name="l01001"></a><span class="lineno"> 1001</span>&#160; </div>
-<div class="line"><a name="l01002"></a><span class="lineno"> 1002</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> opts;</div>
-<div class="line"><a name="l01003"></a><span class="lineno"> 1003</span>&#160;    opts[<span class="stringliteral">&quot;indent_level&quot;</span>] = 1;</div>
-<div class="line"><a name="l01004"></a><span class="lineno"> 1004</span>&#160;    export_code_body(lang, stream, opts);</div>
+<div class="line"><a name="l00994"></a><span class="lineno">  994</span>&#160;    casadi_assert(!has_free(), <span class="stringliteral">&quot;export_code needs a Function without free variables&quot;</span>);</div>
+<div class="line"><a name="l00995"></a><span class="lineno">  995</span>&#160; </div>
+<div class="line"><a name="l00996"></a><span class="lineno">  996</span>&#160;    casadi_assert(lang==<span class="stringliteral">&quot;matlab&quot;</span>, <span class="stringliteral">&quot;Only matlab language supported for now.&quot;</span>);</div>
+<div class="line"><a name="l00997"></a><span class="lineno">  997</span>&#160; </div>
+<div class="line"><a name="l00998"></a><span class="lineno">  998</span>&#160;    <span class="comment">// start function</span></div>
+<div class="line"><a name="l00999"></a><span class="lineno">  999</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;function [varargout] = &quot;</span> &lt;&lt; name_ &lt;&lt; <span class="stringliteral">&quot;(varargin)&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01000"></a><span class="lineno"> 1000</span>&#160; </div>
+<div class="line"><a name="l01001"></a><span class="lineno"> 1001</span>&#160;    <span class="comment">// Allocate space for output argument (segments)</span></div>
+<div class="line"><a name="l01002"></a><span class="lineno"> 1002</span>&#160;    <span class="keywordflow">for</span> (casadi_int i=0;i&lt;n_out_;++i) {</div>
+<div class="line"><a name="l01003"></a><span class="lineno"> 1003</span>&#160;      stream &lt;&lt; <span class="stringliteral">&quot;  argout_&quot;</span> &lt;&lt; i &lt;&lt;  <span class="stringliteral">&quot; = cell(&quot;</span> &lt;&lt; nnz_out(i) &lt;&lt; <span class="stringliteral">&quot;,1);&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01004"></a><span class="lineno"> 1004</span>&#160;    }</div>
 <div class="line"><a name="l01005"></a><span class="lineno"> 1005</span>&#160; </div>
-<div class="line"><a name="l01006"></a><span class="lineno"> 1006</span>&#160;    <span class="comment">// Process the outputs</span></div>
-<div class="line"><a name="l01007"></a><span class="lineno"> 1007</span>&#160;    <span class="keywordflow">for</span> (casadi_int i=0;i&lt;n_out_;++i) {</div>
-<div class="line"><a name="l01008"></a><span class="lineno"> 1008</span>&#160;      <span class="keyword">const</span> Sparsity&amp; out = sparsity_out_.at(i);</div>
-<div class="line"><a name="l01009"></a><span class="lineno"> 1009</span>&#160;      <span class="keywordflow">if</span> (out.is_dense()) {</div>
-<div class="line"><a name="l01010"></a><span class="lineno"> 1010</span>&#160;        <span class="comment">// Special case if dense</span></div>
-<div class="line"><a name="l01011"></a><span class="lineno"> 1011</span>&#160;        stream &lt;&lt; <span class="stringliteral">&quot;  varargout{&quot;</span> &lt;&lt; i+1 &lt;&lt;  <span class="stringliteral">&quot;} = reshape(vertcat(argout_&quot;</span> &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot;{:}), &quot;</span>;</div>
-<div class="line"><a name="l01012"></a><span class="lineno"> 1012</span>&#160;        stream &lt;&lt; out.size1() &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; out.size2() &lt;&lt; <span class="stringliteral">&quot;);&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01013"></a><span class="lineno"> 1013</span>&#160;      } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l01014"></a><span class="lineno"> 1014</span>&#160;        <span class="comment">// For sparse outputs, export sparsity and call &#39;sparse&#39;</span></div>
-<div class="line"><a name="l01015"></a><span class="lineno"> 1015</span>&#160;        <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> opts;</div>
-<div class="line"><a name="l01016"></a><span class="lineno"> 1016</span>&#160;        opts[<span class="stringliteral">&quot;name&quot;</span>] = <span class="stringliteral">&quot;sp&quot;</span>;</div>
-<div class="line"><a name="l01017"></a><span class="lineno"> 1017</span>&#160;        opts[<span class="stringliteral">&quot;indent_level&quot;</span>] = 1;</div>
-<div class="line"><a name="l01018"></a><span class="lineno"> 1018</span>&#160;        opts[<span class="stringliteral">&quot;as_matrix&quot;</span>] = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l01019"></a><span class="lineno"> 1019</span>&#160;        out.export_code(<span class="stringliteral">&quot;matlab&quot;</span>, stream, opts);</div>
-<div class="line"><a name="l01020"></a><span class="lineno"> 1020</span>&#160;        stream &lt;&lt; <span class="stringliteral">&quot;  varargout{&quot;</span> &lt;&lt; i+1 &lt;&lt;  <span class="stringliteral">&quot;} = &quot;</span>;</div>
-<div class="line"><a name="l01021"></a><span class="lineno"> 1021</span>&#160;        stream &lt;&lt; <span class="stringliteral">&quot;sparse(sp_i, sp_j, vertcat(argout_&quot;</span> &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot;{:}), sp_m, sp_n);&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01022"></a><span class="lineno"> 1022</span>&#160;      }</div>
-<div class="line"><a name="l01023"></a><span class="lineno"> 1023</span>&#160;    }</div>
-<div class="line"><a name="l01024"></a><span class="lineno"> 1024</span>&#160; </div>
-<div class="line"><a name="l01025"></a><span class="lineno"> 1025</span>&#160;    <span class="comment">// end function</span></div>
-<div class="line"><a name="l01026"></a><span class="lineno"> 1026</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;end&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01027"></a><span class="lineno"> 1027</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;function y=nonzeros_gen(x)&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01028"></a><span class="lineno"> 1028</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;  if isa(x,&#39;casadi.SX&#39;) || isa(x,&#39;casadi.MX&#39;) || isa(x,&#39;casadi.DM&#39;)&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01029"></a><span class="lineno"> 1029</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;    y = x{:};&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01030"></a><span class="lineno"> 1030</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;  elseif isa(x,&#39;sdpvar&#39;)&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01031"></a><span class="lineno"> 1031</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;    b = getbase(x);&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01032"></a><span class="lineno"> 1032</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;    f = find(sum(b~=0,2));&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01033"></a><span class="lineno"> 1033</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;    y = sdpvar(length(f),1,[],getvariables(x),b(f,:));&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01034"></a><span class="lineno"> 1034</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;  else&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01035"></a><span class="lineno"> 1035</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;    y = nonzeros(x);&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01036"></a><span class="lineno"> 1036</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;  end&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01037"></a><span class="lineno"> 1037</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;end&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01038"></a><span class="lineno"> 1038</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;function y=if_else_zero_gen(c,e)&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01039"></a><span class="lineno"> 1039</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;  if isa(c+e,&#39;casadi.SX&#39;) || isa(c+e,&#39;casadi.MX&#39;) &quot;</span></div>
-<div class="line"><a name="l01040"></a><span class="lineno"> 1040</span>&#160;              <span class="stringliteral">&quot;|| isa(c+e,&#39;casadi.DM&#39;)&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01041"></a><span class="lineno"> 1041</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;    y = if_else(c, e, 0);&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01042"></a><span class="lineno"> 1042</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;  else&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01043"></a><span class="lineno"> 1043</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;    if c&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01044"></a><span class="lineno"> 1044</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;        y = x;&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01045"></a><span class="lineno"> 1045</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;    else&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01046"></a><span class="lineno"> 1046</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;        y = 0;&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01047"></a><span class="lineno"> 1047</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;    end&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01048"></a><span class="lineno"> 1048</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;  end&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01049"></a><span class="lineno"> 1049</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;end&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01050"></a><span class="lineno"> 1050</span>&#160; </div>
-<div class="line"><a name="l01051"></a><span class="lineno"> 1051</span>&#160; </div>
-<div class="line"><a name="l01052"></a><span class="lineno"> 1052</span>&#160;  }</div>
-<div class="line"><a name="l01053"></a><span class="lineno"> 1053</span>&#160; </div>
-<div class="line"><a name="l01054"></a><span class="lineno"> 1054</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> DerivedType, <span class="keyword">typename</span> MatType, <span class="keyword">typename</span> NodeType&gt;</div>
-<div class="line"><a name="l01055"></a><span class="lineno"> 1055</span>&#160;  <span class="keywordtype">bool</span> XFunction&lt;DerivedType, MatType, NodeType&gt;</div>
-<div class="line"><a name="l01056"></a><span class="lineno"> 1056</span>&#160;  ::isInput(<span class="keyword">const</span> std::vector&lt;MatType&gt;&amp; arg)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l01057"></a><span class="lineno"> 1057</span>&#160;    <span class="comment">// Check if arguments matches the input expressions, in which case</span></div>
-<div class="line"><a name="l01058"></a><span class="lineno"> 1058</span>&#160;    <span class="comment">// the output is known to be the output expressions</span></div>
-<div class="line"><a name="l01059"></a><span class="lineno"> 1059</span>&#160;    <span class="keyword">const</span> casadi_int checking_depth = 2;</div>
-<div class="line"><a name="l01060"></a><span class="lineno"> 1060</span>&#160;    <span class="keywordflow">for</span> (casadi_int i=0; i&lt;arg.size(); ++i) {</div>
-<div class="line"><a name="l01061"></a><span class="lineno"> 1061</span>&#160;      <span class="keywordflow">if</span> (!is_equal(arg[i], in_[i], checking_depth)) {</div>
-<div class="line"><a name="l01062"></a><span class="lineno"> 1062</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l01063"></a><span class="lineno"> 1063</span>&#160;      }</div>
-<div class="line"><a name="l01064"></a><span class="lineno"> 1064</span>&#160;    }</div>
-<div class="line"><a name="l01065"></a><span class="lineno"> 1065</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l01066"></a><span class="lineno"> 1066</span>&#160;  }</div>
-<div class="line"><a name="l01067"></a><span class="lineno"> 1067</span>&#160; </div>
-<div class="line"><a name="l01068"></a><span class="lineno"> 1068</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> DerivedType, <span class="keyword">typename</span> MatType, <span class="keyword">typename</span> NodeType&gt;</div>
-<div class="line"><a name="l01069"></a><span class="lineno"> 1069</span>&#160;  <span class="keywordtype">void</span> XFunction&lt;DerivedType, MatType, NodeType&gt;::</div>
-<div class="line"><a name="l01070"></a><span class="lineno"> 1070</span>&#160;  call_forward(<span class="keyword">const</span> std::vector&lt;MatType&gt;&amp; arg,</div>
-<div class="line"><a name="l01071"></a><span class="lineno"> 1071</span>&#160;               <span class="keyword">const</span> std::vector&lt;MatType&gt;&amp; res,</div>
-<div class="line"><a name="l01072"></a><span class="lineno"> 1072</span>&#160;               <span class="keyword">const</span> std::vector&lt;std::vector&lt;MatType&gt; &gt;&amp; fseed,</div>
-<div class="line"><a name="l01073"></a><span class="lineno"> 1073</span>&#160;               std::vector&lt;std::vector&lt;MatType&gt; &gt;&amp; fsens,</div>
-<div class="line"><a name="l01074"></a><span class="lineno"> 1074</span>&#160;               <span class="keywordtype">bool</span> always_inline, <span class="keywordtype">bool</span> never_inline)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l01075"></a><span class="lineno"> 1075</span>&#160;    casadi_assert(!(always_inline &amp;&amp; never_inline), <span class="stringliteral">&quot;Inconsistent options&quot;</span>);</div>
-<div class="line"><a name="l01076"></a><span class="lineno"> 1076</span>&#160;    <span class="keywordflow">if</span> (!should_inline(always_inline, never_inline)) {</div>
-<div class="line"><a name="l01077"></a><span class="lineno"> 1077</span>&#160;      <span class="comment">// The non-inlining version is implemented in the base class</span></div>
-<div class="line"><a name="l01078"></a><span class="lineno"> 1078</span>&#160;      <span class="keywordflow">return</span> FunctionInternal::call_forward(arg, res, fseed, fsens,</div>
-<div class="line"><a name="l01079"></a><span class="lineno"> 1079</span>&#160;                                            always_inline, never_inline);</div>
-<div class="line"><a name="l01080"></a><span class="lineno"> 1080</span>&#160;    }</div>
-<div class="line"><a name="l01081"></a><span class="lineno"> 1081</span>&#160; </div>
-<div class="line"><a name="l01082"></a><span class="lineno"> 1082</span>&#160;    <span class="comment">// Quick return if no seeds</span></div>
-<div class="line"><a name="l01083"></a><span class="lineno"> 1083</span>&#160;    <span class="keywordflow">if</span> (fseed.empty()) {</div>
-<div class="line"><a name="l01084"></a><span class="lineno"> 1084</span>&#160;      fsens.clear();</div>
-<div class="line"><a name="l01085"></a><span class="lineno"> 1085</span>&#160;      <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l01086"></a><span class="lineno"> 1086</span>&#160;    }</div>
-<div class="line"><a name="l01087"></a><span class="lineno"> 1087</span>&#160; </div>
-<div class="line"><a name="l01088"></a><span class="lineno"> 1088</span>&#160;    <span class="comment">// Call inlining</span></div>
-<div class="line"><a name="l01089"></a><span class="lineno"> 1089</span>&#160;    <span class="keywordflow">if</span> (isInput(arg)) {</div>
-<div class="line"><a name="l01090"></a><span class="lineno"> 1090</span>&#160;      <span class="comment">// Argument agrees with in_, call ad_forward directly</span></div>
-<div class="line"><a name="l01091"></a><span class="lineno"> 1091</span>&#160;      <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>DerivedType*<span class="keyword">&gt;</span>(<span class="keyword">this</span>)-&gt;ad_forward(fseed, fsens);</div>
-<div class="line"><a name="l01092"></a><span class="lineno"> 1092</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l01093"></a><span class="lineno"> 1093</span>&#160;      <span class="comment">// Need to create a temporary function</span></div>
-<div class="line"><a name="l01094"></a><span class="lineno"> 1094</span>&#160;      Function f(<span class="stringliteral">&quot;tmp_call_forward&quot;</span>, arg, res);</div>
-<div class="line"><a name="l01095"></a><span class="lineno"> 1095</span>&#160;      <span class="keyword">static_cast&lt;</span>DerivedType *<span class="keyword">&gt;</span>(f.get())-&gt;ad_forward(fseed, fsens);</div>
-<div class="line"><a name="l01096"></a><span class="lineno"> 1096</span>&#160;    }</div>
-<div class="line"><a name="l01097"></a><span class="lineno"> 1097</span>&#160;  }</div>
-<div class="line"><a name="l01098"></a><span class="lineno"> 1098</span>&#160; </div>
-<div class="line"><a name="l01099"></a><span class="lineno"> 1099</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> DerivedType, <span class="keyword">typename</span> MatType, <span class="keyword">typename</span> NodeType&gt;</div>
-<div class="line"><a name="l01100"></a><span class="lineno"> 1100</span>&#160;  <span class="keywordtype">void</span> XFunction&lt;DerivedType, MatType, NodeType&gt;::</div>
-<div class="line"><a name="l01101"></a><span class="lineno"> 1101</span>&#160;  call_reverse(<span class="keyword">const</span> std::vector&lt;MatType&gt;&amp; arg,</div>
-<div class="line"><a name="l01102"></a><span class="lineno"> 1102</span>&#160;               <span class="keyword">const</span> std::vector&lt;MatType&gt;&amp; res,</div>
-<div class="line"><a name="l01103"></a><span class="lineno"> 1103</span>&#160;               <span class="keyword">const</span> std::vector&lt;std::vector&lt;MatType&gt; &gt;&amp; aseed,</div>
-<div class="line"><a name="l01104"></a><span class="lineno"> 1104</span>&#160;               std::vector&lt;std::vector&lt;MatType&gt; &gt;&amp; asens,</div>
-<div class="line"><a name="l01105"></a><span class="lineno"> 1105</span>&#160;               <span class="keywordtype">bool</span> always_inline, <span class="keywordtype">bool</span> never_inline)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l01106"></a><span class="lineno"> 1106</span>&#160;    casadi_assert(!(always_inline &amp;&amp; never_inline), <span class="stringliteral">&quot;Inconsistent options&quot;</span>);</div>
-<div class="line"><a name="l01107"></a><span class="lineno"> 1107</span>&#160;    <span class="keywordflow">if</span> (!should_inline(always_inline, never_inline)) {</div>
-<div class="line"><a name="l01108"></a><span class="lineno"> 1108</span>&#160;      <span class="comment">// The non-inlining version is implemented in the base class</span></div>
-<div class="line"><a name="l01109"></a><span class="lineno"> 1109</span>&#160;      <span class="keywordflow">return</span> FunctionInternal::call_reverse(arg, res, aseed, asens,</div>
-<div class="line"><a name="l01110"></a><span class="lineno"> 1110</span>&#160;                                            always_inline, never_inline);</div>
-<div class="line"><a name="l01111"></a><span class="lineno"> 1111</span>&#160;    }</div>
-<div class="line"><a name="l01112"></a><span class="lineno"> 1112</span>&#160; </div>
-<div class="line"><a name="l01113"></a><span class="lineno"> 1113</span>&#160;    <span class="comment">// Quick return if no seeds</span></div>
-<div class="line"><a name="l01114"></a><span class="lineno"> 1114</span>&#160;    <span class="keywordflow">if</span> (aseed.empty()) {</div>
-<div class="line"><a name="l01115"></a><span class="lineno"> 1115</span>&#160;      asens.clear();</div>
-<div class="line"><a name="l01116"></a><span class="lineno"> 1116</span>&#160;      <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l01117"></a><span class="lineno"> 1117</span>&#160;    }</div>
-<div class="line"><a name="l01118"></a><span class="lineno"> 1118</span>&#160; </div>
-<div class="line"><a name="l01119"></a><span class="lineno"> 1119</span>&#160;    <span class="comment">// Call inlining</span></div>
-<div class="line"><a name="l01120"></a><span class="lineno"> 1120</span>&#160;    <span class="keywordflow">if</span> (isInput(arg)) {</div>
-<div class="line"><a name="l01121"></a><span class="lineno"> 1121</span>&#160;      <span class="comment">// Argument agrees with in_, call ad_reverse directly</span></div>
-<div class="line"><a name="l01122"></a><span class="lineno"> 1122</span>&#160;      <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>DerivedType*<span class="keyword">&gt;</span>(<span class="keyword">this</span>)-&gt;ad_reverse(aseed, asens);</div>
-<div class="line"><a name="l01123"></a><span class="lineno"> 1123</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l01124"></a><span class="lineno"> 1124</span>&#160;      <span class="comment">// Need to create a temporary function</span></div>
-<div class="line"><a name="l01125"></a><span class="lineno"> 1125</span>&#160;      Function f(<span class="stringliteral">&quot;tmp_call_reverse&quot;</span>, arg, res);</div>
-<div class="line"><a name="l01126"></a><span class="lineno"> 1126</span>&#160;      <span class="keyword">static_cast&lt;</span>DerivedType *<span class="keyword">&gt;</span>(f.get())-&gt;ad_reverse(aseed, asens);</div>
-<div class="line"><a name="l01127"></a><span class="lineno"> 1127</span>&#160;    }</div>
-<div class="line"><a name="l01128"></a><span class="lineno"> 1128</span>&#160;  }</div>
-<div class="line"><a name="l01129"></a><span class="lineno"> 1129</span>&#160; </div>
-<div class="line"><a name="l01130"></a><span class="lineno"> 1130</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> DerivedType, <span class="keyword">typename</span> MatType, <span class="keyword">typename</span> NodeType&gt;</div>
-<div class="line"><a name="l01131"></a><span class="lineno"> 1131</span>&#160;  Function XFunction&lt;DerivedType, MatType, NodeType&gt;::</div>
-<div class="line"><a name="l01132"></a><span class="lineno"> 1132</span>&#160;  factory(<span class="keyword">const</span> std::string&amp; name,</div>
-<div class="line"><a name="l01133"></a><span class="lineno"> 1133</span>&#160;          <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; s_in,</div>
-<div class="line"><a name="l01134"></a><span class="lineno"> 1134</span>&#160;          <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; s_out,</div>
-<div class="line"><a name="l01135"></a><span class="lineno"> 1135</span>&#160;          <span class="keyword">const</span> Function::AuxOut&amp; aux,</div>
-<div class="line"><a name="l01136"></a><span class="lineno"> 1136</span>&#160;          <span class="keyword">const</span> Dict&amp; opts)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l01137"></a><span class="lineno"> 1137</span>&#160; </div>
-<div class="line"><a name="l01138"></a><span class="lineno"> 1138</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> g_ops = generate_options(<span class="stringliteral">&quot;clone&quot;</span>);</div>
-<div class="line"><a name="l01139"></a><span class="lineno"> 1139</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> f_options;</div>
-<div class="line"><a name="l01140"></a><span class="lineno"> 1140</span>&#160;    f_options[<span class="stringliteral">&quot;helper_options&quot;</span>] = g_ops;</div>
-<div class="line"><a name="l01141"></a><span class="lineno"> 1141</span>&#160;    f_options[<span class="stringliteral">&quot;final_options&quot;</span>] = g_ops;</div>
-<div class="line"><a name="l01142"></a><span class="lineno"> 1142</span>&#160;    update_dict(f_options, opts, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l01143"></a><span class="lineno"> 1143</span>&#160; </div>
-<div class="line"><a name="l01144"></a><span class="lineno"> 1144</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> final_options;</div>
-<div class="line"><a name="l01145"></a><span class="lineno"> 1145</span>&#160;    extract_from_dict_inplace(f_options, <span class="stringliteral">&quot;final_options&quot;</span>, final_options);</div>
-<div class="line"><a name="l01146"></a><span class="lineno"> 1146</span>&#160;    final_options[<span class="stringliteral">&quot;allow_duplicate_io_names&quot;</span>] = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l01006"></a><span class="lineno"> 1006</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> opts;</div>
+<div class="line"><a name="l01007"></a><span class="lineno"> 1007</span>&#160;    opts[<span class="stringliteral">&quot;indent_level&quot;</span>] = 1;</div>
+<div class="line"><a name="l01008"></a><span class="lineno"> 1008</span>&#160;    export_code_body(lang, stream, opts);</div>
+<div class="line"><a name="l01009"></a><span class="lineno"> 1009</span>&#160; </div>
+<div class="line"><a name="l01010"></a><span class="lineno"> 1010</span>&#160;    <span class="comment">// Process the outputs</span></div>
+<div class="line"><a name="l01011"></a><span class="lineno"> 1011</span>&#160;    <span class="keywordflow">for</span> (casadi_int i=0;i&lt;n_out_;++i) {</div>
+<div class="line"><a name="l01012"></a><span class="lineno"> 1012</span>&#160;      <span class="keyword">const</span> Sparsity&amp; out = sparsity_out_.at(i);</div>
+<div class="line"><a name="l01013"></a><span class="lineno"> 1013</span>&#160;      <span class="keywordflow">if</span> (out.is_dense()) {</div>
+<div class="line"><a name="l01014"></a><span class="lineno"> 1014</span>&#160;        <span class="comment">// Special case if dense</span></div>
+<div class="line"><a name="l01015"></a><span class="lineno"> 1015</span>&#160;        stream &lt;&lt; <span class="stringliteral">&quot;  varargout{&quot;</span> &lt;&lt; i+1 &lt;&lt;  <span class="stringliteral">&quot;} = reshape(vertcat(argout_&quot;</span> &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot;{:}), &quot;</span>;</div>
+<div class="line"><a name="l01016"></a><span class="lineno"> 1016</span>&#160;        stream &lt;&lt; out.size1() &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; out.size2() &lt;&lt; <span class="stringliteral">&quot;);&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01017"></a><span class="lineno"> 1017</span>&#160;      } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l01018"></a><span class="lineno"> 1018</span>&#160;        <span class="comment">// For sparse outputs, export sparsity and call &#39;sparse&#39;</span></div>
+<div class="line"><a name="l01019"></a><span class="lineno"> 1019</span>&#160;        <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> opts;</div>
+<div class="line"><a name="l01020"></a><span class="lineno"> 1020</span>&#160;        opts[<span class="stringliteral">&quot;name&quot;</span>] = <span class="stringliteral">&quot;sp&quot;</span>;</div>
+<div class="line"><a name="l01021"></a><span class="lineno"> 1021</span>&#160;        opts[<span class="stringliteral">&quot;indent_level&quot;</span>] = 1;</div>
+<div class="line"><a name="l01022"></a><span class="lineno"> 1022</span>&#160;        opts[<span class="stringliteral">&quot;as_matrix&quot;</span>] = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l01023"></a><span class="lineno"> 1023</span>&#160;        out.export_code(<span class="stringliteral">&quot;matlab&quot;</span>, stream, opts);</div>
+<div class="line"><a name="l01024"></a><span class="lineno"> 1024</span>&#160;        stream &lt;&lt; <span class="stringliteral">&quot;  varargout{&quot;</span> &lt;&lt; i+1 &lt;&lt;  <span class="stringliteral">&quot;} = &quot;</span>;</div>
+<div class="line"><a name="l01025"></a><span class="lineno"> 1025</span>&#160;        stream &lt;&lt; <span class="stringliteral">&quot;sparse(sp_i, sp_j, vertcat(argout_&quot;</span> &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot;{:}), sp_m, sp_n);&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01026"></a><span class="lineno"> 1026</span>&#160;      }</div>
+<div class="line"><a name="l01027"></a><span class="lineno"> 1027</span>&#160;    }</div>
+<div class="line"><a name="l01028"></a><span class="lineno"> 1028</span>&#160; </div>
+<div class="line"><a name="l01029"></a><span class="lineno"> 1029</span>&#160;    <span class="comment">// end function</span></div>
+<div class="line"><a name="l01030"></a><span class="lineno"> 1030</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;end&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01031"></a><span class="lineno"> 1031</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;function y=nonzeros_gen(x)&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01032"></a><span class="lineno"> 1032</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;  if isa(x,&#39;casadi.SX&#39;) || isa(x,&#39;casadi.MX&#39;) || isa(x,&#39;casadi.DM&#39;)&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01033"></a><span class="lineno"> 1033</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;    y = x{:};&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01034"></a><span class="lineno"> 1034</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;  elseif isa(x,&#39;sdpvar&#39;)&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01035"></a><span class="lineno"> 1035</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;    b = getbase(x);&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01036"></a><span class="lineno"> 1036</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;    f = find(sum(b~=0,2));&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01037"></a><span class="lineno"> 1037</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;    y = sdpvar(length(f),1,[],getvariables(x),b(f,:));&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01038"></a><span class="lineno"> 1038</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;  else&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01039"></a><span class="lineno"> 1039</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;    y = nonzeros(x);&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01040"></a><span class="lineno"> 1040</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;  end&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01041"></a><span class="lineno"> 1041</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;end&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01042"></a><span class="lineno"> 1042</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;function y=if_else_zero_gen(c,e)&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01043"></a><span class="lineno"> 1043</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;  if isa(c+e,&#39;casadi.SX&#39;) || isa(c+e,&#39;casadi.MX&#39;) &quot;</span></div>
+<div class="line"><a name="l01044"></a><span class="lineno"> 1044</span>&#160;              <span class="stringliteral">&quot;|| isa(c+e,&#39;casadi.DM&#39;)&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01045"></a><span class="lineno"> 1045</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;    y = if_else(c, e, 0);&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01046"></a><span class="lineno"> 1046</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;  else&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01047"></a><span class="lineno"> 1047</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;    if c&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01048"></a><span class="lineno"> 1048</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;        y = x;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01049"></a><span class="lineno"> 1049</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;    else&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01050"></a><span class="lineno"> 1050</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;        y = 0;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01051"></a><span class="lineno"> 1051</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;    end&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01052"></a><span class="lineno"> 1052</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;  end&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01053"></a><span class="lineno"> 1053</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;end&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01054"></a><span class="lineno"> 1054</span>&#160; </div>
+<div class="line"><a name="l01055"></a><span class="lineno"> 1055</span>&#160; </div>
+<div class="line"><a name="l01056"></a><span class="lineno"> 1056</span>&#160;  }</div>
+<div class="line"><a name="l01057"></a><span class="lineno"> 1057</span>&#160; </div>
+<div class="line"><a name="l01058"></a><span class="lineno"> 1058</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> DerivedType, <span class="keyword">typename</span> MatType, <span class="keyword">typename</span> NodeType&gt;</div>
+<div class="line"><a name="l01059"></a><span class="lineno"> 1059</span>&#160;  <span class="keywordtype">bool</span> XFunction&lt;DerivedType, MatType, NodeType&gt;</div>
+<div class="line"><a name="l01060"></a><span class="lineno"> 1060</span>&#160;  ::isInput(<span class="keyword">const</span> std::vector&lt;MatType&gt;&amp; arg)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l01061"></a><span class="lineno"> 1061</span>&#160;    <span class="comment">// Check if arguments matches the input expressions, in which case</span></div>
+<div class="line"><a name="l01062"></a><span class="lineno"> 1062</span>&#160;    <span class="comment">// the output is known to be the output expressions</span></div>
+<div class="line"><a name="l01063"></a><span class="lineno"> 1063</span>&#160;    <span class="keyword">const</span> casadi_int checking_depth = 2;</div>
+<div class="line"><a name="l01064"></a><span class="lineno"> 1064</span>&#160;    <span class="keywordflow">for</span> (casadi_int i=0; i&lt;arg.size(); ++i) {</div>
+<div class="line"><a name="l01065"></a><span class="lineno"> 1065</span>&#160;      <span class="keywordflow">if</span> (!is_equal(arg[i], in_[i], checking_depth)) {</div>
+<div class="line"><a name="l01066"></a><span class="lineno"> 1066</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l01067"></a><span class="lineno"> 1067</span>&#160;      }</div>
+<div class="line"><a name="l01068"></a><span class="lineno"> 1068</span>&#160;    }</div>
+<div class="line"><a name="l01069"></a><span class="lineno"> 1069</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l01070"></a><span class="lineno"> 1070</span>&#160;  }</div>
+<div class="line"><a name="l01071"></a><span class="lineno"> 1071</span>&#160; </div>
+<div class="line"><a name="l01072"></a><span class="lineno"> 1072</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> DerivedType, <span class="keyword">typename</span> MatType, <span class="keyword">typename</span> NodeType&gt;</div>
+<div class="line"><a name="l01073"></a><span class="lineno"> 1073</span>&#160;  <span class="keywordtype">void</span> XFunction&lt;DerivedType, MatType, NodeType&gt;::</div>
+<div class="line"><a name="l01074"></a><span class="lineno"> 1074</span>&#160;  call_forward(<span class="keyword">const</span> std::vector&lt;MatType&gt;&amp; arg,</div>
+<div class="line"><a name="l01075"></a><span class="lineno"> 1075</span>&#160;               <span class="keyword">const</span> std::vector&lt;MatType&gt;&amp; res,</div>
+<div class="line"><a name="l01076"></a><span class="lineno"> 1076</span>&#160;               <span class="keyword">const</span> std::vector&lt;std::vector&lt;MatType&gt; &gt;&amp; fseed,</div>
+<div class="line"><a name="l01077"></a><span class="lineno"> 1077</span>&#160;               std::vector&lt;std::vector&lt;MatType&gt; &gt;&amp; fsens,</div>
+<div class="line"><a name="l01078"></a><span class="lineno"> 1078</span>&#160;               <span class="keywordtype">bool</span> always_inline, <span class="keywordtype">bool</span> never_inline)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l01079"></a><span class="lineno"> 1079</span>&#160;    casadi_assert(!(always_inline &amp;&amp; never_inline), <span class="stringliteral">&quot;Inconsistent options&quot;</span>);</div>
+<div class="line"><a name="l01080"></a><span class="lineno"> 1080</span>&#160;    <span class="keywordflow">if</span> (!should_inline(always_inline, never_inline)) {</div>
+<div class="line"><a name="l01081"></a><span class="lineno"> 1081</span>&#160;      <span class="comment">// The non-inlining version is implemented in the base class</span></div>
+<div class="line"><a name="l01082"></a><span class="lineno"> 1082</span>&#160;      <span class="keywordflow">return</span> FunctionInternal::call_forward(arg, res, fseed, fsens,</div>
+<div class="line"><a name="l01083"></a><span class="lineno"> 1083</span>&#160;                                            always_inline, never_inline);</div>
+<div class="line"><a name="l01084"></a><span class="lineno"> 1084</span>&#160;    }</div>
+<div class="line"><a name="l01085"></a><span class="lineno"> 1085</span>&#160; </div>
+<div class="line"><a name="l01086"></a><span class="lineno"> 1086</span>&#160;    <span class="comment">// Quick return if no seeds</span></div>
+<div class="line"><a name="l01087"></a><span class="lineno"> 1087</span>&#160;    <span class="keywordflow">if</span> (fseed.empty()) {</div>
+<div class="line"><a name="l01088"></a><span class="lineno"> 1088</span>&#160;      fsens.clear();</div>
+<div class="line"><a name="l01089"></a><span class="lineno"> 1089</span>&#160;      <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l01090"></a><span class="lineno"> 1090</span>&#160;    }</div>
+<div class="line"><a name="l01091"></a><span class="lineno"> 1091</span>&#160; </div>
+<div class="line"><a name="l01092"></a><span class="lineno"> 1092</span>&#160;    <span class="comment">// Call inlining</span></div>
+<div class="line"><a name="l01093"></a><span class="lineno"> 1093</span>&#160;    <span class="keywordflow">if</span> (isInput(arg)) {</div>
+<div class="line"><a name="l01094"></a><span class="lineno"> 1094</span>&#160;      <span class="comment">// Argument agrees with in_, call ad_forward directly</span></div>
+<div class="line"><a name="l01095"></a><span class="lineno"> 1095</span>&#160;      <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>DerivedType*<span class="keyword">&gt;</span>(<span class="keyword">this</span>)-&gt;ad_forward(fseed, fsens);</div>
+<div class="line"><a name="l01096"></a><span class="lineno"> 1096</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l01097"></a><span class="lineno"> 1097</span>&#160;      <span class="comment">// Need to create a temporary function</span></div>
+<div class="line"><a name="l01098"></a><span class="lineno"> 1098</span>&#160;      Function f(<span class="stringliteral">&quot;tmp_call_forward&quot;</span>, arg, res);</div>
+<div class="line"><a name="l01099"></a><span class="lineno"> 1099</span>&#160;      <span class="keyword">static_cast&lt;</span>DerivedType *<span class="keyword">&gt;</span>(f.get())-&gt;ad_forward(fseed, fsens);</div>
+<div class="line"><a name="l01100"></a><span class="lineno"> 1100</span>&#160;    }</div>
+<div class="line"><a name="l01101"></a><span class="lineno"> 1101</span>&#160;  }</div>
+<div class="line"><a name="l01102"></a><span class="lineno"> 1102</span>&#160; </div>
+<div class="line"><a name="l01103"></a><span class="lineno"> 1103</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> DerivedType, <span class="keyword">typename</span> MatType, <span class="keyword">typename</span> NodeType&gt;</div>
+<div class="line"><a name="l01104"></a><span class="lineno"> 1104</span>&#160;  <span class="keywordtype">void</span> XFunction&lt;DerivedType, MatType, NodeType&gt;::</div>
+<div class="line"><a name="l01105"></a><span class="lineno"> 1105</span>&#160;  call_reverse(<span class="keyword">const</span> std::vector&lt;MatType&gt;&amp; arg,</div>
+<div class="line"><a name="l01106"></a><span class="lineno"> 1106</span>&#160;               <span class="keyword">const</span> std::vector&lt;MatType&gt;&amp; res,</div>
+<div class="line"><a name="l01107"></a><span class="lineno"> 1107</span>&#160;               <span class="keyword">const</span> std::vector&lt;std::vector&lt;MatType&gt; &gt;&amp; aseed,</div>
+<div class="line"><a name="l01108"></a><span class="lineno"> 1108</span>&#160;               std::vector&lt;std::vector&lt;MatType&gt; &gt;&amp; asens,</div>
+<div class="line"><a name="l01109"></a><span class="lineno"> 1109</span>&#160;               <span class="keywordtype">bool</span> always_inline, <span class="keywordtype">bool</span> never_inline)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l01110"></a><span class="lineno"> 1110</span>&#160;    casadi_assert(!(always_inline &amp;&amp; never_inline), <span class="stringliteral">&quot;Inconsistent options&quot;</span>);</div>
+<div class="line"><a name="l01111"></a><span class="lineno"> 1111</span>&#160;    <span class="keywordflow">if</span> (!should_inline(always_inline, never_inline)) {</div>
+<div class="line"><a name="l01112"></a><span class="lineno"> 1112</span>&#160;      <span class="comment">// The non-inlining version is implemented in the base class</span></div>
+<div class="line"><a name="l01113"></a><span class="lineno"> 1113</span>&#160;      <span class="keywordflow">return</span> FunctionInternal::call_reverse(arg, res, aseed, asens,</div>
+<div class="line"><a name="l01114"></a><span class="lineno"> 1114</span>&#160;                                            always_inline, never_inline);</div>
+<div class="line"><a name="l01115"></a><span class="lineno"> 1115</span>&#160;    }</div>
+<div class="line"><a name="l01116"></a><span class="lineno"> 1116</span>&#160; </div>
+<div class="line"><a name="l01117"></a><span class="lineno"> 1117</span>&#160;    <span class="comment">// Quick return if no seeds</span></div>
+<div class="line"><a name="l01118"></a><span class="lineno"> 1118</span>&#160;    <span class="keywordflow">if</span> (aseed.empty()) {</div>
+<div class="line"><a name="l01119"></a><span class="lineno"> 1119</span>&#160;      asens.clear();</div>
+<div class="line"><a name="l01120"></a><span class="lineno"> 1120</span>&#160;      <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l01121"></a><span class="lineno"> 1121</span>&#160;    }</div>
+<div class="line"><a name="l01122"></a><span class="lineno"> 1122</span>&#160; </div>
+<div class="line"><a name="l01123"></a><span class="lineno"> 1123</span>&#160;    <span class="comment">// Call inlining</span></div>
+<div class="line"><a name="l01124"></a><span class="lineno"> 1124</span>&#160;    <span class="keywordflow">if</span> (isInput(arg)) {</div>
+<div class="line"><a name="l01125"></a><span class="lineno"> 1125</span>&#160;      <span class="comment">// Argument agrees with in_, call ad_reverse directly</span></div>
+<div class="line"><a name="l01126"></a><span class="lineno"> 1126</span>&#160;      <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>DerivedType*<span class="keyword">&gt;</span>(<span class="keyword">this</span>)-&gt;ad_reverse(aseed, asens);</div>
+<div class="line"><a name="l01127"></a><span class="lineno"> 1127</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l01128"></a><span class="lineno"> 1128</span>&#160;      <span class="comment">// Need to create a temporary function</span></div>
+<div class="line"><a name="l01129"></a><span class="lineno"> 1129</span>&#160;      Function f(<span class="stringliteral">&quot;tmp_call_reverse&quot;</span>, arg, res);</div>
+<div class="line"><a name="l01130"></a><span class="lineno"> 1130</span>&#160;      <span class="keyword">static_cast&lt;</span>DerivedType *<span class="keyword">&gt;</span>(f.get())-&gt;ad_reverse(aseed, asens);</div>
+<div class="line"><a name="l01131"></a><span class="lineno"> 1131</span>&#160;    }</div>
+<div class="line"><a name="l01132"></a><span class="lineno"> 1132</span>&#160;  }</div>
+<div class="line"><a name="l01133"></a><span class="lineno"> 1133</span>&#160; </div>
+<div class="line"><a name="l01134"></a><span class="lineno"> 1134</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> DerivedType, <span class="keyword">typename</span> MatType, <span class="keyword">typename</span> NodeType&gt;</div>
+<div class="line"><a name="l01135"></a><span class="lineno"> 1135</span>&#160;  Function XFunction&lt;DerivedType, MatType, NodeType&gt;::</div>
+<div class="line"><a name="l01136"></a><span class="lineno"> 1136</span>&#160;  factory(<span class="keyword">const</span> std::string&amp; name,</div>
+<div class="line"><a name="l01137"></a><span class="lineno"> 1137</span>&#160;          <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; s_in,</div>
+<div class="line"><a name="l01138"></a><span class="lineno"> 1138</span>&#160;          <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; s_out,</div>
+<div class="line"><a name="l01139"></a><span class="lineno"> 1139</span>&#160;          <span class="keyword">const</span> Function::AuxOut&amp; aux,</div>
+<div class="line"><a name="l01140"></a><span class="lineno"> 1140</span>&#160;          <span class="keyword">const</span> Dict&amp; opts)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l01141"></a><span class="lineno"> 1141</span>&#160; </div>
+<div class="line"><a name="l01142"></a><span class="lineno"> 1142</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> g_ops = generate_options(<span class="stringliteral">&quot;clone&quot;</span>);</div>
+<div class="line"><a name="l01143"></a><span class="lineno"> 1143</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> f_options;</div>
+<div class="line"><a name="l01144"></a><span class="lineno"> 1144</span>&#160;    f_options[<span class="stringliteral">&quot;helper_options&quot;</span>] = g_ops;</div>
+<div class="line"><a name="l01145"></a><span class="lineno"> 1145</span>&#160;    f_options[<span class="stringliteral">&quot;final_options&quot;</span>] = g_ops;</div>
+<div class="line"><a name="l01146"></a><span class="lineno"> 1146</span>&#160;    update_dict(f_options, opts, <span class="keyword">true</span>);</div>
 <div class="line"><a name="l01147"></a><span class="lineno"> 1147</span>&#160; </div>
-<div class="line"><a name="l01148"></a><span class="lineno"> 1148</span>&#160;    <span class="comment">// Create an expression factory</span></div>
-<div class="line"><a name="l01149"></a><span class="lineno"> 1149</span>&#160;    Factory&lt;MatType&gt; f;</div>
-<div class="line"><a name="l01150"></a><span class="lineno"> 1150</span>&#160;    <span class="keywordflow">for</span> (casadi_int i=0; i&lt;in_.size(); ++i) f.add_input(name_in_[i], in_[i], is_diff_in_[i]);</div>
-<div class="line"><a name="l01151"></a><span class="lineno"> 1151</span>&#160;    <span class="keywordflow">for</span> (casadi_int i=0; i&lt;out_.size(); ++i) f.add_output(name_out_[i], out_[i], is_diff_out_[i]);</div>
-<div class="line"><a name="l01152"></a><span class="lineno"> 1152</span>&#160;    f.add_dual(aux);</div>
-<div class="line"><a name="l01153"></a><span class="lineno"> 1153</span>&#160; </div>
-<div class="line"><a name="l01154"></a><span class="lineno"> 1154</span>&#160;    <span class="comment">// Specify input expressions to be calculated</span></div>
-<div class="line"><a name="l01155"></a><span class="lineno"> 1155</span>&#160;    std::vector&lt;std::string&gt; ret_iname;</div>
-<div class="line"><a name="l01156"></a><span class="lineno"> 1156</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> std::string&amp; s : s_in) {</div>
-<div class="line"><a name="l01157"></a><span class="lineno"> 1157</span>&#160;      <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l01158"></a><span class="lineno"> 1158</span>&#160;        ret_iname.push_back(f.request_input(s));</div>
-<div class="line"><a name="l01159"></a><span class="lineno"> 1159</span>&#160;      } <span class="keywordflow">catch</span> (CasadiException&amp; ex) {</div>
-<div class="line"><a name="l01160"></a><span class="lineno"> 1160</span>&#160;        casadi_error(<span class="stringliteral">&quot;Cannot process factory input \&quot;&quot;</span> + s + <span class="stringliteral">&quot;\&quot;:&quot;</span> + ex.what());</div>
-<div class="line"><a name="l01161"></a><span class="lineno"> 1161</span>&#160;      }</div>
-<div class="line"><a name="l01162"></a><span class="lineno"> 1162</span>&#160;    }</div>
-<div class="line"><a name="l01163"></a><span class="lineno"> 1163</span>&#160; </div>
-<div class="line"><a name="l01164"></a><span class="lineno"> 1164</span>&#160;    <span class="comment">// Specify output expressions to be calculated</span></div>
-<div class="line"><a name="l01165"></a><span class="lineno"> 1165</span>&#160;    std::vector&lt;std::string&gt; ret_oname;</div>
-<div class="line"><a name="l01166"></a><span class="lineno"> 1166</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> std::string&amp; s : s_out) {</div>
-<div class="line"><a name="l01167"></a><span class="lineno"> 1167</span>&#160;      <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l01168"></a><span class="lineno"> 1168</span>&#160;        ret_oname.push_back(f.request_output(s));</div>
-<div class="line"><a name="l01169"></a><span class="lineno"> 1169</span>&#160;      } <span class="keywordflow">catch</span> (CasadiException&amp; ex) {</div>
-<div class="line"><a name="l01170"></a><span class="lineno"> 1170</span>&#160;        casadi_error(<span class="stringliteral">&quot;Cannot process factory output \&quot;&quot;</span> + s + <span class="stringliteral">&quot;\&quot;:&quot;</span> + ex.what());</div>
-<div class="line"><a name="l01171"></a><span class="lineno"> 1171</span>&#160;      }</div>
-<div class="line"><a name="l01172"></a><span class="lineno"> 1172</span>&#160;    }</div>
-<div class="line"><a name="l01173"></a><span class="lineno"> 1173</span>&#160; </div>
-<div class="line"><a name="l01174"></a><span class="lineno"> 1174</span>&#160;    <span class="comment">// Calculate expressions</span></div>
-<div class="line"><a name="l01175"></a><span class="lineno"> 1175</span>&#160;    f.calculate(f_options);</div>
-<div class="line"><a name="l01176"></a><span class="lineno"> 1176</span>&#160; </div>
-<div class="line"><a name="l01177"></a><span class="lineno"> 1177</span>&#160;    <span class="comment">// Get input expressions</span></div>
-<div class="line"><a name="l01178"></a><span class="lineno"> 1178</span>&#160;    std::vector&lt;MatType&gt; ret_in;</div>
-<div class="line"><a name="l01179"></a><span class="lineno"> 1179</span>&#160;    ret_in.reserve(s_in.size());</div>
-<div class="line"><a name="l01180"></a><span class="lineno"> 1180</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> std::string&amp; s : s_in) ret_in.push_back(f.get_input(s));</div>
-<div class="line"><a name="l01181"></a><span class="lineno"> 1181</span>&#160; </div>
-<div class="line"><a name="l01182"></a><span class="lineno"> 1182</span>&#160;    <span class="comment">// Get output expressions</span></div>
-<div class="line"><a name="l01183"></a><span class="lineno"> 1183</span>&#160;    std::vector&lt;MatType&gt; ret_out;</div>
-<div class="line"><a name="l01184"></a><span class="lineno"> 1184</span>&#160;    ret_out.reserve(s_out.size());</div>
-<div class="line"><a name="l01185"></a><span class="lineno"> 1185</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> std::string&amp; s : s_out) ret_out.push_back(f.get_output(s));</div>
-<div class="line"><a name="l01186"></a><span class="lineno"> 1186</span>&#160; </div>
-<div class="line"><a name="l01187"></a><span class="lineno"> 1187</span>&#160;    <span class="comment">// Create function and return</span></div>
-<div class="line"><a name="l01188"></a><span class="lineno"> 1188</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> final_options_allow_free = final_options;</div>
-<div class="line"><a name="l01189"></a><span class="lineno"> 1189</span>&#160;    final_options_allow_free[<span class="stringliteral">&quot;allow_free&quot;</span>] = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l01190"></a><span class="lineno"> 1190</span>&#160;    final_options_allow_free[<span class="stringliteral">&quot;allow_duplicate_io_names&quot;</span>] = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l01191"></a><span class="lineno"> 1191</span>&#160;    Function ret(name, ret_in, ret_out, ret_iname, ret_oname, final_options_allow_free);</div>
-<div class="line"><a name="l01192"></a><span class="lineno"> 1192</span>&#160;    <span class="keywordflow">if</span> (ret.has_free()) {</div>
-<div class="line"><a name="l01193"></a><span class="lineno"> 1193</span>&#160;      <span class="comment">// Substitute free variables with zeros</span></div>
-<div class="line"><a name="l01194"></a><span class="lineno"> 1194</span>&#160;      <span class="comment">// We assume that the free variables are caused by false positive dependencies</span></div>
-<div class="line"><a name="l01195"></a><span class="lineno"> 1195</span>&#160;      std::vector&lt;MatType&gt; free_in = MatType::get_free(ret);</div>
-<div class="line"><a name="l01196"></a><span class="lineno"> 1196</span>&#160;      std::vector&lt;MatType&gt; free_sub = free_in;</div>
-<div class="line"><a name="l01197"></a><span class="lineno"> 1197</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp;&amp; e : free_sub) e = MatType::zeros(e.sparsity());</div>
-<div class="line"><a name="l01198"></a><span class="lineno"> 1198</span>&#160;      ret_out = substitute(ret_out, free_in, free_sub);</div>
-<div class="line"><a name="l01199"></a><span class="lineno"> 1199</span>&#160;      ret = Function(name, ret_in, ret_out, ret_iname, ret_oname, final_options);</div>
-<div class="line"><a name="l01200"></a><span class="lineno"> 1200</span>&#160;    }</div>
-<div class="line"><a name="l01201"></a><span class="lineno"> 1201</span>&#160;    <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l01202"></a><span class="lineno"> 1202</span>&#160;  }</div>
-<div class="line"><a name="l01203"></a><span class="lineno"> 1203</span>&#160; </div>
-<div class="line"><a name="l01204"></a><span class="lineno"> 1204</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> DerivedType, <span class="keyword">typename</span> MatType, <span class="keyword">typename</span> NodeType&gt;</div>
-<div class="line"><a name="l01205"></a><span class="lineno"> 1205</span>&#160;  std::vector&lt;bool&gt; XFunction&lt;DerivedType, MatType, NodeType&gt;::</div>
-<div class="line"><a name="l01206"></a><span class="lineno"> 1206</span>&#160;  which_depends(<span class="keyword">const</span> std::string&amp; s_in, <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; s_out,</div>
-<div class="line"><a name="l01207"></a><span class="lineno"> 1207</span>&#160;      casadi_int order, <span class="keywordtype">bool</span> tr)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l01208"></a><span class="lineno"> 1208</span>&#160; </div>
-<div class="line"><a name="l01209"></a><span class="lineno"> 1209</span>&#160;    <span class="comment">// Input arguments</span></div>
-<div class="line"><a name="l01210"></a><span class="lineno"> 1210</span>&#160;    <span class="keyword">auto</span> it = std::find(name_in_.begin(), name_in_.end(), s_in);</div>
-<div class="line"><a name="l01211"></a><span class="lineno"> 1211</span>&#160;    casadi_assert_dev(it!=name_in_.end());</div>
-<div class="line"><a name="l01212"></a><span class="lineno"> 1212</span>&#160;    MatType arg = in_.at(it-name_in_.begin());</div>
-<div class="line"><a name="l01213"></a><span class="lineno"> 1213</span>&#160; </div>
-<div class="line"><a name="l01214"></a><span class="lineno"> 1214</span>&#160;    <span class="comment">// Output arguments</span></div>
-<div class="line"><a name="l01215"></a><span class="lineno"> 1215</span>&#160;    std::vector&lt;MatType&gt; res;</div>
-<div class="line"><a name="l01216"></a><span class="lineno"> 1216</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp;&amp; s : s_out) {</div>
-<div class="line"><a name="l01217"></a><span class="lineno"> 1217</span>&#160;      it = std::find(name_out_.begin(), name_out_.end(), s);</div>
-<div class="line"><a name="l01218"></a><span class="lineno"> 1218</span>&#160;      casadi_assert_dev(it!=name_out_.end());</div>
-<div class="line"><a name="l01219"></a><span class="lineno"> 1219</span>&#160;      res.push_back(out_.at(it-name_out_.begin()));</div>
-<div class="line"><a name="l01220"></a><span class="lineno"> 1220</span>&#160;    }</div>
-<div class="line"><a name="l01221"></a><span class="lineno"> 1221</span>&#160; </div>
-<div class="line"><a name="l01222"></a><span class="lineno"> 1222</span>&#160;    <span class="comment">// Extract variables entering nonlinearly</span></div>
-<div class="line"><a name="l01223"></a><span class="lineno"> 1223</span>&#160;    <span class="keywordflow">return</span> MatType::which_depends(veccat(res), arg, order, tr);</div>
-<div class="line"><a name="l01224"></a><span class="lineno"> 1224</span>&#160;  }</div>
+<div class="line"><a name="l01148"></a><span class="lineno"> 1148</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> final_options;</div>
+<div class="line"><a name="l01149"></a><span class="lineno"> 1149</span>&#160;    extract_from_dict_inplace(f_options, <span class="stringliteral">&quot;final_options&quot;</span>, final_options);</div>
+<div class="line"><a name="l01150"></a><span class="lineno"> 1150</span>&#160;    final_options[<span class="stringliteral">&quot;allow_duplicate_io_names&quot;</span>] = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l01151"></a><span class="lineno"> 1151</span>&#160; </div>
+<div class="line"><a name="l01152"></a><span class="lineno"> 1152</span>&#160;    <span class="comment">// Create an expression factory</span></div>
+<div class="line"><a name="l01153"></a><span class="lineno"> 1153</span>&#160;    Factory&lt;MatType&gt; f;</div>
+<div class="line"><a name="l01154"></a><span class="lineno"> 1154</span>&#160;    <span class="keywordflow">for</span> (casadi_int i=0; i&lt;in_.size(); ++i) f.add_input(name_in_[i], in_[i], is_diff_in_[i]);</div>
+<div class="line"><a name="l01155"></a><span class="lineno"> 1155</span>&#160;    <span class="keywordflow">for</span> (casadi_int i=0; i&lt;out_.size(); ++i) f.add_output(name_out_[i], out_[i], is_diff_out_[i]);</div>
+<div class="line"><a name="l01156"></a><span class="lineno"> 1156</span>&#160;    f.add_dual(aux);</div>
+<div class="line"><a name="l01157"></a><span class="lineno"> 1157</span>&#160; </div>
+<div class="line"><a name="l01158"></a><span class="lineno"> 1158</span>&#160;    <span class="comment">// Specify input expressions to be calculated</span></div>
+<div class="line"><a name="l01159"></a><span class="lineno"> 1159</span>&#160;    std::vector&lt;std::string&gt; ret_iname;</div>
+<div class="line"><a name="l01160"></a><span class="lineno"> 1160</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> std::string&amp; s : s_in) {</div>
+<div class="line"><a name="l01161"></a><span class="lineno"> 1161</span>&#160;      <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l01162"></a><span class="lineno"> 1162</span>&#160;        ret_iname.push_back(f.request_input(s));</div>
+<div class="line"><a name="l01163"></a><span class="lineno"> 1163</span>&#160;      } <span class="keywordflow">catch</span> (CasadiException&amp; ex) {</div>
+<div class="line"><a name="l01164"></a><span class="lineno"> 1164</span>&#160;        casadi_error(<span class="stringliteral">&quot;Cannot process factory input \&quot;&quot;</span> + s + <span class="stringliteral">&quot;\&quot;:&quot;</span> + ex.what());</div>
+<div class="line"><a name="l01165"></a><span class="lineno"> 1165</span>&#160;      }</div>
+<div class="line"><a name="l01166"></a><span class="lineno"> 1166</span>&#160;    }</div>
+<div class="line"><a name="l01167"></a><span class="lineno"> 1167</span>&#160; </div>
+<div class="line"><a name="l01168"></a><span class="lineno"> 1168</span>&#160;    <span class="comment">// Specify output expressions to be calculated</span></div>
+<div class="line"><a name="l01169"></a><span class="lineno"> 1169</span>&#160;    std::vector&lt;std::string&gt; ret_oname;</div>
+<div class="line"><a name="l01170"></a><span class="lineno"> 1170</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> std::string&amp; s : s_out) {</div>
+<div class="line"><a name="l01171"></a><span class="lineno"> 1171</span>&#160;      <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l01172"></a><span class="lineno"> 1172</span>&#160;        ret_oname.push_back(f.request_output(s));</div>
+<div class="line"><a name="l01173"></a><span class="lineno"> 1173</span>&#160;      } <span class="keywordflow">catch</span> (CasadiException&amp; ex) {</div>
+<div class="line"><a name="l01174"></a><span class="lineno"> 1174</span>&#160;        casadi_error(<span class="stringliteral">&quot;Cannot process factory output \&quot;&quot;</span> + s + <span class="stringliteral">&quot;\&quot;:&quot;</span> + ex.what());</div>
+<div class="line"><a name="l01175"></a><span class="lineno"> 1175</span>&#160;      }</div>
+<div class="line"><a name="l01176"></a><span class="lineno"> 1176</span>&#160;    }</div>
+<div class="line"><a name="l01177"></a><span class="lineno"> 1177</span>&#160; </div>
+<div class="line"><a name="l01178"></a><span class="lineno"> 1178</span>&#160;    <span class="comment">// Calculate expressions</span></div>
+<div class="line"><a name="l01179"></a><span class="lineno"> 1179</span>&#160;    f.calculate(f_options);</div>
+<div class="line"><a name="l01180"></a><span class="lineno"> 1180</span>&#160; </div>
+<div class="line"><a name="l01181"></a><span class="lineno"> 1181</span>&#160;    <span class="comment">// Get input expressions</span></div>
+<div class="line"><a name="l01182"></a><span class="lineno"> 1182</span>&#160;    std::vector&lt;MatType&gt; ret_in;</div>
+<div class="line"><a name="l01183"></a><span class="lineno"> 1183</span>&#160;    ret_in.reserve(s_in.size());</div>
+<div class="line"><a name="l01184"></a><span class="lineno"> 1184</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> std::string&amp; s : s_in) ret_in.push_back(f.get_input(s));</div>
+<div class="line"><a name="l01185"></a><span class="lineno"> 1185</span>&#160; </div>
+<div class="line"><a name="l01186"></a><span class="lineno"> 1186</span>&#160;    <span class="comment">// Get output expressions</span></div>
+<div class="line"><a name="l01187"></a><span class="lineno"> 1187</span>&#160;    std::vector&lt;MatType&gt; ret_out;</div>
+<div class="line"><a name="l01188"></a><span class="lineno"> 1188</span>&#160;    ret_out.reserve(s_out.size());</div>
+<div class="line"><a name="l01189"></a><span class="lineno"> 1189</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> std::string&amp; s : s_out) ret_out.push_back(f.get_output(s));</div>
+<div class="line"><a name="l01190"></a><span class="lineno"> 1190</span>&#160; </div>
+<div class="line"><a name="l01191"></a><span class="lineno"> 1191</span>&#160;    <span class="comment">// Create function and return</span></div>
+<div class="line"><a name="l01192"></a><span class="lineno"> 1192</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> final_options_allow_free = final_options;</div>
+<div class="line"><a name="l01193"></a><span class="lineno"> 1193</span>&#160;    final_options_allow_free[<span class="stringliteral">&quot;allow_free&quot;</span>] = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l01194"></a><span class="lineno"> 1194</span>&#160;    final_options_allow_free[<span class="stringliteral">&quot;allow_duplicate_io_names&quot;</span>] = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l01195"></a><span class="lineno"> 1195</span>&#160;    Function ret(name, ret_in, ret_out, ret_iname, ret_oname, final_options_allow_free);</div>
+<div class="line"><a name="l01196"></a><span class="lineno"> 1196</span>&#160;    <span class="keywordflow">if</span> (ret.has_free()) {</div>
+<div class="line"><a name="l01197"></a><span class="lineno"> 1197</span>&#160;      <span class="comment">// Substitute free variables with zeros</span></div>
+<div class="line"><a name="l01198"></a><span class="lineno"> 1198</span>&#160;      <span class="comment">// We assume that the free variables are caused by false positive dependencies</span></div>
+<div class="line"><a name="l01199"></a><span class="lineno"> 1199</span>&#160;      std::vector&lt;MatType&gt; free_in = MatType::get_free(ret);</div>
+<div class="line"><a name="l01200"></a><span class="lineno"> 1200</span>&#160;      std::vector&lt;MatType&gt; free_sub = free_in;</div>
+<div class="line"><a name="l01201"></a><span class="lineno"> 1201</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp;&amp; e : free_sub) e = MatType::zeros(e.sparsity());</div>
+<div class="line"><a name="l01202"></a><span class="lineno"> 1202</span>&#160;      ret_out = substitute(ret_out, free_in, free_sub);</div>
+<div class="line"><a name="l01203"></a><span class="lineno"> 1203</span>&#160;      ret = Function(name, ret_in, ret_out, ret_iname, ret_oname, final_options);</div>
+<div class="line"><a name="l01204"></a><span class="lineno"> 1204</span>&#160;    }</div>
+<div class="line"><a name="l01205"></a><span class="lineno"> 1205</span>&#160;    <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l01206"></a><span class="lineno"> 1206</span>&#160;  }</div>
+<div class="line"><a name="l01207"></a><span class="lineno"> 1207</span>&#160; </div>
+<div class="line"><a name="l01208"></a><span class="lineno"> 1208</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> DerivedType, <span class="keyword">typename</span> MatType, <span class="keyword">typename</span> NodeType&gt;</div>
+<div class="line"><a name="l01209"></a><span class="lineno"> 1209</span>&#160;  std::vector&lt;bool&gt; XFunction&lt;DerivedType, MatType, NodeType&gt;::</div>
+<div class="line"><a name="l01210"></a><span class="lineno"> 1210</span>&#160;  which_depends(<span class="keyword">const</span> std::string&amp; s_in, <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; s_out,</div>
+<div class="line"><a name="l01211"></a><span class="lineno"> 1211</span>&#160;      casadi_int order, <span class="keywordtype">bool</span> tr)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l01212"></a><span class="lineno"> 1212</span>&#160; </div>
+<div class="line"><a name="l01213"></a><span class="lineno"> 1213</span>&#160;    <span class="comment">// Input arguments</span></div>
+<div class="line"><a name="l01214"></a><span class="lineno"> 1214</span>&#160;    <span class="keyword">auto</span> it = std::find(name_in_.begin(), name_in_.end(), s_in);</div>
+<div class="line"><a name="l01215"></a><span class="lineno"> 1215</span>&#160;    casadi_assert_dev(it!=name_in_.end());</div>
+<div class="line"><a name="l01216"></a><span class="lineno"> 1216</span>&#160;    MatType arg = in_.at(it-name_in_.begin());</div>
+<div class="line"><a name="l01217"></a><span class="lineno"> 1217</span>&#160; </div>
+<div class="line"><a name="l01218"></a><span class="lineno"> 1218</span>&#160;    <span class="comment">// Output arguments</span></div>
+<div class="line"><a name="l01219"></a><span class="lineno"> 1219</span>&#160;    std::vector&lt;MatType&gt; res;</div>
+<div class="line"><a name="l01220"></a><span class="lineno"> 1220</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp;&amp; s : s_out) {</div>
+<div class="line"><a name="l01221"></a><span class="lineno"> 1221</span>&#160;      it = std::find(name_out_.begin(), name_out_.end(), s);</div>
+<div class="line"><a name="l01222"></a><span class="lineno"> 1222</span>&#160;      casadi_assert_dev(it!=name_out_.end());</div>
+<div class="line"><a name="l01223"></a><span class="lineno"> 1223</span>&#160;      res.push_back(out_.at(it-name_out_.begin()));</div>
+<div class="line"><a name="l01224"></a><span class="lineno"> 1224</span>&#160;    }</div>
 <div class="line"><a name="l01225"></a><span class="lineno"> 1225</span>&#160; </div>
-<div class="line"><a name="l01226"></a><span class="lineno"> 1226</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> MatType&gt;</div>
-<div class="line"><a name="l01227"></a><span class="lineno"> 1227</span>&#160;  Sparsity _jacobian_sparsity(<span class="keyword">const</span> MatType &amp;expr, <span class="keyword">const</span> MatType &amp;var) {</div>
-<div class="line"><a name="l01228"></a><span class="lineno"> 1228</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> opts{{<span class="stringliteral">&quot;max_io&quot;</span>, 0}, {<span class="stringliteral">&quot;allow_free&quot;</span>, <span class="keyword">true</span>}};</div>
-<div class="line"><a name="l01229"></a><span class="lineno"> 1229</span>&#160;    Function f = Function(<span class="stringliteral">&quot;tmp_jacobian_sparsity&quot;</span>, {var}, {expr}, opts);</div>
-<div class="line"><a name="l01230"></a><span class="lineno"> 1230</span>&#160;    <span class="keywordflow">return</span> f.jac_sparsity(0, 0, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l01231"></a><span class="lineno"> 1231</span>&#160;  }</div>
-<div class="line"><a name="l01232"></a><span class="lineno"> 1232</span>&#160; </div>
-<div class="line"><a name="l01233"></a><span class="lineno"> 1233</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> MatType&gt;</div>
-<div class="line"><a name="l01234"></a><span class="lineno"> 1234</span>&#160;  std::vector&lt;bool&gt; _which_depends(<span class="keyword">const</span> MatType &amp;expr, <span class="keyword">const</span> MatType &amp;var,</div>
-<div class="line"><a name="l01235"></a><span class="lineno"> 1235</span>&#160;      casadi_int order, <span class="keywordtype">bool</span> tr) {</div>
-<div class="line"><a name="l01236"></a><span class="lineno"> 1236</span>&#160;    <span class="comment">// Short-circuit</span></div>
-<div class="line"><a name="l01237"></a><span class="lineno"> 1237</span>&#160;    <span class="keywordflow">if</span> (expr.is_empty() || var.is_empty()) {</div>
-<div class="line"><a name="l01238"></a><span class="lineno"> 1238</span>&#160;      <span class="keywordflow">return</span> std::vector&lt;bool&gt;(tr? expr.numel() : var.numel(), <span class="keyword">false</span>);</div>
-<div class="line"><a name="l01239"></a><span class="lineno"> 1239</span>&#160;    }</div>
-<div class="line"><a name="l01240"></a><span class="lineno"> 1240</span>&#160; </div>
-<div class="line"><a name="l01241"></a><span class="lineno"> 1241</span>&#160;    MatType e = expr;</div>
-<div class="line"><a name="l01242"></a><span class="lineno"> 1242</span>&#160; </div>
-<div class="line"><a name="l01243"></a><span class="lineno"> 1243</span>&#160;    <span class="comment">// Create a function for calculating a forward-mode derivative</span></div>
-<div class="line"><a name="l01244"></a><span class="lineno"> 1244</span>&#160;    casadi_assert(order==1 || order==2,</div>
-<div class="line"><a name="l01245"></a><span class="lineno"> 1245</span>&#160;      <span class="stringliteral">&quot;which_depends: order argument must be 1 or 2, got &quot;</span> + str(order) + <span class="stringliteral">&quot; instead.&quot;</span>);</div>
+<div class="line"><a name="l01226"></a><span class="lineno"> 1226</span>&#160;    <span class="comment">// Extract variables entering nonlinearly</span></div>
+<div class="line"><a name="l01227"></a><span class="lineno"> 1227</span>&#160;    <span class="keywordflow">return</span> MatType::which_depends(veccat(res), arg, order, tr);</div>
+<div class="line"><a name="l01228"></a><span class="lineno"> 1228</span>&#160;  }</div>
+<div class="line"><a name="l01229"></a><span class="lineno"> 1229</span>&#160; </div>
+<div class="line"><a name="l01230"></a><span class="lineno"> 1230</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> MatType&gt;</div>
+<div class="line"><a name="l01231"></a><span class="lineno"> 1231</span>&#160;  Sparsity _jacobian_sparsity(<span class="keyword">const</span> MatType &amp;expr, <span class="keyword">const</span> MatType &amp;var) {</div>
+<div class="line"><a name="l01232"></a><span class="lineno"> 1232</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> opts{{<span class="stringliteral">&quot;max_io&quot;</span>, 0}, {<span class="stringliteral">&quot;allow_free&quot;</span>, <span class="keyword">true</span>}};</div>
+<div class="line"><a name="l01233"></a><span class="lineno"> 1233</span>&#160;    Function f = Function(<span class="stringliteral">&quot;tmp_jacobian_sparsity&quot;</span>, {var}, {expr}, opts);</div>
+<div class="line"><a name="l01234"></a><span class="lineno"> 1234</span>&#160;    <span class="keywordflow">return</span> f.jac_sparsity(0, 0, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l01235"></a><span class="lineno"> 1235</span>&#160;  }</div>
+<div class="line"><a name="l01236"></a><span class="lineno"> 1236</span>&#160; </div>
+<div class="line"><a name="l01237"></a><span class="lineno"> 1237</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> MatType&gt;</div>
+<div class="line"><a name="l01238"></a><span class="lineno"> 1238</span>&#160;  std::vector&lt;bool&gt; _which_depends(<span class="keyword">const</span> MatType &amp;expr, <span class="keyword">const</span> MatType &amp;var,</div>
+<div class="line"><a name="l01239"></a><span class="lineno"> 1239</span>&#160;      casadi_int order, <span class="keywordtype">bool</span> tr) {</div>
+<div class="line"><a name="l01240"></a><span class="lineno"> 1240</span>&#160;    <span class="comment">// Short-circuit</span></div>
+<div class="line"><a name="l01241"></a><span class="lineno"> 1241</span>&#160;    <span class="keywordflow">if</span> (expr.is_empty() || var.is_empty()) {</div>
+<div class="line"><a name="l01242"></a><span class="lineno"> 1242</span>&#160;      <span class="keywordflow">return</span> std::vector&lt;bool&gt;(tr? expr.numel() : var.numel(), <span class="keyword">false</span>);</div>
+<div class="line"><a name="l01243"></a><span class="lineno"> 1243</span>&#160;    }</div>
+<div class="line"><a name="l01244"></a><span class="lineno"> 1244</span>&#160; </div>
+<div class="line"><a name="l01245"></a><span class="lineno"> 1245</span>&#160;    MatType e = expr;</div>
 <div class="line"><a name="l01246"></a><span class="lineno"> 1246</span>&#160; </div>
-<div class="line"><a name="l01247"></a><span class="lineno"> 1247</span>&#160;    MatType v = MatType::sym(<span class="stringliteral">&quot;v&quot;</span>, var.sparsity());</div>
-<div class="line"><a name="l01248"></a><span class="lineno"> 1248</span>&#160;    <span class="keywordflow">for</span> (casadi_int i=1;i&lt;order;++i) {</div>
-<div class="line"><a name="l01249"></a><span class="lineno"> 1249</span>&#160;      e = jtimes(e, var, v);</div>
-<div class="line"><a name="l01250"></a><span class="lineno"> 1250</span>&#160;    }</div>
-<div class="line"><a name="l01251"></a><span class="lineno"> 1251</span>&#160; </div>
-<div class="line"><a name="l01252"></a><span class="lineno"> 1252</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> opts{{<span class="stringliteral">&quot;max_io&quot;</span>, 0}, {<span class="stringliteral">&quot;allow_free&quot;</span>, <span class="keyword">true</span>}};</div>
-<div class="line"><a name="l01253"></a><span class="lineno"> 1253</span>&#160;    Function f = Function(<span class="stringliteral">&quot;tmp_which_depends&quot;</span>, {var}, {e}, opts);</div>
-<div class="line"><a name="l01254"></a><span class="lineno"> 1254</span>&#160;    <span class="comment">// Propagate sparsities backwards seeding all outputs</span></div>
-<div class="line"><a name="l01255"></a><span class="lineno"> 1255</span>&#160;    std::vector&lt;bvec_t&gt; seed(tr? f.nnz_in(0) : f.nnz_out(0), 1);</div>
-<div class="line"><a name="l01256"></a><span class="lineno"> 1256</span>&#160;    std::vector&lt;bvec_t&gt; sens(tr? f.nnz_out(0) : f.nnz_in(0), 0);</div>
-<div class="line"><a name="l01257"></a><span class="lineno"> 1257</span>&#160; </div>
-<div class="line"><a name="l01258"></a><span class="lineno"> 1258</span>&#160;    <span class="keywordflow">if</span> (tr)</div>
-<div class="line"><a name="l01259"></a><span class="lineno"> 1259</span>&#160;      f({get_ptr(seed)}, {get_ptr(sens)});</div>
-<div class="line"><a name="l01260"></a><span class="lineno"> 1260</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l01261"></a><span class="lineno"> 1261</span>&#160;      f.rev({get_ptr(sens)}, {get_ptr(seed)});</div>
-<div class="line"><a name="l01262"></a><span class="lineno"> 1262</span>&#160;    <span class="comment">// Temporaries for evaluation</span></div>
-<div class="line"><a name="l01263"></a><span class="lineno"> 1263</span>&#160;    std::vector&lt;bool&gt; ret(sens.size());</div>
-<div class="line"><a name="l01264"></a><span class="lineno"> 1264</span>&#160;    std::copy(sens.begin(), sens.end(), ret.begin());</div>
-<div class="line"><a name="l01265"></a><span class="lineno"> 1265</span>&#160; </div>
-<div class="line"><a name="l01266"></a><span class="lineno"> 1266</span>&#160;    <span class="comment">// Project the result back on the original sparsity</span></div>
-<div class="line"><a name="l01267"></a><span class="lineno"> 1267</span>&#160;    <span class="keywordflow">if</span> (tr &amp;&amp; e.sparsity()!=expr.sparsity()) {</div>
-<div class="line"><a name="l01268"></a><span class="lineno"> 1268</span>&#160;      <span class="comment">// std::vector&lt;bool&gt; is not accessible as bool*</span></div>
-<div class="line"><a name="l01269"></a><span class="lineno"> 1269</span>&#160;      <span class="comment">// bool -&gt; casadi_int</span></div>
-<div class="line"><a name="l01270"></a><span class="lineno"> 1270</span>&#160;      std::vector&lt;casadi_int&gt; source(sens.size());</div>
-<div class="line"><a name="l01271"></a><span class="lineno"> 1271</span>&#160;      std::copy(ret.begin(), ret.end(), source.begin());</div>
-<div class="line"><a name="l01272"></a><span class="lineno"> 1272</span>&#160;      std::vector&lt;casadi_int&gt; target(expr.nnz());</div>
-<div class="line"><a name="l01273"></a><span class="lineno"> 1273</span>&#160; </div>
-<div class="line"><a name="l01274"></a><span class="lineno"> 1274</span>&#160;      <span class="comment">// project</span></div>
-<div class="line"><a name="l01275"></a><span class="lineno"> 1275</span>&#160;      std::vector&lt;casadi_int&gt; scratch(expr.size1());</div>
-<div class="line"><a name="l01276"></a><span class="lineno"> 1276</span>&#160;      casadi_project(get_ptr(source), e.sparsity(), get_ptr(target), expr.sparsity(),</div>
-<div class="line"><a name="l01277"></a><span class="lineno"> 1277</span>&#160;        get_ptr(scratch));</div>
-<div class="line"><a name="l01278"></a><span class="lineno"> 1278</span>&#160; </div>
-<div class="line"><a name="l01279"></a><span class="lineno"> 1279</span>&#160;      <span class="comment">// casadi_int -&gt; bool</span></div>
-<div class="line"><a name="l01280"></a><span class="lineno"> 1280</span>&#160;      ret.resize(expr.nnz());</div>
-<div class="line"><a name="l01281"></a><span class="lineno"> 1281</span>&#160;      std::copy(target.begin(), target.end(), ret.begin());</div>
-<div class="line"><a name="l01282"></a><span class="lineno"> 1282</span>&#160;    }</div>
-<div class="line"><a name="l01283"></a><span class="lineno"> 1283</span>&#160; </div>
-<div class="line"><a name="l01284"></a><span class="lineno"> 1284</span>&#160;    <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l01285"></a><span class="lineno"> 1285</span>&#160;  }</div>
-<div class="line"><a name="l01286"></a><span class="lineno"> 1286</span>&#160; </div>
-<div class="line"><a name="l01287"></a><span class="lineno"> 1287</span>&#160;} <span class="comment">// namespace casadi</span></div>
-<div class="line"><a name="l01289"></a><span class="lineno"> 1289</span>&#160;<span class="comment"></span><span class="preprocessor">#undef CASADI_THROW_ERROR</span></div>
+<div class="line"><a name="l01247"></a><span class="lineno"> 1247</span>&#160;    <span class="comment">// Create a function for calculating a forward-mode derivative</span></div>
+<div class="line"><a name="l01248"></a><span class="lineno"> 1248</span>&#160;    casadi_assert(order==1 || order==2,</div>
+<div class="line"><a name="l01249"></a><span class="lineno"> 1249</span>&#160;      <span class="stringliteral">&quot;which_depends: order argument must be 1 or 2, got &quot;</span> + str(order) + <span class="stringliteral">&quot; instead.&quot;</span>);</div>
+<div class="line"><a name="l01250"></a><span class="lineno"> 1250</span>&#160; </div>
+<div class="line"><a name="l01251"></a><span class="lineno"> 1251</span>&#160;    MatType v = MatType::sym(<span class="stringliteral">&quot;v&quot;</span>, var.sparsity());</div>
+<div class="line"><a name="l01252"></a><span class="lineno"> 1252</span>&#160;    <span class="keywordflow">for</span> (casadi_int i=1;i&lt;order;++i) {</div>
+<div class="line"><a name="l01253"></a><span class="lineno"> 1253</span>&#160;      e = jtimes(e, var, v);</div>
+<div class="line"><a name="l01254"></a><span class="lineno"> 1254</span>&#160;    }</div>
+<div class="line"><a name="l01255"></a><span class="lineno"> 1255</span>&#160; </div>
+<div class="line"><a name="l01256"></a><span class="lineno"> 1256</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> opts{{<span class="stringliteral">&quot;max_io&quot;</span>, 0}, {<span class="stringliteral">&quot;allow_free&quot;</span>, <span class="keyword">true</span>}};</div>
+<div class="line"><a name="l01257"></a><span class="lineno"> 1257</span>&#160;    Function f = Function(<span class="stringliteral">&quot;tmp_which_depends&quot;</span>, {var}, {e}, opts);</div>
+<div class="line"><a name="l01258"></a><span class="lineno"> 1258</span>&#160;    <span class="comment">// Propagate sparsities backwards seeding all outputs</span></div>
+<div class="line"><a name="l01259"></a><span class="lineno"> 1259</span>&#160;    std::vector&lt;bvec_t&gt; seed(tr? f.nnz_in(0) : f.nnz_out(0), 1);</div>
+<div class="line"><a name="l01260"></a><span class="lineno"> 1260</span>&#160;    std::vector&lt;bvec_t&gt; sens(tr? f.nnz_out(0) : f.nnz_in(0), 0);</div>
+<div class="line"><a name="l01261"></a><span class="lineno"> 1261</span>&#160; </div>
+<div class="line"><a name="l01262"></a><span class="lineno"> 1262</span>&#160;    <span class="keywordflow">if</span> (tr)</div>
+<div class="line"><a name="l01263"></a><span class="lineno"> 1263</span>&#160;      f({get_ptr(seed)}, {get_ptr(sens)});</div>
+<div class="line"><a name="l01264"></a><span class="lineno"> 1264</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l01265"></a><span class="lineno"> 1265</span>&#160;      f.rev({get_ptr(sens)}, {get_ptr(seed)});</div>
+<div class="line"><a name="l01266"></a><span class="lineno"> 1266</span>&#160;    <span class="comment">// Temporaries for evaluation</span></div>
+<div class="line"><a name="l01267"></a><span class="lineno"> 1267</span>&#160;    std::vector&lt;bool&gt; ret(sens.size());</div>
+<div class="line"><a name="l01268"></a><span class="lineno"> 1268</span>&#160;    std::copy(sens.begin(), sens.end(), ret.begin());</div>
+<div class="line"><a name="l01269"></a><span class="lineno"> 1269</span>&#160; </div>
+<div class="line"><a name="l01270"></a><span class="lineno"> 1270</span>&#160;    <span class="comment">// Project the result back on the original sparsity</span></div>
+<div class="line"><a name="l01271"></a><span class="lineno"> 1271</span>&#160;    <span class="keywordflow">if</span> (tr &amp;&amp; e.sparsity()!=expr.sparsity()) {</div>
+<div class="line"><a name="l01272"></a><span class="lineno"> 1272</span>&#160;      <span class="comment">// std::vector&lt;bool&gt; is not accessible as bool*</span></div>
+<div class="line"><a name="l01273"></a><span class="lineno"> 1273</span>&#160;      <span class="comment">// bool -&gt; casadi_int</span></div>
+<div class="line"><a name="l01274"></a><span class="lineno"> 1274</span>&#160;      std::vector&lt;casadi_int&gt; source(sens.size());</div>
+<div class="line"><a name="l01275"></a><span class="lineno"> 1275</span>&#160;      std::copy(ret.begin(), ret.end(), source.begin());</div>
+<div class="line"><a name="l01276"></a><span class="lineno"> 1276</span>&#160;      std::vector&lt;casadi_int&gt; target(expr.nnz());</div>
+<div class="line"><a name="l01277"></a><span class="lineno"> 1277</span>&#160; </div>
+<div class="line"><a name="l01278"></a><span class="lineno"> 1278</span>&#160;      <span class="comment">// project</span></div>
+<div class="line"><a name="l01279"></a><span class="lineno"> 1279</span>&#160;      std::vector&lt;casadi_int&gt; scratch(expr.size1());</div>
+<div class="line"><a name="l01280"></a><span class="lineno"> 1280</span>&#160;      casadi_project(get_ptr(source), e.sparsity(), get_ptr(target), expr.sparsity(),</div>
+<div class="line"><a name="l01281"></a><span class="lineno"> 1281</span>&#160;        get_ptr(scratch));</div>
+<div class="line"><a name="l01282"></a><span class="lineno"> 1282</span>&#160; </div>
+<div class="line"><a name="l01283"></a><span class="lineno"> 1283</span>&#160;      <span class="comment">// casadi_int -&gt; bool</span></div>
+<div class="line"><a name="l01284"></a><span class="lineno"> 1284</span>&#160;      ret.resize(expr.nnz());</div>
+<div class="line"><a name="l01285"></a><span class="lineno"> 1285</span>&#160;      std::copy(target.begin(), target.end(), ret.begin());</div>
+<div class="line"><a name="l01286"></a><span class="lineno"> 1286</span>&#160;    }</div>
+<div class="line"><a name="l01287"></a><span class="lineno"> 1287</span>&#160; </div>
+<div class="line"><a name="l01288"></a><span class="lineno"> 1288</span>&#160;    <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l01289"></a><span class="lineno"> 1289</span>&#160;  }</div>
 <div class="line"><a name="l01290"></a><span class="lineno"> 1290</span>&#160; </div>
-<div class="line"><a name="l01291"></a><span class="lineno"> 1291</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_X_FUNCTION_HPP</span></div>
+<div class="line"><a name="l01291"></a><span class="lineno"> 1291</span>&#160;} <span class="comment">// namespace casadi</span></div>
+<div class="line"><a name="l01293"></a><span class="lineno"> 1293</span>&#160;<span class="comment"></span><span class="preprocessor">#undef CASADI_THROW_ERROR</span></div>
+<div class="line"><a name="l01294"></a><span class="lineno"> 1294</span>&#160; </div>
+<div class="line"><a name="l01295"></a><span class="lineno"> 1295</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_X_FUNCTION_HPP</span></div>
 <div class="ttc" id="aclasscasadi_1_1Function_html_ae2cf81e9230d66a90c413b5c680d49d8"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#ae2cf81e9230d66a90c413b5c680d49d8">casadi::Function::AuxOut</a></div><div class="ttdeci">std::map&lt; std::string, std::vector&lt; std::string &gt; &gt; AuxOut</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7c/function_8hpp_source.html#l00395">function.hpp:395</a></div></div>
 <div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../db/da5/binary__mx__impl_8hpp_source.html#l00036">binary_mx_impl.hpp:36</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_a8b909f6932a91230738731512b99127e"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">casadi::Dict</a></div><div class="ttdeci">GenericType::Dict Dict</div><div class="ttdoc">C++ equivalent of Python's dict or MATLAB's struct.</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d30/generic__type_8hpp_source.html#l00234">generic_type.hpp:234</a></div></div>
