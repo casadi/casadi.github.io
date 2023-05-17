@@ -12,7 +12,7 @@ f = Function('f',{x,y},{w,z});
 % Use the numeric types from simulink to codegenerate
 cg_options = struct;
 cg_options.casadi_real = 'real_T';
-cg_options.real_min    = 'real_T'; % Needed if you code-generate sqpmethod method  
+cg_options.real_min    = num2str(realmin); % Needed if you code-generate sqpmethod method  
 cg_options.casadi_int  = 'int_T';
 cg_options.with_header = true;
 cg = CodeGenerator('f',cg_options);
