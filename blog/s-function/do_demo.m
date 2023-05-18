@@ -6,13 +6,16 @@ y = MX.sym('y');
 w = dot(x,y*x);
 z = sin(x)+y+w;
 
+solver = nlpsol('solver','sqpmethod',struct('x',y,'f',y^2),struct('qpsol','qrqp'));
+
+res = solver('x0',y);
 % CasADi function with two inputs and two outputs
-f = Function('f',{x,y},{w,z});
+f = Function('f',{x,y},{w,z+res.x});
 
 % Use the numeric types from simulink to codegenerate
 cg_options = struct;
 cg_options.casadi_real = 'real_T';
-cg_options.real_min    = 'real_T'; % Needed if you code-generate sqpmethod method  
+cg_options.real_min    = num2str(realmin); % Needed if you code-generate sqpmethod method  
 cg_options.casadi_int  = 'int_T';
 cg_options.with_header = true;
 cg = CodeGenerator('f',cg_options);
