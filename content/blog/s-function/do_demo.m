@@ -6,8 +6,11 @@ y = MX.sym('y');
 w = dot(x,y*x);
 z = sin(x)+y+w;
 
+solver = nlpsol('solver','sqpmethod',struct('x',y,'f',y^2),struct('qpsol','qrqp'));
+
+res = solver('x0',y);
 % CasADi function with two inputs and two outputs
-f = Function('f',{x,y},{w,z});
+f = Function('f',{x,y},{w,z+res.x});
 
 % Use the numeric types from simulink to codegenerate
 cg_options = struct;
