@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/896ebb1083311cfdb392f411ba83385080a05ed3" id="896ebb1083311cfdb392f411ba83385080a05ed3" >revision 3.6.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/54931cdaaf5859cff6659b5b4077ebde2dcd9f9f" id="54931cdaaf5859cff6659b5b4077ebde2dcd9f9f" >revision 3.6.3</a></div>
   </td>
  </tr>
  </tbody>
@@ -2269,8 +2269,8 @@ template&lt;typename Scalar &gt; </div>
 <div class="line"><a name="l01244"></a><span class="lineno"> 1244</span>&#160; </div>
 <div class="line"><a name="l01245"></a><span class="lineno"> 1245</span>&#160;    <span class="keywordflow">return</span> t ? <a class="code" href="../../d9/dc2/group__expression__tools.html#ga75a08660470c6d90d65330e747b7034a">vertcat</a>(ret) : <a class="code" href="../../d9/dc2/group__expression__tools.html#ga827890de226296a3a15ca904cb0db19d">horzcat</a>(ret);</div>
 <div class="line"><a name="l01246"></a><span class="lineno"> 1246</span>&#160;  }</div>
-<div class="ttc" id="agroup__expression__tools_html_ga75a08660470c6d90d65330e747b7034a"><div class="ttname"><a href="../../d9/dc2/group__expression__tools.html#ga75a08660470c6d90d65330e747b7034a">casadi::SparsityInterface::vertcat</a></div><div class="ttdeci">friend MatType vertcat(const std::vector&lt; MatType &gt; &amp;v)</div><div class="ttdoc">Concatenate a list of matrices vertically.</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/df8/sparsity__interface_8hpp_source.html#l00106">sparsity_interface.hpp:106</a></div></div>
-<div class="ttc" id="agroup__expression__tools_html_ga827890de226296a3a15ca904cb0db19d"><div class="ttname"><a href="../../d9/dc2/group__expression__tools.html#ga827890de226296a3a15ca904cb0db19d">casadi::SparsityInterface::horzcat</a></div><div class="ttdeci">friend MatType horzcat(const std::vector&lt; MatType &gt; &amp;v)</div><div class="ttdoc">Concatenate a list of matrices horizontally.</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/df8/sparsity__interface_8hpp_source.html#l00095">sparsity_interface.hpp:95</a></div></div>
+<div class="ttc" id="agroup__expression__tools_html_ga75a08660470c6d90d65330e747b7034a"><div class="ttname"><a href="../../d9/dc2/group__expression__tools.html#ga75a08660470c6d90d65330e747b7034a">casadi::SparsityInterface::vertcat</a></div><div class="ttdeci">friend MatType vertcat(const std::vector&lt; MatType &gt; &amp;v)</div><div class="ttdoc">Concatenate a list of matrices vertically.</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/df8/sparsity__interface_8hpp_source.html#l00108">sparsity_interface.hpp:108</a></div></div>
+<div class="ttc" id="agroup__expression__tools_html_ga827890de226296a3a15ca904cb0db19d"><div class="ttname"><a href="../../d9/dc2/group__expression__tools.html#ga827890de226296a3a15ca904cb0db19d">casadi::SparsityInterface::horzcat</a></div><div class="ttdeci">friend MatType horzcat(const std::vector&lt; MatType &gt; &amp;v)</div><div class="ttdoc">Concatenate a list of matrices horizontally.</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/df8/sparsity__interface_8hpp_source.html#l00097">sparsity_interface.hpp:97</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2793,32 +2793,32 @@ template&lt;typename Scalar &gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l00233">233</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l01565"></a><span class="lineno"> 1565</span>&#160;                                                                                      {</div>
-<div class="line"><a name="l01566"></a><span class="lineno"> 1566</span>&#160;    casadi_assert(axis==-1 || axis==0 || axis==1, <span class="stringliteral">&quot;Axis argument invalid&quot;</span>);</div>
-<div class="line"><a name="l01567"></a><span class="lineno"> 1567</span>&#160;    casadi_assert(n&gt;=1, <span class="stringliteral">&quot;n argument invalid&quot;</span>);</div>
-<div class="line"><a name="l01568"></a><span class="lineno"> 1568</span>&#160; </div>
-<div class="line"><a name="l01569"></a><span class="lineno"> 1569</span>&#160;    MatType ret = x;</div>
-<div class="line"><a name="l01570"></a><span class="lineno"> 1570</span>&#160;    <span class="keywordflow">for</span> (casadi_int i=0;i&lt;n;++i) {</div>
-<div class="line"><a name="l01571"></a><span class="lineno"> 1571</span>&#160;      <span class="comment">// Matlab&#39;s special case</span></div>
-<div class="line"><a name="l01572"></a><span class="lineno"> 1572</span>&#160;      <span class="keywordflow">if</span> (axis==-1 &amp;&amp; ret.is_scalar()) <span class="keywordflow">return</span> MatType();</div>
-<div class="line"><a name="l01573"></a><span class="lineno"> 1573</span>&#160; </div>
-<div class="line"><a name="l01574"></a><span class="lineno"> 1574</span>&#160;      casadi_int local_axis = (axis==-1) ? ret.is_row() : axis;</div>
-<div class="line"><a name="l01575"></a><span class="lineno"> 1575</span>&#160;      <span class="keywordflow">if</span> (local_axis==0) {</div>
-<div class="line"><a name="l01576"></a><span class="lineno"> 1576</span>&#160;        <span class="keywordflow">if</span> (ret.size1()&lt;=1) {</div>
-<div class="line"><a name="l01577"></a><span class="lineno"> 1577</span>&#160;          ret = MatType::zeros(0, ret.size2());</div>
-<div class="line"><a name="l01578"></a><span class="lineno"> 1578</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l01579"></a><span class="lineno"> 1579</span>&#160;          ret = ret(Slice(1, ret.size1()), Slice())-ret(Slice(0, ret.size1()-1), Slice());</div>
-<div class="line"><a name="l01580"></a><span class="lineno"> 1580</span>&#160;        }</div>
-<div class="line"><a name="l01581"></a><span class="lineno"> 1581</span>&#160;      } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l01582"></a><span class="lineno"> 1582</span>&#160;        <span class="keywordflow">if</span> (ret.size2()&lt;=1) {</div>
-<div class="line"><a name="l01583"></a><span class="lineno"> 1583</span>&#160;          ret = MatType::zeros(ret.size1(), 0);</div>
-<div class="line"><a name="l01584"></a><span class="lineno"> 1584</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l01585"></a><span class="lineno"> 1585</span>&#160;          ret = ret(Slice(), Slice(1, ret.size2()))-ret(Slice(), Slice(0, ret.size2()-1));</div>
-<div class="line"><a name="l01586"></a><span class="lineno"> 1586</span>&#160;        }</div>
-<div class="line"><a name="l01587"></a><span class="lineno"> 1587</span>&#160;      }</div>
-<div class="line"><a name="l01588"></a><span class="lineno"> 1588</span>&#160;    }</div>
-<div class="line"><a name="l01589"></a><span class="lineno"> 1589</span>&#160;    <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l01590"></a><span class="lineno"> 1590</span>&#160;  }</div>
+<div class="fragment"><div class="line"><a name="l01567"></a><span class="lineno"> 1567</span>&#160;                                                                                      {</div>
+<div class="line"><a name="l01568"></a><span class="lineno"> 1568</span>&#160;    casadi_assert(axis==-1 || axis==0 || axis==1, <span class="stringliteral">&quot;Axis argument invalid&quot;</span>);</div>
+<div class="line"><a name="l01569"></a><span class="lineno"> 1569</span>&#160;    casadi_assert(n&gt;=1, <span class="stringliteral">&quot;n argument invalid&quot;</span>);</div>
+<div class="line"><a name="l01570"></a><span class="lineno"> 1570</span>&#160; </div>
+<div class="line"><a name="l01571"></a><span class="lineno"> 1571</span>&#160;    MatType ret = x;</div>
+<div class="line"><a name="l01572"></a><span class="lineno"> 1572</span>&#160;    <span class="keywordflow">for</span> (casadi_int i=0;i&lt;n;++i) {</div>
+<div class="line"><a name="l01573"></a><span class="lineno"> 1573</span>&#160;      <span class="comment">// Matlab&#39;s special case</span></div>
+<div class="line"><a name="l01574"></a><span class="lineno"> 1574</span>&#160;      <span class="keywordflow">if</span> (axis==-1 &amp;&amp; ret.is_scalar()) <span class="keywordflow">return</span> MatType();</div>
+<div class="line"><a name="l01575"></a><span class="lineno"> 1575</span>&#160; </div>
+<div class="line"><a name="l01576"></a><span class="lineno"> 1576</span>&#160;      casadi_int local_axis = (axis==-1) ? ret.is_row() : axis;</div>
+<div class="line"><a name="l01577"></a><span class="lineno"> 1577</span>&#160;      <span class="keywordflow">if</span> (local_axis==0) {</div>
+<div class="line"><a name="l01578"></a><span class="lineno"> 1578</span>&#160;        <span class="keywordflow">if</span> (ret.size1()&lt;=1) {</div>
+<div class="line"><a name="l01579"></a><span class="lineno"> 1579</span>&#160;          ret = MatType::zeros(0, ret.size2());</div>
+<div class="line"><a name="l01580"></a><span class="lineno"> 1580</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l01581"></a><span class="lineno"> 1581</span>&#160;          ret = ret(Slice(1, ret.size1()), Slice())-ret(Slice(0, ret.size1()-1), Slice());</div>
+<div class="line"><a name="l01582"></a><span class="lineno"> 1582</span>&#160;        }</div>
+<div class="line"><a name="l01583"></a><span class="lineno"> 1583</span>&#160;      } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l01584"></a><span class="lineno"> 1584</span>&#160;        <span class="keywordflow">if</span> (ret.size2()&lt;=1) {</div>
+<div class="line"><a name="l01585"></a><span class="lineno"> 1585</span>&#160;          ret = MatType::zeros(ret.size1(), 0);</div>
+<div class="line"><a name="l01586"></a><span class="lineno"> 1586</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l01587"></a><span class="lineno"> 1587</span>&#160;          ret = ret(Slice(), Slice(1, ret.size2()))-ret(Slice(), Slice(0, ret.size2()-1));</div>
+<div class="line"><a name="l01588"></a><span class="lineno"> 1588</span>&#160;        }</div>
+<div class="line"><a name="l01589"></a><span class="lineno"> 1589</span>&#160;      }</div>
+<div class="line"><a name="l01590"></a><span class="lineno"> 1590</span>&#160;    }</div>
+<div class="line"><a name="l01591"></a><span class="lineno"> 1591</span>&#160;    <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l01592"></a><span class="lineno"> 1592</span>&#160;  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -5599,9 +5599,9 @@ template&lt;typename Scalar &gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l00235">235</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l01534"></a><span class="lineno"> 1534</span>&#160;                                                                                {</div>
-<div class="line"><a name="l01535"></a><span class="lineno"> 1535</span>&#160;    <span class="keywordflow">return</span> !<a class="code" href="../../d7/d23/namespacecasadi.html#aa19c9ee08abb1145b6510235c32ce6b1">any</a>(MatType::which_depends(expr, var, 2, <span class="keyword">true</span>));</div>
-<div class="line"><a name="l01536"></a><span class="lineno"> 1536</span>&#160;  }</div>
+<div class="fragment"><div class="line"><a name="l01536"></a><span class="lineno"> 1536</span>&#160;                                                                                {</div>
+<div class="line"><a name="l01537"></a><span class="lineno"> 1537</span>&#160;    <span class="keywordflow">return</span> !<a class="code" href="../../d7/d23/namespacecasadi.html#aa19c9ee08abb1145b6510235c32ce6b1">any</a>(MatType::which_depends(expr, var, 2, <span class="keyword">true</span>));</div>
+<div class="line"><a name="l01538"></a><span class="lineno"> 1538</span>&#160;  }</div>
 <div class="ttc" id="anamespacecasadi_html_aa19c9ee08abb1145b6510235c32ce6b1"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#aa19c9ee08abb1145b6510235c32ce6b1">casadi::any</a></div><div class="ttdeci">bool any(const std::vector&lt; bool &gt; &amp;v)</div><div class="ttdoc">Check if any arguments are true.</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/da7/casadi__misc_8cpp_source.html#l00083">casadi_misc.cpp:83</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -5711,10 +5711,10 @@ template&lt;typename Scalar &gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l00236">236</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l01539"></a><span class="lineno"> 1539</span>&#160;                                                                                   {</div>
-<div class="line"><a name="l01540"></a><span class="lineno"> 1540</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../dc/df3/classcasadi_1_1GenericMatrix.html#a9fcc54eaa7c3ef081e610100fbab77b2">is_linear</a>(<a class="code" href="../../d9/dc2/group__expression__tools.html#ga934bcf443cdb8241ca994029bb02f1d6">gradient</a>(expr, var), var);</div>
-<div class="line"><a name="l01541"></a><span class="lineno"> 1541</span>&#160;  }</div>
-<div class="ttc" id="aclasscasadi_1_1GenericMatrix_html_a9fcc54eaa7c3ef081e610100fbab77b2"><div class="ttname"><a href="../../dc/df3/classcasadi_1_1GenericMatrix.html#a9fcc54eaa7c3ef081e610100fbab77b2">casadi::GenericMatrix&lt; Matrix&lt; Scalar &gt; &gt;::is_linear</a></div><div class="ttdeci">static bool is_linear(const Matrix&lt; Scalar &gt; &amp;expr, const Matrix&lt; Scalar &gt; &amp;var)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d90/generic__matrix_8hpp_source.html#l00235">generic_matrix.hpp:1534</a></div></div>
+<div class="fragment"><div class="line"><a name="l01541"></a><span class="lineno"> 1541</span>&#160;                                                                                   {</div>
+<div class="line"><a name="l01542"></a><span class="lineno"> 1542</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../dc/df3/classcasadi_1_1GenericMatrix.html#a9fcc54eaa7c3ef081e610100fbab77b2">is_linear</a>(<a class="code" href="../../d9/dc2/group__expression__tools.html#ga934bcf443cdb8241ca994029bb02f1d6">gradient</a>(expr, var), var);</div>
+<div class="line"><a name="l01543"></a><span class="lineno"> 1543</span>&#160;  }</div>
+<div class="ttc" id="aclasscasadi_1_1GenericMatrix_html_a9fcc54eaa7c3ef081e610100fbab77b2"><div class="ttname"><a href="../../dc/df3/classcasadi_1_1GenericMatrix.html#a9fcc54eaa7c3ef081e610100fbab77b2">casadi::GenericMatrix&lt; Matrix&lt; Scalar &gt; &gt;::is_linear</a></div><div class="ttdeci">static bool is_linear(const Matrix&lt; Scalar &gt; &amp;expr, const Matrix&lt; Scalar &gt; &amp;var)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d90/generic__matrix_8hpp_source.html#l00235">generic_matrix.hpp:1536</a></div></div>
 <div class="ttc" id="agroup__expression__tools_html_ga934bcf443cdb8241ca994029bb02f1d6"><div class="ttname"><a href="../../d9/dc2/group__expression__tools.html#ga934bcf443cdb8241ca994029bb02f1d6">casadi::GenericMatrix&lt; Matrix&lt; Scalar &gt; &gt;::gradient</a></div><div class="ttdeci">friend Matrix&lt; Scalar &gt; gradient(const Matrix&lt; Scalar &gt; &amp;ex, const Matrix&lt; Scalar &gt; &amp;arg, const Dict &amp;opts=Dict())</div><div class="ttdoc">Calculate the gradient of an expression.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d90/generic__matrix_8hpp_source.html#l00812">generic_matrix.hpp:812</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -6384,14 +6384,14 @@ template&lt;typename Scalar &gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l00239">239</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l01556"></a><span class="lineno"> 1556</span>&#160;                                              {</div>
-<div class="line"><a name="l01557"></a><span class="lineno"> 1557</span>&#160;    casadi_assert(expr.is_vector(), <span class="stringliteral">&quot;&#39;linear_coeff&#39; only defined for vector expressions.&quot;</span>);</div>
-<div class="line"><a name="l01558"></a><span class="lineno"> 1558</span>&#160;    <span class="keywordflow">if</span> (check)</div>
-<div class="line"><a name="l01559"></a><span class="lineno"> 1559</span>&#160;      casadi_assert(<a class="code" href="../../dc/df3/classcasadi_1_1GenericMatrix.html#a9fcc54eaa7c3ef081e610100fbab77b2">is_linear</a>(expr, var), <span class="stringliteral">&quot;&#39;linear_coeff&#39; called on non-linear expression.&quot;</span>);</div>
-<div class="line"><a name="l01560"></a><span class="lineno"> 1560</span>&#160;    A = <a class="code" href="../../d9/dc2/group__expression__tools.html#ga812838e76a44edd579dbe1d8ed9be26f">substitute</a>(<a class="code" href="../../d9/dc2/group__expression__tools.html#gaf94815d746f0194adb2fefd7d085a27a">jacobian</a>(expr, var), var, 0);</div>
-<div class="line"><a name="l01561"></a><span class="lineno"> 1561</span>&#160;    b = <a class="code" href="../../dd/d6b/classcasadi_1_1SparsityInterface.html#a90900b673d36bb6d1204da956338337c">vec</a>(<a class="code" href="../../d9/dc2/group__expression__tools.html#ga812838e76a44edd579dbe1d8ed9be26f">substitute</a>(expr, var, 0));</div>
-<div class="line"><a name="l01562"></a><span class="lineno"> 1562</span>&#160;  }</div>
-<div class="ttc" id="aclasscasadi_1_1SparsityInterface_html_a90900b673d36bb6d1204da956338337c"><div class="ttname"><a href="../../dd/d6b/classcasadi_1_1SparsityInterface.html#a90900b673d36bb6d1204da956338337c">casadi::SparsityInterface::vec</a></div><div class="ttdeci">static MatType vec(const MatType &amp;x)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/df8/sparsity__interface_8hpp_source.html#l00562">sparsity_interface.hpp:562</a></div></div>
+<div class="fragment"><div class="line"><a name="l01558"></a><span class="lineno"> 1558</span>&#160;                                              {</div>
+<div class="line"><a name="l01559"></a><span class="lineno"> 1559</span>&#160;    casadi_assert(expr.is_vector(), <span class="stringliteral">&quot;&#39;linear_coeff&#39; only defined for vector expressions.&quot;</span>);</div>
+<div class="line"><a name="l01560"></a><span class="lineno"> 1560</span>&#160;    <span class="keywordflow">if</span> (check)</div>
+<div class="line"><a name="l01561"></a><span class="lineno"> 1561</span>&#160;      casadi_assert(<a class="code" href="../../dc/df3/classcasadi_1_1GenericMatrix.html#a9fcc54eaa7c3ef081e610100fbab77b2">is_linear</a>(expr, var), <span class="stringliteral">&quot;&#39;linear_coeff&#39; called on non-linear expression.&quot;</span>);</div>
+<div class="line"><a name="l01562"></a><span class="lineno"> 1562</span>&#160;    A = <a class="code" href="../../d9/dc2/group__expression__tools.html#ga812838e76a44edd579dbe1d8ed9be26f">substitute</a>(<a class="code" href="../../d9/dc2/group__expression__tools.html#gaf94815d746f0194adb2fefd7d085a27a">jacobian</a>(expr, var), var, 0);</div>
+<div class="line"><a name="l01563"></a><span class="lineno"> 1563</span>&#160;    b = <a class="code" href="../../dd/d6b/classcasadi_1_1SparsityInterface.html#a90900b673d36bb6d1204da956338337c">vec</a>(<a class="code" href="../../d9/dc2/group__expression__tools.html#ga812838e76a44edd579dbe1d8ed9be26f">substitute</a>(expr, var, 0));</div>
+<div class="line"><a name="l01564"></a><span class="lineno"> 1564</span>&#160;  }</div>
+<div class="ttc" id="aclasscasadi_1_1SparsityInterface_html_a90900b673d36bb6d1204da956338337c"><div class="ttname"><a href="../../dd/d6b/classcasadi_1_1SparsityInterface.html#a90900b673d36bb6d1204da956338337c">casadi::SparsityInterface::vec</a></div><div class="ttdeci">static MatType vec(const MatType &amp;x)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/df8/sparsity__interface_8hpp_source.html#l00599">sparsity_interface.hpp:599</a></div></div>
 <div class="ttc" id="agroup__expression__tools_html_ga812838e76a44edd579dbe1d8ed9be26f"><div class="ttname"><a href="../../d9/dc2/group__expression__tools.html#ga812838e76a44edd579dbe1d8ed9be26f">casadi::GenericMatrix&lt; Matrix&lt; Scalar &gt; &gt;::substitute</a></div><div class="ttdeci">friend Matrix&lt; Scalar &gt; substitute(const Matrix&lt; Scalar &gt; &amp;ex, const Matrix&lt; Scalar &gt; &amp;v, const Matrix&lt; Scalar &gt; &amp;vdef)</div><div class="ttdoc">Substitute variable v with expression vdef in an expression ex.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d90/generic__matrix_8hpp_source.html#l00664">generic_matrix.hpp:664</a></div></div>
 <div class="ttc" id="agroup__expression__tools_html_gaf94815d746f0194adb2fefd7d085a27a"><div class="ttname"><a href="../../d9/dc2/group__expression__tools.html#gaf94815d746f0194adb2fefd7d085a27a">casadi::GenericMatrix&lt; Matrix&lt; Scalar &gt; &gt;::jacobian</a></div><div class="ttdeci">friend Matrix&lt; Scalar &gt; jacobian(const Matrix&lt; Scalar &gt; &amp;ex, const Matrix&lt; Scalar &gt; &amp;arg, const Dict &amp;opts=Dict())</div><div class="ttdoc">Calculate Jacobian.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d90/generic__matrix_8hpp_source.html#l00799">generic_matrix.hpp:799</a></div></div>
 </div><!-- fragment -->
@@ -9480,14 +9480,14 @@ template&lt;typename Scalar &gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l00237">237</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l01545"></a><span class="lineno"> 1545</span>&#160;                                                          {</div>
-<div class="line"><a name="l01546"></a><span class="lineno"> 1546</span>&#160;    casadi_assert(expr.is_scalar(), <span class="stringliteral">&quot;&#39;quadratic_coeff&#39; only defined for scalar expressions.&quot;</span>);</div>
-<div class="line"><a name="l01547"></a><span class="lineno"> 1547</span>&#160;    A = <a class="code" href="../../d9/dc2/group__expression__tools.html#ga40e7da4399badfab763abc187ed7ac14">hessian</a>(expr, var);</div>
-<div class="line"><a name="l01548"></a><span class="lineno"> 1548</span>&#160;    b = <a class="code" href="../../d9/dc2/group__expression__tools.html#ga812838e76a44edd579dbe1d8ed9be26f">substitute</a>(<a class="code" href="../../d9/dc2/group__expression__tools.html#gaf94815d746f0194adb2fefd7d085a27a">jacobian</a>(expr, var), var, 0).T();</div>
-<div class="line"><a name="l01549"></a><span class="lineno"> 1549</span>&#160;    <span class="keywordflow">if</span> (check)</div>
-<div class="line"><a name="l01550"></a><span class="lineno"> 1550</span>&#160;      casadi_assert(!<a class="code" href="../../d9/dc2/group__expression__tools.html#ga11188728b7c587a608114442374c6d9e">depends_on</a>(A, var), <span class="stringliteral">&quot;&#39;quadratic_coeff&#39; called on non-quadratic expression.&quot;</span>);</div>
-<div class="line"><a name="l01551"></a><span class="lineno"> 1551</span>&#160;    c = <a class="code" href="../../d9/dc2/group__expression__tools.html#ga812838e76a44edd579dbe1d8ed9be26f">substitute</a>(expr, var, 0);</div>
-<div class="line"><a name="l01552"></a><span class="lineno"> 1552</span>&#160;  }</div>
+<div class="fragment"><div class="line"><a name="l01547"></a><span class="lineno"> 1547</span>&#160;                                                          {</div>
+<div class="line"><a name="l01548"></a><span class="lineno"> 1548</span>&#160;    casadi_assert(expr.is_scalar(), <span class="stringliteral">&quot;&#39;quadratic_coeff&#39; only defined for scalar expressions.&quot;</span>);</div>
+<div class="line"><a name="l01549"></a><span class="lineno"> 1549</span>&#160;    A = <a class="code" href="../../d9/dc2/group__expression__tools.html#ga40e7da4399badfab763abc187ed7ac14">hessian</a>(expr, var);</div>
+<div class="line"><a name="l01550"></a><span class="lineno"> 1550</span>&#160;    b = <a class="code" href="../../d9/dc2/group__expression__tools.html#ga812838e76a44edd579dbe1d8ed9be26f">substitute</a>(<a class="code" href="../../d9/dc2/group__expression__tools.html#gaf94815d746f0194adb2fefd7d085a27a">jacobian</a>(expr, var), var, 0).T();</div>
+<div class="line"><a name="l01551"></a><span class="lineno"> 1551</span>&#160;    <span class="keywordflow">if</span> (check)</div>
+<div class="line"><a name="l01552"></a><span class="lineno"> 1552</span>&#160;      casadi_assert(!<a class="code" href="../../d9/dc2/group__expression__tools.html#ga11188728b7c587a608114442374c6d9e">depends_on</a>(A, var), <span class="stringliteral">&quot;&#39;quadratic_coeff&#39; called on non-quadratic expression.&quot;</span>);</div>
+<div class="line"><a name="l01553"></a><span class="lineno"> 1553</span>&#160;    c = <a class="code" href="../../d9/dc2/group__expression__tools.html#ga812838e76a44edd579dbe1d8ed9be26f">substitute</a>(expr, var, 0);</div>
+<div class="line"><a name="l01554"></a><span class="lineno"> 1554</span>&#160;  }</div>
 <div class="ttc" id="agroup__expression__tools_html_ga11188728b7c587a608114442374c6d9e"><div class="ttname"><a href="../../d9/dc2/group__expression__tools.html#ga11188728b7c587a608114442374c6d9e">casadi::GenericMatrix&lt; Matrix&lt; Scalar &gt; &gt;::depends_on</a></div><div class="ttdeci">friend bool depends_on(const Matrix&lt; Scalar &gt; &amp;f, const Matrix&lt; Scalar &gt; &amp;arg)</div><div class="ttdoc">Check if expression depends on the argument.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d90/generic__matrix_8hpp_source.html#l00657">generic_matrix.hpp:657</a></div></div>
 <div class="ttc" id="agroup__expression__tools_html_ga40e7da4399badfab763abc187ed7ac14"><div class="ttname"><a href="../../d9/dc2/group__expression__tools.html#ga40e7da4399badfab763abc187ed7ac14">casadi::GenericMatrix&lt; Matrix&lt; Scalar &gt; &gt;::hessian</a></div><div class="ttdeci">friend Matrix&lt; Scalar &gt; hessian(const Matrix&lt; Scalar &gt; &amp;ex, const Matrix&lt; Scalar &gt; &amp;arg, const Dict &amp;opts=Dict())</div><div class="ttdoc">Hessian and (optionally) gradient.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d90/generic__matrix_8hpp_source.html#l00861">generic_matrix.hpp:861</a></div></div>
 </div><!-- fragment -->
@@ -9784,7 +9784,7 @@ template&lt;typename Scalar &gt; </div>
 <div class="line"><a name="l01350"></a><span class="lineno"> 1350</span>&#160;    }</div>
 <div class="line"><a name="l01351"></a><span class="lineno"> 1351</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d23/namespacecasadi.html#ad83c1a6ea0ab21a21dc68dcde41671ca">sum</a>;</div>
 <div class="line"><a name="l01352"></a><span class="lineno"> 1352</span>&#160;  }</div>
-<div class="ttc" id="aclasscasadi_1_1SparsityInterface_html_a5527c598ce26dfee631c5d64e722c551"><div class="ttname"><a href="../../dd/d6b/classcasadi_1_1SparsityInterface.html#a5527c598ce26dfee631c5d64e722c551">casadi::SparsityInterface::blocksplit</a></div><div class="ttdeci">static std::vector&lt; std::vector&lt; MatType &gt; &gt; blocksplit(const MatType &amp;x, const std::vector&lt; casadi_int &gt; &amp;vert_offset, const std::vector&lt; casadi_int &gt; &amp;horz_offset)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/df8/sparsity__interface_8hpp_source.html#l00579">sparsity_interface.hpp:579</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1SparsityInterface_html_a5527c598ce26dfee631c5d64e722c551"><div class="ttname"><a href="../../dd/d6b/classcasadi_1_1SparsityInterface.html#a5527c598ce26dfee631c5d64e722c551">casadi::SparsityInterface::blocksplit</a></div><div class="ttdeci">static std::vector&lt; std::vector&lt; MatType &gt; &gt; blocksplit(const MatType &amp;x, const std::vector&lt; casadi_int &gt; &amp;vert_offset, const std::vector&lt; casadi_int &gt; &amp;horz_offset)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/df8/sparsity__interface_8hpp_source.html#l00616">sparsity_interface.hpp:616</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_ad83c1a6ea0ab21a21dc68dcde41671ca"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#ad83c1a6ea0ab21a21dc68dcde41671ca">casadi::sum</a></div><div class="ttdeci">T sum(const std::vector&lt; T &gt; &amp;values)</div><div class="ttdoc">sum</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d18/casadi__misc_8hpp_source.html#l00857">casadi_misc.hpp:857</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -10505,7 +10505,7 @@ template&lt;typename Scalar &gt; </div>
 <div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../da/d45/classcasadi_1_1Matrix.html#a5922e9fedfe112f4b30b07b68dbee72f">set</a>(m, <span class="keyword">false</span>, el);</div>
 <div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;  }</div>
 <div class="ttc" id="aclasscasadi_1_1Matrix_html_a231141c687441aa7cacee6530e1213b3"><div class="ttname"><a href="../../da/d45/classcasadi_1_1Matrix.html#a231141c687441aa7cacee6530e1213b3">casadi::Matrix::T</a></div><div class="ttdeci">Matrix&lt; Scalar &gt; T() const</div><div class="ttdoc">Transpose the matrix.</div></div>
-<div class="ttc" id="aclasscasadi_1_1SparsityInterface_html_a5356d6bd71d65c91eee73c102c3b3b2f"><div class="ttname"><a href="../../dd/d6b/classcasadi_1_1SparsityInterface.html#a5356d6bd71d65c91eee73c102c3b3b2f">casadi::SparsityInterface::repmat</a></div><div class="ttdeci">static MatType repmat(const MatType &amp;x, casadi_int n, casadi_int m=1)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/df8/sparsity__interface_8hpp_source.html#l00568">sparsity_interface.hpp:568</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1SparsityInterface_html_a5356d6bd71d65c91eee73c102c3b3b2f"><div class="ttname"><a href="../../dd/d6b/classcasadi_1_1SparsityInterface.html#a5356d6bd71d65c91eee73c102c3b3b2f">casadi::SparsityInterface::repmat</a></div><div class="ttdeci">static MatType repmat(const MatType &amp;x, casadi_int n, casadi_int m=1)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/df8/sparsity__interface_8hpp_source.html#l00605">sparsity_interface.hpp:605</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_ab08532c6cca1d1e96ff2c8a873b50a93"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#ab08532c6cca1d1e96ff2c8a873b50a93">casadi::IM</a></div><div class="ttdeci">Matrix&lt; casadi_int &gt; IM</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/im__fwd_8hpp_source.html#l00031">im_fwd.hpp:31</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -11288,7 +11288,7 @@ template&lt;typename Scalar &gt; </div>
 <div class="line"><a name="l01317"></a><span class="lineno"> 1317</span>&#160;    MatType z = a(2);</div>
 <div class="line"><a name="l01318"></a><span class="lineno"> 1318</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d9/dc2/group__expression__tools.html#gac36dcac9eb2029becae3af0ea2435938">blockcat</a>(std::vector&lt; std::vector&lt;MatType&gt; &gt;({{0, -z, y}, {z, 0, -x}, {-y, x, 0}}));</div>
 <div class="line"><a name="l01319"></a><span class="lineno"> 1319</span>&#160;  }</div>
-<div class="ttc" id="agroup__expression__tools_html_gac36dcac9eb2029becae3af0ea2435938"><div class="ttname"><a href="../../d9/dc2/group__expression__tools.html#gac36dcac9eb2029becae3af0ea2435938">casadi::SparsityInterface::blockcat</a></div><div class="ttdeci">friend MatType blockcat(const std::vector&lt; std::vector&lt; MatType &gt; &gt; &amp;v)</div><div class="ttdoc">Construct a matrix from a list of list of blocks.</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/df8/sparsity__interface_8hpp_source.html#l00189">sparsity_interface.hpp:189</a></div></div>
+<div class="ttc" id="agroup__expression__tools_html_gac36dcac9eb2029becae3af0ea2435938"><div class="ttname"><a href="../../d9/dc2/group__expression__tools.html#gac36dcac9eb2029becae3af0ea2435938">casadi::SparsityInterface::blockcat</a></div><div class="ttdeci">friend MatType blockcat(const std::vector&lt; std::vector&lt; MatType &gt; &gt; &amp;v)</div><div class="ttdoc">Construct a matrix from a list of list of blocks.</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/df8/sparsity__interface_8hpp_source.html#l00226">sparsity_interface.hpp:226</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

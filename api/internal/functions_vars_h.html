@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/896ebb1083311cfdb392f411ba83385080a05ed3" id="896ebb1083311cfdb392f411ba83385080a05ed3" >revision 3.6.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/54931cdaaf5859cff6659b5b4077ebde2dcd9f9f" id="54931cdaaf5859cff6659b5b4077ebde2dcd9f9f" >revision 3.6.3</a></div>
   </td>
  </tr>
  </tbody>
@@ -94,14 +94,26 @@ $(function() {
 <li>handle_
 : <a class="el" href="d6/d62/classcasadi_1_1ShellCompiler.html#a728c0d2ba70f2db4fb24e851b3b4806c">casadi::ShellCompiler</a>
 </li>
+<li>has_adj_
+: <a class="el" href="d7/dc1/classcasadi_1_1FmuFunction.html#adfb5027060434d0b37ae358864a138fb">casadi::FmuFunction</a>
+</li>
 <li>has_denorm_loss
 : <a class="el" href="db/dbd/classstd_1_1numeric__limits_3_01casadi_1_1SXElem_01_4.html#ae2b44da2d0ab80c5a4ee069cc2ce4691">std::numeric_limits&lt; casadi::SXElem &gt;</a>
 </li>
 <li>has_eval_buffer_
 : <a class="el" href="df/d13/classcasadi_1_1CallbackInternal.html#ade4634171c07401008908d9ec8cf384b">casadi::CallbackInternal</a>
 </li>
+<li>has_fwd_
+: <a class="el" href="d7/dc1/classcasadi_1_1FmuFunction.html#a96f9ec669be65e5179bfab6c419673c1">casadi::FmuFunction</a>
+</li>
+<li>has_hess_
+: <a class="el" href="d7/dc1/classcasadi_1_1FmuFunction.html#a11c894435b9ad16f1c0692f107a36095">casadi::FmuFunction</a>
+</li>
 <li>has_infinity
 : <a class="el" href="db/dbd/classstd_1_1numeric__limits_3_01casadi_1_1SXElem_01_4.html#ab9867c3f7755ea94b1a1661c6f914119">std::numeric_limits&lt; casadi::SXElem &gt;</a>
+</li>
+<li>has_jac_
+: <a class="el" href="d7/dc1/classcasadi_1_1FmuFunction.html#a516ec4c41f06f72f462b5450c485e41d">casadi::FmuFunction</a>
 </li>
 <li>has_quiet_NaN
 : <a class="el" href="db/dbd/classstd_1_1numeric__limits_3_01casadi_1_1SXElem_01_4.html#aaed67e69d1327c4c748634823a095c8e">std::numeric_limits&lt; casadi::SXElem &gt;</a>
@@ -158,6 +170,9 @@ $(function() {
 <li>hess_body_
 : <a class="el" href="d8/dc1/classcasadi_1_1JitFunction.html#abc9a9f2daaa96f792589202b7b832dda">casadi::JitFunction</a>
 </li>
+<li>hess_colors_
+: <a class="el" href="d7/dc1/classcasadi_1_1FmuFunction.html#af52933d4798d1ebd72e683976ef2f009">casadi::FmuFunction</a>
+</li>
 <li>hess_damp_
 : <a class="el" href="db/d26/classcasadi_1_1Blocksqp.html#add5648df698d52ca65fb39ce949a6c10">casadi::Blocksqp</a>
 </li>
@@ -177,17 +192,27 @@ $(function() {
 <li>hess_memsize_
 : <a class="el" href="db/d26/classcasadi_1_1Blocksqp.html#a3af9f880058226dc6782960a472cb641">casadi::Blocksqp</a>
 </li>
+<li>hess_nz
+: <a class="el" href="d4/dfa/structcasadi_1_1FmuMemory.html#af0df72404da2c162a254818afca59d97">casadi::FmuMemory</a>
+</li>
 <li>hess_res
 : <a class="el" href="d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a804daf080a69689d3fb31318b5a23014">casadi::DaeBuilderInternal::CallIO</a>
 </li>
 <li>hess_scaling_
 : <a class="el" href="db/d26/classcasadi_1_1Blocksqp.html#a080e19064886bd7446743a5169fa87d6">casadi::Blocksqp</a>
 </li>
+<li>hess_sp_
+: <a class="el" href="d7/dc1/classcasadi_1_1FmuFunction.html#a5b6c1ee6752756417b25fd69a70892c4">casadi::FmuFunction</a>
+, <a class="el" href="d2/d26/classcasadi_1_1FmuInternal.html#ab8a94afb08b2e359491d286dbc836324">casadi::FmuInternal</a>
+</li>
 <li>hess_update_
 : <a class="el" href="db/d26/classcasadi_1_1Blocksqp.html#a0a9d81a1789788e66ee26b2883d04cbf">casadi::Blocksqp</a>
 </li>
 <li>hessDamped
 : <a class="el" href="da/dd3/structcasadi_1_1BlocksqpMemory.html#aea0f88eeac7113fd0c477714aced1b6c">casadi::BlocksqpMemory</a>
+</li>
+<li>hessian_coloring_
+: <a class="el" href="d7/dc1/classcasadi_1_1FmuFunction.html#a649cf0881b999ac41a2092b876beb0af">casadi::FmuFunction</a>
 </li>
 <li>hessIndCol
 : <a class="el" href="da/dd3/structcasadi_1_1BlocksqpMemory.html#a9708a4fb3b6ea60f96570bfd43e21a8a">casadi::BlocksqpMemory</a>
@@ -273,17 +298,17 @@ $(function() {
 <li>hpipm_options_
 : <a class="el" href="d2/d94/classcasadi_1_1HpipmInterface.html#ae8f695d6c1bae6b529d6d6808f515f67">casadi::HpipmInterface</a>
 </li>
-<li>hQ
-: <a class="el" href="d1/da5/structcasadi__hpipm__data.html#a886725430e92b1f256d8808d484c941b">casadi_hpipm_data&lt; T1 &gt;</a>
-</li>
 <li>hq
 : <a class="el" href="d1/da5/structcasadi__hpipm__data.html#a45a2f6a8ed97d3e61ab0cbfed74cf761">casadi_hpipm_data&lt; T1 &gt;</a>
 </li>
-<li>hR
-: <a class="el" href="d1/da5/structcasadi__hpipm__data.html#a7b3ff0caaa09a5355488abd931133523">casadi_hpipm_data&lt; T1 &gt;</a>
+<li>hQ
+: <a class="el" href="d1/da5/structcasadi__hpipm__data.html#a886725430e92b1f256d8808d484c941b">casadi_hpipm_data&lt; T1 &gt;</a>
 </li>
 <li>hr
 : <a class="el" href="d1/da5/structcasadi__hpipm__data.html#abdd98ac31e91a5151af4edd4156dc8c4">casadi_hpipm_data&lt; T1 &gt;</a>
+</li>
+<li>hR
+: <a class="el" href="d1/da5/structcasadi__hpipm__data.html#a7b3ff0caaa09a5355488abd931133523">casadi_hpipm_data&lt; T1 &gt;</a>
 </li>
 <li>Hrsp
 : <a class="el" href="d3/dd2/structcasadi_1_1ConvexifyData.html#a630955b6bff9cf52991c9f27c2a26fa9">casadi::ConvexifyData</a>
@@ -326,11 +351,11 @@ $(function() {
 <li>hx
 : <a class="el" href="d1/da5/structcasadi__hpipm__data.html#a1269020d5836f8dd79e0b72059671563">casadi_hpipm_data&lt; T1 &gt;</a>
 </li>
-<li>hzl
-: <a class="el" href="d1/da5/structcasadi__hpipm__data.html#a56b4a4a1f8d246acf296c2ac0e23e3fd">casadi_hpipm_data&lt; T1 &gt;</a>
-</li>
 <li>hZl
 : <a class="el" href="d1/da5/structcasadi__hpipm__data.html#a8609d8b36f7be40f75ec98fa4b20f669">casadi_hpipm_data&lt; T1 &gt;</a>
+</li>
+<li>hzl
+: <a class="el" href="d1/da5/structcasadi__hpipm__data.html#a56b4a4a1f8d246acf296c2ac0e23e3fd">casadi_hpipm_data&lt; T1 &gt;</a>
 </li>
 <li>hZu
 : <a class="el" href="d1/da5/structcasadi__hpipm__data.html#a6bbb7c4a8e79e15b422620490472bdff">casadi_hpipm_data&lt; T1 &gt;</a>

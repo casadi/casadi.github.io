@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/896ebb1083311cfdb392f411ba83385080a05ed3" id="896ebb1083311cfdb392f411ba83385080a05ed3" >revision 3.6.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/54931cdaaf5859cff6659b5b4077ebde2dcd9f9f" id="54931cdaaf5859cff6659b5b4077ebde2dcd9f9f" >revision 3.6.3</a></div>
   </td>
  </tr>
  </tbody>
@@ -243,10 +243,10 @@ $(function() {
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
 <div class="line"><a name="l00185"></a><span class="lineno"><a class="line" href="../../d1/d00/classcasadi_1_1SerializingStream.html#a3ce564d5fd8120b6a8d246316c407d62">  185</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d1/d00/classcasadi_1_1SerializingStream.html#a4fd154fddcaeb3be4cc8690e59b35a4e">SerializingStream::pack</a>(<span class="keyword">const</span> std::string&amp; e) {</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;      decorate(<span class="charliteral">&#39;s&#39;</span>);</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;      <span class="keywordtype">int</span> s = e.size();</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;      <span class="keywordtype">int</span> s = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(e.size());</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;      <a class="code" href="../../d1/d00/classcasadi_1_1SerializingStream.html#a4fd154fddcaeb3be4cc8690e59b35a4e">pack</a>(s);</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;      <span class="keyword">const</span> <span class="keywordtype">char</span>* c = e.c_str();</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j=0;j&lt;s;++j) <a class="code" href="../../d1/d00/classcasadi_1_1SerializingStream.html#a4fd154fddcaeb3be4cc8690e59b35a4e">pack</a>(c[j]);</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; s; ++j) <a class="code" href="../../d1/d00/classcasadi_1_1SerializingStream.html#a4fd154fddcaeb3be4cc8690e59b35a4e">pack</a>(c[j]);</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    }</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
 <div class="line"><a name="l00193"></a><span class="lineno"><a class="line" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a06e8dff6d0ec0130309ebcb35efb06b3">  193</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">DeserializingStream::unpack</a>(std::string&amp; e) {</div>

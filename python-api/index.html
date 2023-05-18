@@ -342,9 +342,9 @@ can be omitted, in which case x^T A x is calculated</p>
 </div>
 <p>Extra doc: <a class="reference external" href="https://github.com/casadi/casadi/wiki/L_3m">https://github.com/casadi/casadi/wiki/L_3m</a></p>
 <p>Doc source:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L197">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L197</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L234">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L234</a></p>
 <p>Implementation:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L197-L199">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L197-L199</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L234-L236">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L234-L236</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -686,9 +686,9 @@ Column dimension of each matrix</p>
 <p>diagsplit(diagsplit(x, …)) = x</p>
 <p>Extra doc: <a class="reference external" href="https://github.com/casadi/casadi/wiki/L_3t">https://github.com/casadi/casadi/wiki/L_3t</a></p>
 <p>Doc source:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L287">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L287</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L324">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L324</a></p>
 <p>Implementation:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L287-L289">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L287-L289</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L324-L326">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L324-L326</a></p>
 </section>
 </dd></dl>
 
@@ -1234,13 +1234,41 @@ H(x) = 1 &amp; x&gt;0 \ end {cases} ]</p>
 <section id="id5">
 <h3><span class="section-number">1. </span>Parameters:<a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h3>
 <p>incr:
-Size of each group of columns</p>
+Size (width) of each group of columns</p>
 <p>horzcat(horzsplit(x, …)) = x</p>
+<p>seealso horzsplit_n</p>
 <p>Extra doc: <a class="reference external" href="https://github.com/casadi/casadi/wiki/L_3h">https://github.com/casadi/casadi/wiki/L_3h</a></p>
 <p>Doc source:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L130">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L130</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L134">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L134</a></p>
 <p>Implementation:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L130-L132">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L130-L132</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L134-L136">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L134-L136</a></p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="casadi.casadi.horzsplit_n">
+<span class="sig-name descname"><span class="pre">horzsplit_n</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#casadi.casadi.horzsplit_n" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>split horizontally, retaining fixed-sized groups of columns</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">horzsplit_n</span><span class="p">(</span><span class="n">Sparsity</span> <span class="n">v</span><span class="p">,</span> <span class="nb">int</span> <span class="n">n</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">Sparsity</span><span class="p">]</span>
+<span class="n">horzsplit_n</span><span class="p">(</span><span class="n">DM</span> <span class="n">v</span><span class="p">,</span> <span class="nb">int</span> <span class="n">n</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">DM</span><span class="p">]</span>
+<span class="n">horzsplit_n</span><span class="p">(</span><span class="n">SX</span> <span class="n">v</span><span class="p">,</span> <span class="nb">int</span> <span class="n">n</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">SX</span><span class="p">]</span>
+<span class="n">horzsplit_n</span><span class="p">(</span><span class="n">MX</span> <span class="n">v</span><span class="p">,</span> <span class="nb">int</span> <span class="n">n</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">MX</span><span class="p">]</span>
+</pre></div>
+</div>
+<section id="id6">
+<h3><span class="section-number">1. </span>Parameters:<a class="headerlink" href="#id6" title="Permalink to this heading">¶</a></h3>
+<p>n:
+Number of groups of columns</p>
+<p>Will error when the number of columns is not a multiple of n</p>
+<p>horzcat(horzsplit(x, …)) = x</p>
+<p>seealso horzsplit</p>
+<p>Extra doc: <a class="reference external" href="https://github.com/casadi/casadi/wiki/L_277">https://github.com/casadi/casadi/wiki/L_277</a></p>
+<p>Doc source:
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L149">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L149</a></p>
+<p>Implementation:
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L149-L151">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L149-L151</a></p>
 </section>
 </dd></dl>
 
@@ -1523,9 +1551,9 @@ v has few rows.</p>
 <p>Creates a block matrix in which each element (i, j) is a_ij*b</p>
 <p>Extra doc: <a class="reference external" href="https://github.com/casadi/casadi/wiki/L_47">https://github.com/casadi/casadi/wiki/L_47</a></p>
 <p>Doc source:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L414">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L414</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L451">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L451</a></p>
 <p>Implementation:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L414-L416">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L414-L416</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L451-L453">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L451-L453</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -1611,8 +1639,8 @@ matrices.</p>
 </pre></div>
 </div>
 <p>A x + b</p>
-<section id="id6">
-<h3><span class="section-number">1. </span>Parameters:<a class="headerlink" href="#id6" title="Permalink to this heading">¶</a></h3>
+<section id="id7">
+<h3><span class="section-number">1. </span>Parameters:<a class="headerlink" href="#id7" title="Permalink to this heading">¶</a></h3>
 <p>check[in]:
 When true (default)m, A is checked to be independent of x.
 Provided to</p>
@@ -1796,9 +1824,9 @@ entries of (x*y) are ignored. The operation is equivalent to:</p>
 <p>z+mtimes(x,y).project(z.sparsity()).</p>
 <p>Extra doc: <a class="reference external" href="https://github.com/casadi/casadi/wiki/L_3x">https://github.com/casadi/casadi/wiki/L_3x</a></p>
 <p>Doc source:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L321">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L321</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L358">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L358</a></p>
 <p>Implementation:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L321-L323">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L321-L323</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L358-L360">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L358-L360</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -2009,9 +2037,9 @@ $1n+2m$.</p>
 </div>
 <p>Extra doc: <a class="reference external" href="https://github.com/casadi/casadi/wiki/L_3w">https://github.com/casadi/casadi/wiki/L_3w</a></p>
 <p>Doc source:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L308">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L308</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L345">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L345</a></p>
 <p>Implementation:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L308-L310">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L308-L310</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L345-L347">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L345-L347</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -2244,8 +2272,8 @@ $1n+2m$.</p>
 <span class="n">poly_coeff</span><span class="p">(</span><span class="n">SX</span> <span class="n">ex</span><span class="p">,</span> <span class="n">SX</span> <span class="n">x</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SX</span>
 </pre></div>
 </div>
-<section id="id7">
-<h3><span class="section-number">1. </span>Parameters:<a class="headerlink" href="#id7" title="Permalink to this heading">¶</a></h3>
+<section id="id8">
+<h3><span class="section-number">1. </span>Parameters:<a class="headerlink" href="#id8" title="Permalink to this heading">¶</a></h3>
 <p>ex:
 Scalar expression that represents a polynomial</p>
 <p>x:
@@ -2357,8 +2385,8 @@ roots are real.</p>
 </div>
 <p>Create a piecewise constant function with n=val.size() intervals</p>
 <p>Inputs:</p>
-<section id="id8">
-<h3><span class="section-number">1. </span>Parameters:<a class="headerlink" href="#id8" title="Permalink to this heading">¶</a></h3>
+<section id="id9">
+<h3><span class="section-number">1. </span>Parameters:<a class="headerlink" href="#id9" title="Permalink to this heading">¶</a></h3>
 <p>t:
 a scalar variable (e.g. time)</p>
 <p>tval:
@@ -2474,8 +2502,8 @@ value.</p>
 </div>
 <p>1/2*x’ A x + b’ x + c</p>
 <p>e = 0.5*bilin(A,x,x)+dot(b,x)+c</p>
-<section id="id9">
-<h3><span class="section-number">1. </span>Parameters:<a class="headerlink" href="#id9" title="Permalink to this heading">¶</a></h3>
+<section id="id10">
+<h3><span class="section-number">1. </span>Parameters:<a class="headerlink" href="#id10" title="Permalink to this heading">¶</a></h3>
 <p>check[in]:
 When true (default), A is checked to be independent of x.
 Provided to
@@ -2555,10 +2583,10 @@ deal with false positive dependency checks.</p>
 </pre></div>
 </div>
 <dl class="simple">
-<dt>[ begin {cases} Pi(x) = 1 &amp; <a href="#id69"><span class="problematic" id="id70">|x|</span></a> &lt; 1/2 \ Pi(x) =</dt><dd><p>1/2</p>
+<dt>[ begin {cases} Pi(x) = 1 &amp; <a href="#id70"><span class="problematic" id="id71">|x|</span></a> &lt; 1/2 \ Pi(x) =</dt><dd><p>1/2</p>
 </dd>
 </dl>
-<p>&amp; <a href="#id71"><span class="problematic" id="id72">|x|</span></a> = 1/2 \ Pi(x) = 0 &amp; <a href="#id73"><span class="problematic" id="id74">|x|</span></a> &gt; 1/2 \ end
+<p>&amp; <a href="#id72"><span class="problematic" id="id73">|x|</span></a> = 1/2 \ Pi(x) = 0 &amp; <a href="#id74"><span class="problematic" id="id75">|x|</span></a> &gt; 1/2 \ end
 {cases}
 ]</p>
 <p>Also called: gate function, block function, band function, pulse
@@ -2623,9 +2651,9 @@ remainder(5,3) -&gt; -1</p>
 </div>
 <p>Extra doc: <a class="reference external" href="https://github.com/casadi/casadi/wiki/L_49">https://github.com/casadi/casadi/wiki/L_49</a></p>
 <p>Doc source:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L428">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L428</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L465">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L465</a></p>
 <p>Implementation:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L428-L430">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L428-L430</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L465-L467">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L465-L467</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -2668,9 +2696,9 @@ remainder(5,3) -&gt; -1</p>
 </div>
 <p>Extra doc: <a class="reference external" href="https://github.com/casadi/casadi/wiki/L_42">https://github.com/casadi/casadi/wiki/L_42</a></p>
 <p>Doc source:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L370">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L370</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L407">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L407</a></p>
 <p>Implementation:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L370-L372">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L370-L372</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L407-L409">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L407-L409</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -2797,8 +2825,8 @@ NaN</p>
 <span class="n">soc</span><span class="p">(</span><span class="n">MX</span> <span class="n">x</span><span class="p">,</span> <span class="n">MX</span> <span class="n">y</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MX</span>
 </pre></div>
 </div>
-<section id="id10">
-<h3><span class="section-number">1. </span>Parameters:<a class="headerlink" href="#id10" title="Permalink to this heading">¶</a></h3>
+<section id="id11">
+<h3><span class="section-number">1. </span>Parameters:<a class="headerlink" href="#id11" title="Permalink to this heading">¶</a></h3>
 <p>x:
 vector expression of size n</p>
 <p>y:
@@ -2864,9 +2892,9 @@ scalar expression</p>
 </div>
 <p>Extra doc: <a class="reference external" href="https://github.com/casadi/casadi/wiki/L_24z">https://github.com/casadi/casadi/wiki/L_24z</a></p>
 <p>Doc source:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L377">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L377</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L414">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L414</a></p>
 <p>Implementation:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L377-L379">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L377-L379</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L414-L416">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L414-L416</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -2975,9 +3003,9 @@ well as</p>
 </div>
 <p>Extra doc: <a class="reference external" href="https://github.com/casadi/casadi/wiki/L_4p">https://github.com/casadi/casadi/wiki/L_4p</a></p>
 <p>Doc source:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L549">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L549</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L586">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L586</a></p>
 <p>Implementation:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L549-L549">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L549-L549</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L586-L586">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L586-L586</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -2994,9 +3022,9 @@ well as</p>
 </div>
 <p>Extra doc: <a class="reference external" href="https://github.com/casadi/casadi/wiki/L_4q">https://github.com/casadi/casadi/wiki/L_4q</a></p>
 <p>Doc source:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L554">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L554</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L591">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L591</a></p>
 <p>Implementation:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L554-L554">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L554-L554</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L591-L591">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L591-L591</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -3175,9 +3203,9 @@ respect to variable ‘x’ around the point ‘a’</p>
 </div>
 <p>Extra doc: <a class="reference external" href="https://github.com/casadi/casadi/wiki/L_3y">https://github.com/casadi/casadi/wiki/L_3y</a></p>
 <p>Doc source:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L328">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L328</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L365">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L365</a></p>
 <p>Implementation:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L328-L330">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L328-L330</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L365-L367">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L365-L367</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -3190,10 +3218,10 @@ respect to variable ‘x’ around the point ‘a’</p>
 <span class="n">triangle</span><span class="p">(</span><span class="n">SX</span> <span class="n">x</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SX</span>
 </pre></div>
 </div>
-<p>[ begin {cases} Lambda(x) = 0 &amp; <a href="#id75"><span class="problematic" id="id76">|x|</span></a> &gt;= 1 \
+<p>[ begin {cases} Lambda(x) = 0 &amp; <a href="#id76"><span class="problematic" id="id77">|x|</span></a> &gt;= 1 \
 Lambda(x)</p>
 <blockquote>
-<div><p>= 1-<a href="#id77"><span class="problematic" id="id78">|x|</span></a> &amp; <a href="#id79"><span class="problematic" id="id80">|x|</span></a> &lt; 1 end {cases} ]</p>
+<div><p>= 1-<a href="#id78"><span class="problematic" id="id79">|x|</span></a> &amp; <a href="#id80"><span class="problematic" id="id81">|x|</span></a> &lt; 1 end {cases} ]</p>
 </div></blockquote>
 <p>Extra doc: <a class="reference external" href="https://github.com/casadi/casadi/wiki/L_23o">https://github.com/casadi/casadi/wiki/L_23o</a></p>
 <p>Doc source:
@@ -3216,9 +3244,9 @@ Lambda(x)</p>
 </div>
 <p>Extra doc: <a class="reference external" href="https://github.com/casadi/casadi/wiki/L_46">https://github.com/casadi/casadi/wiki/L_46</a></p>
 <p>Doc source:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L405">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L405</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L442">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L442</a></p>
 <p>Implementation:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L405-L407">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L405-L407</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L442-L444">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L442-L444</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -3253,9 +3281,9 @@ Lambda(x)</p>
 </div>
 <p>Extra doc: <a class="reference external" href="https://github.com/casadi/casadi/wiki/L_45">https://github.com/casadi/casadi/wiki/L_45</a></p>
 <p>Doc source:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L398">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L398</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L435">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L435</a></p>
 <p>Implementation:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L398-L400">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L398-L400</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L435-L437">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L435-L437</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -3324,9 +3352,9 @@ d</p>
 <div><p>Extra doc: <a class="reference external" href="https://github.com/casadi/casadi/wiki/L_3z">https://github.com/casadi/casadi/wiki/L_3z</a></p>
 </div></blockquote>
 <p>Doc source:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L349">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L349</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L386">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L386</a></p>
 <p>Implementation:
-<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L349-L351">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L349-L351</a></p>
+<a class="reference external" href="https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L386-L388">https://github.com/casadi/casadi/blob/develop/casadi/core/sparsity_interface.hpp#L386-L388</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -8766,8 +8794,8 @@ Export function in specific language.</p>
 </pre></div>
 </div>
 <p>Get a specific function embedded in the expression graphs.</p>
-<section id="id11">
-<h4><span class="section-number">1. </span>Parameters:<a class="headerlink" href="#id11" title="Permalink to this heading">¶</a></h4>
+<section id="id12">
+<h4><span class="section-number">1. </span>Parameters:<a class="headerlink" href="#id12" title="Permalink to this heading">¶</a></h4>
 <p>name:
 Name of function needed</p>
 <p>max_depth:
@@ -8790,8 +8818,8 @@ Maximum depth - a negative number indicates no maximum</p>
 </pre></div>
 </div>
 <p>Get all functions embedded in the expression graphs.</p>
-<section id="id12">
-<h4><span class="section-number">1. </span>Parameters:<a class="headerlink" href="#id12" title="Permalink to this heading">¶</a></h4>
+<section id="id13">
+<h4><span class="section-number">1. </span>Parameters:<a class="headerlink" href="#id13" title="Permalink to this heading">¶</a></h4>
 <p>max_depth:
 Maximum depth - a negative number indicates no maximum</p>
 <p>Extra doc: <a class="reference external" href="https://github.com/casadi/casadi/wiki/L_1y6">https://github.com/casadi/casadi/wiki/L_1y6</a></p>
@@ -9710,11 +9738,11 @@ can be</p>
 <p>The final generated function will have a structure similar to:</p>
 <p>casadi_int fname(const casadi_real** arg, casadi_real** res,
 casadi_int*
-iw, casadi_real* w, void* mem) { const casadi_real <a href="#id13"><span class="problematic" id="id14">*</span></a>x1,
-<a href="#id15"><span class="problematic" id="id16">*</span></a>x2; casadi_real
-<a href="#id17"><span class="problematic" id="id18">*</span></a>r1, <a href="#id19"><span class="problematic" id="id20">*</span></a>r2; x1 = <a href="#id21"><span class="problematic" id="id22">*</span></a>arg++; x2 = <a href="#id23"><span class="problematic" id="id24">*</span></a>arg++; r1 = <a href="#id25"><span class="problematic" id="id26">*</span></a>res++; r2 =</p>
+iw, casadi_real* w, void* mem) { const casadi_real <a href="#id14"><span class="problematic" id="id15">*</span></a>x1,
+<a href="#id16"><span class="problematic" id="id17">*</span></a>x2; casadi_real
+<a href="#id18"><span class="problematic" id="id19">*</span></a>r1, <a href="#id20"><span class="problematic" id="id21">*</span></a>r2; x1 = <a href="#id22"><span class="problematic" id="id23">*</span></a>arg++; x2 = <a href="#id24"><span class="problematic" id="id25">*</span></a>arg++; r1 = <a href="#id26"><span class="problematic" id="id27">*</span></a>res++; r2 =</p>
 <blockquote>
-<div><p><a href="#id27"><span class="problematic" id="id28">*</span></a>res++;</p>
+<div><p><a href="#id28"><span class="problematic" id="id29">*</span></a>res++;</p>
 </div></blockquote>
 <p>&lt;FUNCTION_BODY&gt; return 0; }</p>
 <p>Extra doc: <a class="reference external" href="https://github.com/casadi/casadi/wiki/L_1v3">https://github.com/casadi/casadi/wiki/L_1v3</a></p>
@@ -9748,11 +9776,11 @@ can be</p>
 <p>The final generated function will have a structure similar to:</p>
 <p>casadi_int fname(const casadi_real** arg, casadi_real** res,
 casadi_int*
-iw, casadi_real* w, void* mem) { const casadi_real <a href="#id29"><span class="problematic" id="id30">*</span></a>x1,
-<a href="#id31"><span class="problematic" id="id32">*</span></a>x2; casadi_real
-<a href="#id33"><span class="problematic" id="id34">*</span></a>r1, <a href="#id35"><span class="problematic" id="id36">*</span></a>r2; x1 = <a href="#id37"><span class="problematic" id="id38">*</span></a>arg++; x2 = <a href="#id39"><span class="problematic" id="id40">*</span></a>arg++; r1 = <a href="#id41"><span class="problematic" id="id42">*</span></a>res++; r2 =</p>
+iw, casadi_real* w, void* mem) { const casadi_real <a href="#id30"><span class="problematic" id="id31">*</span></a>x1,
+<a href="#id32"><span class="problematic" id="id33">*</span></a>x2; casadi_real
+<a href="#id34"><span class="problematic" id="id35">*</span></a>r1, <a href="#id36"><span class="problematic" id="id37">*</span></a>r2; x1 = <a href="#id38"><span class="problematic" id="id39">*</span></a>arg++; x2 = <a href="#id40"><span class="problematic" id="id41">*</span></a>arg++; r1 = <a href="#id42"><span class="problematic" id="id43">*</span></a>res++; r2 =</p>
 <blockquote>
-<div><p><a href="#id43"><span class="problematic" id="id44">*</span></a>res++;</p>
+<div><p><a href="#id44"><span class="problematic" id="id45">*</span></a>res++;</p>
 </div></blockquote>
 <p>&lt;FUNCTION_BODY&gt; return 0; }</p>
 <p>Extra doc: <a class="reference external" href="https://github.com/casadi/casadi/wiki/L_1v3">https://github.com/casadi/casadi/wiki/L_1v3</a></p>
@@ -9787,11 +9815,11 @@ can be</p>
 <p>The final generated function will have a structure similar to:</p>
 <p>casadi_int fname(const casadi_real** arg, casadi_real** res,
 casadi_int*
-iw, casadi_real* w, void* mem) { const casadi_real <a href="#id45"><span class="problematic" id="id46">*</span></a>x1,
-<a href="#id47"><span class="problematic" id="id48">*</span></a>x2; casadi_real
-<a href="#id49"><span class="problematic" id="id50">*</span></a>r1, <a href="#id51"><span class="problematic" id="id52">*</span></a>r2; x1 = <a href="#id53"><span class="problematic" id="id54">*</span></a>arg++; x2 = <a href="#id55"><span class="problematic" id="id56">*</span></a>arg++; r1 = <a href="#id57"><span class="problematic" id="id58">*</span></a>res++; r2 =</p>
+iw, casadi_real* w, void* mem) { const casadi_real <a href="#id46"><span class="problematic" id="id47">*</span></a>x1,
+<a href="#id48"><span class="problematic" id="id49">*</span></a>x2; casadi_real
+<a href="#id50"><span class="problematic" id="id51">*</span></a>r1, <a href="#id52"><span class="problematic" id="id53">*</span></a>r2; x1 = <a href="#id54"><span class="problematic" id="id55">*</span></a>arg++; x2 = <a href="#id56"><span class="problematic" id="id57">*</span></a>arg++; r1 = <a href="#id58"><span class="problematic" id="id59">*</span></a>res++; r2 =</p>
 <blockquote>
-<div><p><a href="#id59"><span class="problematic" id="id60">*</span></a>res++;</p>
+<div><p><a href="#id60"><span class="problematic" id="id61">*</span></a>res++;</p>
 </div></blockquote>
 <p>&lt;FUNCTION_BODY&gt; return 0; }</p>
 <p>Extra doc: <a class="reference external" href="https://github.com/casadi/casadi/wiki/L_1v3">https://github.com/casadi/casadi/wiki/L_1v3</a></p>
@@ -9907,8 +9935,8 @@ Create a mapped version of this function.</p>
      <span class="n">s_</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="n">f</span><span class="p">(</span><span class="n">a_</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">p_</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </div>
-<section id="id61">
-<h4><span class="section-number">1. </span>Parameters:<a class="headerlink" href="#id61" title="Permalink to this heading">¶</a></h4>
+<section id="id62">
+<h4><span class="section-number">1. </span>Parameters:<a class="headerlink" href="#id62" title="Permalink to this heading">¶</a></h4>
 <p>parallelization:
 Type of parallelization used: unroll|serial|openmp</p>
 <p>Extra doc: <a class="reference external" href="https://github.com/casadi/casadi/wiki/L_1wj">https://github.com/casadi/casadi/wiki/L_1wj</a></p>
@@ -10263,8 +10291,8 @@ here.</p>
 </pre></div>
 </div>
 <p>Evaluate symbolically in parallel and sum (matrix graph)</p>
-<section id="id62">
-<h4><span class="section-number">1. </span>Parameters:<a class="headerlink" href="#id62" title="Permalink to this heading">¶</a></h4>
+<section id="id63">
+<h4><span class="section-number">1. </span>Parameters:<a class="headerlink" href="#id63" title="Permalink to this heading">¶</a></h4>
 <p>parallelization:
 Type of parallelization used: unroll|serial|openmp</p>
 <p>Extra doc: <a class="reference external" href="https://github.com/casadi/casadi/wiki/L_1wh">https://github.com/casadi/casadi/wiki/L_1wh</a></p>
@@ -11744,8 +11772,8 @@ Get symbolic primitives equivalent to the output expressions.</p>
 </pre></div>
 </div>
 <p>Which variables enter with some order.</p>
-<section id="id63">
-<h4><span class="section-number">1. </span>Parameters:<a class="headerlink" href="#id63" title="Permalink to this heading">¶</a></h4>
+<section id="id64">
+<h4><span class="section-number">1. </span>Parameters:<a class="headerlink" href="#id64" title="Permalink to this heading">¶</a></h4>
 <p>order:
 Only 1 (linear) and 2 (nonlinear) allowed</p>
 <p>tr:
@@ -15011,7 +15039,7 @@ entries.</p></td>
 <td><p>Specify version of cplex to
 load. We will attempt to load l
 ibcplex&lt;version_suffix&gt;.[so|dll
-<a href="#id64"><span class="problematic" id="id65">|</span></a>dylib]. Default value is taken
+<a href="#id65"><span class="problematic" id="id66">|</span></a>dylib]. Default value is taken
 from CPLEX_VERSION env
 variable.</p></td>
 </tr>
@@ -15474,7 +15502,7 @@ strategy.</p></td>
 <td><p>Type of Hessian - see
 qpOASES documentation [UNKNO
 WN|posdef|semidef|indef|zero
-<a href="#id66"><span class="problematic" id="id67">|</span></a>identity]]</p></td>
+<a href="#id67"><span class="problematic" id="id68">|</span></a>identity]]</p></td>
 </tr>
 <tr class="row-odd"><td><p>initialFarBounds</p></td>
 <td><p>OT_DOUBLE</p></td>
@@ -18010,8 +18038,8 @@ before returning.</p></td>
 </table>
 </section>
 <hr class="docutils" />
-<section id="id68">
-<h4><span class="section-number">1. </span>nlpsol<a class="headerlink" href="#id68" title="Permalink to this heading">¶</a></h4>
+<section id="id69">
+<h4><span class="section-number">1. </span>nlpsol<a class="headerlink" href="#id69" title="Permalink to this heading">¶</a></h4>
 </section>
 <hr class="docutils" />
 <section id="newton">
@@ -18029,7 +18057,7 @@ before returning.</p></td>
 <tbody>
 <tr class="row-even"><td><p>abstol</p></td>
 <td><p>OT_DOUBLE</p></td>
-<td><p>Stopping criterion tolerance on max(<a href="#id81"><span class="problematic" id="id82">|F|</span></a>)</p></td>
+<td><p>Stopping criterion tolerance on max(<a href="#id82"><span class="problematic" id="id83">|F|</span></a>)</p></td>
 </tr>
 <tr class="row-odd"><td><p>abstolStep</p></td>
 <td><p>OT_DOUBLE</p></td>

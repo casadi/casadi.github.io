@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/896ebb1083311cfdb392f411ba83385080a05ed3" id="896ebb1083311cfdb392f411ba83385080a05ed3" >revision 3.6.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/54931cdaaf5859cff6659b5b4077ebde2dcd9f9f" id="54931cdaaf5859cff6659b5b4077ebde2dcd9f9f" >revision 3.6.3</a></div>
   </td>
  </tr>
  </tbody>
@@ -82,6 +82,9 @@ $(function() {
 <li>iarg
 : <a class="el" href="de/dfa/structcasadi_1_1RootfinderMemory.html#a6cb943970facb0c0929bdd28ae409fee">casadi::RootfinderMemory</a>
 </li>
+<li>ibuf_
+: <a class="el" href="d4/dfa/structcasadi_1_1FmuMemory.html#adb7f806b27195ee2f7316d4b252a0b6b">casadi::FmuMemory</a>
+</li>
 <li>icntl
 : <a class="el" href="dd/de6/structcasadi_1_1Ma27Memory.html#a0b2ffcda047449aa1d674e5bf18ec195">casadi::Ma27Memory</a>
 </li>
@@ -90,6 +93,12 @@ $(function() {
 </li>
 <li>id
 : <a class="el" href="d8/dce/structcasadi_1_1MumpsMemory.html#ad5937c5d0edd3947ab880823ee0cf0a3">casadi::MumpsMemory</a>
+</li>
+<li>id_in_
+: <a class="el" href="d4/dfa/structcasadi_1_1FmuMemory.html#a02c2a0424f95fed89aeb3c9fc39424b3">casadi::FmuMemory</a>
+</li>
+<li>id_out_
+: <a class="el" href="d4/dfa/structcasadi_1_1FmuMemory.html#aa2b58262c47242bf00fa0e389267e4fa">casadi::FmuMemory</a>
 </li>
 <li>idu
 : <a class="el" href="d9/dff/structcasadi__ipqp__data.html#ae294bc9f3178aefa310f226321069b8d">casadi_ipqp_data&lt; T1 &gt;</a>
@@ -104,6 +113,12 @@ $(function() {
 <li>iin_
 : <a class="el" href="d4/d10/classcasadi_1_1Rootfinder.html#a95200cf8980cfa344a7f1871624fe7d6">casadi::Rootfinder</a>
 </li>
+<li>iind_
+: <a class="el" href="d2/d26/classcasadi_1_1FmuInternal.html#a3264809d3aa3b6adf459b0a002f05d22">casadi::FmuInternal</a>
+</li>
+<li>iind_map_
+: <a class="el" href="d2/d26/classcasadi_1_1FmuInternal.html#afdc777fbc5976e9232d1b56ef6696b11">casadi::FmuInternal</a>
+</li>
 <li>ikeep
 : <a class="el" href="dd/de6/structcasadi_1_1Ma27Memory.html#a19865e188029fe3d4cf8f4dc368a792e">casadi::Ma27Memory</a>
 </li>
@@ -115,7 +130,11 @@ $(function() {
 </li>
 <li>in_
 : <a class="el" href="d5/d29/classcasadi_1_1Factory.html#ab2e46afbfa1b2729d5047880ac84882b">casadi::Factory&lt; MatType &gt;</a>
+, <a class="el" href="d7/dc1/classcasadi_1_1FmuFunction.html#a0bc978806a1c29528c554cfdd0fa1401">casadi::FmuFunction</a>
 , <a class="el" href="d7/d72/classcasadi_1_1XFunction.html#abbdc6a6d3bb13c1a3e2c21e74648da3a">casadi::XFunction&lt; DerivedType, MatType, NodeType &gt;</a>
+</li>
+<li>in_bounds_
+: <a class="el" href="d4/dfa/structcasadi_1_1FmuMemory.html#a150788930bc572f8bcc6f367e18cf7a0">casadi::FmuMemory</a>
 </li>
 <li>inactive_lam_strategy_
 : <a class="el" href="d7/d2f/classcasadi_1_1IpoptInterface.html#a8a5d6f20d7574fd027141f639f1f0839">casadi::IpoptInterface</a>
@@ -140,6 +159,10 @@ $(function() {
 </li>
 <li>incref_
 : <a class="el" href="d8/db5/classcasadi_1_1External.html#a6e95ec35255db0b3807ae65c1dc5e800">casadi::External</a>
+</li>
+<li>ind
+: <a class="el" href="d8/d16/structcasadi_1_1InputStruct.html#ae2e76fb434df95234e3c4d88908af9dd">casadi::InputStruct</a>
+, <a class="el" href="d0/d86/structcasadi_1_1OutputStruct.html#a74081fbb2b3048aed44ceaca36b19788">casadi::OutputStruct</a>
 </li>
 <li>ind_
 : <a class="el" href="d8/d99/classcasadi_1_1IOInstruction.html#a11be748489d763ac697d54fb3e275a08">casadi::IOInstruction</a>
@@ -222,6 +245,9 @@ $(function() {
 <li>init_rhs_
 : <a class="el" href="d5/de1/classcasadi_1_1DaeBuilderInternal.html#a2d38a88f1a5aed513c81584b615f705f">casadi::DaeBuilderInternal</a>
 </li>
+<li>init_stats_
+: <a class="el" href="d7/dc1/classcasadi_1_1FmuFunction.html#a258287696d827a7810560822b8c9fc8d">casadi::FmuFunction</a>
+</li>
 <li>init_xdot_
 : <a class="el" href="d2/d52/classcasadi_1_1IdasInterface.html#a404bf0835fa6821cd3001dd39ff4ae5d">casadi::IdasInterface</a>
 </li>
@@ -239,6 +265,9 @@ $(function() {
 </li>
 <li>inputs_check_
 : <a class="el" href="d2/dab/classcasadi_1_1FunctionInternal.html#a5ff4beb66f8524d690051503c4185784">casadi::FunctionInternal</a>
+</li>
+<li>instance
+: <a class="el" href="d4/dfa/structcasadi_1_1FmuMemory.html#a5054ddc7ac2db4f837e5e01568f2f1d1">casadi::FmuMemory</a>
 </li>
 <li>instance_name
 : <a class="el" href="d4/dea/structcasadi__fmi__memory.html#a8cf9b234c70cae112dbd75d8ad4676e0">casadi_fmi_memory</a>
@@ -273,6 +302,9 @@ $(function() {
 <li>ipr
 : <a class="el" href="d9/dff/structcasadi__ipqp__data.html#a8c68fade32dff68c70aede6f95772922">casadi_ipqp_data&lt; T1 &gt;</a>
 , <a class="el" href="d3/d8d/structcasadi__qrqp__data.html#a4f30f77ab3cc62b0febf2f7650291485">casadi_qrqp_data&lt; T1 &gt;</a>
+</li>
+<li>ired_
+: <a class="el" href="d2/d26/classcasadi_1_1FmuInternal.html#a46146e056023d003e461eece6cd62719">casadi::FmuInternal</a>
 </li>
 <li>ires
 : <a class="el" href="de/dfa/structcasadi_1_1RootfinderMemory.html#a536c70a43888e2306b41e8f60b01d259">casadi::RootfinderMemory</a>
