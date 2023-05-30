@@ -6,12 +6,12 @@ type: singles
 
 ## Hands-on CasADi course on optimal control
 
-**20-22 November 2023 – Leuven, Belgium **
+**20-22 November 2023 – Leuven, Belgium**
 
 (download this description as [flyer](ocp2023.pdf))
 
 ### Target audience
-Academic/industrial researchers or tool-developers that seek practical ways to tackle large/complex continuous optimization problems, and optimal control problems in particular.
+Academic/industrial researchers or tool-developers that seek practical ways to tackle large/complex continuous optimization problems, and optimal control problems in particular. People seeking to quickly gain familiarity with CasADi through a broad range of practical exercises.
 
 ### CasADi?
 Originating from KU Leuven’s “Optimization in Engineering Center” under guidance of prof. Moritz Diehl, [CasADi](http://casadi.org) [1] is an open-source software framework for nonlinear optimization and algorithmic differentiation. It facilitates rapid - yet efficient - implementation of different methods for numerical optimal control, both in an offline context and for nonlinear model predictive control.
@@ -32,7 +32,7 @@ Basic mathematical skills (analysis, calculus, linear algebra) are required. Exp
 Joris Gillis obtained his PhD in electrical engineering at KU Leuven in 2015. Currently active at MECO, KU Leuven and part-time freelancer, he pursues large-scale applications in optimal control and is highly active as a main developer of CasADi since 2010.
 
 ### Practicalities
-The course will take place at the Park Inn hotel, Martelarenlaan 36, 3010 Leuven, Belgium, starting each day at 9:00 and ending on 18:00.
+The course will take place at the Park Inn hotel, Martelarenlaan 36, 3010 Leuven, Belgium, starting each day at 9:00 and ending at 18:00.
 Participants are required to bring their own laptops (Linux/Windows/Mac); no software is needed besides a working installation of MATLAB/Octave or Python.
 
 ### Registration
