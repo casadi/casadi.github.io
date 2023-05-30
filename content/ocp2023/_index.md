@@ -6,7 +6,7 @@ type: singles
 
 ## Hands-on CasADi course on optimal control
 
-**20-22 November 2023 – Leuven, Belgium**
+**November 20-22, 2023 – Leuven, Belgium**
 
 (download this description as [flyer](ocp2023.pdf))
 
