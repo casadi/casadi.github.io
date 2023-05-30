@@ -34,7 +34,7 @@ Basic mathematical skills (analysis, calculus, linear algebra) are required. Exp
 Joris Gillis obtained his PhD in electrical engineering at KU Leuven in 2015. Currently a post-doc at MECO, KU Leuven and part-time freelancer, he pursues large-scale applications in optimal control and is highly active as a main developer of CasADi since 2010.
 
 ### Practicalities
-The course will take place at the Park Inn hotel, Martelarenlaan 36, 3010 Leuven, Belgium, starting each day at 9:00 and ending on 18:00. A registration fee of 320 EURO excl. VAT is asked for to cover costs of venue, coffee breaks and sandwich lunches, as well as to sponsor further educational material/activities on CasADi.
+The course will take place at the Park Inn hotel, Martelarenlaan 36, 3010 Leuven, Belgium, starting each day at 9:00 and ending on 18:00. A registration fee is asked for to cover costs of venue, coffee breaks and sandwich lunches, as well as to sponsor further educational material/activities on CasADi.
 
 Lodging is not included, but a [discount rate](parkinn.pdf) can be obtained at the Park Inn.
 

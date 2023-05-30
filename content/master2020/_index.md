@@ -36,7 +36,7 @@ Joris Gillis obtained his PhD in electrical engineering at KU Leuven in 2015. Cu
 
 ### Practicalities
 The course will take place at the Park Inn hotel, Martelarenlaan 36, 3010 Leuven, Belgium, starting each day at 9:00 and ending on 18:00.
-The registration fee amounts to 750 EUR excl. VAT (450 EUR for PhD students). This includes lunches and a social dinner on March 17. Lodging is not included.
+The registration fee includes lunches and a social dinner on March 17. Lodging is not included.
 
 Participants are required to bring their own laptops (Linux/Windows/Mac). A working installation of either Matlab or Python is needed, as well as a C compiler, and either Virtualbox or VMware Workstation Player.
 
