@@ -41,9 +41,7 @@ The registration fee amounts to 1050 EUR excl. VAT (850 EUR for PhD students). E
 
 The number of participants is capped to 40. Registration closes October 15.
 
-
-Register now
-https://forms.gle/hX1ZcvZa2PZdrdqh9
+<a class="button" style="text-align: center;color:white;background-color:#dc0000;padding: 1em;text-decoration: none;font-weight:bold;margin:1em;display: inline-block;" href="https://forms.gle/hX1ZcvZa2PZdrdqh9">Register now</a>
 
 Subscribe to the [newsletter](https://forms.gle/9v1HKPYZDHcBYMXNA) if you wish to be kept up to date of further courses. You may also [pre-register](https://forms.gle/Pb7dwrwP6uanXeyr5) to a future course to get priority in registration.
 
