@@ -56,10 +56,10 @@ plot(full(res.x))
 {{< /highlight >}}
 {{< highlight python >}}
 from casadi import *
+from matplotlib.pyplot import plot, show
 
-
-x = MX.sym('x',2); # Two states
-p = MX.sym('p');   # Free parameter
+x = MX.sym('x',2)  # Two states
+p = MX.sym('p')    # Free parameter
 
 # Expression for ODE right-hand side
 z = 1-x[1]**2;
@@ -79,17 +79,18 @@ for k in range(4):
   # Integrate 1s forward in time:
   # call integrator symbolically
   res = F(x0=x,p=u[k])
-  x = res["xf"]
+  x = res['xf']
 
 
 # NLP declaration
-nlp = {'x':u,'f':dot(u,u),'g':x};
+nlp = {'x':u,'f':dot(u,u),'g':x}
 
 # Solve using IPOPT
 solver = nlpsol('solver','ipopt',nlp)
 res = solver(x0=0.2,lbg=0,ubg=0)
 
-plot(res["x"])
+plot(res['x'])
+show()
 {{< /highlight >}}
 {{< highlight cpp >}}
 #include <casadi/casadi.hpp>
