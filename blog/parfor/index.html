@@ -109,7 +109,7 @@
   <div class="row">
     <div class="col">
       <h1>Parfor</h1>
-      <span class="reading-time text-muted">Estimated reading time: 3 minutes</span>
+      <span class="reading-time text-muted">Estimated reading time: 4 minutes</span>
 
       <p>In this post we&rsquo;ll explore how to use Matlab&rsquo;s parfor with a CasADi nonlinear program.</p>
 <p>The nonlinear program (NLP) of interest is the following:
@@ -125,38 +125,38 @@ Our goal is to collect each solution of the NLP as we loop over $r$.
 We could imagine performing such task when tracing a pareto front of a multi-objective optimization, for which the parameter would be the a weight to combine those objectives.</p>
 <h1 id="problem-construction-inside-the-loop">Problem construction inside the loop</h1>
 <p>The first way to work with parfor and CasADi is to do the problem construction entirely in the loop:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="n">N</span> <span class="p">=</span> <span class="mi">250</span><span class="p">;</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="n">fsol</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">);</span><span class="err">
-</span><span class="err"></span><span class="n">rs</span> <span class="p">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">N</span><span class="p">);</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="n">parfor</span> <span class="n">i</span><span class="p">=</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="err">
-</span><span class="err"></span>  <span class="n">r</span> <span class="p">=</span> <span class="n">rs</span><span class="p">(</span><span class="n">i</span><span class="p">);</span><span class="err">
-</span><span class="err"></span>  <span class="n">x</span> <span class="p">=</span> <span class="n">casadi</span><span class="p">.</span><span class="n">SX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">);</span><span class="err">
-</span><span class="err"></span>  <span class="n">y</span> <span class="p">=</span> <span class="n">casadi</span><span class="p">.</span><span class="n">SX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;y&#39;</span><span class="p">);</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span>  <span class="n">v</span> <span class="p">=</span> <span class="p">[</span><span class="n">x</span><span class="p">;</span><span class="n">y</span><span class="p">];</span><span class="err">
-</span><span class="err"></span>  <span class="n">f</span> <span class="p">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>^<span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">x</span>^<span class="mi">2</span><span class="p">)</span>^<span class="mi">2</span><span class="p">;</span><span class="err">
-</span><span class="err"></span>  <span class="n">g</span> <span class="p">=</span> <span class="n">x</span>^<span class="mi">2</span><span class="o">+</span><span class="n">y</span>^<span class="mi">2</span><span class="p">;</span><span class="err">
-</span><span class="err"></span>  <span class="n">nlp</span> <span class="p">=</span> <span class="nb">struct</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="s">&#39;f&#39;</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="s">&#39;g&#39;</span><span class="p">,</span> <span class="n">g</span><span class="p">);</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span>  <span class="c">% Create IPOPT solver object</span><span class="err">
-</span><span class="err"></span>  <span class="n">solver</span> <span class="p">=</span> <span class="n">casadi</span><span class="p">.</span><span class="n">nlpsol</span><span class="p">(</span><span class="s">&#39;solver&#39;</span><span class="p">,</span> <span class="s">&#39;ipopt&#39;</span><span class="p">,</span> <span class="n">nlp</span><span class="p">);</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span>  <span class="c">% Solve the NLP</span><span class="err">
-</span><span class="err"></span>  <span class="n">res</span> <span class="p">=</span> <span class="n">solver</span><span class="p">(</span><span class="s">&#39;x0&#39;</span> <span class="p">,</span> <span class="p">[</span><span class="mf">2.5</span> <span class="mf">3.0</span><span class="p">],...</span>      <span class="c">% solution guess</span><span class="err">
-</span><span class="err"></span>               <span class="s">&#39;lbx&#39;</span><span class="p">,</span> <span class="o">-</span><span class="nb">inf</span><span class="p">,...</span>           <span class="c">% lower bound on x</span><span class="err">
-</span><span class="err"></span>               <span class="s">&#39;ubx&#39;</span><span class="p">,</span>  <span class="nb">inf</span><span class="p">,...</span>           <span class="c">% upper bound on x</span><span class="err">
-</span><span class="err"></span>               <span class="s">&#39;lbg&#39;</span><span class="p">,</span> <span class="o">-</span><span class="nb">inf</span><span class="p">,...</span>           <span class="c">% lower bound on g</span><span class="err">
-</span><span class="err"></span>               <span class="s">&#39;ubg&#39;</span><span class="p">,</span>  <span class="n">r</span><span class="p">);</span>               <span class="c">% upper bound on g</span><span class="err">
-</span><span class="err"></span>   <span class="err">
-</span><span class="err"></span>  <span class="err">
-</span><span class="err"></span>  <span class="c">% Store the solution</span><span class="err">
-</span><span class="err"></span>  <span class="n">fsol</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">=</span> <span class="nb">full</span><span class="p">(</span><span class="n">res</span><span class="p">.</span><span class="n">f</span><span class="p">);</span><span class="err">
-</span><span class="err"></span><span class="k">end</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="nb">plot</span><span class="p">(</span><span class="n">rs</span><span class="p">,</span><span class="n">fsol</span><span class="p">,</span><span class="s">&#39;o&#39;</span><span class="p">)</span><span class="err">
-</span></code></pre></div><p>We obtain a nice plot:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="line"><span class="cl"><span class="n">N</span> <span class="p">=</span> <span class="mi">250</span><span class="p">;</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="n">fsol</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">);</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="n">rs</span> <span class="p">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">N</span><span class="p">);</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="n">parfor</span> <span class="n">i</span><span class="p">=</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>  <span class="n">r</span> <span class="p">=</span> <span class="n">rs</span><span class="p">(</span><span class="n">i</span><span class="p">);</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>  <span class="n">x</span> <span class="p">=</span> <span class="n">casadi</span><span class="p">.</span><span class="n">SX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">);</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>  <span class="n">y</span> <span class="p">=</span> <span class="n">casadi</span><span class="p">.</span><span class="n">SX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;y&#39;</span><span class="p">);</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>  <span class="n">v</span> <span class="p">=</span> <span class="p">[</span><span class="n">x</span><span class="p">;</span><span class="n">y</span><span class="p">];</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>  <span class="n">f</span> <span class="p">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>^<span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">x</span>^<span class="mi">2</span><span class="p">)</span>^<span class="mi">2</span><span class="p">;</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>  <span class="n">g</span> <span class="p">=</span> <span class="n">x</span>^<span class="mi">2</span><span class="o">+</span><span class="n">y</span>^<span class="mi">2</span><span class="p">;</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>  <span class="n">nlp</span> <span class="p">=</span> <span class="nb">struct</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="s">&#39;f&#39;</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="s">&#39;g&#39;</span><span class="p">,</span> <span class="n">g</span><span class="p">);</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>  <span class="c">% Create IPOPT solver object</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>  <span class="n">solver</span> <span class="p">=</span> <span class="n">casadi</span><span class="p">.</span><span class="n">nlpsol</span><span class="p">(</span><span class="s">&#39;solver&#39;</span><span class="p">,</span> <span class="s">&#39;ipopt&#39;</span><span class="p">,</span> <span class="n">nlp</span><span class="p">);</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>  <span class="c">% Solve the NLP</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>  <span class="n">res</span> <span class="p">=</span> <span class="n">solver</span><span class="p">(</span><span class="s">&#39;x0&#39;</span> <span class="p">,</span> <span class="p">[</span><span class="mf">2.5</span> <span class="mf">3.0</span><span class="p">],...</span>      <span class="c">% solution guess</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>               <span class="s">&#39;lbx&#39;</span><span class="p">,</span> <span class="o">-</span><span class="nb">inf</span><span class="p">,...</span>           <span class="c">% lower bound on x</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>               <span class="s">&#39;ubx&#39;</span><span class="p">,</span>  <span class="nb">inf</span><span class="p">,...</span>           <span class="c">% upper bound on x</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>               <span class="s">&#39;lbg&#39;</span><span class="p">,</span> <span class="o">-</span><span class="nb">inf</span><span class="p">,...</span>           <span class="c">% lower bound on g</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>               <span class="s">&#39;ubg&#39;</span><span class="p">,</span>  <span class="n">r</span><span class="p">);</span>               <span class="c">% upper bound on g</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>   <span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>  <span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>  <span class="c">% Store the solution</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>  <span class="n">fsol</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">=</span> <span class="nb">full</span><span class="p">(</span><span class="n">res</span><span class="p">.</span><span class="n">f</span><span class="p">);</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">end</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">plot</span><span class="p">(</span><span class="n">rs</span><span class="p">,</span><span class="n">fsol</span><span class="p">,</span><span class="s">&#39;o&#39;</span><span class="p">)</span><span class="err">
+</span></span></span></code></pre></div><p>We obtain a nice plot:</p>
 <figure class=" default">
   <a href="https://web.casadi.org/blog/parfor/parfor1.png" target="_blank">
   <img src="https://web.casadi.org/blog/parfor/parfor1.png"  />
@@ -173,81 +173,81 @@ and simply make numerical calls to it in the loop.</p>
 <p>This advice collided with our limited support for parfor so far.
 CasADi 3.5 comes with improved support.
 The loop body may now contain numerical calls to CasADi Functions defined outside that loop:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="n">x</span> <span class="p">=</span> <span class="n">casadi</span><span class="p">.</span><span class="n">SX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">);</span><span class="err">
-</span><span class="err"></span><span class="n">y</span> <span class="p">=</span> <span class="n">casadi</span><span class="p">.</span><span class="n">SX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;y&#39;</span><span class="p">);</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="n">v</span> <span class="p">=</span> <span class="p">[</span><span class="n">x</span><span class="p">;</span><span class="n">y</span><span class="p">];</span><span class="err">
-</span><span class="err"></span><span class="n">f</span> <span class="p">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>^<span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">x</span>^<span class="mi">2</span><span class="p">)</span>^<span class="mi">2</span><span class="p">;</span><span class="err">
-</span><span class="err"></span><span class="n">g</span> <span class="p">=</span> <span class="n">x</span>^<span class="mi">2</span><span class="o">+</span><span class="n">y</span>^<span class="mi">2</span><span class="p">;</span><span class="err">
-</span><span class="err"></span><span class="n">nlp</span> <span class="p">=</span> <span class="nb">struct</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="s">&#39;f&#39;</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="s">&#39;g&#39;</span><span class="p">,</span> <span class="n">g</span><span class="p">);</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="c">% Create IPOPT solver object</span><span class="err">
-</span><span class="err"></span><span class="n">solver</span> <span class="p">=</span> <span class="n">casadi</span><span class="p">.</span><span class="n">nlpsol</span><span class="p">(</span><span class="s">&#39;solver&#39;</span><span class="p">,</span> <span class="s">&#39;ipopt&#39;</span><span class="p">,</span> <span class="n">nlp</span><span class="p">);</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="nb">tic</span><span class="err">
-</span><span class="err"></span><span class="n">parfor</span> <span class="n">i</span><span class="p">=</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="err">
-</span><span class="err"></span>  <span class="c">% Solve the NLP</span><span class="err">
-</span><span class="err"></span>  <span class="n">res</span> <span class="p">=</span> <span class="n">solver</span><span class="p">(</span><span class="s">&#39;x0&#39;</span> <span class="p">,</span> <span class="p">[</span><span class="mf">2.5</span> <span class="mf">3.0</span><span class="p">],...</span>      <span class="c">% solution guess</span><span class="err">
-</span><span class="err"></span>               <span class="s">&#39;lbx&#39;</span><span class="p">,</span> <span class="o">-</span><span class="nb">inf</span><span class="p">,...</span>           <span class="c">% lower bound on x</span><span class="err">
-</span><span class="err"></span>               <span class="s">&#39;ubx&#39;</span><span class="p">,</span>  <span class="nb">inf</span><span class="p">,...</span>           <span class="c">% upper bound on x</span><span class="err">
-</span><span class="err"></span>               <span class="s">&#39;lbg&#39;</span><span class="p">,</span> <span class="o">-</span><span class="nb">inf</span><span class="p">,...</span>           <span class="c">% lower bound on g</span><span class="err">
-</span><span class="err"></span>               <span class="s">&#39;ubg&#39;</span><span class="p">,</span>  <span class="n">rs</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>           <span class="c">% upper bound on g</span><span class="err">
-</span><span class="err"></span>   <span class="err">
-</span><span class="err"></span>  <span class="err">
-</span><span class="err"></span>  <span class="c">% Store the solution</span><span class="err">
-</span><span class="err"></span>  <span class="n">fsol</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">=</span> <span class="nb">full</span><span class="p">(</span><span class="n">res</span><span class="p">.</span><span class="n">f</span><span class="p">);</span><span class="err">
-</span><span class="err"></span><span class="k">end</span><span class="err">
-</span><span class="err"></span><span class="nb">toc</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="nb">plot</span><span class="p">(</span><span class="n">rs</span><span class="p">,</span><span class="n">fsol</span><span class="p">,</span><span class="s">&#39;o&#39;</span><span class="p">)</span><span class="err">
-</span></code></pre></div><p>Download code: <a href="casadi_parfor2.m">casadi_parfor2.m</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="line"><span class="cl"><span class="n">x</span> <span class="p">=</span> <span class="n">casadi</span><span class="p">.</span><span class="n">SX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">);</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="n">y</span> <span class="p">=</span> <span class="n">casadi</span><span class="p">.</span><span class="n">SX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;y&#39;</span><span class="p">);</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="n">v</span> <span class="p">=</span> <span class="p">[</span><span class="n">x</span><span class="p">;</span><span class="n">y</span><span class="p">];</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="n">f</span> <span class="p">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>^<span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">x</span>^<span class="mi">2</span><span class="p">)</span>^<span class="mi">2</span><span class="p">;</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="n">g</span> <span class="p">=</span> <span class="n">x</span>^<span class="mi">2</span><span class="o">+</span><span class="n">y</span>^<span class="mi">2</span><span class="p">;</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="n">nlp</span> <span class="p">=</span> <span class="nb">struct</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="s">&#39;f&#39;</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="s">&#39;g&#39;</span><span class="p">,</span> <span class="n">g</span><span class="p">);</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c">% Create IPOPT solver object</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="n">solver</span> <span class="p">=</span> <span class="n">casadi</span><span class="p">.</span><span class="n">nlpsol</span><span class="p">(</span><span class="s">&#39;solver&#39;</span><span class="p">,</span> <span class="s">&#39;ipopt&#39;</span><span class="p">,</span> <span class="n">nlp</span><span class="p">);</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">tic</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="n">parfor</span> <span class="n">i</span><span class="p">=</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>  <span class="c">% Solve the NLP</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>  <span class="n">res</span> <span class="p">=</span> <span class="n">solver</span><span class="p">(</span><span class="s">&#39;x0&#39;</span> <span class="p">,</span> <span class="p">[</span><span class="mf">2.5</span> <span class="mf">3.0</span><span class="p">],...</span>      <span class="c">% solution guess</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>               <span class="s">&#39;lbx&#39;</span><span class="p">,</span> <span class="o">-</span><span class="nb">inf</span><span class="p">,...</span>           <span class="c">% lower bound on x</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>               <span class="s">&#39;ubx&#39;</span><span class="p">,</span>  <span class="nb">inf</span><span class="p">,...</span>           <span class="c">% upper bound on x</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>               <span class="s">&#39;lbg&#39;</span><span class="p">,</span> <span class="o">-</span><span class="nb">inf</span><span class="p">,...</span>           <span class="c">% lower bound on g</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>               <span class="s">&#39;ubg&#39;</span><span class="p">,</span>  <span class="n">rs</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>           <span class="c">% upper bound on g</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>   <span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>  <span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>  <span class="c">% Store the solution</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>  <span class="n">fsol</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">=</span> <span class="nb">full</span><span class="p">(</span><span class="n">res</span><span class="p">.</span><span class="n">f</span><span class="p">);</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">end</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">toc</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">plot</span><span class="p">(</span><span class="n">rs</span><span class="p">,</span><span class="n">fsol</span><span class="p">,</span><span class="s">&#39;o&#39;</span><span class="p">)</span><span class="err">
+</span></span></span></code></pre></div><p>Download code: <a href="casadi_parfor2.m">casadi_parfor2.m</a></p>
 <p>Note 1: for this example the parameter entered trivially through &lsquo;ubg&rsquo;.
 In general, you may need to work with a parametric NLP:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="n">p</span> <span class="p">=</span> <span class="n">casadi</span><span class="p">.</span><span class="n">SX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;p&#39;</span><span class="p">);</span><span class="err">
-</span><span class="err"></span><span class="n">g</span> <span class="p">=</span> <span class="n">x</span>^<span class="mi">2</span><span class="o">+</span><span class="n">y</span>^<span class="mi">2</span><span class="o">-</span><span class="n">p</span><span class="p">;</span><span class="err">
-</span><span class="err"></span><span class="n">nlp</span> <span class="p">=</span> <span class="nb">struct</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="s">&#39;p&#39;</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="s">&#39;f&#39;</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="s">&#39;g&#39;</span><span class="p">,</span> <span class="n">g</span><span class="p">);</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span>  <span class="n">res</span> <span class="p">=</span> <span class="n">solver</span><span class="p">(</span><span class="s">&#39;x0&#39;</span> <span class="p">,</span> <span class="p">[</span><span class="mf">2.5</span> <span class="mf">3.0</span><span class="p">],...</span>      <span class="c">% solution guess</span><span class="err">
-</span><span class="err"></span>               <span class="p">...</span><span class="err">
-</span><span class="err"></span>               <span class="s">&#39;p&#39;</span><span class="p">,</span>  <span class="n">rs</span><span class="p">(</span><span class="n">i</span><span class="p">));</span><span class="err">
-</span></code></pre></div><p>Note 2: constructing CasADi Functions inside the loop with CasADi symbols declared outside the loop is forbidden, but inefficient anyway.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="line"><span class="cl"><span class="n">p</span> <span class="p">=</span> <span class="n">casadi</span><span class="p">.</span><span class="n">SX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;p&#39;</span><span class="p">);</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="n">g</span> <span class="p">=</span> <span class="n">x</span>^<span class="mi">2</span><span class="o">+</span><span class="n">y</span>^<span class="mi">2</span><span class="o">-</span><span class="n">p</span><span class="p">;</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="n">nlp</span> <span class="p">=</span> <span class="nb">struct</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="s">&#39;p&#39;</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="s">&#39;f&#39;</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="s">&#39;g&#39;</span><span class="p">,</span> <span class="n">g</span><span class="p">);</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>  <span class="n">res</span> <span class="p">=</span> <span class="n">solver</span><span class="p">(</span><span class="s">&#39;x0&#39;</span> <span class="p">,</span> <span class="p">[</span><span class="mf">2.5</span> <span class="mf">3.0</span><span class="p">],...</span>      <span class="c">% solution guess</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>               <span class="p">...</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>               <span class="s">&#39;p&#39;</span><span class="p">,</span>  <span class="n">rs</span><span class="p">(</span><span class="n">i</span><span class="p">));</span><span class="err">
+</span></span></span></code></pre></div><p>Note 2: constructing CasADi Functions inside the loop with CasADi symbols declared outside the loop is forbidden, but inefficient anyway.</p>
 <h1 id="implementation-details-and-python">Implementation details and Python</h1>
 <p>We did not actually code anything parfor-specific in CasADi.
 The reason that CasADi 3.5 supports the construct above now is because we implemented serialization/deserialization of CasADi Functions.</p>
 <p>Parfor uses this under the hood to transfer problems/results to/from different threads.
 Such mechanism is often encounter for parallelization, for example in Python&rsquo;s multiprocessing module.
 In fact, the above code can easily be rewritten for Python:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span>
-
-<span class="kn">from</span> <span class="nn">casadi</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="n">N</span> <span class="o">=</span> <span class="mi">250</span>
-<span class="n">rs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
-
-<span class="n">x</span> <span class="o">=</span> <span class="n">SX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">SX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
-
-<span class="n">v</span> <span class="o">=</span> <span class="n">vertcat</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-<span class="n">f</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
-<span class="n">g</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span>
-<span class="n">nlp</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">v</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">:</span> <span class="n">f</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">:</span> <span class="n">g</span><span class="p">}</span>
-
-<span class="c1"># Create IPOPT solver object</span>
-<span class="n">solver</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">nlpsol</span><span class="p">(</span><span class="s1">&#39;solver&#39;</span><span class="p">,</span> <span class="s1">&#39;ipopt&#39;</span><span class="p">,</span> <span class="n">nlp</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">optimize</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
-  <span class="n">res</span> <span class="o">=</span> <span class="n">solver</span><span class="p">(</span><span class="n">x0</span><span class="o">=</span><span class="p">[</span><span class="mf">2.5</span><span class="p">,</span><span class="mf">3.0</span><span class="p">],</span>      <span class="c1"># solution guess</span>
-               <span class="n">lbx</span><span class="o">=-</span><span class="n">inf</span><span class="p">,</span>          <span class="c1"># lower bound on x</span>
-               <span class="n">ubx</span><span class="o">=</span><span class="n">inf</span><span class="p">,</span>           <span class="c1"># upper bound on x</span>
-               <span class="n">lbg</span><span class="o">=-</span><span class="n">inf</span><span class="p">,</span>          <span class="c1"># lower bound on g</span>
-               <span class="n">ubg</span><span class="o">=</span><span class="n">r</span><span class="p">)</span>         <span class="c1"># upper bound on g</span>
-   
-  
-  <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s2">&#34;f&#34;</span><span class="p">])</span>
-
-<span class="n">b</span> <span class="o">=</span> <span class="n">Pool</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">fsol</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">optimize</span><span class="p">,</span> <span class="n">rs</span><span class="p">)</span>
-</code></pre></div><p>Download code: <a href="casadi_multiprocessing.py">casadi_multiprocessing.py</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">casadi</span> <span class="kn">import</span> <span class="o">*</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">N</span> <span class="o">=</span> <span class="mi">250</span>
+</span></span><span class="line"><span class="cl"><span class="n">rs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">SX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="o">=</span> <span class="n">SX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">v</span> <span class="o">=</span> <span class="n">vertcat</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">f</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+</span></span><span class="line"><span class="cl"><span class="n">g</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span>
+</span></span><span class="line"><span class="cl"><span class="n">nlp</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">v</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">:</span> <span class="n">f</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">:</span> <span class="n">g</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Create IPOPT solver object</span>
+</span></span><span class="line"><span class="cl"><span class="n">solver</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">nlpsol</span><span class="p">(</span><span class="s1">&#39;solver&#39;</span><span class="p">,</span> <span class="s1">&#39;ipopt&#39;</span><span class="p">,</span> <span class="n">nlp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">optimize</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">  <span class="n">res</span> <span class="o">=</span> <span class="n">solver</span><span class="p">(</span><span class="n">x0</span><span class="o">=</span><span class="p">[</span><span class="mf">2.5</span><span class="p">,</span><span class="mf">3.0</span><span class="p">],</span>      <span class="c1"># solution guess</span>
+</span></span><span class="line"><span class="cl">               <span class="n">lbx</span><span class="o">=-</span><span class="n">inf</span><span class="p">,</span>          <span class="c1"># lower bound on x</span>
+</span></span><span class="line"><span class="cl">               <span class="n">ubx</span><span class="o">=</span><span class="n">inf</span><span class="p">,</span>           <span class="c1"># upper bound on x</span>
+</span></span><span class="line"><span class="cl">               <span class="n">lbg</span><span class="o">=-</span><span class="n">inf</span><span class="p">,</span>          <span class="c1"># lower bound on g</span>
+</span></span><span class="line"><span class="cl">               <span class="n">ubg</span><span class="o">=</span><span class="n">r</span><span class="p">)</span>         <span class="c1"># upper bound on g</span>
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s2">&#34;f&#34;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">b</span> <span class="o">=</span> <span class="n">Pool</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">fsol</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">optimize</span><span class="p">,</span> <span class="n">rs</span><span class="p">)</span>
+</span></span></code></pre></div><p>Download code: <a href="casadi_multiprocessing.py">casadi_multiprocessing.py</a></p>
 <p>In conclusion, we demonstrated a new way to solve NLPs in parallel with CasADi.
 Finally, note that we have an unrelated <a href="https://web.casadi.org/docs/#map">parallelization mechanism</a> to evaluate e.g. constraints of a single NLP in parallel.</p>
 

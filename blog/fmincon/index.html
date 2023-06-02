@@ -123,24 +123,24 @@ you don&rsquo;t have to stick to the solvers we interface.</p>
 \end{align}
 $$</p>
 <p>You can solve this with <code>fminunc</code>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="n">fminunc</span><span class="p">(@(</span><span class="n">x</span><span class="p">)</span> <span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>^<span class="mi">2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
-</code></pre></div><p>The first argument, an anonymous function, can contain any code, including CasADi code.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="n">fminunc</span><span class="p">(@(</span><span class="n">x</span><span class="p">)</span> <span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>^<span class="mi">2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+</span></span></code></pre></div><p>The first argument, an anonymous function, can contain any code, including CasADi code.</p>
 <p>Let&rsquo;s use CasADi to evaluate the objective:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="n">import</span> <span class="n">casadi</span><span class="o">.*</span>
-<span class="n">x</span> <span class="p">=</span> <span class="n">MX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">);</span>
-<span class="n">f</span> <span class="p">=</span> <span class="n">Function</span><span class="p">(</span><span class="s">&#39;f&#39;</span><span class="p">,{</span><span class="n">x</span><span class="p">},{</span><span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>^<span class="mi">2</span><span class="p">});</span>
-
-<span class="n">fminunc</span><span class="p">(@(</span><span class="n">x</span><span class="p">)</span> <span class="n">full</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="mf">0.1</span><span class="p">)</span>
-</code></pre></div><p>Simple enough, but do mind the <code>full</code> to go from CasADi numeric matrix type to a Matlab matrix.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="n">import</span> <span class="n">casadi</span><span class="o">.*</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="p">=</span> <span class="n">MX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">f</span> <span class="p">=</span> <span class="n">Function</span><span class="p">(</span><span class="s">&#39;f&#39;</span><span class="p">,{</span><span class="n">x</span><span class="p">},{</span><span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>^<span class="mi">2</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">fminunc</span><span class="p">(@(</span><span class="n">x</span><span class="p">)</span> <span class="n">full</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="mf">0.1</span><span class="p">)</span>
+</span></span></code></pre></div><p>Simple enough, but do mind the <code>full</code> to go from CasADi numeric matrix type to a Matlab matrix.</p>
 <p>As is, <code>fminunc</code> will perform finite differences under the hood.
 That&rsquo;s a shame since CasADi can do algorithmic differentiation.</p>
 <p>Let&rsquo;s supply the gradient of the objective, computed by CasADi, as well:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="n">fg</span> <span class="p">=</span> <span class="n">Function</span><span class="p">(</span><span class="s">&#39;fg&#39;</span><span class="p">,{</span><span class="n">x</span><span class="p">},{</span><span class="n">y</span><span class="p">,</span><span class="n">gradient</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)});</span>
-<span class="n">fg_full</span> <span class="p">=</span> <span class="n">returntypes</span><span class="p">(</span><span class="s">&#39;full&#39;</span><span class="p">,</span><span class="n">fg</span><span class="p">);</span>
-
-<span class="n">options</span> <span class="p">=</span> <span class="n">optimoptions</span><span class="p">(</span><span class="s">&#39;fminunc&#39;</span><span class="p">,</span><span class="s">&#39;SpecifyObjectiveGradient&#39;</span><span class="p">,</span><span class="n">true</span><span class="p">);</span>
-<span class="n">fminunc</span><span class="p">(@(</span><span class="n">x</span><span class="p">)</span> <span class="n">fg_full</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
-</code></pre></div><p>Note the <code>returntypes</code> helper such that you don&rsquo;t need to explicitly convert from a CasADi numeric matrix to a Matlab matrix.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="n">fg</span> <span class="p">=</span> <span class="n">Function</span><span class="p">(</span><span class="s">&#39;fg&#39;</span><span class="p">,{</span><span class="n">x</span><span class="p">},{</span><span class="n">y</span><span class="p">,</span><span class="n">gradient</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)});</span>
+</span></span><span class="line"><span class="cl"><span class="n">fg_full</span> <span class="p">=</span> <span class="n">returntypes</span><span class="p">(</span><span class="s">&#39;full&#39;</span><span class="p">,</span><span class="n">fg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">options</span> <span class="p">=</span> <span class="n">optimoptions</span><span class="p">(</span><span class="s">&#39;fminunc&#39;</span><span class="p">,</span><span class="s">&#39;SpecifyObjectiveGradient&#39;</span><span class="p">,</span><span class="n">true</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">fminunc</span><span class="p">(@(</span><span class="n">x</span><span class="p">)</span> <span class="n">fg_full</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
+</span></span></code></pre></div><p>Note the <code>returntypes</code> helper such that you don&rsquo;t need to explicitly convert from a CasADi numeric matrix to a Matlab matrix.</p>
 <p>For this scalar example, you will hardly see any speed-up.
 For a decision space of size $n$, the default finite differences approach will cost you <code>n</code> times the cost of the objective function evaluation:
 <code>O(n cost(f))</code>
@@ -160,54 +160,54 @@ $$</p>
 We just need to construct CasADi functions to compute the objective and constraints and their sensitivities,
 and massage them to match the API of <code>fmincon</code>.
 Again, you can omit the sensitivities and rely on (much slower!) finite differences.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">% Function to compute objective and its gradient
-f = casadi.Function(&#39;f&#39;,{x,p},{f,gradient(f,x)});
-
-% Function to compute constraint vector, its Jacobian, and bounds
-g = casadi.Function(&#39;g&#39;,{x,p},{g,jacobian(g,x),lbg,ubg});
-
-options = optimoptions(&#39;fmincon&#39;,...
-                       &#39;Display&#39;,&#39;iter&#39;,...
-                       &#39;Algorithm&#39;,&#39;sqp&#39;,...
-                       &#39;SpecifyObjectiveGradient&#39;,true,...
-                       &#39;SpecifyConstraintGradient&#39;,true);
-
-[x_opt,fval] = fmincon(@(x) obj_casadi(f,x,p),x0,[],[],[],[],[],[], @(x) nonlin_casadi(g,x,p),options);
-</code></pre></div><p>Note the helper functions <code>obj_casadi</code> and <code>nonlin_casadi</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">% Function to compute objective and its gradient
+</span></span><span class="line"><span class="cl">f = casadi.Function(&#39;f&#39;,{x,p},{f,gradient(f,x)});
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">% Function to compute constraint vector, its Jacobian, and bounds
+</span></span><span class="line"><span class="cl">g = casadi.Function(&#39;g&#39;,{x,p},{g,jacobian(g,x),lbg,ubg});
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">options = optimoptions(&#39;fmincon&#39;,...
+</span></span><span class="line"><span class="cl">                       &#39;Display&#39;,&#39;iter&#39;,...
+</span></span><span class="line"><span class="cl">                       &#39;Algorithm&#39;,&#39;sqp&#39;,...
+</span></span><span class="line"><span class="cl">                       &#39;SpecifyObjectiveGradient&#39;,true,...
+</span></span><span class="line"><span class="cl">                       &#39;SpecifyConstraintGradient&#39;,true);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[x_opt,fval] = fmincon(@(x) obj_casadi(f,x,p),x0,[],[],[],[],[],[], @(x) nonlin_casadi(g,x,p),options);
+</span></span></code></pre></div><p>Note the helper functions <code>obj_casadi</code> and <code>nonlin_casadi</code>.</p>
 <p>The first helper is simple enough, and could also be achieved with <code>returntypes</code>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="k">function</span><span class="w"> </span>[f,g]<span class="p">=</span><span class="nf">obj_casadi</span><span class="p">(</span>f_function,x,p<span class="p">)</span><span class="w">
-</span><span class="w">  </span><span class="p">[</span><span class="n">f</span><span class="p">,</span><span class="n">g</span><span class="p">]</span> <span class="p">=</span> <span class="n">f_function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">p</span><span class="p">);</span>
-  <span class="n">f</span> <span class="p">=</span> <span class="n">full</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
-  <span class="n">g</span> <span class="p">=</span> <span class="n">full</span><span class="p">(</span><span class="n">g</span><span class="p">);</span>
-<span class="k">end</span>
-</code></pre></div><p>The second helper is somewhat more involved since we need to separate out the equalities from the inequalities:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="k">function</span><span class="w"> </span>[c,ceq,gradc,gradceq]<span class="p">=</span><span class="nf">nonlin_casadi</span><span class="p">(</span>g_function,x,p<span class="p">)</span><span class="w">
-</span><span class="w">  </span><span class="c">% Morph the constraints into c&lt;=0, ceq==0</span>
-  <span class="c">%</span>
-  <span class="c">% CasADi way: lbg &lt;= g &lt;= ubg</span>
-  <span class="p">[</span><span class="n">g</span><span class="p">,</span><span class="n">J</span><span class="p">,</span><span class="n">lbg</span><span class="p">,</span><span class="n">ubg</span><span class="p">]</span> <span class="p">=</span> <span class="n">g_function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">p</span><span class="p">);</span>
-  <span class="n">g</span> <span class="p">=</span> <span class="n">full</span><span class="p">(</span><span class="n">g</span><span class="p">);</span>
-  <span class="n">lbg</span> <span class="p">=</span> <span class="n">full</span><span class="p">(</span><span class="n">lbg</span><span class="p">);</span>
-  <span class="n">ubg</span> <span class="p">=</span> <span class="n">full</span><span class="p">(</span><span class="n">ubg</span><span class="p">);</span>
-  <span class="n">J</span> <span class="p">=</span> <span class="n">sparse</span><span class="p">(</span><span class="n">J</span><span class="p">);</span>
-  
-  <span class="c">% Classify into eq/ineq</span>
-  <span class="n">eq</span> <span class="p">=</span> <span class="n">lbg</span><span class="o">==</span><span class="n">ubg</span><span class="p">;</span>
-  <span class="n">ineq</span> <span class="p">=</span> <span class="n">lbg</span><span class="o">~=</span><span class="n">ubg</span><span class="p">;</span>
-  
-  <span class="c">% Classify into free/fixed</span>
-  <span class="n">lbg_fixed</span> <span class="p">=</span> <span class="n">lbg</span><span class="o">~=-</span><span class="nb">inf</span><span class="p">;</span>
-  <span class="n">ubg_fixed</span> <span class="p">=</span> <span class="n">ubg</span><span class="o">~=</span><span class="nb">inf</span><span class="p">;</span>
-  
-  <span class="c">% Constraint vector</span>
-  <span class="n">c</span> <span class="p">=</span> <span class="p">[</span><span class="n">lbg</span><span class="p">(</span><span class="n">ineq</span><span class="o">&amp;</span><span class="n">lbg_fixed</span><span class="p">)</span><span class="o">-</span><span class="n">g</span><span class="p">(</span><span class="n">ineq</span><span class="o">&amp;</span><span class="n">lbg_fixed</span><span class="p">);</span><span class="n">g</span><span class="p">(</span><span class="n">ineq</span><span class="o">&amp;</span><span class="n">ubg_fixed</span><span class="p">)</span><span class="o">-</span><span class="n">ubg</span><span class="p">(</span><span class="n">ineq</span><span class="o">&amp;</span><span class="n">ubg_fixed</span><span class="p">)];</span>
-  <span class="n">ceq</span> <span class="p">=</span> <span class="n">g</span><span class="p">(</span><span class="n">eq</span><span class="p">)</span><span class="o">-</span><span class="n">lbg</span><span class="p">(</span><span class="n">eq</span><span class="p">);</span>
-  
-  <span class="c">% Constraint Jacobian tranposed</span>
-  <span class="n">gradc</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="n">J</span><span class="p">(</span><span class="n">ineq</span><span class="o">&amp;</span><span class="n">lbg_fixed</span><span class="p">,:);</span><span class="n">J</span><span class="p">(</span><span class="n">ineq</span><span class="o">&amp;</span><span class="n">ubg_fixed</span><span class="p">,:)]</span><span class="o">&#39;</span><span class="p">;</span>
-  <span class="n">gradceq</span> <span class="p">=</span> <span class="n">J</span><span class="p">(</span><span class="n">eq</span><span class="p">,:)</span><span class="o">&#39;</span><span class="p">;</span>
-<span class="k">end</span>
-</code></pre></div><p>There&rsquo;s more options to go from here with <code>fmincon</code>.
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="k">function</span><span class="w"> </span>[f,g]<span class="p">=</span><span class="nf">obj_casadi</span><span class="p">(</span>f_function,x,p<span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">[</span><span class="n">f</span><span class="p">,</span><span class="n">g</span><span class="p">]</span> <span class="p">=</span> <span class="n">f_function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">p</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">f</span> <span class="p">=</span> <span class="n">full</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">g</span> <span class="p">=</span> <span class="n">full</span><span class="p">(</span><span class="n">g</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span></code></pre></div><p>The second helper is somewhat more involved since we need to separate out the equalities from the inequalities:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="k">function</span><span class="w"> </span>[c,ceq,gradc,gradceq]<span class="p">=</span><span class="nf">nonlin_casadi</span><span class="p">(</span>g_function,x,p<span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c">% Morph the constraints into c&lt;=0, ceq==0</span>
+</span></span><span class="line"><span class="cl">  <span class="c">%</span>
+</span></span><span class="line"><span class="cl">  <span class="c">% CasADi way: lbg &lt;= g &lt;= ubg</span>
+</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="n">g</span><span class="p">,</span><span class="n">J</span><span class="p">,</span><span class="n">lbg</span><span class="p">,</span><span class="n">ubg</span><span class="p">]</span> <span class="p">=</span> <span class="n">g_function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">p</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">g</span> <span class="p">=</span> <span class="n">full</span><span class="p">(</span><span class="n">g</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">lbg</span> <span class="p">=</span> <span class="n">full</span><span class="p">(</span><span class="n">lbg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ubg</span> <span class="p">=</span> <span class="n">full</span><span class="p">(</span><span class="n">ubg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">J</span> <span class="p">=</span> <span class="n">sparse</span><span class="p">(</span><span class="n">J</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="c">% Classify into eq/ineq</span>
+</span></span><span class="line"><span class="cl">  <span class="n">eq</span> <span class="p">=</span> <span class="n">lbg</span><span class="o">==</span><span class="n">ubg</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ineq</span> <span class="p">=</span> <span class="n">lbg</span><span class="o">~=</span><span class="n">ubg</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="c">% Classify into free/fixed</span>
+</span></span><span class="line"><span class="cl">  <span class="n">lbg_fixed</span> <span class="p">=</span> <span class="n">lbg</span><span class="o">~=-</span><span class="nb">inf</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ubg_fixed</span> <span class="p">=</span> <span class="n">ubg</span><span class="o">~=</span><span class="nb">inf</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="c">% Constraint vector</span>
+</span></span><span class="line"><span class="cl">  <span class="n">c</span> <span class="p">=</span> <span class="p">[</span><span class="n">lbg</span><span class="p">(</span><span class="n">ineq</span><span class="o">&amp;</span><span class="n">lbg_fixed</span><span class="p">)</span><span class="o">-</span><span class="n">g</span><span class="p">(</span><span class="n">ineq</span><span class="o">&amp;</span><span class="n">lbg_fixed</span><span class="p">);</span><span class="n">g</span><span class="p">(</span><span class="n">ineq</span><span class="o">&amp;</span><span class="n">ubg_fixed</span><span class="p">)</span><span class="o">-</span><span class="n">ubg</span><span class="p">(</span><span class="n">ineq</span><span class="o">&amp;</span><span class="n">ubg_fixed</span><span class="p">)];</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ceq</span> <span class="p">=</span> <span class="n">g</span><span class="p">(</span><span class="n">eq</span><span class="p">)</span><span class="o">-</span><span class="n">lbg</span><span class="p">(</span><span class="n">eq</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="c">% Constraint Jacobian tranposed</span>
+</span></span><span class="line"><span class="cl">  <span class="n">gradc</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="n">J</span><span class="p">(</span><span class="n">ineq</span><span class="o">&amp;</span><span class="n">lbg_fixed</span><span class="p">,:);</span><span class="n">J</span><span class="p">(</span><span class="n">ineq</span><span class="o">&amp;</span><span class="n">ubg_fixed</span><span class="p">,:)]</span><span class="o">&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">gradceq</span> <span class="p">=</span> <span class="n">J</span><span class="p">(</span><span class="n">eq</span><span class="p">,:)</span><span class="o">&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span></code></pre></div><p>There&rsquo;s more options to go from here with <code>fmincon</code>.
 You may use <code>which_depends</code> to classify constraints into linear/nonlinear, you may specify a Hessian,
 or you can work with matrix-free (large-scale) methods that require the computation of a matrix-vector product instead of the matrix.</p>
 <p>And remember, you always have the code-generation option to speed up your problem if the bottleneck lies with the function evaluations.</p>

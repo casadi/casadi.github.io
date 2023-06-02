@@ -114,31 +114,31 @@
       <p>During my master&rsquo;s thesis at KULeuven on optimal control, one of the take-aways were that it&rsquo;s important to scale your variables. It helps convergence if the variables are in the order of 0.01 to 100.</p>
 <p>Master student Thomas Durbin stumbled upon a dramatic example of bad scaling in practice. He works on <a href="https://web.casadi.org/blog/ocp/">optimal control</a> for rockets. As a first toy problem, he studied a 1D rocket the must attain a certain height at $t=100\,\mathrm{s}$, with minimal expenditure of fuel. Following good engineering practice, he used SI base units to write the code.</p>
 <p>The gist of the code is as follows (complete code <a href="rocket.m">here</a>):</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="n">m0</span> <span class="p">=</span> <span class="mi">500000</span><span class="p">;</span> <span class="c">% start mass [kg]</span>
-<span class="n">yT</span> <span class="p">=</span> <span class="mi">100000</span><span class="p">;</span> <span class="c">% final height [m]</span>
-<span class="n">g</span> <span class="p">=</span> <span class="mf">9.81</span><span class="p">;</span> <span class="c">% gravity 9.81 [m/s^2]</span>
-<span class="n">alpha</span> <span class="p">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">300</span><span class="o">*</span><span class="n">g</span><span class="p">);</span> <span class="c">% kg/(N*s);</span>
-
-<span class="n">opti</span> <span class="p">=</span> <span class="n">casadi</span><span class="p">.</span><span class="n">Opti</span><span class="p">();</span>
-
-<span class="c">% Decision variables [height;velocity;mass]</span>
-<span class="n">x</span> <span class="p">=</span> <span class="n">opti</span><span class="p">.</span><span class="n">variable</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
-<span class="n">y</span> <span class="p">=</span> <span class="n">x</span><span class="p">(</span><span class="mi">1</span><span class="p">,:);</span> <span class="c">% height</span>
-<span class="n">v</span> <span class="p">=</span> <span class="n">x</span><span class="p">(</span><span class="mi">2</span><span class="p">,:);</span> <span class="c">% velocity</span>
-<span class="n">m</span> <span class="p">=</span> <span class="n">x</span><span class="p">(</span><span class="mi">3</span><span class="p">,:);</span> <span class="c">% mass</span>
-<span class="n">u</span> <span class="p">=</span> <span class="n">opti</span><span class="p">.</span><span class="n">variable</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">);</span> <span class="c">% Control vector</span>
-
-<span class="c">% Dynamic constraints</span>
-<span class="n">rocket_ode</span> <span class="p">=</span> <span class="p">@(</span><span class="n">x</span><span class="p">,</span><span class="n">u</span><span class="p">)</span> <span class="p">[</span><span class="n">x</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="n">u</span><span class="o">/</span><span class="n">x</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">-</span><span class="n">g</span><span class="p">;</span><span class="o">-</span><span class="n">alpha</span><span class="o">*</span><span class="n">u</span><span class="p">];</span>
-
-<span class="k">for</span> <span class="n">k</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">N</span>
-    <span class="n">opti</span><span class="p">.</span><span class="n">subject_to</span><span class="p">(</span><span class="n">x</span><span class="p">(:,</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="n">x</span><span class="p">(:,</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">rocket_ode</span><span class="p">(</span><span class="n">x</span><span class="p">(:,</span><span class="n">k</span><span class="p">),</span><span class="n">u</span><span class="p">(:,</span><span class="n">k</span><span class="p">))</span><span class="o">*</span><span class="n">dt</span><span class="p">);</span>
-<span class="k">end</span>
-
-<span class="c">% Boundary conditions</span>
-<span class="n">opti</span><span class="p">.</span><span class="n">subject_to</span><span class="p">(</span><span class="n">x</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="n">m0</span><span class="p">]);</span>
-<span class="n">opti</span><span class="p">.</span><span class="n">subject_to</span><span class="p">(</span><span class="n">y</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="n">yT</span><span class="p">);</span>
-</code></pre></div><p>The solution is quite interesting:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="n">m0</span> <span class="p">=</span> <span class="mi">500000</span><span class="p">;</span> <span class="c">% start mass [kg]</span>
+</span></span><span class="line"><span class="cl"><span class="n">yT</span> <span class="p">=</span> <span class="mi">100000</span><span class="p">;</span> <span class="c">% final height [m]</span>
+</span></span><span class="line"><span class="cl"><span class="n">g</span> <span class="p">=</span> <span class="mf">9.81</span><span class="p">;</span> <span class="c">% gravity 9.81 [m/s^2]</span>
+</span></span><span class="line"><span class="cl"><span class="n">alpha</span> <span class="p">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">300</span><span class="o">*</span><span class="n">g</span><span class="p">);</span> <span class="c">% kg/(N*s);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">opti</span> <span class="p">=</span> <span class="n">casadi</span><span class="p">.</span><span class="n">Opti</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% Decision variables [height;velocity;mass]</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="p">=</span> <span class="n">opti</span><span class="p">.</span><span class="n">variable</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="p">=</span> <span class="n">x</span><span class="p">(</span><span class="mi">1</span><span class="p">,:);</span> <span class="c">% height</span>
+</span></span><span class="line"><span class="cl"><span class="n">v</span> <span class="p">=</span> <span class="n">x</span><span class="p">(</span><span class="mi">2</span><span class="p">,:);</span> <span class="c">% velocity</span>
+</span></span><span class="line"><span class="cl"><span class="n">m</span> <span class="p">=</span> <span class="n">x</span><span class="p">(</span><span class="mi">3</span><span class="p">,:);</span> <span class="c">% mass</span>
+</span></span><span class="line"><span class="cl"><span class="n">u</span> <span class="p">=</span> <span class="n">opti</span><span class="p">.</span><span class="n">variable</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">);</span> <span class="c">% Control vector</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% Dynamic constraints</span>
+</span></span><span class="line"><span class="cl"><span class="n">rocket_ode</span> <span class="p">=</span> <span class="p">@(</span><span class="n">x</span><span class="p">,</span><span class="n">u</span><span class="p">)</span> <span class="p">[</span><span class="n">x</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="n">u</span><span class="o">/</span><span class="n">x</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">-</span><span class="n">g</span><span class="p">;</span><span class="o">-</span><span class="n">alpha</span><span class="o">*</span><span class="n">u</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">k</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">N</span>
+</span></span><span class="line"><span class="cl">    <span class="n">opti</span><span class="p">.</span><span class="n">subject_to</span><span class="p">(</span><span class="n">x</span><span class="p">(:,</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="n">x</span><span class="p">(:,</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">rocket_ode</span><span class="p">(</span><span class="n">x</span><span class="p">(:,</span><span class="n">k</span><span class="p">),</span><span class="n">u</span><span class="p">(:,</span><span class="n">k</span><span class="p">))</span><span class="o">*</span><span class="n">dt</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% Boundary conditions</span>
+</span></span><span class="line"><span class="cl"><span class="n">opti</span><span class="p">.</span><span class="n">subject_to</span><span class="p">(</span><span class="n">x</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="n">m0</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl"><span class="n">opti</span><span class="p">.</span><span class="n">subject_to</span><span class="p">(</span><span class="n">y</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="n">yT</span><span class="p">);</span>
+</span></span></code></pre></div><p>The solution is quite interesting:</p>
 <figure class=" default">
   <a href="https://web.casadi.org/blog/nlp-scaling/controls.png" target="_blank">
   <img src="https://web.casadi.org/blog/nlp-scaling/controls.png"  />
@@ -156,9 +156,9 @@
   </figcaption>
 </figure>
 <p>But the focus is here on convergence. It&rsquo;s pretty lousy.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="n">semilogy</span><span class="p">(</span><span class="n">sol</span><span class="p">.</span><span class="n">stats</span><span class="p">.</span><span class="n">iterations</span><span class="p">.</span><span class="n">inf_du</span><span class="p">)</span>
-<span class="n">semilogy</span><span class="p">(</span><span class="n">sol</span><span class="p">.</span><span class="n">stats</span><span class="p">.</span><span class="n">iterations</span><span class="p">.</span><span class="n">inf_pr</span><span class="p">)</span>
-</code></pre></div><p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="n">semilogy</span><span class="p">(</span><span class="n">sol</span><span class="p">.</span><span class="n">stats</span><span class="p">.</span><span class="n">iterations</span><span class="p">.</span><span class="n">inf_du</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">semilogy</span><span class="p">(</span><span class="n">sol</span><span class="p">.</span><span class="n">stats</span><span class="p">.</span><span class="n">iterations</span><span class="p">.</span><span class="n">inf_pr</span><span class="p">)</span>
+</span></span></code></pre></div><p>
 <figure class=" default">
   <a href="https://web.casadi.org/blog/nlp-scaling/conv.png" target="_blank">
   
@@ -174,9 +174,9 @@
 
 
 Then, introduce a simple scaling of variables (complete code <a href="rocket_scaled.m">here</a>)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="n">x</span> <span class="p">=</span>  <span class="nb">repmat</span><span class="p">([</span><span class="mf">1e5</span><span class="p">;</span><span class="mi">2000</span><span class="p">;</span><span class="mf">300e3</span><span class="p">],</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.*</span><span class="n">opti</span><span class="p">.</span><span class="n">variable</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
-<span class="n">u</span> <span class="p">=</span> <span class="mf">1e8</span><span class="o">*</span><span class="n">opti</span><span class="p">.</span><span class="n">variable</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">);</span> <span class="c">% Control vector</span>
-</code></pre></div><p>Exact same solution, wildly different convergence:
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="n">x</span> <span class="p">=</span>  <span class="nb">repmat</span><span class="p">([</span><span class="mf">1e5</span><span class="p">;</span><span class="mi">2000</span><span class="p">;</span><span class="mf">300e3</span><span class="p">],</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.*</span><span class="n">opti</span><span class="p">.</span><span class="n">variable</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">u</span> <span class="p">=</span> <span class="mf">1e8</span><span class="o">*</span><span class="n">opti</span><span class="p">.</span><span class="n">variable</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">);</span> <span class="c">% Control vector</span>
+</span></span></code></pre></div><p>Exact same solution, wildly different convergence:
 
 <figure class=" default">
   <a href="https://web.casadi.org/blog/nlp-scaling/conv_scaled.png" target="_blank">
@@ -197,12 +197,12 @@ Then, introduce a simple scaling of variables (complete code <a href="rocket_sca
 <p><a href="http://homes.esat.kuleuven.be/~optec/events/courses/JohnBetts_coursept1brf.pdf">Guidelines for scaling</a> involve more than just scaling of the variables.
 In IPOPT, objective and constraints (but not variables) are scaled automatically, using first-order sensitivities at the initial guess.
 This is vital for the above example to work. Without it, we need to scale objective and constraints ourselves:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="k">for</span> <span class="n">k</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">N</span>
-    <span class="n">opti</span><span class="p">.</span><span class="n">subject_to</span><span class="p">(</span><span class="n">x</span><span class="p">(:,</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">./</span><span class="n">x_nom</span> <span class="o">==</span> <span class="p">(</span><span class="n">x</span><span class="p">(:,</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">rocket_ode</span><span class="p">(</span><span class="n">x</span><span class="p">(:,</span><span class="n">k</span><span class="p">),</span><span class="n">u</span><span class="p">(:,</span><span class="n">k</span><span class="p">))</span><span class="o">*</span><span class="n">dt</span><span class="p">)</span><span class="o">./</span><span class="n">x_nom</span><span class="p">);</span>
-<span class="k">end</span>
-<span class="c">...</span>
-<span class="n">opti</span><span class="p">.</span><span class="n">minimize</span><span class="p">((</span><span class="n">m</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="n">m</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span><span class="o">/</span><span class="n">m_nom</span><span class="p">);</span> <span class="c">% minimize fuel consumption</span>
-</code></pre></div><p>(complete code <a href="rocket_scaled2.m">here</a>)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="k">for</span> <span class="n">k</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">N</span>
+</span></span><span class="line"><span class="cl">    <span class="n">opti</span><span class="p">.</span><span class="n">subject_to</span><span class="p">(</span><span class="n">x</span><span class="p">(:,</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">./</span><span class="n">x_nom</span> <span class="o">==</span> <span class="p">(</span><span class="n">x</span><span class="p">(:,</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">rocket_ode</span><span class="p">(</span><span class="n">x</span><span class="p">(:,</span><span class="n">k</span><span class="p">),</span><span class="n">u</span><span class="p">(:,</span><span class="n">k</span><span class="p">))</span><span class="o">*</span><span class="n">dt</span><span class="p">)</span><span class="o">./</span><span class="n">x_nom</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="c">...</span>
+</span></span><span class="line"><span class="cl"><span class="n">opti</span><span class="p">.</span><span class="n">minimize</span><span class="p">((</span><span class="n">m</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="n">m</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span><span class="o">/</span><span class="n">m_nom</span><span class="p">);</span> <span class="c">% minimize fuel consumption</span>
+</span></span></code></pre></div><p>(complete code <a href="rocket_scaled2.m">here</a>)</p>
     </div>
   </div>
 </div>

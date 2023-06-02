@@ -127,10 +127,10 @@ Today we&rsquo;ll be exploring a <em>simple</em> coupling with Simulink. We&rsqu
 \frac{d\begin{bmatrix}x_1\\ x_2\end{bmatrix}}{dt} = \begin{bmatrix}(1-x_2^2)\, x_1-x_2+u\\ x_1\end{bmatrix}.
 $$</p>
 <p>In the above Simulink block diagram, the <code>rhs</code> MATLAB function block encodes this ode:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="k">function</span><span class="w"> </span>y <span class="p">=</span><span class="w"> </span><span class="nf">rhs</span><span class="p">(</span>x,u<span class="p">)</span><span class="w">
-</span><span class="w">  </span><span class="n">y</span> <span class="p">=</span> <span class="p">[(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>^<span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">x</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">u</span><span class="p">;</span> <span class="n">x</span><span class="p">(</span><span class="mi">1</span><span class="p">)];</span>
-<span class="k">end</span>
-</code></pre></div><p>The <code>casadi_block</code> computes the discrete control signal by solving an Optimal Control Problem (OCP).
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="k">function</span><span class="w"> </span>y <span class="p">=</span><span class="w"> </span><span class="nf">rhs</span><span class="p">(</span>x,u<span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">y</span> <span class="p">=</span> <span class="p">[(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>^<span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">x</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">u</span><span class="p">;</span> <span class="n">x</span><span class="p">(</span><span class="mi">1</span><span class="p">)];</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span></code></pre></div><p>The <code>casadi_block</code> computes the discrete control signal by solving an Optimal Control Problem (OCP).
 The act of closing the loop with the continuous plant makes our setup effectively an MPC controller.</p>
 <p>The OCP problem here simply drives the states to zero:</p>
 <p>$$
@@ -148,37 +148,37 @@ The act of closing the loop with the continuous plant makes our setup effectivel
 \end{align}
 $$</p>
 <p>We will use the <a href="https://github.com/casadi/casadi/blob/3.1.0/docs/examples/matlab/direct_multiple_shooting.m">multiple shooting transcription from the CasADi examples</a> to cast the OCP to an NLP problem. In short, the multiple shooting code reads like:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="n">w</span> <span class="p">=</span> <span class="p">{};</span> <span class="c">% decision variables</span>
-<span class="n">g</span> <span class="p">=</span> <span class="p">{};</span> <span class="c">% cosntraints</span>
-<span class="n">J</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c">% objective</span>
-
-<span class="c">% Initial conditions</span>
-<span class="n">X0</span> <span class="p">=</span> <span class="n">MX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;X0&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
-
-<span class="c">% Formulate the NLP</span>
-<span class="n">Xk</span> <span class="p">=</span> <span class="n">X0</span><span class="p">;</span>
-<span class="k">for</span> <span class="n">k</span><span class="p">=</span><span class="mi">0</span><span class="p">:</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span>
-    <span class="c">% New NLP variable for the control</span>
-    <span class="n">Uk</span> <span class="p">=</span> <span class="n">MX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;U&#39;</span><span class="p">);</span>
-    <span class="n">w</span> <span class="p">=</span> <span class="p">{</span><span class="n">w</span><span class="p">{:},</span> <span class="n">Uk</span><span class="p">};</span>
-
-    <span class="c">% Integrate till the end of the interval</span>
-    <span class="n">Fk</span> <span class="p">=</span> <span class="n">F</span><span class="p">(</span><span class="s">&#39;x0&#39;</span><span class="p">,</span> <span class="n">Xk</span><span class="p">,</span> <span class="s">&#39;p&#39;</span><span class="p">,</span> <span class="n">Uk</span><span class="p">);</span>
-    <span class="n">Xk_end</span> <span class="p">=</span> <span class="n">Fk</span><span class="p">.</span><span class="n">xf</span><span class="p">;</span>
-    <span class="n">J</span><span class="p">=</span><span class="n">J</span><span class="o">+</span><span class="n">Fk</span><span class="p">.</span><span class="n">qf</span><span class="p">;</span>
-
-    <span class="c">% New NLP variable for state at end of interval</span>
-    <span class="n">Xk</span> <span class="p">=</span> <span class="n">MX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;X&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
-    <span class="n">w</span> <span class="p">=</span> <span class="p">{</span><span class="n">w</span><span class="p">{:},</span> <span class="n">Xk</span><span class="p">};</span>
-
-    <span class="c">% Add equality constraint</span>
-    <span class="n">g</span> <span class="p">=</span> <span class="p">{</span><span class="n">g</span><span class="p">{:},</span> <span class="n">Xk_end</span><span class="o">-</span><span class="n">Xk</span><span class="p">};</span>
-<span class="k">end</span>
-
-<span class="c">% Create an NLP solver</span>
-<span class="n">prob</span> <span class="p">=</span> <span class="n">struct</span><span class="p">(</span><span class="s">&#39;f&#39;</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="n">vertcat</span><span class="p">(</span><span class="n">w</span><span class="p">{:}),</span> <span class="s">&#39;g&#39;</span><span class="p">,</span> <span class="n">vertcat</span><span class="p">(</span><span class="n">g</span><span class="p">{:}));</span>
-<span class="n">solver</span> <span class="p">=</span> <span class="n">nlpsol</span><span class="p">(</span><span class="s">&#39;solver&#39;</span><span class="p">,</span> <span class="s">&#39;ipopt&#39;</span><span class="p">,</span> <span class="n">prob</span><span class="p">);</span>
-</code></pre></div><p>Recall from that example the solution plot:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="n">w</span> <span class="p">=</span> <span class="p">{};</span> <span class="c">% decision variables</span>
+</span></span><span class="line"><span class="cl"><span class="n">g</span> <span class="p">=</span> <span class="p">{};</span> <span class="c">% cosntraints</span>
+</span></span><span class="line"><span class="cl"><span class="n">J</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c">% objective</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% Initial conditions</span>
+</span></span><span class="line"><span class="cl"><span class="n">X0</span> <span class="p">=</span> <span class="n">MX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;X0&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% Formulate the NLP</span>
+</span></span><span class="line"><span class="cl"><span class="n">Xk</span> <span class="p">=</span> <span class="n">X0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">k</span><span class="p">=</span><span class="mi">0</span><span class="p">:</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    <span class="c">% New NLP variable for the control</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Uk</span> <span class="p">=</span> <span class="n">MX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;U&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">w</span> <span class="p">=</span> <span class="p">{</span><span class="n">w</span><span class="p">{:},</span> <span class="n">Uk</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c">% Integrate till the end of the interval</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Fk</span> <span class="p">=</span> <span class="n">F</span><span class="p">(</span><span class="s">&#39;x0&#39;</span><span class="p">,</span> <span class="n">Xk</span><span class="p">,</span> <span class="s">&#39;p&#39;</span><span class="p">,</span> <span class="n">Uk</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Xk_end</span> <span class="p">=</span> <span class="n">Fk</span><span class="p">.</span><span class="n">xf</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">J</span><span class="p">=</span><span class="n">J</span><span class="o">+</span><span class="n">Fk</span><span class="p">.</span><span class="n">qf</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c">% New NLP variable for state at end of interval</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Xk</span> <span class="p">=</span> <span class="n">MX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;X&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">w</span> <span class="p">=</span> <span class="p">{</span><span class="n">w</span><span class="p">{:},</span> <span class="n">Xk</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c">% Add equality constraint</span>
+</span></span><span class="line"><span class="cl">    <span class="n">g</span> <span class="p">=</span> <span class="p">{</span><span class="n">g</span><span class="p">{:},</span> <span class="n">Xk_end</span><span class="o">-</span><span class="n">Xk</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% Create an NLP solver</span>
+</span></span><span class="line"><span class="cl"><span class="n">prob</span> <span class="p">=</span> <span class="n">struct</span><span class="p">(</span><span class="s">&#39;f&#39;</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="n">vertcat</span><span class="p">(</span><span class="n">w</span><span class="p">{:}),</span> <span class="s">&#39;g&#39;</span><span class="p">,</span> <span class="n">vertcat</span><span class="p">(</span><span class="n">g</span><span class="p">{:}));</span>
+</span></span><span class="line"><span class="cl"><span class="n">solver</span> <span class="p">=</span> <span class="n">nlpsol</span><span class="p">(</span><span class="s">&#39;solver&#39;</span><span class="p">,</span> <span class="s">&#39;ipopt&#39;</span><span class="p">,</span> <span class="n">prob</span><span class="p">);</span>
+</span></span></code></pre></div><p>Recall from that example the solution plot:</p>
 <figure class=" default">
   <a href="https://web.casadi.org/blog/mpc-simulink/reference.png" target="_blank">
   <img src="https://web.casadi.org/blog/mpc-simulink/reference.png"  />
@@ -192,34 +192,34 @@ We would not want to construct an NLP afresh at every sampling time!
 Rather, we&rsquo;d like to construct the NLP once, and simply evaluate it repeatedly using slightly different numerical inputs.
 For this purpose, we chose a <code>MATLAB System</code> block in Simulink.</p>
 <p>In abbreviated form, the code in that block reads:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="k">classdef</span> <span class="n">casadi_block</span> <span class="o">&lt;</span> <span class="n">matlab</span><span class="p">.</span><span class="n">System</span>
-    <span class="k">properties</span> <span class="p">(</span><span class="n">Access</span> <span class="p">=</span> <span class="n">private</span><span class="p">)</span>
-        <span class="n">casadi_solver</span>
-        <span class="n">lbx</span>
-        <span class="n">ubx</span>
-    <span class="k">end</span>
-    <span class="k">methods</span> <span class="p">(</span><span class="n">Access</span> <span class="p">=</span> <span class="n">protected</span><span class="p">)</span>
-<span class="k">        function</span><span class="w"> </span><span class="nf">setupImpl</span><span class="p">(</span>obj,~,~<span class="p">)</span><span class="w">
-</span><span class="w">            </span><span class="n">obj</span><span class="p">.</span><span class="n">casadi_solver</span> <span class="p">=</span> <span class="n">nlpsol</span><span class="p">(</span><span class="s">&#39;solver&#39;</span><span class="p">,</span> <span class="s">&#39;ipopt&#39;</span><span class="p">,</span> <span class="n">prob</span><span class="p">,</span> <span class="n">options</span><span class="p">);</span>
-            <span class="n">obj</span><span class="p">.</span><span class="n">lbx</span> <span class="p">=</span> <span class="n">lbw</span><span class="p">;</span>
-            <span class="n">obj</span><span class="p">.</span><span class="n">ubx</span> <span class="p">=</span> <span class="n">ubw</span><span class="p">;</span>
-        <span class="k">end</span>
-
-<span class="k">        function</span><span class="w"> </span>u <span class="p">=</span><span class="w"> </span><span class="nf">stepImpl</span><span class="p">(</span>obj,x,t<span class="p">)</span><span class="w">
-</span><span class="w">            </span><span class="n">lbw</span> <span class="p">=</span> <span class="n">obj</span><span class="p">.</span><span class="n">lbx</span><span class="p">;</span>
-            <span class="n">ubw</span> <span class="p">=</span> <span class="n">obj</span><span class="p">.</span><span class="n">ubx</span><span class="p">;</span>
-            <span class="n">solver</span> <span class="p">=</span> <span class="n">obj</span><span class="p">.</span><span class="n">casadi_solver</span><span class="p">;</span>
-            <span class="n">lbw</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">)</span> <span class="p">=</span> <span class="n">x</span><span class="p">;</span>
-            <span class="n">ubw</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">)</span> <span class="p">=</span> <span class="n">x</span><span class="p">;</span>
-            <span class="n">sol</span> <span class="p">=</span> <span class="n">solver</span><span class="p">(</span><span class="s">&#39;x0&#39;</span><span class="p">,</span> <span class="n">w0</span><span class="p">,</span> <span class="s">&#39;lbx&#39;</span><span class="p">,</span> <span class="n">lbw</span><span class="p">,</span> <span class="s">&#39;ubx&#39;</span><span class="p">,</span> <span class="n">ubw</span><span class="p">,</span><span class="c">...</span>
-                        <span class="s">&#39;lbg&#39;</span><span class="p">,</span> <span class="n">obj</span><span class="p">.</span><span class="n">lbg</span><span class="p">,</span> <span class="s">&#39;ubg&#39;</span><span class="p">,</span> <span class="n">obj</span><span class="p">.</span><span class="n">ubg</span><span class="p">);</span>
-
-            <span class="n">u</span> <span class="p">=</span> <span class="n">full</span><span class="p">(</span><span class="n">sol</span><span class="p">.</span><span class="n">x</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span>
-        <span class="k">end</span>
-
-    <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div><p>As you can see, <code>setupImpl</code> takes care of constructing the NLP, and <code>stepImpl</code> solves the actual NLP while constraining $x_1(0)$ and $x_2(0)$ to the state <em>measurement</em> coming in from Simulink.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="k">classdef</span> <span class="n">casadi_block</span> <span class="o">&lt;</span> <span class="n">matlab</span><span class="p">.</span><span class="n">System</span>
+</span></span><span class="line"><span class="cl">    <span class="k">properties</span> <span class="p">(</span><span class="n">Access</span> <span class="p">=</span> <span class="n">private</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">casadi_solver</span>
+</span></span><span class="line"><span class="cl">        <span class="n">lbx</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ubx</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl">    <span class="k">methods</span> <span class="p">(</span><span class="n">Access</span> <span class="p">=</span> <span class="n">protected</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">        function</span><span class="w"> </span><span class="nf">setupImpl</span><span class="p">(</span>obj,~,~<span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">obj</span><span class="p">.</span><span class="n">casadi_solver</span> <span class="p">=</span> <span class="n">nlpsol</span><span class="p">(</span><span class="s">&#39;solver&#39;</span><span class="p">,</span> <span class="s">&#39;ipopt&#39;</span><span class="p">,</span> <span class="n">prob</span><span class="p">,</span> <span class="n">options</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">obj</span><span class="p">.</span><span class="n">lbx</span> <span class="p">=</span> <span class="n">lbw</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">obj</span><span class="p">.</span><span class="n">ubx</span> <span class="p">=</span> <span class="n">ubw</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">        function</span><span class="w"> </span>u <span class="p">=</span><span class="w"> </span><span class="nf">stepImpl</span><span class="p">(</span>obj,x,t<span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">lbw</span> <span class="p">=</span> <span class="n">obj</span><span class="p">.</span><span class="n">lbx</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">ubw</span> <span class="p">=</span> <span class="n">obj</span><span class="p">.</span><span class="n">ubx</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">solver</span> <span class="p">=</span> <span class="n">obj</span><span class="p">.</span><span class="n">casadi_solver</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">lbw</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">)</span> <span class="p">=</span> <span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">ubw</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">)</span> <span class="p">=</span> <span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">sol</span> <span class="p">=</span> <span class="n">solver</span><span class="p">(</span><span class="s">&#39;x0&#39;</span><span class="p">,</span> <span class="n">w0</span><span class="p">,</span> <span class="s">&#39;lbx&#39;</span><span class="p">,</span> <span class="n">lbw</span><span class="p">,</span> <span class="s">&#39;ubx&#39;</span><span class="p">,</span> <span class="n">ubw</span><span class="p">,</span><span class="c">...</span>
+</span></span><span class="line"><span class="cl">                        <span class="s">&#39;lbg&#39;</span><span class="p">,</span> <span class="n">obj</span><span class="p">.</span><span class="n">lbg</span><span class="p">,</span> <span class="s">&#39;ubg&#39;</span><span class="p">,</span> <span class="n">obj</span><span class="p">.</span><span class="n">ubg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="n">u</span> <span class="p">=</span> <span class="n">full</span><span class="p">(</span><span class="n">sol</span><span class="p">.</span><span class="n">x</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span></code></pre></div><p>As you can see, <code>setupImpl</code> takes care of constructing the NLP, and <code>stepImpl</code> solves the actual NLP while constraining $x_1(0)$ and $x_2(0)$ to the state <em>measurement</em> coming in from Simulink.</p>
 <p>In general, you may distinguish several approaches to bring CasADi computations into simulink:</p>
 <ol>
 <li>write CasADi-Matlab code, and use an <code>interpreted Matlab code</code> in Simulink</li>

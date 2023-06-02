@@ -124,6 +124,11 @@
 
         
 
+        
+      
+
+        
+
           
             
 
@@ -265,37 +270,40 @@ CasADi can now efficiently eliminate redundant computation by inspecting an expr
 </ul>
 <p>Before, CasADi internals would avoid introducing redundant nodes during operations on a given expression, but the user was responsible to avoid duplication when constructing that expression.</p>
 <p>There is a function <code>cse()</code> that you may apply to expressions:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">x</span> <span class="o">=</span> <span class="n">MX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<p><span class="c1"># User responsibility</span>
-<span class="n">sx</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">sx</span><span class="p">)</span><span class="o">+</span><span class="n">sx</span> <span class="c1"># MX(@1=sin(x), (sqrt(@1)+@1))</span></p>
-<p><span class="c1"># cse</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">+</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># MX((sqrt(sin(x))+sin(x)))</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">cse</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="c1"># MX(@1=sin(x), (sqrt(@1)+@1))</span>
-</code></pre></div><p>There is a boolean option <code>cse</code> that may be used when constructing a <code>Function</code>:</p></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">x</span> <span class="o">=</span> <span class="n">MX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<p><span class="n">f</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s1">'f'</span><span class="p">,[</span><span class="n">x</span><span class="p">],[</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">+</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)],{</span><span class="s2">&quot;cse&quot;</span><span class="p">:</span><span class="kc">True</span><span class="p">})</span>
-<span class="n">f</span><span class="o">.</span><span class="n">disp</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">f:(i0)-&gt;(o0) MXFunction
-Algorithm:
-@0 = input[0][0]
-@0 = sin(@0)
-@1 = sqrt(@0)
-@1 = (@1+@0)
-output[0][0] = @1
-</code></pre></div><p>The technique scales favorably for large graphs.</p></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">MX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># User responsibility</span>
+</span></span><span class="line"><span class="cl"><span class="n">sx</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">sx</span><span class="p">)</span><span class="o">+</span><span class="n">sx</span> <span class="c1"># MX(@1=sin(x), (sqrt(@1)+@1))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># cse</span>
+</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">+</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># MX((sqrt(sin(x))+sin(x)))</span>
+</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="o">=</span> <span class="n">cse</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="c1"># MX(@1=sin(x), (sqrt(@1)+@1))</span>
+</span></span></code></pre></div><p>There is a boolean option <code>cse</code> that may be used when constructing a <code>Function</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">MX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">f</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">,[</span><span class="n">x</span><span class="p">],[</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">+</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)],{</span><span class="s2">&#34;cse&#34;</span><span class="p">:</span><span class="kc">True</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="n">f</span><span class="o">.</span><span class="n">disp</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">f:(i0)-&gt;(o0) MXFunction
+</span></span><span class="line"><span class="cl">Algorithm:
+</span></span><span class="line"><span class="cl">@0 = input[0][0]
+</span></span><span class="line"><span class="cl">@0 = sin(@0)
+</span></span><span class="line"><span class="cl">@1 = sqrt(@0)
+</span></span><span class="line"><span class="cl">@1 = (@1+@0)
+</span></span><span class="line"><span class="cl">output[0][0] = @1
+</span></span></code></pre></div><p>The technique scales favorably for large graphs.</p>
 <h3 id="triangular-solve-triangular-solve-nodes-in-mx">Triangular solve triangular solve nodes in MX</h3>
 <p>MX how has atomic support for solving upper and lower triangular linear systems without allocating any linear solver instance. The operation handles the case with unity diagonal separately for efficiency and supports C code generation. To use the feature, call <code>casadi.solve(A, b)</code> (Python or MATLAB/Octave)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Python</span>
-<span class="kn">import</span> <span class="nn">casadi</span>
-<span class="n">A</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">MX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">casadi</span><span class="o">.</span><span class="n">Sparsity</span><span class="o">.</span><span class="n">upper</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">MX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">// C++
-</span><span class="c1"></span><span class="n">casadi</span><span class="o">::</span><span class="n">MX</span> <span class="n">A</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">::</span><span class="n">MX</span><span class="o">::</span><span class="n">sym</span><span class="p">(</span><span class="s">&#34;A&#34;</span><span class="p">,</span> <span class="n">casadi</span><span class="o">::</span><span class="n">Sparsity</span><span class="o">::</span><span class="n">upper</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
-<span class="n">casadi</span><span class="o">::</span><span class="n">MX</span> <span class="n">b</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">::</span><span class="n">MX</span><span class="o">::</span><span class="n">sym</span><span class="p">(</span><span class="s">&#34;b&#34;</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
-<span class="n">casadi</span><span class="o">::</span><span class="n">MX</span> <span class="n">x</span> <span class="o">=</span> <span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>  <span class="c1">// for argument-dependent lookup, alternatively casadi::MX::solve(A, b) for static function
-</span></code></pre></div><p>Cf. <a href="https://github.com/casadi/casadi/issues/2688">#2688</a>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Python</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">casadi</span>
+</span></span><span class="line"><span class="cl"><span class="n">A</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">MX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">casadi</span><span class="o">.</span><span class="n">Sparsity</span><span class="o">.</span><span class="n">upper</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">b</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">MX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">// C++
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">casadi</span><span class="o">::</span><span class="n">MX</span> <span class="n">A</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">::</span><span class="n">MX</span><span class="o">::</span><span class="n">sym</span><span class="p">(</span><span class="s">&#34;A&#34;</span><span class="p">,</span> <span class="n">casadi</span><span class="o">::</span><span class="n">Sparsity</span><span class="o">::</span><span class="n">upper</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="n">casadi</span><span class="o">::</span><span class="n">MX</span> <span class="n">b</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">::</span><span class="n">MX</span><span class="o">::</span><span class="n">sym</span><span class="p">(</span><span class="s">&#34;b&#34;</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">casadi</span><span class="o">::</span><span class="n">MX</span> <span class="n">x</span> <span class="o">=</span> <span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>  <span class="c1">// for argument-dependent lookup, alternatively casadi::MX::solve(A, b) for static function
+</span></span></span></code></pre></div><p>Cf. <a href="https://github.com/casadi/casadi/issues/2688">#2688</a>.</p>
 <h2 id="function">Function</h2>
 <ul>
 <li><strong>breaking</strong> <code>SX</code>/<code>MX</code> <code>Function</code> construction with free variables (i.e. symbols used in the output expressions that are not declared as inputs) now fails immediately unless the <code>allow_free</code> option is used.</li>
@@ -304,9 +312,9 @@ output[0][0] = @1
 <li><strong>breaking</strong> <code>custom_jacobian</code> semantics changed. The Function must now return individual blocks (Jacobian of an output w.r.t. to an input)</li>
 <li><strong>breaking</strong> Changed API part for Jacobian sparsity (relevant for advanced use through <code>external</code> or <code>Callback</code>)</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">bool</span> <span class="nf">has_jac_sparsity</span><span class="p">(</span><span class="n">casadi_int</span> <span class="n">oind</span><span class="p">,</span> <span class="n">casadi_int</span> <span class="n">iind</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
-<span class="n">Sparsity</span> <span class="nf">get_jac_sparsity</span><span class="p">(</span><span class="n">casadi_int</span> <span class="n">oind</span><span class="p">,</span> <span class="n">casadi_int</span> <span class="n">iind</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">symmetric</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">bool</span> <span class="nf">has_jac_sparsity</span><span class="p">(</span><span class="n">casadi_int</span> <span class="n">oind</span><span class="p">,</span> <span class="n">casadi_int</span> <span class="n">iind</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">Sparsity</span> <span class="nf">get_jac_sparsity</span><span class="p">(</span><span class="n">casadi_int</span> <span class="n">oind</span><span class="p">,</span> <span class="n">casadi_int</span> <span class="n">iind</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">symmetric</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+</span></span></code></pre></div><ul>
 <li><code>Function.find_function</code> Can be used to retrieve Functions in a hierarchy.</li>
 <li>Avoid truncation in printing <a href="https://github.com/casadi/casadi/issues/2452">#2452</a></li>
 <li><strong>breaking</strong>: Function outputs that are not used (passed a null pointer internally) will be logged (<code>dump_in</code> option ) as <code>nan</code> instead of earlier <code>0</code>. E.g. Ipopt <code>nlp_grad_f</code> has two outputs, <code>f</code> and <code>grad_f_x</code>. The <code>f</code> output is not used internally, so will be logged as <code>nan</code>.</li>
@@ -728,9 +736,9 @@ print(jacobian(sin(x),x))
 <ul>
 <li>CasADi Functions can be serialized now (<a href="https://github.com/casadi/casadi/issues/308">#308</a>).</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">f.save(&#39;f.casadi&#39;)            % Dump any CasADi Function to a file
-f = Function.load(&#39;f.casadi&#39;) % Loads back in
-</code></pre></div><p>This enables easy sharing of models/solver isntances beteen Matlab/Python/C++ cross-platform, and enables a form of <a href="https://web.casadi.org/blog/parfor/">parallelization</a>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">f.save(&#39;f.casadi&#39;)            % Dump any CasADi Function to a file
+</span></span><span class="line"><span class="cl">f = Function.load(&#39;f.casadi&#39;) % Loads back in
+</span></span></code></pre></div><p>This enables easy sharing of models/solver isntances beteen Matlab/Python/C++ cross-platform, and enables a form of <a href="https://web.casadi.org/blog/parfor/">parallelization</a>.</p>
 <ul>
 <li>You can now evaluate CasADi Functions from C <a href="https://github.com/casadi/casadi/blob/develop/docs/examples/cplusplus/c_api_usage.cpp">without requiring code-generation</a>. This makes it possible to embed CasADi computations in Fortran, Julia, FMI, &hellip;</li>
 <li>All CasADi Functions support timing information now (<code>print_time</code>, default true for QP and NLP solvers). Use <code>record_time</code> to make timings available through <code>f.stats()</code> without printing them.</li>
@@ -754,7 +762,7 @@ f = Function.load(&#39;f.casadi&#39;) % Loads back in
 <ul>
 <li><strong>breaking</strong>: <code>veccat</code> of an empty list now returns <code>0-by-1</code> instead of <code>0-by-0</code>.</li>
 <li><code>jtimes</code> output dimensions have changed when any of the arguments is empty.</li>
-<li>NLP function object&rsquo;s &lsquo;lam_p&rsquo; is now <code>0-by-1</code> in case of missing parameters.</li>
+<li>NLP function object&rsquo;s &rsquo;lam_p&rsquo; is now <code>0-by-1</code> in case of missing parameters.</li>
 </ul>
 </li>
 <li>(3.5.2) Fixed long-standing bug in <code>cosh</code> derivative</li>
@@ -789,16 +797,20 @@ f = Function.load(&#39;f.casadi&#39;) % Loads back in
 <li>Opti supports conic problems now: <code>Opti('conic')</code></li>
 <li>One can now easily obtain a parametric solution as a CasADi Function from an Opti instance:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">opti = Opti()
-x = opti.variable()
-y = opti.variable()
-p = opti.parameter()
-<p>opti.minimize(y**2+sin(x-y-p)**2)
-opti.subject_to(x+y&gt;=1)</p>
-<p>opti.solver(nlpsolver,nlpsolver_options)</p>
-<p>F = opti.to_function(&quot;F&quot;,[x,p,opti.lam_g],[x,y])</p>
-<p>r = F(0,0.1,0)
-</code></pre></div><p>(3.5.1) Improved support for vertcatted inputs to <code>to_function</code></p></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">opti = Opti()
+</span></span><span class="line"><span class="cl">x = opti.variable()
+</span></span><span class="line"><span class="cl">y = opti.variable()
+</span></span><span class="line"><span class="cl">p = opti.parameter()
+</span></span><span class="line"><span class="cl">      
+</span></span><span class="line"><span class="cl">opti.minimize(y**2+sin(x-y-p)**2)
+</span></span><span class="line"><span class="cl">opti.subject_to(x+y&gt;=1)
+</span></span><span class="line"><span class="cl">      
+</span></span><span class="line"><span class="cl">opti.solver(nlpsolver,nlpsolver_options)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">F = opti.to_function(&#34;F&#34;,[x,p,opti.lam_g],[x,y])
+</span></span><span class="line"><span class="cl">      
+</span></span><span class="line"><span class="cl">r = F(0,0.1,0)
+</span></span></code></pre></div><p>(3.5.1) Improved support for vertcatted inputs to <code>to_function</code></p>
 <ul>
 <li>Using Opti together with <code>max_iter</code> is more natural now: use <code>solve_limited()</code> to avoid exceptions to be raised when iterations or time runs out. No need to try/catch.</li>
 </ul>
@@ -809,10 +821,10 @@ opti.subject_to(x+y&gt;=1)</p>
 <li><code>void* mem</code> changed to <code>int mem</code></li>
 <li><code>alloc_mem</code>, <code>init_mem</code>, <code>free_mem</code> have been purged. <code>checkout</code> and <code>release</code> replace them.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">  int mem = checkout();
-  eval(arg, res, iw, w, mem);
-  release(mem);
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  int mem = checkout();
+</span></span><span class="line"><span class="cl">  eval(arg, res, iw, w, mem);
+</span></span><span class="line"><span class="cl">  release(mem);
+</span></span></code></pre></div><ul>
 <li>Codegen &lsquo;CODEGEN_PREFIX&rsquo; has been renamed to &lsquo;CASADI_CODEGEN_PREFIX&rsquo;</li>
 <li>QP solvers (QRQP, OSQP) and SqpMethod codegenerate now. This means that embedded MPC with CasADi is now more practical.</li>
 <li>Runge-Kutta and Collocation Integrator objects can be inlined into code-generatable MX Function with the &lsquo;simplify&rsquo; option.</li>
@@ -869,7 +881,7 @@ opti.subject_to(x+y&gt;=1)</p>
 <p><strong>breaking</strong>: Newton Rootfinder now supports a <code>line_search</code> option (default true)</p>
 </li>
 <li>
-<p>Rootfinder now throws an exception by default (&lsquo;error_on_fail&rsquo; option true) when failing to converge</p>
+<p>Rootfinder now throws an exception by default (&rsquo;error_on_fail&rsquo; option true) when failing to converge</p>
 </li>
 <li>
 <p>(3.5.5) Implemented constraints in IDAS and step size limits in CVODES/IDAS integrators</p>
@@ -1128,7 +1140,7 @@ print(jacobian(sin(x),x))
                               <h2 id="credit-where-credit-is-due-proper-attribution-of-linear-solver-routines-reimplementation-of-code-generation-for-linear-solvers-2158httpsgithubcomcasadicasadiissues2158-2134httpsgithubcomcasadicasadiissues2134">Credit where credit is due: Proper attribution of linear solver routines, reimplementation of code generation for linear solvers <a href="https://github.com/casadi/casadi/issues/2158">#2158</a>, <a href="https://github.com/casadi/casadi/issues/2134">#2134</a></h2>
 <p>CasADi 3.3 introduced support for two sparse direct linear solvers relying based on sparse direct QR factorization and sparse direct LDL factorization, respectively. In the release notes and in the code, it was not made clear enough that part of these routines could be considered derivative works of CSparse and LDL, respectively, both under copyright of Tim Davis. In the current release, routines derived from CSparse and LDL are clearly marked as such and to be considered derivative work under LGPL. All these routines reside inside the <code>casadi::Sparsity</code> class.
 Since CasADi, CSparse and LDL all have the same open-source license (LGPL), this will not introduce any additional restrictions for users.</p>
-<p>Since C code generated from CasADi is <em>not</em> LGPL (allowing CasADi users to use the generated code freely), all CSparse and LDL derived routines have been removed or replaced in CasADi&rsquo;s C runtime. This means that code generation for CasADi&rsquo;s &lsquo;qr&rsquo; and &lsquo;ldl&rsquo; is now possible without any additional license restrictions. A number of bugs have also been resolved.</p>
+<p>Since C code generated from CasADi is <em>not</em> LGPL (allowing CasADi users to use the generated code freely), all CSparse and LDL derived routines have been removed or replaced in CasADi&rsquo;s C runtime. This means that code generation for CasADi&rsquo;s &lsquo;qr&rsquo; and &rsquo;ldl&rsquo; is now possible without any additional license restrictions. A number of bugs have also been resolved.</p>
 <h2 id="parametric-sensitivity-for-nlp-solvers-724httpsgithubcomcasadicasadiissues724">Parametric sensitivity for NLP solvers <a href="https://github.com/casadi/casadi/issues/724">#724</a></h2>
 <p>CasADi 3.4 introduces differentiability for NLP solver instances in CasADi. Derivatives can be calculated efficiently with either forward or reverse mode algorithmic differentiation. We will detail this functionality in future publications, but in the meantime, feel free to reach out to Joel if you have questions about the functionality. The implementation is based on using derivative propagation rules to the implicit function theorem, applied to the nonlinear KKT system. It is part of the NLP solver base class and should in principle work with any NLP solver, although the factorization and solution of the KKT system (based on the sparse QR above) is likely to be a speed bottle neck in applications. The derivative calculations also depend on accurate Lagrange multipliers to be available, in particular with the correct signs for all multipliers. Functions for calculating parametric sensitivities for a particular system can be C code generated.</p>
 <h2 id="a-primal-dual-active-set-method-for-quadratic-programming">A primal-dual active set method for quadratic programming</h2>
@@ -1425,14 +1437,14 @@ CasADi should now run on CentOS 5.</li>
 <h2 id="api-changes">API changes</h2>
 <h3 id="refactored-printing-of-function-objects">Refactored printing of function objects</h3>
 <p>The default printout of Function instances is now shorter and consistent across different Function derived classes (SX/MX functions, NLP solvers, integrators, etc.). The new syntax is:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">casadi</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">SX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">SX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">f</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">],[</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="n">y</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="c1"># f:(x,y[2])-&gt;(r[2]) SXFunction</span>
-<span class="n">f</span><span class="o">.</span><span class="n">disp</span><span class="p">()</span> <span class="c1"># Equivalent syntax (MATLAB style)</span>
-<span class="n">f</span><span class="o">.</span><span class="n">disp</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># Print algorithm</span>
-</code></pre></div><p>I.e. you get a list of inputs, with dimension if non-scalar, and a name of the internal class (here SXFunction).
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">casadi</span> <span class="kn">import</span> <span class="o">*</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">SX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="o">=</span> <span class="n">SX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">f</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">],[</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="n">y</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="c1"># f:(x,y[2])-&gt;(r[2]) SXFunction</span>
+</span></span><span class="line"><span class="cl"><span class="n">f</span><span class="o">.</span><span class="n">disp</span><span class="p">()</span> <span class="c1"># Equivalent syntax (MATLAB style)</span>
+</span></span><span class="line"><span class="cl"><span class="n">f</span><span class="o">.</span><span class="n">disp</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># Print algorithm</span>
+</span></span></code></pre></div><p>I.e. you get a list of inputs, with dimension if non-scalar, and a name of the internal class (here SXFunction).
 You can also get the name as a string: <code>str(f)</code> or <code>f.str()</code>. If you want to print the algorithm, pass an optional argument &ldquo;True&rdquo;, i.e. <code>f.str(True)</code> or <code>f.disp(True)</code>.</p>
 <h3 id="changes-to-the-codegen-c-api">Changes to the codegen C API</h3>
 <p>The C API has seen continued improvements, in particular regarding the handling of external functions with memory allocation. See the user guide for the latest API.</p>
@@ -1639,24 +1651,24 @@ print(jacobian(sin(x),x))
 <li>The functions <code>Function::jacobian</code>, <code>Function::derivative</code> and <code>Function::hessian</code>, which have had an internal character since CasADi 3.0, have been deprecated and will be removed in their current forms in the next release. The user is encouraged to work with expressions (e.g. <code>J = jacobian(f,x)</code> or <code>Jv = jtimes(f,x,v)</code> or <code>[H,g] = hessian(f,x)</code>) or use <code>Function::factory</code> (*). To allow a smooth transition, <code>Function::jacobian</code> and <code>Function::hessian</code> will be available as <code>Function::jacobian_old</code> and <code>Function::hessian_old</code> in this and next release. Cf. <a href="https://github.com/casadi/casadi/issues/1777">#1777</a>.</li>
 </ul>
 <p>(*) example in Matlab:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="n">x</span> <span class="p">=</span> <span class="n">MX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">)</span>
-<span class="n">y</span> <span class="p">=</span> <span class="n">x</span>^<span class="mi">2</span><span class="p">;</span>
-<span class="n">f</span> <span class="p">=</span> <span class="n">Function</span><span class="p">(</span><span class="s">&#39;f&#39;</span><span class="p">,{</span><span class="n">x</span><span class="p">},{</span><span class="n">y</span><span class="p">})</span>
-<span class="c">%J = f.jacobian(0,0) replacement:</span>
-<span class="n">J</span> <span class="p">=</span> <span class="n">Function</span><span class="p">(</span><span class="s">&#39;J&#39;</span><span class="p">,{</span><span class="n">x</span><span class="p">},{</span><span class="n">jacobian</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">),</span> <span class="n">y</span><span class="p">})</span> <span class="c">% alternative 1</span>
-<span class="n">J</span> <span class="p">=</span> <span class="n">f</span><span class="p">.</span><span class="n">factory</span><span class="p">(</span><span class="s">&#39;J&#39;</span><span class="p">,{</span><span class="s">&#39;i0&#39;</span><span class="p">},{</span><span class="s">&#39;jac:o0:i0&#39;</span><span class="p">,</span><span class="s">&#39;o0&#39;</span><span class="p">})</span> <span class="c">% alternative 2</span>
-<span class="c">%H = f.hessian(0,0) replacement:</span>
-<span class="p">[</span><span class="n">H</span><span class="p">,</span><span class="n">g</span><span class="p">]</span> <span class="p">=</span> <span class="n">hessian</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">);</span>
-<span class="n">H</span> <span class="p">=</span> <span class="n">Function</span><span class="p">(</span><span class="s">&#39;H&#39;</span><span class="p">,{</span><span class="n">x</span><span class="p">},{</span><span class="n">H</span><span class="p">,</span><span class="n">g</span><span class="p">})</span> <span class="c">% alternative 1</span>
-<span class="n">H</span> <span class="p">=</span> <span class="n">f</span><span class="p">.</span><span class="n">factory</span><span class="p">(</span><span class="s">&#39;H&#39;</span><span class="p">,{</span><span class="s">&#39;i0&#39;</span><span class="p">},{</span><span class="s">&#39;hess:o0:i0:i0&#39;</span><span class="p">,</span><span class="s">&#39;grad:o0:i0&#39;</span><span class="p">})</span> <span class="c">% alternative 2</span>
-</code></pre></div><h2 id="improvements-to-c-code-generation">Improvements to C code generation</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="n">x</span> <span class="p">=</span> <span class="n">MX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="p">=</span> <span class="n">x</span>^<span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">f</span> <span class="p">=</span> <span class="n">Function</span><span class="p">(</span><span class="s">&#39;f&#39;</span><span class="p">,{</span><span class="n">x</span><span class="p">},{</span><span class="n">y</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="c">%J = f.jacobian(0,0) replacement:</span>
+</span></span><span class="line"><span class="cl"><span class="n">J</span> <span class="p">=</span> <span class="n">Function</span><span class="p">(</span><span class="s">&#39;J&#39;</span><span class="p">,{</span><span class="n">x</span><span class="p">},{</span><span class="n">jacobian</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">),</span> <span class="n">y</span><span class="p">})</span> <span class="c">% alternative 1</span>
+</span></span><span class="line"><span class="cl"><span class="n">J</span> <span class="p">=</span> <span class="n">f</span><span class="p">.</span><span class="n">factory</span><span class="p">(</span><span class="s">&#39;J&#39;</span><span class="p">,{</span><span class="s">&#39;i0&#39;</span><span class="p">},{</span><span class="s">&#39;jac:o0:i0&#39;</span><span class="p">,</span><span class="s">&#39;o0&#39;</span><span class="p">})</span> <span class="c">% alternative 2</span>
+</span></span><span class="line"><span class="cl"><span class="c">%H = f.hessian(0,0) replacement:</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="n">H</span><span class="p">,</span><span class="n">g</span><span class="p">]</span> <span class="p">=</span> <span class="n">hessian</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">H</span> <span class="p">=</span> <span class="n">Function</span><span class="p">(</span><span class="s">&#39;H&#39;</span><span class="p">,{</span><span class="n">x</span><span class="p">},{</span><span class="n">H</span><span class="p">,</span><span class="n">g</span><span class="p">})</span> <span class="c">% alternative 1</span>
+</span></span><span class="line"><span class="cl"><span class="n">H</span> <span class="p">=</span> <span class="n">f</span><span class="p">.</span><span class="n">factory</span><span class="p">(</span><span class="s">&#39;H&#39;</span><span class="p">,{</span><span class="s">&#39;i0&#39;</span><span class="p">},{</span><span class="s">&#39;hess:o0:i0:i0&#39;</span><span class="p">,</span><span class="s">&#39;grad:o0:i0&#39;</span><span class="p">})</span> <span class="c">% alternative 2</span>
+</span></span></code></pre></div><h2 id="improvements-to-c-code-generation">Improvements to C code generation</h2>
 <ul>
 <li>The generated code now follows stricter coding standards. It should now be possible to compile the code with the GCC flags <code>-Wall -Werror</code>. Cf. <a href="https://github.com/casadi/casadi/issues/1741">#1741</a>.</li>
 </ul>
 <h2 id="changes-to-the-build-system">Changes to the build system</h2>
 <ul>
 <li>The build system has been refactored and CasADi/C++ can be conveniently compiled with Visual Studio C++ on Windows. The installation now also includes CMake configure files, which makes it convenient to locate and use a CasADi installation in C++ code. Cf. <a href="https://github.com/casadi/casadi/issues/1982">#1982</a>.</li>
-<li>The logic for source builds have changed. Before, the build system would try to locate third-party packages on the system and compile and install the third-party interfaces if this was successful. Now, the logic is that third-party packages are not installed unless the user specifically indicates this <code>e.g. </code>-DWITH_IPOPT=ON`. Cf. 
+<li>The logic for source builds have changed. Before, the build system would try to locate third-party packages on the system and compile and install the third-party interfaces if this was successful. Now, the logic is that third-party packages are not installed unless the user specifically indicates this <code>e.g. </code>-DWITH_IPOPT=ON`. Cf.
 <a href="https://github.com/casadi/casadi/issues/1989">#1989</a>, <a href="https://github.com/casadi/casadi/issues/1988">#1988</a>.</li>
 <li>The default installation directories for the SWIG interfaces (for Python, Octave and MATLAB) has changed. It is now installed as subdirectories of the <code>CMAKE_INSTALL_PREFIX</code> location by default, but this can be changed by explicitly setting the CMake variables <code>BIN_PREFIX</code>, <code>CMAKE_PREFIX</code>, <code>INCLUDE_PREFIX</code>, <code>LIB_PREFIX</code>, <code>MATLAB_PREFIX</code> and <code>PYTHON_PREFIX</code>. A flat installation directory (without subdirectories) can be obtained by setting the <code>WITH_SELFCONTAINED</code> option. This is the default behavior on Windows. Cf. <a href="https://github.com/casadi/casadi/issues/1991">#1991</a>, <a href="https://github.com/casadi/casadi/issues/1990">#1990</a></li>
 </ul>

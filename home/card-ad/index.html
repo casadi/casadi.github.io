@@ -119,46 +119,57 @@ CasADi's backbone is a <a href="docs/#document-symbolic">symbolic framework</a> 
   </a>
 </figure>
 </div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="n">import</span> <span class="n">casadi</span><span class="o">.*</span><span class="err">
-</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="c">% Create scalar/matrix symbols</span><span class="err">
-</span><span class="err"></span><span class="n">x</span> <span class="p">=</span> <span class="n">MX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="c">% Compose into expressions</span><span class="err">
-</span><span class="err"></span><span class="n">y</span> <span class="p">=</span> <span class="nb">norm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="c">% Sensitivity of expression -&gt; new expression</span><span class="err">
-</span><span class="err"></span><span class="n">grad_y</span> <span class="p">=</span> <span class="nb">gradient</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="c">% Create a Function to evaluate expression</span><span class="err">
-</span><span class="err"></span><span class="n">f</span> <span class="p">=</span> <span class="n">Function</span><span class="p">(</span><span class="s">&#39;f&#39;</span><span class="p">,{</span><span class="n">x</span><span class="p">},{</span><span class="n">grad_y</span><span class="p">});</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="c">% Evaluate numerically</span><span class="err">
-</span><span class="err"></span><span class="n">grad_y_num</span> <span class="p">=</span> <span class="n">f</span><span class="p">([</span><span class="mi">1</span><span class="p">;</span><span class="mi">2</span><span class="p">;</span><span class="mi">3</span><span class="p">;</span><span class="mi">4</span><span class="p">;</span><span class="mi">5</span><span class="p">])</span></code></pre></div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">casadi</span> <span class="kn">import</span> <span class="o">*</span>
-<p><span class="c1"># Create scalar/matrix symbols</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">MX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s1">'x'</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span></p>
-<p><span class="c1"># Compose into expressions</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">norm_2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></p>
-<p><span class="c1"># Sensitivity of expression -&gt; new expression</span>
-<span class="n">grad_y</span> <span class="o">=</span> <span class="n">gradient</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">);</span></p>
-<p><span class="c1"># Create a Function to evaluate expression</span>
-<span class="n">f</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s1">'f'</span><span class="p">,[</span><span class="n">x</span><span class="p">],[</span><span class="n">grad_y</span><span class="p">])</span></p>
-<p><span class="c1"># Evaluate numerically</span>
-<span class="n">grad_y_num</span> <span class="o">=</span> <span class="n">f</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]);</span></code></pre></div></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;casadi/casadi.hpp&gt;</span><span class="cp">
-</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">casadi</span><span class="p">;</span>
-<p><span class="c1">// Create scalar/matrix symbols
-</span><span class="c1"></span><span class="n">MX</span> <span class="n">x</span> <span class="o">=</span> <span class="n">MX</span><span class="o">::</span><span class="n">sym</span><span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span></p>
-<p><span class="c1">// Compose into expressions
-</span><span class="c1"></span><span class="n">MX</span> <span class="n">y</span> <span class="o">=</span> <span class="n">norm_2</span><span class="p">(</span><span class="n">x</span><span class="p">);</span></p>
-<p><span class="c1">// Sensitivity of expression -&gt; new expression
-</span><span class="c1"></span><span class="n">MX</span> <span class="n">grad_y</span> <span class="o">=</span> <span class="n">gradient</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">);</span></p>
-<p><span class="c1">// Create a Function to evaluate expression
-</span><span class="c1"></span><span class="n">Function</span> <span class="n">f</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s">&quot;f&quot;</span><span class="p">,{</span><span class="n">x</span><span class="p">},{</span><span class="n">grad_y</span><span class="p">});</span></p>
-<p><span class="c1">// Evaluate numerically
-</span><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">DM</span><span class="o">&gt;</span> <span class="n">grad_y_num</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">DM</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">}));</span></code></pre></div></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-octave" data-lang="octave"><span class="line"><span class="cl"><span class="n">import</span> <span class="n">casadi</span><span class="o">.*</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c">% Create scalar/matrix symbols</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="n">x</span> <span class="p">=</span> <span class="n">MX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c">% Compose into expressions</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="n">y</span> <span class="p">=</span> <span class="nb">norm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c">% Sensitivity of expression -&gt; new expression</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="n">grad_y</span> <span class="p">=</span> <span class="nb">gradient</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c">% Create a Function to evaluate expression</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="n">f</span> <span class="p">=</span> <span class="n">Function</span><span class="p">(</span><span class="s">&#39;f&#39;</span><span class="p">,{</span><span class="n">x</span><span class="p">},{</span><span class="n">grad_y</span><span class="p">});</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c">% Evaluate numerically</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="n">grad_y_num</span> <span class="p">=</span> <span class="n">f</span><span class="p">([</span><span class="mi">1</span><span class="p">;</span><span class="mi">2</span><span class="p">;</span><span class="mi">3</span><span class="p">;</span><span class="mi">4</span><span class="p">;</span><span class="mi">5</span><span class="p">])</span></span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">casadi</span> <span class="kn">import</span> <span class="o">*</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Create scalar/matrix symbols</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">MX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Compose into expressions</span>
+</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="o">=</span> <span class="n">norm_2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Sensitivity of expression -&gt; new expression</span>
+</span></span><span class="line"><span class="cl"><span class="n">grad_y</span> <span class="o">=</span> <span class="n">gradient</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Create a Function to evaluate expression</span>
+</span></span><span class="line"><span class="cl"><span class="n">f</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">,[</span><span class="n">x</span><span class="p">],[</span><span class="n">grad_y</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Evaluate numerically</span>
+</span></span><span class="line"><span class="cl"><span class="n">grad_y_num</span> <span class="o">=</span> <span class="n">f</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]);</span></span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;casadi/casadi.hpp&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">casadi</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Create scalar/matrix symbols
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">MX</span> <span class="n">x</span> <span class="o">=</span> <span class="n">MX</span><span class="o">::</span><span class="n">sym</span><span class="p">(</span><span class="s">&#34;x&#34;</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Compose into expressions
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">MX</span> <span class="n">y</span> <span class="o">=</span> <span class="n">norm_2</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Sensitivity of expression -&gt; new expression
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">MX</span> <span class="n">grad_y</span> <span class="o">=</span> <span class="n">gradient</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Create a Function to evaluate expression
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Function</span> <span class="n">f</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s">&#34;f&#34;</span><span class="p">,{</span><span class="n">x</span><span class="p">},{</span><span class="n">grad_y</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Evaluate numerically
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">DM</span><span class="o">&gt;</span> <span class="n">grad_y_num</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">DM</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">}));</span></span></span></code></pre></div>
 </div>
   </div>
 </div>

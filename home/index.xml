@@ -13,9 +13,8 @@
       <pubDate>Mon, 13 Oct 2014 20:07:19 +0000</pubDate>
       
       <guid>https://web.casadi.org/home/card-subtitle/</guid>
-      <description>  Build efficient optimal control software, with minimal effort.  CasADi is an open-source tool for nonlinear optimization and algorithmic differentiation.
-It facilitates rapid &amp;mdash; yet efficient &amp;mdash; implementation of different methods for numerical optimal control, both in an offline context and for nonlinear model predictive control (NMPC).
- </description>
+      <description>Build efficient optimal control software, with minimal effort. CasADi is an open-source tool for nonlinear optimization and algorithmic differentiation.
+It facilitates rapid &amp;mdash; yet efficient &amp;mdash; implementation of different methods for numerical optimal control, both in an offline context and for nonlinear model predictive control (NMPC).</description>
     </item>
     
     <item>
@@ -24,7 +23,7 @@ It facilitates rapid &amp;mdash; yet efficient &amp;mdash; implementation of dif
       <pubDate>Mon, 13 Oct 2014 20:07:19 +0000</pubDate>
       
       <guid>https://web.casadi.org/home/card-ad/</guid>
-      <description>Algorithmic Differentiation (AD) CasADi&#39;s backbone is a symbolic framework implementing forward and reverse mode of AD on expression graphs to construct gradients, large-and-sparse Jacobians and Hessians. These expression graphs, encapsulated in Function objects, can be evaluated in a virtual machine or be exported to stand-alone C code.      import casadi.*% Create scalar/matrix symbolsx = MX.sym(&amp;#39;x&amp;#39;,5);% Compose into expressionsy = norm(x,2);% Sensitivity of expression -&amp;gt; new expressiongrad_y = gradient(y,x)% Create a Function to evaluate expressionf = Function(&amp;#39;f&amp;#39;,{x},{grad_y});% Evaluate numericallygrad_y_num = f([1;2;3;4;5]) from casadi import * # Create scalar/matrix symbols x = MX.</description>
+      <description>Algorithmic Differentiation (AD) CasADi&#39;s backbone is a symbolic framework implementing forward and reverse mode of AD on expression graphs to construct gradients, large-and-sparse Jacobians and Hessians. These expression graphs, encapsulated in Function objects, can be evaluated in a virtual machine or be exported to stand-alone C code. import casadi.* % Create scalar/matrix symbols x = MX.sym(&amp;#39;x&amp;#39;,5); % Compose into expressions y = norm(x,2); % Sensitivity of expression -&amp;gt; new expression grad_y = gradient(y,x) % Create a Function to evaluate expression f = Function(&amp;#39;f&amp;#39;,{x},{grad_y}); % Evaluate numerically grad_y_num = f([1;2;3;4;5]) from casadi import * # Create scalar/matrix symbols x = MX.</description>
     </item>
     
     <item>
@@ -33,7 +32,7 @@ It facilitates rapid &amp;mdash; yet efficient &amp;mdash; implementation of dif
       <pubDate>Mon, 13 Oct 2014 20:07:19 +0000</pubDate>
       
       <guid>https://web.casadi.org/home/card-integrator/</guid>
-      <description>Dynamic systems    $$ \begin{align} \left\\{ \begin{array}{ccll} \dot{x}_1 &amp;=&amp; (1-x_2^2) \\, x_1 - x_2, \quad &amp;x_1(0)=0 \\\\ \dot{x}_2 &amp;=&amp; x_1, \quad &amp;x_2(0)=1 \end{array} \right. \end{align} $$  import casadi.*x = MX.sym(&amp;#39;x&amp;#39;,2); % Two states% Expression for ODE right-hand sidez = 1-x(2)^2;rhs = [z*x(1)-x(2);x(1)];ode = struct; % ODE declarationode.x = x; % statesode.ode = rhs; % right-hand side% Construct a Function that integrates over 4sF = integrator(&amp;#39;F&amp;#39;,&amp;#39;cvodes&amp;#39;,ode,0,4);% Start from x=[0;1]res = F(&amp;#39;x0&amp;#39;,[0;1]);disp(res.</description>
+      <description>Dynamic systems $$ \begin{align} \left\\{ \begin{array}{ccll} \dot{x}_1 &amp;=&amp; (1-x_2^2) \\, x_1 - x_2, \quad &amp;x_1(0)=0 \\\\ \dot{x}_2 &amp;=&amp; x_1, \quad &amp;x_2(0)=1 \end{array} \right. \end{align} $$ import casadi.* x = MX.sym(&amp;#39;x&amp;#39;,2); % Two states % Expression for ODE right-hand side z = 1-x(2)^2; rhs = [z*x(1)-x(2);x(1)]; ode = struct; % ODE declaration ode.x = x; % states ode.ode = rhs; % right-hand side % Construct a Function that integrates over 4s F = integrator(&amp;#39;F&amp;#39;,&amp;#39;cvodes&amp;#39;,ode,0,4); % Start from x=[0;1] res = F(&amp;#39;x0&amp;#39;,[0;1]); disp(res.</description>
     </item>
     
     <item>
@@ -51,7 +50,7 @@ It facilitates rapid &amp;mdash; yet efficient &amp;mdash; implementation of dif
       <pubDate>Mon, 13 Oct 2014 20:07:19 +0000</pubDate>
       
       <guid>https://web.casadi.org/home/card-ocp/</guid>
-      <description>Composition of the above       import casadi.*x = MX.sym(&amp;#39;x&amp;#39;,2); % Two statesp = MX.sym(&amp;#39;p&amp;#39;); % Free parameter% Expression for ODE right-hand sidez = 1-x(2)^2;rhs = [z*x(1)-x(2)+2*tanh(p);x(1)];% ODE declaration with free parameterode = struct(&amp;#39;x&amp;#39;,x,&amp;#39;p&amp;#39;,p,&amp;#39;ode&amp;#39;,rhs);% Construct a Function that integrates over 1sF = integrator(&amp;#39;F&amp;#39;,&amp;#39;cvodes&amp;#39;,ode,struct(&amp;#39;tf&amp;#39;,1));% Control vectoru = MX.sym(&amp;#39;u&amp;#39;,5,1);x = [0;1]; % Initial statefor k=1:5 % Integrate 1s forward in time: % call integrator symbolically res = F(&amp;#39;x0&amp;#39;,x,&amp;#39;p&amp;#39;,u(k)); x = res.</description>
+      <description>Composition of the above import casadi.* x = MX.sym(&amp;#39;x&amp;#39;,2); % Two states p = MX.sym(&amp;#39;p&amp;#39;); % Free parameter % Expression for ODE right-hand side z = 1-x(2)^2; rhs = [z*x(1)-x(2)+2*tanh(p);x(1)]; % ODE declaration with free parameter ode = struct(&amp;#39;x&amp;#39;,x,&amp;#39;p&amp;#39;,p,&amp;#39;ode&amp;#39;,rhs); % Construct a Function that integrates over 1s F = integrator(&amp;#39;F&amp;#39;,&amp;#39;cvodes&amp;#39;,ode,struct(&amp;#39;tf&amp;#39;,1)); % Control vector u = MX.sym(&amp;#39;u&amp;#39;,5,1); x = [0;1]; % Initial state for k=1:5 % Integrate 1s forward in time: % call integrator symbolically res = F(&amp;#39;x0&amp;#39;,x,&amp;#39;p&amp;#39;,u(k)); x = res.</description>
     </item>
     
     <item>
@@ -61,7 +60,7 @@ It facilitates rapid &amp;mdash; yet efficient &amp;mdash; implementation of dif
       
       <guid>https://web.casadi.org/home/card-users/</guid>
       <description>Applications CasADi saves time prototyping formulations, solving complex engineering problems, and building professional optimization tools. The landscape of its academic and industrial applications is diverse:
-  thermal control-- wind turbine-- airborne wind-- solar thermal-- fossil fuel-- renewables-- grid balance-- trajectory optimization optimal control OCP moving horizon estimation MHE model predictive control MPC NLP MINLP ODE differential equations algebraic loops DAE bio-reactors-- autonomous vehicles-- iceberg drift-- optimal experiment OED steam power-- pseudo spectral direct collocation single shooting multiple shooting indirect methods machine learning serial robots-- dual control-- distributed MPC multi-objective pareto front robust optimization scenario tree hierarchical control sigma points gearbox synthesis-- artificial pancreas-- polynomial chaos-- traffic control-- MEMS-- walking robot-- design control co-design stochastic optimization spline-relaxations-- multi-level MPC tube following-- time optimal path following iterative learning Gauss-Newton energy medical fixed-bed reactor-- chemical reactor-- stabilization cost curves grey-box model Collision Avoidance Lagrangian Duality economic MPC NMPC self-reflective real-time offline online mesh refinement-- pose estimation heart model-- Lagrange mechanics Baumgarte-- invariants-- atomic layer deposition--  well network-- object-oriented multi-stage path constraints pharmacokinetic-- non-steady periodic cyclic feasibility study air conditioning-- powertrain-- diesel-- biological networks-- offset-free mpc Gaussian belief space continuous systems discrete systems redundant manipulators inverse kinematics marine vessel-- confidence interval-- agriculture-- B-spline-- path-parametric-- invariant description-- heat exchangers-- Jacobian Hessian gradient Lyapunov  Examples of software with a CasADi backend: JModelica.</description>
+trajectory optimization optimal control OCP moving horizon estimation MHE model predictive control MPC NLP MINLP ODE differential equations algebraic loops DAE optimal experiment OED pseudo spectral direct collocation single shooting multiple shooting indirect methods machine learning distributed MPC multi-objective pareto front robust optimization scenario tree hierarchical control sigma points design control co-design stochastic optimization multi-level MPC time optimal path following iterative learning Gauss-Newton energy medical stabilization cost curves grey-box model Collision Avoidance Lagrangian Duality economic MPC NMPC self-reflective real-time offline online Lagrange mechanics object-oriented multi-stage path constraints non-steady periodic cyclic feasibility study offset-free mpc Gaussian belief space continuous systems discrete systems redundant manipulators inverse kinematics Jacobian Hessian gradient Lyapunov Examples of software with a CasADi backend: JModelica.</description>
     </item>
     
     <item>
@@ -70,7 +69,7 @@ It facilitates rapid &amp;mdash; yet efficient &amp;mdash; implementation of dif
       <pubDate>Mon, 13 Oct 2014 20:07:19 +0000</pubDate>
       
       <guid>https://web.casadi.org/home/card-get-started/</guid>
-      <description> ## Ready to try? Jump right in by getting CasADi and exploring the example pack, joining a workshop or online course, or watching a small tutorial.  </description>
+      <description> ## Ready to try? Jump right in by getting CasADi and exploring the example pack, joining a workshop or online course, or watching a small tutorial. </description>
     </item>
     
     <item>
