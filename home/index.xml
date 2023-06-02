@@ -50,7 +50,7 @@ It facilitates rapid &amp;mdash; yet efficient &amp;mdash; implementation of dif
       <pubDate>Mon, 13 Oct 2014 20:07:19 +0000</pubDate>
       
       <guid>https://web.casadi.org/home/card-ocp/</guid>
-      <description>Composition of the above import casadi.* x = MX.sym(&amp;#39;x&amp;#39;,2); % Two states p = MX.sym(&amp;#39;p&amp;#39;); % Free parameter % Expression for ODE right-hand side z = 1-x(2)^2; rhs = [z*x(1)-x(2)+2*tanh(p);x(1)]; % ODE declaration with free parameter ode = struct(&amp;#39;x&amp;#39;,x,&amp;#39;p&amp;#39;,p,&amp;#39;ode&amp;#39;,rhs); % Construct a Function that integrates over 1s F = integrator(&amp;#39;F&amp;#39;,&amp;#39;cvodes&amp;#39;,ode,struct(&amp;#39;tf&amp;#39;,1)); % Control vector u = MX.sym(&amp;#39;u&amp;#39;,5,1); x = [0;1]; % Initial state for k=1:5 % Integrate 1s forward in time: % call integrator symbolically res = F(&amp;#39;x0&amp;#39;,x,&amp;#39;p&amp;#39;,u(k)); x = res.</description>
+      <description>Composition of the above import casadi.* x = MX.sym(&amp;#39;x&amp;#39;,2); % Two states p = MX.sym(&amp;#39;p&amp;#39;); % Free parameter % Expression for ODE right-hand side z = 1-x(2)^2; rhs = [z*x(1)-x(2)+2*tanh(p);x(1)]; % ODE declaration with free parameter ode = struct(&amp;#39;x&amp;#39;,x,&amp;#39;p&amp;#39;,p,&amp;#39;ode&amp;#39;,rhs); % Construct a Function that integrates over 1s F = integrator(&amp;#39;F&amp;#39;,&amp;#39;cvodes&amp;#39;,ode,0,1); % Control vector u = MX.sym(&amp;#39;u&amp;#39;,5,1); x = [0;1]; % Initial state for k=1:5 % Integrate 1s forward in time: % call integrator symbolically res = F(&amp;#39;x0&amp;#39;,x,&amp;#39;p&amp;#39;,u(k)); x = res.</description>
     </item>
     
     <item>
