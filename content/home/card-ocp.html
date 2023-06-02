@@ -32,7 +32,7 @@ rhs = [z*x(1)-x(2)+2*tanh(p);x(1)];
 ode = struct('x',x,'p',p,'ode',rhs);
 
 % Construct a Function that integrates over 1s
-F = integrator('F','cvodes',ode,struct('tf',1));
+F = integrator('F','cvodes',ode,0,1);
 
 % Control vector
 u = MX.sym('u',5,1);
@@ -69,7 +69,7 @@ rhs = vertcat(z*x[0]-x[1]+2*tanh(p),x[0])
 ode = {'x':x,'p':p,'ode':rhs}
 
 # Construct a Function that integrates over 1s
-F = integrator('F','cvodes',ode,{'tf':1})
+F = integrator('F','cvodes',ode,0,1)
 
 # Control vector
 u = MX.sym('u',4,1)
@@ -107,7 +107,7 @@ MX rhs = vertcat(z*x(0)-x(1)+2*tanh(p),x(0));
 MXDict ode = {{"x",x},{"p",p},{"ode",rhs}};
 
 // Construct a Function that integrates over 1s
-Function F = integrator("F","cvodes",ode,{{"tf",1}});
+Function F = integrator("F","cvodes",ode,0,1);
 
 // Control vector
 MX u = MX::sym("u",4,1);
