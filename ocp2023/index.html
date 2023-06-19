@@ -117,7 +117,131 @@
 <h3 id="format">Format</h3>
 <p>Seminars (40%) paired with computer exercises (60%). The seminars provide a bird’s-eye view on optimization and optimal control, serving as teaser for further study or as recap for the experienced. The computer exercises aim to deepen understanding of the theory, and leave the participants well-equipped to solve a broad range of problems using CasADi by themselves.</p>
 <h3 id="covered-topics">Covered topics</h3>
-<p>Newton-type methods for constrained nonlinear programming – integration methods – direct transcription of optimal control problems (OCP) – model predictive control (MPC) – CasADi 3.6 syntax and best practices</p>
+<p>
+Newton-type methods for constrained nonlinear programming – integration methods – direct transcription of optimal control problems (OCP) – model predictive control (MPC) – CasADi 3.6 syntax and best practices
+</p>
+<details>
+<summary><i>(click for more details)</i>
+</summary>
+<p>
+The following is the curriculum of earlier editions:
+<dl>
+  <dt>Module 1: Rootfinding on a nonlinear set of equations: Newton's method</dt>
+  <dd>
+    <ul>
+      <li>Understand the Newton step in a high-dimensional search space</li>
+      <li>Understand how (approximated) Jacobians are central to the Newton's method</li>
+      <li>Using CasADi to evaluate Jacobians</li>
+      <li>Understand some common failure modes of Newton's method</li>
+    </ul>
+  </dd>
+
+  <dt>Module 2: CasADi basics: Expressions graphs and Functions</dt>
+  <dd>
+    <ul>
+      <li>Get a clear mental image on basic CasADi concepts</li>
+      <li>Get acquainted with a consistent vocabulary to talk about CasADi concepts</li>
+      <li>Reason about CasADi types</li>
+      <li>Learn to read CasADi error messages</li>
+    </ul>
+  </dd>
+
+  <dt>Module 3: Constraint nonlinear programming: Newton-type methods and interior point</dt>
+  <dd>
+    <ul>
+      <li>Understand the conditions for optimality</li>
+      <li>Understand how Newton-type methods orginate from rootfinding</li>
+      <li>Learn how to build an SQP and interior point method in CasADi</li>
+    </ul>
+  </dd>
+
+  <dt>Module 4: Integration of CasADi integrator, rootfinder and nonlinear programming</dt>
+  <dd>
+    <ul>
+      <li>Learn how to compose CasADi building blocks to solve non-trivial engineering problems</li>
+    </ul>
+  </dd>
+
+  <dt>Module 5: CasADi Opti stack for easy nonlinear programming</dt>
+  <dd>
+    <ul>
+      <li>Learn how to use Opti for nonlinear programming</li>
+      <li>Learn some simple debugging skills for common failure cases of nonlinear programming</li>
+    </ul>
+  </dd>
+
+  <dt>Module 6: Nonlinear programming for fitting problems</dt>
+  <dd>
+    <ul>
+      <li>Understand how several fitting algorithms are related</li>
+      <li>Learn how to use L1 and L2 norms in CasADi</li>
+      <li>Understand the robustness property of L1 norm</li>
+      <li>Solve a parameter estimation problem from scratch in Opti</li>
+    </ul>
+  </dd>
+
+  <dt>Module 7: Direct methods for optimal control</dt>
+  <dd>
+    <ul>
+      <li>Understand single shooting and multipleshooting</li>
+      <li>Understand the sparsity structure present in multiple shooting</li>
+      <li>Learn how to choose between single- and multiple shooting</li>
+    </ul>
+  </dd>
+
+  <dt>Module 8: Implementing model predictive control in CasADi</dt>
+  <dd>
+    <ul>
+      <li>Understand MPC as an extension of optimal control</li>
+      <li>Learn how to speed up a CasADi MPC problem</li>
+      <li>Understand that MPC does not necessarily lead to a good controller</li>
+    </ul>
+  </dd>
+
+ <dt>Module 9: Time-optimal control in CasADi</dt>
+  <dd>
+    <ul>
+      <li>Understand how time-optimal control is intrinsically harder</li>
+      <li>Understand the difference between trajectory tracking and path tracking</li>
+      <li>Learn how to implement periodic racing problems</li>
+      <li>Learn how to interpret Lagrange multipliers</li>
+    </ul>
+  </dd>
+
+  <dt>Module 10: A demonstration of stochastic and robust constraints in optimal control</dt>
+  <dd>
+    <ul>
+      <li>Learn how CasADi can be applied outside 'standard' optimal control</li>
+    </ul>
+  </dd>
+
+  <dt>Module 11: Perform integration of system dynamics with collocation.</dt>
+  <dd>
+    <ul>
+      <li>Get an intuitive understanding of a collocation method</li>
+      <li>Understand the connection to rootfinding</li>
+    </ul>
+  </dd>
+
+  <dt>Module 12: Another direct method for optimal control: direct collocation</dt>
+  <dd>
+    <ul>
+      <li>Understand how direct collocation differs from multiple shooting with a collocation integrator</li>
+      <li>Learn how to implement direct collocation</li>
+      <li>Understand the sparsity structure resulting from direct collocation</li>
+      <li>Learn the benefits of direct collocation</li>
+    </ul>
+  </dd>
+</dl>
+
+
+Module 10 will probably be replaced by other material, e.g. BSplines or Neural Networks in CasADi graphs, focus on dedicated solver like hpipm, ...<br/>
+
+The contents of the physical course will be close to the contents of the <a href="https://yacoda-training.teachable.com/p/ocp">self-paced hands-on course</a>, with updates from casadi 3.6.
+What sets the physical course apart is really the networking opportunity, ability to ask live questions, the focus and the peer pressure that provides a stimulus to perform the exercises instead of procrastinating.
+In practice, I see a large difference in capabilities of students coming out of these courses, in spite of the proximity in contents.
+</p>
+</details>
 <h3 id="prerequisites">Prerequisites</h3>
 <p>Basic mathematical skills (analysis, calculus, linear algebra) are required. Experience with programming in MATLAB/Octave or Python is required, unless you partner up with an experienced person.</p>
 <h3 id="tutor">Tutor</h3>
@@ -129,7 +253,7 @@ Participants are required to bring their own laptops (Linux/Windows/Mac); no sof
 <p>The registration fee amounts to 1050 EUR excl. VAT (850 EUR for PhD students). Early bird discount (75 EUR) applies until July 1. The registration fee covers for daily mini-breakfasts, refreshments during the breaks, and lunch. A joint dinner is included on Tuesday evening. Lodging is not included.</p>
 <p>The number of participants is capped to 40. Registration closes October 15.</p>
 <p><a class="button" style="text-align: center;color:white;background-color:#dc0000;padding: 1em;text-decoration: none;font-weight:bold;margin:1em;display: inline-block;" href="https://forms.gle/hX1ZcvZa2PZdrdqh9">Register now</a></p>
-<p>Subscribe to the <a href="https://forms.gle/9v1HKPYZDHcBYMXNA">newsletter</a> if you wish to be kept up to date of further courses. You may also <a href="https://forms.gle/Pb7dwrwP6uanXeyr5">pre-register</a> to a future course to get priority in registration.</p>
+<p>Subscribe to the <a href="https://forms.gle/9v1HKPYZDHcBYMXNA">newsletter</a> if you wish to be kept up to date of further courses. You may also <a href="https://forms.gle/Pb7dwrwP6uanXeyr5">pre-register</a> to a future course to get priority in registration, or opt for a <a href="https://yacoda-training.teachable.com/p/ocp">pre-recorded</a> setting.</p>
 <p>Organizer: Joris Gillis, <a href="mailto:joris@yacoda.com">joris@yacoda.com</a>, +32496432937, Yacoda BV, Glabbeeksestraat 37, 3300 Vissenaken, Belgium. BE0642979742</p>
 <p>[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, M. Diehl, “CasADi – A software framework for nonlinear optimization and optimal control,” Mathematical Programming Computation, 2018.</p>
 
