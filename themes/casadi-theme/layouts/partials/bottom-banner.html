@@ -1,0 +1,19 @@
+{{ if .Site.Params.show_bottom_banner }}
+{{ if .IsHome }}
+{{ with .Site.GetPage "/bottom-banner" }}
+<a href="{{ .Params.href }}" target="_blank" id="bottom-banner">
+{{ end }}
+{{ else }}
+{{ with .Site.GetPage "/bottom-banner" }}
+<a href="{{ .Params.href }}" target="_blank" id="bottom-banner" class="visible">
+{{ end }}
+{{ end }}
+  <div class="container p-3">
+    <div class="row justify-content-md-center">
+      <div class="col-md-auto text-center">
+        {{ with .Site.GetPage "/bottom-banner" }}{{ .Content }}{{ end }}
+      </div>
+    </div>
+  </div>
+</a>
+{{ end }}
