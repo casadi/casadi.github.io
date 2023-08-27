@@ -223,6 +223,39 @@ iframe {
   font-size: inherit !important;
 }
 
+#bottom-banner {
+  color: #fff;
+  width: 100%;
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
+  opacity: 0;
+  z-index: 1000;
+}
+#bottom-banner:before {
+  content: " ";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  background-color: rgb(220, 0, 0);
+  -webkit-transition: opacity 0.3s;
+  -o-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+#bottom-banner.visible {
+  opacity: 1;
+}
+#bottom-banner:hover {
+  text-decoration: none;
+}
+#bottom-banner:hover:before {
+  opacity: 1;
+}
+
 figure {
   text-align: center;
 }
