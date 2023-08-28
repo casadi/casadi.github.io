@@ -73,4 +73,5 @@ let observer = new IntersectionObserver(
   }
 );
 
-observer.observe(document.getElementById('landing-cover'));
+let landing_cover = document.getElementById('landing-cover') || null
+if (landing_cover) observer.observe(landing_cover);
