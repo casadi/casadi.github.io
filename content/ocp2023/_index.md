@@ -39,7 +39,7 @@ Participants are required to bring their own laptops (Linux/Windows/Mac); no sof
 
 The registration fee amounts to 1050 EUR excl. VAT (850 EUR for PhD students). Early bird discount (75 EUR) applies until July 1. The registration fee covers for daily mini-breakfasts, refreshments during the breaks, and lunch. A joint dinner is included on Tuesday evening. Lodging is not included.
 
-The number of participants is capped to 40. Registration closes October 15.
+The number of participants is capped to 40. Registration closes October 22.
 
 <a class="button" style="text-align: center;color:white;background-color:#dc0000;padding: 1em;text-decoration: none;font-weight:bold;margin:1em;display: inline-block;" href="https://forms.gle/hX1ZcvZa2PZdrdqh9">Register now</a>
 
