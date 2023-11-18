@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/54931cdaaf5859cff6659b5b4077ebde2dcd9f9f" id="54931cdaaf5859cff6659b5b4077ebde2dcd9f9f" >revision 3.6.3</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/329e2282664f584b17fd6319f8ce765a111a6022" id="329e2282664f584b17fd6319f8ce765a111a6022" >revision 3.6.4</a></div>
   </td>
  </tr>
  </tbody>
@@ -68,6 +68,8 @@ Functions</h2></td></tr>
 <tr class="separator:ga3842767f464be180cfd06dd66566df83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gafca5a8c81c564e0ee2d854f9a61ef191"><td class="memItemLeft" align="right" valign="top">CASADI_EXPORT <a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d89/group__nlpsol.html#gafca5a8c81c564e0ee2d854f9a61ef191">casadi::nlpsol</a> (const std::string &amp;name, const std::string &amp;solver, const <a class="el" href="../../d1/d89/classcasadi_1_1NlpBuilder.html">NlpBuilder</a> &amp;nl, const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;opts=<a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>())</td></tr>
 <tr class="separator:gafca5a8c81c564e0ee2d854f9a61ef191"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaceb6368ad80111a40070998845d15a9c"><td class="memItemLeft" align="right" valign="top">CASADI_EXPORT <a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d89/group__nlpsol.html#gaceb6368ad80111a40070998845d15a9c">casadi::nlpsol</a> (const std::string &amp;name, const std::string &amp;solver, const <a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a> &amp;nlp, const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;opts=<a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>())</td></tr>
+<tr class="separator:gaceb6368ad80111a40070998845d15a9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2c3d2f260e0ed20f8f020ddf66862071"><td class="memItemLeft" align="right" valign="top">CASADI_EXPORT std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d89/group__nlpsol.html#ga2c3d2f260e0ed20f8f020ddf66862071">casadi::nlpsol_in</a> ()</td></tr>
 <tr class="memdesc:ga2c3d2f260e0ed20f8f020ddf66862071"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get input scheme of NLP solvers.  <a href="../../d4/d89/group__nlpsol.html#ga2c3d2f260e0ed20f8f020ddf66862071">More...</a><br /></td></tr>
 <tr class="separator:ga2c3d2f260e0ed20f8f020ddf66862071"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -902,8 +904,48 @@ List of plugins</h3>
 
 </div>
 </div>
+<a id="gaceb6368ad80111a40070998845d15a9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaceb6368ad80111a40070998845d15a9c">&#9670;&nbsp;</a></span>nlpsol() <span class="overload">[1/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CASADI_EXPORT <a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a> casadi::nlpsol </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>solver</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a> &amp;&#160;</td>
+          <td class="paramname"><em>nlp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;&#160;</td>
+          <td class="paramname"><em>opts</em> = <code><a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ga3842767f464be180cfd06dd66566df83"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga3842767f464be180cfd06dd66566df83">&#9670;&nbsp;</a></span>nlpsol() <span class="overload">[1/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3842767f464be180cfd06dd66566df83">&#9670;&nbsp;</a></span>nlpsol() <span class="overload">[2/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -943,7 +985,7 @@ List of plugins</h3>
 </div>
 </div>
 <a id="ga147a8bebdee123a16a2cda9c11d166ed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga147a8bebdee123a16a2cda9c11d166ed">&#9670;&nbsp;</a></span>nlpsol() <span class="overload">[2/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ga147a8bebdee123a16a2cda9c11d166ed">&#9670;&nbsp;</a></span>nlpsol() <span class="overload">[3/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -983,7 +1025,7 @@ List of plugins</h3>
 </div>
 </div>
 <a id="gafca5a8c81c564e0ee2d854f9a61ef191"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gafca5a8c81c564e0ee2d854f9a61ef191">&#9670;&nbsp;</a></span>nlpsol() <span class="overload">[3/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#gafca5a8c81c564e0ee2d854f9a61ef191">&#9670;&nbsp;</a></span>nlpsol() <span class="overload">[4/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1023,7 +1065,7 @@ List of plugins</h3>
 </div>
 </div>
 <a id="ga86d2299e29d4493bbb9e04649218311f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga86d2299e29d4493bbb9e04649218311f">&#9670;&nbsp;</a></span>nlpsol() <span class="overload">[4/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ga86d2299e29d4493bbb9e04649218311f">&#9670;&nbsp;</a></span>nlpsol() <span class="overload">[5/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1063,7 +1105,7 @@ List of plugins</h3>
 </div>
 </div>
 <a id="ga108c0bf3874938eec6bbfb54eda2d791"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga108c0bf3874938eec6bbfb54eda2d791">&#9670;&nbsp;</a></span>nlpsol() <span class="overload">[5/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ga108c0bf3874938eec6bbfb54eda2d791">&#9670;&nbsp;</a></span>nlpsol() <span class="overload">[6/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">

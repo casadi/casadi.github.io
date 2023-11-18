@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/54931cdaaf5859cff6659b5b4077ebde2dcd9f9f" id="54931cdaaf5859cff6659b5b4077ebde2dcd9f9f" >revision 3.6.3</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/329e2282664f584b17fd6319f8ce765a111a6022" id="329e2282664f584b17fd6319f8ce765a111a6022" >revision 3.6.4</a></div>
   </td>
  </tr>
  </tbody>
@@ -106,8 +106,9 @@ $(function() {
 : <a class="el" href="d3/d5a/structcasadi_1_1IndexAbstraction.html#abf33258fcca6e70082432e4289ea0a9e">casadi::IndexAbstraction</a>
 </li>
 <li>inf()
-: <a class="el" href="da/d45/classcasadi_1_1Matrix.html#aee8494fb395bf40866cb4a09568c739a">casadi::Matrix&lt; Scalar &gt;</a>
+: <a class="el" href="da/d45/classcasadi_1_1Matrix.html#aa171bb2f2a911a63cc24da4a0eb38000">casadi::Matrix&lt; Scalar &gt;</a>
 , <a class="el" href="de/d57/classcasadi_1_1MX.html#afeb58ce060ee119d466c33b34493c782">casadi::MX</a>
+, <a class="el" href="d4/dea/structcasadi__fatrop__conic__prob.html#ac6751b20fb633b31200983582a885e6e">casadi_fatrop_conic_prob&lt; T1 &gt;</a>
 , <a class="el" href="d4/df6/structcasadi__hpipm__prob.html#a3832655063a0629d72dcda6a046cee60">casadi_hpipm_prob&lt; T1 &gt;</a>
 , <a class="el" href="d5/d36/structcasadi__ipqp__prob.html#ab681229bfa13fb5ac16ea066f32a36b1">casadi_ipqp_prob&lt; T1 &gt;</a>
 , <a class="el" href="d2/d08/structcasadi__qrqp__prob.html#aceead25671422c46b7192304489100f4">casadi_qrqp_prob&lt; T1 &gt;</a>
@@ -126,11 +127,17 @@ $(function() {
 , <a class="el" href="d5/da8/classcasadi_1_1Sparsity.html#a33a805e4d8ca08ac422945b627077cb1">casadi::Sparsity</a>
 </li>
 <li>init()
-: <a class="el" href="d6/dac/classcasadi_1_1Callback.html#a29736e587991e952fc1a76a2c41db902">casadi::Callback</a>
+: <a class="el" href="d3/dfa/classcasadi_1_1AlpaqaInterface.html#ab1ddcfc3e789b2e3a6c9a7d6a2e2b6f1">casadi::AlpaqaInterface</a>
+, <a class="el" href="d6/dac/classcasadi_1_1Callback.html#a29736e587991e952fc1a76a2c41db902">casadi::Callback</a>
 , <a class="el" href="df/d13/classcasadi_1_1CallbackInternal.html#a203e72e020c1d027c55e97573d7f57a0">casadi::CallbackInternal</a>
+, <a class="el" href="d7/d97/classcasadi_1_1SLEQPInterface.html#aaee4e010e9d2e25c9a5b565a970f2744">casadi::SLEQPInterface</a>
 </li>
 <li>init_lhs()
 : <a class="el" href="d4/db5/classcasadi_1_1DaeBuilder.html#ad67aeb72f6febd0803ffb04e21b92762">casadi::DaeBuilder</a>
+</li>
+<li>init_mem()
+: <a class="el" href="d3/dfa/classcasadi_1_1AlpaqaInterface.html#aadbc25629a2848365b49d0bfcd30cfd0">casadi::AlpaqaInterface</a>
+, <a class="el" href="d7/d97/classcasadi_1_1SLEQPInterface.html#a0800cd530edb59a927ff94603cb2c11b">casadi::SLEQPInterface</a>
 </li>
 <li>init_rhs()
 : <a class="el" href="d4/db5/classcasadi_1_1DaeBuilder.html#a463d0c69aa4fc26cadea8a6ac2ae9985">casadi::DaeBuilder</a>
@@ -180,6 +187,13 @@ $(function() {
 </li>
 <li>integrality
 : <a class="el" href="db/d5e/structcasadi__highs__prob.html#affedc9eed302a058eac96fc9778b7e6e">casadi_highs_prob&lt; T1 &gt;</a>
+</li>
+<li>interface
+: <a class="el" href="da/d9a/structcasadi_1_1AlpaqaMemory.html#a1c971951a854ae2081c163f97072e637">casadi::AlpaqaMemory</a>
+, <a class="el" href="df/dad/structcasadi_1_1SLEQPMemory.html#aba0e14dfe468e20d7cb98992b6a52067">casadi::SLEQPMemory</a>
+</li>
+<li>internal
+: <a class="el" href="df/dad/structcasadi_1_1SLEQPMemory.html#ac9211275328b3ea00d667c7e5cd1ae43">casadi::SLEQPMemory</a>
 </li>
 <li>InternalOptiCallback
 : <a class="el" href="dd/dc6/classcasadi_1_1Opti.html#ad5ddf7a50b2df162f40eb72b77919b0f">casadi::Opti</a>
@@ -251,10 +265,10 @@ $(function() {
 : <a class="el" href="d5/da8/classcasadi_1_1Sparsity.html#a81bd1e2a0880482b35b07b35c273ab18">casadi::Sparsity</a>
 </li>
 <li>is_diff_in()
-: <a class="el" href="da/da4/classcasadi_1_1Function.html#a0352f4cde6534e0338ccc11a5e52724a">casadi::Function</a>
+: <a class="el" href="da/da4/classcasadi_1_1Function.html#aa08e3e10dd500d35489a137e7fb5d239">casadi::Function</a>
 </li>
 <li>is_diff_out()
-: <a class="el" href="da/da4/classcasadi_1_1Function.html#a746b604c2924ba32a10f2397f824ff8d">casadi::Function</a>
+: <a class="el" href="da/da4/classcasadi_1_1Function.html#a78ae76bbb95d29d6744990aee9c0afc6">casadi::Function</a>
 </li>
 <li>is_empty()
 : <a class="el" href="dc/df3/classcasadi_1_1GenericMatrix.html#a2e59469a9a3721a9e365531d186c31ef">casadi::GenericMatrix&lt; MatType &gt;</a>
@@ -434,8 +448,12 @@ $(function() {
 , <a class="el" href="d3/d8d/structcasadi__qrqp__data.html#a6367d7be6e30a284d5c62f4a7d95ec9d">casadi_qrqp_data&lt; T1 &gt;</a>
 </li>
 <li>iter_count
-: <a class="el" href="d1/da5/structcasadi__hpipm__data.html#a7596d63ea5e53831afdf12eb89d3a9a0">casadi_hpipm_data&lt; T1 &gt;</a>
+: <a class="el" href="d5/d5f/structcasadi__fatrop__conic__data.html#a62943e5d3182279eb70cfa3cd5e0a3b9">casadi_fatrop_conic_data&lt; T1 &gt;</a>
+, <a class="el" href="d1/da5/structcasadi__hpipm__data.html#a7596d63ea5e53831afdf12eb89d3a9a0">casadi_hpipm_data&lt; T1 &gt;</a>
 , <a class="el" href="dc/dd5/structcasadi__qp__data.html#a2b88b1d9548fbd36d20cd437c263d440">casadi_qp_data&lt; T1 &gt;</a>
+</li>
+<li>iteration_callback_ignore_errors
+: <a class="el" href="df/dad/structcasadi_1_1SLEQPMemory.html#aa632d8f0f0b6dc8bd7a8f0374e6965da">casadi::SLEQPMemory</a>
 </li>
 <li>iw
 : <a class="el" href="d4/dea/structcasadi__fmi__memory.html#a77613451a593e0ee7dee8857c85a71e8">casadi_fmi_memory</a>

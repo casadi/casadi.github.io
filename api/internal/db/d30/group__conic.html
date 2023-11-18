@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/54931cdaaf5859cff6659b5b4077ebde2dcd9f9f" id="54931cdaaf5859cff6659b5b4077ebde2dcd9f9f" >revision 3.6.3</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/329e2282664f584b17fd6319f8ce765a111a6022" id="329e2282664f584b17fd6319f8ce765a111a6022" >revision 3.6.4</a></div>
   </td>
  </tr>
  </tbody>
@@ -289,6 +289,7 @@ List of plugins</h3>
 <p>- <a href='#plugin_Conic_cbc'>cbc</a> </p>
 <p>- <a href='#plugin_Conic_clp'>clp</a> </p>
 <p>- <a href='#plugin_Conic_cplex'>cplex</a> </p>
+<p>- <a href='#plugin_Conic_fatrop'>fatrop</a> </p>
 <p>- <a href='#plugin_Conic_gurobi'>gurobi</a> </p>
 <p>- <a href='#plugin_Conic_highs'>highs</a> </p>
 <p>- <a href='#plugin_Conic_hpipm'>hpipm</a> </p>
@@ -376,6 +377,41 @@ List of plugins</h3>
 </table>
 </dd></dl>
 <hr  />
+  <h4>fatrop <a class="anchor" id="plugin_Conic_fatrop"></a> </h4>
+<dl class="section user"><dt></dt><dd>Interface to Fatrop Solver</dd></dl>
+<p>In order to use this interface, you must:</p>
+<ul>
+<li>Decision variables must only by state and control, and the variable ordering must be [x0 u0 x1 u1 ...]</li>
+<li><p class="startli">The constraints must be in order: [ gap0 lincon0 gap1 lincon1 ]</p>
+<p class="startli">gap: Ak+1 = Ak xk + Bk uk lincon: yk= Ck xk + Dk uk</p>
+</li>
+</ul>
+<pre class="fragment">       A0 B0 -I
+       C0 D0
+              A1 B1 -I
+              C1 D1</pre><p>where I must be a diagonal sparse matrix</p><ul>
+<li><p class="startli">Either supply all of N, nx, ng, nu options or rely on automatic detection</p>
+<p class="startli">Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_27g">https://github.com/casadi/casadi/wiki/L_27g</a></p>
+</li>
+</ul>
+<p><br  />
+</p><dl class="section user"><dt></dt><dd><a class="anchor" id="options"></a><table class="doxtable">
+<caption>List of available options</caption>
+<tr>
+<th>Id</th><th>Type</th><th>Description </th></tr>
+<tr>
+<td>N</td><td>OT_INT</td><td>OCP horizon </td></tr>
+<tr>
+<td>fatrop</td><td>OT_DICT</td><td><a class="el" href="../../db/d35/structcasadi_1_1Options.html" title="Options metadata for a class.">Options</a> to be passed to fatrop </td></tr>
+<tr>
+<td>ng</td><td>OT_INTVECTOR</td><td>Number of non-dynamic constraints, length N+1 </td></tr>
+<tr>
+<td>nu</td><td>OT_INTVECTOR</td><td>Number of controls, length N </td></tr>
+<tr>
+<td>nx</td><td>OT_INTVECTOR</td><td>Number of states, length N+1 </td></tr>
+</table>
+</dd></dl>
+<hr  />
   <h4>gurobi <a class="anchor" id="plugin_Conic_gurobi"></a> </h4>
 <dl class="section user"><dt></dt><dd></dd></dl>
 <p>Interface to the GUROBI Solver for quadratic programming</p>
@@ -413,7 +449,7 @@ List of plugins</h3>
 </dd></dl>
 <hr  />
   <h4>hpipm <a class="anchor" id="plugin_Conic_hpipm"></a> </h4>
-<dl class="section user"><dt></dt><dd>Interface to HMPC Solver</dd></dl>
+<dl class="section user"><dt></dt><dd>Interface to HPIPM Solver</dd></dl>
 <p>In order to use this interface, you must:</p>
 <ul>
 <li>Decision variables must only by state and control, and the variable ordering must be [x0 u0 x1 u1 ...]</li>
@@ -1335,7 +1371,7 @@ List of plugins</h3>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../df/d70/conic_8cpp_source.html#l00111">casadi::qpsol_nlp()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d3/db1/optistack__internal_8cpp_source.html#l00955">casadi::OptiNode::solve()</a>, and <a class="el" href="../../d3/db1/optistack__internal_8cpp_source.html#l01270">casadi::OptiNode::to_function()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d3/db1/optistack__internal_8cpp_source.html#l00953">casadi::OptiNode::solve()</a>, and <a class="el" href="../../d3/db1/optistack__internal_8cpp_source.html#l01268">casadi::OptiNode::to_function()</a>.</p>
 
 </div>
 </div>

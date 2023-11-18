@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/54931cdaaf5859cff6659b5b4077ebde2dcd9f9f" id="54931cdaaf5859cff6659b5b4077ebde2dcd9f9f" >revision 3.6.3</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/329e2282664f584b17fd6319f8ce765a111a6022" id="329e2282664f584b17fd6319f8ce765a111a6022" >revision 3.6.4</a></div>
   </td>
  </tr>
  </tbody>
@@ -1276,7 +1276,7 @@ $(function() {
 <div class="line"><a name="l01217"></a><span class="lineno"> 1217</span>&#160;  Matrix&lt;Scalar&gt; Matrix&lt;Scalar&gt;::</div>
 <div class="line"><a name="l01218"></a><span class="lineno"> 1218</span>&#160;  _logsumexp(<span class="keyword">const</span> Matrix&lt;Scalar&gt;&amp; x) {</div>
 <div class="line"><a name="l01219"></a><span class="lineno"> 1219</span>&#160;    Matrix&lt;Scalar&gt; mx = mmax(x);</div>
-<div class="line"><a name="l01220"></a><span class="lineno"> 1220</span>&#160;    <span class="keywordflow">return</span> log(sum1(exp(x-mx)));</div>
+<div class="line"><a name="l01220"></a><span class="lineno"> 1220</span>&#160;    <span class="keywordflow">return</span> mx+log(sum1(exp(x-mx)));</div>
 <div class="line"><a name="l01221"></a><span class="lineno"> 1221</span>&#160;  }</div>
 <div class="line"><a name="l01222"></a><span class="lineno"> 1222</span>&#160; </div>
 <div class="line"><a name="l01223"></a><span class="lineno"> 1223</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Scalar&gt;</div>

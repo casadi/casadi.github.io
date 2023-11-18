@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/54931cdaaf5859cff6659b5b4077ebde2dcd9f9f" id="54931cdaaf5859cff6659b5b4077ebde2dcd9f9f" >revision 3.6.3</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/329e2282664f584b17fd6319f8ce765a111a6022" id="329e2282664f584b17fd6319f8ce765a111a6022" >revision 3.6.4</a></div>
   </td>
  </tr>
  </tbody>
@@ -108,6 +108,12 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a229e9b5be2ec65274ca5f995c755ee98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af361e31876151b53f9bd9157a2a77584"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d52/structcasadi_1_1GurobiMemory.html#af361e31876151b53f9bd9157a2a77584">return_status</a></td></tr>
 <tr class="separator:af361e31876151b53f9bd9157a2a77584"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae02b309224ed0606397fe5d6089d7c60"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d52/structcasadi_1_1GurobiMemory.html#ae02b309224ed0606397fe5d6089d7c60">pool_sol_nr</a></td></tr>
+<tr class="separator:ae02b309224ed0606397fe5d6089d7c60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92340b6ce9aea5708c70f181c41ca511"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d52/structcasadi_1_1GurobiMemory.html#a92340b6ce9aea5708c70f181c41ca511">pool_obj_vals</a></td></tr>
+<tr class="separator:a92340b6ce9aea5708c70f181c41ca511"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a99d7341e54697a13acd9e5ccaafa62"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d52/structcasadi_1_1GurobiMemory.html#a2a99d7341e54697a13acd9e5ccaafa62">pool_solutions</a></td></tr>
+<tr class="separator:a2a99d7341e54697a13acd9e5ccaafa62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b27a8296494458e3d8d45a4d4f89062"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d52/structcasadi_1_1GurobiMemory.html#a2b27a8296494458e3d8d45a4d4f89062">sos_weights</a></td></tr>
 <tr class="separator:a2b27a8296494458e3d8d45a4d4f89062"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a635d71fa2ca78968098b8bec2449d008"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d52/structcasadi_1_1GurobiMemory.html#a635d71fa2ca78968098b8bec2449d008">sos_beg</a></td></tr>
@@ -139,10 +145,10 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d5/d0d/gurobi__interface_8cpp_source.html#l00538">538</a> of file <a class="el" href="../../d5/d0d/gurobi__interface_8cpp_source.html">gurobi_interface.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;                             {</div>
-<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;    this-&gt;<a class="code" href="../../de/d52/structcasadi_1_1GurobiMemory.html#a229e9b5be2ec65274ca5f995c755ee98">env</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d5/d0d/gurobi__interface_8cpp_source.html#l00564">564</a> of file <a class="el" href="../../d5/d0d/gurobi__interface_8cpp_source.html">gurobi_interface.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;                             {</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;    this-&gt;<a class="code" href="../../de/d52/structcasadi_1_1GurobiMemory.html#a229e9b5be2ec65274ca5f995c755ee98">env</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;  }</div>
 <div class="ttc" id="astructcasadi_1_1GurobiMemory_html_a229e9b5be2ec65274ca5f995c755ee98"><div class="ttname"><a href="../../de/d52/structcasadi_1_1GurobiMemory.html#a229e9b5be2ec65274ca5f995c755ee98">casadi::GurobiMemory::env</a></div><div class="ttdeci">GRBenv * env</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dbf/gurobi__interface_8hpp_source.html#l00051">gurobi_interface.hpp:51</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../da/dbf/gurobi__interface_8hpp_source.html#l00051">env</a>.</p>
@@ -164,10 +170,10 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d5/d0d/gurobi__interface_8cpp_source.html#l00542">542</a> of file <a class="el" href="../../d5/d0d/gurobi__interface_8cpp_source.html">gurobi_interface.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;                              {</div>
-<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="../../de/d52/structcasadi_1_1GurobiMemory.html#a229e9b5be2ec65274ca5f995c755ee98">env</a>) GRBfreeenv(this-&gt;<a class="code" href="../../de/d52/structcasadi_1_1GurobiMemory.html#a229e9b5be2ec65274ca5f995c755ee98">env</a>);</div>
-<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d5/d0d/gurobi__interface_8cpp_source.html#l00568">568</a> of file <a class="el" href="../../d5/d0d/gurobi__interface_8cpp_source.html">gurobi_interface.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;                              {</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="../../de/d52/structcasadi_1_1GurobiMemory.html#a229e9b5be2ec65274ca5f995c755ee98">env</a>) GRBfreeenv(this-&gt;<a class="code" href="../../de/d52/structcasadi_1_1GurobiMemory.html#a229e9b5be2ec65274ca5f995c755ee98">env</a>);</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;  }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../da/dbf/gurobi__interface_8hpp_source.html#l00051">env</a>.</p>
 
@@ -205,7 +211,7 @@ Public Attributes</h2></td></tr>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
 <div class="ttc" id="astructcasadi_1_1ProtoFunctionMemory_html_a37d1f033205f4c123a7a14d159a5d265"><div class="ttname"><a href="../../d1/df0/structcasadi_1_1ProtoFunctionMemory.html#a37d1f033205f4c123a7a14d159a5d265">casadi::ProtoFunctionMemory::fstats</a></div><div class="ttdeci">std::map&lt; std::string, FStats &gt; fstats</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4f/function__internal_8hpp_source.html#l00068">function_internal.hpp:68</a></div></div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l00787">casadi::ProtoFunction::init_mem()</a>, <a class="el" href="../../d6/d4e/linsol__internal_8cpp_source.html#l00051">casadi::LinsolInternal::init_mem()</a>, <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00578">casadi::Nlpsol::init_mem()</a>, <a class="el" href="../../d2/dc0/oracle__function_8cpp_source.html#l00396">casadi::OracleFunction::init_mem()</a>, <a class="el" href="../../dc/d65/cbc__interface_8cpp_source.html#l00255">casadi::CbcInterface::init_mem()</a>, <a class="el" href="../../d9/dcd/clp__interface_8cpp_source.html#l00261">casadi::ClpInterface::init_mem()</a>, <a class="el" href="../../df/d8d/hpipm__interface_8cpp_source.html#l00686">casadi::HpipmInterface::init_mem()</a>, <a class="el" href="../../da/d41/feasiblesqpmethod_8cpp_source.html#l00493">casadi::Feasiblesqpmethod::init_mem()</a>, <a class="el" href="../../d8/dfc/sqpmethod_8cpp_source.html#l00381">casadi::Sqpmethod::init_mem()</a>, and <a class="el" href="../../d2/dc0/oracle__function_8cpp_source.html#l00383">casadi::OracleFunction::local_init_mem()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l00788">casadi::ProtoFunction::init_mem()</a>, <a class="el" href="../../d6/d4e/linsol__internal_8cpp_source.html#l00051">casadi::LinsolInternal::init_mem()</a>, <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00578">casadi::Nlpsol::init_mem()</a>, <a class="el" href="../../d2/dc0/oracle__function_8cpp_source.html#l00447">casadi::OracleFunction::init_mem()</a>, <a class="el" href="../../dc/d65/cbc__interface_8cpp_source.html#l00255">casadi::CbcInterface::init_mem()</a>, <a class="el" href="../../d9/dcd/clp__interface_8cpp_source.html#l00261">casadi::ClpInterface::init_mem()</a>, <a class="el" href="../../d5/d26/fatrop__conic__interface_8cpp_source.html#l00315">casadi::FatropConicInterface::init_mem()</a>, <a class="el" href="../../df/d8d/hpipm__interface_8cpp_source.html#l00682">casadi::HpipmInterface::init_mem()</a>, <a class="el" href="../../da/d41/feasiblesqpmethod_8cpp_source.html#l00493">casadi::Feasiblesqpmethod::init_mem()</a>, <a class="el" href="../../d8/dfc/sqpmethod_8cpp_source.html#l00381">casadi::Sqpmethod::init_mem()</a>, and <a class="el" href="../../d2/dc0/oracle__function_8cpp_source.html#l00434">casadi::OracleFunction::local_init_mem()</a>.</p>
 
 </div>
 </div>
@@ -232,7 +238,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d0/dea/conic__impl_8hpp_source.html#l00039">39</a> of file <a class="el" href="../../d0/dea/conic__impl_8hpp_source.html">conic_impl.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d70/conic_8cpp_source.html#l00689">casadi::Conic::get_stats()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d70/conic_8cpp_source.html#l00689">casadi::Conic::get_stats()</a>, and <a class="el" href="../../d5/d26/fatrop__conic__interface_8cpp_source.html#l01038">casadi::FatropConicInterface::solve()</a>.</p>
 
 </div>
 </div>
@@ -250,7 +256,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../da/dbf/gurobi__interface_8hpp_source.html#l00051">51</a> of file <a class="el" href="../../da/dbf/gurobi__interface_8hpp_source.html">gurobi_interface.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d5/d0d/gurobi__interface_8cpp_source.html#l00538">GurobiMemory()</a>, and <a class="el" href="../../d5/d0d/gurobi__interface_8cpp_source.html#l00542">~GurobiMemory()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d5/d0d/gurobi__interface_8cpp_source.html#l00564">GurobiMemory()</a>, and <a class="el" href="../../d5/d0d/gurobi__interface_8cpp_source.html#l00568">~GurobiMemory()</a>.</p>
 
 </div>
 </div>
@@ -276,7 +282,55 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d6/d4f/function__internal_8hpp_source.html#l00068">68</a> of file <a class="el" href="../../d6/d4f/function__internal_8hpp_source.html">function_internal.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l01186">casadi::Nlpsol::callback()</a>, <a class="el" href="../../d0/d5d/ipopt__nlp_8cpp_source.html#l00182">casadi::IpoptUserClass::eval_h()</a>, <a class="el" href="../../d0/d7f/bonmin__interface_8cpp_source.html#l00486">casadi::BonminInterface::intermediate_callback()</a>, <a class="el" href="../../d9/d80/ipopt__interface_8cpp_source.html#l00487">casadi::IpoptInterface::intermediate_callback()</a>, <a class="el" href="../../d2/dc0/oracle__function_8cpp_source.html#l00145">casadi::OracleFunction::join_results()</a>, <a class="el" href="../../d3/d83/highs__interface_8cpp_source.html#l00215">casadi::HighsInterface::solve()</a>, <a class="el" href="../../df/d8d/hpipm__interface_8cpp_source.html#l00710">casadi::HpipmInterface::solve()</a>, <a class="el" href="../../d7/d75/hpmpc__interface_8cpp_source.html#l00580">casadi::HpmpcInterface::solve()</a>, <a class="el" href="../../d9/db2/proxqp__interface_8cpp_source.html#l00163">casadi::ProxqpInterface::solve()</a>, <a class="el" href="../../de/d94/qpoases__interface_8cpp_source.html#l00355">casadi::QpoasesInterface::solve()</a>, <a class="el" href="../../d8/dfc/sqpmethod_8cpp_source.html#l00879">casadi::Sqpmethod::solve_ela_QP()</a>, <a class="el" href="../../da/d41/feasiblesqpmethod_8cpp_source.html#l01348">casadi::Feasiblesqpmethod::solve_LP()</a>, <a class="el" href="../../da/d41/feasiblesqpmethod_8cpp_source.html#l01383">casadi::Feasiblesqpmethod::solve_QP()</a>, and <a class="el" href="../../d8/dfc/sqpmethod_8cpp_source.html#l00838">casadi::Sqpmethod::solve_QP()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l01186">casadi::Nlpsol::callback()</a>, <a class="el" href="../../d0/d5d/ipopt__nlp_8cpp_source.html#l00182">casadi::IpoptUserClass::eval_h()</a>, <a class="el" href="../../d0/d7f/bonmin__interface_8cpp_source.html#l00486">casadi::BonminInterface::intermediate_callback()</a>, <a class="el" href="../../d9/d80/ipopt__interface_8cpp_source.html#l00487">casadi::IpoptInterface::intermediate_callback()</a>, <a class="el" href="../../d2/dc0/oracle__function_8cpp_source.html#l00145">casadi::OracleFunction::join_results()</a>, <a class="el" href="../../d5/d26/fatrop__conic__interface_8cpp_source.html#l01038">casadi::FatropConicInterface::solve()</a>, <a class="el" href="../../d3/d83/highs__interface_8cpp_source.html#l00215">casadi::HighsInterface::solve()</a>, <a class="el" href="../../df/d8d/hpipm__interface_8cpp_source.html#l00706">casadi::HpipmInterface::solve()</a>, <a class="el" href="../../d7/d75/hpmpc__interface_8cpp_source.html#l00580">casadi::HpmpcInterface::solve()</a>, <a class="el" href="../../d9/db2/proxqp__interface_8cpp_source.html#l00163">casadi::ProxqpInterface::solve()</a>, <a class="el" href="../../de/d94/qpoases__interface_8cpp_source.html#l00355">casadi::QpoasesInterface::solve()</a>, <a class="el" href="../../d8/dfc/sqpmethod_8cpp_source.html#l00879">casadi::Sqpmethod::solve_ela_QP()</a>, <a class="el" href="../../da/d41/feasiblesqpmethod_8cpp_source.html#l01348">casadi::Feasiblesqpmethod::solve_LP()</a>, <a class="el" href="../../da/d41/feasiblesqpmethod_8cpp_source.html#l01383">casadi::Feasiblesqpmethod::solve_QP()</a>, and <a class="el" href="../../d8/dfc/sqpmethod_8cpp_source.html#l00838">casadi::Sqpmethod::solve_QP()</a>.</p>
+
+</div>
+</div>
+<a id="a92340b6ce9aea5708c70f181c41ca511"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92340b6ce9aea5708c70f181c41ca511">&#9670;&nbsp;</a></span>pool_obj_vals</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;double&gt; casadi::GurobiMemory::pool_obj_vals</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../da/dbf/gurobi__interface_8hpp_source.html#l00056">56</a> of file <a class="el" href="../../da/dbf/gurobi__interface_8hpp_source.html">gurobi_interface.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ae02b309224ed0606397fe5d6089d7c60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae02b309224ed0606397fe5d6089d7c60">&#9670;&nbsp;</a></span>pool_sol_nr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int casadi::GurobiMemory::pool_sol_nr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../da/dbf/gurobi__interface_8hpp_source.html#l00055">55</a> of file <a class="el" href="../../da/dbf/gurobi__interface_8hpp_source.html">gurobi_interface.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a2a99d7341e54697a13acd9e5ccaafa62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a99d7341e54697a13acd9e5ccaafa62">&#9670;&nbsp;</a></span>pool_solutions</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::vector&lt;double&gt; &gt; casadi::GurobiMemory::pool_solutions</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../da/dbf/gurobi__interface_8hpp_source.html#l00057">57</a> of file <a class="el" href="../../da/dbf/gurobi__interface_8hpp_source.html">gurobi_interface.hpp</a>.</p>
 
 </div>
 </div>
@@ -308,7 +362,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/dbf/gurobi__interface_8hpp_source.html#l00057">57</a> of file <a class="el" href="../../da/dbf/gurobi__interface_8hpp_source.html">gurobi_interface.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dbf/gurobi__interface_8hpp_source.html#l00061">61</a> of file <a class="el" href="../../da/dbf/gurobi__interface_8hpp_source.html">gurobi_interface.hpp</a>.</p>
 
 </div>
 </div>
@@ -324,7 +378,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/dbf/gurobi__interface_8hpp_source.html#l00058">58</a> of file <a class="el" href="../../da/dbf/gurobi__interface_8hpp_source.html">gurobi_interface.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dbf/gurobi__interface_8hpp_source.html#l00062">62</a> of file <a class="el" href="../../da/dbf/gurobi__interface_8hpp_source.html">gurobi_interface.hpp</a>.</p>
 
 </div>
 </div>
@@ -340,7 +394,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/dbf/gurobi__interface_8hpp_source.html#l00059">59</a> of file <a class="el" href="../../da/dbf/gurobi__interface_8hpp_source.html">gurobi_interface.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dbf/gurobi__interface_8hpp_source.html#l00063">63</a> of file <a class="el" href="../../da/dbf/gurobi__interface_8hpp_source.html">gurobi_interface.hpp</a>.</p>
 
 </div>
 </div>
@@ -356,7 +410,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/dbf/gurobi__interface_8hpp_source.html#l00056">56</a> of file <a class="el" href="../../da/dbf/gurobi__interface_8hpp_source.html">gurobi_interface.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dbf/gurobi__interface_8hpp_source.html#l00060">60</a> of file <a class="el" href="../../da/dbf/gurobi__interface_8hpp_source.html">gurobi_interface.hpp</a>.</p>
 
 </div>
 </div>
@@ -382,7 +436,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d6/d4f/function__internal_8hpp_source.html#l00071">71</a> of file <a class="el" href="../../d6/d4f/function__internal_8hpp_source.html">function_internal.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d4/d9e/solve__impl_8hpp_source.html#l00057">casadi::LinsolCall&lt; Tr &gt;::eval()</a>, <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l00825">casadi::FunctionInternal::eval_gen()</a>, and <a class="el" href="../../d4/dce/linsol_8cpp_source.html#l00072">casadi::Linsol::solve()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d4/d9e/solve__impl_8hpp_source.html#l00057">casadi::LinsolCall&lt; Tr &gt;::eval()</a>, <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l00826">casadi::FunctionInternal::eval_gen()</a>, and <a class="el" href="../../d4/dce/linsol_8cpp_source.html#l00072">casadi::Linsol::solve()</a>.</p>
 
 </div>
 </div>

@@ -113,10 +113,10 @@
         <nav class="nav-side">
           <p class="caption"><span class="caption-text">See also:</span></p>
 <ul>
-  <li><a href="https://github.com/casadi/casadi/releases/download/3.6.3/casadi-users_guide-v3.6.3.pdf">PDF version</a></li>
+  <li><a href="https://github.com/casadi/casadi/releases/download/3.6.4/casadi-users_guide-v3.6.4.pdf">PDF version</a></li>
   <li><a href="../api/html/">C++ API</a></li>
   <li><a href="../python-api">Python API</a></li>
-  <li><a href="https://github.com/casadi/casadi/releases/download/3.6.3/casadi-example_pack-v3.6.3.zip">Example pack</a></li>
+  <li><a href="https://github.com/casadi/casadi/releases/download/3.6.4/casadi-example_pack-v3.6.4.zip">Example pack</a></li>
 </ul>  
 </p>
 
@@ -824,7 +824,7 @@ x[0]
 </div>
 <p>As is customary in MATLAB, multiplication using <code class="docutils literal notranslate"><span class="pre">*</span></code> and <code class="docutils literal notranslate"><span class="pre">.*</span></code> are equivalent when either of the arguments is a scalar.</p>
 <p><strong>Transposes</strong> are formed using the syntax <code class="docutils literal notranslate"><span class="pre">A.T</span></code> in Python, <code class="docutils literal notranslate"><span class="pre">A.T()</span></code> in C++ and with
-<code class="docutils literal notranslate"><span class="pre">A</span></code> or <code class="docutils literal notranslate"><span class="pre">A.'</span></code> in MATLAB:</p>
+<code class="docutils literal notranslate"><span class="pre">A'</span></code> or <code class="docutils literal notranslate"><span class="pre">A.'</span></code> in MATLAB:</p>
 <div class="sidebyside-master docutils container">
 <div class="sidebyside docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
@@ -974,23 +974,11 @@ x[0]
 <div class="sidebyside docutils container">
 <div class="highlight-octave notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="p">=</span> <span class="n">SX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
 <span class="n">w</span> <span class="p">=</span> <span class="n">horzsplit</span><span class="p">(</span><span class="n">x</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]);</span>
-<span class="nb">disp</span><span class="p">(</span><span class="n">w</span><span class="p">(</span><span class="mi">1</span><span class="p">)),</span> <span class="nb">disp</span><span class="p">(</span><span class="n">w</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">disp</span><span class="p">(</span><span class="n">w</span><span class="p">{</span><span class="mi">1</span><span class="p">}),</span> <span class="nb">disp</span><span class="p">(</span><span class="n">w</span><span class="p">{</span><span class="mi">2</span><span class="p">})</span>
 </pre></div>
 </div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>{
-  [1,1] =
-
-    casadi.SX object with properties:
-
-
-}
-{
-  [1,1] =
-
-    casadi.SX object with properties:
-
-
-}
+<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>[x_0, x_1, x_2, x_3, x_4]
+[x_5, x_6, x_7, x_8, x_9]
 </pre></div>
 </div>
 </div>
@@ -1796,16 +1784,16 @@ Number of inequality constraint evaluations          = 0
 Number of equality constraint Jacobian evaluations   = 11
 Number of inequality constraint Jacobian evaluations = 0
 Number of Lagrangian Hessian evaluations             = 10
-Total seconds in IPOPT                               = 0.006
+Total seconds in IPOPT                               = 0.007
 
 EXIT: Optimal Solution Found.
            S  :   t_proc      (avg)   t_wall      (avg)    n_eval
-       nlp_f  |  27.00us (  2.45us)  14.30us (  1.30us)        11
-       nlp_g  |  76.00us (  6.91us)  30.80us (  2.80us)        11
-  nlp_grad_f  |  45.00us (  3.75us)  20.50us (  1.71us)        12
-  nlp_hess_l  |  33.00us (  3.30us)  15.50us (  1.55us)        10
-   nlp_jac_g  |  34.00us (  2.83us)  16.60us (  1.38us)        12
-       total  |  13.21ms ( 13.21ms)   6.61ms (  6.61ms)         1
+       nlp_f  |  59.00us (  5.36us)  14.26us (  1.30us)        11
+       nlp_g  | 132.00us ( 12.00us)  29.65us (  2.70us)        11
+  nlp_grad_f  |  80.00us (  6.67us)  19.74us (  1.64us)        12
+  nlp_hess_l  |  60.00us (  6.00us)  13.88us (  1.39us)        10
+   nlp_jac_g  |  67.00us (  5.58us)  16.22us (  1.35us)        12
+       total  |  31.09ms ( 31.09ms)   7.77ms (  7.77ms)         1
 x_opt:  [0, 1, 0]
 </pre></div>
 </div>
@@ -1865,16 +1853,16 @@ Number of inequality constraint evaluations          = 0
 Number of equality constraint Jacobian evaluations   = 11
 Number of inequality constraint Jacobian evaluations = 0
 Number of Lagrangian Hessian evaluations             = 10
-Total seconds in IPOPT                               = 0.007
+Total seconds in IPOPT                               = 0.008
 
 EXIT: Optimal Solution Found.
            S  :   t_proc      (avg)   t_wall      (avg)    n_eval
-       nlp_f  |  28.00us (  2.55us)  14.80us (  1.35us)        11
-       nlp_g  |  84.00us (  7.64us)  34.60us (  3.15us)        11
-  nlp_grad_f  |  48.00us (  4.00us)  23.00us (  1.92us)        12
-  nlp_hess_l  |  38.00us (  3.80us)  17.70us (  1.77us)        10
-   nlp_jac_g  |  36.00us (  3.00us)  18.10us (  1.51us)        12
-       total  |  15.20ms ( 15.20ms)   7.73ms (  7.73ms)         1
+       nlp_f  |  63.00us (  5.73us)  15.03us (  1.37us)        11
+       nlp_g  | 134.00us ( 12.18us)  30.13us (  2.74us)        11
+  nlp_grad_f  |  91.00us (  7.58us)  21.51us (  1.79us)        12
+  nlp_hess_l  |  62.00us (  6.20us)  15.23us (  1.52us)        10
+   nlp_jac_g  |  68.00us (  5.67us)  17.38us (  1.45us)        12
+       total  |  34.91ms ( 34.91ms)   8.80ms (  8.80ms)         1
 [0, 1, 0]
 </pre></div>
 </div>
@@ -2290,7 +2278,7 @@ f_2(x_1, x_2, \ldots, x_m) &amp; \text{otherwise}
 <p>Note that conditional expressions such as these can result in non-smooth expressions that may not converge if used if used in a gradient-based optimization algorithm.</p>
 <p class="rubric">Footnotes</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="f1" role="note">
+<aside class="footnote brackets" id="f1" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
 <p>for problems with free end time, you can always scale time by introducing an extra parameter and substitute <span class="math notranslate nohighlight">\(t\)</span> for a dimensionless time variable that goes from 0 to 1</p>
 </aside>
@@ -2323,7 +2311,7 @@ self-contained C-code for a large subset of function objects.</p>
 <span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;gen.c&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>/* This file was automatically generated by CasADi 3.6.3.
+<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>/* This file was automatically generated by CasADi 3.6.4.
  *  It consists of: 
  *   1) content generated by CasADi runtime: not copyrighted
  *   2) template code copied from CasADi source: permissively licensed (MIT-0)
@@ -2505,7 +2493,7 @@ CASADI_SYMBOL_EXPORT int f_work(casadi_int *sz_arg, casadi_int* sz_res, casadi_i
 <span class="nb">type</span><span class="p">(</span><span class="s">&#39;gen.c&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>/* This file was automatically generated by CasADi 3.6.3.
+<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>/* This file was automatically generated by CasADi 3.6.4.
  *  It consists of: 
  *   1) content generated by CasADi runtime: not copyrighted
  *   2) template code copied from CasADi source: permissively licensed (MIT-0)
@@ -2847,8 +2835,8 @@ which invokes the system compiler via the command line:</p>
 </pre></div>
 </div>
 <div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>0.00159265
-CasADi - 2023-05-17 20:14:25 WARNING(&quot;Failed to remove ./tmp_casadi_compiler_shellkRq1w4.so&quot;) [.../casadi/solvers/shell_compiler.cpp:66]
-CasADi - 2023-05-17 20:14:25 WARNING(&quot;Failed to remove ./tmp_casadi_compiler_shellkRq1w4.o&quot;) [.../casadi/solvers/shell_compiler.cpp:67]
+CasADi - 2023-11-07 01:51:05 WARNING(&quot;Failed to remove ./tmp_casadi_compiler_shellP0YrAk.so&quot;) [.../casadi/solvers/shell_compiler.cpp:66]
+CasADi - 2023-11-07 01:51:05 WARNING(&quot;Failed to remove ./tmp_casadi_compiler_shellP0YrAk.o&quot;) [.../casadi/solvers/shell_compiler.cpp:67]
 </pre></div>
 </div>
 </div>
@@ -3037,7 +3025,7 @@ not the actual values).</p>
 <p>The return value of the function is nonzero upon failure.</p>
 <p class="rubric">Footnotes</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="f2" role="note">
+<aside class="footnote brackets" id="f2" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>An exception is when code is generated for a function that in turn contains calls to external functions.</p>
 </aside>
@@ -3332,9 +3320,9 @@ where the user simply specifies the source code as a C language string.</p>
 </pre></div>
 </div>
 <div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>f:(x,s)-&gt;(r) JitFunction
-CasADi - 2023-05-17 20:14:29 WARNING(&quot;Failed to remove jit_tmpryFspM.c&quot;) [.../casadi/core/function_internal.cpp:127]
-CasADi - 2023-05-17 20:14:29 WARNING(&quot;Failed to remove ./tmp_casadi_compiler_shellOCpqVk.so&quot;) [.../casadi/solvers/shell_compiler.cpp:66]
-CasADi - 2023-05-17 20:14:29 WARNING(&quot;Failed to remove ./tmp_casadi_compiler_shellOCpqVk.o&quot;) [.../casadi/solvers/shell_compiler.cpp:67]
+CasADi - 2023-11-07 01:50:52 WARNING(&quot;Failed to remove jit_tmpuFVG1B.c&quot;) [.../casadi/core/function_internal.cpp:128]
+CasADi - 2023-11-07 01:50:52 WARNING(&quot;Failed to remove ./tmp_casadi_compiler_shellCEFXwL.so&quot;) [.../casadi/solvers/shell_compiler.cpp:66]
+CasADi - 2023-11-07 01:50:52 WARNING(&quot;Failed to remove ./tmp_casadi_compiler_shellCEFXwL.o&quot;) [.../casadi/solvers/shell_compiler.cpp:67]
 </pre></div>
 </div>
 </div>
@@ -3369,9 +3357,9 @@ of the sparsity patterns:</p>
 </pre></div>
 </div>
 <div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>f:(x,s)-&gt;(r) JitFunction
-CasADi - 2023-05-17 20:14:36 WARNING(&quot;Failed to remove jit_tmp9vC5ah.c&quot;) [.../casadi/core/function_internal.cpp:127]
-CasADi - 2023-05-17 20:14:36 WARNING(&quot;Failed to remove ./tmp_casadi_compiler_shellPvpRVJ.so&quot;) [.../casadi/solvers/shell_compiler.cpp:66]
-CasADi - 2023-05-17 20:14:36 WARNING(&quot;Failed to remove ./tmp_casadi_compiler_shellPvpRVJ.o&quot;) [.../casadi/solvers/shell_compiler.cpp:67]
+CasADi - 2023-11-07 01:50:54 WARNING(&quot;Failed to remove jit_tmp9M1NLU.c&quot;) [.../casadi/core/function_internal.cpp:128]
+CasADi - 2023-11-07 01:50:54 WARNING(&quot;Failed to remove ./tmp_casadi_compiler_shell7aMPMD.so&quot;) [.../casadi/solvers/shell_compiler.cpp:66]
+CasADi - 2023-11-07 01:50:54 WARNING(&quot;Failed to remove ./tmp_casadi_compiler_shell7aMPMD.o&quot;) [.../casadi/solvers/shell_compiler.cpp:67]
 </pre></div>
 </div>
 </div>
@@ -3720,7 +3708,7 @@ For example, <code class="docutils literal notranslate"><span class="pre">dae.x<
 <code class="docutils literal notranslate"><span class="pre">dae.ode</span></code> contains the expressions corresponding to ‘ode’, etc.</p>
 <p class="rubric">Footnotes</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="f3" role="note">
+<aside class="footnote brackets" id="f3" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
 <p>FMI development group. Functional Mock-up Interface for Model Exchange and Co-Simulation. <a class="reference external" href="https://www.fmi-standard.org/">https://www.fmi-standard.org/</a>, July 2014. Specification, FMI 2.0. Section 3.1, pp. 71–72</p>
 </aside>
@@ -3808,15 +3796,15 @@ of the discrete time dynamics completely.</p>
 but is also even sparser.</p>
 <p class="rubric">Footnotes</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="f4" role="note">
+<aside class="footnote brackets" id="f4" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>Lorenz T. Biegler, <a class="reference external" href="http://books.google.es/books/about/Nonlinear_Programming.html?id=VdB1wJQu0sgC&amp;redir_esc=y">Nonlinear Programming: Concepts, Algorithms, and Applications to Chemical Processes</a> , SIAM 2010</p>
 </aside>
-<aside class="footnote brackets" id="f5" role="note">
+<aside class="footnote brackets" id="f5" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
 <p>John T. Betts, <a class="reference external" href="http://books.google.es/books/about/Practical_Methods_for_Optimal_Control_Us.html?id=Yn53JcYAeaoC&amp;redir_esc=y">Practical Methods for Optimal Control Using Nonlinear Programming</a> , SIAM 2001</p>
 </aside>
-<aside class="footnote brackets" id="f6" role="note">
+<aside class="footnote brackets" id="f6" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
 <p>You can obtain this collection as an archive named <code class="docutils literal notranslate"><span class="pre">examples_pack.zip</span></code> in CasADi’s <a class="reference external" href="http://files.casadi.org">download area</a></p>
 </aside>
@@ -4110,16 +4098,16 @@ Number of inequality constraint evaluations          = 16
 Number of equality constraint Jacobian evaluations   = 16
 Number of inequality constraint Jacobian evaluations = 16
 Number of Lagrangian Hessian evaluations             = 15
-Total seconds in IPOPT                               = 0.008
+Total seconds in IPOPT                               = 0.009
 
 EXIT: Optimal Solution Found.
       solver  :   t_proc      (avg)   t_wall      (avg)    n_eval
-       nlp_f  |  61.00us (  3.81us)  29.50us (  1.84us)        16
-       nlp_g  | 163.00us ( 10.19us)  59.20us (  3.70us)        16
-  nlp_grad_f  |  82.00us (  4.82us)  40.80us (  2.40us)        17
-  nlp_hess_l  | 131.00us (  8.73us)  64.20us (  4.28us)        15
-   nlp_jac_g  | 117.00us (  6.88us)  57.50us (  3.38us)        17
-       total  |  17.01ms ( 17.01ms)   8.51ms (  8.51ms)         1
+       nlp_f  | 125.00us (  7.81us)  30.37us (  1.90us)        16
+       nlp_g  | 254.00us ( 15.88us)  61.01us (  3.81us)        16
+  nlp_grad_f  | 161.00us (  9.47us)  40.36us (  2.37us)        17
+  nlp_hess_l  | 237.00us ( 15.80us)  57.98us (  3.87us)        15
+   nlp_jac_g  | 218.00us ( 12.82us)  55.16us (  3.24us)        17
+       total  |  39.25ms ( 39.25ms)   9.88ms (  9.88ms)         1
 </pre></div>
 </div>
 </div>
@@ -4180,16 +4168,16 @@ Number of inequality constraint evaluations          = 16
 Number of equality constraint Jacobian evaluations   = 16
 Number of inequality constraint Jacobian evaluations = 16
 Number of Lagrangian Hessian evaluations             = 15
-Total seconds in IPOPT                               = 0.009
+Total seconds in IPOPT                               = 0.010
 
 EXIT: Optimal Solution Found.
       solver  :   t_proc      (avg)   t_wall      (avg)    n_eval
-       nlp_f  |  65.00us (  4.06us)  30.50us (  1.91us)        16
-       nlp_g  | 144.00us (  9.00us)  63.80us (  3.99us)        16
-  nlp_grad_f  |  95.00us (  5.59us)  47.70us (  2.81us)        17
-  nlp_hess_l  | 158.00us ( 10.53us)  77.90us (  5.19us)        15
-   nlp_jac_g  | 135.00us (  7.94us)  67.90us (  3.99us)        17
-       total  |  18.22ms ( 18.22ms)   9.21ms (  9.21ms)         1
+       nlp_f  | 128.00us (  8.00us)  31.29us (  1.96us)        16
+       nlp_g  | 269.00us ( 16.81us)  62.78us (  3.92us)        16
+  nlp_grad_f  | 185.00us ( 10.88us)  44.81us (  2.64us)        17
+  nlp_hess_l  | 277.00us ( 18.47us)  68.89us (  4.59us)        15
+   nlp_jac_g  | 254.00us ( 14.94us)  62.17us (  3.66us)        17
+       total  |  43.07ms ( 43.07ms)  10.86ms ( 10.86ms)         1
 </pre></div>
 </div>
 </div>

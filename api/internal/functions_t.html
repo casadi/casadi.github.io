@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/54931cdaaf5859cff6659b5b4077ebde2dcd9f9f" id="54931cdaaf5859cff6659b5b4077ebde2dcd9f9f" >revision 3.6.3</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/329e2282664f584b17fd6319f8ce765a111a6022" id="329e2282664f584b17fd6319f8ce765a111a6022" >revision 3.6.4</a></div>
   </td>
  </tr>
  </tbody>
@@ -182,27 +182,39 @@ $(function() {
 <li>TFQMR
 : <a class="el" href="d6/def/classcasadi_1_1KinsolInterface.html#a2996f0e34de1268addc89fe121574774aad607bb011ca103d12560d310e9eb2fe">casadi::KinsolInterface</a>
 </li>
-<li>theirs_usp
-: <a class="el" href="d4/df6/structcasadi__hpipm__prob.html#ad9d6b55d32ca4880f3ffb8d7ffd15489">casadi_hpipm_prob&lt; T1 &gt;</a>
-</li>
 <li>theirs_Usp
 : <a class="el" href="d4/df6/structcasadi__hpipm__prob.html#a149d5ce4ac9f4610636cbb54ec770e69">casadi_hpipm_prob&lt; T1 &gt;</a>
 </li>
+<li>theirs_usp
+: <a class="el" href="d4/df6/structcasadi__hpipm__prob.html#ad9d6b55d32ca4880f3ffb8d7ffd15489">casadi_hpipm_prob&lt; T1 &gt;</a>
+</li>
+<li>theirs_Usp_
+: <a class="el" href="d3/d37/classcasadi_1_1FatropConicInterface.html#a235a0759442ba65648f79856aa048c71">casadi::FatropConicInterface</a>
+</li>
 <li>theirs_usp_
-: <a class="el" href="d2/d94/classcasadi_1_1HpipmInterface.html#ad72d865950a3cdf02db8cc7e8640256f">casadi::HpipmInterface</a>
+: <a class="el" href="d3/d37/classcasadi_1_1FatropConicInterface.html#a19bf89f554b2a0b292aa9b7f1c5b089c">casadi::FatropConicInterface</a>
 </li>
 <li>theirs_Usp_
 : <a class="el" href="d2/d94/classcasadi_1_1HpipmInterface.html#a1a1f94c529bcfb4649bcd60d110aa5c0">casadi::HpipmInterface</a>
-, <a class="el" href="df/d97/classcasadi_1_1HpmpcInterface.html#a57ee156f9299fc949007713631f666ef">casadi::HpmpcInterface</a>
 </li>
 <li>theirs_usp_
-: <a class="el" href="df/d97/classcasadi_1_1HpmpcInterface.html#a76988488260750a06479b5e1d4613c4e">casadi::HpmpcInterface</a>
+: <a class="el" href="d2/d94/classcasadi_1_1HpipmInterface.html#ad72d865950a3cdf02db8cc7e8640256f">casadi::HpipmInterface</a>
+, <a class="el" href="df/d97/classcasadi_1_1HpmpcInterface.html#a76988488260750a06479b5e1d4613c4e">casadi::HpmpcInterface</a>
+</li>
+<li>theirs_Usp_
+: <a class="el" href="df/d97/classcasadi_1_1HpmpcInterface.html#a57ee156f9299fc949007713631f666ef">casadi::HpmpcInterface</a>
 </li>
 <li>theirs_xsp
 : <a class="el" href="d4/df6/structcasadi__hpipm__prob.html#a5d1657e9ce1d7f70c3c9b0091965bd55">casadi_hpipm_prob&lt; T1 &gt;</a>
 </li>
 <li>theirs_Xsp
 : <a class="el" href="d4/df6/structcasadi__hpipm__prob.html#a6110ae538959fc874a73ad6288317d60">casadi_hpipm_prob&lt; T1 &gt;</a>
+</li>
+<li>theirs_xsp_
+: <a class="el" href="d3/d37/classcasadi_1_1FatropConicInterface.html#af5ee7b39233eea4edf47ebd6d468d0c3">casadi::FatropConicInterface</a>
+</li>
+<li>theirs_Xsp_
+: <a class="el" href="d3/d37/classcasadi_1_1FatropConicInterface.html#a18dee33e9a6b23a331a8e3400a8414b1">casadi::FatropConicInterface</a>
 </li>
 <li>theirs_xsp_
 : <a class="el" href="d2/d94/classcasadi_1_1HpipmInterface.html#a7de2f2ac584094cb5809cdd0e7e2438a">casadi::HpipmInterface</a>
@@ -447,8 +459,8 @@ $(function() {
 <li>trial_xk
 : <a class="el" href="da/dd3/structcasadi_1_1BlocksqpMemory.html#af992204be7057df3da5df150fe760cf4">casadi::BlocksqpMemory</a>
 </li>
-<li>triangle()
-: <a class="el" href="da/d45/classcasadi_1_1Matrix.html#ae25464e25061e3004d17c91baec63d2a">casadi::Matrix&lt; Scalar &gt;</a>
+<li>triangle
+: <a class="el" href="d9/dc2/group__expression__tools.html#gac0917b9f9e272fda3cdd51b011535ba6">casadi::Matrix&lt; Scalar &gt;</a>
 </li>
 <li>tril()
 : <a class="el" href="dc/df3/classcasadi_1_1GenericMatrix.html#a9608abc049bbe48340c924ee4fbba99f">casadi::GenericMatrix&lt; MatType &gt;</a>

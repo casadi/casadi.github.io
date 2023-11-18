@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/54931cdaaf5859cff6659b5b4077ebde2dcd9f9f" id="54931cdaaf5859cff6659b5b4077ebde2dcd9f9f" >revision 3.6.3</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/329e2282664f584b17fd6319f8ce765a111a6022" id="329e2282664f584b17fd6319f8ce765a111a6022" >revision 3.6.4</a></div>
   </td>
  </tr>
  </tbody>
@@ -235,7 +235,7 @@ $(function() {
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="comment">// C-REPLACE &quot;casadi_hpipm_data&lt;T1&gt;&quot; &quot;struct casadi_hpipm_data&quot;</span></div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="comment">// SYMBOL &quot;qp_work&quot;</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="comment">// SYMBOL &quot;hpipm_work&quot;</span></div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="keywordtype">void</span> casadi_hpipm_work(<span class="keyword">const</span> <a class="code" href="../../d4/df6/structcasadi__hpipm__prob.html">casadi_hpipm_prob&lt;T1&gt;</a>* p, casadi_int* sz_arg, casadi_int* sz_res, casadi_int* sz_iw, casadi_int* sz_w) {</div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;  casadi_qp_work(p-&gt;<a class="code" href="../../d4/df6/structcasadi__hpipm__prob.html#afe47590f858b4f77fb55ab8d577c13d0">qp</a>, sz_arg, sz_res, sz_iw, sz_w);</div>
@@ -304,9 +304,9 @@ $(function() {
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
 <div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;}</div>
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160; </div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="comment">// SYMBOL &quot;qp_init&quot;</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="comment">// SYMBOL &quot;hpipm_set_work&quot;</span></div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="keywordtype">void</span> casadi_hpipm_init(<a class="code" href="../../d1/da5/structcasadi__hpipm__data.html">casadi_hpipm_data&lt;T1&gt;</a>* d, <span class="keyword">const</span> T1*** arg, T1*** res, casadi_int** iw, T1** w) {</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="keywordtype">void</span> casadi_hpipm_set_work(<a class="code" href="../../d1/da5/structcasadi__hpipm__data.html">casadi_hpipm_data&lt;T1&gt;</a>* d, <span class="keyword">const</span> T1*** arg, T1*** res, casadi_int** iw, T1** w) {</div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;  <span class="comment">// Local variables</span></div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;  casadi_int offset, i, k;</div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;  </div>
@@ -509,9 +509,9 @@ $(function() {
 <div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;    <span class="comment">// replace infinities</span></div>
 <div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;    casadi_clip_min(d-&gt;<a class="code" href="../../d1/da5/structcasadi__hpipm__data.html#ae76d79aec618c5c20f10fc1efc897cc2">lbx</a>, p-&gt;<a class="code" href="../../d4/df6/structcasadi__hpipm__prob.html#a553dfb6c39e4820c6ed270dffc9eb332">nx_total</a>, -p-&gt;<a class="code" href="../../d4/df6/structcasadi__hpipm__prob.html#a3832655063a0629d72dcda6a046cee60">inf</a>, 0);</div>
 <div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;    casadi_clip_min(d-&gt;<a class="code" href="../../d1/da5/structcasadi__hpipm__data.html#a8e167dcf0bc4dca25ee2f7b0285880af">lbu</a>, p-&gt;<a class="code" href="../../d4/df6/structcasadi__hpipm__prob.html#a68c3259661a745d14159daf80c732a62">nu_total</a>, -p-&gt;<a class="code" href="../../d4/df6/structcasadi__hpipm__prob.html#a3832655063a0629d72dcda6a046cee60">inf</a>, 0);</div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;    casadi_clip_min(d-&gt;<a class="code" href="../../d1/da5/structcasadi__hpipm__data.html#afcd0df9725a01450c9ab86f261eff353">lg</a>,  p-&gt;<a class="code" href="../../d4/df6/structcasadi__hpipm__prob.html#a68c3259661a745d14159daf80c732a62">nu_total</a>, -p-&gt;<a class="code" href="../../d4/df6/structcasadi__hpipm__prob.html#a3832655063a0629d72dcda6a046cee60">inf</a>, 0); <span class="comment">// count?</span></div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;    casadi_clip_min(d-&gt;<a class="code" href="../../d1/da5/structcasadi__hpipm__data.html#afcd0df9725a01450c9ab86f261eff353">lg</a>,  p-&gt;<a class="code" href="../../d4/df6/structcasadi__hpipm__prob.html#ab7025787a4e24c516aea270e2baa906f">ng_total</a>, -p-&gt;<a class="code" href="../../d4/df6/structcasadi__hpipm__prob.html#a3832655063a0629d72dcda6a046cee60">inf</a>, 0); <span class="comment">// count?</span></div>
 <div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;    casadi_clip_max(d-&gt;<a class="code" href="../../d1/da5/structcasadi__hpipm__data.html#ac779d483f805c02900e967b577fa8ee7">ubx</a>, p-&gt;<a class="code" href="../../d4/df6/structcasadi__hpipm__prob.html#a553dfb6c39e4820c6ed270dffc9eb332">nx_total</a>, p-&gt;<a class="code" href="../../d4/df6/structcasadi__hpipm__prob.html#a3832655063a0629d72dcda6a046cee60">inf</a>, 0);</div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    casadi_clip_max(d-&gt;<a class="code" href="../../d1/da5/structcasadi__hpipm__data.html#aef594df7de47b34ed97b9631e7af8572">ubu</a>, p-&gt;<a class="code" href="../../d4/df6/structcasadi__hpipm__prob.html#ab7025787a4e24c516aea270e2baa906f">ng_total</a>, p-&gt;<a class="code" href="../../d4/df6/structcasadi__hpipm__prob.html#a3832655063a0629d72dcda6a046cee60">inf</a>, 0);</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    casadi_clip_max(d-&gt;<a class="code" href="../../d1/da5/structcasadi__hpipm__data.html#aef594df7de47b34ed97b9631e7af8572">ubu</a>, p-&gt;<a class="code" href="../../d4/df6/structcasadi__hpipm__prob.html#a68c3259661a745d14159daf80c732a62">nu_total</a>, p-&gt;<a class="code" href="../../d4/df6/structcasadi__hpipm__prob.html#a3832655063a0629d72dcda6a046cee60">inf</a>, 0);</div>
 <div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;    casadi_clip_max(d-&gt;<a class="code" href="../../d1/da5/structcasadi__hpipm__data.html#a781d713b86fecaecfe6bfbc7caa883b6">ug</a>,  p-&gt;<a class="code" href="../../d4/df6/structcasadi__hpipm__prob.html#ab7025787a4e24c516aea270e2baa906f">ng_total</a>, p-&gt;<a class="code" href="../../d4/df6/structcasadi__hpipm__prob.html#a3832655063a0629d72dcda6a046cee60">inf</a>, 0); <span class="comment">// count?</span></div>
 <div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160; </div>
 <div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160; </div>
