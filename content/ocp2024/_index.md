@@ -1,5 +1,5 @@
 ---
-title: "Hands-on CasADi course on optimal control"
+title: "Hands-on CasADi course on optimal control 2024"
 description: "no description"
 type: singles
 ---

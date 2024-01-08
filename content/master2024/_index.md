@@ -1,14 +1,14 @@
 ---
-title: "Hands-on CasADi course on optimal control"
+title: "CasADi master class 2024"
 description: "no description"
 type: singles
 ---
 
-## Hands-on CasADi course on optimal control
+## CasADi master class
 
 **March 18-20, 2024 – Leuven, Belgium**
 
-(download this description as [flyer](ocp2024.pdf))
+(download this description as [flyer](master2024.pdf))
 
 ### Target audience
 Academic/industrial CasADi users that want to get a deeper understanding of CasADi, in order to speed up existing applications or create advanced implementations. Unlike the [fall course](../ocp2024), there is no focus on mathematics.
