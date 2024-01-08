@@ -7,7 +7,8 @@ type: singles
 This an overview of past and future workshops/courses involving CasADi:
 
 ## Future events
- * Hands-on CasADi course on optimal control, Leuven, Belgium, 20-22 November 2023, [announcement](http://ocp2023.casadi.org)
+ * CasADi master class, Leuven, Belgium, 18-20 March 2024, [announcement](http://master2024.casadi.org)
+ * Hands-on CasADi course on optimal control, Leuven, Belgium, 18-20 November 2024, [announcement](http://ocp2024.casadi.org)
 
 ## Permanent courses
  * Hands-on CasADi course on optimal control, [self-paced online learning](https://yacoda-training.teachable.com/p/ocp)
@@ -16,6 +17,7 @@ This an overview of past and future workshops/courses involving CasADi:
 Keep informed about future events via our <a href="https://forms.gle/9v1HKPYZDHcBYMXNA">newsletter</a>.  You may also [pre-register](https://forms.gle/Pb7dwrwP6uanXeyr5) to a future course to get priority in registration.
 
 ## Past events
+ * Hands-on CasADi course on optimal control, Leuven, Belgium, 20-22 November 2023, [announcement](http://ocp2023.casadi.org)
  * Hands-on CasADi course on optimal control, ~~Leuven, Belgium~~ online live event, 16-18 November 2020, [announcement](http://ocp2020.casadi.org)
  * CasADi master class, Leuven, Belgium, ~~16-18 March~~ 27-29 July 2020, [announcement](http://master2020.casadi.org) -- rescheduled and made remote due to COVID-19.
 
