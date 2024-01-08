@@ -43,7 +43,7 @@ The number of participants is capped to 20. Registration closes February 25.
 
 <a class="button" style="text-align: center;color:white;background-color:#dc0000;padding: 1em;text-decoration: none;font-weight:bold;margin:1em;display: inline-block;" href="https://forms.gle/DZpQabcuSx3h4z4o8">Register now</a>
 
-Subscribe to the [newsletter](https://forms.gle/9v1HKPYZDHcBYMXNA) if you wish to be kept up to date of further courses. You may also [pre-register](https://forms.gle/Pb7dwrwP6uanXeyr5) to a future course to get priority in registration.
+Subscribe to the [newsletter](https://forms.gle/9v1HKPYZDHcBYMXNA) if you wish to be kept up to date of further courses. You may also [pre-register](https://forms.gle/Pb7dwrwP6uanXeyr5) to a future course to get priority in registration, or follow a [pre-recorded](https://yacoda-training.teachable.com/) course.
 
 
 Organizer: Joris Gillis, [joris@yacoda.com](mailto:joris@yacoda.com), +32496432937, Yacoda BV, Glabbeeksestraat 37, 3300 Vissenaken, Belgium. BE0642979742

@@ -6,6 +6,8 @@ type: singles
 
 ## Hands-on CasADi course on optimal control
 
+(This event is in the past. Check the [workshop page](../events) for future events)
+
 **November 20-22, 2023 – Leuven, Belgium**
 
 (download this description as [flyer](ocp2023.pdf))
@@ -16,7 +18,7 @@ Academic/industrial researchers or tool-developers that seek practical ways to t
 ### CasADi?
 Originating from KU Leuven’s “Optimization in Engineering Center” under guidance of prof. Moritz Diehl, [CasADi](http://casadi.org) [1] is an open-source software framework for nonlinear optimization and algorithmic differentiation. It facilitates rapid - yet efficient - implementation of different methods for numerical optimal control, both in an offline context and for nonlinear model predictive control.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/aygB4COWHCs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5Fpi_C0w2lg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 
 ### Format
@@ -43,7 +45,7 @@ The number of participants is capped to 40. Registration closes October 22.
 
 <a class="button" style="text-align: center;color:white;background-color:#dc0000;padding: 1em;text-decoration: none;font-weight:bold;margin:1em;display: inline-block;" href="https://forms.gle/hX1ZcvZa2PZdrdqh9">Register now</a>
 
-Subscribe to the [newsletter](https://forms.gle/9v1HKPYZDHcBYMXNA) if you wish to be kept up to date of further courses. You may also [pre-register](https://forms.gle/Pb7dwrwP6uanXeyr5) to a future course to get priority in registration.
+Subscribe to the [newsletter](https://forms.gle/9v1HKPYZDHcBYMXNA) if you wish to be kept up to date of further courses. You may also [pre-register](https://forms.gle/Pb7dwrwP6uanXeyr5) to a future course to get priority in registration, or follow a [pre-recorded](https://yacoda-training.teachable.com/) course.
 
 
 Organizer: Joris Gillis, [joris@yacoda.com](mailto:joris@yacoda.com), +32496432937, Yacoda BV, Glabbeeksestraat 37, 3300 Vissenaken, Belgium. BE0642979742
