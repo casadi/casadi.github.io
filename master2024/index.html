@@ -107,155 +107,148 @@
   <div class="row">
     <div class="col">
       <h2 id="hands-on-casadi-course-on-optimal-control">Hands-on CasADi course on optimal control</h2>
-<p>(This event is in the past. Check the <a href="../events">workshop page</a> for future events)</p>
-<p><strong>November 20-22, 2023 – Leuven, Belgium</strong></p>
-<p>(download this description as <a href="ocp2023.pdf">flyer</a>)</p>
+<p><strong>March 18-20, 2024 – Leuven, Belgium</strong></p>
+<p>(download this description as <a href="ocp2024.pdf">flyer</a>)</p>
 <h3 id="target-audience">Target audience</h3>
-<p>Academic/industrial researchers or tool-developers that seek practical ways to tackle large/complex continuous optimization problems, and optimal control problems in particular. People seeking to quickly gain familiarity with CasADi through a broad range of practical exercises.</p>
+<p>Academic/industrial CasADi users that want to get a deeper understanding of CasADi, in order to speed up existing applications or create advanced implementations. Unlike the <a href="../ocp2024">fall course</a>, there is no focus on mathematics.</p>
 <h3 id="casadi">CasADi?</h3>
 <p>Originating from KU Leuven’s “Optimization in Engineering Center” under guidance of prof. Moritz Diehl, <a href="http://casadi.org">CasADi</a> [1] is an open-source software framework for nonlinear optimization and algorithmic differentiation. It facilitates rapid - yet efficient - implementation of different methods for numerical optimal control, both in an offline context and for nonlinear model predictive control.</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/5Fpi_C0w2lg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/aygB4COWHCs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 <h3 id="format">Format</h3>
-<p>Seminars (40%) paired with computer exercises (60%). The seminars provide a bird’s-eye view on optimization and optimal control, serving as teaser for further study or as recap for the experienced. The computer exercises aim to deepen understanding of the theory, and leave the participants well-equipped to solve a broad range of problems using CasADi by themselves.</p>
+<p>Seminars paired with computer exercises. The seminars provide a view on advanced CasADi techniques. The computer exercises aim to internalize these techniques, and leave the participants well-equipped to apply them on their own applications.</p>
 <h3 id="covered-topics">Covered topics</h3>
-<p>
-Newton-type methods for constrained nonlinear programming – integration methods – direct transcription of optimal control problems (OCP) – model predictive control (MPC) – CasADi 3.6 syntax and best practices
-</p>
+<p>SX and MX expression graphs - benchmarking and debugging - thread-safety and parallelisation - code generation API and C API - memory/speed trade-offs and algorithmic differentiation</p>
 <details>
 <summary><i>(click for more details)</i>
 </summary>
 <p>
-The following is the curriculum of earlier editions:
 <dl>
-  <dt>Module 1: Rootfinding on a nonlinear set of equations: Newton's method</dt>
-  <dd>
-    <ul>
-      <li>Understand the Newton step in a high-dimensional search space</li>
-      <li>Understand how (approximated) Jacobians are central to the Newton's method</li>
-      <li>Using CasADi to evaluate Jacobians</li>
-      <li>Understand some common failure modes of Newton's method</li>
-    </ul>
-  </dd>
-
-  <dt>Module 2: CasADi basics: Expressions graphs and Functions</dt>
+  <dt>Module 1: CasADi expression graphs and Functions: recap and internals</dt>
   <dd>
     <ul>
       <li>Get a clear mental image on basic CasADi concepts</li>
       <li>Get acquainted with a consistent vocabulary to talk about CasADi concepts</li>
-      <li>Reason about CasADi types</li>
-      <li>Learn to read CasADi error messages</li>
     </ul>
   </dd>
-
-  <dt>Module 3: Constraint nonlinear programming: Newton-type methods and interior point</dt>
+  <dt>Module 2: Debugging CasADi expression graphs and Functions</dt>
   <dd>
     <ul>
-      <li>Understand the conditions for optimality</li>
-      <li>Understand how Newton-type methods orginate from rootfinding</li>
-      <li>Learn how to build an SQP and interior point method in CasADi</li>
+      <li>Learn how to introspect the numerical evaluation of symbolic expression graphs</li>
     </ul>
   </dd>
-
-  <dt>Module 4: Integration of CasADi integrator, rootfinder and nonlinear programming</dt>
+  <dt>Module 3: CasADi for-loop equivalents: map and mapaccum</dt>
   <dd>
     <ul>
-      <li>Learn how to compose CasADi building blocks to solve non-trivial engineering problems</li>
+      <li>Learn how expression graph sizes can be reduced with map and mapaccum</li>
+      <li>Learn how to apply a CasADi Function on a range of inputs (broadcasting)</li>
+      <li>Learn the different flavours of the map command</li>
     </ul>
   </dd>
-
-  <dt>Module 5: CasADi Opti stack for easy nonlinear programming</dt>
+  <dt>Module 4: Saving and loading CasADi objects</dt>
   <dd>
     <ul>
-      <li>Learn how to use Opti for nonlinear programming</li>
-      <li>Learn some simple debugging skills for common failure cases of nonlinear programming</li>
+      <li>Learn how to load/save CasADi Functions</li>
+      <li>Learn how to load/save expression graphs</li>
+      <li>Learn how to load/save objects of your class with CasADi members</li>
     </ul>
   </dd>
-
-  <dt>Module 6: Nonlinear programming for fitting problems</dt>
+  <dt>Module 5: Internals of CasADi expressions graphs and Functions</dt>
   <dd>
     <ul>
-      <li>Understand how several fitting algorithms are related</li>
-      <li>Learn how to use L1 and L2 norms in CasADi</li>
-      <li>Understand the robustness property of L1 norm</li>
-      <li>Solve a parameter estimation problem from scratch in Opti</li>
+      <li>Get an intimate understanding of MX versus SX</li>
+      <li>Learn how the CasADi virtual machine works</li>
+      <li>Get a basic understanding of CasADi source code structure</li>
     </ul>
   </dd>
-
-  <dt>Module 7: Direct methods for optimal control</dt>
+  <dt>Module 6: Benchmarking: how to identify computational bottlenecks in your CasADi code</dt>
   <dd>
     <ul>
-      <li>Understand single shooting and multipleshooting</li>
-      <li>Understand the sparsity structure present in multiple shooting</li>
-      <li>Learn how to choose between single- and multiple shooting</li>
+      <li>Understand how non careful benchmarking can easily lead to wrong conclusions</li>
+      <li>Learn how to hunt for computational bottlenecks in CasADi expression graphs</li>
     </ul>
   </dd>
-
-  <dt>Module 8: Implementing model predictive control in CasADi</dt>
+  <dt>Module 7: Representation of sparse matrices in CasADi</dt>
   <dd>
     <ul>
-      <li>Understand MPC as an extension of optimal control</li>
-      <li>Learn how to speed up a CasADi MPC problem</li>
-      <li>Understand that MPC does not necessarily lead to a good controller</li>
+      <li>Understand how compressed column storage works</li>
+      <li>Understand how CasADi encodes sparsity</li>
     </ul>
   </dd>
-
- <dt>Module 9: Time-optimal control in CasADi</dt>
+  <dt>Module 8: Using code generated by CasADi in third-party applications</dt>
   <dd>
     <ul>
-      <li>Understand how time-optimal control is intrinsically harder</li>
-      <li>Understand the difference between trajectory tracking and path tracking</li>
-      <li>Learn how to implement periodic racing problems</li>
-      <li>Learn how to interpret Lagrange multipliers</li>
+      <li>Understand the API of CasADi generated code</li>
+      <li>Practice the usage of generated code with concrete compilation</li>
+      <li>Learn to use generated code with dependencies</li>
     </ul>
   </dd>
-
-  <dt>Module 10: A demonstration of stochastic and robust constraints in optimal control</dt>
+  <dt>Module 9: Calling the CasADi virtual machine from C</dt>
   <dd>
     <ul>
-      <li>Learn how CasADi can be applied outside 'standard' optimal control</li>
+      <li>Understand the difference between code generation and C API</li>
+      <li>Learn how to use the C API from a concrete example</li>
     </ul>
   </dd>
-
-  <dt>Module 11: Perform integration of system dynamics with collocation.</dt>
+  <dt>Module 10: Parallelization of CasADi computations</dt>
   <dd>
     <ul>
-      <li>Get an intuitive understanding of a collocation method</li>
-      <li>Understand the connection to rootfinding</li>
+      <li>Learn how to call CasADi Functions in parallel</li>
+      <li>Learn how to parallelize parts of a CasADi expression graph</li>
     </ul>
   </dd>
-
-  <dt>Module 12: Another direct method for optimal control: direct collocation</dt>
+  <dt>Module 11: Algorithmic differentiation of algorithms</dt>
   <dd>
     <ul>
-      <li>Understand how direct collocation differs from multiple shooting with a collocation integrator</li>
-      <li>Learn how to implement direct collocation</li>
-      <li>Understand the sparsity structure resulting from direct collocation</li>
-      <li>Learn the benefits of direct collocation</li>
+      <li>Derive reverse mode from scratch using only high-school level insight</li>
+      <li>Get acquainted with forward and reverse mode sensitivity functions</li>
+      <li>Understand how forward and reverse mode sensitivity functions can be used to construct Jacobians</li>
+      <li>Understand the impact of CasADi concepts on the cost of a Jacobian</li>
+      <li>Get an idea of heuristics in CasADi governing the choice between forward and reverse mode</li>
+    </ul>
+  </dd>
+  <dt>Module 12: Using CasADi callbacks for embedding custom code</dt>
+  <dd>
+    <ul>
+      <li>Learn how to deal with code that is not compatible with CasADi</li>
+      <li>Learn how to use finite differences for custom code</li>
+      <li>Learn how to specify exact derivatives for custom code</li>
+    </ul>
+  </dd>
+  <dt>Module 13: Linking CasADi to compiled C code</dt>
+  <dd>
+    <ul>
+      <li>Learn how to introduce compiled C code into a CasADi graph</li>
+      <li>Understand how CasADi reads meta-data from shared libraries</li>
+      <li>Understand how meta-data can impact performance</li>
+      <li>Learn to use 'jit' option for simple speed-ups</li>
+    </ul>
+  </dd>
+  <dt>Module 14: A synthesis exercise of advanced CasADi concepts</dt>
+  <dd>
+    <ul>
+      <li>Understand how derivatives of maps are computed</li>
+      <li>Understand how the use of a hierarchy of Functions impacts the runtime of derivatives</li>
     </ul>
   </dd>
 </dl>
 
 
-Module 10 will probably be replaced by other material, e.g. BSplines or Neural Networks in CasADi graphs, focus on dedicated solver like hpipm, ...<br/>
-
-The contents of the physical course will be close to the contents of the <a href="https://yacoda-training.teachable.com/p/ocp">self-paced hands-on course</a>, with updates from casadi 3.6.
+The contents of the physical course will be close to the contents of the <a href="https://yacoda-training.teachable.com/p/master">self-paced hands-on course</a>, with updates from casadi 3.6.
 What sets the physical course apart is really the networking opportunity, ability to ask live questions, the focus and the peer pressure that provides a stimulus to perform the exercises instead of procrastinating.
 In practice, I see a large difference in capabilities of students coming out of these courses, in spite of the proximity in contents.
 </p>
 </details>
 <h3 id="prerequisites">Prerequisites</h3>
-<p>Basic mathematical skills (analysis, calculus, linear algebra) are required. Experience with programming in MATLAB/Octave or Python is required, unless you partner up with an experienced person.</p>
+<p>Basic programming skills are assumed. Exercises will build upon boilerplate codes in Python/Matlab, C and C++. Familiarity with CasADi is assumed.</p>
 <h3 id="tutor">Tutor</h3>
-<div>
-
-<p><img src="joris0006_normal.jpg" style="float: left; margin-right: 1em;height: 20ex"/>Joris Gillis obtained his PhD in electrical engineering at KU Leuven in 2015. Currently active at MECO, KU Leuven and part-time freelancer, he pursues large-scale applications in optimal control and is highly active as a main developer of CasADi since 2010.</p>
+<p><img src="../ocp2023/joris0006_normal.jpg" style="float: left; margin-right: 1em;height: 20ex"/>Joris Gillis obtained his PhD in electrical engineering at KU Leuven in 2015. Currently active at MECO, KU Leuven and part-time freelancer, he pursues large-scale applications in optimal control and is highly active as a main developer of CasADi since 2010.</p>
 <h3 id="practicalities" style="clear:both;"></>Practicalities</h3>
 <p>The course will take place at the Park Inn hotel, Martelarenlaan 36, 3010 Leuven, Belgium, starting each day at 9:00 and ending at 18:00.
-Participants are required to bring their own laptops (Linux/Windows/Mac); no software is needed besides a working installation of MATLAB/Octave or Python.</p>
+Participants are required to bring their own laptops (Linux/Windows/Mac). A working installation of either Matlab or Python is needed, as well as a C compiler (gcc/clang/msvc).</p>
 <h3 id="registration">Registration</h3>
-<p>The registration fee amounts to 1050 EUR excl. VAT (850 EUR for PhD students). The registration fee covers for daily mini-breakfasts, refreshments during the breaks, and lunch. A joint dinner is included on Tuesday evening. Lodging is not included.</p>
-<p>The number of participants is capped to 40. Registration closes November 10.</p>
-<p><a class="button" style="text-align: center;color:white;background-color:#dc0000;padding: 1em;text-decoration: none;font-weight:bold;margin:1em;display: inline-block;" href="https://forms.gle/hX1ZcvZa2PZdrdqh9">Register now</a></p>
+<p>The registration fee amounts to 1050 EUR excl. VAT (850 EUR for PhD students). Early bird discount (75 EUR) applies until January 28. The registration fee covers for daily mini-breakfasts, refreshments during the breaks, and lunch. A joint dinner is included on Tuesday evening. Lodging is not included.</p>
+<p>The number of participants is capped to 20. Registration closes February 25.</p>
+<p><a class="button" style="text-align: center;color:white;background-color:#dc0000;padding: 1em;text-decoration: none;font-weight:bold;margin:1em;display: inline-block;" href="https://forms.gle/DZpQabcuSx3h4z4o8">Register now</a></p>
 <p>Subscribe to the <a href="https://forms.gle/9v1HKPYZDHcBYMXNA">newsletter</a> if you wish to be kept up to date of further courses. You may also <a href="https://forms.gle/Pb7dwrwP6uanXeyr5">pre-register</a> to a future course to get priority in registration, or follow a <a href="https://yacoda-training.teachable.com/">pre-recorded</a> course.</p>
 <p>Organizer: Joris Gillis, <a href="mailto:joris@yacoda.com">joris@yacoda.com</a>, +32496432937, Yacoda BV, Glabbeeksestraat 37, 3300 Vissenaken, Belgium. BE0642979742</p>
 <p>[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, M. Diehl, “CasADi – A software framework for nonlinear optimization and optimal control,” Mathematical Programming Computation, 2018.</p>
@@ -263,21 +256,6 @@ Participants are required to bring their own laptops (Linux/Windows/Mac); no sof
     </div>
   </div>
 </div>
-    
-
-
-<a href="http://master2024.casadi.org" target="_blank" id="bottom-banner" class="visible">
-
-
-  <div class="container p-3">
-    <div class="row justify-content-md-center">
-      <div class="col-md-auto text-center">
-        <p>📣Next CasADi master class: March 18-20</p>
-
-      </div>
-    </div>
-  </div>
-</a>
 
 
     
