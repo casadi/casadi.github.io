@@ -1,16 +1,14 @@
 ---
-title: "Hands-on CasADi course on optimal control"
+title: "Hands-on CasADi course on optimal control 2024"
 description: "no description"
 type: singles
 ---
 
 ## Hands-on CasADi course on optimal control
 
-(This event is in the past. Check the [workshop page](../events) for future events)
+**November 18-20, 2024 – Leuven, Belgium**
 
-**November 20-22, 2023 – Leuven, Belgium**
-
-(download this description as [flyer](ocp2023.pdf))
+(download this description as [flyer](ocp2024.pdf))
 
 ### Target audience
 Academic/industrial researchers or tool-developers that seek practical ways to tackle large/complex continuous optimization problems, and optimal control problems in particular. People seeking to quickly gain familiarity with CasADi through a broad range of practical exercises.
@@ -41,9 +39,9 @@ Participants are required to bring their own laptops (Linux/Windows/Mac); no sof
 
 The registration fee amounts to 1050 EUR excl. VAT (850 EUR for PhD students). Early bird discount (75 EUR) applies until July 1. The registration fee covers for daily mini-breakfasts, refreshments during the breaks, and lunch. A joint dinner is included on Tuesday evening. Lodging is not included.
 
-The number of participants is capped to 40. Registration closes October 22.
+The number of participants is capped to 40. Registration closes October 20.
 
-<a class="button" style="text-align: center;color:white;background-color:#dc0000;padding: 1em;text-decoration: none;font-weight:bold;margin:1em;display: inline-block;" href="https://forms.gle/hX1ZcvZa2PZdrdqh9">Register now</a>
+<a class="button" style="text-align: center;color:white;background-color:#dc0000;padding: 1em;text-decoration: none;font-weight:bold;margin:1em;display: inline-block;" href="https://forms.gle/RFCNmziH1F6ZXRZ2A">Register now</a>
 
 Subscribe to the [newsletter](https://forms.gle/9v1HKPYZDHcBYMXNA) if you wish to be kept up to date of further courses. You may also [pre-register](https://forms.gle/Pb7dwrwP6uanXeyr5) to a future course to get priority in registration, or follow a [pre-recorded](https://yacoda-training.teachable.com/) course.
 
