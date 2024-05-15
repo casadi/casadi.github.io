@@ -1,5 +1,5 @@
 ---
-href: http://master2024.casadi.org
+href: http://ocp2024.casadi.org
 ---
 
-📣Next CasADi master class: March 18-20
+📣Next hands-on CasADi class: November 18-20
