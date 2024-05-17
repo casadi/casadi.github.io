@@ -1,0 +1,376 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+      <title>CasADi - Blog - Matlab coder meets CasADi codegen</title>
+    
+
+    
+    <link href="https://web.casadi.org/_css/font-awesome.min.css" rel="stylesheet">
+
+    
+    <link href="https://web.casadi.org/_css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <link href="https://web.casadi.org/_css/pygments-default.css" rel="stylesheet">
+
+    
+    <link href="https://web.casadi.org/_css/casadi-theme.min.css" rel="stylesheet">
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+          displayMath: [ ['$$','$$'], ['\\[','\\]'] ],
+          processEnvironments: false
+        }
+      });
+    </script>
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+
+  <body>
+
+
+
+<nav class="navbar fixed-top navbar-expand-lg nav-top">
+  <div class="container">
+    <a class="navbar-brand" href="https://web.casadi.org/"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        
+        
+          
+          <li class="nav-item active">
+          
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/get/">Try/Install</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/docs/">Docs</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/support/">Support</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/source/">Source</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/publications/">Publications</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/events/">Workshops</a>
+          </li>
+        
+          
+          <li class="nav-item active">
+          
+            <a class="nav-link" href="/blog/">Blog</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div id="main" class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Matlab coder meets CasADi codegen</h1>
+      <span class="reading-time text-muted">Estimated reading time: 4 minutes</span>
+
+      <p>In this post we show how CasADi codegen can be integrated seemlessly with Matlab Coder.
+Matlab Coder is capable of transforming a Matlab function into C code.
+CasADi codegen is somewhat similar: it generates C code out of a CasADi Function.</p>
+<h1 id="some-context">Some context</h1>
+<p>Running CasADi generated code inside a mex file is nothing new.
+Indeed, it has been  <a href="https://web.casadi.org/docs/#syntax-for-generating-code">featured in the user guide</a> for many years.
+Calls to such a mex file would play nicely with Matlab Coder out-of-the-box.</p>
+<h1 id="rationale">Rationale</h1>
+<p>Keeping related pieces of code together one m-script may make your code project more maintainable.
+Here is an example piece of code that mixes CasADi and regular matlab operations, inspired by <a href="https://github.com/casadi/micro_demo_ipopt_codegen">the Ipopt codegen demo</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="k">function</span><span class="w"> </span>[area_sol, center_sol] <span class="p">=</span><span class="w"> </span><span class="nf">fun_interpreted</span><span class="p">(</span>a<span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">opti</span>   <span class="p">=</span> <span class="n">casadi</span><span class="p">.</span><span class="n">Opti</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">center</span> <span class="p">=</span> <span class="n">opti</span><span class="p">.</span><span class="n">variable</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">radius</span> <span class="p">=</span> <span class="n">opti</span><span class="p">.</span><span class="n">variable</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">opti</span><span class="p">.</span><span class="n">minimize</span><span class="p">(</span><span class="o">-</span><span class="n">radius</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% Sample edge vertices</span>
+</span></span><span class="line"><span class="cl"><span class="n">ts</span> <span class="p">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">v_x</span> <span class="p">=</span> <span class="n">radius</span><span class="o">*</span><span class="nb">cos</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span><span class="o">+</span><span class="n">center</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">v_y</span> <span class="p">=</span> <span class="n">radius</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span><span class="o">+</span><span class="n">center</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">opti</span><span class="p">.</span><span class="n">subject_to</span><span class="p">(</span><span class="n">v_x</span><span class="o">&gt;</span><span class="p">=</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span> <span class="p">=</span> <span class="n">interp1</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">9</span><span class="p">],</span><span class="n">a</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">opti</span><span class="p">.</span><span class="n">subject_to</span><span class="p">(</span><span class="n">v_y</span><span class="o">&gt;</span><span class="p">=</span><span class="n">p</span><span class="o">*</span><span class="nb">sqrt</span><span class="p">(</span><span class="n">v_x</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="n">opti</span><span class="p">.</span><span class="n">subject_to</span><span class="p">(</span><span class="n">v_x</span><span class="o">.^</span><span class="mi">2</span><span class="o">+</span><span class="n">v_y</span><span class="o">.^</span><span class="mi">2</span><span class="o">&lt;</span><span class="p">=</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">opti</span><span class="p">.</span><span class="n">set_initial</span><span class="p">(</span><span class="n">center</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">opti</span><span class="p">.</span><span class="n">solver</span><span class="p">(</span><span class="s">&#39;ipopt&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sol</span> <span class="p">=</span> <span class="n">opti</span><span class="p">.</span><span class="n">solve</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">area_sol</span> <span class="p">=</span> <span class="n">sol</span><span class="p">.</span><span class="n">value</span><span class="p">(</span><span class="nb">pi</span><span class="o">*</span><span class="n">radius</span>^<span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">center_sol</span> <span class="p">=</span> <span class="n">sol</span><span class="p">.</span><span class="n">value</span><span class="p">(</span><span class="n">center</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span></code></pre></div><p>Wouldn&rsquo;t it be nice if we could just ask Matlab Coder to generate the mex file for us?</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="n">codegen</span> <span class="n">fun_interpreted</span> <span class="o">-</span><span class="n">args</span> <span class="p">{</span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)}</span>
+</span></span></code></pre></div><p>Unfortunately, we are greeted by a somewhat cryptic error message:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">??? Diamond-shape inheritance is not supported in code generation. Class &#39;casadi.Opti&#39; inherits from base class &#39;SwigRef&#39; via two or more
+</span></span><span class="line"><span class="cl">paths.
+</span></span><span class="line"><span class="cl">Error in ==&gt; Opti Line: 1460 Column: 7
+</span></span><span class="line"><span class="cl">Code generation failed: View Error Report
+</span></span></code></pre></div><p>Matlab coder is trying (and failing) to dump the entire CasADi class hierarchy into C.</p>
+<p>How do we fix this?</p>
+<h1 id="step-1">Step 1</h1>
+<p>The first step we need to do is to make sure we get our hands on a CasADi Function <code>F</code> which we can later code-generate:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">function [area_sol, center_sol] = fun_intermediate(a)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">% Any pre-processing using pure Matlab operations can go here
+</span></span><span class="line"><span class="cl">p_value = interp1([0,1,2],[0,3,9],a);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">% Anything CasADi related goes here
+</span></span><span class="line"><span class="cl">opti   = casadi.Opti();
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">center = opti.variable(2);
+</span></span><span class="line"><span class="cl">radius = opti.variable();
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">p = opti.parameter();
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">opti.minimize(-radius);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">% Sample edge vertices
+</span></span><span class="line"><span class="cl">ts = linspace(0, 2*pi, 1000);
+</span></span><span class="line"><span class="cl">v_x = radius*cos(ts)+center(1);
+</span></span><span class="line"><span class="cl">v_y = radius*sin(ts)+center(2);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">opti.subject_to(v_x&gt;=0);
+</span></span><span class="line"><span class="cl">opti.subject_to(v_y&gt;=p*sqrt(v_x));
+</span></span><span class="line"><span class="cl">opti.subject_to(v_x.^2+v_y.^2&lt;=1);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">opti.set_initial(center, [0.5, 0.5]);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">opti.solver(&#39;ipopt&#39;);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">% Vreate a CasADi Function
+</span></span><span class="line"><span class="cl">F = opti.to_function(&#39;F&#39;,{p},{radius, center});
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">[radius_sol,center_sol] = F(p_value);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">% Any post-processing using pure Matlab operations can go here
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">area_sol = pi*radius_sol^2;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">end
+</span></span></code></pre></div><p>At the same time, we also moved some code around to get a split-up between pure Matlab portions of code (pre-processing and post-processing) and CasADi portions of code.</p>
+<h1 id="step-2">Step 2</h1>
+<p>In the next step, we introduce a <code>coder.target('MATLAB')</code> if-test around any CasADi portion of code.
+Most of the code below can just be copy-pasted for your project.
+The most important project-specific part is marked with &lsquo;% Adapt&rsquo;.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="k">function</span><span class="w"> </span>[area_sol, center_sol] <span class="p">=</span><span class="w"> </span><span class="nf">fun_codable</span><span class="p">(</span>a<span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">% Any pre-processing using pure Matlab operations can go here</span>
+</span></span><span class="line"><span class="cl"><span class="n">p_value</span> <span class="p">=</span> <span class="n">interp1</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">9</span><span class="p">],</span><span class="n">a</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% Make sure data-types and sizes are known</span>
+</span></span><span class="line"><span class="cl"><span class="n">radius_sol</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">center_sol</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% Anything CasADi related goes here</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="n">coder</span><span class="p">.</span><span class="n">target</span><span class="p">(</span><span class="s">&#39;MATLAB&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c">% Normal CasADi usage + CasADi codegen</span>
+</span></span><span class="line"><span class="cl">     
+</span></span><span class="line"><span class="cl">    <span class="n">opti</span>   <span class="p">=</span> <span class="n">casadi</span><span class="p">.</span><span class="n">Opti</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c">...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c">% Codegen via a CasADi Function</span>
+</span></span><span class="line"><span class="cl">    <span class="n">F</span> <span class="p">=</span> <span class="n">opti</span><span class="p">.</span><span class="n">to_function</span><span class="p">(</span><span class="s">&#39;F&#39;</span><span class="p">,{</span><span class="n">p</span><span class="p">},{</span><span class="n">radius</span><span class="p">,</span> <span class="n">center</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="n">radius_sol</span><span class="p">,</span><span class="n">center_sol</span><span class="p">]</span> <span class="p">=</span> <span class="n">F</span><span class="p">(</span><span class="n">p_value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c">% Generate C code</span>
+</span></span><span class="line"><span class="cl">    <span class="n">F</span><span class="p">.</span><span class="n">generate</span><span class="p">(</span><span class="s">&#39;F.c&#39;</span><span class="p">,</span><span class="n">struct</span><span class="p">(</span><span class="s">&#39;unroll_args&#39;</span><span class="p">,</span><span class="n">true</span><span class="p">,</span><span class="s">&#39;with_header&#39;</span><span class="p">,</span><span class="n">true</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c">% Generate meta-data</span>
+</span></span><span class="line"><span class="cl">    <span class="n">config</span> <span class="p">=</span> <span class="n">struct</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">config</span><span class="p">.</span><span class="n">sz_arg</span> <span class="p">=</span> <span class="n">F</span><span class="p">.</span><span class="n">sz_arg</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">config</span><span class="p">.</span><span class="n">sz_res</span> <span class="p">=</span> <span class="n">F</span><span class="p">.</span><span class="n">sz_res</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">config</span><span class="p">.</span><span class="n">sz_iw</span> <span class="p">=</span> <span class="n">F</span><span class="p">.</span><span class="n">sz_iw</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">config</span><span class="p">.</span><span class="n">sz_w</span> <span class="p">=</span> <span class="n">F</span><span class="p">.</span><span class="n">sz_w</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">config</span><span class="p">.</span><span class="n">include_path</span> <span class="p">=</span> <span class="n">casadi</span><span class="p">.</span><span class="n">GlobalOptions</span><span class="p">.</span><span class="n">getCasadiIncludePath</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">config</span><span class="p">.</span><span class="n">path</span> <span class="p">=</span> <span class="n">casadi</span><span class="p">.</span><span class="n">GlobalOptions</span><span class="p">.</span><span class="n">getCasadiPath</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">ismac</span>
+</span></span><span class="line"><span class="cl">      <span class="n">config</span><span class="p">.</span><span class="n">link_library_suffix</span> <span class="p">=</span> <span class="s">&#39;.dylib&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">config</span><span class="p">.</span><span class="n">link_library_prefix</span> <span class="p">=</span> <span class="s">&#39;lib&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">elseif</span> <span class="n">isunix</span>
+</span></span><span class="line"><span class="cl">      <span class="n">config</span><span class="p">.</span><span class="n">link_library_suffix</span> <span class="p">=</span> <span class="s">&#39;.so&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">config</span><span class="p">.</span><span class="n">link_library_prefix</span> <span class="p">=</span> <span class="s">&#39;lib&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">elseif</span> <span class="n">ispc</span>
+</span></span><span class="line"><span class="cl">      <span class="n">config</span><span class="p">.</span><span class="n">link_library_suffix</span> <span class="p">=</span> <span class="s">&#39;.lib&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">config</span><span class="p">.</span><span class="n">link_library_prefix</span> <span class="p">=</span> <span class="s">&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl">    <span class="n">save</span><span class="p">(</span><span class="s">&#39;F_config.mat&#39;</span><span class="p">,</span><span class="s">&#39;-struct&#39;</span><span class="p">,</span><span class="s">&#39;config&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span>
+</span></span><span class="line"><span class="cl">    <span class="c">% This gets executed when Matlab Coder is parsing the file</span>
+</span></span><span class="line"><span class="cl">    <span class="c">% Hooks up Matlab Coder with CasADi generated C code</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c">% Connect .c and .h file</span>
+</span></span><span class="line"><span class="cl">    <span class="n">coder</span><span class="p">.</span><span class="n">cinclude</span><span class="p">(</span><span class="s">&#39;F.h&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">coder</span><span class="p">.</span><span class="n">updateBuildInfo</span><span class="p">(</span><span class="s">&#39;addSourceFiles&#39;</span><span class="p">,</span><span class="s">&#39;F.c&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c">% Set link and include path</span>
+</span></span><span class="line"><span class="cl">    <span class="n">config</span> <span class="p">=</span> <span class="n">coder</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">&#39;F_config.mat&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">coder</span><span class="p">.</span><span class="n">updateBuildInfo</span><span class="p">(</span><span class="s">&#39;addIncludePaths&#39;</span><span class="p">,</span><span class="n">config</span><span class="p">.</span><span class="n">include_path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c">% Link with IPOPT</span>
+</span></span><span class="line"><span class="cl">    <span class="n">coder</span><span class="p">.</span><span class="n">updateBuildInfo</span><span class="p">(</span><span class="s">&#39;addLinkObjects&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">config</span><span class="p">.</span><span class="n">link_library_prefix</span> <span class="s">&#39;ipopt&#39;</span> <span class="n">config</span><span class="p">.</span><span class="n">link_library_suffix</span><span class="p">],</span> <span class="n">config</span><span class="p">.</span><span class="n">path</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">true</span><span class="p">,</span> <span class="n">true</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c">% Setting up working space</span>
+</span></span><span class="line"><span class="cl">    <span class="n">arg</span> <span class="p">=</span> <span class="n">coder</span><span class="p">.</span><span class="n">opaque</span><span class="p">(</span><span class="s">&#39;const casadi_real*&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">res</span> <span class="p">=</span> <span class="n">coder</span><span class="p">.</span><span class="n">opaque</span><span class="p">(</span><span class="s">&#39;casadi_real*&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">iw</span> <span class="p">=</span> <span class="n">coder</span><span class="p">.</span><span class="n">opaque</span><span class="p">(</span><span class="s">&#39;casadi_int&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">w</span> <span class="p">=</span> <span class="n">coder</span><span class="p">.</span><span class="n">opaque</span><span class="p">(</span><span class="s">&#39;casadi_real&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">arg</span> <span class="p">=</span> <span class="n">coder</span><span class="p">.</span><span class="n">nullcopy</span><span class="p">(</span><span class="n">cast</span><span class="p">(</span><span class="nb">zeros</span><span class="p">(</span><span class="n">config</span><span class="p">.</span><span class="n">sz_arg</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="s">&#39;like&#39;</span><span class="p">,</span><span class="n">arg</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">res</span> <span class="p">=</span> <span class="n">coder</span><span class="p">.</span><span class="n">nullcopy</span><span class="p">(</span><span class="n">cast</span><span class="p">(</span><span class="nb">zeros</span><span class="p">(</span><span class="n">config</span><span class="p">.</span><span class="n">sz_res</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="s">&#39;like&#39;</span><span class="p">,</span><span class="n">res</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">iw</span>  <span class="p">=</span> <span class="n">coder</span><span class="p">.</span><span class="n">nullcopy</span><span class="p">(</span><span class="n">cast</span><span class="p">(</span><span class="nb">zeros</span><span class="p">(</span><span class="n">config</span><span class="p">.</span><span class="n">sz_iw</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="s">&#39;like&#39;</span><span class="p">,</span><span class="n">iw</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">w</span>   <span class="p">=</span> <span class="n">coder</span><span class="p">.</span><span class="n">nullcopy</span><span class="p">(</span><span class="n">cast</span><span class="p">(</span><span class="nb">zeros</span><span class="p">(</span><span class="n">config</span><span class="p">.</span><span class="n">sz_w</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="s">&#39;like&#39;</span><span class="p">,</span><span class="n">w</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">mem</span> <span class="p">=</span> <span class="n">int32</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">flag</span><span class="p">=</span> <span class="n">int32</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mem</span> <span class="p">=</span> <span class="n">coder</span><span class="p">.</span><span class="n">ceval</span><span class="p">(</span><span class="s">&#39;F_checkout&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c">% Call the generated CasADi code</span>
+</span></span><span class="line"><span class="cl">    <span class="n">flag</span><span class="p">=</span><span class="n">coder</span><span class="p">.</span><span class="n">ceval</span><span class="p">(</span><span class="s">&#39;F_unrolled&#39;</span><span class="p">,</span><span class="c">...</span>
+</span></span><span class="line"><span class="cl">        <span class="n">coder</span><span class="p">.</span><span class="n">rref</span><span class="p">(</span><span class="n">p_value</span><span class="p">),</span> <span class="c">... % Adapt to as many inputs arguments as your CasADi Function has</span>
+</span></span><span class="line"><span class="cl">        <span class="n">coder</span><span class="p">.</span><span class="n">wref</span><span class="p">(</span><span class="n">radius_sol</span><span class="p">),</span> <span class="n">coder</span><span class="p">.</span><span class="n">wref</span><span class="p">(</span><span class="n">center_sol</span><span class="p">),</span> <span class="c">... % Adapt to as many outputs as your CasADi Function has</span>
+</span></span><span class="line"><span class="cl">        <span class="n">arg</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="n">iw</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">mem</span><span class="p">);</span> <span class="c">% </span>
+</span></span><span class="line"><span class="cl">    <span class="n">coder</span><span class="p">.</span><span class="n">ceval</span><span class="p">(</span><span class="s">&#39;F_release&#39;</span><span class="p">,</span> <span class="n">mem</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% Any post-processing using pure Matlab operations can go here</span>
+</span></span><span class="line"><span class="cl"><span class="n">area_sol</span> <span class="p">=</span> <span class="nb">pi</span><span class="o">*</span><span class="n">radius_sol</span>^<span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span></code></pre></div><p>Please see the inline comments for explanations of the various parts.
+Note that <code>F_unrolled</code> is a variant of <code>F</code> added in CasADi 3.6.5 specifically to make the Malab Coder integration easier.</p>
+<h1 id="results">Results</h1>
+<p>The result is a Matlab function that can be handled by Matlab Coder:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="n">codegen</span> <span class="n">fun_codable</span> <span class="o">-</span><span class="n">args</span> <span class="p">{</span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% Call the geneated mex function</span>
+</span></span><span class="line"><span class="cl"><span class="n">fun_codable_mex</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</span></span></code></pre></div><p>At the same time, the code can stil be run/debugged in interpreted mode and is still close to the original <code>fun_interpreted.m</code> file.</p>
+<p>Using <code>coder.target('MATLAB')</code>, the Simulink system block of <a href="https://web.casadi.org/blog/mpc-simulink/%5D">the MPC blog post</a> could be modified and made compatible with embedded targets.</p>
+<p>Downloads: <a href="demo.m">demo.m</a>, <a href="fun_codable.m">fun_codable.m</a>, <a href="fun_interpreted.m">fun_interpreted.m</a>, <a href="fun_intermediate.m">fun_intermediate.m</a></p>
+
+    </div>
+  </div>
+</div>
+    
+
+
+<a href="http://ocp2024.casadi.org" target="_blank" id="bottom-banner" class="visible">
+
+
+  <div class="container p-3">
+    <div class="row justify-content-md-center">
+      <div class="col-md-auto text-center">
+        <p>📣Next hands-on CasADi class: November 18-20</p>
+
+      </div>
+    </div>
+  </div>
+</a>
+
+
+    
+    <footer>
+      <div class="container">
+        <div class="row justify-content-md-center">
+          <div class="col-md-auto text-center">
+            <ul id="social" class="list-inline">
+              
+                <li class="list-inline-item">
+                  <a href="https://github.com/casadi/casadi" title="github">
+                    <i class="fa fa-github"></i>
+                  </a>
+                </li>
+              
+                <li class="list-inline-item">
+                  <a href="https://twitter.com/casadi_software" title="twitter">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                </li>
+              
+                <li class="list-inline-item">
+                  <a href="https://www.youtube.com/channel/UC3VDpv5Pi3R-a2VkcJN1RLw" title="youtube">
+                    <i class="fa fa-youtube"></i>
+                  </a>
+                </li>
+              
+            </ul>
+            <p class="copyright">Copyright 2023.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    
+    <script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    
+    <script src="https://web.casadi.org/_js/bootstrap.min.js"></script>
+
+    
+    <script src="https://web.casadi.org/_js/scripts.js"></script>
+
+    
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+
+    
+  </body>
+
+</html>
+
