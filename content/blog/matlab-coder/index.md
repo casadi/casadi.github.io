@@ -1,162 +1,228 @@
 ---
 title: Matlab coder meets CasADi codegen
 author: jg
-tags: MPC simulink
-date: 2024-05-15
-image: simulink_block.png
+tags: matlab
+date: 2024-05-17
+image: matlab-coder.png
 ---
 
 In this post we show how CasADi codegen can be integrated seemlessly with Matlab Coder.
+Matlab Coder is capable of transforming a Matlab function into C code.
+CasADi codegen is somewhat similar: it generates C code out of a CasADi Function.
 
-As a staring point, we will take an [earlier post on MPC in Simulink](https://web.casadi.org/blog/mpc-simulink/) that featured an interpreted 'Matlab system' block in the simulink diagram.
+# Some context
 
+Running CasADi generated code inside a mex file is nothing new.
+Indeed, it has been  [featured in the user guide](https://web.casadi.org/docs/#syntax-for-generating-code) for many years.
+Calls to such a mex file would play nicely with Matlab Coder out-of-the-box.
 
+# Rationale
 
-CasADi is not a monolithic tool. We can easily couple it to other software to have more fun.
-Today we'll be exploring a _simple_ coupling with Simulink. We'll be showing off nonlinear MPC (NMPC).
-
-<!--more-->
-
-{{% figure src="simulink_block.png" title="Simulink block diagram" %}}
-
-# The details
-
-For plant model, we'll be using the familiar [Van der Pol oscillator](https://en.wikipedia.org/wiki/Van_der_Pol_oscillator) ode:
-
-$$
-\frac{d\begin{bmatrix}x_1\\\\ x_2\end{bmatrix}}{dt} = \begin{bmatrix}(1-x_2^2)\\, x_1-x_2+u\\\\ x_1\end{bmatrix}.
-$$
-
-In the above Simulink block diagram, the `rhs` MATLAB function block encodes this ode:
+Keeping related pieces of code together one m-script may make your code project more maintainable.
+Here is an example piece of code that mixes CasADi and regular matlab operations, inspired by [the Ipopt codegen demo](https://github.com/casadi/micro_demo_ipopt_codegen)
 ```matlab
-function y = rhs(x,u)
-  y = [(1-x(2)^2)*x(1) - x(2) + u; x(1)];
+function [area_sol, center_sol] = fun_interpreted(a)
+
+opti   = casadi.Opti();
+
+center = opti.variable(2);
+radius = opti.variable();
+
+opti.minimize(-radius);
+
+% Sample edge vertices
+ts = linspace(0, 2*pi, 1000);
+v_x = radius*cos(ts)+center(1);
+v_y = radius*sin(ts)+center(2);
+
+opti.subject_to(v_x>=0);
+p = interp1([0,1,2],[0,3,9],a);
+opti.subject_to(v_y>=p*sqrt(v_x));
+opti.subject_to(v_x.^2+v_y.^2<=1);
+
+opti.set_initial(center, [0.5, 0.5]);
+
+opti.solver('ipopt');
+
+sol = opti.solve();
+
+area_sol = sol.value(pi*radius^2);
+center_sol = sol.value(center);
+
 end
 ```
 
-The `casadi_block` computes the discrete control signal by solving an Optimal Control Problem (OCP).
-The act of closing the loop with the continuous plant makes our setup effectively an MPC controller.
-
-The OCP problem here simply drives the states to zero:
-
-$$
-\begin{align}
-  \underset{\begin{array}{c}x(\cdot), u(\cdot)\end{array}}
-  {\text{minimize}}\quad & \int_{0}^{T}{ \left( x_1(t)^2 + x_2(t)^2 + u(t)^2 \right) \\, dt} \newline
-  \text{subject to} \\, \quad
-  & \left\\{\begin{array}{l}
-    \dot{x}_1(t) = (1-x_2(t)^2) \\, x_1(t) - x_2(t) + u(t) \newline
-    \dot{x}_2(t) = x_1(t) \newline
-    -1.0 \le u(t) \le 1.0, \quad x_1(t) \ge -0.25
-  \end{array}\right.
-  \quad  t \in [0,T] \newline
-  & x_1(0)=\bar{x}_1, \quad x_2(0)=\bar{x}_2
-\end{align}
-$$
-
-We will use the [multiple shooting transcription from the CasADi examples](https://github.com/casadi/casadi/blob/3.1.0/docs/examples/matlab/direct_multiple_shooting.m) to cast the OCP to an NLP problem. In short, the multiple shooting code reads like:
+Wouldn't it be nice if we could just ask Matlab Coder to generate the mex file for us?
 ```matlab
-w = {}; % decision variables
-g = {}; % cosntraints
-J = 0; % objective
+codegen fun_interpreted -args {zeros(1,1)}
+```
+Unfortunately, we are greeted by a somewhat cryptic error message:
 
-% Initial conditions
-X0 = MX.sym('X0', 2);
+```
+??? Diamond-shape inheritance is not supported in code generation. Class 'casadi.Opti' inherits from base class 'SwigRef' via two or more
+paths.
+Error in ==> Opti Line: 1460 Column: 7
+Code generation failed: View Error Report
+```
+Matlab coder is trying (and failing) to dump the entire CasADi class hierarchy into C.
 
-% Formulate the NLP
-Xk = X0;
-for k=0:N-1
-    % New NLP variable for the control
-    Uk = MX.sym('U');
-    w = {w{:}, Uk};
+How do we fix this?
 
-    % Integrate till the end of the interval
-    Fk = F('x0', Xk, 'p', Uk);
-    Xk_end = Fk.xf;
-    J=J+Fk.qf;
+# Step 1
 
-    % New NLP variable for state at end of interval
-    Xk = MX.sym('X', 2);
-    w = {w{:}, Xk};
+The first step we need to do is to make sure we get our hands on a CasADi Function `F` which we can later code-generate:
 
-    % Add equality constraint
-    g = {g{:}, Xk_end-Xk};
+```
+function [area_sol, center_sol] = fun_intermediate(a)
+
+% Any pre-processing using pure Matlab operations can go here
+p_value = interp1([0,1,2],[0,3,9],a);
+
+% Anything CasADi related goes here
+opti   = casadi.Opti();
+
+center = opti.variable(2);
+radius = opti.variable();
+
+p = opti.parameter();
+
+opti.minimize(-radius);
+
+% Sample edge vertices
+ts = linspace(0, 2*pi, 1000);
+v_x = radius*cos(ts)+center(1);
+v_y = radius*sin(ts)+center(2);
+
+opti.subject_to(v_x>=0);
+opti.subject_to(v_y>=p*sqrt(v_x));
+opti.subject_to(v_x.^2+v_y.^2<=1);
+
+opti.set_initial(center, [0.5, 0.5]);
+
+opti.solver('ipopt');
+
+% Vreate a CasADi Function
+F = opti.to_function('F',{p},{radius, center});
+        
+[radius_sol,center_sol] = F(p_value);
+
+% Any post-processing using pure Matlab operations can go here
+
+area_sol = pi*radius_sol^2;
+
 end
-
-% Create an NLP solver
-prob = struct('f', J, 'x', vertcat(w{:}), 'g', vertcat(g{:}));
-solver = nlpsol('solver', 'ipopt', prob);
 ```
 
-Recall from that example the solution plot:
+At the same time, we also moved some code around to get a split-up between pure Matlab portions of code (pre-processing and post-processing) and CasADi portions of code.
 
-{{% figure src="reference.png" title="Reference solution from multiple shooting example" %}}
-
-As we all know, CasADi makes an important distinction between _initialisation_ and _evaluation_ steps.
-We would not want to construct an NLP afresh at every sampling time!
-Rather, we'd like to construct the NLP once, and simply evaluate it repeatedly using slightly different numerical inputs.
-For this purpose, we chose a `MATLAB System` block in Simulink.
-
-In abbreviated form, the code in that block reads:
+# Step 2
+In the next step, we introduce a `coder.target('MATLAB')` if-test around any CasADi portion of code.
+Most of the code below can just be copy-pasted for your project.
+The most important project-specific part is marked with '% Adapt'.
 ```matlab
-classdef casadi_block < matlab.System
-    properties (Access = private)
-        casadi_solver
-        lbx
-        ubx
+function [area_sol, center_sol] = fun_codable(a)
+
+% Any pre-processing using pure Matlab operations can go here
+p_value = interp1([0,1,2],[0,3,9],a);
+
+% Make sure data-types and sizes are known
+radius_sol = 0;
+center_sol = zeros(2,1);
+
+% Anything CasADi related goes here
+if coder.target('MATLAB')
+    % Normal CasADi usage + CasADi codegen
+     
+    opti   = casadi.Opti();
+
+    ...
+
+    % Codegen via a CasADi Function
+    F = opti.to_function('F',{p},{radius, center});
+    [radius_sol,center_sol] = F(p_value);
+
+    % Generate C code
+    F.generate('F.c',struct('unroll_args',true,'with_header',true));
+
+    % Generate meta-data
+    config = struct;
+    config.sz_arg = F.sz_arg();
+    config.sz_res = F.sz_res();
+    config.sz_iw = F.sz_iw();
+    config.sz_w = F.sz_w();
+    config.include_path = casadi.GlobalOptions.getCasadiIncludePath;
+    config.path = casadi.GlobalOptions.getCasadiPath;
+    if ismac
+      config.link_library_suffix = '.dylib';
+      config.link_library_prefix = 'lib';
+    elseif isunix
+      config.link_library_suffix = '.so';
+      config.link_library_prefix = 'lib';
+    elseif ispc
+      config.link_library_suffix = '.lib';
+      config.link_library_prefix = '';
     end
-    methods (Access = protected)
-        function setupImpl(obj,~,~)
-            obj.casadi_solver = nlpsol('solver', 'ipopt', prob, options);
-            obj.lbx = lbw;
-            obj.ubx = ubw;
-        end
+    save('F_config.mat','-struct','config');
+else
+    % This gets executed when Matlab Coder is parsing the file
+    % Hooks up Matlab Coder with CasADi generated C code
 
-        function u = stepImpl(obj,x,t)
-            lbw = obj.lbx;
-            ubw = obj.ubx;
-            solver = obj.casadi_solver;
-            lbw(1:2) = x;
-            ubw(1:2) = x;
-            sol = solver('x0', w0, 'lbx', lbw, 'ubx', ubw,...
-                        'lbg', obj.lbg, 'ubg', obj.ubg);
+    % Connect .c and .h file
+    coder.cinclude('F.h');
+    coder.updateBuildInfo('addSourceFiles','F.c');
+    
+    % Set link and include path
+    config = coder.load('F_config.mat');
+    coder.updateBuildInfo('addIncludePaths',config.include_path)
+    
+    % Link with IPOPT
+    coder.updateBuildInfo('addLinkObjects', [config.link_library_prefix 'ipopt' config.link_library_suffix], config.path, '', true, true);
 
-            u = full(sol.x(3));
-        end
+    % Setting up working space
+    arg = coder.opaque('const casadi_real*');
+    res = coder.opaque('casadi_real*');
+    iw = coder.opaque('casadi_int');
+    w = coder.opaque('casadi_real');
 
-    end
+
+    arg = coder.nullcopy(cast(zeros(config.sz_arg,1),'like',arg));
+    res = coder.nullcopy(cast(zeros(config.sz_res,1),'like',res));
+    iw  = coder.nullcopy(cast(zeros(config.sz_iw,1),'like',iw));
+    w   = coder.nullcopy(cast(zeros(config.sz_w,1),'like',w));
+
+    mem = int32(0);
+    flag= int32(0);
+    mem = coder.ceval('F_checkout');
+    
+    % Call the generated CasADi code
+    flag=coder.ceval('F_unrolled',...
+        coder.rref(p_value), ... % Adapt to as many inputs arguments as your CasADi Function has
+        coder.wref(radius_sol), coder.wref(center_sol), ... % Adapt to as many outputs as your CasADi Function has
+        arg, res, iw, w, mem); % 
+    coder.ceval('F_release', mem);
+end
+
+% Any post-processing using pure Matlab operations can go here
+area_sol = pi*radius_sol^2;
+
 end
 ```
+Please see the inline comments for explanations of the various parts.
 
-As you can see, `setupImpl` takes care of constructing the NLP, and `stepImpl` solves the actual NLP while constraining $x_1(0)$ and $x_2(0)$ to the state _measurement_ coming in from Simulink.
+# Results
+
+The result is a Matlab function that can be handled by Matlab Coder:
+```matlab
+codegen fun_codable -args {zeros(1,1)}
+
+% Call the geneated mex function
+fun_codable_mex(0.5)
+```
+
+At the same time, the code can stil be run/debugged in interpreted mode and is still close to the original `fun_interpreted.m` file.
+
+Using `coder.target('MATLAB')`, the Simulink system block of [the MPC blog post](https://web.casadi.org/blog/mpc-simulink/]) could be modified and made compatible with embedded targets.
+
+Downloads: [demo.m](demo.m), [fun_codable.m](fun_codable.m), [fun_interpreted.m](fun_interpreted.m), [fun_intermediate.m](fun_intermediate.m)
 
 
-In general, you may distinguish several approaches to bring CasADi computations into simulink:
- 1. write CasADi-Matlab code, and use an `interpreted Matlab code` in Simulink
- 2. write CasADi-Matlab code, and use CasADi's codegenerator to spit out a pure c function (or mex file). Then, interface that pure c function in simulink
- 3. write a mex file from scratch using CasADi-C++ code
-
-We used option 1 here. It's the most simple way. Obviously this is not the most efficient way,
-but since all of CasADi's number-crunching happens in compiled libraries, `interpreted Matlab code` is not as bad as it sounds perhaps.
-Anyway, make sure that you indicate to Simulink that the code is `interpreted`:
-
-{{% figure src="interpreted.png" title="Simulink block diagram" %}}
-
-Let's jump to results.
-
-# The results
-MPC control signal:
-{{% figure src="simulink_control.png" title="MPC control signal" %}}
-
-State evolution:
-{{% figure src="simulink_state.png" title="State evolution"%}}
-
-Note how the control trajectory (up to t=10s) matches the reference solution further up in this post.
-The state trajectory matches too, but Simulink shows you more detail: you see the smooth time-evolution of the system in-between the sampling times.
-Pretty neat, huh?
-Just for fun, I dropped in some noised at around t=10s. The MPC controller manages to recover from this.
-
-This post showed a quick way to drop your CasADi code into Simulink.
-We're curious what you'll cook up based on this example. Enjoy!
-
-Downloads: [casadi_block.m](casadi_block.m), [mpc_demo.slx](mpc_demo.slx)
