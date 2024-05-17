@@ -161,44 +161,44 @@ Here is an example piece of code that mixes CasADi and regular matlab operations
 <p>How do we fix this?</p>
 <h1 id="step-1">Step 1</h1>
 <p>The first step we need to do is to make sure we get our hands on a CasADi Function <code>F</code> which we can later code-generate:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">function [area_sol, center_sol] = fun_intermediate(a)
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="k">function</span><span class="w"> </span>[area_sol, center_sol] <span class="p">=</span><span class="w"> </span><span class="nf">fun_intermediate</span><span class="p">(</span>a<span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">% Any pre-processing using pure Matlab operations can go here</span>
+</span></span><span class="line"><span class="cl"><span class="n">p_value</span> <span class="p">=</span> <span class="n">interp1</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">9</span><span class="p">],</span><span class="n">a</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">% Any pre-processing using pure Matlab operations can go here
-</span></span><span class="line"><span class="cl">p_value = interp1([0,1,2],[0,3,9],a);
+</span></span><span class="line"><span class="cl"><span class="c">% Anything CasADi related goes here</span>
+</span></span><span class="line"><span class="cl"><span class="n">opti</span>   <span class="p">=</span> <span class="n">casadi</span><span class="p">.</span><span class="n">Opti</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">% Anything CasADi related goes here
-</span></span><span class="line"><span class="cl">opti   = casadi.Opti();
+</span></span><span class="line"><span class="cl"><span class="n">center</span> <span class="p">=</span> <span class="n">opti</span><span class="p">.</span><span class="n">variable</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">radius</span> <span class="p">=</span> <span class="n">opti</span><span class="p">.</span><span class="n">variable</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">center = opti.variable(2);
-</span></span><span class="line"><span class="cl">radius = opti.variable();
+</span></span><span class="line"><span class="cl"><span class="n">p</span> <span class="p">=</span> <span class="n">opti</span><span class="p">.</span><span class="n">parameter</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">p = opti.parameter();
+</span></span><span class="line"><span class="cl"><span class="n">opti</span><span class="p">.</span><span class="n">minimize</span><span class="p">(</span><span class="o">-</span><span class="n">radius</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">opti.minimize(-radius);
+</span></span><span class="line"><span class="cl"><span class="c">% Sample edge vertices</span>
+</span></span><span class="line"><span class="cl"><span class="n">ts</span> <span class="p">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">v_x</span> <span class="p">=</span> <span class="n">radius</span><span class="o">*</span><span class="nb">cos</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span><span class="o">+</span><span class="n">center</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">v_y</span> <span class="p">=</span> <span class="n">radius</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span><span class="o">+</span><span class="n">center</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">% Sample edge vertices
-</span></span><span class="line"><span class="cl">ts = linspace(0, 2*pi, 1000);
-</span></span><span class="line"><span class="cl">v_x = radius*cos(ts)+center(1);
-</span></span><span class="line"><span class="cl">v_y = radius*sin(ts)+center(2);
+</span></span><span class="line"><span class="cl"><span class="n">opti</span><span class="p">.</span><span class="n">subject_to</span><span class="p">(</span><span class="n">v_x</span><span class="o">&gt;</span><span class="p">=</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">opti</span><span class="p">.</span><span class="n">subject_to</span><span class="p">(</span><span class="n">v_y</span><span class="o">&gt;</span><span class="p">=</span><span class="n">p</span><span class="o">*</span><span class="nb">sqrt</span><span class="p">(</span><span class="n">v_x</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="n">opti</span><span class="p">.</span><span class="n">subject_to</span><span class="p">(</span><span class="n">v_x</span><span class="o">.^</span><span class="mi">2</span><span class="o">+</span><span class="n">v_y</span><span class="o">.^</span><span class="mi">2</span><span class="o">&lt;</span><span class="p">=</span><span class="mi">1</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">opti.subject_to(v_x&gt;=0);
-</span></span><span class="line"><span class="cl">opti.subject_to(v_y&gt;=p*sqrt(v_x));
-</span></span><span class="line"><span class="cl">opti.subject_to(v_x.^2+v_y.^2&lt;=1);
+</span></span><span class="line"><span class="cl"><span class="n">opti</span><span class="p">.</span><span class="n">set_initial</span><span class="p">(</span><span class="n">center</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">opti.set_initial(center, [0.5, 0.5]);
+</span></span><span class="line"><span class="cl"><span class="n">opti</span><span class="p">.</span><span class="n">solver</span><span class="p">(</span><span class="s">&#39;ipopt&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">opti.solver(&#39;ipopt&#39;);
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">% Vreate a CasADi Function
-</span></span><span class="line"><span class="cl">F = opti.to_function(&#39;F&#39;,{p},{radius, center});
+</span></span><span class="line"><span class="cl"><span class="c">% Create a CasADi Function</span>
+</span></span><span class="line"><span class="cl"><span class="n">F</span> <span class="p">=</span> <span class="n">opti</span><span class="p">.</span><span class="n">to_function</span><span class="p">(</span><span class="s">&#39;F&#39;</span><span class="p">,{</span><span class="n">p</span><span class="p">},{</span><span class="n">radius</span><span class="p">,</span> <span class="n">center</span><span class="p">});</span>
 </span></span><span class="line"><span class="cl">        
-</span></span><span class="line"><span class="cl">[radius_sol,center_sol] = F(p_value);
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="n">radius_sol</span><span class="p">,</span><span class="n">center_sol</span><span class="p">]</span> <span class="p">=</span> <span class="n">F</span><span class="p">(</span><span class="n">p_value</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">% Any post-processing using pure Matlab operations can go here
+</span></span><span class="line"><span class="cl"><span class="c">% Any post-processing using pure Matlab operations can go here</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">area_sol = pi*radius_sol^2;
+</span></span><span class="line"><span class="cl"><span class="n">area_sol</span> <span class="p">=</span> <span class="nb">pi</span><span class="o">*</span><span class="n">radius_sol</span>^<span class="mi">2</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">end
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
 </span></span></code></pre></div><p>At the same time, we also moved some code around to get a split-up between pure Matlab portions of code (pre-processing and post-processing) and CasADi portions of code.</p>
 <h1 id="step-2">Step 2</h1>
 <p>In the next step, we introduce a <code>coder.target('MATLAB')</code> if-test around any CasADi portion of code.
@@ -299,7 +299,7 @@ Note that <code>F_unrolled</code> is a variant of <code>F</code> added in CasADi
 </span></span><span class="line"><span class="cl"><span class="c">% Call the geneated mex function</span>
 </span></span><span class="line"><span class="cl"><span class="n">fun_codable_mex</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 </span></span></code></pre></div><p>At the same time, the code can stil be run/debugged in interpreted mode and is still close to the original <code>fun_interpreted.m</code> file.</p>
-<p>Using <code>coder.target('MATLAB')</code>, the Simulink system block of <a href="https://web.casadi.org/blog/mpc-simulink/%5D">the MPC blog post</a> could be modified and made compatible with embedded targets.</p>
+<p>Using <code>coder.target('MATLAB')</code>, the Simulink system block of <a href="https://web.casadi.org/blog/mpc-simulink/">the MPC blog post</a> could be modified and made compatible with embedded targets.</p>
 <p>Downloads: <a href="demo.m">demo.m</a>, <a href="fun_codable.m">fun_codable.m</a>, <a href="fun_interpreted.m">fun_interpreted.m</a>, <a href="fun_intermediate.m">fun_intermediate.m</a></p>
 
     </div>
