@@ -208,6 +208,7 @@ area_sol = pi*radius_sol^2;
 end
 ```
 Please see the inline comments for explanations of the various parts.
+Note that `F_unrolled` is a variant of `F` added in CasADi 3.6.5 specifically to make the Malab Coder integration easier.
 
 # Results
 
