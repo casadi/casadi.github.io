@@ -26,7 +26,7 @@ opti.set_initial(center, [0.5, 0.5]);
 
 opti.solver('ipopt');
 
-% Vreate a CasADi Function
+% Create a CasADi Function
 F = opti.to_function('F',{p},{radius, center});
         
 [radius_sol,center_sol] = F(p_value);
