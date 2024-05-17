@@ -222,7 +222,7 @@ fun_codable_mex(0.5)
 
 At the same time, the code can stil be run/debugged in interpreted mode and is still close to the original `fun_interpreted.m` file.
 
-Using `coder.target('MATLAB')`, the Simulink system block of [the MPC blog post](https://web.casadi.org/blog/mpc-simulink/]) could be modified and made compatible with embedded targets.
+Using `coder.target('MATLAB')`, the Simulink system block of [the MPC blog post](https://web.casadi.org/blog/mpc-simulink/) could be modified and made compatible with embedded targets.
 
 Downloads: [demo.m](demo.m), [fun_codable.m](fun_codable.m), [fun_interpreted.m](fun_interpreted.m), [fun_intermediate.m](fun_intermediate.m)
 
