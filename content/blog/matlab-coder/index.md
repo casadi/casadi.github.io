@@ -72,7 +72,7 @@ How do we fix this?
 
 The first step we need to do is to make sure we get our hands on a CasADi Function `F` which we can later code-generate:
 
-```
+```matlab
 function [area_sol, center_sol] = fun_intermediate(a)
 
 % Any pre-processing using pure Matlab operations can go here
