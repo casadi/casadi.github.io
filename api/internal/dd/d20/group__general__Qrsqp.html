@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/329e2282664f584b17fd6319f8ce765a111a6022" id="329e2282664f584b17fd6319f8ce765a111a6022" >revision 3.6.4</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/279e0b80886dc5eb43a9d12a1056c550dc3b786e" id="279e0b80886dc5eb43a9d12a1056c550dc3b786e" >revision 3.6.6</a></div>
   </td>
  </tr>
  </tbody>
@@ -121,11 +121,15 @@ $(function() {
 <tr>
 <td>enable_reverse</td><td>OT_BOOL</td><td>Enable derivative calculation using generated functions for transposed Jacobian-times-vector products - typically using reverse mode AD - if available. [default: true]</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
+<td>equality</td><td>OT_BOOLVECTOR</td><td>Indicate an upfront hint which of the constraints are equalities. Some solvers may be able to exploit this knowledge. When true, the corresponding lower and upper bounds are assumed equal. When false, the corresponding bounds may be equal or different.</td><td><a class="el" href="../../d8/dc2/classcasadi_1_1Nlpsol.html" title="NLP solver storage class.">casadi::Nlpsol</a> </td></tr>
+<tr>
 <td>error_on_fail</td><td>OT_BOOL</td><td>Throw exceptions when function evaluation fails (default true).</td><td><a class="el" href="../../db/da0/classcasadi_1_1ProtoFunction.html" title="Base class for FunctionInternal and LinsolInternal.">casadi::ProtoFunction</a> </td></tr>
 <tr>
 <td>eval_errors_fatal</td><td>OT_BOOL</td><td>When errors occur during evaluation of f,g,...,stop the iterations</td><td><a class="el" href="../../d8/dc2/classcasadi_1_1Nlpsol.html" title="NLP solver storage class.">casadi::Nlpsol</a> </td></tr>
 <tr>
 <td>expand</td><td>OT_BOOL</td><td>Replace MX with SX expressions in problem formulation [false]</td><td><a class="el" href="../../d2/df9/classcasadi_1_1OracleFunction.html" title="Base class for functions that perform calculation with an oracle.">casadi::OracleFunction</a> </td></tr>
+<tr>
+<td>external_transform</td><td>OT_VECTORVECTOR</td><td>List of external_transform instruction arguments. Default: empty</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
 <td>fd_method</td><td>OT_STRING</td><td>Method for finite differencing [default 'central']</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>

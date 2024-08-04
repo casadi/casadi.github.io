@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/329e2282664f584b17fd6319f8ce765a111a6022" id="329e2282664f584b17fd6319f8ce765a111a6022" >revision 3.6.4</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/279e0b80886dc5eb43a9d12a1056c550dc3b786e" id="279e0b80886dc5eb43a9d12a1056c550dc3b786e" >revision 3.6.6</a></div>
   </td>
  </tr>
  </tbody>
@@ -103,15 +103,15 @@ $(function() {
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  };</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  fatrop_int get_n_stage_params_k(<span class="keyword">const</span> fatrop_int k)<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> 0;}</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  fatrop_int get_n_global_params()<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> 0;}</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  fatrop_int <a class="code" href="../../d7/d23/namespacecasadi.html#a57c6656e3f273d31238b578677e00caf">get_n_global_params</a>()<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> 0;}</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  fatrop_int get_default_stage_paramsk(<span class="keywordtype">double</span> *stage_params, <span class="keyword">const</span> fatrop_int k)<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> 0;}</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  fatrop_int get_default_global_params(<span class="keywordtype">double</span> *global_params)<span class="keyword"> const override</span>{ <span class="keywordflow">return</span> 0; }</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  fatrop_int <a class="code" href="../../d7/d23/namespacecasadi.html#aee7efe0be3cb5dfccdc1a8a5c59c4705">get_default_global_params</a>(<span class="keywordtype">double</span> *global_params)<span class="keyword"> const override</span>{ <span class="keywordflow">return</span> 0; }</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  <span class="keyword">virtual</span> fatrop_int get_ng_ineq_k(<span class="keyword">const</span> fatrop_int k)<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    std::vector&lt;fatrop_int&gt; res_lbg = {2, 1, 0, 0};</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    std::vector&lt;fatrop_int&gt; res_lbx = {1, 5, 3, 1};</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="keywordflow">return</span> res_lbg[k]+res_lbx[k];</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;  }</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;  fatrop_int get_horizon_length()<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> 4; }</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;  fatrop_int <a class="code" href="../../d7/d23/namespacecasadi.html#a1107a1bfa814439f8d1e71b7b3b3738c">get_horizon_length</a>()<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> 4; }</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  fatrop_int eval_BAbtk(</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;      <span class="keyword">const</span> <span class="keywordtype">double</span> *states_kp1,</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;      <span class="keyword">const</span> <span class="keywordtype">double</span> *inputs_k,</div>
@@ -253,10 +253,10 @@ $(function() {
 <div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;  fatrop_int get_boundsk(<span class="keywordtype">double</span> *lower, <span class="keywordtype">double</span> *upper, <span class="keyword">const</span> fatrop_int k)<span class="keyword"> const override </span>{</div>
 <div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;      printf(<span class="stringliteral">&quot;get_boundsk k=%d\n&quot;</span>, k);</div>
 <div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;  }</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;  fatrop_int get_initial_xk(<span class="keywordtype">double</span> *xk, <span class="keyword">const</span> fatrop_int k)<span class="keyword"> const override </span>{</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;  fatrop_int <a class="code" href="../../d7/d23/namespacecasadi.html#afb4f69656439eb83eb87b704e3942ac5">get_initial_xk</a>(<span class="keywordtype">double</span> *xk, <span class="keyword">const</span> fatrop_int k)<span class="keyword"> const override </span>{</div>
 <div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;    printf(<span class="stringliteral">&quot;get_initial_xk k=%d\n&quot;</span>, k);</div>
 <div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;  }</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;  fatrop_int get_initial_uk(<span class="keywordtype">double</span> *uk, <span class="keyword">const</span> fatrop_int k)<span class="keyword"> const override </span>{</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;  fatrop_int <a class="code" href="../../d7/d23/namespacecasadi.html#a09daaf623e5c5a865c6baf69a1da8cc3">get_initial_uk</a>(<span class="keywordtype">double</span> *uk, <span class="keyword">const</span> fatrop_int k)<span class="keyword"> const override </span>{</div>
 <div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    printf(<span class="stringliteral">&quot;get_initial_uk k=%d\n&quot;</span>, k);</div>
 <div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;  }</div>
 <div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160; </div>
@@ -308,7 +308,12 @@ $(function() {
 <div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160; </div>
 <div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;}</div>
 <div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/da2/assertion_8cpp_source.html#l00029">assertion.cpp:29</a></div></div>
-<div class="ttc" id="anamespacecasadi_html_ac09c0efbef523dbe0a36546b832d32d5"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#ac09c0efbef523dbe0a36546b832d32d5">casadi::get_ptr</a></div><div class="ttdeci">T * get_ptr(std::vector&lt; T &gt; &amp;v)</div><div class="ttdoc">Get a pointer to the data contained in the vector.</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d18/casadi__misc_8hpp_source.html#l00798">casadi_misc.hpp:798</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_a09daaf623e5c5a865c6baf69a1da8cc3"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a09daaf623e5c5a865c6baf69a1da8cc3">casadi::get_initial_uk</a></div><div class="ttdeci">fatrop_int get_initial_uk(double *uk, const fatrop_int k, void *user_data)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d26/fatrop__conic__interface_8cpp_source.html#l01012">fatrop_conic_interface.cpp:1012</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_a1107a1bfa814439f8d1e71b7b3b3738c"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a1107a1bfa814439f8d1e71b7b3b3738c">casadi::get_horizon_length</a></div><div class="ttdeci">fatrop_int get_horizon_length(void *user_data)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d26/fatrop__conic__interface_8cpp_source.html#l00477">fatrop_conic_interface.cpp:477</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_a57c6656e3f273d31238b578677e00caf"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a57c6656e3f273d31238b578677e00caf">casadi::get_n_global_params</a></div><div class="ttdeci">fatrop_int get_n_global_params(void *user_data)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d26/fatrop__conic__interface_8cpp_source.html#l00457">fatrop_conic_interface.cpp:457</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_ac09c0efbef523dbe0a36546b832d32d5"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#ac09c0efbef523dbe0a36546b832d32d5">casadi::get_ptr</a></div><div class="ttdeci">T * get_ptr(std::vector&lt; T &gt; &amp;v)</div><div class="ttdoc">Get a pointer to the data contained in the vector.</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d18/casadi__misc_8hpp_source.html#l00811">casadi_misc.hpp:811</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_aee7efe0be3cb5dfccdc1a8a5c59c4705"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#aee7efe0be3cb5dfccdc1a8a5c59c4705">casadi::get_default_global_params</a></div><div class="ttdeci">fatrop_int get_default_global_params(double *global_params, void *user_data)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d26/fatrop__conic__interface_8cpp_source.html#l00465">fatrop_conic_interface.cpp:465</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_afb4f69656439eb83eb87b704e3942ac5"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#afb4f69656439eb83eb87b704e3942ac5">casadi::get_initial_xk</a></div><div class="ttdeci">fatrop_int get_initial_xk(double *xk, const fatrop_int k, void *user_data)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d26/fatrop__conic__interface_8cpp_source.html#l01001">fatrop_conic_interface.cpp:1001</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </body>
 </html>

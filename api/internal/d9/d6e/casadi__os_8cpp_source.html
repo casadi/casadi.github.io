@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/329e2282664f584b17fd6319f8ce765a111a6022" id="329e2282664f584b17fd6319f8ce765a111a6022" >revision 3.6.4</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/279e0b80886dc5eb43a9d12a1056c550dc3b786e" id="279e0b80886dc5eb43a9d12a1056c550dc3b786e" >revision 3.6.6</a></div>
   </td>
  </tr>
  </tbody>
@@ -174,7 +174,7 @@ $(function() {
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            flag = RTLD_LAZY | RTLD_LOCAL;</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        }</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor">    #ifdef WITH_DEEPBIND</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor">    #ifndef __APPLE__</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor">    #if !defined(__APPLE__) &amp;&amp; !defined(__EMSCRIPTEN__)</span></div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        flag |= RTLD_DEEPBIND;</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">    #endif</span></div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor">    #endif</span></div>
@@ -230,7 +230,7 @@ $(function() {
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// WITH_DL</span></div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;} <span class="comment">// namespace casadi</span></div>
-<div class="ttc" id="aclasscasadi_1_1GlobalOptions_html_a39a40bc9185c88dae1cea6b97dea2dcd"><div class="ttname"><a href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a39a40bc9185c88dae1cea6b97dea2dcd">casadi::GlobalOptions::getCasadiPath</a></div><div class="ttdeci">static std::string getCasadiPath()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dc6/global__options_8hpp_source.html#l00083">global_options.hpp:83</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1GlobalOptions_html_a39a40bc9185c88dae1cea6b97dea2dcd"><div class="ttname"><a href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a39a40bc9185c88dae1cea6b97dea2dcd">casadi::GlobalOptions::getCasadiPath</a></div><div class="ttdeci">static std::string getCasadiPath()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dc6/global__options_8hpp_source.html#l00085">global_options.hpp:85</a></div></div>
 <div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/da2/assertion_8cpp_source.html#l00029">assertion.cpp:29</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_a346abe04a957fb512189c74d9b752069"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a346abe04a957fb512189c74d9b752069">casadi::filesep</a></div><div class="ttdeci">std::string filesep()</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6e/casadi__os_8cpp_source.html#l00041">casadi_os.cpp:41</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_a6395b27f59899b46702fab89df48548a"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a6395b27f59899b46702fab89df48548a">casadi::get_search_paths</a></div><div class="ttdeci">std::vector&lt; std::string &gt; get_search_paths()</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6e/casadi__os_8cpp_source.html#l00049">casadi_os.cpp:49</a></div></div>

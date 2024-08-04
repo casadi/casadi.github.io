@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/329e2282664f584b17fd6319f8ce765a111a6022" id="329e2282664f584b17fd6319f8ce765a111a6022" >revision 3.6.4</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/279e0b80886dc5eb43a9d12a1056c550dc3b786e" id="279e0b80886dc5eb43a9d12a1056c550dc3b786e" >revision 3.6.6</a></div>
   </td>
  </tr>
  </tbody>
@@ -113,23 +113,23 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1ya">https://github.com/casadi/casadi/wiki/L_1ya</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../de/dea/function_8cpp_source.html#l01876">1876</a> of file <a class="el" href="../../de/dea/function_8cpp_source.html">function.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l01876"></a><span class="lineno"> 1876</span>&#160;                                                  : f_(f) {</div>
-<div class="line"><a name="l01877"></a><span class="lineno"> 1877</span>&#160;    w_.resize(f_.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#aa5e30ac0ffe9f9575b6bbf80634020e3">sz_w</a>());</div>
-<div class="line"><a name="l01878"></a><span class="lineno"> 1878</span>&#160;    iw_.resize(f_.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a9551c779f63814f7054865e0d11a542c">sz_iw</a>());</div>
-<div class="line"><a name="l01879"></a><span class="lineno"> 1879</span>&#160;    arg_.resize(f_.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#aacc27ab13c891bad238679c559b98fb0">sz_arg</a>());</div>
-<div class="line"><a name="l01880"></a><span class="lineno"> 1880</span>&#160;    res_.resize(f_.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a0cc8d6904bf15f48d6025ef135d12e9a">sz_res</a>());</div>
-<div class="line"><a name="l01881"></a><span class="lineno"> 1881</span>&#160;    mem_ = f_-&gt;<a class="code" href="../../db/da0/classcasadi_1_1ProtoFunction.html#a5ce4c0b5f51e5a101da1faeec7d40f46">checkout</a>();</div>
-<div class="line"><a name="l01882"></a><span class="lineno"> 1882</span>&#160;    mem_internal_ = f.memory(mem_);</div>
-<div class="line"><a name="l01883"></a><span class="lineno"> 1883</span>&#160;    f_node_ = f.operator-&gt;();</div>
-<div class="line"><a name="l01884"></a><span class="lineno"> 1884</span>&#160;  }</div>
-<div class="ttc" id="aclasscasadi_1_1Function_html_a0cc8d6904bf15f48d6025ef135d12e9a"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#a0cc8d6904bf15f48d6025ef135d12e9a">casadi::Function::sz_res</a></div><div class="ttdeci">size_t sz_res() const</div><div class="ttdoc">Get required length of res field.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l01029">function.cpp:1029</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1Function_html_a9551c779f63814f7054865e0d11a542c"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#a9551c779f63814f7054865e0d11a542c">casadi::Function::sz_iw</a></div><div class="ttdeci">size_t sz_iw() const</div><div class="ttdoc">Get required length of iw field.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l01031">function.cpp:1031</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1Function_html_aa5e30ac0ffe9f9575b6bbf80634020e3"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#aa5e30ac0ffe9f9575b6bbf80634020e3">casadi::Function::sz_w</a></div><div class="ttdeci">size_t sz_w() const</div><div class="ttdoc">Get required length of w field.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l01033">function.cpp:1033</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1Function_html_aacc27ab13c891bad238679c559b98fb0"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#aacc27ab13c891bad238679c559b98fb0">casadi::Function::sz_arg</a></div><div class="ttdeci">size_t sz_arg() const</div><div class="ttdoc">Get required length of arg field.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l01027">function.cpp:1027</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1ProtoFunction_html_a5ce4c0b5f51e5a101da1faeec7d40f46"><div class="ttname"><a href="../../db/da0/classcasadi_1_1ProtoFunction.html#a5ce4c0b5f51e5a101da1faeec7d40f46">casadi::ProtoFunction::checkout</a></div><div class="ttdeci">int checkout() const</div><div class="ttdoc">Checkout a memory object.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/db4/function__internal_8cpp_source.html#l03498">function_internal.cpp:3498</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../de/dea/function_8cpp_source.html#l01907">1907</a> of file <a class="el" href="../../de/dea/function_8cpp_source.html">function.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l01907"></a><span class="lineno"> 1907</span>&#160;                                                  : f_(f) {</div>
+<div class="line"><a name="l01908"></a><span class="lineno"> 1908</span>&#160;    w_.resize(f_.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#aa5e30ac0ffe9f9575b6bbf80634020e3">sz_w</a>());</div>
+<div class="line"><a name="l01909"></a><span class="lineno"> 1909</span>&#160;    iw_.resize(f_.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a9551c779f63814f7054865e0d11a542c">sz_iw</a>());</div>
+<div class="line"><a name="l01910"></a><span class="lineno"> 1910</span>&#160;    arg_.resize(f_.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#aacc27ab13c891bad238679c559b98fb0">sz_arg</a>());</div>
+<div class="line"><a name="l01911"></a><span class="lineno"> 1911</span>&#160;    res_.resize(f_.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a0cc8d6904bf15f48d6025ef135d12e9a">sz_res</a>());</div>
+<div class="line"><a name="l01912"></a><span class="lineno"> 1912</span>&#160;    mem_ = f_-&gt;<a class="code" href="../../db/da0/classcasadi_1_1ProtoFunction.html#a5ce4c0b5f51e5a101da1faeec7d40f46">checkout</a>();</div>
+<div class="line"><a name="l01913"></a><span class="lineno"> 1913</span>&#160;    mem_internal_ = f.memory(mem_);</div>
+<div class="line"><a name="l01914"></a><span class="lineno"> 1914</span>&#160;    f_node_ = f.operator-&gt;();</div>
+<div class="line"><a name="l01915"></a><span class="lineno"> 1915</span>&#160;  }</div>
+<div class="ttc" id="aclasscasadi_1_1Function_html_a0cc8d6904bf15f48d6025ef135d12e9a"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#a0cc8d6904bf15f48d6025ef135d12e9a">casadi::Function::sz_res</a></div><div class="ttdeci">size_t sz_res() const</div><div class="ttdoc">Get required length of res field.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l01060">function.cpp:1060</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1Function_html_a9551c779f63814f7054865e0d11a542c"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#a9551c779f63814f7054865e0d11a542c">casadi::Function::sz_iw</a></div><div class="ttdeci">size_t sz_iw() const</div><div class="ttdoc">Get required length of iw field.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l01062">function.cpp:1062</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1Function_html_aa5e30ac0ffe9f9575b6bbf80634020e3"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#aa5e30ac0ffe9f9575b6bbf80634020e3">casadi::Function::sz_w</a></div><div class="ttdeci">size_t sz_w() const</div><div class="ttdoc">Get required length of w field.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l01064">function.cpp:1064</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1Function_html_aacc27ab13c891bad238679c559b98fb0"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#aacc27ab13c891bad238679c559b98fb0">casadi::Function::sz_arg</a></div><div class="ttdeci">size_t sz_arg() const</div><div class="ttdoc">Get required length of arg field.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l01058">function.cpp:1058</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1ProtoFunction_html_a5ce4c0b5f51e5a101da1faeec7d40f46"><div class="ttname"><a href="../../db/da0/classcasadi_1_1ProtoFunction.html#a5ce4c0b5f51e5a101da1faeec7d40f46">casadi::ProtoFunction::checkout</a></div><div class="ttdeci">int checkout() const</div><div class="ttdoc">Checkout a memory object.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/db4/function__internal_8cpp_source.html#l03540">function_internal.cpp:3540</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l03498">casadi::ProtoFunction::checkout()</a>, <a class="el" href="../../de/dea/function_8cpp_source.html#l01719">casadi::Function::memory()</a>, <a class="el" href="../../de/dea/function_8cpp_source.html#l01027">casadi::Function::sz_arg()</a>, <a class="el" href="../../de/dea/function_8cpp_source.html#l01031">casadi::Function::sz_iw()</a>, <a class="el" href="../../de/dea/function_8cpp_source.html#l01029">casadi::Function::sz_res()</a>, and <a class="el" href="../../de/dea/function_8cpp_source.html#l01033">casadi::Function::sz_w()</a>.</p>
+<p class="reference">References <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l03540">casadi::ProtoFunction::checkout()</a>, <a class="el" href="../../de/dea/function_8cpp_source.html#l01750">casadi::Function::memory()</a>, <a class="el" href="../../de/dea/function_8cpp_source.html#l01058">casadi::Function::sz_arg()</a>, <a class="el" href="../../de/dea/function_8cpp_source.html#l01062">casadi::Function::sz_iw()</a>, <a class="el" href="../../de/dea/function_8cpp_source.html#l01060">casadi::Function::sz_res()</a>, and <a class="el" href="../../de/dea/function_8cpp_source.html#l01064">casadi::Function::sz_w()</a>.</p>
 
 </div>
 </div>
@@ -148,18 +148,18 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../de/dea/function_8cpp_source.html#l01886">1886</a> of file <a class="el" href="../../de/dea/function_8cpp_source.html">function.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l01886"></a><span class="lineno"> 1886</span>&#160;                                  {</div>
-<div class="line"><a name="l01887"></a><span class="lineno"> 1887</span>&#160;    <span class="keywordflow">if</span> (f_-&gt;<a class="code" href="../../d2/dab/classcasadi_1_1FunctionInternal.html#a323438d1cd5d4c43c2a2a8222808d2e7">release_</a>) {</div>
-<div class="line"><a name="l01888"></a><span class="lineno"> 1888</span>&#160;      f_-&gt;<a class="code" href="../../d2/dab/classcasadi_1_1FunctionInternal.html#a323438d1cd5d4c43c2a2a8222808d2e7">release_</a>(mem_);</div>
-<div class="line"><a name="l01889"></a><span class="lineno"> 1889</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l01890"></a><span class="lineno"> 1890</span>&#160;      f_.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a5c5b3bd6893057a98b390960d9bf9175">release</a>(mem_);</div>
-<div class="line"><a name="l01891"></a><span class="lineno"> 1891</span>&#160;    }</div>
-<div class="line"><a name="l01892"></a><span class="lineno"> 1892</span>&#160;  }</div>
-<div class="ttc" id="aclasscasadi_1_1FunctionInternal_html_a323438d1cd5d4c43c2a2a8222808d2e7"><div class="ttname"><a href="../../d2/dab/classcasadi_1_1FunctionInternal.html#a323438d1cd5d4c43c2a2a8222808d2e7">casadi::FunctionInternal::release_</a></div><div class="ttdeci">casadi_release_t release_</div><div class="ttdoc">Release redirected to a C function.</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4f/function__internal_8hpp_source.html#l01263">function_internal.hpp:1263</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1Function_html_a5c5b3bd6893057a98b390960d9bf9175"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#a5c5b3bd6893057a98b390960d9bf9175">casadi::Function::release</a></div><div class="ttdeci">void release(int mem) const</div><div class="ttdoc">Release a memory object.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l01715">function.cpp:1715</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../de/dea/function_8cpp_source.html#l01917">1917</a> of file <a class="el" href="../../de/dea/function_8cpp_source.html">function.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l01917"></a><span class="lineno"> 1917</span>&#160;                                  {</div>
+<div class="line"><a name="l01918"></a><span class="lineno"> 1918</span>&#160;    <span class="keywordflow">if</span> (f_-&gt;<a class="code" href="../../d2/dab/classcasadi_1_1FunctionInternal.html#a323438d1cd5d4c43c2a2a8222808d2e7">release_</a>) {</div>
+<div class="line"><a name="l01919"></a><span class="lineno"> 1919</span>&#160;      f_-&gt;<a class="code" href="../../d2/dab/classcasadi_1_1FunctionInternal.html#a323438d1cd5d4c43c2a2a8222808d2e7">release_</a>(mem_);</div>
+<div class="line"><a name="l01920"></a><span class="lineno"> 1920</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l01921"></a><span class="lineno"> 1921</span>&#160;      f_.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a5c5b3bd6893057a98b390960d9bf9175">release</a>(mem_);</div>
+<div class="line"><a name="l01922"></a><span class="lineno"> 1922</span>&#160;    }</div>
+<div class="line"><a name="l01923"></a><span class="lineno"> 1923</span>&#160;  }</div>
+<div class="ttc" id="aclasscasadi_1_1FunctionInternal_html_a323438d1cd5d4c43c2a2a8222808d2e7"><div class="ttname"><a href="../../d2/dab/classcasadi_1_1FunctionInternal.html#a323438d1cd5d4c43c2a2a8222808d2e7">casadi::FunctionInternal::release_</a></div><div class="ttdeci">casadi_release_t release_</div><div class="ttdoc">Release redirected to a C function.</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4f/function__internal_8hpp_source.html#l01268">function_internal.hpp:1268</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1Function_html_a5c5b3bd6893057a98b390960d9bf9175"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#a5c5b3bd6893057a98b390960d9bf9175">casadi::Function::release</a></div><div class="ttdeci">void release(int mem) const</div><div class="ttdoc">Release a memory object.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l01746">function.cpp:1746</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../de/dea/function_8cpp_source.html#l01715">casadi::Function::release()</a>, and <a class="el" href="../../d6/d4f/function__internal_8hpp_source.html#l01263">casadi::FunctionInternal::release_</a>.</p>
+<p class="reference">References <a class="el" href="../../de/dea/function_8cpp_source.html#l01746">casadi::Function::release()</a>, and <a class="el" href="../../d6/d4f/function__internal_8hpp_source.html#l01268">casadi::FunctionInternal::release_</a>.</p>
 
 </div>
 </div>
@@ -179,13 +179,13 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../de/dea/function_8cpp_source.html#l01894">1894</a> of file <a class="el" href="../../de/dea/function_8cpp_source.html">function.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l01894"></a><span class="lineno"> 1894</span>&#160;                                                        : f_(f.f_) {</div>
-<div class="line"><a name="l01895"></a><span class="lineno"> 1895</span>&#160;    <a class="code" href="../../d7/de2/classcasadi_1_1FunctionBuffer.html#a8488ddda4d90d76380245ebe7f5dc0f1">operator=</a>(f);</div>
-<div class="line"><a name="l01896"></a><span class="lineno"> 1896</span>&#160;  }</div>
-<div class="ttc" id="aclasscasadi_1_1FunctionBuffer_html_a8488ddda4d90d76380245ebe7f5dc0f1"><div class="ttname"><a href="../../d7/de2/classcasadi_1_1FunctionBuffer.html#a8488ddda4d90d76380245ebe7f5dc0f1">casadi::FunctionBuffer::operator=</a></div><div class="ttdeci">FunctionBuffer &amp; operator=(const FunctionBuffer &amp;f)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l01898">function.cpp:1898</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../de/dea/function_8cpp_source.html#l01925">1925</a> of file <a class="el" href="../../de/dea/function_8cpp_source.html">function.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l01925"></a><span class="lineno"> 1925</span>&#160;                                                        : f_(f.f_) {</div>
+<div class="line"><a name="l01926"></a><span class="lineno"> 1926</span>&#160;    <a class="code" href="../../d7/de2/classcasadi_1_1FunctionBuffer.html#a8488ddda4d90d76380245ebe7f5dc0f1">operator=</a>(f);</div>
+<div class="line"><a name="l01927"></a><span class="lineno"> 1927</span>&#160;  }</div>
+<div class="ttc" id="aclasscasadi_1_1FunctionBuffer_html_a8488ddda4d90d76380245ebe7f5dc0f1"><div class="ttname"><a href="../../d7/de2/classcasadi_1_1FunctionBuffer.html#a8488ddda4d90d76380245ebe7f5dc0f1">casadi::FunctionBuffer::operator=</a></div><div class="ttdeci">FunctionBuffer &amp; operator=(const FunctionBuffer &amp;f)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l01929">function.cpp:1929</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../de/dea/function_8cpp_source.html#l01898">operator=()</a>.</p>
+<p class="reference">References <a class="el" href="../../de/dea/function_8cpp_source.html#l01929">operator=()</a>.</p>
 
 </div>
 </div>
@@ -205,19 +205,19 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../de/dea/function_8cpp_source.html#l01924">1924</a> of file <a class="el" href="../../de/dea/function_8cpp_source.html">function.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l01924"></a><span class="lineno"> 1924</span>&#160;                             {</div>
-<div class="line"><a name="l01925"></a><span class="lineno"> 1925</span>&#160;    <span class="keywordflow">if</span> (f_node_-&gt;<a class="code" href="../../d2/dab/classcasadi_1_1FunctionInternal.html#a6c865d86f80622fd45b2aa32a551c715">eval_</a>) {</div>
-<div class="line"><a name="l01926"></a><span class="lineno"> 1926</span>&#160;      ret_ = f_node_-&gt;<a class="code" href="../../d2/dab/classcasadi_1_1FunctionInternal.html#a6c865d86f80622fd45b2aa32a551c715">eval_</a>(<a class="code" href="../../d7/d23/namespacecasadi.html#ac09c0efbef523dbe0a36546b832d32d5">get_ptr</a>(arg_), <a class="code" href="../../d7/d23/namespacecasadi.html#ac09c0efbef523dbe0a36546b832d32d5">get_ptr</a>(res_), <a class="code" href="../../d7/d23/namespacecasadi.html#ac09c0efbef523dbe0a36546b832d32d5">get_ptr</a>(iw_), <a class="code" href="../../d7/d23/namespacecasadi.html#ac09c0efbef523dbe0a36546b832d32d5">get_ptr</a>(w_), mem_);</div>
-<div class="line"><a name="l01927"></a><span class="lineno"> 1927</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l01928"></a><span class="lineno"> 1928</span>&#160;      ret_ = f_node_-&gt;<a class="code" href="../../d2/dab/classcasadi_1_1FunctionInternal.html#a3a349052ec77b25edfe1df15e1aaaf15">eval</a>(<a class="code" href="../../d7/d23/namespacecasadi.html#ac09c0efbef523dbe0a36546b832d32d5">get_ptr</a>(arg_), <a class="code" href="../../d7/d23/namespacecasadi.html#ac09c0efbef523dbe0a36546b832d32d5">get_ptr</a>(res_), <a class="code" href="../../d7/d23/namespacecasadi.html#ac09c0efbef523dbe0a36546b832d32d5">get_ptr</a>(iw_), <a class="code" href="../../d7/d23/namespacecasadi.html#ac09c0efbef523dbe0a36546b832d32d5">get_ptr</a>(w_), mem_internal_);</div>
-<div class="line"><a name="l01929"></a><span class="lineno"> 1929</span>&#160;    }</div>
-<div class="line"><a name="l01930"></a><span class="lineno"> 1930</span>&#160;  }</div>
-<div class="ttc" id="aclasscasadi_1_1FunctionInternal_html_a3a349052ec77b25edfe1df15e1aaaf15"><div class="ttname"><a href="../../d2/dab/classcasadi_1_1FunctionInternal.html#a3a349052ec77b25edfe1df15e1aaaf15">casadi::FunctionInternal::eval</a></div><div class="ttdeci">virtual int eval(const double **arg, double **res, casadi_int *iw, double *w, void *mem) const</div><div class="ttdoc">Evaluate numerically.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/db4/function__internal_8cpp_source.html#l03597">function_internal.cpp:3598</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1FunctionInternal_html_a6c865d86f80622fd45b2aa32a551c715"><div class="ttname"><a href="../../d2/dab/classcasadi_1_1FunctionInternal.html#a6c865d86f80622fd45b2aa32a551c715">casadi::FunctionInternal::eval_</a></div><div class="ttdeci">eval_t eval_</div><div class="ttdoc">Numerical evaluation redirected to a C function.</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4f/function__internal_8hpp_source.html#l01253">function_internal.hpp:1253</a></div></div>
-<div class="ttc" id="anamespacecasadi_html_ac09c0efbef523dbe0a36546b832d32d5"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#ac09c0efbef523dbe0a36546b832d32d5">casadi::get_ptr</a></div><div class="ttdeci">T * get_ptr(std::vector&lt; T &gt; &amp;v)</div><div class="ttdoc">Get a pointer to the data contained in the vector.</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d18/casadi__misc_8hpp_source.html#l00798">casadi_misc.hpp:798</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../de/dea/function_8cpp_source.html#l01955">1955</a> of file <a class="el" href="../../de/dea/function_8cpp_source.html">function.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l01955"></a><span class="lineno"> 1955</span>&#160;                             {</div>
+<div class="line"><a name="l01956"></a><span class="lineno"> 1956</span>&#160;    <span class="keywordflow">if</span> (f_node_-&gt;<a class="code" href="../../d2/dab/classcasadi_1_1FunctionInternal.html#a6c865d86f80622fd45b2aa32a551c715">eval_</a>) {</div>
+<div class="line"><a name="l01957"></a><span class="lineno"> 1957</span>&#160;      ret_ = f_node_-&gt;<a class="code" href="../../d2/dab/classcasadi_1_1FunctionInternal.html#a6c865d86f80622fd45b2aa32a551c715">eval_</a>(<a class="code" href="../../d7/d23/namespacecasadi.html#ac09c0efbef523dbe0a36546b832d32d5">get_ptr</a>(arg_), <a class="code" href="../../d7/d23/namespacecasadi.html#ac09c0efbef523dbe0a36546b832d32d5">get_ptr</a>(res_), <a class="code" href="../../d7/d23/namespacecasadi.html#ac09c0efbef523dbe0a36546b832d32d5">get_ptr</a>(iw_), <a class="code" href="../../d7/d23/namespacecasadi.html#ac09c0efbef523dbe0a36546b832d32d5">get_ptr</a>(w_), mem_);</div>
+<div class="line"><a name="l01958"></a><span class="lineno"> 1958</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l01959"></a><span class="lineno"> 1959</span>&#160;      ret_ = f_node_-&gt;<a class="code" href="../../d2/dab/classcasadi_1_1FunctionInternal.html#a3a349052ec77b25edfe1df15e1aaaf15">eval</a>(<a class="code" href="../../d7/d23/namespacecasadi.html#ac09c0efbef523dbe0a36546b832d32d5">get_ptr</a>(arg_), <a class="code" href="../../d7/d23/namespacecasadi.html#ac09c0efbef523dbe0a36546b832d32d5">get_ptr</a>(res_), <a class="code" href="../../d7/d23/namespacecasadi.html#ac09c0efbef523dbe0a36546b832d32d5">get_ptr</a>(iw_), <a class="code" href="../../d7/d23/namespacecasadi.html#ac09c0efbef523dbe0a36546b832d32d5">get_ptr</a>(w_), mem_internal_);</div>
+<div class="line"><a name="l01960"></a><span class="lineno"> 1960</span>&#160;    }</div>
+<div class="line"><a name="l01961"></a><span class="lineno"> 1961</span>&#160;  }</div>
+<div class="ttc" id="aclasscasadi_1_1FunctionInternal_html_a3a349052ec77b25edfe1df15e1aaaf15"><div class="ttname"><a href="../../d2/dab/classcasadi_1_1FunctionInternal.html#a3a349052ec77b25edfe1df15e1aaaf15">casadi::FunctionInternal::eval</a></div><div class="ttdeci">virtual int eval(const double **arg, double **res, casadi_int *iw, double *w, void *mem) const</div><div class="ttdoc">Evaluate numerically.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/db4/function__internal_8cpp_source.html#l03639">function_internal.cpp:3640</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1FunctionInternal_html_a6c865d86f80622fd45b2aa32a551c715"><div class="ttname"><a href="../../d2/dab/classcasadi_1_1FunctionInternal.html#a6c865d86f80622fd45b2aa32a551c715">casadi::FunctionInternal::eval_</a></div><div class="ttdeci">eval_t eval_</div><div class="ttdoc">Numerical evaluation redirected to a C function.</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4f/function__internal_8hpp_source.html#l01258">function_internal.hpp:1258</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_ac09c0efbef523dbe0a36546b832d32d5"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#ac09c0efbef523dbe0a36546b832d32d5">casadi::get_ptr</a></div><div class="ttdeci">T * get_ptr(std::vector&lt; T &gt; &amp;v)</div><div class="ttdoc">Get a pointer to the data contained in the vector.</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d18/casadi__misc_8hpp_source.html#l00811">casadi_misc.hpp:811</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l03598">casadi::FunctionInternal::eval()</a>, <a class="el" href="../../d6/d4f/function__internal_8hpp_source.html#l01253">casadi::FunctionInternal::eval_</a>, and <a class="el" href="../../dc/d18/casadi__misc_8hpp_source.html#l00798">casadi::get_ptr()</a>.</p>
+<p class="reference">References <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l03640">casadi::FunctionInternal::eval()</a>, <a class="el" href="../../d6/d4f/function__internal_8hpp_source.html#l01258">casadi::FunctionInternal::eval_</a>, and <a class="el" href="../../dc/d18/casadi__misc_8hpp_source.html#l00811">casadi::get_ptr()</a>.</p>
 
 </div>
 </div>
@@ -265,27 +265,27 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../de/dea/function_8cpp_source.html#l01898">1898</a> of file <a class="el" href="../../de/dea/function_8cpp_source.html">function.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l01898"></a><span class="lineno"> 1898</span>&#160;                                                                   {</div>
-<div class="line"><a name="l01899"></a><span class="lineno"> 1899</span>&#160;    f_ = f.f_;</div>
-<div class="line"><a name="l01900"></a><span class="lineno"> 1900</span>&#160;    w_ = f.w_; iw_ = f.iw_; arg_ = f.arg_; res_ = f.res_; f_node_ = f.f_node_;</div>
-<div class="line"><a name="l01901"></a><span class="lineno"> 1901</span>&#160;    <span class="comment">// Checkout fresh memory</span></div>
-<div class="line"><a name="l01902"></a><span class="lineno"> 1902</span>&#160;    <span class="keywordflow">if</span> (f_-&gt;<a class="code" href="../../d2/dab/classcasadi_1_1FunctionInternal.html#a9617f9ede077d65491a771ac57372650">checkout_</a>) {</div>
-<div class="line"><a name="l01903"></a><span class="lineno"> 1903</span>&#160;      mem_ = f_-&gt;<a class="code" href="../../d2/dab/classcasadi_1_1FunctionInternal.html#a9617f9ede077d65491a771ac57372650">checkout_</a>();</div>
-<div class="line"><a name="l01904"></a><span class="lineno"> 1904</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l01905"></a><span class="lineno"> 1905</span>&#160;      mem_ = f_.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a76c4c92d700cf9f0167dbf82f15a4578">checkout</a>();</div>
-<div class="line"><a name="l01906"></a><span class="lineno"> 1906</span>&#160;      mem_internal_ = f_.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a9bc1acee8c0fe2ca26d1599587e56cbd">memory</a>(mem_);</div>
-<div class="line"><a name="l01907"></a><span class="lineno"> 1907</span>&#160;    }</div>
-<div class="line"><a name="l01908"></a><span class="lineno"> 1908</span>&#160; </div>
-<div class="line"><a name="l01909"></a><span class="lineno"> 1909</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l01910"></a><span class="lineno"> 1910</span>&#160;  }</div>
-<div class="ttc" id="aclasscasadi_1_1FunctionInternal_html_a9617f9ede077d65491a771ac57372650"><div class="ttname"><a href="../../d2/dab/classcasadi_1_1FunctionInternal.html#a9617f9ede077d65491a771ac57372650">casadi::FunctionInternal::checkout_</a></div><div class="ttdeci">casadi_checkout_t checkout_</div><div class="ttdoc">Checkout redirected to a C function.</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4f/function__internal_8hpp_source.html#l01258">function_internal.hpp:1258</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1Function_html_a76c4c92d700cf9f0167dbf82f15a4578"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#a76c4c92d700cf9f0167dbf82f15a4578">casadi::Function::checkout</a></div><div class="ttdeci">casadi_int checkout() const</div><div class="ttdoc">Checkout a memory object.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l01711">function.cpp:1711</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1Function_html_a9bc1acee8c0fe2ca26d1599587e56cbd"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#a9bc1acee8c0fe2ca26d1599587e56cbd">casadi::Function::memory</a></div><div class="ttdeci">void * memory(int ind) const</div><div class="ttdoc">Get memory object.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l01719">function.cpp:1719</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../de/dea/function_8cpp_source.html#l01929">1929</a> of file <a class="el" href="../../de/dea/function_8cpp_source.html">function.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l01929"></a><span class="lineno"> 1929</span>&#160;                                                                   {</div>
+<div class="line"><a name="l01930"></a><span class="lineno"> 1930</span>&#160;    f_ = f.f_;</div>
+<div class="line"><a name="l01931"></a><span class="lineno"> 1931</span>&#160;    w_ = f.w_; iw_ = f.iw_; arg_ = f.arg_; res_ = f.res_; f_node_ = f.f_node_;</div>
+<div class="line"><a name="l01932"></a><span class="lineno"> 1932</span>&#160;    <span class="comment">// Checkout fresh memory</span></div>
+<div class="line"><a name="l01933"></a><span class="lineno"> 1933</span>&#160;    <span class="keywordflow">if</span> (f_-&gt;<a class="code" href="../../d2/dab/classcasadi_1_1FunctionInternal.html#a9617f9ede077d65491a771ac57372650">checkout_</a>) {</div>
+<div class="line"><a name="l01934"></a><span class="lineno"> 1934</span>&#160;      mem_ = f_-&gt;<a class="code" href="../../d2/dab/classcasadi_1_1FunctionInternal.html#a9617f9ede077d65491a771ac57372650">checkout_</a>();</div>
+<div class="line"><a name="l01935"></a><span class="lineno"> 1935</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l01936"></a><span class="lineno"> 1936</span>&#160;      mem_ = f_.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a76c4c92d700cf9f0167dbf82f15a4578">checkout</a>();</div>
+<div class="line"><a name="l01937"></a><span class="lineno"> 1937</span>&#160;      mem_internal_ = f_.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a9bc1acee8c0fe2ca26d1599587e56cbd">memory</a>(mem_);</div>
+<div class="line"><a name="l01938"></a><span class="lineno"> 1938</span>&#160;    }</div>
+<div class="line"><a name="l01939"></a><span class="lineno"> 1939</span>&#160; </div>
+<div class="line"><a name="l01940"></a><span class="lineno"> 1940</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l01941"></a><span class="lineno"> 1941</span>&#160;  }</div>
+<div class="ttc" id="aclasscasadi_1_1FunctionInternal_html_a9617f9ede077d65491a771ac57372650"><div class="ttname"><a href="../../d2/dab/classcasadi_1_1FunctionInternal.html#a9617f9ede077d65491a771ac57372650">casadi::FunctionInternal::checkout_</a></div><div class="ttdeci">casadi_checkout_t checkout_</div><div class="ttdoc">Checkout redirected to a C function.</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4f/function__internal_8hpp_source.html#l01263">function_internal.hpp:1263</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1Function_html_a76c4c92d700cf9f0167dbf82f15a4578"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#a76c4c92d700cf9f0167dbf82f15a4578">casadi::Function::checkout</a></div><div class="ttdeci">casadi_int checkout() const</div><div class="ttdoc">Checkout a memory object.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l01742">function.cpp:1742</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1Function_html_a9bc1acee8c0fe2ca26d1599587e56cbd"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#a9bc1acee8c0fe2ca26d1599587e56cbd">casadi::Function::memory</a></div><div class="ttdeci">void * memory(int ind) const</div><div class="ttdoc">Get memory object.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l01750">function.cpp:1750</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../de/dea/function_8cpp_source.html#l01711">casadi::Function::checkout()</a>, <a class="el" href="../../d6/d4f/function__internal_8hpp_source.html#l01258">casadi::FunctionInternal::checkout_</a>, and <a class="el" href="../../de/dea/function_8cpp_source.html#l01719">casadi::Function::memory()</a>.</p>
+<p class="reference">References <a class="el" href="../../de/dea/function_8cpp_source.html#l01742">casadi::Function::checkout()</a>, <a class="el" href="../../d6/d4f/function__internal_8hpp_source.html#l01263">casadi::FunctionInternal::checkout_</a>, and <a class="el" href="../../de/dea/function_8cpp_source.html#l01750">casadi::Function::memory()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../de/dea/function_8cpp_source.html#l01894">FunctionBuffer()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../de/dea/function_8cpp_source.html#l01925">FunctionBuffer()</a>.</p>
 
 </div>
 </div>
@@ -304,10 +304,10 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../de/dea/function_8cpp_source.html#l01931">1931</a> of file <a class="el" href="../../de/dea/function_8cpp_source.html">function.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l01931"></a><span class="lineno"> 1931</span>&#160;                          {</div>
-<div class="line"><a name="l01932"></a><span class="lineno"> 1932</span>&#160;    <span class="keywordflow">return</span> ret_;</div>
-<div class="line"><a name="l01933"></a><span class="lineno"> 1933</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../de/dea/function_8cpp_source.html#l01962">1962</a> of file <a class="el" href="../../de/dea/function_8cpp_source.html">function.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l01962"></a><span class="lineno"> 1962</span>&#160;                          {</div>
+<div class="line"><a name="l01963"></a><span class="lineno"> 1963</span>&#160;    <span class="keywordflow">return</span> ret_;</div>
+<div class="line"><a name="l01964"></a><span class="lineno"> 1964</span>&#160;  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -346,17 +346,17 @@ Public Member Functions</h2></td></tr>
 <p>Note that CasADi uses 'fortran' order: column-by-column</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1yb">https://github.com/casadi/casadi/wiki/L_1yb</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../de/dea/function_8cpp_source.html#l01912">1912</a> of file <a class="el" href="../../de/dea/function_8cpp_source.html">function.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l01912"></a><span class="lineno"> 1912</span>&#160;                                                                             {</div>
-<div class="line"><a name="l01913"></a><span class="lineno"> 1913</span>&#160;    casadi_assert(size&gt;=f_.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#abb0d5ffe092d157d012fd28d0b945f63">nnz_in</a>(i)*<span class="keyword">sizeof</span>(<span class="keywordtype">double</span>),</div>
-<div class="line"><a name="l01914"></a><span class="lineno"> 1914</span>&#160;     <span class="stringliteral">&quot;Buffer is not large enough. Needed &quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(f_.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#abb0d5ffe092d157d012fd28d0b945f63">nnz_in</a>(i)*<span class="keyword">sizeof</span>(<span class="keywordtype">double</span>)) +</div>
-<div class="line"><a name="l01915"></a><span class="lineno"> 1915</span>&#160;     <span class="stringliteral">&quot; bytes, got &quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(size) + <span class="stringliteral">&quot;.&quot;</span>);</div>
-<div class="line"><a name="l01916"></a><span class="lineno"> 1916</span>&#160;    arg_.at(i) = a;</div>
-<div class="line"><a name="l01917"></a><span class="lineno"> 1917</span>&#160;  }</div>
-<div class="ttc" id="aclasscasadi_1_1Function_html_abb0d5ffe092d157d012fd28d0b945f63"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#abb0d5ffe092d157d012fd28d0b945f63">casadi::Function::nnz_in</a></div><div class="ttdeci">casadi_int nnz_in() const</div><div class="ttdoc">Get number of input nonzeros.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l00819">function.cpp:819</a></div></div>
-<div class="ttc" id="anamespacecasadi_html_a88082fbf80560c888949bb765d9ccea0"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">casadi::str</a></div><div class="ttdeci">std::string str(const T &amp;v)</div><div class="ttdoc">String representation, any type.</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d59/casadi__common_8hpp_source.html#l00243">casadi_common.hpp:243</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../de/dea/function_8cpp_source.html#l01943">1943</a> of file <a class="el" href="../../de/dea/function_8cpp_source.html">function.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l01943"></a><span class="lineno"> 1943</span>&#160;                                                                             {</div>
+<div class="line"><a name="l01944"></a><span class="lineno"> 1944</span>&#160;    casadi_assert(size&gt;=f_.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#abb0d5ffe092d157d012fd28d0b945f63">nnz_in</a>(i)*<span class="keyword">sizeof</span>(<span class="keywordtype">double</span>),</div>
+<div class="line"><a name="l01945"></a><span class="lineno"> 1945</span>&#160;     <span class="stringliteral">&quot;Buffer is not large enough. Needed &quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(f_.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#abb0d5ffe092d157d012fd28d0b945f63">nnz_in</a>(i)*<span class="keyword">sizeof</span>(<span class="keywordtype">double</span>)) +</div>
+<div class="line"><a name="l01946"></a><span class="lineno"> 1946</span>&#160;     <span class="stringliteral">&quot; bytes, got &quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(size) + <span class="stringliteral">&quot;.&quot;</span>);</div>
+<div class="line"><a name="l01947"></a><span class="lineno"> 1947</span>&#160;    arg_.at(i) = a;</div>
+<div class="line"><a name="l01948"></a><span class="lineno"> 1948</span>&#160;  }</div>
+<div class="ttc" id="aclasscasadi_1_1Function_html_abb0d5ffe092d157d012fd28d0b945f63"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#abb0d5ffe092d157d012fd28d0b945f63">casadi::Function::nnz_in</a></div><div class="ttdeci">casadi_int nnz_in() const</div><div class="ttdoc">Get number of input nonzeros.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l00850">function.cpp:850</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_a88082fbf80560c888949bb765d9ccea0"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">casadi::str</a></div><div class="ttdeci">std::string str(const T &amp;v)</div><div class="ttdoc">String representation, any type.</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d59/casadi__common_8hpp_source.html#l00244">casadi_common.hpp:244</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../de/dea/function_8cpp_source.html#l00819">casadi::Function::nnz_in()</a>, and <a class="el" href="../../dc/d59/casadi__common_8hpp_source.html#l00243">casadi::str()</a>.</p>
+<p class="reference">References <a class="el" href="../../de/dea/function_8cpp_source.html#l00850">casadi::Function::nnz_in()</a>, and <a class="el" href="../../dc/d59/casadi__common_8hpp_source.html#l00244">casadi::str()</a>.</p>
 
 </div>
 </div>
@@ -395,16 +395,16 @@ Public Member Functions</h2></td></tr>
 <p>Note that CasADi uses 'fortran' order: column-by-column</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1yc">https://github.com/casadi/casadi/wiki/L_1yc</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../de/dea/function_8cpp_source.html#l01918">1918</a> of file <a class="el" href="../../de/dea/function_8cpp_source.html">function.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l01918"></a><span class="lineno"> 1918</span>&#160;                                                                       {</div>
-<div class="line"><a name="l01919"></a><span class="lineno"> 1919</span>&#160;    casadi_assert(size&gt;=f_.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a064a6452fc3dae2ccd1d1fea49af9f22">nnz_out</a>(i)*<span class="keyword">sizeof</span>(<span class="keywordtype">double</span>),</div>
-<div class="line"><a name="l01920"></a><span class="lineno"> 1920</span>&#160;     <span class="stringliteral">&quot;Buffer is not large enough. Needed &quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(f_.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a064a6452fc3dae2ccd1d1fea49af9f22">nnz_out</a>(i)*<span class="keyword">sizeof</span>(<span class="keywordtype">double</span>)) +</div>
-<div class="line"><a name="l01921"></a><span class="lineno"> 1921</span>&#160;     <span class="stringliteral">&quot; bytes, got &quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(size) + <span class="stringliteral">&quot;.&quot;</span>);</div>
-<div class="line"><a name="l01922"></a><span class="lineno"> 1922</span>&#160;    res_.at(i) = a;</div>
-<div class="line"><a name="l01923"></a><span class="lineno"> 1923</span>&#160;  }</div>
-<div class="ttc" id="aclasscasadi_1_1Function_html_a064a6452fc3dae2ccd1d1fea49af9f22"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#a064a6452fc3dae2ccd1d1fea49af9f22">casadi::Function::nnz_out</a></div><div class="ttdeci">casadi_int nnz_out() const</div><div class="ttdoc">Get number of output nonzeros.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l00823">function.cpp:823</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../de/dea/function_8cpp_source.html#l01949">1949</a> of file <a class="el" href="../../de/dea/function_8cpp_source.html">function.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l01949"></a><span class="lineno"> 1949</span>&#160;                                                                       {</div>
+<div class="line"><a name="l01950"></a><span class="lineno"> 1950</span>&#160;    casadi_assert(size&gt;=f_.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a064a6452fc3dae2ccd1d1fea49af9f22">nnz_out</a>(i)*<span class="keyword">sizeof</span>(<span class="keywordtype">double</span>),</div>
+<div class="line"><a name="l01951"></a><span class="lineno"> 1951</span>&#160;     <span class="stringliteral">&quot;Buffer is not large enough. Needed &quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(f_.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a064a6452fc3dae2ccd1d1fea49af9f22">nnz_out</a>(i)*<span class="keyword">sizeof</span>(<span class="keywordtype">double</span>)) +</div>
+<div class="line"><a name="l01952"></a><span class="lineno"> 1952</span>&#160;     <span class="stringliteral">&quot; bytes, got &quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(size) + <span class="stringliteral">&quot;.&quot;</span>);</div>
+<div class="line"><a name="l01953"></a><span class="lineno"> 1953</span>&#160;    res_.at(i) = a;</div>
+<div class="line"><a name="l01954"></a><span class="lineno"> 1954</span>&#160;  }</div>
+<div class="ttc" id="aclasscasadi_1_1Function_html_a064a6452fc3dae2ccd1d1fea49af9f22"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#a064a6452fc3dae2ccd1d1fea49af9f22">casadi::Function::nnz_out</a></div><div class="ttdeci">casadi_int nnz_out() const</div><div class="ttdoc">Get number of output nonzeros.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l00854">function.cpp:854</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../de/dea/function_8cpp_source.html#l00823">casadi::Function::nnz_out()</a>, and <a class="el" href="../../dc/d59/casadi__common_8hpp_source.html#l00243">casadi::str()</a>.</p>
+<p class="reference">References <a class="el" href="../../de/dea/function_8cpp_source.html#l00854">casadi::Function::nnz_out()</a>, and <a class="el" href="../../dc/d59/casadi__common_8hpp_source.html#l00244">casadi::str()</a>.</p>
 
 </div>
 </div>

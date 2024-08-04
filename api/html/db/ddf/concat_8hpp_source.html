@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/329e2282664f584b17fd6319f8ce765a111a6022" id="329e2282664f584b17fd6319f8ce765a111a6022" >revision 3.6.4</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/279e0b80886dc5eb43a9d12a1056c550dc3b786e" id="279e0b80886dc5eb43a9d12a1056c550dc3b786e" >revision 3.6.6</a></div>
   </td>
  </tr>
  </tbody>
@@ -153,83 +153,121 @@ $(function() {
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    casadi_int op()<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> OP_HORZCAT;}</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keywordtype">void</span> split_primitives(<span class="keyword">const</span> MX&amp; x, std::vector&lt;MX&gt;::iterator&amp; it) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    MX join_primitives(std::vector&lt;MX&gt;::const_iterator&amp; it) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    std::vector&lt;casadi_int&gt; off() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keyword">static</span> MXNode* deserialize(DeserializingStream&amp; s) { <span class="keywordflow">return</span> <span class="keyword">new</span> Horzcat(s); }</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;  <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <span class="keyword">explicit</span> Horzcat(DeserializingStream&amp; s) : Concat(s) {}</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  };</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keywordtype">void</span> split_primitives_gen(<span class="keyword">const</span> T&amp; x, <span class="keyword">typename</span> std::vector&lt;T&gt;::iterator&amp; it) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordtype">void</span> split_primitives(<span class="keyword">const</span> MX&amp; x, std::vector&lt;MX&gt;::iterator&amp; it) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keywordtype">void</span> split_primitives(<span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a77ea10c3c8f78d7a80e15b83af5b7a82">SX</a>&amp; x, std::vector&lt;SX&gt;::iterator&amp; it) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordtype">void</span> split_primitives(<span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a>&amp; x, std::vector&lt;DM&gt;::iterator&amp; it) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    T join_primitives_gen(<span class="keyword">typename</span> std::vector&lt;T&gt;::const_iterator&amp; it) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    MX join_primitives(std::vector&lt;MX&gt;::const_iterator&amp; it) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#a77ea10c3c8f78d7a80e15b83af5b7a82">SX</a> join_primitives(std::vector&lt;SX&gt;::const_iterator&amp; it) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a> join_primitives(std::vector&lt;DM&gt;::const_iterator&amp; it) <span class="keyword">const override</span>;</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;  <span class="keyword">class </span>CASADI_EXPORT Vertcat : <span class="keyword">public</span> Concat {</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    Vertcat(<span class="keyword">const</span> std::vector&lt;MX&gt;&amp; x);</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    ~Vertcat()<span class="keyword"> override </span>{}</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    std::string disp(<span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; arg) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="keywordtype">void</span> eval_mx(<span class="keyword">const</span> std::vector&lt;MX&gt;&amp; arg, std::vector&lt;MX&gt;&amp; res) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    std::vector&lt;casadi_int&gt; off() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <span class="keyword">static</span> MXNode* deserialize(DeserializingStream&amp; s) { <span class="keywordflow">return</span> <span class="keyword">new</span> Horzcat(s); }</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="keyword">explicit</span> Horzcat(DeserializingStream&amp; s) : Concat(s) {}</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;  };</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;  <span class="keyword">class </span>CASADI_EXPORT Vertcat : <span class="keyword">public</span> Concat {</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;  <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <span class="keywordtype">void</span> ad_forward(<span class="keyword">const</span> std::vector&lt;std::vector&lt;MX&gt; &gt;&amp; fseed,</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                         std::vector&lt;std::vector&lt;MX&gt; &gt;&amp; fsens) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    Vertcat(<span class="keyword">const</span> std::vector&lt;MX&gt;&amp; x);</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    ~Vertcat()<span class="keyword"> override </span>{}</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="keywordtype">void</span> ad_reverse(<span class="keyword">const</span> std::vector&lt;std::vector&lt;MX&gt; &gt;&amp; aseed,</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                         std::vector&lt;std::vector&lt;MX&gt; &gt;&amp; asens) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    casadi_int op()<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> OP_VERTCAT;}</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; </div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <span class="keywordtype">void</span> split_primitives(<span class="keyword">const</span> MX&amp; x, std::vector&lt;MX&gt;::iterator&amp; it) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    std::string disp(<span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; arg) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; </div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <span class="keywordtype">void</span> eval_mx(<span class="keyword">const</span> std::vector&lt;MX&gt;&amp; arg, std::vector&lt;MX&gt;&amp; res) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <span class="keywordtype">void</span> ad_forward(<span class="keyword">const</span> std::vector&lt;std::vector&lt;MX&gt; &gt;&amp; fseed,</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                         std::vector&lt;std::vector&lt;MX&gt; &gt;&amp; fsens) <span class="keyword">const override</span>;</div>
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    MX join_primitives(std::vector&lt;MX&gt;::const_iterator&amp; it) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    std::vector&lt;casadi_int&gt; off() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="keyword">static</span> MXNode* deserialize(DeserializingStream&amp; s) { <span class="keywordflow">return</span> <span class="keyword">new</span> Vertcat(s); }</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <span class="keywordtype">void</span> ad_reverse(<span class="keyword">const</span> std::vector&lt;std::vector&lt;MX&gt; &gt;&amp; aseed,</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                         std::vector&lt;std::vector&lt;MX&gt; &gt;&amp; asens) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160; </div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    casadi_int op()<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> OP_VERTCAT;}</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="keywordtype">void</span> split_primitives_gen(<span class="keyword">const</span> T&amp; x, <span class="keyword">typename</span> std::vector&lt;T&gt;::iterator&amp; it) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;  <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keyword">explicit</span> Vertcat(DeserializingStream&amp; s) : Concat(s) {}</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;  };</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;  <span class="keyword">class </span>CASADI_EXPORT Diagcat : <span class="keyword">public</span> Concat {</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    Diagcat(<span class="keyword">const</span> std::vector&lt;MX&gt;&amp; x);</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160; </div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    ~Diagcat()<span class="keyword"> override </span>{}</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keywordtype">void</span> split_primitives(<span class="keyword">const</span> MX&amp; x, std::vector&lt;MX&gt;::iterator&amp; it) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="keywordtype">void</span> split_primitives(<span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a77ea10c3c8f78d7a80e15b83af5b7a82">SX</a>&amp; x, std::vector&lt;SX&gt;::iterator&amp; it) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <span class="keywordtype">void</span> split_primitives(<span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a>&amp; x, std::vector&lt;DM&gt;::iterator&amp; it) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    T join_primitives_gen(<span class="keyword">typename</span> std::vector&lt;T&gt;::const_iterator&amp; it) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    MX join_primitives(std::vector&lt;MX&gt;::const_iterator&amp; it) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#a77ea10c3c8f78d7a80e15b83af5b7a82">SX</a> join_primitives(std::vector&lt;SX&gt;::const_iterator&amp; it) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a> join_primitives(std::vector&lt;DM&gt;::const_iterator&amp; it) <span class="keyword">const override</span>;</div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160; </div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    std::string disp(<span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; arg) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    std::vector&lt;casadi_int&gt; off() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160; </div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <span class="keywordtype">void</span> eval_mx(<span class="keyword">const</span> std::vector&lt;MX&gt;&amp; arg, std::vector&lt;MX&gt;&amp; res) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <span class="keyword">static</span> MXNode* deserialize(DeserializingStream&amp; s) { <span class="keywordflow">return</span> <span class="keyword">new</span> Vertcat(s); }</div>
 <div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <span class="keywordtype">void</span> ad_forward(<span class="keyword">const</span> std::vector&lt;std::vector&lt;MX&gt; &gt;&amp; fseed,</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                         std::vector&lt;std::vector&lt;MX&gt; &gt;&amp; fsens) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160; </div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="keywordtype">void</span> ad_reverse(<span class="keyword">const</span> std::vector&lt;std::vector&lt;MX&gt; &gt;&amp; aseed,</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                         std::vector&lt;std::vector&lt;MX&gt; &gt;&amp; asens) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160; </div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    casadi_int op()<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> OP_DIAGCAT;}</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160; </div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <span class="keywordtype">void</span> split_primitives(<span class="keyword">const</span> MX&amp; x, std::vector&lt;MX&gt;::iterator&amp; it) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;  <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <span class="keyword">explicit</span> Vertcat(DeserializingStream&amp; s) : Concat(s) {}</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;  };</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160; </div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;  <span class="keyword">class </span>CASADI_EXPORT Diagcat : <span class="keyword">public</span> Concat {</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160; </div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    Diagcat(<span class="keyword">const</span> std::vector&lt;MX&gt;&amp; x);</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160; </div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    ~Diagcat()<span class="keyword"> override </span>{}</div>
 <div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160; </div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    MX join_primitives(std::vector&lt;MX&gt;::const_iterator&amp; it) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    std::string disp(<span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; arg) <span class="keyword">const override</span>;</div>
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160; </div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    std::pair&lt;std::vector&lt;casadi_int&gt;, std::vector&lt;casadi_int&gt; &gt; off() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    <span class="keywordtype">void</span> eval_mx(<span class="keyword">const</span> std::vector&lt;MX&gt;&amp; arg, std::vector&lt;MX&gt;&amp; res) <span class="keyword">const override</span>;</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160; </div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    <span class="keyword">static</span> MXNode* deserialize(DeserializingStream&amp; s) { <span class="keywordflow">return</span> <span class="keyword">new</span> Diagcat(s); }</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;  <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    <span class="keyword">explicit</span> Diagcat(DeserializingStream&amp; s) : Concat(s) {}</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;  };</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    <span class="keywordtype">void</span> ad_forward(<span class="keyword">const</span> std::vector&lt;std::vector&lt;MX&gt; &gt;&amp; fseed,</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                         std::vector&lt;std::vector&lt;MX&gt; &gt;&amp; fsens) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160; </div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    <span class="keywordtype">void</span> ad_reverse(<span class="keyword">const</span> std::vector&lt;std::vector&lt;MX&gt; &gt;&amp; aseed,</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;                         std::vector&lt;std::vector&lt;MX&gt; &gt;&amp; asens) <span class="keyword">const override</span>;</div>
 <div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;} <span class="comment">// namespace casadi</span></div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_CONCAT_HPP</span></div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    casadi_int op()<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> OP_DIAGCAT;}</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160; </div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="keywordtype">void</span> split_primitives_gen(<span class="keyword">const</span> T&amp; x, <span class="keyword">typename</span> std::vector&lt;T&gt;::iterator&amp; it) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160; </div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160; </div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    <span class="keywordtype">void</span> split_primitives(<span class="keyword">const</span> MX&amp; x, std::vector&lt;MX&gt;::iterator&amp; it) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    <span class="keywordtype">void</span> split_primitives(<span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a77ea10c3c8f78d7a80e15b83af5b7a82">SX</a>&amp; x, std::vector&lt;SX&gt;::iterator&amp; it) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    <span class="keywordtype">void</span> split_primitives(<span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a>&amp; x, std::vector&lt;DM&gt;::iterator&amp; it) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160; </div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    T join_primitives_gen(<span class="keyword">typename</span> std::vector&lt;T&gt;::const_iterator&amp; it) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160; </div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160; </div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    MX join_primitives(std::vector&lt;MX&gt;::const_iterator&amp; it) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#a77ea10c3c8f78d7a80e15b83af5b7a82">SX</a> join_primitives(std::vector&lt;SX&gt;::const_iterator&amp; it) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a> join_primitives(std::vector&lt;DM&gt;::const_iterator&amp; it) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160; </div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    std::pair&lt;std::vector&lt;casadi_int&gt;, std::vector&lt;casadi_int&gt; &gt; off() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160; </div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    <span class="keyword">static</span> MXNode* deserialize(DeserializingStream&amp; s) { <span class="keywordflow">return</span> <span class="keyword">new</span> Diagcat(s); }</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160; </div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;  <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    <span class="keyword">explicit</span> Diagcat(DeserializingStream&amp; s) : Concat(s) {}</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;  };</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160; </div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;} <span class="comment">// namespace casadi</span></div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_CONCAT_HPP</span></div>
 <div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../db/da5/binary__mx__impl_8hpp_source.html#l00036">binary_mx_impl.hpp:36</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_a77ea10c3c8f78d7a80e15b83af5b7a82"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a77ea10c3c8f78d7a80e15b83af5b7a82">casadi::SX</a></div><div class="ttdeci">Matrix&lt; SXElem &gt; SX</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d46/sx__fwd_8hpp_source.html#l00036">sx_fwd.hpp:32</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_acf4e4e693df7cfbd8b89ad5ff8aec939"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">casadi::DM</a></div><div class="ttdeci">Matrix&lt; double &gt; DM</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d97/dm__fwd_8hpp_source.html#l00033">dm_fwd.hpp:33</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </body>
 </html>

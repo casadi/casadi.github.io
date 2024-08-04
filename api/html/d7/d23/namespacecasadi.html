@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/329e2282664f584b17fd6319f8ce765a111a6022" id="329e2282664f584b17fd6319f8ce765a111a6022" >revision 3.6.4</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/279e0b80886dc5eb43a9d12a1056c550dc3b786e" id="279e0b80886dc5eb43a9d12a1056c550dc3b786e" >revision 3.6.6</a></div>
   </td>
  </tr>
  </tbody>
@@ -264,6 +264,10 @@ Typedefs</h2></td></tr>
 <tr class="separator:ab08532c6cca1d1e96ff2c8a873b50a93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95dbe520c1aae05731638df85ea93d64"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d23/namespacecasadi.html#a95dbe520c1aae05731638df85ea93d64">native_DM</a></td></tr>
 <tr class="separator:a95dbe520c1aae05731638df85ea93d64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79fc590a6c2aaced03b1d2cb2902135c"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d23/namespacecasadi.html#a79fc590a6c2aaced03b1d2cb2902135c">external_print_callback_t</a>) (const char *s)</td></tr>
+<tr class="separator:a79fc590a6c2aaced03b1d2cb2902135c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a837212eccf4f5e84f84e1f1f86eced3a"><td class="memItemLeft" align="right" valign="top">typedef const char *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d23/namespacecasadi.html#a837212eccf4f5e84f84e1f1f86eced3a">external_transform_t</a>) (char api_version, const char *casadi_version, const char *in, <a class="el" href="../../d7/d23/namespacecasadi.html#a79fc590a6c2aaced03b1d2cb2902135c">external_print_callback_t</a> cb_stdout, <a class="el" href="../../d7/d23/namespacecasadi.html#a79fc590a6c2aaced03b1d2cb2902135c">external_print_callback_t</a> cb_stderr)</td></tr>
+<tr class="separator:a837212eccf4f5e84f84e1f1f86eced3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
 <tr class="memitem:a746c394d3baa8e4be2ab21cebff17077"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d23/namespacecasadi.html#a746c394d3baa8e4be2ab21cebff17077">MXVector</a></td></tr>
 <tr class="separator:a746c394d3baa8e4be2ab21cebff17077"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -297,6 +301,7 @@ Enumerations</h2></td></tr>
 , <a class="el" href="../../d7/d23/namespacecasadi.html#af9d5636b1258dd8fe6e6a38131f478eaa1e561d6801d55ce70fb26306fcf2a3d1">SOLVER_RET_NAN</a>
 , <br />
 &#160;&#160;<a class="el" href="../../d7/d23/namespacecasadi.html#af9d5636b1258dd8fe6e6a38131f478eaa2ab3bf41577e4217eed06ceb03344687">SOLVER_RET_INFEASIBLE</a>
+, <a class="el" href="../../d7/d23/namespacecasadi.html#af9d5636b1258dd8fe6e6a38131f478eaaf3830ccccf2a0d6fa051c562544a1604">SOLVER_RET_EXCEPTION</a>
 <br />
  }</td></tr>
 <tr class="separator:af9d5636b1258dd8fe6e6a38131f478ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -416,6 +421,10 @@ Enumerations</h2></td></tr>
 , <a class="el" href="../../d7/d23/namespacecasadi.html#a44d225d62c7971e1f8d9457623e7f2c6a0e4de649e62119b6f50e00c375ae406f">OPTI_DUAL_G</a>
  }</td></tr>
 <tr class="separator:a44d225d62c7971e1f8d9457623e7f2c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f02ca5c5754c7c718a829c36c8ba654"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d23/namespacecasadi.html#a6f02ca5c5754c7c718a829c36c8ba654">DomainType</a> { <a class="el" href="../../d7/d23/namespacecasadi.html#a6f02ca5c5754c7c718a829c36c8ba654a71bdb2f484bbf002ae35aaa345bfdedf">OPTI_DOMAIN_REAL</a>
+, <a class="el" href="../../d7/d23/namespacecasadi.html#a6f02ca5c5754c7c718a829c36c8ba654a262f88089655d4275325abdf46cde3ea">OPTI_DOMAIN_INTEGER</a>
+ }</td></tr>
+<tr class="separator:a6f02ca5c5754c7c718a829c36c8ba654"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -867,12 +876,17 @@ Functions</h2></td></tr>
 <tr class="memitem:a8d15f996d54373037d84a00b4c42f5f7"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d7/d23/namespacecasadi.html#a8d15f996d54373037d84a00b4c42f5f7">hash_combine</a> (std::size_t &amp;seed, T v)</td></tr>
 <tr class="memdesc:a8d15f996d54373037d84a00b4c42f5f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a hash value incrementally (function taken from boost)  <a href="../../d7/d23/namespacecasadi.html#a8d15f996d54373037d84a00b4c42f5f7">More...</a><br /></td></tr>
 <tr class="separator:a8d15f996d54373037d84a00b4c42f5f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa244708b4f2a4aa7cd5aeeb59bf3edf3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d23/namespacecasadi.html#aa244708b4f2a4aa7cd5aeeb59bf3edf3">hash_combine</a> (std::size_t &amp;seed, const casadi_int *v, std::size_t sz)</td></tr>
-<tr class="memdesc:aa244708b4f2a4aa7cd5aeeb59bf3edf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a hash value incrementally, array.  <a href="../../d7/d23/namespacecasadi.html#aa244708b4f2a4aa7cd5aeeb59bf3edf3">More...</a><br /></td></tr>
-<tr class="separator:aa244708b4f2a4aa7cd5aeeb59bf3edf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8cbb679963685b796efc54209d0956c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d23/namespacecasadi.html#a8cbb679963685b796efc54209d0956c1">hash_combine</a> (std::size_t &amp;seed, const std::vector&lt; casadi_int &gt; &amp;v)</td></tr>
-<tr class="memdesc:a8cbb679963685b796efc54209d0956c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a hash value incrementally (function taken from boost)  <a href="../../d7/d23/namespacecasadi.html#a8cbb679963685b796efc54209d0956c1">More...</a><br /></td></tr>
-<tr class="separator:a8cbb679963685b796efc54209d0956c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e3ed649291571c8e9ad5250540ff2fc"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a4e3ed649291571c8e9ad5250540ff2fc"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d7/d23/namespacecasadi.html#a4e3ed649291571c8e9ad5250540ff2fc">hash_combine</a> (std::size_t &amp;seed, const T *v, std::size_t sz)</td></tr>
+<tr class="memdesc:a4e3ed649291571c8e9ad5250540ff2fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a hash value incrementally, array.  <a href="../../d7/d23/namespacecasadi.html#a4e3ed649291571c8e9ad5250540ff2fc">More...</a><br /></td></tr>
+<tr class="separator:a4e3ed649291571c8e9ad5250540ff2fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11527062d87c0756799482cc36b22ec7"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a11527062d87c0756799482cc36b22ec7"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d7/d23/namespacecasadi.html#a11527062d87c0756799482cc36b22ec7">hash_combine</a> (std::size_t &amp;seed, const std::vector&lt; T &gt; &amp;v)</td></tr>
+<tr class="memdesc:a11527062d87c0756799482cc36b22ec7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a hash value incrementally (function taken from boost)  <a href="../../d7/d23/namespacecasadi.html#a11527062d87c0756799482cc36b22ec7">More...</a><br /></td></tr>
+<tr class="separator:a11527062d87c0756799482cc36b22ec7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6044d01bc5f1935e0e48fcb2a9ed37ee"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
+<tr class="memitem:a6044d01bc5f1935e0e48fcb2a9ed37ee"><td class="memTemplItemLeft" align="right" valign="top">size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d7/d23/namespacecasadi.html#a6044d01bc5f1935e0e48fcb2a9ed37ee">hash_value</a> (std::string v)</td></tr>
+<tr class="separator:a6044d01bc5f1935e0e48fcb2a9ed37ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9745098c62c6266e02d1cdb19a51ac43"><td class="memItemLeft" align="right" valign="top">CASADI_EXPORT std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d23/namespacecasadi.html#a9745098c62c6266e02d1cdb19a51ac43">hash_sparsity</a> (casadi_int nrow, casadi_int ncol, const std::vector&lt; casadi_int &gt; &amp;colind, const std::vector&lt; casadi_int &gt; &amp;row)</td></tr>
 <tr class="memdesc:a9745098c62c6266e02d1cdb19a51ac43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hash a sparsity pattern.  <a href="../../d7/d23/namespacecasadi.html#a9745098c62c6266e02d1cdb19a51ac43">More...</a><br /></td></tr>
 <tr class="separator:a9745098c62c6266e02d1cdb19a51ac43"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -881,6 +895,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a3ec15271e2f10442b18b5be976d0c889"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
 <tr class="memitem:a3ec15271e2f10442b18b5be976d0c889"><td class="memTemplItemLeft" align="right" valign="top">std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d7/d23/namespacecasadi.html#a3ec15271e2f10442b18b5be976d0c889">matrixName&lt; SXElem &gt;</a> ()</td></tr>
 <tr class="separator:a3ec15271e2f10442b18b5be976d0c889"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af60cc4f9b4535dc511f5769188a67f9b"><td class="memItemLeft" align="right" valign="top">CASADI_EXPORT <a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d23/namespacecasadi.html#af60cc4f9b4535dc511f5769188a67f9b">external_transform</a> (const std::string &amp;name, const std::string &amp;op, const <a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a> &amp;f, const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;opts=<a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>())</td></tr>
+<tr class="memdesc:af60cc4f9b4535dc511f5769188a67f9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply a transformation defined externally.  <a href="../../d7/d23/namespacecasadi.html#af60cc4f9b4535dc511f5769188a67f9b">More...</a><br /></td></tr>
+<tr class="separator:af60cc4f9b4535dc511f5769188a67f9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a297d8330809b5177091d3df3fc7aa481"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d23/namespacecasadi.html#a297d8330809b5177091d3df3fc7aa481">casadi_sleqp_func_create</a> (SleqpFunc **star, int num_vars, int num_cons, <a class="el" href="../../df/dad/structcasadi_1_1SLEQPMemory.html">SLEQPMemory</a> *m)</td></tr>
 <tr class="separator:a297d8330809b5177091d3df3fc7aa481"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7780e44464c515261b76693b2139771"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d23/namespacecasadi.html#af7780e44464c515261b76693b2139771">slicot_mb03vd</a> (int n, int p, int ilo, int ihi, double *a, int lda1, int lda2, double *tau, int ldtau, double *dwork=nullptr)</td></tr>
@@ -947,7 +964,7 @@ Functions</h2></td></tr>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="../../dd/dc1/Function_2callback_c_8cc-example.html#a0">Function/callback_c.cc</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/generic__type_8hpp_source.html#l00234">234</a> of file <a class="el" href="../../d0/d30/generic__type_8hpp_source.html">generic_type.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/generic__type_8hpp_source.html#l00258">258</a> of file <a class="el" href="../../d0/d30/generic__type_8hpp_source.html">generic_type.hpp</a>.</p>
 
 </div>
 </div>
@@ -1017,6 +1034,38 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a79fc590a6c2aaced03b1d2cb2902135c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79fc590a6c2aaced03b1d2cb2902135c">&#9670;&nbsp;</a></span>external_print_callback_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(* casadi::external_print_callback_t) (const char *s)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../de/d71/tools_8hpp_source.html#l00047">47</a> of file <a class="el" href="../../de/d71/tools_8hpp_source.html">tools.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a837212eccf4f5e84f84e1f1f86eced3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a837212eccf4f5e84f84e1f1f86eced3a">&#9670;&nbsp;</a></span>external_transform_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef const char*(* casadi::external_transform_t) (char api_version, const char *casadi_version, const char *in, <a class="el" href="../../d7/d23/namespacecasadi.html#a79fc590a6c2aaced03b1d2cb2902135c">external_print_callback_t</a> cb_stdout, <a class="el" href="../../d7/d23/namespacecasadi.html#a79fc590a6c2aaced03b1d2cb2902135c">external_print_callback_t</a> cb_stderr)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../de/d71/tools_8hpp_source.html#l00048">48</a> of file <a class="el" href="../../de/d71/tools_8hpp_source.html">tools.hpp</a>.</p>
+
+</div>
+</div>
 <a id="ab08532c6cca1d1e96ff2c8a873b50a93"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab08532c6cca1d1e96ff2c8a873b50a93">&#9670;&nbsp;</a></span>IM</h2>
 
@@ -1046,7 +1095,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Readability typedefs </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dc6/mx_8hpp_source.html#l00933">933</a> of file <a class="el" href="../../db/dc6/mx_8hpp_source.html">mx.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/dc6/mx_8hpp_source.html#l00943">943</a> of file <a class="el" href="../../db/dc6/mx_8hpp_source.html">mx.hpp</a>.</p>
 
 </div>
 </div>
@@ -1063,7 +1112,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Readability typedefs </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dc6/mx_8hpp_source.html#l00931">931</a> of file <a class="el" href="../../db/dc6/mx_8hpp_source.html">mx.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/dc6/mx_8hpp_source.html#l00941">941</a> of file <a class="el" href="../../db/dc6/mx_8hpp_source.html">mx.hpp</a>.</p>
 
 </div>
 </div>
@@ -1080,7 +1129,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Readability typedefs </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dc6/mx_8hpp_source.html#l00930">930</a> of file <a class="el" href="../../db/dc6/mx_8hpp_source.html">mx.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/dc6/mx_8hpp_source.html#l00940">940</a> of file <a class="el" href="../../db/dc6/mx_8hpp_source.html">mx.hpp</a>.</p>
 
 </div>
 </div>
@@ -1097,7 +1146,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Readability typedefs </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dc6/mx_8hpp_source.html#l00932">932</a> of file <a class="el" href="../../db/dc6/mx_8hpp_source.html">mx.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/dc6/mx_8hpp_source.html#l00942">942</a> of file <a class="el" href="../../db/dc6/mx_8hpp_source.html">mx.hpp</a>.</p>
 
 </div>
 </div>
@@ -1130,7 +1179,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Readability typedefs </p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/da8/sparsity_8hpp_source.html#l01481">1481</a> of file <a class="el" href="../../da/da8/sparsity_8hpp_source.html">sparsity.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/da8/sparsity_8hpp_source.html#l01490">1490</a> of file <a class="el" href="../../da/da8/sparsity_8hpp_source.html">sparsity.hpp</a>.</p>
 
 </div>
 </div>
@@ -1329,7 +1378,7 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="aa240a66e033e468337148192ec5043cead0077e1edbd849c9ff92b526de3d25ad"></a>OPTI_UNKNOWN&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l00441">441</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l00458">458</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
 
 </div>
 </div>
@@ -1362,6 +1411,26 @@ Functions</h2></td></tr>
 </table>
 
 <p class="definition">Definition at line <a class="el" href="../../dd/d68/dae__builder__internal_8hpp_source.html#l00060">60</a> of file <a class="el" href="../../dd/d68/dae__builder__internal_8hpp_source.html">dae_builder_internal.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a6f02ca5c5754c7c718a829c36c8ba654"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f02ca5c5754c7c718a829c36c8ba654">&#9670;&nbsp;</a></span>DomainType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="../../d7/d23/namespacecasadi.html#a6f02ca5c5754c7c718a829c36c8ba654">casadi::DomainType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a6f02ca5c5754c7c718a829c36c8ba654a71bdb2f484bbf002ae35aaa345bfdedf"></a>OPTI_DOMAIN_REAL&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a6f02ca5c5754c7c718a829c36c8ba654a262f88089655d4275325abdf46cde3ea"></a>OPTI_DOMAIN_INTEGER&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l00471">471</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
 
 </div>
 </div>
@@ -1488,6 +1557,7 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="af9d5636b1258dd8fe6e6a38131f478eaa76f513b3cba7808e547a693d1e5fc123"></a>SOLVER_RET_LIMITED&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="af9d5636b1258dd8fe6e6a38131f478eaa1e561d6801d55ce70fb26306fcf2a3d1"></a>SOLVER_RET_NAN&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="af9d5636b1258dd8fe6e6a38131f478eaa2ab3bf41577e4217eed06ceb03344687"></a>SOLVER_RET_INFEASIBLE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af9d5636b1258dd8fe6e6a38131f478eaaf3830ccccf2a0d6fa051c562544a1604"></a>SOLVER_RET_EXCEPTION&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 <p class="definition">Definition at line <a class="el" href="../../d7/d62/casadi__types_8hpp_source.html#l00055">55</a> of file <a class="el" href="../../d7/d62/casadi__types_8hpp_source.html">casadi_types.hpp</a>.</p>
@@ -1543,7 +1613,7 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="a44d225d62c7971e1f8d9457623e7f2c6a0e4de649e62119b6f50e00c375ae406f"></a>OPTI_DUAL_G&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l00449">449</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l00466">466</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
 
 </div>
 </div>
@@ -2768,6 +2838,56 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<a id="af60cc4f9b4535dc511f5769188a67f9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af60cc4f9b4535dc511f5769188a67f9b">&#9670;&nbsp;</a></span>external_transform()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CASADI_EXPORT <a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a> casadi::external_transform </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>op</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a> &amp;&#160;</td>
+          <td class="paramname"><em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;&#160;</td>
+          <td class="paramname"><em>opts</em> = <code><a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>Name of the shared library </td></tr>
+    <tr><td class="paramname">op</td><td>Name of the operation </td></tr>
+    <tr><td class="paramname">f</td><td><a class="el" href="../../da/da4/classcasadi_1_1Function.html" title="Function object.">Function</a> to transform </td></tr>
+    <tr><td class="paramname">opts</td><td>Options <pre class="fragment">Extra doc: https://github.com/casadi/casadi/wiki/L_27i 
+</pre> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a45aaabecaa533abad5a71765786818fe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a45aaabecaa533abad5a71765786818fe">&#9670;&nbsp;</a></span>flatten_nested_vector() <span class="overload">[1/2]</span></h2>
 
@@ -2876,11 +2996,13 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="aa244708b4f2a4aa7cd5aeeb59bf3edf3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa244708b4f2a4aa7cd5aeeb59bf3edf3">&#9670;&nbsp;</a></span>hash_combine() <span class="overload">[1/3]</span></h2>
+<a id="a11527062d87c0756799482cc36b22ec7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11527062d87c0756799482cc36b22ec7">&#9670;&nbsp;</a></span>hash_combine() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -2894,7 +3016,48 @@ template&lt;typename T &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const casadi_int *&#160;</td>
+          <td class="paramtype">const std::vector&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_dr">https://github.com/casadi/casadi/wiki/L_dr</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="../../da/da8/sparsity_8hpp_source.html#l01211">1211</a> of file <a class="el" href="../../da/da8/sparsity_8hpp_source.html">sparsity.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a4e3ed649291571c8e9ad5250540ff2fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e3ed649291571c8e9ad5250540ff2fc">&#9670;&nbsp;</a></span>hash_combine() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void casadi::hash_combine </td>
+          <td>(</td>
+          <td class="paramtype">std::size_t &amp;&#160;</td>
+          <td class="paramname"><em>seed</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const T *&#160;</td>
           <td class="paramname"><em>v</em>, </td>
         </tr>
         <tr>
@@ -2917,46 +3080,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_dq">https://github.com/casadi/casadi/wiki/L_dq</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/da8/sparsity_8hpp_source.html#l01202">1202</a> of file <a class="el" href="../../da/da8/sparsity_8hpp_source.html">sparsity.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a8cbb679963685b796efc54209d0956c1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8cbb679963685b796efc54209d0956c1">&#9670;&nbsp;</a></span>hash_combine() <span class="overload">[2/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void casadi::hash_combine </td>
-          <td>(</td>
-          <td class="paramtype">std::size_t &amp;&#160;</td>
-          <td class="paramname"><em>seed</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::vector&lt; casadi_int &gt; &amp;&#160;</td>
-          <td class="paramname"><em>v</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_dr">https://github.com/casadi/casadi/wiki/L_dr</a> </p>
-
-<p class="definition">Definition at line <a class="el" href="../../da/da8/sparsity_8hpp_source.html#l01209">1209</a> of file <a class="el" href="../../da/da8/sparsity_8hpp_source.html">sparsity.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/da8/sparsity_8hpp_source.html#l01203">1203</a> of file <a class="el" href="../../da/da8/sparsity_8hpp_source.html">sparsity.hpp</a>.</p>
 
 </div>
 </div>
@@ -3082,8 +3206,38 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<a id="a6044d01bc5f1935e0e48fcb2a9ed37ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6044d01bc5f1935e0e48fcb2a9ed37ee">&#9670;&nbsp;</a></span>hash_value() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t casadi::hash_value </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../da/da8/sparsity_8hpp_source.html#l01216">1216</a> of file <a class="el" href="../../da/da8/sparsity_8hpp_source.html">sparsity.hpp</a>.</p>
+
+</div>
+</div>
 <a id="a981566cd3605fc25889be291864bcbf8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a981566cd3605fc25889be291864bcbf8">&#9670;&nbsp;</a></span>hash_value()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a981566cd3605fc25889be291864bcbf8">&#9670;&nbsp;</a></span>hash_value() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -3331,7 +3485,7 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d18/casadi__misc_8hpp_source.html#l00393">393</a> of file <a class="el" href="../../dc/d18/casadi__misc_8hpp_source.html">casadi_misc.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/d18/casadi__misc_8hpp_source.html#l00399">399</a> of file <a class="el" href="../../dc/d18/casadi__misc_8hpp_source.html">casadi_misc.hpp</a>.</p>
 
 </div>
 </div>
@@ -3617,7 +3771,7 @@ template&lt;&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d18/casadi__misc_8hpp_source.html#l00418">418</a> of file <a class="el" href="../../dc/d18/casadi__misc_8hpp_source.html">casadi_misc.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/d18/casadi__misc_8hpp_source.html#l00424">424</a> of file <a class="el" href="../../dc/d18/casadi__misc_8hpp_source.html">casadi_misc.hpp</a>.</p>
 
 </div>
 </div>
@@ -3655,7 +3809,7 @@ template&lt;&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d18/casadi__misc_8hpp_source.html#l00407">407</a> of file <a class="el" href="../../dc/d18/casadi__misc_8hpp_source.html">casadi_misc.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/d18/casadi__misc_8hpp_source.html#l00413">413</a> of file <a class="el" href="../../dc/d18/casadi__misc_8hpp_source.html">casadi_misc.hpp</a>.</p>
 
 </div>
 </div>

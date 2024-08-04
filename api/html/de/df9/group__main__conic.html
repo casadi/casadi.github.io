@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/329e2282664f584b17fd6319f8ce765a111a6022" id="329e2282664f584b17fd6319f8ce765a111a6022" >revision 3.6.4</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/279e0b80886dc5eb43a9d12a1056c550dc3b786e" id="279e0b80886dc5eb43a9d12a1056c550dc3b786e" >revision 3.6.6</a></div>
   </td>
  </tr>
  </tbody>
@@ -124,7 +124,11 @@ General information</h3>
 <tr>
 <td>enable_reverse</td><td>OT_BOOL</td><td>Enable derivative calculation using generated functions for transposed Jacobian-times-vector products - typically using reverse mode AD - if available. [default: true]</td><td>casadi::FunctionInternal </td></tr>
 <tr>
+<td>equality</td><td>OT_BOOLVECTOR</td><td>Indicate an upfront hint which of the constraints are equalities. Some solvers may be able to exploit this knowledge. When true, the corresponding lower and upper bounds are assumed equal. When false, the corresponding bounds may be equal or different.</td><td>casadi::Conic </td></tr>
+<tr>
 <td>error_on_fail</td><td>OT_BOOL</td><td>Throw exceptions when function evaluation fails (default true).</td><td>casadi::ProtoFunction </td></tr>
+<tr>
+<td>external_transform</td><td>OT_VECTORVECTOR</td><td>List of external_transform instruction arguments. Default: empty</td><td>casadi::FunctionInternal </td></tr>
 <tr>
 <td>fd_method</td><td>OT_STRING</td><td>Method for finite differencing [default 'central']</td><td>casadi::FunctionInternal </td></tr>
 <tr>
@@ -236,6 +240,7 @@ List of plugins</h3>
 <p>- <a href='#plugin_Conic_cbc'>cbc</a> </p>
 <p>- <a href='#plugin_Conic_clp'>clp</a> </p>
 <p>- <a href='#plugin_Conic_cplex'>cplex</a> </p>
+<p>- <a href='#plugin_Conic_daqp'>daqp</a> </p>
 <p>- <a href='#plugin_Conic_fatrop'>fatrop</a> </p>
 <p>- <a href='#plugin_Conic_gurobi'>gurobi</a> </p>
 <p>- <a href='#plugin_Conic_highs'>highs</a> </p>
@@ -324,6 +329,20 @@ List of plugins</h3>
 </table>
 </dd></dl>
 <hr  />
+  <h4>daqp <a class="anchor" id="plugin_Conic_daqp"></a> </h4>
+<dl class="section user"><dt></dt><dd></dd></dl>
+<p>Interface to Daqp solver for sparse Quadratic Programs, see daqp.dev for more information and <a href="https://www.maths.ed.ac.uk/hall/Daqp/DaqpOptions.html">https://www.maths.ed.ac.uk/hall/Daqp/DaqpOptions.html</a> for a list of options.</p>
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_27p">https://github.com/casadi/casadi/wiki/L_27p</a></p>
+<p><br  />
+</p><dl class="section user"><dt></dt><dd><a class="anchor" id="options"></a><table class="doxtable">
+<caption>List of available options</caption>
+<tr>
+<th>Id</th><th>Type</th><th>Description </th></tr>
+<tr>
+<td>daqp</td><td>OT_DICT</td><td>Options to be passed to Daqp. </td></tr>
+</table>
+</dd></dl>
+<hr  />
   <h4>fatrop <a class="anchor" id="plugin_Conic_fatrop"></a> </h4>
 <dl class="section user"><dt></dt><dd>Interface to Fatrop Solver</dd></dl>
 <p>In order to use this interface, you must:</p>
@@ -356,6 +375,8 @@ List of plugins</h3>
 <td>nu</td><td>OT_INTVECTOR</td><td>Number of controls, length N </td></tr>
 <tr>
 <td>nx</td><td>OT_INTVECTOR</td><td>Number of states, length N+1 </td></tr>
+<tr>
+<td>structure_detection</td><td>OT_STRING</td><td>NONE | auto | manual </td></tr>
 </table>
 </dd></dl>
 <hr  />

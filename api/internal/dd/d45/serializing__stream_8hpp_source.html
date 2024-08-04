@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/329e2282664f584b17fd6319f8ce765a111a6022" id="329e2282664f584b17fd6319f8ce765a111a6022" >revision 3.6.4</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/279e0b80886dc5eb43a9d12a1056c550dc3b786e" id="279e0b80886dc5eb43a9d12a1056c550dc3b786e" >revision 3.6.6</a></div>
   </td>
  </tr>
  </tbody>
@@ -145,7 +145,7 @@ $(function() {
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordtype">void</span> unpack(<a class="code" href="../../d0/dec/classcasadi_1_1Slice.html">Slice</a>&amp; e);</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordtype">void</span> unpack(<span class="keywordtype">int</span>&amp; e);</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#if SIZE_MAX != UINT_MAX</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#if SIZE_MAX != UINT_MAX || defined(__EMSCRIPTEN__)</span></div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordtype">void</span> unpack(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp; e);</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">void</span> unpack(<span class="keywordtype">bool</span>&amp; e);</div>
@@ -257,7 +257,7 @@ $(function() {
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="keywordtype">void</span> pack(<span class="keyword">const</span> <a class="code" href="../../d6/d82/classcasadi_1_1GenericType.html">GenericType</a>&amp; e);</div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="keywordtype">void</span> pack(std::istream&amp; s);</div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keywordtype">void</span> pack(<span class="keywordtype">int</span> e);</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="preprocessor">#if SIZE_MAX != UINT_MAX</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="preprocessor">#if SIZE_MAX != UINT_MAX || defined(__EMSCRIPTEN__)</span></div>
 <div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <span class="keywordtype">void</span> pack(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> e);</div>
 <div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <span class="keywordtype">void</span> pack(<span class="keywordtype">bool</span> e);</div>
@@ -344,7 +344,7 @@ $(function() {
 <div class="ttc" id="aclasscasadi_1_1DeserializingStream_html_ae1d0e5f129ea0238eab1653bfdd7a939"><div class="ttname"><a href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#ae1d0e5f129ea0238eab1653bfdd7a939">casadi::DeserializingStream::unpack</a></div><div class="ttdeci">void unpack(const std::string &amp;descr, T &amp;e)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d45/serializing__stream_8hpp_source.html#l00143">serializing_stream.hpp:143</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1Fmu_html"><div class="ttname"><a href="../../d8/d25/classcasadi_1_1Fmu.html">casadi::Fmu</a></div><div class="ttdoc">Interface to binary FMU.</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dcb/fmu_8hpp_source.html#l00059">fmu.hpp:61</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1Function_html"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html">casadi::Function</a></div><div class="ttdoc">Function object.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7c/function_8hpp_source.html#l00058">function.hpp:60</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1GenericType_html"><div class="ttname"><a href="../../d6/d82/classcasadi_1_1GenericType.html">casadi::GenericType</a></div><div class="ttdoc">Generic data type, can hold different types such as bool, casadi_int, std::string etc.</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d30/generic__type_8hpp_source.html#l00068">generic_type.hpp:73</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1GenericType_html"><div class="ttname"><a href="../../d6/d82/classcasadi_1_1GenericType.html">casadi::GenericType</a></div><div class="ttdoc">Generic data type, can hold different types such as bool, casadi_int, std::string etc.</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d30/generic__type_8hpp_source.html#l00072">generic_type.hpp:77</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1Importer_html"><div class="ttname"><a href="../../de/d6f/classcasadi_1_1Importer.html">casadi::Importer</a></div><div class="ttdoc">Importer.</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dce/importer_8hpp_source.html#l00084">importer.hpp:86</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1Linsol_html"><div class="ttname"><a href="../../d5/d08/classcasadi_1_1Linsol.html">casadi::Linsol</a></div><div class="ttdoc">Linear solver.</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/db2/linsol_8hpp_source.html#l00053">linsol.hpp:55</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1MX_html"><div class="ttname"><a href="../../de/d57/classcasadi_1_1MX.html">casadi::MX</a></div><div class="ttdoc">MX - Matrix expression.</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dc6/mx_8hpp_source.html#l00080">mx.hpp:84</a></div></div>
@@ -370,7 +370,7 @@ $(function() {
 <div class="ttc" id="aclasscasadi_1_1UniversalNodeOwner_html_aadc4bcf77305c958f5c664868797907b"><div class="ttname"><a href="../../d9/dd2/classcasadi_1_1UniversalNodeOwner.html#aadc4bcf77305c958f5c664868797907b">casadi::UniversalNodeOwner::get</a></div><div class="ttdeci">void * get()</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d45/serializing__stream_8hpp_source.html#l00059">serializing_stream.hpp:59</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1UniversalNodeOwner_html_ae8faa18f43d9a735c5824ea13b06546d"><div class="ttname"><a href="../../d9/dd2/classcasadi_1_1UniversalNodeOwner.html#ae8faa18f43d9a735c5824ea13b06546d">casadi::UniversalNodeOwner::UniversalNodeOwner</a></div><div class="ttdeci">UniversalNodeOwner(const UniversalNodeOwner &amp;)=delete</div></div>
 <div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/da2/assertion_8cpp_source.html#l00029">assertion.cpp:29</a></div></div>
-<div class="ttc" id="anamespacecasadi_html_a8b909f6932a91230738731512b99127e"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">casadi::Dict</a></div><div class="ttdeci">GenericType::Dict Dict</div><div class="ttdoc">C++ equivalent of Python's dict or MATLAB's struct.</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d30/generic__type_8hpp_source.html#l00234">generic_type.hpp:234</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_a8b909f6932a91230738731512b99127e"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">casadi::Dict</a></div><div class="ttdeci">GenericType::Dict Dict</div><div class="ttdoc">C++ equivalent of Python's dict or MATLAB's struct.</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d30/generic__type_8hpp_source.html#l00258">generic_type.hpp:258</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </body>
 </html>

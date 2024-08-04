@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/329e2282664f584b17fd6319f8ce765a111a6022" id="329e2282664f584b17fd6319f8ce765a111a6022" >revision 3.6.4</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/279e0b80886dc5eb43a9d12a1056c550dc3b786e" id="279e0b80886dc5eb43a9d12a1056c550dc3b786e" >revision 3.6.6</a></div>
   </td>
  </tr>
  </tbody>
@@ -61,6 +61,7 @@ $(function() {
 <li>lam
 : <a class="el" href="da/dad/structcasadi_1_1HpmpcMemory.html#ad0419ac5c8d6633e3aa23c2a8715f529">casadi::HpmpcMemory</a>
 , <a class="el" href="d9/d2b/structcasadi_1_1ScpgenMemory_1_1VarMem.html#a5f4766d8e245f26cb5ab20a866f7af90">casadi::ScpgenMemory::VarMem</a>
+, <a class="el" href="dd/dc3/structcasadi__fatrop__data.html#a716e4984c3d84e4d9291d23d97e0165e">casadi_fatrop_data&lt; T1 &gt;</a>
 , <a class="el" href="d1/da5/structcasadi__hpipm__data.html#a65ef3b1187dea7c0e6a02dcca160bde6">casadi_hpipm_data&lt; T1 &gt;</a>
 , <a class="el" href="d9/dff/structcasadi__ipqp__data.html#a2660e8dfbd4b33276bde0b705dd3d1be">casadi_ipqp_data&lt; T1 &gt;</a>
 , <a class="el" href="d8/d47/structcasadi__nlpsol__data.html#a57cd2d5ac11b57cdbd7a4b81697a3fc0">casadi_nlpsol_data&lt; T1 &gt;</a>
@@ -99,6 +100,7 @@ $(function() {
 <li>lam_g()
 : <a class="el" href="dd/dc6/classcasadi_1_1Opti.html#ae26371c89f364d793bcfcc8efe101f4f">casadi::Opti</a>
 , <a class="el" href="de/dd6/classcasadi_1_1OptiNode.html#ac2992d9a070d1c8b993cdcdfa22dcfd3">casadi::OptiNode</a>
+, <a class="el" href="d5/daf/structcasadi__madnlp__data.html#adc957e2615ffba35d98f819b3afb547b">casadi_madnlp_data&lt; T1 &gt;</a>
 , <a class="el" href="d8/d47/structcasadi__nlpsol__data.html#ad76ceef7313bcda9e10992b37e0cd3f1">casadi_nlpsol_data&lt; T1 &gt;</a>
 </li>
 <li>lam_g0
@@ -327,7 +329,7 @@ $(function() {
 <li>lift()
 : <a class="el" href="d4/db5/classcasadi_1_1DaeBuilder.html#ac739b7eef29c7cc4b1111ae7823da5ba">casadi::DaeBuilder</a>
 , <a class="el" href="d5/de1/classcasadi_1_1DaeBuilderInternal.html#a5fd3adc43163204910253d410154e6d3">casadi::DaeBuilderInternal</a>
-, <a class="el" href="d9/dc2/group__expression__tools.html#gacad0fd11bc3c95c1ebc8265555c66443">casadi::MX</a>
+, <a class="el" href="de/d57/classcasadi_1_1MX.html#a15e1edd7699706714f23de0399921d04">casadi::MX</a>
 </li>
 <li>lifted_mem
 : <a class="el" href="dd/d69/structcasadi_1_1ScpgenMemory.html#a8583c19f64e43a4bd93a82d9684b403c">casadi::ScpgenMemory</a>
@@ -497,8 +499,8 @@ $(function() {
 <li>logic_and()
 : <a class="el" href="d9/dc2/group__expression__tools.html#ga13f0d36a9226a3e9e961637e54d33bf1">casadi::GenericExpression&lt; ExType &gt;</a>
 </li>
-<li>logic_not
-: <a class="el" href="d9/dc2/group__expression__tools.html#gabf339d815359fadaacc95ec007be6374">casadi::GenericExpression&lt; ExType &gt;</a>
+<li>logic_not()
+: <a class="el" href="d9/dc2/group__expression__tools.html#ga19b7a71d539f6efba7328b26f0341ffd">casadi::GenericExpression&lt; ExType &gt;</a>
 </li>
 <li>logic_or()
 : <a class="el" href="d9/dc2/group__expression__tools.html#ga99d55f2895c461f4732afc2047781b18">casadi::GenericExpression&lt; ExType &gt;</a>
@@ -527,10 +529,10 @@ $(function() {
 : <a class="el" href="d1/da2/classcasadi_1_1CodeGenerator.html#a37f7a0358f26c3e6d98fe7a795603a2c">casadi::CodeGenerator</a>
 </li>
 <li>Low()
-: <a class="el" href="d0/d34/classcasadi_1_1Low.html#a3afa1d285766b0ca735545d6833ef975">casadi::Low</a>
+: <a class="el" href="d0/d34/classcasadi_1_1Low.html#a49cbdbe85e71535d9fcf1a4c299b7554">casadi::Low</a>
 </li>
-<li>low()
-: <a class="el" href="de/d57/classcasadi_1_1MX.html#af4fed61a62fa5e1dfe7e84911905f161">casadi::MX</a>
+<li>low
+: <a class="el" href="d9/dc2/group__expression__tools.html#ga1176b552280b8ebebebb8959572f1f96">casadi::MX</a>
 </li>
 <li>lower()
 : <a class="el" href="d5/da8/classcasadi_1_1Sparsity.html#adc679d5ae255f5cdfb55b094f891cada">casadi::Sparsity</a>

@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/329e2282664f584b17fd6319f8ce765a111a6022" id="329e2282664f584b17fd6319f8ce765a111a6022" >revision 3.6.4</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/279e0b80886dc5eb43a9d12a1056c550dc3b786e" id="279e0b80886dc5eb43a9d12a1056c550dc3b786e" >revision 3.6.6</a></div>
   </td>
  </tr>
  </tbody>
@@ -98,6 +98,7 @@ $(function() {
 </li>
 <li>jac_g
 : <a class="el" href="da/dd3/structcasadi_1_1BlocksqpMemory.html#a8af28234ebf68393339b6b80025d66da">casadi::BlocksqpMemory</a>
+, <a class="el" href="d5/daf/structcasadi__madnlp__data.html#a221f55eefe16e7aaef0178b46809983c">casadi_madnlp_data&lt; T1 &gt;</a>
 </li>
 <li>jac_g_x
 : <a class="el" href="d9/d98/structcasadi__newton__mem.html#a82410fc7c7bf85745189e6524d82610a">casadi_newton_mem&lt; T1 &gt;</a>
@@ -142,7 +143,7 @@ $(function() {
 <li>jac_sparsity()
 : <a class="el" href="d4/db5/classcasadi_1_1DaeBuilder.html#abc350d6fae6edfaf60d37fa6e200a745">casadi::DaeBuilder</a>
 , <a class="el" href="d5/de1/classcasadi_1_1DaeBuilderInternal.html#a01328cb64cae7491faa3e74934678757">casadi::DaeBuilderInternal</a>
-, <a class="el" href="d8/d25/classcasadi_1_1Fmu.html#a48db088779bc20bdbb359d8dd408733f">casadi::Fmu</a>
+, <a class="el" href="d8/d25/classcasadi_1_1Fmu.html#a5dbc6a3f95761aa615a450e48c4f6d69">casadi::Fmu</a>
 , <a class="el" href="d2/d26/classcasadi_1_1FmuInternal.html#ae6a1257554db60c8ced32629f9b18839">casadi::FmuInternal</a>
 , <a class="el" href="da/da4/classcasadi_1_1Function.html#ade10188c774d4b7ac1b9cde2c2394a23">casadi::Function</a>
 , <a class="el" href="d2/dab/classcasadi_1_1FunctionInternal.html#a55240912cc5f80b5909084b1ae9778a3">casadi::FunctionInternal</a>
@@ -187,8 +188,10 @@ $(function() {
 <li>jacg_sp_
 : <a class="el" href="d3/dfa/classcasadi_1_1AlpaqaInterface.html#aaa4dfeaf5f9d40335ab812d172f1ec0a">casadi::AlpaqaInterface</a>
 , <a class="el" href="db/d41/classcasadi_1_1BonminInterface.html#a8764c0dab4663964a43aa91c28b11b10">casadi::BonminInterface</a>
+, <a class="el" href="d0/dc2/classcasadi_1_1FatropInterface.html#a12487dd19db0acc61fa5efef7e7d71ac">casadi::FatropInterface</a>
 , <a class="el" href="d7/d2f/classcasadi_1_1IpoptInterface.html#a83fe53b554e220857c9a68807984bf25">casadi::IpoptInterface</a>
 , <a class="el" href="db/dba/classcasadi_1_1KnitroInterface.html#afe42d41d0d0d22633ec82ac90723bdd2">casadi::KnitroInterface</a>
+, <a class="el" href="d8/d94/classcasadi_1_1MadnlpInterface.html#aace155e039808e92d5320c1b98c6b0ae">casadi::MadnlpInterface</a>
 , <a class="el" href="d8/d05/classcasadi_1_1SnoptInterface.html#afd44b5a2dd0c4c9b3052b23261160fae">casadi::SnoptInterface</a>
 , <a class="el" href="d5/d79/classcasadi_1_1WorhpInterface.html#a5468a641e7bb88d34598d5906b13a322">casadi::WorhpInterface</a>
 </li>
@@ -255,13 +258,23 @@ $(function() {
 : <a class="el" href="d3/ddb/classcasadi_1_1FStats.html#a95774199073f67f732566d6eeea7f996">casadi::FStats</a>
 </li>
 <li>join_primitives()
-: <a class="el" href="d6/dc0/classcasadi_1_1ConstantMX.html#a45859bf0c052e99ddb55a16c1863b1b8">casadi::ConstantMX</a>
-, <a class="el" href="dd/de9/classcasadi_1_1Diagcat.html#a7007c3d82621dabcaefb10cbe7af5caf">casadi::Diagcat</a>
-, <a class="el" href="d0/d4d/classcasadi_1_1Horzcat.html#a563ba8098c154fed552f326b2bc6ca7d">casadi::Horzcat</a>
+: <a class="el" href="d6/dc0/classcasadi_1_1ConstantMX.html#a5b7770d7e5010668bafe8fbf35f7f14d">casadi::ConstantMX</a>
+, <a class="el" href="dd/de9/classcasadi_1_1Diagcat.html#addbdf8365433c104df7aa2c0d3212641">casadi::Diagcat</a>
+, <a class="el" href="d0/d4d/classcasadi_1_1Horzcat.html#abaf7f9df40d749e8e31ff15beae26aa8">casadi::Horzcat</a>
 , <a class="el" href="de/d57/classcasadi_1_1MX.html#acdbd4a53be4c827737230c07c4fb69c9">casadi::MX</a>
 , <a class="el" href="d0/d19/classcasadi_1_1MXNode.html#a541a21b4c097ffe1843499654932260b">casadi::MXNode</a>
 , <a class="el" href="df/d15/classcasadi_1_1Reshape.html#a26dfe0f9e4d8b17b2b7c320558674ced">casadi::Reshape</a>
-, <a class="el" href="dd/dad/classcasadi_1_1Vertcat.html#af45436013550da2cd83aece7d3561c76">casadi::Vertcat</a>
+, <a class="el" href="dd/d08/classcasadi_1_1SparsityCast.html#a3c0621f8125f34065206295dfaf18edb">casadi::SparsityCast</a>
+, <a class="el" href="dd/dad/classcasadi_1_1Vertcat.html#ac1b8e1f6968b06d75552b75980fb822c">casadi::Vertcat</a>
+</li>
+<li>join_primitives_gen()
+: <a class="el" href="d6/dc0/classcasadi_1_1ConstantMX.html#a0deac38c86349086af8ac429fa397409">casadi::ConstantMX</a>
+, <a class="el" href="dd/de9/classcasadi_1_1Diagcat.html#a71d79309d2b04d774fcdeb9ed50edb07">casadi::Diagcat</a>
+, <a class="el" href="d0/d4d/classcasadi_1_1Horzcat.html#aa1e5f768d3277030597ccf8453f7583b">casadi::Horzcat</a>
+, <a class="el" href="d0/d19/classcasadi_1_1MXNode.html#afc01f7e9034a90df76141ef8e891d80c">casadi::MXNode</a>
+, <a class="el" href="df/d15/classcasadi_1_1Reshape.html#a1b866d088c54422cd7cb8350afb3e1f3">casadi::Reshape</a>
+, <a class="el" href="dd/d08/classcasadi_1_1SparsityCast.html#a470c3463885c6ba674a16fc7f4ad6aff">casadi::SparsityCast</a>
+, <a class="el" href="dd/dad/classcasadi_1_1Vertcat.html#aeafbf3e73a0e3ce5f2c47d86000cf75c">casadi::Vertcat</a>
 </li>
 <li>join_results()
 : <a class="el" href="d2/df9/classcasadi_1_1OracleFunction.html#a3f19d5b7f7211c1018cd347778d4ce2f">casadi::OracleFunction</a>
@@ -322,6 +335,9 @@ $(function() {
 </li>
 <li>JtimesFOut
 : <a class="el" href="d6/d90/classcasadi_1_1SundialsInterface.html#abfa9f334e06b236adbd6d616e68b73ba">casadi::SundialsInterface</a>
+</li>
+<li>julia_initialized
+: <a class="el" href="d6/dc7/classcasadi_1_1GlobalOptions.html#a054c23202eaff6bde1581f202b32cc27">casadi::GlobalOptions</a>
 </li>
 <li>just_in_time_opencl_
 : <a class="el" href="df/d79/classcasadi_1_1SXFunction.html#aa4d5f13f07d9f54de814350d27b06b23">casadi::SXFunction</a>

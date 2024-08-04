@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/329e2282664f584b17fd6319f8ce765a111a6022" id="329e2282664f584b17fd6319f8ce765a111a6022" >revision 3.6.4</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/279e0b80886dc5eb43a9d12a1056c550dc3b786e" id="279e0b80886dc5eb43a9d12a1056c550dc3b786e" >revision 3.6.6</a></div>
   </td>
  </tr>
  </tbody>
@@ -1915,7 +1915,7 @@ template&lt;typename Scalar &gt; </div>
 <p>Implementation of <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#af45af3f7204e2f0143aa4e7ab6c9f97c" title="Get all nonzeros.">Matrix::get_nonzeros</a> (in public API)</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1a2">https://github.com/casadi/casadi/wiki/L_1a2</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d1/d6d/matrix__decl_8hpp_source.html#l01310">1310</a> of file <a class="el" href="../../d1/d6d/matrix__decl_8hpp_source.html">matrix_decl.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d1/d6d/matrix__decl_8hpp_source.html#l01325">1325</a> of file <a class="el" href="../../d1/d6d/matrix__decl_8hpp_source.html">matrix_decl.hpp</a>.</p>
 
 </div>
 </div>
@@ -2651,7 +2651,9 @@ template&lt;typename Scalar &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Check if an expression is a pure symbol. Pure means that no operations should happen on the symbol (not even vec, transpose, index, concatenation, ...) By consequence, a slice of a vector-shaped <a class="el" href="../../de/d57/classcasadi_1_1MX.html" title="MX - Matrix expression.">MX</a> symbol is not a symbol. However, the SX type is really a container format with scalar entries. Therefore, a slice of a vector-shaped SX symbol is still a symbol.</p>
 <p>Sparse matrices invariable return false</p>
+<p>\seealso is_valid_input</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_19r">https://github.com/casadi/casadi/wiki/L_19r</a> </p>
 
 </div>
@@ -2726,7 +2728,9 @@ template&lt;typename Scalar &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>is_valid_input is more forgiving than is_symbolic. Some compositions are allowed: vec, vertcat.</p>
 <p>Sparse matrices can return true if all non-zero elements are symbolic</p>
+<p>\seealso is_symbolic</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_19s">https://github.com/casadi/casadi/wiki/L_19s</a> </p>
 
 </div>

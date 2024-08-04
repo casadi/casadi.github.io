@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/329e2282664f584b17fd6319f8ce765a111a6022" id="329e2282664f584b17fd6319f8ce765a111a6022" >revision 3.6.4</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/279e0b80886dc5eb43a9d12a1056c550dc3b786e" id="279e0b80886dc5eb43a9d12a1056c550dc3b786e" >revision 3.6.6</a></div>
   </td>
  </tr>
  </tbody>
@@ -194,6 +194,8 @@ General information</h3>
 <td>error_on_fail</td><td>OT_BOOL</td><td>Throw exceptions when function evaluation fails (default true).</td><td><a class="el" href="../../db/da0/classcasadi_1_1ProtoFunction.html" title="Base class for FunctionInternal and LinsolInternal.">casadi::ProtoFunction</a> </td></tr>
 <tr>
 <td>expand</td><td>OT_BOOL</td><td>Replace <a class="el" href="../../de/d57/classcasadi_1_1MX.html" title="MX - Matrix expression.">MX</a> with SX expressions in problem formulation [false]</td><td><a class="el" href="../../db/d3d/classcasadi_1_1Integrator.html" title="Internal storage for integrator related data.">casadi::Integrator</a> </td></tr>
+<tr>
+<td>external_transform</td><td>OT_VECTORVECTOR</td><td>List of external_transform instruction arguments. Default: empty</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
 <td>fd_method</td><td>OT_STRING</td><td>Method for finite differencing [default 'central']</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
@@ -554,7 +556,7 @@ List of plugins</h3>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;  <span class="keywordflow">return</span> enum_names&lt;DynIn&gt;();</div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../db/dc8/dae__builder_8cpp_source.html#l00742">casadi::DaeBuilder::create()</a>, <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02193">casadi::DaeBuilderInternal::fmu_fun()</a>, <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l00699">casadi::Integrator::get_forward_dae()</a>, <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l00469">casadi::Integrator::init()</a>, and <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l02063">casadi::Integrator::map2oracle()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../db/dc8/dae__builder_8cpp_source.html#l00742">casadi::DaeBuilder::create()</a>, <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02193">casadi::DaeBuilderInternal::fmu_fun()</a>, <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l00699">casadi::Integrator::get_forward_dae()</a>, <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l00469">casadi::Integrator::init()</a>, and <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l02066">casadi::Integrator::map2oracle()</a>.</p>
 
 </div>
 </div>
@@ -659,7 +661,7 @@ List of plugins</h3>
 <div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;  <span class="keywordflow">return</span> enum_names&lt;DynOut&gt;();</div>
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../db/dc8/dae__builder_8cpp_source.html#l00742">casadi::DaeBuilder::create()</a>, <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02193">casadi::DaeBuilderInternal::fmu_fun()</a>, <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l00699">casadi::Integrator::get_forward_dae()</a>, <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l00469">casadi::Integrator::init()</a>, and <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l02063">casadi::Integrator::map2oracle()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../db/dc8/dae__builder_8cpp_source.html#l00742">casadi::DaeBuilder::create()</a>, <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02193">casadi::DaeBuilderInternal::fmu_fun()</a>, <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l00699">casadi::Integrator::get_forward_dae()</a>, <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l00469">casadi::Integrator::init()</a>, and <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l02066">casadi::Integrator::map2oracle()</a>.</p>
 
 </div>
 </div>
@@ -822,9 +824,9 @@ List of plugins</h3>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  Integrator* intg = Integrator::getPlugin(solver).creator(name, dae, t0, tout);</div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;  <span class="keywordflow">return</span> intg-&gt;create_advanced(opts);</div>
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;}</div>
-<div class="ttc" id="anamespacecasadi_html_a88082fbf80560c888949bb765d9ccea0"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">casadi::str</a></div><div class="ttdeci">std::string str(const T &amp;v)</div><div class="ttdoc">String representation, any type.</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d59/casadi__common_8hpp_source.html#l00243">casadi_common.hpp:243</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_a88082fbf80560c888949bb765d9ccea0"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">casadi::str</a></div><div class="ttdeci">std::string str(const T &amp;v)</div><div class="ttdoc">String representation, any type.</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d59/casadi__common_8hpp_source.html#l00244">casadi_common.hpp:244</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l00313">casadi::Integrator::create_advanced()</a>, <a class="el" href="../../de/dea/function_8cpp_source.html#l01128">casadi::Function::get_free()</a>, <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00270">casadi::PluginInterface&lt; Integrator &gt;::getPlugin()</a>, <a class="el" href="../../de/dea/function_8cpp_source.html#l01635">casadi::Function::has_free()</a>, and <a class="el" href="../../dc/d59/casadi__common_8hpp_source.html#l00243">casadi::str()</a>.</p>
+<p class="reference">References <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l00313">casadi::Integrator::create_advanced()</a>, <a class="el" href="../../de/dea/function_8cpp_source.html#l01159">casadi::Function::get_free()</a>, <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00270">casadi::PluginInterface&lt; Integrator &gt;::getPlugin()</a>, <a class="el" href="../../de/dea/function_8cpp_source.html#l01666">casadi::Function::has_free()</a>, and <a class="el" href="../../dc/d59/casadi__common_8hpp_source.html#l00244">casadi::str()</a>.</p>
 
 </div>
 </div>
@@ -989,7 +991,7 @@ List of plugins</h3>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="../../dd/d1b/group__integrator.html#ga0160415d8a364414ecdf142cab77c4c8">integrator</a>(name, solver, Integrator::map2oracle(<span class="stringliteral">&quot;dae&quot;</span>, dae), t0, tout, opts);</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l00109">casadi::integrator()</a>, and <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l02063">casadi::Integrator::map2oracle()</a>.</p>
+<p class="reference">References <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l00109">casadi::integrator()</a>, and <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l02066">casadi::Integrator::map2oracle()</a>.</p>
 
 </div>
 </div>
@@ -1156,7 +1158,7 @@ List of plugins</h3>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="../../dd/d1b/group__integrator.html#ga0160415d8a364414ecdf142cab77c4c8">integrator</a>(name, solver, Integrator::map2oracle(<span class="stringliteral">&quot;dae&quot;</span>, dae), t0, tout, opts);</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l00109">casadi::integrator()</a>, and <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l02063">casadi::Integrator::map2oracle()</a>.</p>
+<p class="reference">References <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l00109">casadi::integrator()</a>, and <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l02066">casadi::Integrator::map2oracle()</a>.</p>
 
 </div>
 </div>

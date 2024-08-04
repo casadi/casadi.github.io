@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/329e2282664f584b17fd6319f8ce765a111a6022" id="329e2282664f584b17fd6319f8ce765a111a6022" >revision 3.6.4</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/279e0b80886dc5eb43a9d12a1056c550dc3b786e" id="279e0b80886dc5eb43a9d12a1056c550dc3b786e" >revision 3.6.6</a></div>
   </td>
  </tr>
  </tbody>
@@ -177,7 +177,11 @@ General information</h3>
 <tr>
 <td>enable_reverse</td><td>OT_BOOL</td><td>Enable derivative calculation using generated functions for transposed Jacobian-times-vector products - typically using reverse mode AD - if available. [default: true]</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
+<td>equality</td><td>OT_BOOLVECTOR</td><td>Indicate an upfront hint which of the constraints are equalities. Some solvers may be able to exploit this knowledge. When true, the corresponding lower and upper bounds are assumed equal. When false, the corresponding bounds may be equal or different.</td><td><a class="el" href="../../df/de0/classcasadi_1_1Conic.html" title="Internal class.">casadi::Conic</a> </td></tr>
+<tr>
 <td>error_on_fail</td><td>OT_BOOL</td><td>Throw exceptions when function evaluation fails (default true).</td><td><a class="el" href="../../db/da0/classcasadi_1_1ProtoFunction.html" title="Base class for FunctionInternal and LinsolInternal.">casadi::ProtoFunction</a> </td></tr>
+<tr>
+<td>external_transform</td><td>OT_VECTORVECTOR</td><td>List of external_transform instruction arguments. Default: empty</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
 <td>fd_method</td><td>OT_STRING</td><td>Method for finite differencing [default 'central']</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
@@ -289,6 +293,7 @@ List of plugins</h3>
 <p>- <a href='#plugin_Conic_cbc'>cbc</a> </p>
 <p>- <a href='#plugin_Conic_clp'>clp</a> </p>
 <p>- <a href='#plugin_Conic_cplex'>cplex</a> </p>
+<p>- <a href='#plugin_Conic_daqp'>daqp</a> </p>
 <p>- <a href='#plugin_Conic_fatrop'>fatrop</a> </p>
 <p>- <a href='#plugin_Conic_gurobi'>gurobi</a> </p>
 <p>- <a href='#plugin_Conic_highs'>highs</a> </p>
@@ -377,6 +382,20 @@ List of plugins</h3>
 </table>
 </dd></dl>
 <hr  />
+  <h4>daqp <a class="anchor" id="plugin_Conic_daqp"></a> </h4>
+<dl class="section user"><dt></dt><dd></dd></dl>
+<p>Interface to Daqp solver for sparse Quadratic Programs, see daqp.dev for more information and <a href="https://www.maths.ed.ac.uk/hall/Daqp/DaqpOptions.html">https://www.maths.ed.ac.uk/hall/Daqp/DaqpOptions.html</a> for a list of options.</p>
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_27p">https://github.com/casadi/casadi/wiki/L_27p</a></p>
+<p><br  />
+</p><dl class="section user"><dt></dt><dd><a class="anchor" id="options"></a><table class="doxtable">
+<caption>List of available options</caption>
+<tr>
+<th>Id</th><th>Type</th><th>Description </th></tr>
+<tr>
+<td>daqp</td><td>OT_DICT</td><td><a class="el" href="../../db/d35/structcasadi_1_1Options.html" title="Options metadata for a class.">Options</a> to be passed to Daqp. </td></tr>
+</table>
+</dd></dl>
+<hr  />
   <h4>fatrop <a class="anchor" id="plugin_Conic_fatrop"></a> </h4>
 <dl class="section user"><dt></dt><dd>Interface to Fatrop Solver</dd></dl>
 <p>In order to use this interface, you must:</p>
@@ -409,6 +428,8 @@ List of plugins</h3>
 <td>nu</td><td>OT_INTVECTOR</td><td>Number of controls, length N </td></tr>
 <tr>
 <td>nx</td><td>OT_INTVECTOR</td><td>Number of states, length N+1 </td></tr>
+<tr>
+<td>structure_detection</td><td>OT_STRING</td><td>NONE | auto | manual </td></tr>
 </table>
 </dd></dl>
 <hr  />
@@ -814,7 +835,7 @@ List of plugins</h3>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">return</span> Function::create(Conic::instantiate(name, solver, qp), opts);</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../de/dea/function_8cpp_source.html#l00304">casadi::Function::create()</a>, and <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00287">casadi::PluginInterface&lt; Conic &gt;::instantiate()</a>.</p>
+<p class="reference">References <a class="el" href="../../de/dea/function_8cpp_source.html#l00335">casadi::Function::create()</a>, and <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00287">casadi::PluginInterface&lt; Conic &gt;::instantiate()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="../../da/d41/feasiblesqpmethod_8cpp_source.html#l00197">casadi::Feasiblesqpmethod::init()</a>, <a class="el" href="../../d8/dee/qrsqp_8cpp_source.html#l00117">casadi::Qrsqp::init()</a>, <a class="el" href="../../d7/d42/scpgen_8cpp_source.html#l00126">casadi::Scpgen::init()</a>, <a class="el" href="../../d8/dfc/sqpmethod_8cpp_source.html#l00157">casadi::Sqpmethod::init()</a>, and <a class="el" href="../../df/d70/conic_8cpp_source.html#l00111">casadi::qpsol_nlp()</a>.</p>
 
@@ -891,7 +912,7 @@ List of plugins</h3>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">return</span> n-&gt;generateNativeCode(file);</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../df/d70/conic_8cpp_source.html#l00490">casadi::Conic::generateNativeCode()</a>, <a class="el" href="../../de/dea/function_8cpp_source.html#l00321">casadi::Function::get()</a>, and <a class="el" href="../../d1/d38/shared__object_8cpp_source.html#l00073">casadi::SharedObject::is_null()</a>.</p>
+<p class="reference">References <a class="el" href="../../df/d70/conic_8cpp_source.html#l00504">casadi::Conic::generateNativeCode()</a>, <a class="el" href="../../de/dea/function_8cpp_source.html#l00352">casadi::Function::get()</a>, and <a class="el" href="../../d1/d38/shared__object_8cpp_source.html#l00073">casadi::SharedObject::is_null()</a>.</p>
 
 </div>
 </div>
@@ -1063,10 +1084,10 @@ List of plugins</h3>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1em">https://github.com/casadi/casadi/wiki/L_1em</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../df/d70/conic_8cpp_source.html#l00550">550</a> of file <a class="el" href="../../df/d70/conic_8cpp_source.html">conic.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;                                                                          {</div>
-<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;    <span class="keywordflow">return</span> Conic::plugin_options(name).info(op);</div>
-<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../df/d70/conic_8cpp_source.html#l00564">564</a> of file <a class="el" href="../../df/d70/conic_8cpp_source.html">conic.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;                                                                          {</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;    <span class="keywordflow">return</span> Conic::plugin_options(name).info(op);</div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;  }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d5/d1e/options_8cpp_source.html#l00284">casadi::Options::info()</a>, and <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00149">casadi::PluginInterface&lt; Conic &gt;::plugin_options()</a>.</p>
 
@@ -1099,10 +1120,10 @@ List of plugins</h3>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1el">https://github.com/casadi/casadi/wiki/L_1el</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../df/d70/conic_8cpp_source.html#l00546">546</a> of file <a class="el" href="../../df/d70/conic_8cpp_source.html">conic.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;                                                                          {</div>
-<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;    <span class="keywordflow">return</span> Conic::plugin_options(name).type(op);</div>
-<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../df/d70/conic_8cpp_source.html#l00560">560</a> of file <a class="el" href="../../df/d70/conic_8cpp_source.html">conic.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;                                                                          {</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;    <span class="keywordflow">return</span> Conic::plugin_options(name).type(op);</div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;  }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00149">casadi::PluginInterface&lt; Conic &gt;::plugin_options()</a>, and <a class="el" href="../../d5/d1e/options_8cpp_source.html#l00278">casadi::Options::type()</a>.</p>
 
@@ -1125,10 +1146,10 @@ List of plugins</h3>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1ek">https://github.com/casadi/casadi/wiki/L_1ek</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../df/d70/conic_8cpp_source.html#l00542">542</a> of file <a class="el" href="../../df/d70/conic_8cpp_source.html">conic.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;                                                            {</div>
-<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;    <span class="keywordflow">return</span> Conic::plugin_options(name).all();</div>
-<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../df/d70/conic_8cpp_source.html#l00556">556</a> of file <a class="el" href="../../df/d70/conic_8cpp_source.html">conic.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;                                                            {</div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;    <span class="keywordflow">return</span> Conic::plugin_options(name).all();</div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;  }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d5/d1e/options_8cpp_source.html#l00272">casadi::Options::all()</a>, and <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00149">casadi::PluginInterface&lt; Conic &gt;::plugin_options()</a>.</p>
 
@@ -1371,7 +1392,7 @@ List of plugins</h3>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../df/d70/conic_8cpp_source.html#l00111">casadi::qpsol_nlp()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d3/db1/optistack__internal_8cpp_source.html#l00953">casadi::OptiNode::solve()</a>, and <a class="el" href="../../d3/db1/optistack__internal_8cpp_source.html#l01268">casadi::OptiNode::to_function()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d3/db1/optistack__internal_8cpp_source.html#l00963">casadi::OptiNode::solve()</a>, and <a class="el" href="../../d3/db1/optistack__internal_8cpp_source.html#l01306">casadi::OptiNode::to_function()</a>.</p>
 
 </div>
 </div>

@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/329e2282664f584b17fd6319f8ce765a111a6022" id="329e2282664f584b17fd6319f8ce765a111a6022" >revision 3.6.4</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/279e0b80886dc5eb43a9d12a1056c550dc3b786e" id="279e0b80886dc5eb43a9d12a1056c550dc3b786e" >revision 3.6.6</a></div>
   </td>
  </tr>
  </tbody>
@@ -116,128 +116,142 @@ $(function() {
 <div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="../../dc/d0c/structcasadi__sqpmethod__data.html#ad3a84acf0c14afdb032176c8d7e582c6">   57</a></span>&#160;  T1* <a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#ad3a84acf0c14afdb032176c8d7e582c6">temp_mem</a>;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="comment">// temp_sol</span></div>
 <div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="../../dc/d0c/structcasadi__sqpmethod__data.html#adf63d7145681fc3c93f8c0540a9ba432">   59</a></span>&#160;  T1* <a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#adf63d7145681fc3c93f8c0540a9ba432">temp_sol</a>;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;};</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">// C-REPLACE &quot;casadi_sqpmethod_data&lt;T1&gt;&quot; &quot;struct casadi_sqpmethod_data&quot;</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">// SYMBOL &quot;sqpmethod_work&quot;</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keywordtype">void</span> casadi_sqpmethod_work(<span class="keyword">const</span> <a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html">casadi_sqpmethod_prob&lt;T1&gt;</a>* p,</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    casadi_int* sz_iw, casadi_int* sz_w, <span class="keywordtype">int</span> elastic_mode, <span class="keywordtype">int</span> so_corr) {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="comment">// Local variables</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  casadi_int nnz_h, nnz_a, nx, ng;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  nnz_h = p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#ac0a0536dd26260aad6e4eca3c4ff0fe2">sp_h</a>[2+p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#ac0a0536dd26260aad6e4eca3c4ff0fe2">sp_h</a>[1]];</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  nnz_a = p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#af41a74fcc2565a101244a490fe4f4051">sp_a</a>[2+p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#af41a74fcc2565a101244a490fe4f4051">sp_a</a>[1]];</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  nx = p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#a0e3b38d3b06af72b041d0235a29ca465">nlp</a>-&gt;nx;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  ng = p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#a0e3b38d3b06af72b041d0235a29ca465">nlp</a>-&gt;ng;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="comment">// Reset sz_w, sz_iw</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  *sz_w = *sz_iw = 0;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordflow">if</span> (p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#ade0600176c40d4ff7b095bf491629bd0">max_iter_ls</a>&gt;0 || so_corr) *sz_w += nx + ng; <span class="comment">// z_cand</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="comment">// Lagrange gradient in the next iterate</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  *sz_w += nx; <span class="comment">// gLag</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  *sz_w += nx; <span class="comment">// gLag_old</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="comment">// Gradient of the objective</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  *sz_w += nx; <span class="comment">// gf</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="comment">// Bounds of the QP</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  *sz_w += nx + ng; <span class="comment">// lbdz</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  *sz_w += nx + ng; <span class="comment">// ubdz</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="comment">// QP solution</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  *sz_w += nx; <span class="comment">// dx</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  *sz_w += nx + ng; <span class="comment">// dlam</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="comment">// Hessian approximation</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  *sz_w += nnz_h; <span class="comment">// Bk</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="comment">// Jacobian</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  *sz_w += nnz_a; <span class="comment">// Jk</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="comment">// merit_mem</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keywordflow">if</span> (p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#ade0600176c40d4ff7b095bf491629bd0">max_iter_ls</a>&gt;0 || so_corr) *sz_w += p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#a1faf75926a2be356b7a30775e383aece">merit_memsize</a>;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="keywordflow">if</span> (elastic_mode) {</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="comment">// Additional work for larger objective gradient</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    *sz_w += 2*ng; <span class="comment">// gf</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="comment">// Additional work for the larger bounds</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    *sz_w += 2*ng; <span class="comment">// lbdz</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    *sz_w += 2*ng; <span class="comment">// ubdz</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="comment">// Additional work for larger solution</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    *sz_w += 2*ng; <span class="comment">// dx</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    *sz_w += 2*ng; <span class="comment">// dlam</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="comment">// Additional work for larger jacobian</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    *sz_w += 2*ng; <span class="comment">// Jk</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="comment">// Additional work for temp memory</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    *sz_w += ng;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  }</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  <span class="keywordflow">if</span> (so_corr) *sz_w += nx+nx+ng; <span class="comment">// Temp memory for failing soc</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;}</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">// SYMBOL &quot;sqpmethod_init&quot;</span></div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="keywordtype">void</span> casadi_sqpmethod_init(<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html">casadi_sqpmethod_data&lt;T1&gt;</a>* d, casadi_int** iw, T1** w,</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordtype">int</span> elastic_mode, <span class="keywordtype">int</span> so_corr) {</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <span class="comment">// Local variables</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  casadi_int nnz_h, nnz_a, nx, ng;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <span class="keyword">const</span> <a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html">casadi_sqpmethod_prob&lt;T1&gt;</a>* p = d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#a71841e535c353d1554e3413fa52359b8">prob</a>;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  <span class="comment">// Get matrix number of nonzeros</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  nnz_h = p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#ac0a0536dd26260aad6e4eca3c4ff0fe2">sp_h</a>[2+p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#ac0a0536dd26260aad6e4eca3c4ff0fe2">sp_h</a>[1]];</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  nnz_a = p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#af41a74fcc2565a101244a490fe4f4051">sp_a</a>[2+p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#af41a74fcc2565a101244a490fe4f4051">sp_a</a>[1]];</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  nx = p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#a0e3b38d3b06af72b041d0235a29ca465">nlp</a>-&gt;nx;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  ng = p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#a0e3b38d3b06af72b041d0235a29ca465">nlp</a>-&gt;ng;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  <span class="keywordflow">if</span> (p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#ade0600176c40d4ff7b095bf491629bd0">max_iter_ls</a>&gt;0 || so_corr) {</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#a21e3979e80055f309264d00ab816da36">z_cand</a> = *w; *w += nx + ng;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  }</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  <span class="comment">// Lagrange gradient in the next iterate</span></div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#a46505d1054f6ffab2bea7c6c4d4f02a5">gLag</a> = *w; *w += nx;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#a5b171895686a9be0e4f7e14ca7860dba">gLag_old</a> = *w; *w += nx;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  <span class="comment">// Hessian approximation</span></div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#a01f3872bfd1845277112f5a2261716a8">Bk</a> = *w; *w += nnz_h;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  <span class="comment">// merit_mem</span></div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  <span class="keywordflow">if</span> (p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#ade0600176c40d4ff7b095bf491629bd0">max_iter_ls</a>&gt;0 || so_corr) {</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#a1c0d630189222df071f97875c81f8c48">merit_mem</a> = *w; *w += p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#a1faf75926a2be356b7a30775e383aece">merit_memsize</a>;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  }</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  <span class="keywordflow">if</span> (so_corr) {</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#adf63d7145681fc3c93f8c0540a9ba432">temp_sol</a> = *w; *w += nx+nx+ng;</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;  }</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  <span class="keywordflow">if</span> (elastic_mode) {</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="comment">// Gradient of the objective</span></div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#a215308d3fd88c92e04040504c1dd350e">gf</a> = *w; *w += nx + 2*ng;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="comment">// Bounds of the QP</span></div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#a8aad51a9700fe8c45899fd8ee38b6650">lbdz</a> = *w; *w += nx + 3*ng;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#aa89b7603ed569951edfd209a43c86293">ubdz</a> = *w; *w += nx + 3*ng;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="comment">// QP solution</span></div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#aa23026320f0e3f731cd2f661d2101d29">dx</a> = *w; *w += nx + 2*ng;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#abc45276f35a40d5ebfb693f4656e68fe">dlam</a> = *w; *w += nx + 3*ng;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="comment">// Jacobian</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#a048523076de6dd34c36f5bef86e602b7">Jk</a> = *w; *w += nnz_a + 2*ng;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="comment">// temp mem</span></div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#ad3a84acf0c14afdb032176c8d7e582c6">temp_mem</a> = *w; *w += ng;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="comment">// Gradient of the objective</span></div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#a215308d3fd88c92e04040504c1dd350e">gf</a> = *w; *w += nx;</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="comment">// Bounds of the QP</span></div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#a8aad51a9700fe8c45899fd8ee38b6650">lbdz</a> = *w; *w += nx + ng;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#aa89b7603ed569951edfd209a43c86293">ubdz</a> = *w; *w += nx + ng;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="comment">// QP solution</span></div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#aa23026320f0e3f731cd2f661d2101d29">dx</a> = *w; *w += nx;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#abc45276f35a40d5ebfb693f4656e68fe">dlam</a> = *w; *w += nx + ng;</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="comment">// Jacobian</span></div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#a048523076de6dd34c36f5bef86e602b7">Jk</a> = *w; *w += nnz_a;</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  }</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;}</div>
-<div class="ttc" id="astructcasadi__nlpsol__prob_html"><div class="ttname"><a href="../../da/d37/structcasadi__nlpsol__prob.html">casadi_nlpsol_prob</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d07/casadi__nlp_8hpp_source.html#l00040">casadi_nlp.hpp:40</a></div></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="../../dc/d0c/structcasadi__sqpmethod__data.html#a1f3d566d0e1fd35df911be0b714c5c11">   61</a></span>&#160;  <span class="keyword">const</span> T1** <a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#a1f3d566d0e1fd35df911be0b714c5c11">arg</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="../../dc/d0c/structcasadi__sqpmethod__data.html#a8ab8dde0257ac2119aa817720bb0a985">   62</a></span>&#160;  T1** <a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#a8ab8dde0257ac2119aa817720bb0a985">res</a>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="../../dc/d0c/structcasadi__sqpmethod__data.html#ab1fde9849aeda25e2d3f82a58d5623a9">   63</a></span>&#160;  casadi_int* <a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#ab1fde9849aeda25e2d3f82a58d5623a9">iw</a>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="../../dc/d0c/structcasadi__sqpmethod__data.html#a0a3d7100178802c678f5c67ef94866e5">   64</a></span>&#160;  T1* <a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#a0a3d7100178802c678f5c67ef94866e5">w</a>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;};</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">// C-REPLACE &quot;casadi_sqpmethod_data&lt;T1&gt;&quot; &quot;struct casadi_sqpmethod_data&quot;</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">// SYMBOL &quot;sqpmethod_work&quot;</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">void</span> casadi_sqpmethod_work(<span class="keyword">const</span> <a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html">casadi_sqpmethod_prob&lt;T1&gt;</a>* p,</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    casadi_int* sz_iw, casadi_int* sz_w, <span class="keywordtype">int</span> elastic_mode, <span class="keywordtype">int</span> so_corr) {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="comment">// Local variables</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  casadi_int nnz_h, nnz_a, nx, ng;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  nnz_h = p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#ac0a0536dd26260aad6e4eca3c4ff0fe2">sp_h</a>[2+p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#ac0a0536dd26260aad6e4eca3c4ff0fe2">sp_h</a>[1]];</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  nnz_a = p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#af41a74fcc2565a101244a490fe4f4051">sp_a</a>[2+p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#af41a74fcc2565a101244a490fe4f4051">sp_a</a>[1]];</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  nx = p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#a0e3b38d3b06af72b041d0235a29ca465">nlp</a>-&gt;nx;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  ng = p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#a0e3b38d3b06af72b041d0235a29ca465">nlp</a>-&gt;ng;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="comment">// Reset sz_w, sz_iw</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  *sz_w = *sz_iw = 0;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordflow">if</span> (p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#ade0600176c40d4ff7b095bf491629bd0">max_iter_ls</a>&gt;0 || so_corr) *sz_w += nx + ng; <span class="comment">// z_cand</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="comment">// Lagrange gradient in the next iterate</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  *sz_w += nx; <span class="comment">// gLag</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  *sz_w += nx; <span class="comment">// gLag_old</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="comment">// Gradient of the objective</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  *sz_w += nx; <span class="comment">// gf</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <span class="comment">// Bounds of the QP</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  *sz_w += nx + ng; <span class="comment">// lbdz</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  *sz_w += nx + ng; <span class="comment">// ubdz</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="comment">// QP solution</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  *sz_w += nx; <span class="comment">// dx</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  *sz_w += nx + ng; <span class="comment">// dlam</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="comment">// Hessian approximation</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  *sz_w += nnz_h; <span class="comment">// Bk</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="comment">// Jacobian</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  *sz_w += nnz_a; <span class="comment">// Jk</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <span class="comment">// merit_mem</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <span class="keywordflow">if</span> (p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#ade0600176c40d4ff7b095bf491629bd0">max_iter_ls</a>&gt;0 || so_corr) *sz_w += p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#a1faf75926a2be356b7a30775e383aece">merit_memsize</a>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keywordflow">if</span> (elastic_mode) {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="comment">// Additional work for larger objective gradient</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    *sz_w += 2*ng; <span class="comment">// gf</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="comment">// Additional work for the larger bounds</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    *sz_w += 2*ng; <span class="comment">// lbdz</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    *sz_w += 2*ng; <span class="comment">// ubdz</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="comment">// Additional work for larger solution</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    *sz_w += 2*ng; <span class="comment">// dx</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    *sz_w += 2*ng; <span class="comment">// dlam</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="comment">// Additional work for larger jacobian</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    *sz_w += 2*ng; <span class="comment">// Jk</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="comment">// Additional work for temp memory</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    *sz_w += ng;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  <span class="keywordflow">if</span> (so_corr) *sz_w += nx+nx+ng; <span class="comment">// Temp memory for failing soc</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">// SYMBOL &quot;sqpmethod_init&quot;</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="keywordtype">void</span> casadi_sqpmethod_init(<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html">casadi_sqpmethod_data&lt;T1&gt;</a>* d,</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keyword">const</span> T1*** arg, T1*** res, casadi_int** iw, T1** w,</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordtype">int</span> elastic_mode, <span class="keywordtype">int</span> so_corr) {</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  <span class="comment">// Local variables</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  casadi_int nnz_h, nnz_a, nx, ng;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  <span class="keyword">const</span> <a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html">casadi_sqpmethod_prob&lt;T1&gt;</a>* p = d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#a71841e535c353d1554e3413fa52359b8">prob</a>;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  <span class="comment">// Get matrix number of nonzeros</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  nnz_h = p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#ac0a0536dd26260aad6e4eca3c4ff0fe2">sp_h</a>[2+p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#ac0a0536dd26260aad6e4eca3c4ff0fe2">sp_h</a>[1]];</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  nnz_a = p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#af41a74fcc2565a101244a490fe4f4051">sp_a</a>[2+p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#af41a74fcc2565a101244a490fe4f4051">sp_a</a>[1]];</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  nx = p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#a0e3b38d3b06af72b041d0235a29ca465">nlp</a>-&gt;nx;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  ng = p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#a0e3b38d3b06af72b041d0235a29ca465">nlp</a>-&gt;ng;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  <span class="keywordflow">if</span> (p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#ade0600176c40d4ff7b095bf491629bd0">max_iter_ls</a>&gt;0 || so_corr) {</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#a21e3979e80055f309264d00ab816da36">z_cand</a> = *w; *w += nx + ng;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  <span class="comment">// Lagrange gradient in the next iterate</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#a46505d1054f6ffab2bea7c6c4d4f02a5">gLag</a> = *w; *w += nx;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#a5b171895686a9be0e4f7e14ca7860dba">gLag_old</a> = *w; *w += nx;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  <span class="comment">// Hessian approximation</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#a01f3872bfd1845277112f5a2261716a8">Bk</a> = *w; *w += nnz_h;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  <span class="comment">// merit_mem</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;  <span class="keywordflow">if</span> (p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#ade0600176c40d4ff7b095bf491629bd0">max_iter_ls</a>&gt;0 || so_corr) {</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#a1c0d630189222df071f97875c81f8c48">merit_mem</a> = *w; *w += p-&gt;<a class="code" href="../../d9/ddf/structcasadi__sqpmethod__prob.html#a1faf75926a2be356b7a30775e383aece">merit_memsize</a>;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  }</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  <span class="keywordflow">if</span> (so_corr) {</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#adf63d7145681fc3c93f8c0540a9ba432">temp_sol</a> = *w; *w += nx+nx+ng;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  }</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  <span class="keywordflow">if</span> (elastic_mode) {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="comment">// Gradient of the objective</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#a215308d3fd88c92e04040504c1dd350e">gf</a> = *w; *w += nx + 2*ng;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="comment">// Bounds of the QP</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#a8aad51a9700fe8c45899fd8ee38b6650">lbdz</a> = *w; *w += nx + 3*ng;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#aa89b7603ed569951edfd209a43c86293">ubdz</a> = *w; *w += nx + 3*ng;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="comment">// QP solution</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#aa23026320f0e3f731cd2f661d2101d29">dx</a> = *w; *w += nx + 2*ng;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#abc45276f35a40d5ebfb693f4656e68fe">dlam</a> = *w; *w += nx + 3*ng;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="comment">// Jacobian</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#a048523076de6dd34c36f5bef86e602b7">Jk</a> = *w; *w += nnz_a + 2*ng;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="comment">// temp mem</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#ad3a84acf0c14afdb032176c8d7e582c6">temp_mem</a> = *w; *w += ng;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="comment">// Gradient of the objective</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#a215308d3fd88c92e04040504c1dd350e">gf</a> = *w; *w += nx;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="comment">// Bounds of the QP</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#a8aad51a9700fe8c45899fd8ee38b6650">lbdz</a> = *w; *w += nx + ng;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#aa89b7603ed569951edfd209a43c86293">ubdz</a> = *w; *w += nx + ng;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="comment">// QP solution</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#aa23026320f0e3f731cd2f661d2101d29">dx</a> = *w; *w += nx;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#abc45276f35a40d5ebfb693f4656e68fe">dlam</a> = *w; *w += nx + ng;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="comment">// Jacobian</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#a048523076de6dd34c36f5bef86e602b7">Jk</a> = *w; *w += nnz_a;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  }</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#a1f3d566d0e1fd35df911be0b714c5c11">arg</a> = *arg;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#a8ab8dde0257ac2119aa817720bb0a985">res</a> = *res;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#ab1fde9849aeda25e2d3f82a58d5623a9">iw</a> = *iw;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  d-&gt;<a class="code" href="../../dc/d0c/structcasadi__sqpmethod__data.html#a0a3d7100178802c678f5c67ef94866e5">w</a> = *w;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;}</div>
+<div class="ttc" id="astructcasadi__nlpsol__prob_html"><div class="ttname"><a href="../../da/d37/structcasadi__nlpsol__prob.html">casadi_nlpsol_prob</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d07/casadi__nlp_8hpp_source.html#l00043">casadi_nlp.hpp:43</a></div></div>
 <div class="ttc" id="astructcasadi__sqpmethod__data_html"><div class="ttname"><a href="../../dc/d0c/structcasadi__sqpmethod__data.html">casadi_sqpmethod_data</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d40/casadi__sqpmethod_8hpp_source.html#l00037">casadi_sqpmethod.hpp:37</a></div></div>
 <div class="ttc" id="astructcasadi__sqpmethod__data_html_a01f3872bfd1845277112f5a2261716a8"><div class="ttname"><a href="../../dc/d0c/structcasadi__sqpmethod__data.html#a01f3872bfd1845277112f5a2261716a8">casadi_sqpmethod_data::Bk</a></div><div class="ttdeci">T1 * Bk</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d40/casadi__sqpmethod_8hpp_source.html#l00051">casadi_sqpmethod.hpp:51</a></div></div>
 <div class="ttc" id="astructcasadi__sqpmethod__data_html_a048523076de6dd34c36f5bef86e602b7"><div class="ttname"><a href="../../dc/d0c/structcasadi__sqpmethod__data.html#a048523076de6dd34c36f5bef86e602b7">casadi_sqpmethod_data::Jk</a></div><div class="ttdeci">T1 * Jk</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d40/casadi__sqpmethod_8hpp_source.html#l00053">casadi_sqpmethod.hpp:53</a></div></div>
+<div class="ttc" id="astructcasadi__sqpmethod__data_html_a0a3d7100178802c678f5c67ef94866e5"><div class="ttname"><a href="../../dc/d0c/structcasadi__sqpmethod__data.html#a0a3d7100178802c678f5c67ef94866e5">casadi_sqpmethod_data::w</a></div><div class="ttdeci">T1 * w</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d40/casadi__sqpmethod_8hpp_source.html#l00064">casadi_sqpmethod.hpp:64</a></div></div>
 <div class="ttc" id="astructcasadi__sqpmethod__data_html_a1c0d630189222df071f97875c81f8c48"><div class="ttname"><a href="../../dc/d0c/structcasadi__sqpmethod__data.html#a1c0d630189222df071f97875c81f8c48">casadi_sqpmethod_data::merit_mem</a></div><div class="ttdeci">T1 * merit_mem</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d40/casadi__sqpmethod_8hpp_source.html#l00055">casadi_sqpmethod.hpp:55</a></div></div>
+<div class="ttc" id="astructcasadi__sqpmethod__data_html_a1f3d566d0e1fd35df911be0b714c5c11"><div class="ttname"><a href="../../dc/d0c/structcasadi__sqpmethod__data.html#a1f3d566d0e1fd35df911be0b714c5c11">casadi_sqpmethod_data::arg</a></div><div class="ttdeci">const T1 ** arg</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d40/casadi__sqpmethod_8hpp_source.html#l00061">casadi_sqpmethod.hpp:61</a></div></div>
 <div class="ttc" id="astructcasadi__sqpmethod__data_html_a215308d3fd88c92e04040504c1dd350e"><div class="ttname"><a href="../../dc/d0c/structcasadi__sqpmethod__data.html#a215308d3fd88c92e04040504c1dd350e">casadi_sqpmethod_data::gf</a></div><div class="ttdeci">T1 * gf</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d40/casadi__sqpmethod_8hpp_source.html#l00045">casadi_sqpmethod.hpp:45</a></div></div>
 <div class="ttc" id="astructcasadi__sqpmethod__data_html_a21e3979e80055f309264d00ab816da36"><div class="ttname"><a href="../../dc/d0c/structcasadi__sqpmethod__data.html#a21e3979e80055f309264d00ab816da36">casadi_sqpmethod_data::z_cand</a></div><div class="ttdeci">T1 * z_cand</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d40/casadi__sqpmethod_8hpp_source.html#l00041">casadi_sqpmethod.hpp:41</a></div></div>
 <div class="ttc" id="astructcasadi__sqpmethod__data_html_a46505d1054f6ffab2bea7c6c4d4f02a5"><div class="ttname"><a href="../../dc/d0c/structcasadi__sqpmethod__data.html#a46505d1054f6ffab2bea7c6c4d4f02a5">casadi_sqpmethod_data::gLag</a></div><div class="ttdeci">T1 * gLag</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d40/casadi__sqpmethod_8hpp_source.html#l00043">casadi_sqpmethod.hpp:43</a></div></div>
 <div class="ttc" id="astructcasadi__sqpmethod__data_html_a5b171895686a9be0e4f7e14ca7860dba"><div class="ttname"><a href="../../dc/d0c/structcasadi__sqpmethod__data.html#a5b171895686a9be0e4f7e14ca7860dba">casadi_sqpmethod_data::gLag_old</a></div><div class="ttdeci">T1 * gLag_old</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d40/casadi__sqpmethod_8hpp_source.html#l00043">casadi_sqpmethod.hpp:43</a></div></div>
 <div class="ttc" id="astructcasadi__sqpmethod__data_html_a71841e535c353d1554e3413fa52359b8"><div class="ttname"><a href="../../dc/d0c/structcasadi__sqpmethod__data.html#a71841e535c353d1554e3413fa52359b8">casadi_sqpmethod_data::prob</a></div><div class="ttdeci">const casadi_sqpmethod_prob&lt; T1 &gt; * prob</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d40/casadi__sqpmethod_8hpp_source.html#l00039">casadi_sqpmethod.hpp:39</a></div></div>
 <div class="ttc" id="astructcasadi__sqpmethod__data_html_a8aad51a9700fe8c45899fd8ee38b6650"><div class="ttname"><a href="../../dc/d0c/structcasadi__sqpmethod__data.html#a8aad51a9700fe8c45899fd8ee38b6650">casadi_sqpmethod_data::lbdz</a></div><div class="ttdeci">T1 * lbdz</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d40/casadi__sqpmethod_8hpp_source.html#l00047">casadi_sqpmethod.hpp:47</a></div></div>
+<div class="ttc" id="astructcasadi__sqpmethod__data_html_a8ab8dde0257ac2119aa817720bb0a985"><div class="ttname"><a href="../../dc/d0c/structcasadi__sqpmethod__data.html#a8ab8dde0257ac2119aa817720bb0a985">casadi_sqpmethod_data::res</a></div><div class="ttdeci">T1 ** res</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d40/casadi__sqpmethod_8hpp_source.html#l00062">casadi_sqpmethod.hpp:62</a></div></div>
 <div class="ttc" id="astructcasadi__sqpmethod__data_html_aa23026320f0e3f731cd2f661d2101d29"><div class="ttname"><a href="../../dc/d0c/structcasadi__sqpmethod__data.html#aa23026320f0e3f731cd2f661d2101d29">casadi_sqpmethod_data::dx</a></div><div class="ttdeci">T1 * dx</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d40/casadi__sqpmethod_8hpp_source.html#l00049">casadi_sqpmethod.hpp:49</a></div></div>
 <div class="ttc" id="astructcasadi__sqpmethod__data_html_aa89b7603ed569951edfd209a43c86293"><div class="ttname"><a href="../../dc/d0c/structcasadi__sqpmethod__data.html#aa89b7603ed569951edfd209a43c86293">casadi_sqpmethod_data::ubdz</a></div><div class="ttdeci">T1 * ubdz</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d40/casadi__sqpmethod_8hpp_source.html#l00047">casadi_sqpmethod.hpp:47</a></div></div>
+<div class="ttc" id="astructcasadi__sqpmethod__data_html_ab1fde9849aeda25e2d3f82a58d5623a9"><div class="ttname"><a href="../../dc/d0c/structcasadi__sqpmethod__data.html#ab1fde9849aeda25e2d3f82a58d5623a9">casadi_sqpmethod_data::iw</a></div><div class="ttdeci">casadi_int * iw</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d40/casadi__sqpmethod_8hpp_source.html#l00063">casadi_sqpmethod.hpp:63</a></div></div>
 <div class="ttc" id="astructcasadi__sqpmethod__data_html_abc45276f35a40d5ebfb693f4656e68fe"><div class="ttname"><a href="../../dc/d0c/structcasadi__sqpmethod__data.html#abc45276f35a40d5ebfb693f4656e68fe">casadi_sqpmethod_data::dlam</a></div><div class="ttdeci">T1 * dlam</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d40/casadi__sqpmethod_8hpp_source.html#l00049">casadi_sqpmethod.hpp:49</a></div></div>
 <div class="ttc" id="astructcasadi__sqpmethod__data_html_ad3a84acf0c14afdb032176c8d7e582c6"><div class="ttname"><a href="../../dc/d0c/structcasadi__sqpmethod__data.html#ad3a84acf0c14afdb032176c8d7e582c6">casadi_sqpmethod_data::temp_mem</a></div><div class="ttdeci">T1 * temp_mem</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d40/casadi__sqpmethod_8hpp_source.html#l00057">casadi_sqpmethod.hpp:57</a></div></div>
 <div class="ttc" id="astructcasadi__sqpmethod__data_html_adf63d7145681fc3c93f8c0540a9ba432"><div class="ttname"><a href="../../dc/d0c/structcasadi__sqpmethod__data.html#adf63d7145681fc3c93f8c0540a9ba432">casadi_sqpmethod_data::temp_sol</a></div><div class="ttdeci">T1 * temp_sol</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d40/casadi__sqpmethod_8hpp_source.html#l00059">casadi_sqpmethod.hpp:59</a></div></div>

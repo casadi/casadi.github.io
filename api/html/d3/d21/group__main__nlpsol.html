@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/329e2282664f584b17fd6319f8ce765a111a6022" id="329e2282664f584b17fd6319f8ce765a111a6022" >revision 3.6.4</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/279e0b80886dc5eb43a9d12a1056c550dc3b786e" id="279e0b80886dc5eb43a9d12a1056c550dc3b786e" >revision 3.6.6</a></div>
   </td>
  </tr>
  </tbody>
@@ -130,11 +130,15 @@ General information</h3>
 <tr>
 <td>enable_reverse</td><td>OT_BOOL</td><td>Enable derivative calculation using generated functions for transposed Jacobian-times-vector products - typically using reverse mode AD - if available. [default: true]</td><td>casadi::FunctionInternal </td></tr>
 <tr>
+<td>equality</td><td>OT_BOOLVECTOR</td><td>Indicate an upfront hint which of the constraints are equalities. Some solvers may be able to exploit this knowledge. When true, the corresponding lower and upper bounds are assumed equal. When false, the corresponding bounds may be equal or different.</td><td>casadi::Nlpsol </td></tr>
+<tr>
 <td>error_on_fail</td><td>OT_BOOL</td><td>Throw exceptions when function evaluation fails (default true).</td><td>casadi::ProtoFunction </td></tr>
 <tr>
 <td>eval_errors_fatal</td><td>OT_BOOL</td><td>When errors occur during evaluation of f,g,...,stop the iterations</td><td>casadi::Nlpsol </td></tr>
 <tr>
 <td>expand</td><td>OT_BOOL</td><td>Replace <a class="el" href="../../de/d57/classcasadi_1_1MX.html" title="MX - Matrix expression.">MX</a> with SX expressions in problem formulation [false]</td><td>casadi::OracleFunction </td></tr>
+<tr>
+<td>external_transform</td><td>OT_VECTORVECTOR</td><td>List of external_transform instruction arguments. Default: empty</td><td>casadi::FunctionInternal </td></tr>
 <tr>
 <td>fd_method</td><td>OT_STRING</td><td>Method for finite differencing [default 'central']</td><td>casadi::FunctionInternal </td></tr>
 <tr>
@@ -268,8 +272,10 @@ List of plugins</h3>
 <p>- <a href='#plugin_Nlpsol_AmplInterface'>AmplInterface</a> </p>
 <p>- <a href='#plugin_Nlpsol_blocksqp'>blocksqp</a> </p>
 <p>- <a href='#plugin_Nlpsol_bonmin'>bonmin</a> </p>
+<p>- <a href='#plugin_Nlpsol_fatrop'>fatrop</a> </p>
 <p>- <a href='#plugin_Nlpsol_ipopt'>ipopt</a> </p>
 <p>- <a href='#plugin_Nlpsol_knitro'>knitro</a> </p>
+<p>- <a href='#plugin_Nlpsol_madnlp'>madnlp</a> </p>
 <p>- <a href='#plugin_Nlpsol_snopt'>snopt</a> </p>
 <p>- <a href='#plugin_Nlpsol_worhp'>worhp</a> </p>
 <p>- <a href='#plugin_Nlpsol_feasiblesqpmethod'>feasiblesqpmethod</a> </p>
@@ -470,6 +476,49 @@ List of plugins</h3>
 </table>
 </dd></dl>
 <hr  />
+  <h4>fatrop <a class="anchor" id="plugin_Nlpsol_fatrop"></a> </h4>
+<p><br  />
+</p><dl class="section user"><dt></dt><dd><a class="anchor" id="options"></a><table class="doxtable">
+<caption>List of available options</caption>
+<tr>
+<th>Id</th><th>Type</th><th>Description </th></tr>
+<tr>
+<td>N</td><td>OT_INT</td><td>OCP horizon </td></tr>
+<tr>
+<td>convexify_margin</td><td>OT_DOUBLE</td><td>When using a convexification strategy, make sure that the smallest eigenvalue is at least this (default: 1e-7). </td></tr>
+<tr>
+<td>convexify_strategy</td><td>OT_STRING</td><td>NONE|regularize|eigen-reflect|eigen-clip. Strategy to convexify the Lagrange Hessian before passing it to the solver. </td></tr>
+<tr>
+<td>debug</td><td>OT_BOOL</td><td>Produce debug information (default: false) </td></tr>
+<tr>
+<td>fatrop</td><td>OT_DICT</td><td>Options to be passed to fatrop </td></tr>
+<tr>
+<td>ng</td><td>OT_INTVECTOR</td><td>Number of non-dynamic constraints, length N+1 </td></tr>
+<tr>
+<td>nu</td><td>OT_INTVECTOR</td><td>Number of controls, length N+1 </td></tr>
+<tr>
+<td>nx</td><td>OT_INTVECTOR</td><td>Number of states, length N+1 </td></tr>
+<tr>
+<td>structure_detection</td><td>OT_STRING</td><td>NONE | auto | manual </td></tr>
+</table>
+</dd></dl>
+<p>Fatrop is a solver developed at KU Leuven by Lander Vanroye and Wilm Decre. The algorithm is based on IPOPT, but the linear algebra is much more efficient.</p>
+<p>With structure_detection = 'none' (default), it will behave as a general-purpose dense nonlinear program solver.</p>
+<p>With structure_detection = 'manual', you can specify a block structure.</p>
+<p>Let's say you perform multiply shooting with a system</p>
+<p>x_k+1 = A_k x_k + B_k u_k</p>
+<p>Suppose your constraint Jacobian looks like: </p><pre class="fragment"> nx0  nu0  nx1  nu1  nx2  nu2
+ -----------------------------
+</pre><p> nx1 |A0 B0 I0 <br  />
+ ng1 |C0 D0 <br  />
+ nx2 | A1 B1 I1 <br  />
+ ng2 | C1 D1 <br  />
+ ng3 | C2 D2</p>
+<p>with n* capturing the number of states, inputs, and constraints in each block.</p>
+<p>You can then specify this structure with:</p>
+<p>N = 2 nx = [nx0 ,nx1, nx2] nu = [nu0, nu1, nu2] ng = [ng1, ng2, ng3]</p>
+<p>With structure_detection = 'auto', the block-defining parameters nx, nu, ng, and N are automatically detected from the sparsity pattern.</p>
+<hr  />
   <h4>ipopt <a class="anchor" id="plugin_Nlpsol_ipopt"></a> </h4>
 <dl class="section user"><dt></dt><dd></dd></dl>
 <p>When in warmstart mode, output NLPSOL_LAM_X may be used as input</p>
@@ -542,6 +591,25 @@ List of plugins</h3>
 <td>knitro</td><td>OT_DICT</td><td>Options to be passed to KNITRO </td></tr>
 <tr>
 <td>options_file</td><td>OT_STRING</td><td>Read options from file (solver specific) </td></tr>
+</table>
+</dd></dl>
+<hr  />
+  <h4>madnlp <a class="anchor" id="plugin_Nlpsol_madnlp"></a> </h4>
+<p><br  />
+</p><dl class="section user"><dt></dt><dd><a class="anchor" id="options"></a><table class="doxtable">
+<caption>List of available options</caption>
+<tr>
+<th>Id</th><th>Type</th><th>Description </th></tr>
+<tr>
+<td>convexify_margin</td><td>OT_DOUBLE</td><td>When using a convexification strategy, make sure that the smallest eigenvalue is at least this (default: 1e-7). </td></tr>
+<tr>
+<td>convexify_strategy</td><td>OT_STRING</td><td>NONE|regularize|eigen-reflect|eigen-clip. Strategy to convexify the Lagrange Hessian before passing it to the solver. </td></tr>
+<tr>
+<td>madnlp</td><td>OT_DICT</td><td>Options to be passed to madnlp </td></tr>
+<tr>
+<td>ng</td><td>OT_INTVECTOR</td><td>Number of constraints </td></tr>
+<tr>
+<td>nw</td><td>OT_INTVECTOR</td><td>Number of variables </td></tr>
 </table>
 </dd></dl>
 <hr  />

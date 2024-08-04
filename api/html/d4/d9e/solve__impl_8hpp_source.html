@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/329e2282664f584b17fd6319f8ce765a111a6022" id="329e2282664f584b17fd6319f8ce765a111a6022" >revision 3.6.4</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/279e0b80886dc5eb43a9d12a1056c550dc3b786e" id="279e0b80886dc5eb43a9d12a1056c550dc3b786e" >revision 3.6.6</a></div>
   </td>
  </tr>
  </tbody>
@@ -491,7 +491,7 @@ $(function() {
 <div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    }</div>
 <div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    <span class="comment">// Perform sparse matrix multiplication</span></div>
 <div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    g &lt;&lt; g.triusolve(this-&gt;dep(1).sparsity(), g.work(arg[1], this-&gt;dep(1).nnz()),</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;      g.work(arg[1], this-&gt;dep(1).nnz()), Tr, <span class="keyword">false</span>, nrhs) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;      g.work(res[0], this-&gt;nnz()), Tr, <span class="keyword">false</span>, nrhs) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
 <div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;  }</div>
 <div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160; </div>
 <div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;  <span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> Tr&gt;</div>
@@ -505,7 +505,7 @@ $(function() {
 <div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    }</div>
 <div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;    <span class="comment">// Perform sparse matrix multiplication</span></div>
 <div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;    g &lt;&lt; g.trilsolve(this-&gt;dep(1).sparsity(), g.work(arg[1], this-&gt;dep(1).nnz()),</div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;      g.work(arg[1], this-&gt;dep(1).nnz()), Tr, <span class="keyword">false</span>, nrhs) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;      g.work(res[0], this-&gt;nnz()), Tr, <span class="keyword">false</span>, nrhs) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
 <div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;  }</div>
 <div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160; </div>
 <div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;  <span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> Tr&gt;</div>
@@ -519,7 +519,7 @@ $(function() {
 <div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    }</div>
 <div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;    <span class="comment">// Perform sparse matrix multiplication</span></div>
 <div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    g &lt;&lt; g.triusolve(this-&gt;dep(1).sparsity(), g.work(arg[1], this-&gt;dep(1).nnz()),</div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;      g.work(arg[1], this-&gt;dep(1).nnz()), Tr, <span class="keyword">true</span>, nrhs) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;      g.work(res[0], this-&gt;nnz()), Tr, <span class="keyword">true</span>, nrhs) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
 <div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;  }</div>
 <div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160; </div>
 <div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;  <span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> Tr&gt;</div>
@@ -533,7 +533,7 @@ $(function() {
 <div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;    }</div>
 <div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;    <span class="comment">// Perform sparse matrix multiplication</span></div>
 <div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;    g &lt;&lt; g.trilsolve(this-&gt;dep(1).sparsity(), g.work(arg[1], this-&gt;dep(1).nnz()),</div>
-<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;      g.work(arg[1], this-&gt;dep(1).nnz()), Tr, <span class="keyword">true</span>, nrhs) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;      g.work(res[0], this-&gt;nnz()), Tr, <span class="keyword">true</span>, nrhs) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
 <div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;  }</div>
 <div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160; </div>
 <div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;} <span class="comment">// namespace casadi</span></div>
