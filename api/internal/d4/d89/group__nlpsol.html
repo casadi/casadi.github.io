@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/279e0b80886dc5eb43a9d12a1056c550dc3b786e" id="279e0b80886dc5eb43a9d12a1056c550dc3b786e" >revision 3.6.6</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
   </td>
  </tr>
  </tbody>
@@ -1031,14 +1031,14 @@ List of plugins</h3>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00188">188</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                                                         {</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="comment">// Make sure that nlp is sound</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keywordflow">if</span> (nlp.has_free()) {</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;      casadi_error(<span class="stringliteral">&quot;Cannot create &#39;&quot;</span> + name + <span class="stringliteral">&quot;&#39; since &quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(nlp.get_free()) + <span class="stringliteral">&quot; are free.&quot;</span>);</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    }</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keywordflow">return</span> Function::create(Nlpsol::instantiate(name, solver, nlp), opts);</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00193">193</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                                                         {</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="comment">// Make sure that nlp is sound</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="keywordflow">if</span> (nlp.has_free()) {</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;      casadi_error(<span class="stringliteral">&quot;Cannot create &#39;&quot;</span> + name + <span class="stringliteral">&quot;&#39; since &quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(nlp.get_free()) + <span class="stringliteral">&quot; are free.&quot;</span>);</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    }</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="keywordflow">return</span> Function::create(Nlpsol::instantiate(name, solver, nlp), opts);</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;  }</div>
 <div class="ttc" id="anamespacecasadi_html_a88082fbf80560c888949bb765d9ccea0"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">casadi::str</a></div><div class="ttdeci">std::string str(const T &amp;v)</div><div class="ttdoc">String representation, any type.</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d59/casadi__common_8hpp_source.html#l00244">casadi_common.hpp:244</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../de/dea/function_8cpp_source.html#l00335">casadi::Function::create()</a>, <a class="el" href="../../de/dea/function_8cpp_source.html#l01159">casadi::Function::get_free()</a>, <a class="el" href="../../de/dea/function_8cpp_source.html#l01666">casadi::Function::has_free()</a>, <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00287">casadi::PluginInterface&lt; Nlpsol &gt;::instantiate()</a>, and <a class="el" href="../../dc/d59/casadi__common_8hpp_source.html#l00244">casadi::str()</a>.</p>
@@ -1083,14 +1083,14 @@ List of plugins</h3>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00183">183</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                                                              {</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d4/d89/group__nlpsol.html#ga6a395ca3ef159a39f85482e892e03a2f">nlpsol</a>(name, solver, <a class="code" href="../../d7/d23/namespacecasadi.html#af1575561f3c36159ac74af8f4a22b0ba">external</a>(<span class="stringliteral">&quot;nlp&quot;</span>, compiler), opts);</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  }</div>
-<div class="ttc" id="agroup__nlpsol_html_ga6a395ca3ef159a39f85482e892e03a2f"><div class="ttname"><a href="../../d4/d89/group__nlpsol.html#ga6a395ca3ef159a39f85482e892e03a2f">casadi::nlpsol</a></div><div class="ttdeci">Function nlpsol(const std::string &amp;name, const std::string &amp;solver, const Function &amp;nlp, const Dict &amp;opts)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d7a/nlpsol_8cpp_source.html#l00188">nlpsol.cpp:188</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00188">188</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                                                              {</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d4/d89/group__nlpsol.html#ga6a395ca3ef159a39f85482e892e03a2f">nlpsol</a>(name, solver, <a class="code" href="../../d7/d23/namespacecasadi.html#af1575561f3c36159ac74af8f4a22b0ba">external</a>(<span class="stringliteral">&quot;nlp&quot;</span>, compiler), opts);</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;  }</div>
+<div class="ttc" id="agroup__nlpsol_html_ga6a395ca3ef159a39f85482e892e03a2f"><div class="ttname"><a href="../../d4/d89/group__nlpsol.html#ga6a395ca3ef159a39f85482e892e03a2f">casadi::nlpsol</a></div><div class="ttdeci">Function nlpsol(const std::string &amp;name, const std::string &amp;solver, const Function &amp;nlp, const Dict &amp;opts)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d7a/nlpsol_8cpp_source.html#l00193">nlpsol.cpp:193</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_af1575561f3c36159ac74af8f4a22b0ba"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#af1575561f3c36159ac74af8f4a22b0ba">casadi::external</a></div><div class="ttdeci">Function external(const std::string &amp;name, const Importer &amp;li, const Dict &amp;opts)</div><div class="ttdoc">Load a just-in-time compiled external function.</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d89/external_8cpp_source.html#l00042">external.cpp:42</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../dd/d89/external_8cpp_source.html#l00042">casadi::external()</a>, and <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00115">casadi::nlpsol()</a>.</p>
+<p class="reference">References <a class="el" href="../../dd/d89/external_8cpp_source.html#l00042">casadi::external()</a>, and <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00120">casadi::nlpsol()</a>.</p>
 
 </div>
 </div>
@@ -1132,10 +1132,10 @@ List of plugins</h3>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00120">120</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                                                       {</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d23/namespacecasadi.html#ac526728a1c4a876d15c9e52390dc3985">construct_nlpsol</a>(name, solver, nlp, opts);</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00125">125</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                                                       {</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d23/namespacecasadi.html#ac526728a1c4a876d15c9e52390dc3985">construct_nlpsol</a>(name, solver, nlp, opts);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  }</div>
 <div class="ttc" id="anamespacecasadi_html_ac526728a1c4a876d15c9e52390dc3985"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#ac526728a1c4a876d15c9e52390dc3985">casadi::construct_nlpsol</a></div><div class="ttdeci">Function construct_nlpsol(const std::string &amp;name, const std::string &amp;solver, const std::map&lt; std::string, X &gt; &amp;nlp, const Dict &amp;opts)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d7a/nlpsol_8cpp_source.html#l00047">nlpsol.cpp:47</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00047">casadi::construct_nlpsol()</a>.</p>
@@ -1180,17 +1180,17 @@ List of plugins</h3>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00163">163</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                                                          {</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;     <a class="code" href="../../d7/d23/namespacecasadi.html#a019f74566993adb049bf3958e4a476ed">MXDict</a> nlp;</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;     nlp[<span class="stringliteral">&quot;x&quot;</span>] = vertcat(nl.x);</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;     nlp[<span class="stringliteral">&quot;f&quot;</span>] = nl.f;</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;     nlp[<span class="stringliteral">&quot;g&quot;</span>] = vertcat(nl.g);</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;     <span class="keywordflow">return</span> <a class="code" href="../../d4/d89/group__nlpsol.html#ga6a395ca3ef159a39f85482e892e03a2f">nlpsol</a>(name, solver, nlp, opts);</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  }</div>
-<div class="ttc" id="anamespacecasadi_html_a019f74566993adb049bf3958e4a476ed"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a019f74566993adb049bf3958e4a476ed">casadi::MXDict</a></div><div class="ttdeci">std::map&lt; std::string, MX &gt; MXDict</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dc6/mx_8hpp_source.html#l00943">mx.hpp:943</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00168">168</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                                                          {</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;     <a class="code" href="../../d7/d23/namespacecasadi.html#a019f74566993adb049bf3958e4a476ed">MXDict</a> nlp;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;     nlp[<span class="stringliteral">&quot;x&quot;</span>] = vertcat(nl.x);</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;     nlp[<span class="stringliteral">&quot;f&quot;</span>] = nl.f;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;     nlp[<span class="stringliteral">&quot;g&quot;</span>] = vertcat(nl.g);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;     <span class="keywordflow">return</span> <a class="code" href="../../d4/d89/group__nlpsol.html#ga6a395ca3ef159a39f85482e892e03a2f">nlpsol</a>(name, solver, nlp, opts);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  }</div>
+<div class="ttc" id="anamespacecasadi_html_a019f74566993adb049bf3958e4a476ed"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a019f74566993adb049bf3958e4a476ed">casadi::MXDict</a></div><div class="ttdeci">std::map&lt; std::string, MX &gt; MXDict</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dc6/mx_8hpp_source.html#l00948">mx.hpp:948</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d8/d4a/nlp__builder_8hpp_source.html#l00052">casadi::NlpBuilder::f</a>, <a class="el" href="../../d8/d4a/nlp__builder_8hpp_source.html#l00055">casadi::NlpBuilder::g</a>, <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00115">casadi::nlpsol()</a>, and <a class="el" href="../../d8/d4a/nlp__builder_8hpp_source.html#l00049">casadi::NlpBuilder::x</a>.</p>
+<p class="reference">References <a class="el" href="../../d8/d4a/nlp__builder_8hpp_source.html#l00052">casadi::NlpBuilder::f</a>, <a class="el" href="../../d8/d4a/nlp__builder_8hpp_source.html#l00055">casadi::NlpBuilder::g</a>, <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00120">casadi::nlpsol()</a>, and <a class="el" href="../../d8/d4a/nlp__builder_8hpp_source.html#l00049">casadi::NlpBuilder::x</a>.</p>
 
 </div>
 </div>
@@ -1232,18 +1232,18 @@ List of plugins</h3>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00172">172</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                                                            {</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="comment">// If fname ends with .c, JIT</span></div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keywordflow">if</span> (fname.size()&gt;2 &amp;&amp; fname.compare(fname.size()-2, fname.size(), <span class="stringliteral">&quot;.c&quot;</span>)==0) {</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;      Importer compiler(fname, <span class="stringliteral">&quot;clang&quot;</span>);</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="../../d4/d89/group__nlpsol.html#ga6a395ca3ef159a39f85482e892e03a2f">nlpsol</a>(name, solver, compiler, opts);</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="../../d4/d89/group__nlpsol.html#ga6a395ca3ef159a39f85482e892e03a2f">nlpsol</a>(name, solver, <a class="code" href="../../d7/d23/namespacecasadi.html#af1575561f3c36159ac74af8f4a22b0ba">external</a>(<span class="stringliteral">&quot;nlp&quot;</span>, fname), opts);</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    }</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00177">177</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                                                            {</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="comment">// If fname ends with .c, JIT</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <span class="keywordflow">if</span> (fname.size()&gt;2 &amp;&amp; fname.compare(fname.size()-2, fname.size(), <span class="stringliteral">&quot;.c&quot;</span>)==0) {</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;      Importer compiler(fname, <span class="stringliteral">&quot;clang&quot;</span>);</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="../../d4/d89/group__nlpsol.html#ga6a395ca3ef159a39f85482e892e03a2f">nlpsol</a>(name, solver, compiler, opts);</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="../../d4/d89/group__nlpsol.html#ga6a395ca3ef159a39f85482e892e03a2f">nlpsol</a>(name, solver, <a class="code" href="../../d7/d23/namespacecasadi.html#af1575561f3c36159ac74af8f4a22b0ba">external</a>(<span class="stringliteral">&quot;nlp&quot;</span>, fname), opts);</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    }</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../dd/d89/external_8cpp_source.html#l00042">casadi::external()</a>, and <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00115">casadi::nlpsol()</a>.</p>
+<p class="reference">References <a class="el" href="../../dd/d89/external_8cpp_source.html#l00042">casadi::external()</a>, and <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00120">casadi::nlpsol()</a>.</p>
 
 </div>
 </div>
@@ -1285,14 +1285,14 @@ List of plugins</h3>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00115">115</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                                                       {</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d23/namespacecasadi.html#ac526728a1c4a876d15c9e52390dc3985">construct_nlpsol</a>(name, solver, nlp, opts);</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00120">120</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                                                       {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d23/namespacecasadi.html#ac526728a1c4a876d15c9e52390dc3985">construct_nlpsol</a>(name, solver, nlp, opts);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00047">casadi::construct_nlpsol()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00047">casadi::construct_nlpsol()</a>, <a class="el" href="../../d7/daf/blocksqp_8cpp_source.html#l00231">casadi::Blocksqp::init()</a>, <a class="el" href="../../df/dc7/implicit__to__nlp_8cpp_source.html#l00067">casadi::ImplicitToNlp::init()</a>, <a class="el" href="../../dc/dfb/qp__to__nlp_8cpp_source.html#l00082">casadi::QpToNlp::init()</a>, <a class="el" href="../../dd/d07/integration__tools_8cpp_source.html#l01101">casadi::init_gen()</a>, <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00163">casadi::nlpsol()</a>, <a class="el" href="../../d3/db1/optistack__internal_8cpp_source.html#l00963">casadi::OptiNode::solve()</a>, and <a class="el" href="../../d3/db1/optistack__internal_8cpp_source.html#l01306">casadi::OptiNode::to_function()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00047">casadi::construct_nlpsol()</a>, <a class="el" href="../../d7/daf/blocksqp_8cpp_source.html#l00231">casadi::Blocksqp::init()</a>, <a class="el" href="../../df/dc7/implicit__to__nlp_8cpp_source.html#l00067">casadi::ImplicitToNlp::init()</a>, <a class="el" href="../../dc/dfb/qp__to__nlp_8cpp_source.html#l00082">casadi::QpToNlp::init()</a>, <a class="el" href="../../dd/d07/integration__tools_8cpp_source.html#l01101">casadi::init_gen()</a>, <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00168">casadi::nlpsol()</a>, and <a class="el" href="../../d3/db1/optistack__internal_8cpp_source.html#l00966">casadi::OptiNode::solver_construct()</a>.</p>
 
 </div>
 </div>
@@ -1312,16 +1312,16 @@ List of plugins</h3>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1t4">https://github.com/casadi/casadi/wiki/L_1t4</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00222">222</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                                        {</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    std::vector&lt;double&gt; ret(<a class="code" href="../../d4/d89/group__nlpsol.html#ga682bd205bd6e5f9bea46d4da97dd71c9">nlpsol_n_in</a>());</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i&lt;ret.size(); ++i) ret[i]=<a class="code" href="../../d4/d89/group__nlpsol.html#ga8bf35e0f812f6d6ec93f6358935262e9">nlpsol_default_in</a>(i);</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;  }</div>
-<div class="ttc" id="agroup__nlpsol_html_ga682bd205bd6e5f9bea46d4da97dd71c9"><div class="ttname"><a href="../../d4/d89/group__nlpsol.html#ga682bd205bd6e5f9bea46d4da97dd71c9">casadi::nlpsol_n_in</a></div><div class="ttdeci">casadi_int nlpsol_n_in()</div><div class="ttdoc">Number of NLP solver inputs.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d7a/nlpsol_8cpp_source.html#l00256">nlpsol.cpp:256</a></div></div>
-<div class="ttc" id="agroup__nlpsol_html_ga8bf35e0f812f6d6ec93f6358935262e9"><div class="ttname"><a href="../../d4/d89/group__nlpsol.html#ga8bf35e0f812f6d6ec93f6358935262e9">casadi::nlpsol_default_in</a></div><div class="ttdeci">std::vector&lt; double &gt; nlpsol_default_in()</div><div class="ttdoc">Default input for an NLP solver.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d7a/nlpsol_8cpp_source.html#l00222">nlpsol.cpp:222</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00227">227</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                                        {</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    std::vector&lt;double&gt; ret(<a class="code" href="../../d4/d89/group__nlpsol.html#ga682bd205bd6e5f9bea46d4da97dd71c9">nlpsol_n_in</a>());</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i&lt;ret.size(); ++i) ret[i]=<a class="code" href="../../d4/d89/group__nlpsol.html#ga8bf35e0f812f6d6ec93f6358935262e9">nlpsol_default_in</a>(i);</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;  }</div>
+<div class="ttc" id="agroup__nlpsol_html_ga682bd205bd6e5f9bea46d4da97dd71c9"><div class="ttname"><a href="../../d4/d89/group__nlpsol.html#ga682bd205bd6e5f9bea46d4da97dd71c9">casadi::nlpsol_n_in</a></div><div class="ttdeci">casadi_int nlpsol_n_in()</div><div class="ttdoc">Number of NLP solver inputs.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d7a/nlpsol_8cpp_source.html#l00261">nlpsol.cpp:261</a></div></div>
+<div class="ttc" id="agroup__nlpsol_html_ga8bf35e0f812f6d6ec93f6358935262e9"><div class="ttname"><a href="../../d4/d89/group__nlpsol.html#ga8bf35e0f812f6d6ec93f6358935262e9">casadi::nlpsol_default_in</a></div><div class="ttdeci">std::vector&lt; double &gt; nlpsol_default_in()</div><div class="ttdoc">Default input for an NLP solver.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d7a/nlpsol_8cpp_source.html#l00227">nlpsol.cpp:227</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00209">casadi::nlpsol_default_in()</a>, and <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00256">casadi::nlpsol_n_in()</a>.</p>
+<p class="reference">References <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00214">casadi::nlpsol_default_in()</a>, and <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00261">casadi::nlpsol_n_in()</a>.</p>
 
 </div>
 </div>
@@ -1342,19 +1342,19 @@ List of plugins</h3>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1t4">https://github.com/casadi/casadi/wiki/L_1t4</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00209">209</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                                           {</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="keywordflow">switch</span> (ind) {</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbdae9d011aa2fdf94fbbe5eebec79ad5822">NLPSOL_LBX</a>:</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbdac37c59e33d0a2f9bbbb188adfcb5b77d">NLPSOL_LBG</a>:</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;      <span class="keywordflow">return</span> -std::numeric_limits&lt;double&gt;::infinity();</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbda2c17e2a376d669e0faede2968c2f08b8">NLPSOL_UBX</a>:</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbda5cea7e68a52ab8f97bb283f7907e0aad">NLPSOL_UBG</a>:</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;      <span class="keywordflow">return</span> std::numeric_limits&lt;double&gt;::infinity();</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;      <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    }</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00214">214</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                                           {</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <span class="keywordflow">switch</span> (ind) {</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbdae9d011aa2fdf94fbbe5eebec79ad5822">NLPSOL_LBX</a>:</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbdac37c59e33d0a2f9bbbb188adfcb5b77d">NLPSOL_LBG</a>:</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;      <span class="keywordflow">return</span> -std::numeric_limits&lt;double&gt;::infinity();</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbda2c17e2a376d669e0faede2968c2f08b8">NLPSOL_UBX</a>:</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbda5cea7e68a52ab8f97bb283f7907e0aad">NLPSOL_UBG</a>:</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;      <span class="keywordflow">return</span> std::numeric_limits&lt;double&gt;::infinity();</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;      <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    }</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;  }</div>
 <div class="ttc" id="anamespacecasadi_html_a005c69a087f3feef721b15e709542dbda2c17e2a376d669e0faede2968c2f08b8"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbda2c17e2a376d669e0faede2968c2f08b8">casadi::NLPSOL_UBX</a></div><div class="ttdeci">@ NLPSOL_UBX</div><div class="ttdoc">Decision variables upper bound (nx x 1), default +inf.</div><div class="ttdef"><b>Definition:</b> <a href="../../db/db6/nlpsol_8hpp_source.html#l00202">nlpsol.hpp:202</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_a005c69a087f3feef721b15e709542dbda5cea7e68a52ab8f97bb283f7907e0aad"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbda5cea7e68a52ab8f97bb283f7907e0aad">casadi::NLPSOL_UBG</a></div><div class="ttdeci">@ NLPSOL_UBG</div><div class="ttdoc">Constraints upper bound (ng x 1), default +inf.</div><div class="ttdef"><b>Definition:</b> <a href="../../db/db6/nlpsol_8hpp_source.html#l00206">nlpsol.hpp:206</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_a005c69a087f3feef721b15e709542dbdac37c59e33d0a2f9bbbb188adfcb5b77d"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbdac37c59e33d0a2f9bbbb188adfcb5b77d">casadi::NLPSOL_LBG</a></div><div class="ttdeci">@ NLPSOL_LBG</div><div class="ttdoc">Constraints lower bound (ng x 1), default -inf.</div><div class="ttdef"><b>Definition:</b> <a href="../../db/db6/nlpsol_8hpp_source.html#l00204">nlpsol.hpp:204</a></div></div>
@@ -1362,7 +1362,7 @@ List of plugins</h3>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../db/db6/nlpsol_8hpp_source.html#l00204">casadi::NLPSOL_LBG</a>, <a class="el" href="../../db/db6/nlpsol_8hpp_source.html#l00200">casadi::NLPSOL_LBX</a>, <a class="el" href="../../db/db6/nlpsol_8hpp_source.html#l00206">casadi::NLPSOL_UBG</a>, and <a class="el" href="../../db/db6/nlpsol_8hpp_source.html#l00202">casadi::NLPSOL_UBX</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../da/dce/nlpsol__impl_8hpp_source.html#l00199">casadi::Nlpsol::get_default_in()</a>, <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00222">casadi::nlpsol_default_in()</a>, and <a class="el" href="../../df/d70/conic_8cpp_source.html#l00111">casadi::qpsol_nlp()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../da/dce/nlpsol__impl_8hpp_source.html#l00199">casadi::Nlpsol::get_default_in()</a>, <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00227">casadi::nlpsol_default_in()</a>, and <a class="el" href="../../df/d70/conic_8cpp_source.html#l00111">casadi::qpsol_nlp()</a>.</p>
 
 </div>
 </div>
@@ -1382,15 +1382,15 @@ List of plugins</h3>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1sy">https://github.com/casadi/casadi/wiki/L_1sy</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00197">197</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                                   {</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    std::vector&lt;std::string&gt; ret(<a class="code" href="../../d4/d89/group__nlpsol.html#ga682bd205bd6e5f9bea46d4da97dd71c9">nlpsol_n_in</a>());</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i&lt;ret.size(); ++i) ret[i]=<a class="code" href="../../d4/d89/group__nlpsol.html#ga0ffc3a6169a50a8e0dc1730fa5ea1cc1">nlpsol_in</a>(i);</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  }</div>
-<div class="ttc" id="agroup__nlpsol_html_ga0ffc3a6169a50a8e0dc1730fa5ea1cc1"><div class="ttname"><a href="../../d4/d89/group__nlpsol.html#ga0ffc3a6169a50a8e0dc1730fa5ea1cc1">casadi::nlpsol_in</a></div><div class="ttdeci">std::string nlpsol_in(casadi_int ind)</div><div class="ttdoc">Get NLP solver input scheme name by index.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d7a/nlpsol_8cpp_source.html#l00228">nlpsol.cpp:228</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00202">202</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                                   {</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    std::vector&lt;std::string&gt; ret(<a class="code" href="../../d4/d89/group__nlpsol.html#ga682bd205bd6e5f9bea46d4da97dd71c9">nlpsol_n_in</a>());</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i&lt;ret.size(); ++i) ret[i]=<a class="code" href="../../d4/d89/group__nlpsol.html#ga0ffc3a6169a50a8e0dc1730fa5ea1cc1">nlpsol_in</a>(i);</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;  }</div>
+<div class="ttc" id="agroup__nlpsol_html_ga0ffc3a6169a50a8e0dc1730fa5ea1cc1"><div class="ttname"><a href="../../d4/d89/group__nlpsol.html#ga0ffc3a6169a50a8e0dc1730fa5ea1cc1">casadi::nlpsol_in</a></div><div class="ttdeci">std::string nlpsol_in(casadi_int ind)</div><div class="ttdoc">Get NLP solver input scheme name by index.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d7a/nlpsol_8cpp_source.html#l00233">nlpsol.cpp:233</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00256">casadi::nlpsol_n_in()</a>.</p>
+<p class="reference">References <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00261">casadi::nlpsol_n_in()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="../../da/dce/nlpsol__impl_8hpp_source.html#l00156">casadi::Nlpsol::get_name_in()</a>, and <a class="el" href="../../df/d70/conic_8cpp_source.html#l00111">casadi::qpsol_nlp()</a>.</p>
 
@@ -1413,21 +1413,21 @@ List of plugins</h3>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1t0">https://github.com/casadi/casadi/wiki/L_1t0</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00228">228</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                                      {</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <span class="keywordflow">switch</span> (<span class="keyword">static_cast&lt;</span><a class="code" href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbd">NlpsolInput</a><span class="keyword">&gt;</span>(ind)) {</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbda387b5d29d9496aac3b5f9199eac75b9f">NLPSOL_X0</a>:     <span class="keywordflow">return</span> <span class="stringliteral">&quot;x0&quot;</span>;</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbda05a8c513dcf976a155a8f58525341da1">NLPSOL_P</a>:      <span class="keywordflow">return</span> <span class="stringliteral">&quot;p&quot;</span>;</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbdae9d011aa2fdf94fbbe5eebec79ad5822">NLPSOL_LBX</a>:    <span class="keywordflow">return</span> <span class="stringliteral">&quot;lbx&quot;</span>;</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbda2c17e2a376d669e0faede2968c2f08b8">NLPSOL_UBX</a>:    <span class="keywordflow">return</span> <span class="stringliteral">&quot;ubx&quot;</span>;</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbdac37c59e33d0a2f9bbbb188adfcb5b77d">NLPSOL_LBG</a>:    <span class="keywordflow">return</span> <span class="stringliteral">&quot;lbg&quot;</span>;</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbda5cea7e68a52ab8f97bb283f7907e0aad">NLPSOL_UBG</a>:    <span class="keywordflow">return</span> <span class="stringliteral">&quot;ubg&quot;</span>;</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbda6ed0f5b3642d1f7d9c2d81e6eca877f9">NLPSOL_LAM_X0</a>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;lam_x0&quot;</span>;</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbda502b1c66fdf9833766466cf90ed24e9e">NLPSOL_LAM_G0</a>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;lam_g0&quot;</span>;</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbdaa7b8738e302f4d207876486d0e58fab1">NLPSOL_NUM_IN</a>: <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    }</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <span class="keywordflow">return</span> std::string();</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00233">233</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                                      {</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <span class="keywordflow">switch</span> (<span class="keyword">static_cast&lt;</span><a class="code" href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbd">NlpsolInput</a><span class="keyword">&gt;</span>(ind)) {</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbda387b5d29d9496aac3b5f9199eac75b9f">NLPSOL_X0</a>:     <span class="keywordflow">return</span> <span class="stringliteral">&quot;x0&quot;</span>;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbda05a8c513dcf976a155a8f58525341da1">NLPSOL_P</a>:      <span class="keywordflow">return</span> <span class="stringliteral">&quot;p&quot;</span>;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbdae9d011aa2fdf94fbbe5eebec79ad5822">NLPSOL_LBX</a>:    <span class="keywordflow">return</span> <span class="stringliteral">&quot;lbx&quot;</span>;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbda2c17e2a376d669e0faede2968c2f08b8">NLPSOL_UBX</a>:    <span class="keywordflow">return</span> <span class="stringliteral">&quot;ubx&quot;</span>;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbdac37c59e33d0a2f9bbbb188adfcb5b77d">NLPSOL_LBG</a>:    <span class="keywordflow">return</span> <span class="stringliteral">&quot;lbg&quot;</span>;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbda5cea7e68a52ab8f97bb283f7907e0aad">NLPSOL_UBG</a>:    <span class="keywordflow">return</span> <span class="stringliteral">&quot;ubg&quot;</span>;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbda6ed0f5b3642d1f7d9c2d81e6eca877f9">NLPSOL_LAM_X0</a>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;lam_x0&quot;</span>;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbda502b1c66fdf9833766466cf90ed24e9e">NLPSOL_LAM_G0</a>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;lam_g0&quot;</span>;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbdaa7b8738e302f4d207876486d0e58fab1">NLPSOL_NUM_IN</a>: <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    }</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    <span class="keywordflow">return</span> std::string();</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;  }</div>
 <div class="ttc" id="anamespacecasadi_html_a005c69a087f3feef721b15e709542dbd"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbd">casadi::NlpsolInput</a></div><div class="ttdeci">NlpsolInput</div><div class="ttdoc">Input arguments of an NLP Solver.</div><div class="ttdef"><b>Definition:</b> <a href="../../db/db6/nlpsol_8hpp_source.html#l00194">nlpsol.hpp:194</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_a005c69a087f3feef721b15e709542dbda05a8c513dcf976a155a8f58525341da1"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbda05a8c513dcf976a155a8f58525341da1">casadi::NLPSOL_P</a></div><div class="ttdeci">@ NLPSOL_P</div><div class="ttdoc">Value of fixed parameters (np x 1)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/db6/nlpsol_8hpp_source.html#l00198">nlpsol.hpp:198</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_a005c69a087f3feef721b15e709542dbda387b5d29d9496aac3b5f9199eac75b9f"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbda387b5d29d9496aac3b5f9199eac75b9f">casadi::NLPSOL_X0</a></div><div class="ttdeci">@ NLPSOL_X0</div><div class="ttdoc">Decision variables, initial guess (nx x 1)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/db6/nlpsol_8hpp_source.html#l00196">nlpsol.hpp:196</a></div></div>
@@ -1455,14 +1455,14 @@ List of plugins</h3>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1t2">https://github.com/casadi/casadi/wiki/L_1t2</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00256">256</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                           {</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbdaa7b8738e302f4d207876486d0e58fab1">NLPSOL_NUM_IN</a>;</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00261">261</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                           {</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a005c69a087f3feef721b15e709542dbdaa7b8738e302f4d207876486d0e58fab1">NLPSOL_NUM_IN</a>;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;  }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../db/db6/nlpsol_8hpp_source.html#l00211">casadi::NLPSOL_NUM_IN</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00222">casadi::nlpsol_default_in()</a>, and <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00197">casadi::nlpsol_in()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00227">casadi::nlpsol_default_in()</a>, and <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00202">casadi::nlpsol_in()</a>.</p>
 
 </div>
 </div>
@@ -1482,15 +1482,15 @@ List of plugins</h3>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1t3">https://github.com/casadi/casadi/wiki/L_1t3</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00260">260</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                            {</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a0c9f527029c5cabeb1bc3abd4df6ef88a4fa6c991040498292da36b1af975cae6">NLPSOL_NUM_OUT</a>;</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00265">265</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                            {</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a0c9f527029c5cabeb1bc3abd4df6ef88a4fa6c991040498292da36b1af975cae6">NLPSOL_NUM_OUT</a>;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;  }</div>
 <div class="ttc" id="anamespacecasadi_html_a0c9f527029c5cabeb1bc3abd4df6ef88a4fa6c991040498292da36b1af975cae6"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a0c9f527029c5cabeb1bc3abd4df6ef88a4fa6c991040498292da36b1af975cae6">casadi::NLPSOL_NUM_OUT</a></div><div class="ttdeci">@ NLPSOL_NUM_OUT</div><div class="ttdef"><b>Definition:</b> <a href="../../db/db6/nlpsol_8hpp_source.html#l00229">nlpsol.hpp:228</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../db/db6/nlpsol_8hpp_source.html#l00228">casadi::NLPSOL_NUM_OUT</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00203">casadi::nlpsol_out()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00208">casadi::nlpsol_out()</a>.</p>
 
 </div>
 </div>
@@ -1521,10 +1521,10 @@ List of plugins</h3>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1t7">https://github.com/casadi/casadi/wiki/L_1t7</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00828">828</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;                                                                           {</div>
-<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;    <span class="keywordflow">return</span> Nlpsol::plugin_options(name).info(op);</div>
-<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00833">833</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;                                                                           {</div>
+<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;    <span class="keywordflow">return</span> Nlpsol::plugin_options(name).info(op);</div>
+<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;  }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d5/d1e/options_8cpp_source.html#l00284">casadi::Options::info()</a>, and <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00149">casadi::PluginInterface&lt; Nlpsol &gt;::plugin_options()</a>.</p>
 
@@ -1557,10 +1557,10 @@ List of plugins</h3>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1t6">https://github.com/casadi/casadi/wiki/L_1t6</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00824">824</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;                                                                           {</div>
-<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;    <span class="keywordflow">return</span> Nlpsol::plugin_options(name).type(op);</div>
-<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00829">829</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;                                                                           {</div>
+<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;    <span class="keywordflow">return</span> Nlpsol::plugin_options(name).type(op);</div>
+<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;  }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00149">casadi::PluginInterface&lt; Nlpsol &gt;::plugin_options()</a>, and <a class="el" href="../../d5/d1e/options_8cpp_source.html#l00278">casadi::Options::type()</a>.</p>
 
@@ -1583,10 +1583,10 @@ List of plugins</h3>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1t5">https://github.com/casadi/casadi/wiki/L_1t5</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00820">820</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;                                                             {</div>
-<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;    <span class="keywordflow">return</span> Nlpsol::plugin_options(name).all();</div>
-<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00825">825</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;                                                             {</div>
+<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;    <span class="keywordflow">return</span> Nlpsol::plugin_options(name).all();</div>
+<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;  }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d5/d1e/options_8cpp_source.html#l00272">casadi::Options::all()</a>, and <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00149">casadi::PluginInterface&lt; Nlpsol &gt;::plugin_options()</a>.</p>
 
@@ -1610,18 +1610,18 @@ List of plugins</h3>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1sz">https://github.com/casadi/casadi/wiki/L_1sz</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00203">203</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                                    {</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    std::vector&lt;std::string&gt; ret(<a class="code" href="../../d4/d89/group__nlpsol.html#gae6f95c81c5bf3d1fff41e3a2a08d05e5">nlpsol_n_out</a>());</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i&lt;ret.size(); ++i) ret[i]=<a class="code" href="../../d4/d89/group__nlpsol.html#gad353f2f3ac89c4951ba15cf5d84851c7">nlpsol_out</a>(i);</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;  }</div>
-<div class="ttc" id="agroup__nlpsol_html_gad353f2f3ac89c4951ba15cf5d84851c7"><div class="ttname"><a href="../../d4/d89/group__nlpsol.html#gad353f2f3ac89c4951ba15cf5d84851c7">casadi::nlpsol_out</a></div><div class="ttdeci">std::string nlpsol_out(casadi_int ind)</div><div class="ttdoc">Get output scheme name by index.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d7a/nlpsol_8cpp_source.html#l00243">nlpsol.cpp:243</a></div></div>
-<div class="ttc" id="agroup__nlpsol_html_gae6f95c81c5bf3d1fff41e3a2a08d05e5"><div class="ttname"><a href="../../d4/d89/group__nlpsol.html#gae6f95c81c5bf3d1fff41e3a2a08d05e5">casadi::nlpsol_n_out</a></div><div class="ttdeci">casadi_int nlpsol_n_out()</div><div class="ttdoc">Number of NLP solver outputs.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d7a/nlpsol_8cpp_source.html#l00260">nlpsol.cpp:260</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00208">208</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                                    {</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    std::vector&lt;std::string&gt; ret(<a class="code" href="../../d4/d89/group__nlpsol.html#gae6f95c81c5bf3d1fff41e3a2a08d05e5">nlpsol_n_out</a>());</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i&lt;ret.size(); ++i) ret[i]=<a class="code" href="../../d4/d89/group__nlpsol.html#gad353f2f3ac89c4951ba15cf5d84851c7">nlpsol_out</a>(i);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;  }</div>
+<div class="ttc" id="agroup__nlpsol_html_gad353f2f3ac89c4951ba15cf5d84851c7"><div class="ttname"><a href="../../d4/d89/group__nlpsol.html#gad353f2f3ac89c4951ba15cf5d84851c7">casadi::nlpsol_out</a></div><div class="ttdeci">std::string nlpsol_out(casadi_int ind)</div><div class="ttdoc">Get output scheme name by index.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d7a/nlpsol_8cpp_source.html#l00248">nlpsol.cpp:248</a></div></div>
+<div class="ttc" id="agroup__nlpsol_html_gae6f95c81c5bf3d1fff41e3a2a08d05e5"><div class="ttname"><a href="../../d4/d89/group__nlpsol.html#gae6f95c81c5bf3d1fff41e3a2a08d05e5">casadi::nlpsol_n_out</a></div><div class="ttdeci">casadi_int nlpsol_n_out()</div><div class="ttdoc">Number of NLP solver outputs.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d7a/nlpsol_8cpp_source.html#l00265">nlpsol.cpp:265</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00260">casadi::nlpsol_n_out()</a>.</p>
+<p class="reference">References <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00265">casadi::nlpsol_n_out()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../da/dce/nlpsol__impl_8hpp_source.html#l00157">casadi::Nlpsol::get_name_out()</a>, <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00417">casadi::Nlpsol::init()</a>, and <a class="el" href="../../df/d70/conic_8cpp_source.html#l00111">casadi::qpsol_nlp()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../da/dce/nlpsol__impl_8hpp_source.html#l00157">casadi::Nlpsol::get_name_out()</a>, <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00422">casadi::Nlpsol::init()</a>, and <a class="el" href="../../df/d70/conic_8cpp_source.html#l00111">casadi::qpsol_nlp()</a>.</p>
 
 </div>
 </div>
@@ -1642,19 +1642,19 @@ List of plugins</h3>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1t1">https://github.com/casadi/casadi/wiki/L_1t1</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00243">243</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                                       {</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    <span class="keywordflow">switch</span> (<span class="keyword">static_cast&lt;</span><a class="code" href="../../d7/d23/namespacecasadi.html#a0c9f527029c5cabeb1bc3abd4df6ef88">NlpsolOutput</a><span class="keyword">&gt;</span>(ind)) {</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a0c9f527029c5cabeb1bc3abd4df6ef88a25c9a05790cfda36988f55b0ae6fb930">NLPSOL_X</a>:     <span class="keywordflow">return</span> <span class="stringliteral">&quot;x&quot;</span>;</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a0c9f527029c5cabeb1bc3abd4df6ef88adacdcb60aa0ee7eb70f2a0885716ac30">NLPSOL_F</a>:     <span class="keywordflow">return</span> <span class="stringliteral">&quot;f&quot;</span>;</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a0c9f527029c5cabeb1bc3abd4df6ef88a25b4e82fbf9228b128d89068aa0a87b3">NLPSOL_G</a>:     <span class="keywordflow">return</span> <span class="stringliteral">&quot;g&quot;</span>;</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a0c9f527029c5cabeb1bc3abd4df6ef88afce210d8abfcbf6789cc30c5937479d1">NLPSOL_LAM_X</a>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;lam_x&quot;</span>;</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a0c9f527029c5cabeb1bc3abd4df6ef88af272e525bfc416a532d6f7dcc909a994">NLPSOL_LAM_G</a>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;lam_g&quot;</span>;</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a0c9f527029c5cabeb1bc3abd4df6ef88aa51b5184eaba9bf79a274a16ec73aa3d">NLPSOL_LAM_P</a>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;lam_p&quot;</span>;</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a0c9f527029c5cabeb1bc3abd4df6ef88a4fa6c991040498292da36b1af975cae6">NLPSOL_NUM_OUT</a>: <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    }</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <span class="keywordflow">return</span> std::string();</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00248">248</a> of file <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html">nlpsol.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                                       {</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="keywordflow">switch</span> (<span class="keyword">static_cast&lt;</span><a class="code" href="../../d7/d23/namespacecasadi.html#a0c9f527029c5cabeb1bc3abd4df6ef88">NlpsolOutput</a><span class="keyword">&gt;</span>(ind)) {</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a0c9f527029c5cabeb1bc3abd4df6ef88a25c9a05790cfda36988f55b0ae6fb930">NLPSOL_X</a>:     <span class="keywordflow">return</span> <span class="stringliteral">&quot;x&quot;</span>;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a0c9f527029c5cabeb1bc3abd4df6ef88adacdcb60aa0ee7eb70f2a0885716ac30">NLPSOL_F</a>:     <span class="keywordflow">return</span> <span class="stringliteral">&quot;f&quot;</span>;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a0c9f527029c5cabeb1bc3abd4df6ef88a25b4e82fbf9228b128d89068aa0a87b3">NLPSOL_G</a>:     <span class="keywordflow">return</span> <span class="stringliteral">&quot;g&quot;</span>;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a0c9f527029c5cabeb1bc3abd4df6ef88afce210d8abfcbf6789cc30c5937479d1">NLPSOL_LAM_X</a>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;lam_x&quot;</span>;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a0c9f527029c5cabeb1bc3abd4df6ef88af272e525bfc416a532d6f7dcc909a994">NLPSOL_LAM_G</a>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;lam_g&quot;</span>;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a0c9f527029c5cabeb1bc3abd4df6ef88aa51b5184eaba9bf79a274a16ec73aa3d">NLPSOL_LAM_P</a>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;lam_p&quot;</span>;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a0c9f527029c5cabeb1bc3abd4df6ef88a4fa6c991040498292da36b1af975cae6">NLPSOL_NUM_OUT</a>: <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    }</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <span class="keywordflow">return</span> std::string();</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;  }</div>
 <div class="ttc" id="anamespacecasadi_html_a0c9f527029c5cabeb1bc3abd4df6ef88"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a0c9f527029c5cabeb1bc3abd4df6ef88">casadi::NlpsolOutput</a></div><div class="ttdeci">NlpsolOutput</div><div class="ttdoc">Output arguments of an NLP Solver.</div><div class="ttdef"><b>Definition:</b> <a href="../../db/db6/nlpsol_8hpp_source.html#l00215">nlpsol.hpp:215</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_a0c9f527029c5cabeb1bc3abd4df6ef88a25b4e82fbf9228b128d89068aa0a87b3"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a0c9f527029c5cabeb1bc3abd4df6ef88a25b4e82fbf9228b128d89068aa0a87b3">casadi::NLPSOL_G</a></div><div class="ttdeci">@ NLPSOL_G</div><div class="ttdoc">Constraints function at the optimal solution (ng x 1)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/db6/nlpsol_8hpp_source.html#l00221">nlpsol.hpp:221</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_a0c9f527029c5cabeb1bc3abd4df6ef88a25c9a05790cfda36988f55b0ae6fb930"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a0c9f527029c5cabeb1bc3abd4df6ef88a25c9a05790cfda36988f55b0ae6fb930">casadi::NLPSOL_X</a></div><div class="ttdeci">@ NLPSOL_X</div><div class="ttdoc">Decision variables at the optimal solution (nx x 1)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/db6/nlpsol_8hpp_source.html#l00217">nlpsol.hpp:217</a></div></div>
