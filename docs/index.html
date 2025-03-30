@@ -113,10 +113,10 @@
         <nav class="nav-side">
           <p class="caption"><span class="caption-text">See also:</span></p>
 <ul>
-  <li><a href="https://github.com/casadi/casadi/releases/download/3.6.7/casadi-users_guide-v3.6.7.pdf">PDF version</a></li>
+  <li><a href="https://github.com/casadi/casadi/releases/download/3.7.0/casadi-users_guide-v3.7.0.pdf">PDF version</a></li>
   <li><a href="../api/html/">C++ API</a></li>
   <li><a href="../python-api">Python API</a></li>
-  <li><a href="https://github.com/casadi/casadi/releases/download/3.6.7/casadi-example_pack-v3.6.7.zip">Example pack</a></li>
+  <li><a href="https://github.com/casadi/casadi/releases/download/3.7.0/casadi-example_pack-v3.7.0.zip">Example pack</a></li>
 </ul>  
 </p>
 
@@ -169,9 +169,14 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#document-daebuilder">7. The <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> class</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#constructing-a-daebuilder-instance">7.1. Constructing a <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> instance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#symbolic-import-of-ocps-from-modelica">7.2. Symbolic import of OCPs from Modelica</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#function-factory">7.3. Function factory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#daebuilder-model-variables-and-their-categorization">7.1. <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> model variables and their categorization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#daebuilder-model-equations">7.2. <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> model equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#constructing-a-daebuilder-instance-symbolically">7.3. Constructing a <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> instance symbolically</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-a-daebuilder-instance-from-modelica-symbolically">7.4. Creating a <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> instance from Modelica, symbolically</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#constructing-a-daebuilder-instance-from-an-fmu">7.5. Constructing a <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> instance from an FMU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hybrid-modeling-with-daebuilder">7.6. Hybrid modeling with <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reformulating-a-model">7.7. Reformulating a model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#evaluating-model-equations-function-factory">7.8. Evaluating model equations, function factory</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#document-ocp">8. Optimal control with CasADi</a><ul>
@@ -1562,7 +1567,7 @@ The syntax for this, assuming <span class="math notranslate nohighlight">\(n=m=1
 <span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>G:(i0,i1)-&gt;(o0,o1) Newton
+<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>G:(i00,i1)-&gt;(i0,o1) Newton
 </pre></div>
 </div>
 </div>
@@ -1576,7 +1581,7 @@ The syntax for this, assuming <span class="math notranslate nohighlight">\(n=m=1
 <span class="nb">disp</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>G:(i0,i1)-&gt;(o0,o1) Newton
+<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>G:(i00,i1)-&gt;(i0,o1) Newton
 </pre></div>
 </div>
 </div>
@@ -1788,12 +1793,12 @@ Total seconds in IPOPT                               = 0.008
 
 EXIT: Optimal Solution Found.
            S  :   t_proc      (avg)   t_wall      (avg)    n_eval
-       nlp_f  |  68.00us (  6.18us)  15.80us (  1.44us)        11
-       nlp_g  | 138.00us ( 12.55us)  31.40us (  2.85us)        11
-  nlp_grad_f  |  92.00us (  7.67us)  22.05us (  1.84us)        12
-  nlp_hess_l  |  75.00us (  7.50us)  15.63us (  1.56us)        10
-   nlp_jac_g  |  77.00us (  6.42us)  17.84us (  1.49us)        12
-       total  |  32.81ms ( 32.81ms)   8.21ms (  8.21ms)         1
+       nlp_f  |  66.00us (  6.00us)  15.24us (  1.39us)        11
+       nlp_g  | 151.00us ( 13.73us)  35.12us (  3.19us)        11
+  nlp_grad_f  |  91.00us (  7.58us)  22.62us (  1.89us)        12
+  nlp_hess_l  |  64.00us (  6.40us)  16.03us (  1.60us)        10
+   nlp_jac_g  |  68.00us (  5.67us)  17.40us (  1.45us)        12
+       total  |  33.49ms ( 33.49ms)   8.38ms (  8.38ms)         1
 x_opt:  [0, 1, 0]
 </pre></div>
 </div>
@@ -1857,12 +1862,12 @@ Total seconds in IPOPT                               = 0.008
 
 EXIT: Optimal Solution Found.
            S  :   t_proc      (avg)   t_wall      (avg)    n_eval
-       nlp_f  |  64.00us (  5.82us)  16.07us (  1.46us)        11
-       nlp_g  | 146.00us ( 13.27us)  33.20us (  3.02us)        11
-  nlp_grad_f  | 100.00us (  8.33us)  22.84us (  1.90us)        12
-  nlp_hess_l  |  70.00us (  7.00us)  16.37us (  1.64us)        10
-   nlp_jac_g  |  77.00us (  6.42us)  18.80us (  1.57us)        12
-       total  |  37.20ms ( 37.20ms)   9.38ms (  9.38ms)         1
+       nlp_f  |  67.00us (  6.09us)  16.00us (  1.45us)        11
+       nlp_g  | 217.00us ( 19.73us)  35.21us (  3.20us)        11
+  nlp_grad_f  | 100.00us (  8.33us)  23.50us (  1.96us)        12
+  nlp_hess_l  |  72.00us (  7.20us)  17.46us (  1.75us)        10
+   nlp_jac_g  |  76.00us (  6.33us)  18.65us (  1.55us)        12
+       total  |  36.49ms ( 36.49ms)   9.19ms (  9.19ms)         1
 [0, 1, 0]
 </pre></div>
 </div>
@@ -2311,7 +2316,7 @@ self-contained C-code for a large subset of function objects.</p>
 <span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;gen.c&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>/* This file was automatically generated by CasADi 3.6.7.
+<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>/* This file was automatically generated by CasADi 3.7.0.
  *  It consists of: 
  *   1) content generated by CasADi runtime: not copyrighted
  *   2) template code copied from CasADi source: permissively licensed (MIT-0)
@@ -2373,15 +2378,14 @@ void casadi_copy(const casadi_real* x, casadi_int n, casadi_real* y) {
   }
 }
 
-static const casadi_int casadi_s0[6] = {2, 1, 0, 2, 0, 1};
-static const casadi_int casadi_s1[5] = {1, 1, 0, 1, 0};
+static const casadi_int casadi_s0[3] = {2, 1, 1};
+static const casadi_int casadi_s1[3] = {1, 1, 1};
 
 /* f:(x[2],y)-&gt;(r[2],q[2]) */
 static int casadi_f0(const casadi_real** arg, casadi_real** res, casadi_int* iw, casadi_real* w, int mem) {
   casadi_int i;
-  casadi_real *rr;
+  casadi_real *rr, *w0=w+0, w1;
   const casadi_real *cs;
-  casadi_real *w0=w+0, w1;
   /* #0: @0 = input[0][0] */
   casadi_copy(arg[0], 2, w0);
   /* #1: output[0][0] = @0 */
@@ -2498,186 +2502,6 @@ CASADI_SYMBOL_EXPORT int f_work_bytes(casadi_int *sz_arg, casadi_int* sz_res, ca
       <span class="p">{</span><span class="n">x</span><span class="p">,</span><span class="nb">sin</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="p">},...</span>
       <span class="p">{</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="s">&#39;y&#39;</span><span class="p">},{</span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="s">&#39;q&#39;</span><span class="p">});</span>
 <span class="n">f</span><span class="p">.</span><span class="n">generate</span><span class="p">(</span><span class="s">&#39;gen.c&#39;</span><span class="p">);</span>
-<span class="nb">type</span><span class="p">(</span><span class="s">&#39;gen.c&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>/* This file was automatically generated by CasADi 3.6.7.
- *  It consists of: 
- *   1) content generated by CasADi runtime: not copyrighted
- *   2) template code copied from CasADi source: permissively licensed (MIT-0)
- *   3) user code: owned by the user
- *
- */
-#ifdef __cplusplus
-extern &quot;C&quot; {
-#endif
-
-/* How to prefix internal symbols */
-#ifdef CASADI_CODEGEN_PREFIX
-  #define CASADI_NAMESPACE_CONCAT(NS, ID) _CASADI_NAMESPACE_CONCAT(NS, ID)
-  #define _CASADI_NAMESPACE_CONCAT(NS, ID) NS ## ID
-  #define CASADI_PREFIX(ID) CASADI_NAMESPACE_CONCAT(CODEGEN_PREFIX, ID)
-#else
-  #define CASADI_PREFIX(ID) gen_ ## ID
-#endif
-
-#include &lt;math.h&gt;
-
-#ifndef casadi_real
-#define casadi_real double
-#endif
-
-#ifndef casadi_int
-#define casadi_int long long int
-#endif
-
-/* Add prefix to internal symbols */
-#define casadi_copy CASADI_PREFIX(copy)
-#define casadi_f0 CASADI_PREFIX(f0)
-#define casadi_s0 CASADI_PREFIX(s0)
-#define casadi_s1 CASADI_PREFIX(s1)
-
-/* Symbol visibility in DLLs */
-#ifndef CASADI_SYMBOL_EXPORT
-  #if defined(_WIN32) || defined(__WIN32__) || defined(__CYGWIN__)
-    #if defined(STATIC_LINKED)
-      #define CASADI_SYMBOL_EXPORT
-    #else
-      #define CASADI_SYMBOL_EXPORT __declspec(dllexport)
-    #endif
-  #elif defined(__GNUC__) &amp;&amp; defined(GCC_HASCLASSVISIBILITY)
-    #define CASADI_SYMBOL_EXPORT __attribute__ ((visibility (&quot;default&quot;)))
-  #else
-    #define CASADI_SYMBOL_EXPORT
-  #endif
-#endif
-
-void casadi_copy(const casadi_real* x, casadi_int n, casadi_real* y) {
-  casadi_int i;
-  if (y) {
-    if (x) {
-      for (i=0; i&lt;n; ++i) *y++ = *x++;
-    } else {
-      for (i=0; i&lt;n; ++i) *y++ = 0.;
-    }
-  }
-}
-
-static const casadi_int casadi_s0[6] = {2, 1, 0, 2, 0, 1};
-static const casadi_int casadi_s1[5] = {1, 1, 0, 1, 0};
-
-/* f:(x[2],y)-&gt;(r[2],q[2]) */
-static int casadi_f0(const casadi_real** arg, casadi_real** res, casadi_int* iw, casadi_real* w, int mem) {
-  casadi_int i;
-  casadi_real *rr;
-  const casadi_real *cs;
-  casadi_real *w0=w+0, w1;
-  /* #0: @0 = input[0][0] */
-  casadi_copy(arg[0], 2, w0);
-  /* #1: output[0][0] = @0 */
-  casadi_copy(w0, 2, res[0]);
-  /* #2: @1 = input[1][0] */
-  w1 = arg[1] ? arg[1][0] : 0;
-  /* #3: @1 = sin(@1) */
-  w1 = sin( w1 );
-  /* #4: @0 = (@1*@0) */
-  for (i=0, rr=w0, cs=w0; i&lt;2; ++i) (*rr++)  = (w1*(*cs++));
-  /* #5: output[1][0] = @0 */
-  casadi_copy(w0, 2, res[1]);
-  return 0;
-}
-
-CASADI_SYMBOL_EXPORT int f(const casadi_real** arg, casadi_real** res, casadi_int* iw, casadi_real* w, int mem){
-  return casadi_f0(arg, res, iw, w, mem);
-}
-
-CASADI_SYMBOL_EXPORT int f_alloc_mem(void) {
-  return 0;
-}
-
-CASADI_SYMBOL_EXPORT int f_init_mem(int mem) {
-  return 0;
-}
-
-CASADI_SYMBOL_EXPORT void f_free_mem(int mem) {
-}
-
-CASADI_SYMBOL_EXPORT int f_checkout(void) {
-  return 0;
-}
-
-CASADI_SYMBOL_EXPORT void f_release(int mem) {
-}
-
-CASADI_SYMBOL_EXPORT void f_incref(void) {
-}
-
-CASADI_SYMBOL_EXPORT void f_decref(void) {
-}
-
-CASADI_SYMBOL_EXPORT casadi_int f_n_in(void) { return 2;}
-
-CASADI_SYMBOL_EXPORT casadi_int f_n_out(void) { return 2;}
-
-CASADI_SYMBOL_EXPORT casadi_real f_default_in(casadi_int i) {
-  switch (i) {
-    default: return 0;
-  }
-}
-
-CASADI_SYMBOL_EXPORT const char* f_name_in(casadi_int i) {
-  switch (i) {
-    case 0: return &quot;x&quot;;
-    case 1: return &quot;y&quot;;
-    default: return 0;
-  }
-}
-
-CASADI_SYMBOL_EXPORT const char* f_name_out(casadi_int i) {
-  switch (i) {
-    case 0: return &quot;r&quot;;
-    case 1: return &quot;q&quot;;
-    default: return 0;
-  }
-}
-
-CASADI_SYMBOL_EXPORT const casadi_int* f_sparsity_in(casadi_int i) {
-  switch (i) {
-    case 0: return casadi_s0;
-    case 1: return casadi_s1;
-    default: return 0;
-  }
-}
-
-CASADI_SYMBOL_EXPORT const casadi_int* f_sparsity_out(casadi_int i) {
-  switch (i) {
-    case 0: return casadi_s0;
-    case 1: return casadi_s0;
-    default: return 0;
-  }
-}
-
-CASADI_SYMBOL_EXPORT int f_work(casadi_int *sz_arg, casadi_int* sz_res, casadi_int *sz_iw, casadi_int *sz_w) {
-  if (sz_arg) *sz_arg = 4;
-  if (sz_res) *sz_res = 3;
-  if (sz_iw) *sz_iw = 0;
-  if (sz_w) *sz_w = 3;
-  return 0;
-}
-
-CASADI_SYMBOL_EXPORT int f_work_bytes(casadi_int *sz_arg, casadi_int* sz_res, casadi_int *sz_iw, casadi_int *sz_w) {
-  if (sz_arg) *sz_arg = 4*sizeof(const casadi_real*);
-  if (sz_res) *sz_res = 3*sizeof(casadi_real*);
-  if (sz_iw) *sz_iw = 0*sizeof(casadi_int);
-  if (sz_w) *sz_w = 3*sizeof(casadi_real);
-  return 0;
-}
-
-
-#ifdef __cplusplus
-} /* extern &quot;C&quot; */
-#endif
-
 </pre></div>
 </div>
 </div>
@@ -2851,8 +2675,8 @@ which invokes the system compiler via the command line:</p>
 </pre></div>
 </div>
 <div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>0.00159265
-CasADi - 2024-09-30 17:04:49 WARNING(&quot;Failed to remove ./tmp_casadi_compiler_shellF05jFd.so&quot;) [.../casadi/solvers/shell_compiler.cpp:66]
-CasADi - 2024-09-30 17:04:49 WARNING(&quot;Failed to remove ./tmp_casadi_compiler_shellF05jFd.o&quot;) [.../casadi/solvers/shell_compiler.cpp:67]
+CasADi - 2025-03-29 19:11:39 WARNING(&quot;Failed to remove ./tmp_casadi_compiler_shellL00eOj.so&quot;) [.../casadi/solvers/shell_compiler.cpp:66]
+CasADi - 2025-03-29 19:11:39 WARNING(&quot;Failed to remove ./tmp_casadi_compiler_shellL00eOj.o&quot;) [.../casadi/solvers/shell_compiler.cpp:67]
 </pre></div>
 </div>
 </div>
@@ -3336,9 +3160,9 @@ where the user simply specifies the source code as a C language string.</p>
 </pre></div>
 </div>
 <div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>f:(x,s)-&gt;(r) JitFunction
-CasADi - 2024-09-30 17:04:59 WARNING(&quot;Failed to remove jit_tmplyUXrO.c&quot;) [.../casadi/core/function_internal.cpp:128]
-CasADi - 2024-09-30 17:04:59 WARNING(&quot;Failed to remove ./tmp_casadi_compiler_shellQ2ilFT.so&quot;) [.../casadi/solvers/shell_compiler.cpp:66]
-CasADi - 2024-09-30 17:04:59 WARNING(&quot;Failed to remove ./tmp_casadi_compiler_shellQ2ilFT.o&quot;) [.../casadi/solvers/shell_compiler.cpp:67]
+CasADi - 2025-03-29 19:11:41 WARNING(&quot;Failed to remove jit_tmpMsqCn7.c&quot;) [.../casadi/core/function_internal.cpp:133]
+CasADi - 2025-03-29 19:11:41 WARNING(&quot;Failed to remove ./tmp_casadi_compiler_shellqC1Af1.so&quot;) [.../casadi/solvers/shell_compiler.cpp:66]
+CasADi - 2025-03-29 19:11:41 WARNING(&quot;Failed to remove ./tmp_casadi_compiler_shellqC1Af1.o&quot;) [.../casadi/solvers/shell_compiler.cpp:67]
 </pre></div>
 </div>
 </div>
@@ -3373,9 +3197,9 @@ of the sparsity patterns:</p>
 </pre></div>
 </div>
 <div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>f:(x,s)-&gt;(r) JitFunction
-CasADi - 2024-09-30 17:04:55 WARNING(&quot;Failed to remove jit_tmpf9NHPh.c&quot;) [.../casadi/core/function_internal.cpp:128]
-CasADi - 2024-09-30 17:04:55 WARNING(&quot;Failed to remove ./tmp_casadi_compiler_shellsmIH3W.so&quot;) [.../casadi/solvers/shell_compiler.cpp:66]
-CasADi - 2024-09-30 17:04:55 WARNING(&quot;Failed to remove ./tmp_casadi_compiler_shellsmIH3W.o&quot;) [.../casadi/solvers/shell_compiler.cpp:67]
+CasADi - 2025-03-29 19:11:30 WARNING(&quot;Failed to remove jit_tmp5RVeRY.c&quot;) [.../casadi/core/function_internal.cpp:133]
+CasADi - 2025-03-29 19:11:30 WARNING(&quot;Failed to remove ./tmp_casadi_compiler_shellNuAeFJ.so&quot;) [.../casadi/solvers/shell_compiler.cpp:66]
+CasADi - 2025-03-29 19:11:30 WARNING(&quot;Failed to remove ./tmp_casadi_compiler_shellNuAeFJ.o&quot;) [.../casadi/solvers/shell_compiler.cpp:67]
 </pre></div>
 </div>
 </div>
@@ -3516,25 +3340,153 @@ you can set <code class="docutils literal notranslate"><span class="pre">'enable
 <span id="document-daebuilder"></span><section id="the-daebuilder-class">
 <h2><span class="section-number">7. </span>The <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> class<a class="headerlink" href="#the-daebuilder-class" title="Permalink to this heading">¶</a></h2>
 <p id="sec-daebuilder">The <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> class in CasADi is an auxiliary class intended to
-facilitate the modeling complex dynamical systems for later use with optimal
-control algorithms. This class has lower level of abstraction than
-a physical modeling language such as Modelica (cf. <a class="reference internal" href="#sec-modelica"><span class="std std-numref">Section 7.2</span></a>),
+facilitate the modeling as well as import and export of complex dynamical
+systems. This class has lower level of abstraction than
+a physical modeling language such as Modelica (cf. <a class="reference internal" href="#sec-modelica"><span class="std std-numref">Section 7.4</span></a>),
 while still being higher level than working directly with CasADi symbolic
-expressions. In particular, it can be used to interface physical models
-available in the Functional Mock-up Interface (FMI) format or be used
-as a building block for constructing a domain specific modeling environments.</p>
+expressions. In particular, it can be used to import or export physical models
+defined using the Functional Mock-up Interface (FMI) format. It can also be used as a building block for constructing a domain specific modeling environments.</p>
+<p>The syntax and scope of the class has changed significantly since its initial inception. In the following, we provide an overview of the syntax introduced in CasADi 3.7.</p>
+<section id="daebuilder-model-variables-and-their-categorization">
+<span id="sec-model-variables"></span><h3><span class="section-number">7.1. </span><code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> model variables and their categorization<a class="headerlink" href="#daebuilder-model-variables-and-their-categorization" title="Permalink to this heading">¶</a></h3>
+<p>Each <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> instance maintains a list of model variables. The variables must be uniquely named and hold import meta information about the variable such as its type (e.g. floating point, integer or sting-valued), minimum and maximum values, nominal values, dimension, description, unit etc. The format for model variables closely mimics that of the FMI standard, version 3.0, and to be able to use the <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> class efficently, you should probably be somewhat familar with the format. As in FMI, variables are classified according to their <em>causality</em> and <em>variability</em> (consult the FMI specification <a class="footnote-reference brackets" href="#fmi3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> if you are unfamilar with these terms). They are also given a CasADi-specific categorization into the following categories:</p>
 <dl class="simple">
-<dt>There are in principle three different ways to use <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code>:</dt><dd><ul class="simple">
-<li><p>One can use the class to step-by-step construct a structured system of differential-algebraic equations (DAE), which can then be used to interface to simulation or optimization in CasADi. There is also experimental support for exporting the models in the FMI format for use in other tools.</p></li>
-<li><p>One can use the class to import existing models available in the FMI format. As of CasADi 3.6, we support import of standard FMUs, where the model equations are available only by calls to DLLs. The FMU import support has been tested for challenging FMUs, but is still under development as of this writing.</p></li>
-<li><p>One can use the class to import existing models in a symbolic XML format. This format was supported in the JModelica.org tool and has experimental support in OpenModelica. This format is not in active development due to the limited availability of tools to generate models in the format.</p></li>
-</ul>
+<dt><span class="math notranslate nohighlight">\(t\)</span></dt><dd><p>The independent variable, usually time</p>
+</dd>
+<dt><span class="math notranslate nohighlight">\(c\)</span></dt><dd><p>Constants, calculated explicitly using <span class="math notranslate nohighlight">\(c = f_{\text{cdef}}(c)\)</span>, where the dependency on <span class="math notranslate nohighlight">\(c\)</span> is always acyclic</p>
+</dd>
+<dt><span class="math notranslate nohighlight">\(p\)</span></dt><dd><p>Independent parameters</p>
+</dd>
+<dt><span class="math notranslate nohighlight">\(d\)</span></dt><dd><p>Dependent parameters, calculated explicitly using <span class="math notranslate nohighlight">\(d = f_{\text{ddef}}(p, d; c)\)</span>, where the dependency on <span class="math notranslate nohighlight">\(d\)</span> is always acyclic</p>
+</dd>
+<dt><span class="math notranslate nohighlight">\(u\)</span></dt><dd><p>Input variables</p>
+</dd>
+<dt><span class="math notranslate nohighlight">\(w\)</span></dt><dd><p>Dependent variables, calculated explicitly using <span class="math notranslate nohighlight">\(w = f_{\text{wdef}}(t, p, d, u, w, x, z; c)\)</span>, where the dependency on <span class="math notranslate nohighlight">\(w\)</span> is always acyclic</p>
+</dd>
+<dt><span class="math notranslate nohighlight">\(x\)</span></dt><dd><p>Differential states, each defined by an ordinary differential equation (ODE), <span class="math notranslate nohighlight">\(\dot{x} = f_{\text{ode}}(t, p, d, u, w, x, z; c)\)</span></p>
+</dd>
+<dt><span class="math notranslate nohighlight">\(q\)</span></dt><dd><p>Quadrature states, i.e. a differential states that do not appear in the right-hand-sides, <span class="math notranslate nohighlight">\(\dot{q} = f_{\text{quad}}(t, p, d, u, w, x, z; c)\)</span></p>
+</dd>
+<dt><span class="math notranslate nohighlight">\(z\)</span></dt><dd><p>Algebraic variables, defined implicitly using the algebraic equations, <span class="math notranslate nohighlight">\(0 = f_{\text{alg}}(t, p, d, u, w, x, z; c)\)</span></p>
 </dd>
 </dl>
-<span class="target" id="sec-daebuilder-io"></span><section id="constructing-a-daebuilder-instance">
-<span id="sec-daebuilder-syntax"></span><h3><span class="section-number">7.1. </span>Constructing a <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> instance<a class="headerlink" href="#constructing-a-daebuilder-instance" title="Permalink to this heading">¶</a></h3>
-<p>Consider the following simple DAE corresponding to a controlled rocket subject to
-quadratic air friction term and gravity, which loses mass as it uses up fuel:</p>
+<p>There is also a category for <em>calculated</em> model variables, which represent different quantities that can be calculated using the above variables but cannot be used as function inputs. Calculated model variables include output variables, <span class="math notranslate nohighlight">\(y\)</span>, calculated explicitly using the output equations, <span class="math notranslate nohighlight">\(y = f_{\text{y}}(t, p, d, u, w, x, z; c)\)</span>. These quantities are referenced via the corresponding model equation, cf. <a class="reference internal" href="#sec-model-equations"><span class="std std-numref">Section 7.2</span></a> below. Note that in the functions above, the dependency on <span class="math notranslate nohighlight">\(c\)</span> is always parametric to the function definition, i.e. a new function needs to be defined if the value of <span class="math notranslate nohighlight">\(c\)</span> changes.</p>
+<p>The category for a variable is determined automatically from its causality and variability according to the following table, where the rows correspond to the causality and the columns to the variability (cf. Table 18 in FMI specification, 3.0.2 <a class="footnote-reference brackets" href="#fmi3" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>):</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">parameter</div>
+<div class="line"><br /></div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">calculated</div>
+<div class="line">Parameter</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">input</div>
+<div class="line"><br /></div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">output</div>
+<div class="line">(also in <span class="math notranslate nohighlight">\(y\)</span>)</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">local</div>
+<div class="line"><br /></div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line">independent</div>
+<div class="line"><br /></div>
+</div>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>constant</p></td>
+<td><p>n/a</p></td>
+<td><p>n/a</p></td>
+<td><p>n/a</p></td>
+<td><p><span class="math notranslate nohighlight">\(c\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(c\)</span></p></td>
+<td><p>n/a</p></td>
+</tr>
+<tr class="row-odd"><td><p>fixed</p></td>
+<td><p><span class="math notranslate nohighlight">\(c\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(d\)</span></p></td>
+<td><p>n/a</p></td>
+<td><p>n/a</p></td>
+<td><p><span class="math notranslate nohighlight">\(d\)</span></p></td>
+<td><p>n/a</p></td>
+</tr>
+<tr class="row-even"><td><p>tunable</p></td>
+<td><p><span class="math notranslate nohighlight">\(p\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(d\)</span></p></td>
+<td><p>n/a</p></td>
+<td><p>n/a</p></td>
+<td><p><span class="math notranslate nohighlight">\(d\)</span></p></td>
+<td><p>n/a</p></td>
+</tr>
+<tr class="row-odd"><td><p>discrete</p></td>
+<td><p>n/a</p></td>
+<td><p>n/a</p></td>
+<td><p><span class="math notranslate nohighlight">\(u\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(x\)</span> or
+<span class="math notranslate nohighlight">\(q\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(x\)</span> or
+<span class="math notranslate nohighlight">\(q\)</span></p></td>
+<td><p>n/a</p></td>
+</tr>
+<tr class="row-even"><td><p>continuous</p></td>
+<td><p>n/a</p></td>
+<td><p>n/a</p></td>
+<td><p><span class="math notranslate nohighlight">\(u\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(x\)</span>,
+<span class="math notranslate nohighlight">\(q\)</span>,
+<span class="math notranslate nohighlight">\(z\)</span>, or,
+<span class="math notranslate nohighlight">\(w\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(x\)</span>,
+<span class="math notranslate nohighlight">\(q\)</span>,
+<span class="math notranslate nohighlight">\(z\)</span>, or,
+<span class="math notranslate nohighlight">\(w\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(t\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Not all combinations of causality and variability are permitted, as explained in the FMI specification <a class="footnote-reference brackets" href="#fmi3" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>. These combinations are marked “n/a” in the table. There may also be multiple combinations mapping to the same variable category.</p>
+<p>Variables of continuous variability are given a category depending on its defining equation, which we will return to in <a class="reference internal" href="#sec-model-equations"><span class="std std-numref">Section 7.2</span></a> below. If the defining equation is an ODE, the variable is normally given the category <span class="math notranslate nohighlight">\(x\)</span> but can also be category <span class="math notranslate nohighlight">\(q\)</span> <em>if</em> detection of quadrature states is enabled and the variable does not appears in the right-hand-side of any other model equation. If there is a defining equation for the variable itself, i.e. if it appears in the left-hand-side of an equation, and if it has not previously appeared in any equation, it becomes part of <span class="math notranslate nohighlight">\(w\)</span>. If none of the above applies, the variable is given the category <span class="math notranslate nohighlight">\(z\)</span> and assumed implicitly defined by a residual equation.  A variable with discrete variability, including integer/boolean-valued variables, is treated as a continuous variable with a trivial ODE defined, i.e. <span class="math notranslate nohighlight">\(\dot{x} = 0\)</span> or <span class="math notranslate nohighlight">\(\dot{q} = 0\)</span>. After the user generates functions to calculate the ODE right hand sides as described in <a class="reference internal" href="#sec-daebuilder-factory"><span class="std std-numref">Section 7.8</span></a>, this structure can easily be detected (e.g. by looking for rows in the Jacobian matrices with only structural zeros).</p>
+<p>The set of variables with output causality also define the calculated model outputs <span class="math notranslate nohighlight">\(y\)</span> with associated output equation.</p>
+<p>The category of a variable may change during symbolic construction, cf. <a class="reference internal" href="#sec-daebuilder-symbolic"><span class="std std-numref">Section 7.3</span></a>, in particular when adding equations. It may also change by explicitly changing the variability or causality of a variable, when such an operation is permitted. A continuous model variable also changes from category <span class="math notranslate nohighlight">\(z\)</span> to <span class="math notranslate nohighlight">\(x\)</span> when it appears differentiated in a model equation.</p>
+</section>
+<section id="daebuilder-model-equations">
+<span id="sec-model-equations"></span><h3><span class="section-number">7.2. </span><code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> model equations<a class="headerlink" href="#daebuilder-model-equations" title="Permalink to this heading">¶</a></h3>
+<p>At the time of this writing, <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> instances supported the following types of equations, leaving out <span class="math notranslate nohighlight">\(c\)</span>, <span class="math notranslate nohighlight">\(d\)</span> and <span class="math notranslate nohighlight">\(w\)</span> for simplicity:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Ordinary differential equation, e.g.: <span class="math notranslate nohighlight">\(\dot{x} = f_{\text{ode}}(t,x,z,u,p)\)</span></p></li>
+<li><p>Output equation, e.g.: <span class="math notranslate nohighlight">\(y = f_{\text{y}}(t,x,z,u,p)\)</span></p></li>
+<li><p>Algebraic equation, e.g.: <span class="math notranslate nohighlight">\(0 = f_{\text{alg}}(t,x,z,u,p)\)</span></p></li>
+<li><p>Quadrature equation, e.g.: <span class="math notranslate nohighlight">\(\dot{q} = f_{\text{quad}}(t,x,z,u,p)\)</span></p></li>
+<li><p>When equation, e.g.: when <span class="math notranslate nohighlight">\(f_\text{zero}(t,x,z,u,p) &lt; 0\)</span> then <span class="math notranslate nohighlight">\(x := f_\text{transition}(t,x,z,u,p)\)</span></p></li>
+</ul>
+</div></blockquote>
+<p>Future versions of <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> may support more types of equations, in particular related to proper handling of initial equations and other types of events, guided by the Modelica standard <a class="footnote-reference brackets" href="#modelica36" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>.</p>
+<p>The functions in the list above are associated with additional, internal, variable categories, in addition to the categories listed in <a class="reference internal" href="#sec-model-variables"><span class="std std-numref">Section 7.1</span></a>. For example ordinary differential equations and quadrature equations are associated with derivative variables and algebraic equations are associated with residual variables. When equations are associated with zero-crossing conditions and a set of assignment operations. We will return to when equations in <a class="reference internal" href="#sec-hybrid"><span class="std std-numref">Section 7.6</span></a> below.</p>
+<p>Model equations may be given either as symbolic expressions, as described in <a class="reference internal" href="#sec-daebuilder-symbolic"><span class="std std-numref">Section 7.3</span></a>, from Modelica source code as described in <a class="reference internal" href="#sec-modelica"><span class="std std-numref">Section 7.4</span></a> or via standard Functional Mock-up Unit (FMU) shared libraries, as described in <a class="reference internal" href="#sec-fmi"><span class="std std-numref">Section 7.5</span></a>.</p>
+</section>
+<section id="constructing-a-daebuilder-instance-symbolically">
+<span id="sec-daebuilder-symbolic"></span><h3><span class="section-number">7.3. </span>Constructing a <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> instance symbolically<a class="headerlink" href="#constructing-a-daebuilder-instance-symbolically" title="Permalink to this heading">¶</a></h3>
+<p>We can create <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> instances using CasADi symbolic expressions. The current ambition is to support an acausal model approach taking elements from the Functional Mock-up Interface (FMI) standard as well as the proposed Base Modelica standard <a class="footnote-reference brackets" href="#basemodelica" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>. Specifically, model variables (cf. <a class="reference internal" href="#sec-model-variables"><span class="std std-numref">Section 7.1</span></a>) are defined using the conventions defined by the FMI standard, version 3.0. The model equations (cf. <a class="reference internal" href="#sec-model-equations"><span class="std std-numref">Section 7.2</span></a>), on the other hand, where standard FMI relies on a black-box C API, we try to follow Base Modelica. We will discuss in <a class="reference internal" href="#sec-modelica"><span class="std std-numref">Section 7.4</span></a> how this support can be used to enable symbolic import of models formulated in actual Modelica.</p>
+<p>To illustrate the usage, consider the following simple DAE corresponding to a controlled rocket subject to quadratic air friction term and gravity, which loses mass as it uses up fuel:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
  \dot{h} &amp;= v,                    \qquad &amp;h(0) = 0 \\
@@ -3543,61 +3495,45 @@ quadratic air friction term and gravity, which loses mass as it uses up fuel:</p
 \end{aligned}\end{split}\]</div>
 <p>where the three states correspond to height, velocity and mass, respectively.
 <span class="math notranslate nohighlight">\(u\)</span> is the thrust of the rocket and <span class="math notranslate nohighlight">\((a,b)\)</span> are parameters.</p>
-<p>To construct a DAE formulation for this problem, start with an empty
-<code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> instance and add the input and output expressions step-by-step
-as follows.</p>
+<p>To construct a DAE formulation for this problem, start with an empty <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> instance and add the model variables, including any meta information, and model equations step-by-step as follows.</p>
 <div class="sidebyside-master docutils container">
 <div class="sidebyside docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dae</span> <span class="o">=</span> <span class="n">DaeBuilder</span><span class="p">(</span><span class="s1">&#39;rocket&#39;</span><span class="p">)</span>
-<span class="c1"># Add input expressions</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">dae</span><span class="o">.</span><span class="n">add_p</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">dae</span><span class="o">.</span><span class="n">add_p</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
-<span class="n">u</span> <span class="o">=</span> <span class="n">dae</span><span class="o">.</span><span class="n">add_u</span><span class="p">(</span><span class="s1">&#39;u&#39;</span><span class="p">)</span>
-<span class="n">h</span> <span class="o">=</span> <span class="n">dae</span><span class="o">.</span><span class="n">add_x</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">)</span>
-<span class="n">v</span> <span class="o">=</span> <span class="n">dae</span><span class="o">.</span><span class="n">add_x</span><span class="p">(</span><span class="s1">&#39;v&#39;</span><span class="p">)</span>
-<span class="n">m</span> <span class="o">=</span> <span class="n">dae</span><span class="o">.</span><span class="n">add_x</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
-<span class="c1"># Add output expressions</span>
-<span class="n">hdot</span> <span class="o">=</span> <span class="n">v</span>
-<span class="n">vdot</span> <span class="o">=</span> <span class="p">(</span><span class="n">u</span><span class="o">-</span><span class="n">a</span><span class="o">*</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">m</span><span class="o">-</span><span class="n">g</span>
-<span class="n">mdot</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span><span class="o">*</span><span class="n">u</span><span class="o">**</span><span class="mi">2</span>
-<span class="n">dae</span><span class="o">.</span><span class="n">set_ode</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="n">hdot</span><span class="p">)</span>
-<span class="n">dae</span><span class="o">.</span><span class="n">set_ode</span><span class="p">(</span><span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="n">vdot</span><span class="p">)</span>
-<span class="n">dae</span><span class="o">.</span><span class="n">set_ode</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="n">mdot</span><span class="p">)</span>
-<span class="c1"># Specify initial conditions</span>
-<span class="n">dae</span><span class="o">.</span><span class="n">set_start</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">dae</span><span class="o">.</span><span class="n">set_start</span><span class="p">(</span><span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">dae</span><span class="o">.</span><span class="n">set_start</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="c1"># Add meta information</span>
-<span class="n">dae</span><span class="o">.</span><span class="n">set_unit</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">,</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
-<span class="n">dae</span><span class="o">.</span><span class="n">set_unit</span><span class="p">(</span><span class="s1">&#39;v&#39;</span><span class="p">,</span><span class="s1">&#39;m/s&#39;</span><span class="p">)</span>
-<span class="n">dae</span><span class="o">.</span><span class="n">set_unit</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">,</span><span class="s1">&#39;kg&#39;</span><span class="p">)</span>
+<span class="c1"># Add model variables</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">dae</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;parameter&#39;</span><span class="p">,</span> <span class="s1">&#39;tunable&#39;</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">dae</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;parameter&#39;</span><span class="p">,</span> <span class="s1">&#39;tunable&#39;</span><span class="p">)</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">dae</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;u&#39;</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">dae</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">dae</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">dae</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="c1"># Change some meta information</span>
+<span class="n">dae</span><span class="o">.</span><span class="n">set_unit</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">)</span>
+<span class="n">dae</span><span class="o">.</span><span class="n">set_unit</span><span class="p">(</span><span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="s1">&#39;m/s&#39;</span><span class="p">)</span>
+<span class="n">dae</span><span class="o">.</span><span class="n">set_unit</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="s1">&#39;kg&#39;</span><span class="p">)</span>
+<span class="c1"># Add model equations</span>
+<span class="n">dae</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">dae</span><span class="o">.</span><span class="n">der</span><span class="p">(</span><span class="n">h</span><span class="p">),</span> <span class="n">v</span><span class="p">)</span>
+<span class="n">dae</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">dae</span><span class="o">.</span><span class="n">der</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="p">(</span><span class="n">u</span><span class="o">-</span><span class="n">a</span><span class="o">*</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">m</span><span class="o">-</span><span class="mf">9.81</span><span class="p">)</span>
+<span class="n">dae</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">dae</span><span class="o">.</span><span class="n">der</span><span class="p">(</span><span class="n">m</span><span class="p">),</span> <span class="o">-</span><span class="n">b</span><span class="o">*</span><span class="n">u</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="sidebyside docutils container">
 <div class="highlight-octave notranslate"><div class="highlight"><pre><span></span><span class="n">dae</span> <span class="p">=</span> <span class="n">DaeBuilder</span><span class="p">(</span><span class="s">&#39;rocket&#39;</span><span class="p">)</span>
-<span class="c">% Add input expressions</span>
-<span class="n">a</span> <span class="p">=</span> <span class="n">dae</span><span class="p">.</span><span class="n">add_p</span><span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">);</span>
-<span class="n">b</span> <span class="p">=</span> <span class="n">dae</span><span class="p">.</span><span class="n">add_p</span><span class="p">(</span><span class="s">&#39;b&#39;</span><span class="p">);</span>
-<span class="n">u</span> <span class="p">=</span> <span class="n">dae</span><span class="p">.</span><span class="n">add_u</span><span class="p">(</span><span class="s">&#39;u&#39;</span><span class="p">);</span>
-<span class="n">h</span> <span class="p">=</span> <span class="n">dae</span><span class="p">.</span><span class="n">add_x</span><span class="p">(</span><span class="s">&#39;h&#39;</span><span class="p">);</span>
-<span class="n">v</span> <span class="p">=</span> <span class="n">dae</span><span class="p">.</span><span class="n">add_x</span><span class="p">(</span><span class="s">&#39;v&#39;</span><span class="p">);</span>
-<span class="n">m</span> <span class="p">=</span> <span class="n">dae</span><span class="p">.</span><span class="n">add_x</span><span class="p">(</span><span class="s">&#39;m&#39;</span><span class="p">);</span>
-<span class="c">% Add output expressions</span>
-<span class="n">hdot</span> <span class="p">=</span> <span class="n">v</span><span class="p">;</span>
-<span class="n">vdot</span> <span class="p">=</span> <span class="p">(</span><span class="n">u</span><span class="o">-</span><span class="n">a</span><span class="o">*</span><span class="n">v</span>^<span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">m</span><span class="o">-</span><span class="n">g</span><span class="p">;</span>
-<span class="n">mdot</span> <span class="p">=</span> <span class="o">-</span><span class="n">b</span><span class="o">*</span><span class="n">u</span>^<span class="mi">2</span><span class="p">;</span>
-<span class="n">dae</span><span class="p">.</span><span class="n">set_ode</span><span class="p">(</span><span class="s">&#39;h&#39;</span><span class="p">,</span> <span class="n">hdot</span><span class="p">);</span>
-<span class="n">dae</span><span class="p">.</span><span class="n">set_ode</span><span class="p">(</span><span class="s">&#39;v&#39;</span><span class="p">,</span> <span class="n">vdot</span><span class="p">);</span>
-<span class="n">dae</span><span class="p">.</span><span class="n">set_ode</span><span class="p">(</span><span class="s">&#39;m&#39;</span><span class="p">,</span> <span class="n">mdot</span><span class="p">);</span>
-<span class="c">% Specify initial conditions</span>
-<span class="n">dae</span><span class="p">.</span><span class="n">set_start</span><span class="p">(</span><span class="s">&#39;h&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-<span class="n">dae</span><span class="p">.</span><span class="n">set_start</span><span class="p">(</span><span class="s">&#39;v&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-<span class="n">dae</span><span class="p">.</span><span class="n">set_start</span><span class="p">(</span><span class="s">&#39;m&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-<span class="c">% Add meta information</span>
+<span class="c">% Add model variables</span>
+<span class="n">a</span> <span class="p">=</span> <span class="n">dae</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;parameter&#39;</span><span class="p">,</span> <span class="s">&#39;tunable&#39;</span><span class="p">);</span>
+<span class="n">b</span> <span class="p">=</span> <span class="n">dae</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;parameter&#39;</span><span class="p">,</span> <span class="s">&#39;tunable&#39;</span><span class="p">);</span>
+<span class="n">u</span> <span class="p">=</span> <span class="n">dae</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">&#39;u&#39;</span><span class="p">,</span> <span class="s">&#39;input&#39;</span><span class="p">);</span>
+<span class="n">h</span> <span class="p">=</span> <span class="n">dae</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">&#39;h&#39;</span><span class="p">,</span> <span class="nb">struct</span><span class="p">(</span><span class="s">&#39;start&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
+<span class="n">v</span> <span class="p">=</span> <span class="n">dae</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">&#39;v&#39;</span><span class="p">,</span> <span class="nb">struct</span><span class="p">(</span><span class="s">&#39;start&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
+<span class="n">m</span> <span class="p">=</span> <span class="n">dae</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">&#39;m&#39;</span><span class="p">,</span> <span class="nb">struct</span><span class="p">(</span><span class="s">&#39;start&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">));</span>
+<span class="c">% Change some meta information</span>
 <span class="n">dae</span><span class="p">.</span><span class="n">set_unit</span><span class="p">(</span><span class="s">&#39;h&#39;</span><span class="p">,</span><span class="s">&#39;m&#39;</span><span class="p">);</span>
 <span class="n">dae</span><span class="p">.</span><span class="n">set_unit</span><span class="p">(</span><span class="s">&#39;v&#39;</span><span class="p">,</span><span class="s">&#39;m/s&#39;</span><span class="p">);</span>
 <span class="n">dae</span><span class="p">.</span><span class="n">set_unit</span><span class="p">(</span><span class="s">&#39;m&#39;</span><span class="p">,</span><span class="s">&#39;kg&#39;</span><span class="p">);</span>
+<span class="c">% Add model equations</span>
+<span class="n">dae</span><span class="p">.</span><span class="nb">eq</span><span class="p">(</span><span class="n">dae</span><span class="p">.</span><span class="n">der</span><span class="p">(</span><span class="n">h</span><span class="p">),</span> <span class="n">v</span><span class="p">);</span>
+<span class="n">dae</span><span class="p">.</span><span class="nb">eq</span><span class="p">(</span><span class="n">dae</span><span class="p">.</span><span class="n">der</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="p">(</span><span class="n">u</span><span class="o">-</span><span class="n">a</span><span class="o">*</span><span class="n">v</span>^<span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">m</span><span class="o">-</span><span class="mf">9.81</span><span class="p">);</span>
+<span class="n">dae</span><span class="p">.</span><span class="nb">eq</span><span class="p">(</span><span class="n">dae</span><span class="p">.</span><span class="n">der</span><span class="p">(</span><span class="n">m</span><span class="p">),</span> <span class="o">-</span><span class="n">b</span><span class="o">*</span><span class="n">u</span>^<span class="mi">2</span><span class="p">);</span>
 </pre></div>
 </div>
 <div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>dae =
@@ -3610,123 +3546,143 @@ nx = 0, nz = 0, nq = 0, ny = 0, np = 0, nc = 0, nd = 0, nw = 0, nu = 0
 </div>
 <p>Other input and output expressions can be added in an analogous way. For a full
 list of functions, see the C++ API documentation for <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code>.</p>
+<p>In <a class="reference internal" href="#sec-daebuilder-factory"><span class="std std-numref">Section 7.8</span></a> below, we will show how to evaluate the model equations, which is same as if the equations had been created a different way, e.g. from an FMU, cf. <a class="reference internal" href="#sec-fmi"><span class="std std-numref">Section 7.5</span></a>.</p>
 </section>
-<section id="symbolic-import-of-ocps-from-modelica">
-<span id="sec-modelica"></span><h3><span class="section-number">7.2. </span>Symbolic import of OCPs from Modelica<a class="headerlink" href="#symbolic-import-of-ocps-from-modelica" title="Permalink to this heading">¶</a></h3>
-<p>Note: JModelica.org is no longer offered by Modelon. Its closed-source successor code, OCT,
-does retain CasADi interoperability however. Details of how to use OCT to generate CasADi
-expressions is best described in OCT’s user guide. The text in the following refers to the
-legacy Modelica interoperability support.</p>
-<section id="legacy-symbolic-import-from-xml-files">
-<h4><span class="section-number">7.2.1. </span>Legacy symbolic import from XML files<a class="headerlink" href="#legacy-symbolic-import-from-xml-files" title="Permalink to this heading">¶</a></h4>
-<p>An alternative to model directly in CasADi, as above, is to use an advanced
-physical modeling language such as Modelica to specify the model. For this,
-CasADi offers interoperability with the open-source <a class="reference external" href="http://www.jmodelica.org/}">JModelica.org</a> compiler, which
-is written specifically with optimal control in mind. Model import from
-JModelica.org is possible in two different ways; using the JModelica.org’s
-<code class="docutils literal notranslate"><span class="pre">CasadiInterface</span></code> or via <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code>’s
-<code class="docutils literal notranslate"><span class="pre">parse_fmi</span></code> command.</p>
-<p>We recommend the former approach, since it is being actively maintained and
-refer to JModelica.org’s user guide for details on how to extract CasADi
-expressions.</p>
-<p>In the following, we will outline the legacy approach, using
-<code class="docutils literal notranslate"><span class="pre">parse_fmi</span></code>.</p>
+<section id="creating-a-daebuilder-instance-from-modelica-symbolically">
+<span id="sec-modelica"></span><h3><span class="section-number">7.4. </span>Creating a <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> instance from Modelica, symbolically<a class="headerlink" href="#creating-a-daebuilder-instance-from-modelica-symbolically" title="Permalink to this heading">¶</a></h3>
+<p>The original goal of the <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> class was to enable symbolic import of models formulated in Modelica. This was made possible by supporting the import models in the “FMUX” format, an XML format derived from FMI 1.0. In this format, the model variables (cf. <a class="reference internal" href="#sec-model-variables"><span class="std std-numref">Section 7.1</span></a>) are defined using standard FMI 1.0 XML syntax, while the model equations (c.f. <a class="reference internal" href="#sec-model-equations"><span class="std std-numref">Section 7.2</span></a>) are provided in the same XML instead of the C API defined by the standard. The support for FMUX import in CasADi never reached a mature state, in part because there was never a mature way to generate  FMUX files using available Modelica tools. While originally supported by the JModelica.org tool, this support was later dropped in favor of a tighter, SWIG-based CasADi interface. FMUX export has also been implemented in the OpenModelica compiler.</p>
+<p>There is still legacy support for FMUX import in the <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> class, but since it is not actively maintained and very incomplete, it may require diving into the C++ source code to get it to work for nontrivial models.</p>
+<p>We also note that JModelica.org’s closed-source successor code, OCT, does retain CasADi interoperability. Details of how to use OCT to generate CasADi expressions is best described in OCT’s user guide. As of this writing, this support did not use the DaeBuilder class in CasADi, although it is possible to create DaeBuilder instances from OCT-generated CasADi expressions, using the standard symbolic API described in <a class="reference internal" href="#sec-daebuilder-symbolic"><span class="std std-numref">Section 7.3</span></a>.</p>
+<p>In future versions of CasADi, we hope to provide a more mature support for symbolic import of Modelica models based on the emerging Base Modelica standard. Base Modelica <a class="footnote-reference brackets" href="#basemodelica" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a> is intended to be a subset of the full Modelica language, which can be generated from any Modelica models, but removing many of the high-level features associated to object oriented physical modeling.</p>
+<p>Unlike previous attempts at symbolic import, this support will also include support for hybrid (event-driven) modeling, while still retaining the differentiability needed by gradient-based optimization algorithms. Specifically, we try to ensure that the zero-crossing functions used to trigger events are differentiable and, secondly, that the state transitions are provided as differentiable functions. CasADi’s Base Modelica effort currently does not include a Modelica parser, instead we are working with the open-source Rumoca <a class="footnote-reference brackets" href="#rumoca" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a> translator, which can be used to convert Base Modelica source code into Pythons scripts that construct DaeBuilder instances symbolically.</p>
 </section>
-<section id="legacy-import-of-a-modeldescription-xml-file">
-<h4><span class="section-number">7.2.2. </span>Legacy import of a <code class="docutils literal notranslate"><span class="pre">modelDescription.xml</span></code> file<a class="headerlink" href="#legacy-import-of-a-modeldescription-xml-file" title="Permalink to this heading">¶</a></h4>
-<p>To see how to use the Modelica import, look at <a class="reference external" href="https://github.com/casadi/casadi/blob/master/docs/examples/python/modelica/fritzson_application_examples/thermodynamics_example.py">thermodynamics_example.py</a> in CasADi’s example collection.</p>
-<p>Assuming that the Modelica/Optimica model <code class="docutils literal notranslate"><span class="pre">ModelicaClass.ModelicaModel</span></code> is defined in the files <code class="docutils literal notranslate"><span class="pre">file1.mo</span></code> and <code class="docutils literal notranslate"><span class="pre">file2.mop</span></code>, the Python compile command is:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pymodelica</span> <span class="kn">import</span> <span class="n">compile_jmu</span>
-<span class="n">jmu_name</span><span class="o">=</span><span class="n">compile_jmu</span><span class="p">(</span><span class="s1">&#39;ModelicaClass.ModelicaModel&#39;</span><span class="p">,</span> \
-  <span class="p">[</span><span class="s1">&#39;file1.mo&#39;</span><span class="p">,</span><span class="s1">&#39;file2.mop&#39;</span><span class="p">],</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span><span class="s1">&#39;ipopt&#39;</span><span class="p">,</span>\
-  <span class="p">{</span><span class="s1">&#39;generate_xml_equations&#39;</span><span class="p">:</span><span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;generate_fmi_me_xml&#39;</span><span class="p">:</span><span class="kc">False</span><span class="p">})</span>
-</pre></div>
-</div>
-<p>This will generate a <code class="docutils literal notranslate"><span class="pre">jmu</span></code>-file, which is essentially a zip file containing, among other things, the file <code class="docutils literal notranslate"><span class="pre">modelDescription.xml</span></code>. This XML-file contains a symbolic representation of the optimal control problem and can be inspected in a standard XML editor.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">zipfile</span> <span class="kn">import</span> <span class="n">ZipFile</span>
-<span class="n">sfile</span> <span class="o">=</span> <span class="n">ZipFile</span><span class="p">(</span><span class="n">jmu_name</span><span class="s1">&#39;,&#39;</span><span class="sa">r</span><span class="s1">&#39;)</span>
-<span class="n">mfile</span> <span class="o">=</span> <span class="n">sfile</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s1">&#39;modelDescription.xml&#39;</span><span class="p">,</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Once a <code class="docutils literal notranslate"><span class="pre">modelDescription.xml</span></code> file is available, it can be imported
-using the <code class="docutils literal notranslate"><span class="pre">parse_fmi</span></code> command:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ocp</span> <span class="o">=</span> <span class="n">DaeBuilder</span><span class="p">()</span>
-<span class="n">ocp</span><span class="o">.</span><span class="n">parse_fmi</span><span class="p">(</span><span class="s1">&#39;modelDescription.xml&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
+<section id="constructing-a-daebuilder-instance-from-an-fmu">
+<span id="sec-fmi"></span><h3><span class="section-number">7.5. </span>Constructing a <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> instance from an FMU<a class="headerlink" href="#constructing-a-daebuilder-instance-from-an-fmu" title="Permalink to this heading">¶</a></h3>
+<p>The DaeBuilder class can be used to import standard FMUs, adhering to the FMI standard version 2.0 or 3.0 <a class="footnote-reference brackets" href="#casadi-fmi" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. This is a dedicated, native, foreign function interface (FFI) of CasADi that communicates directly with the FMI C API. The evaluation takes place in CasADi function objects created using the function factory described in <a class="reference internal" href="#sec-daebuilder-factory"><span class="std std-numref">Section 7.8</span></a>. Importantly, the binary FMI interface enables the efficient calculation of first and second derivatives of the model equations using a hybrid symbolic-numeric approach, relying on analytical derivatives for the first order derivatives and efficient finite differences implementations for the second order derivatives. Sparsity and parallelization is also exploited, whenever possible.</p>
+<p>Not all model exchange FMUs are suitable for import into CasADi, although we are hoping to gradually support more and more parts of the standard. In general, for derivative calculations, the FMUs should support analytical derivatives. Although CasADi does support finite differencing for calculating first order derivatives, this should been seen mainly as a debugging and diagnostics feature.</p>
+<p>Event-driven dynamics, cf. <a class="reference internal" href="#sec-hybrid"><span class="std std-numref">Section 7.6</span></a>, have not yet been demonstrated for standard FMUs and may require some manual reformulation such as explicitly defining zero crossing function and event transitions as additional outputs. In section <a class="reference internal" href="#sec-daebuilder-factory"><span class="std std-numref">Section 7.8</span></a>, we will discuss how to evaluate the model equations numerically.</p>
 </section>
-</section>
-<section id="function-factory">
-<h3><span class="section-number">7.3. </span>Function factory<a class="headerlink" href="#function-factory" title="Permalink to this heading">¶</a></h3>
-<p>Once a <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> has been formulated and possibly reformulated to
-a satisfactory form, we can generate CasADi functions corresponding to the
-input and output expressions outlined in <code class="xref std std-numref docutils literal notranslate"><span class="pre">sec-daebuilder_io</span></code>.
-For example, to create a function for the ODE right-hand-side for the rocket
-model in <a class="reference internal" href="#sec-daebuilder-syntax"><span class="std std-numref">Section 7.1</span></a>, simply provide a display
-name of the function being created, a list of input expressions
-and a list of output expressions:</p>
+<section id="hybrid-modeling-with-daebuilder">
+<span id="sec-hybrid"></span><h3><span class="section-number">7.6. </span>Hybrid modeling with <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code><a class="headerlink" href="#hybrid-modeling-with-daebuilder" title="Permalink to this heading">¶</a></h3>
+<p>CasADi 3.7 introduces initial support for hybrid modeling and sensitivity analysis. In <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code>, state events can be formulated with when equations, mirroring the syntax in (Base) Modelica <a class="footnote-reference brackets" href="#modelica36" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>. Whenever a when equation is added, a differential zero crossing condition is created automatically, using a form compatible with an extension of the CasADi integrator class to enable automatic sensitivity analysis of hybrid systems. While the event support is still at an early stage, it has been successfully used to model simple hybrid systems, such as the following bouncing ball example:</p>
 <div class="sidebyside-master docutils container">
 <div class="sidebyside docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">dae</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">,</span>\
-     <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;u&#39;</span><span class="p">,</span><span class="s1">&#39;p&#39;</span><span class="p">],[</span><span class="s1">&#39;ode&#39;</span><span class="p">])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dae</span> <span class="o">=</span> <span class="n">DaeBuilder</span><span class="p">(</span><span class="s1">&#39;bouncing_ball&#39;</span><span class="p">)</span>
+<span class="c1"># Add model variables</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">dae</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">dae</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="c1"># Add model equations</span>
+<span class="n">dae</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">dae</span><span class="o">.</span><span class="n">der</span><span class="p">(</span><span class="n">h</span><span class="p">),</span> <span class="n">v</span><span class="p">)</span>
+<span class="n">dae</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">dae</span><span class="o">.</span><span class="n">der</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="o">-</span><span class="mf">9.81</span><span class="p">)</span>
+<span class="n">dae</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">h</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">,</span> \
+  <span class="p">[</span><span class="n">dae</span><span class="o">.</span><span class="n">reinit</span><span class="p">(</span><span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.8</span><span class="o">*</span><span class="n">dae</span><span class="o">.</span><span class="n">pre</span><span class="p">(</span><span class="n">v</span><span class="p">))])</span>
+</pre></div>
+</div>
+<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>CasADi - 2025-03-29 19:11:19 WARNING(&quot;DaeBuilder::pre has not been implemented: Returning identity mapping&quot;) [.../casadi/core/dae_builder.cpp:769]
 </pre></div>
 </div>
 </div>
 <div class="sidebyside docutils container">
-<div class="highlight-octave notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="p">=</span> <span class="n">dae</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="s">&#39;f&#39;</span><span class="p">,...</span>
-     <span class="p">{</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="s">&#39;u&#39;</span><span class="p">,</span><span class="s">&#39;p&#39;</span><span class="p">},{</span><span class="s">&#39;ode&#39;</span><span class="p">});</span>
+<div class="highlight-octave notranslate"><div class="highlight"><pre><span></span><span class="n">dae</span> <span class="p">=</span> <span class="n">DaeBuilder</span><span class="p">(</span><span class="s">&#39;bouncing_ball&#39;</span><span class="p">)</span>
+<span class="c">% Add model variables</span>
+<span class="n">h</span> <span class="p">=</span> <span class="n">dae</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">&#39;h&#39;</span><span class="p">,</span> <span class="nb">struct</span><span class="p">(</span><span class="s">&#39;start&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">));</span>
+<span class="n">v</span> <span class="p">=</span> <span class="n">dae</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">&#39;v&#39;</span><span class="p">,</span> <span class="nb">struct</span><span class="p">(</span><span class="s">&#39;start&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
+<span class="c">% Add model equations</span>
+<span class="n">dae</span><span class="p">.</span><span class="nb">eq</span><span class="p">(</span><span class="n">dae</span><span class="p">.</span><span class="n">der</span><span class="p">(</span><span class="n">h</span><span class="p">),</span> <span class="n">v</span><span class="p">);</span>
+<span class="n">dae</span><span class="p">.</span><span class="nb">eq</span><span class="p">(</span><span class="n">dae</span><span class="p">.</span><span class="n">der</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="o">-</span><span class="mf">9.81</span><span class="p">);</span>
+<span class="n">dae</span><span class="p">.</span><span class="n">when</span><span class="p">(</span><span class="n">h</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">,</span> <span class="p">...</span>
+  <span class="p">{</span><span class="n">dae</span><span class="p">.</span><span class="n">reinit</span><span class="p">(</span><span class="s">&#39;v&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.8</span><span class="o">*</span><span class="n">dae</span><span class="p">.</span><span class="n">pre</span><span class="p">(</span><span class="n">v</span><span class="p">))});</span>
+</pre></div>
+</div>
+<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>dae =
+
+nx = 0, nz = 0, nq = 0, ny = 0, np = 0, nc = 0, nd = 0, nw = 0, nu = 0
+
+CasADi - 2025-03-29 19:11:36 WARNING(&quot;DaeBuilder::pre has not been implemented: Returning identity mapping&quot;) [.../casadi/core/dae_builder.cpp:769]
 </pre></div>
 </div>
 </div>
 </div>
-<p>Using a naming convention, we can also create Jacobians, e.g. for the ‘ode’
-output with respect to ‘x’:</p>
+<p>For more information about the hybrid support in CasADi, we refer to the implementation paper: <a class="footnote-reference brackets" href="#casadi-hybrid" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+</section>
+<section id="reformulating-a-model">
+<span id="sec-daebuilder-reformulation"></span><h3><span class="section-number">7.7. </span>Reformulating a model<a class="headerlink" href="#reformulating-a-model" title="Permalink to this heading">¶</a></h3>
+<p>Instances of the <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> class are mutable and it is possible, with several restrictions, to change the formulation after creation. In particular, it is possible to change the causality or variability of a variable, as long as the change is possible with the current set of model equations. In particular, it is possible to remove an output variable <span class="math notranslate nohighlight">\(y\)</span> by changing its causality to local. An input variable <span class="math notranslate nohighlight">\(u\)</span> can be treated as a parameter <span class="math notranslate nohighlight">\(p\)</span> or a constant <span class="math notranslate nohighlight">\(c\)</span> by changing the variability to tunable or fixed, respectively (the causality will be automatically updated to “parameter” in this case). In addition, it is always possible to reorder the variables in a category in an arbitrary way – by default the ordering within a category will match the ordering of the model variables.</p>
+<p>If a <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> instance has been created symbolically (as opposed as from a standard FMU), additional manipulations such as the elimination of dependent variables, BLT reordering, index reduction, etc. is possible. Some of these features have not been actively maintained or continuously tested, but may be revived with limited work of the C++ source code.</p>
+</section>
+<section id="evaluating-model-equations-function-factory">
+<span id="sec-daebuilder-factory"></span><h3><span class="section-number">7.8. </span>Evaluating model equations, function factory<a class="headerlink" href="#evaluating-model-equations-function-factory" title="Permalink to this heading">¶</a></h3>
+<p>The evaluation of model equations in a <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> instance follows a somewhat different paradigm than other tools capable of evaluating FMUs such as FMPy or PyFMI. In general, we only use setters (<code class="docutils literal notranslate"><span class="pre">DaeBuilder.set</span></code>) to set constants (<span class="math notranslate nohighlight">\(c\)</span>) or <em>initial</em>/<em>default</em> values for other variables. For the evaluation, <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> relies on a <em>function factory</em> where the user creates differentiable CasADi function objects by providing a function name as well as a list of inputs and a list of outputs. The following example shows how to create a function named <code class="docutils literal notranslate"><span class="pre">f</span></code> with three (vector-valued) inputs,  <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(p\)</span>, and one (vector-valued) output, <span class="math notranslate nohighlight">\(f_{\text{ode}}\)</span>:</p>
 <div class="sidebyside-master docutils container">
 <div class="sidebyside docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">dae</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">,</span>\
-     <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;u&#39;</span><span class="p">,</span><span class="s1">&#39;p&#39;</span><span class="p">],</span>\
-     <span class="p">[</span><span class="s1">&#39;jac_ode_x&#39;</span><span class="p">])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">dae</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">,[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;u&#39;</span><span class="p">,</span><span class="s1">&#39;p&#39;</span><span class="p">],[</span><span class="s1">&#39;ode&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="sidebyside docutils container">
-<div class="highlight-octave notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="p">=</span> <span class="n">dae</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="s">&#39;f&#39;</span><span class="p">,...</span>
-     <span class="p">{</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="s">&#39;u&#39;</span><span class="p">,</span><span class="s">&#39;p&#39;</span><span class="p">},</span>
-     <span class="p">{</span><span class="s">&#39;jac_ode_x&#39;</span><span class="p">});</span>
+<div class="highlight-octave notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="p">=</span> <span class="n">dae</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="s">&#39;f&#39;</span><span class="p">,{</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="s">&#39;u&#39;</span><span class="p">,</span><span class="s">&#39;p&#39;</span><span class="p">},{</span><span class="s">&#39;ode&#39;</span><span class="p">});</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Functions with second order information can be extracted by first creating
-a named linear combination of the output expressions using <code class="docutils literal notranslate"><span class="pre">add_lc</span></code>
-and then requesting its Hessian:</p>
+<p>Similarly, we can create an output function named <code class="docutils literal notranslate"><span class="pre">h</span></code> as follows:</p>
 <div class="sidebyside-master docutils container">
 <div class="sidebyside docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dae</span><span class="o">.</span><span class="n">add_lc</span><span class="p">(</span><span class="s1">&#39;gamma&#39;</span><span class="p">,[</span><span class="s1">&#39;ode&#39;</span><span class="p">])</span>
-<span class="n">hes</span> <span class="o">=</span> <span class="n">dae</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s1">&#39;hes&#39;</span><span class="p">,</span>\
-  <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;u&#39;</span><span class="p">,</span><span class="s1">&#39;p&#39;</span><span class="p">,</span><span class="s1">&#39;lam_ode&#39;</span><span class="p">],</span>\
-  <span class="p">[</span><span class="s1">&#39;hes_gamma_x_x&#39;</span><span class="p">])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">dae</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">,[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;u&#39;</span><span class="p">,</span><span class="s1">&#39;p&#39;</span><span class="p">],[</span><span class="s1">&#39;y&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="sidebyside docutils container">
-<div class="highlight-octave notranslate"><div class="highlight"><pre><span></span><span class="n">dae</span><span class="p">.</span><span class="n">add_lc</span><span class="p">(</span><span class="s">&#39;gamma&#39;</span><span class="p">,{</span><span class="s">&#39;ode&#39;</span><span class="p">});</span>
-<span class="n">hes</span> <span class="p">=</span> <span class="n">dae</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="s">&#39;hes&#39;</span><span class="p">,...</span>
-  <span class="p">{</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="s">&#39;u&#39;</span><span class="p">,</span><span class="s">&#39;p&#39;</span><span class="p">,</span><span class="s">&#39;lam_ode&#39;</span><span class="p">},...</span>
-  <span class="p">{</span><span class="s">&#39;hes_gamma_x_x&#39;</span><span class="p">});</span>
+<div class="highlight-octave notranslate"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="p">=</span> <span class="n">dae</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="s">&#39;h&#39;</span><span class="p">,{</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="s">&#39;u&#39;</span><span class="p">,</span><span class="s">&#39;p&#39;</span><span class="p">},{</span><span class="s">&#39;y&#39;</span><span class="p">});</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>It is also possible to simply extract the symbolic expressions from the
-<code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> instance and manually create CasADi functions.
-For example, <code class="docutils literal notranslate"><span class="pre">dae.x</span></code> contains all the expressions corresponding to ‘x’,
-<code class="docutils literal notranslate"><span class="pre">dae.ode</span></code> contains the expressions corresponding to ‘ode’, etc.</p>
+<p>The names of inputs and outputs correspond to the categories outlined in <a class="reference internal" href="#sec-model-variables"><span class="std std-numref">Section 7.1</span></a> and <a class="reference internal" href="#sec-model-equations"><span class="std std-numref">Section 7.2</span></a>, respectively. Constants (<span class="math notranslate nohighlight">\(c\)</span>) are never allowed as mentioned above. Dependent parameters (<span class="math notranslate nohighlight">\(d\)</span>) and dependent variables (<span class="math notranslate nohighlight">\(w\)</span>) can be <em>either</em> inputs or outputs (but not both). If they are absent from inputs (whether or not they are defined as outputs), they will be substituted out from the expressions during function construction. Outputs (<span class="math notranslate nohighlight">\(y\)</span>) and other purely dependent variables are only allowed as outputs. During creation, the function factory will save the current state of the (mutable) <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> instance and the created function will not be impacted by any subsequent changes to or even deletion of the <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> instance. The created functions are thus immutable (with very few exceptions), similar to all other functions in CasADi.</p>
+<p>We may also use CasADi’s naming conventions for derivative functions to include e.g. Jacobian blocks in the function output. The following example creates a function named <code class="docutils literal notranslate"><span class="pre">J</span></code> with three (vector-valued) inputs, <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(p\)</span>, and one (matrix-valued) output corresponding to the Jacobian of <span class="math notranslate nohighlight">\(f_{\text{ode}}\)</span> with respect to <span class="math notranslate nohighlight">\(x\)</span>:</p>
+<div class="sidebyside-master docutils container">
+<div class="sidebyside docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">J</span> <span class="o">=</span> <span class="n">dae</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s1">&#39;J&#39;</span><span class="p">,</span>\
+     <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;u&#39;</span><span class="p">,</span><span class="s1">&#39;p&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;jac_ode_x&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="sidebyside docutils container">
+<div class="highlight-octave notranslate"><div class="highlight"><pre><span></span><span class="n">J</span> <span class="p">=</span> <span class="n">dae</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="s">&#39;J&#39;</span><span class="p">,...</span>
+     <span class="p">{</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="s">&#39;u&#39;</span><span class="p">,</span><span class="s">&#39;p&#39;</span><span class="p">}</span> <span class="p">{</span><span class="s">&#39;jac_ode_x&#39;</span><span class="p">});</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We refer to the notebook <cite>fmu_demo.ipynb</cite> for more examples on how to use the function factory, including how to define and obtain (non-differentiable) auxiliary outputs during evaluation.</p>
 <p class="rubric">Footnotes</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="f3" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
-<p>FMI development group. Functional Mock-up Interface for Model Exchange and Co-Simulation. <a class="reference external" href="https://www.fmi-standard.org/">https://www.fmi-standard.org/</a>, July 2014. Specification, FMI 2.0. Section 3.1, pp. 71–72</p>
+<aside class="footnote brackets" id="casadi-hybrid" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">1</a><span class="fn-bracket">]</span></span>
+<p>Joel Andersson, James Goppert, <a class="reference external" href="https://doi.org/10.3384/ecp20799">Event Support for Simulation and Sensitivity Analysis in CasADi for use with Modelica and FMI</a> , Proceedings of the American Modelica Conference 2024, Storrs, Connecticut, USA, October 14-16, 2024</p>
+</aside>
+<aside class="footnote brackets" id="casadi-fmi" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">2</a><span class="fn-bracket">]</span></span>
+<p>Joel Andersson, <a class="reference external" href="https://doi.org/10.3384/ecp204321">Import and Export of Functional Mockup Units in CasADi</a> , Proceedings of the 15th International Modelica Conference 2023, Aachen, October 9-11</p>
+</aside>
+<aside class="footnote brackets" id="fmi3" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>,<a role="doc-backlink" href="#id3">3</a>)</span>
+<p>Modelica Association, <a class="reference external" href="https://fmi-standard.org/docs/3.0.2/">Functional Mock-up Interface Specification, version 3.0.2</a></p>
+</aside>
+<aside class="footnote brackets" id="modelica36" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id4">1</a>,<a role="doc-backlink" href="#id9">2</a>)</span>
+<p>Modelica Association, <a class="reference external" href="https://specification.modelica.org/maint/3.6/">Modelica(R) - A Unified Object-Oriented Language for Systems Modeling Language Specification, Version 3.6</a></p>
+</aside>
+<aside class="footnote brackets" id="basemodelica" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id5">1</a>,<a role="doc-backlink" href="#id6">2</a>)</span>
+<p>Peter Harman, Werther Kai, Gerd Kurzbach, Oliver Lenord, Hans Olsson, Michael Schellenberger, Martin Sjölund, Henrik Tidefelt, <a class="reference external" href="https://github.com/modelica/ModelicaSpecification/tree/MCP/0031/RationaleMCP/0031">Modelica Change Proposal MCP-0031 Base Modelica and MLS modularization</a></p>
+</aside>
+<aside class="footnote brackets" id="rumoca" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">6</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://github.com/CogniPilot/rumoca_parser">https://github.com/CogniPilot/rumoca_parser</a></p>
 </aside>
 </aside>
 </section>
@@ -4120,12 +4076,12 @@ Total seconds in IPOPT                               = 0.010
 
 EXIT: Optimal Solution Found.
       solver  :   t_proc      (avg)   t_wall      (avg)    n_eval
-       nlp_f  | 118.00us (  7.37us)  30.18us (  1.89us)        16
-       nlp_g  | 259.00us ( 16.19us)  60.40us (  3.78us)        16
-  nlp_grad_f  | 167.00us (  9.82us)  40.41us (  2.38us)        17
-  nlp_hess_l  | 300.00us ( 20.00us)  76.52us (  5.10us)        15
-   nlp_jac_g  | 291.00us ( 17.12us)  72.82us (  4.28us)        17
-       total  |  40.84ms ( 40.84ms)  10.25ms ( 10.25ms)         1
+       nlp_f  | 131.00us (  8.19us)  31.66us (  1.98us)        16
+       nlp_g  | 279.00us ( 17.44us)  65.42us (  4.09us)        16
+  nlp_grad_f  | 184.00us ( 10.82us)  43.27us (  2.55us)        17
+  nlp_hess_l  | 245.00us ( 16.33us)  60.65us (  4.04us)        15
+   nlp_jac_g  | 231.00us ( 13.59us)  56.08us (  3.30us)        17
+       total  |  41.88ms ( 41.88ms)  10.50ms ( 10.50ms)         1
 </pre></div>
 </div>
 </div>
@@ -4186,16 +4142,16 @@ Number of inequality constraint evaluations          = 16
 Number of equality constraint Jacobian evaluations   = 16
 Number of inequality constraint Jacobian evaluations = 16
 Number of Lagrangian Hessian evaluations             = 15
-Total seconds in IPOPT                               = 0.016
+Total seconds in IPOPT                               = 0.011
 
 EXIT: Optimal Solution Found.
       solver  :   t_proc      (avg)   t_wall      (avg)    n_eval
-       nlp_f  | 192.00us ( 12.00us)  32.45us (  2.03us)        16
-       nlp_g  | 276.00us ( 17.25us)  64.20us (  4.01us)        16
-  nlp_grad_f  | 182.00us ( 10.71us)  43.99us (  2.59us)        17
-  nlp_hess_l  | 260.00us ( 17.33us)  65.65us (  4.38us)        15
-   nlp_jac_g  | 237.00us ( 13.94us)  59.63us (  3.51us)        17
-       total  |  67.28ms ( 67.28ms)  17.13ms ( 17.13ms)         1
+       nlp_f  | 132.00us (  8.25us)  32.90us (  2.06us)        16
+       nlp_g  | 350.00us ( 21.88us)  84.42us (  5.28us)        16
+  nlp_grad_f  | 189.00us ( 11.12us)  45.44us (  2.67us)        17
+  nlp_hess_l  | 286.00us ( 19.07us)  71.64us (  4.78us)        15
+   nlp_jac_g  | 247.00us ( 14.53us)  60.74us (  3.57us)        17
+       total  |  45.26ms ( 45.26ms)  11.42ms ( 11.42ms)         1
 </pre></div>
 </div>
 </div>

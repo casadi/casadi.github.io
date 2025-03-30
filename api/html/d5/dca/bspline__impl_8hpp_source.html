@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -92,85 +92,96 @@ $(function() {
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d7/d23/namespacecasadi.html">casadi</a> {</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">class</span> M&gt;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    M BSplineCommon::derivative_coeff(casadi_int i, <span class="keyword">const</span> M&amp; coeffs)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;      casadi_int n_dims = degree_.size();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;      casadi_int n_knots = offset_[i+1]-offset_[i];</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;      casadi_int n = n_knots-degree_[i]-1;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;      <a class="code" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a> knots = std::vector&lt;double&gt;(get_ptr(knots_)+offset_[i], get_ptr(knots_)+offset_[i+1]);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      <a class="code" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a> delta_knots = knots(range(1+degree_[i], n_knots-1))</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            - knots(range(1, n_knots-degree_[i]-1));</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;      Sparsity sp_diag = vertsplit(<a class="code" href="../../d5/da8/classcasadi_1_1Sparsity.html#a43274706adbf65b0115e26139a7cf6da">Sparsity::diag</a>(n), {0, n-1, n})[0];</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;      Sparsity sp_band = vertsplit(<a class="code" href="../../d5/da8/classcasadi_1_1Sparsity.html#a131a185c0be45943470e5f179138d684">Sparsity::band</a>(n, -1), {0, n-1, n})[0];</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;      <a class="code" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a> delta_knots_inv = 1/delta_knots;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;      <a class="code" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a> T = <a class="code" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a>(sp_diag, -delta_knots_inv) + <a class="code" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a>(sp_band, delta_knots_inv);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;      T*= degree_[i];</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      std::vector&lt;casadi_int&gt; coeffs_dims_new = coeffs_dims_;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;      coeffs_dims_new[i+1] = T.size1();</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      <span class="comment">// Apply transformation T on axis i</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      <span class="comment">// Bring axis i to the back</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      std::vector&lt;casadi_int&gt; order = range(n_dims+1);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      std::swap(order.back(), order[i+1]);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      std::vector&lt;casadi_int&gt; mapping = tensor_permute_mapping(coeffs_dims_, order);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      M coeff_matrix = coeffs.nz(mapping); <span class="comment">// NOLINT(cppcoreguidelines-slicing)</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    M BSplineCommon::derivative_coeff(casadi_int i,</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keyword">const</span> std::vector&lt;double&gt;&amp; knots,</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; offset,</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; degree, </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; coeffs_dims, <span class="keyword">const</span> M&amp; coeffs,</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        std::vector&lt; std::vector&lt;double&gt; &gt;&amp; new_knots,</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        std::vector&lt;casadi_int&gt;&amp; new_degree) {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;      casadi_int n_dims = degree.size();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;      casadi_int n_knots = offset[i+1]-offset[i];</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;      casadi_int n = n_knots-degree[i]-1;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;      <a class="code" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a> K = std::vector&lt;double&gt;(get_ptr(knots)+offset[i], get_ptr(knots)+offset[i+1]);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;      <a class="code" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a> delta_knots = K(range(1+degree[i], n_knots-1))</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            - K(range(1, n_knots-degree[i]-1));</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      Sparsity sp_diag = vertsplit(<a class="code" href="../../d5/da8/classcasadi_1_1Sparsity.html#a43274706adbf65b0115e26139a7cf6da">Sparsity::diag</a>(n), {0, n-1, n})[0];</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;      Sparsity sp_band = vertsplit(<a class="code" href="../../d5/da8/classcasadi_1_1Sparsity.html#a131a185c0be45943470e5f179138d684">Sparsity::band</a>(n, -1), {0, n-1, n})[0];</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      <a class="code" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a> delta_knots_inv = 1/delta_knots;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      <a class="code" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a> <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a> = <a class="code" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a>(sp_diag, -delta_knots_inv) + <a class="code" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a>(sp_band, delta_knots_inv);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>*= degree[i];</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      std::vector&lt;casadi_int&gt; coeffs_dims_new = coeffs_dims;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      coeffs_dims_new[i+1] = <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>.size1();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      <span class="comment">// Apply transformation T on axis i</span></div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      <span class="comment">// Cast as matrix</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      coeff_matrix = reshape(coeff_matrix, -1, T.size2());</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      <span class="comment">// Apply the transformation matrix from the right</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      coeff_matrix = mtimes(coeff_matrix, T.T());</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      <span class="comment">// Bring axis i to the back</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      std::vector&lt;casadi_int&gt; order = range(n_dims+1);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      std::swap(order.back(), order[i+1]);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      std::vector&lt;casadi_int&gt; mapping = tensor_permute_mapping(coeffs_dims, order);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      M coeff_matrix = coeffs.nz(mapping); <span class="comment">// NOLINT(cppcoreguidelines-slicing)</span></div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      <span class="comment">// Bring axis i back to the original place</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      mapping = tensor_permute_mapping(permute(coeffs_dims_new, order), order);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;      coeff_matrix = coeff_matrix.nz(mapping); <span class="comment">// NOLINT(cppcoreguidelines-slicing)</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      <span class="comment">// Return the flat vector</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      <span class="keywordflow">return</span> coeff_matrix;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    MX BSplineCommon::jac(<span class="keyword">const</span> MX&amp; x, <span class="keyword">const</span> T&amp; coeffs)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    casadi_int n_dims = degree_.size();</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    std::vector&lt;MX&gt; parts;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> opts;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    std::vector&lt;std::string&gt; lookup_mode;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> e : lookup_mode_) lookup_mode.push_back(Low::lookup_mode_from_enum(e));</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    opts[<span class="stringliteral">&quot;lookup_mode&quot;</span>] = lookup_mode;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="comment">// Loop over dimensions</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordflow">for</span> (casadi_int k=0;k&lt;n_dims;++k) {</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      std::vector&lt; std::vector&lt;double&gt; &gt; knots;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      std::vector&lt; casadi_int&gt; degree;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      <span class="keywordflow">for</span> (casadi_int i=0;i&lt;degree_.size();++i) {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">if</span> (i==k) {</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;          knots.push_back(</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            std::vector&lt;double&gt;(get_ptr(knots_)+offset_[i]+1, get_ptr(knots_)+offset_[i+1]-1));</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;          degree.push_back(degree_[i]-1);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;          knots.push_back(</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            std::vector&lt;double&gt;(get_ptr(knots_)+offset_[i], get_ptr(knots_)+offset_[i+1]));</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;          degree.push_back(degree_[i]);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        }</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;      }</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;      MX d = <a class="code" href="../../d9/dc2/group__expression__tools.html#ga94157a42780dca08718ed60e0cb26f52">MX::bspline</a>(x, derivative_coeff(k, coeffs), knots, degree, m_, opts);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;      parts.push_back(d);</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    }</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordflow">return</span> horzcat(parts);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  }</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;} <span class="comment">// namespace casadi</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_BSPLINE_IMPL_HPP</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      <span class="comment">// Cast as matrix</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      coeff_matrix = reshape(coeff_matrix, -1, <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>.size2());</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      <span class="comment">// Apply the transformation matrix from the right</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      coeff_matrix = mtimes(coeff_matrix, <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>.T());</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      <span class="comment">// Bring axis i back to the original place</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      mapping = tensor_permute_mapping(permute(coeffs_dims_new, order), order);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      coeff_matrix = coeff_matrix.nz(mapping); <span class="comment">// NOLINT(cppcoreguidelines-slicing)</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      new_knots.clear();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      new_degree.clear();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      <span class="keywordflow">for</span> (casadi_int k=0;k&lt;degree.size();++k) {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">if</span> (i==k) {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;          new_knots.push_back(</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            std::vector&lt;double&gt;(get_ptr(knots)+offset[k]+1, get_ptr(knots)+offset[k+1]-1));</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;          new_degree.push_back(degree[k]-1);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;          new_knots.push_back(</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            std::vector&lt;double&gt;(get_ptr(knots)+offset[k], get_ptr(knots)+offset[k+1]));</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;          new_degree.push_back(degree[k]);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;      <span class="comment">// Return the flat vector</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;      <span class="keywordflow">return</span> coeff_matrix;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    MX BSplineCommon::jac(<span class="keyword">const</span> MX&amp; x, <span class="keyword">const</span> T&amp; coeffs)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    casadi_int n_dims = degree_.size();</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    std::vector&lt;MX&gt; parts;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> opts;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    std::vector&lt;std::string&gt; lookup_mode;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> e : lookup_mode_) lookup_mode.push_back(Low::lookup_mode_from_enum(e));</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    opts[<span class="stringliteral">&quot;lookup_mode&quot;</span>] = lookup_mode;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="comment">// Loop over dimensions</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordflow">for</span> (casadi_int k=0;k&lt;n_dims;++k) {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;      std::vector&lt; std::vector&lt;double&gt; &gt; knots;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;      std::vector&lt; casadi_int&gt; degree;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;      <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a> dC = derivative_coeff(k, knots_, offset_, degree_, coeffs_dims_, coeffs, knots, degree);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;      MX d = <a class="code" href="../../d9/dc2/group__expression__tools.html#ga94157a42780dca08718ed60e0cb26f52">MX::bspline</a>(x, dC, knots, degree, m_, opts);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;      parts.push_back(d);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordflow">return</span> horzcat(parts);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;} <span class="comment">// namespace casadi</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_BSPLINE_IMPL_HPP</span></div>
 <div class="ttc" id="aclasscasadi_1_1Sparsity_html_a131a185c0be45943470e5f179138d684"><div class="ttname"><a href="../../d5/da8/classcasadi_1_1Sparsity.html#a131a185c0be45943470e5f179138d684">casadi::Sparsity::band</a></div><div class="ttdeci">static Sparsity band(casadi_int n, casadi_int p)</div><div class="ttdoc">Create a single band in a square sparsity pattern.</div></div>
-<div class="ttc" id="aclasscasadi_1_1Sparsity_html_a43274706adbf65b0115e26139a7cf6da"><div class="ttname"><a href="../../d5/da8/classcasadi_1_1Sparsity.html#a43274706adbf65b0115e26139a7cf6da">casadi::Sparsity::diag</a></div><div class="ttdeci">static Sparsity diag(casadi_int nrow)</div><div class="ttdoc">Create diagonal sparsity pattern *.</div><div class="ttdef"><b>Definition:</b> <a href="../../da/da8/sparsity_8hpp_source.html#l00183">sparsity.hpp:183</a></div></div>
-<div class="ttc" id="agroup__expression__tools_html_ga94157a42780dca08718ed60e0cb26f52"><div class="ttname"><a href="../../d9/dc2/group__expression__tools.html#ga94157a42780dca08718ed60e0cb26f52">casadi::MX::bspline</a></div><div class="ttdeci">friend MX bspline(const MX &amp;x, const DM &amp;coeffs, const std::vector&lt; std::vector&lt; double &gt; &gt; &amp;knots, const std::vector&lt; casadi_int &gt; &amp;degree, casadi_int m, const Dict &amp;opts=Dict())</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dc6/mx_8hpp_source.html#l00766">mx.hpp:766</a></div></div>
-<div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../db/da5/binary__mx__impl_8hpp_source.html#l00036">binary_mx_impl.hpp:36</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1Sparsity_html_a43274706adbf65b0115e26139a7cf6da"><div class="ttname"><a href="../../d5/da8/classcasadi_1_1Sparsity.html#a43274706adbf65b0115e26139a7cf6da">casadi::Sparsity::diag</a></div><div class="ttdeci">static Sparsity diag(casadi_int nrow)</div><div class="ttdoc">Create diagonal sparsity pattern *.</div><div class="ttdef"><b>Definition:</b> <a href="../../da/da8/sparsity_8hpp_source.html#l00190">sparsity.hpp:190</a></div></div>
+<div class="ttc" id="agroup__expression__tools_html_ga94157a42780dca08718ed60e0cb26f52"><div class="ttname"><a href="../../d9/dc2/group__expression__tools.html#ga94157a42780dca08718ed60e0cb26f52">casadi::MX::bspline</a></div><div class="ttdeci">friend MX bspline(const MX &amp;x, const DM &amp;coeffs, const std::vector&lt; std::vector&lt; double &gt; &gt; &amp;knots, const std::vector&lt; casadi_int &gt; &amp;degree, casadi_int m, const Dict &amp;opts=Dict())</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dc6/mx_8hpp_source.html#l00823">mx.hpp:823</a></div></div>
+<div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/archiver_8hpp_source.html#l00032">archiver.hpp:32</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_a8b909f6932a91230738731512b99127e"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">casadi::Dict</a></div><div class="ttdeci">GenericType::Dict Dict</div><div class="ttdoc">C++ equivalent of Python's dict or MATLAB's struct.</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d30/generic__type_8hpp_source.html#l00258">generic_type.hpp:258</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">casadi::Category::T</a></div><div class="ttdeci">@ T</div></div>
 <div class="ttc" id="anamespacecasadi_html_acf4e4e693df7cfbd8b89ad5ff8aec939"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">casadi::DM</a></div><div class="ttdeci">Matrix&lt; double &gt; DM</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d97/dm__fwd_8hpp_source.html#l00033">dm_fwd.hpp:33</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </body>

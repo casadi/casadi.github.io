@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -125,7 +125,7 @@ $(function() {
 <tr>
 <td>eval_errors_fatal</td><td>OT_BOOL</td><td>When errors occur during evaluation of f,g,...,stop the iterations</td><td>casadi::Nlpsol </td></tr>
 <tr>
-<td>expand</td><td>OT_BOOL</td><td>Replace MX with SX expressions in problem formulation [false]</td><td>casadi::OracleFunction </td></tr>
+<td>expand</td><td>OT_BOOL</td><td>Replace MX with SX expressions in problem formulation [false] This happens before creating derivatives unless indicated by postpone_expand</td><td>casadi::OracleFunction </td></tr>
 <tr>
 <td>external_transform</td><td>OT_VECTORVECTOR</td><td>List of external_transform instruction arguments. Default: empty</td><td>casadi::FunctionInternal </td></tr>
 <tr>
@@ -188,6 +188,8 @@ $(function() {
 <td>post_expand</td><td>OT_BOOL</td><td>After construction, expand this Function. Default: False</td><td>casadi::FunctionInternal </td></tr>
 <tr>
 <td>post_expand_options</td><td>OT_DICT</td><td>Options to be passed to post-construction expansion. Default: empty</td><td>casadi::FunctionInternal </td></tr>
+<tr>
+<td>postpone_expand</td><td>OT_BOOL</td><td>When expand is active, postpone it until after creation of derivatives. Default: False</td><td>casadi::OracleFunction </td></tr>
 <tr>
 <td>print_in</td><td>OT_BOOL</td><td>Print numerical values of inputs [default: false]</td><td>casadi::FunctionInternal </td></tr>
 <tr>

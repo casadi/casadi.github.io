@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -79,7 +79,7 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <dl class="section user"><dt></dt><dd></dd></dl>
 <p>Performs a matrix exponentiation expm(A)</p>
-<h3><a class="anchor" id="autotoc_md4"></a>
+<h3><a class="anchor" id="autotoc_md6"></a>
 General information</h3>
 <p><br  />
 </p><dl class="section user"><dt></dt><dd><a class="anchor" id="options"></a><table class="doxtable">
@@ -188,7 +188,7 @@ General information</h3>
 <td>verbose</td><td>OT_BOOL</td><td>Verbose evaluation &ndash; for debugging</td><td><a class="el" href="../../db/da0/classcasadi_1_1ProtoFunction.html" title="Base class for FunctionInternal and LinsolInternal.">casadi::ProtoFunction</a> </td></tr>
 </table>
 </dd></dl>
-<h3><a class="anchor" id="autotoc_md5"></a>
+<h3><a class="anchor" id="autotoc_md7"></a>
 List of plugins</h3>
 <p>- <a href='#plugin_Expm_slicot'>slicot</a> </p>
 <p>Note: some of the plugins in this list might not be available on your system.  Also, there might be extra plugins available to you that are not listed here. You can obtain their documentation with <code>Expm.doc("myextraplugin")</code></p>
@@ -221,7 +221,7 @@ List of plugins</h3>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">return</span> Expm::getPlugin(name).doc;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00270">casadi::PluginInterface&lt; Expm &gt;::getPlugin()</a>.</p>
+<p class="reference">References <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00291">casadi::PluginInterface&lt; Expm &gt;::getPlugin()</a>.</p>
 
 </div>
 </div>
@@ -314,9 +314,9 @@ List of plugins</h3>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> Function::create(Expm::instantiate(name, solver, A), opts);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../de/dea/function_8cpp_source.html#l00335">casadi::Function::create()</a>, and <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00287">casadi::PluginInterface&lt; Expm &gt;::instantiate()</a>.</p>
+<p class="reference">References <a class="el" href="../../de/dea/function_8cpp_source.html#l00336">casadi::Function::create()</a>, and <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00312">casadi::PluginInterface&lt; Expm &gt;::instantiate()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d7/df4/mx_8cpp_source.html#l01960">casadi::MX::expm()</a>, and <a class="el" href="../../d7/df4/mx_8cpp_source.html#l01953">casadi::MX::expm_const()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d7/df4/mx_8cpp_source.html#l02046">casadi::MX::expm()</a>, and <a class="el" href="../../d7/df4/mx_8cpp_source.html#l02039">casadi::MX::expm_const()</a>.</p>
 
 </div>
 </div>
@@ -341,7 +341,7 @@ List of plugins</h3>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">return</span> Expm::has_plugin(name);</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00129">casadi::PluginInterface&lt; Expm &gt;::has_plugin()</a>.</p>
+<p class="reference">References <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00131">casadi::PluginInterface&lt; Expm &gt;::has_plugin()</a>.</p>
 
 </div>
 </div>
@@ -366,7 +366,7 @@ List of plugins</h3>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    Expm::load_plugin(name);</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00197">casadi::PluginInterface&lt; Expm &gt;::load_plugin()</a>.</p>
+<p class="reference">References <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00203">casadi::PluginInterface&lt; Expm &gt;::load_plugin()</a>.</p>
 
 </div>
 </div>

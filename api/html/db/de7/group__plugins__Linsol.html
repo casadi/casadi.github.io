@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -123,11 +123,33 @@ $(function() {
 <dl class="section user"><dt></dt><dd></dd></dl>
 <p>Linear solver using sparse direct LDL factorization</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_233">https://github.com/casadi/casadi/wiki/L_233</a></p>
+<p><br  />
+</p><dl class="section user"><dt></dt><dd><a class="anchor" id="options"></a><table class="doxtable">
+<caption>List of available options</caption>
+<tr>
+<th>Id</th><th>Type</th><th>Description </th></tr>
+<tr>
+<td>incomplete</td><td>OT_BOOL</td><td>Incomplete factorization, without any fill-in </td></tr>
+<tr>
+<td>preordering</td><td>OT_BOOL</td><td>Approximate minimal degree (AMD) preordering </td></tr>
+</table>
+</dd></dl>
 <hr  />
   <h4>qr <a class="anchor" id="plugin_Linsol_qr"></a> </h4>
 <dl class="section user"><dt></dt><dd></dd></dl>
 <p>Linear solver using sparse direct QR factorization</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_22z">https://github.com/casadi/casadi/wiki/L_22z</a></p>
+<p><br  />
+</p><dl class="section user"><dt></dt><dd><a class="anchor" id="options"></a><table class="doxtable">
+<caption>List of available options</caption>
+<tr>
+<th>Id</th><th>Type</th><th>Description </th></tr>
+<tr>
+<td>cache</td><td>OT_DOUBLE</td><td>Amount of factorisations to remember (thread-local) [0] </td></tr>
+<tr>
+<td>eps</td><td>OT_DOUBLE</td><td>Minimum R entry before singularity is declared [1e-12] </td></tr>
+</table>
+</dd></dl>
 <hr  />
   <h4>tridiag <a class="anchor" id="plugin_Linsol_tridiag"></a> </h4>
 <dl class="section user"><dt></dt><dd></dd></dl>

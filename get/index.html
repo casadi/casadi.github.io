@@ -138,14 +138,437 @@
                 
 
                 
-                <div class="card text-left border-success mb-2" id="36">
+                <div class="card text-left border-success mb-2" id="37">
                 
                   
-                  <a class="card-header bg-white border-success" data-toggle="collapse" href="#body-36" aria-expanded="true" aria-controls="body-36">
+                  <a class="card-header bg-white border-success" data-toggle="collapse" href="#body-37" aria-expanded="true" aria-controls="body-37">
                   
                     
-                    <h4 class="text-success" style="display: inline-block; margin: 0;">CasADi v3.6.7</h4>
+                    <h4 class="text-success" style="display: inline-block; margin: 0;">CasADi v3.7.0</h4>
                     <span class="badge badge-success" style="font-size: 0.5em; vertical-align: top;">latest</span>
+                    
+                    
+                    
+                    
+                    <span class="release-info text-muted">released March 29, 2025</span>
+                  </a>
+                  
+                  <div class="collapse show" id="body-37">
+                  
+
+                    
+                    
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+
+                      
+                        <div class="nav nav-pills card-header justify-content-center" role="tablist">
+                          
+                          <a class="nav-link active" href="#downloadTab-37" role="tab" data-toggle="tab" aria-selected="true">Install</a>
+                          
+                          
+                          <a class="nav-link" href="#installTab-37" role="tab" data-toggle="tab" aria-selected="false">Troubleshooting</a>
+                          
+                          
+                          <a class="nav-link" href="#notesTab-37" role="tab" data-toggle="tab" aria-selected="false">Release notes</a>
+                          
+
+                        </div>
+                        <div class="card-body tab-content">
+                          <div id="downloadTab-37" role="tabpanel" class="tab-pane fade active show">
+                            
+                              <p>Grab a binary from the table:</p>
+<table>
+  <tr><th></th><th>Windows</th><th>Linux</th><th>Mac classic (High Sierra or above)</th><th>Mac M1</th></tr>
+  <tr>
+    <th>Matlab</th>
+    <td><a href="https://github.com/casadi/casadi/releases/download/3.7.0/casadi-3.7.0-windows64-matlab2018b.zip">R2018b</a> or later</td>
+    <td><a href="https://github.com/casadi/casadi/releases/download/3.7.0/casadi-3.7.0-linux64-matlab2018b.zip">R2018b</a> or later</td>
+    <td><a href="https://github.com/casadi/casadi/releases/download/3.7.0/casadi-3.7.0-osx64-matlab2018b.zip">R2018b</a> or later</td>
+    <td><a href="https://github.com/casadi/casadi/releases/download/3.7.0/casadi-3.7.0-osx_arm64-matlab2018b.zip">R2023b</a> or later (Apple Silicon)<br/><a href="https://github.com/casadi/casadi/releases/download/3.7.0/casadi-3.7.0-osx64-matlab2018b.zip">R2018b</a> or later (Rosetta)</td>
+  </tr>
+  <tr>
+    <th>Octave</th>
+    <td><a href="https://github.com/casadi/casadi/releases/download/3.7.0/casadi-3.7.0-windows64-octave7.3.0.zip">6.2.0</a> or later</td>
+    <td><a href="https://github.com/casadi/casadi/releases/download/3.7.0/casadi-3.7.0-linux64-octave7.3.0.zip">6.2.0</a> or later</td>
+    <td><a href="https://github.com/casadi/casadi/releases/download/3.7.0/casadi-3.7.0-osx64-octave7.3.0.zip">6.2.0</a> or later</td>
+    <td><a href="https://github.com/casadi/casadi/releases/download/3.7.0/casadi-3.7.0-osx_arm64-octave7.3.0.zip">6.2.0</a> or later</td>
+  </tr>
+  <tr>
+    <th>Python</th>
+    <td colspan="4"><code>pip install casadi</code> (needs <code>pip -V</code>>=8.1)</td>
+  </tr>
+</table>
+<p>For Matlab/Octave, unzip in your home directory and adapt the path:</p>
+<pre>
+<code>
+addpath('&lt;yourpath>/casadi-3.7.0-windows64-matlab2018b')
+</code>
+</pre>
+<p>Check your installation:</p>
+<table>
+<tr><th>Matlab/Octave</th><th>Python</th><tr>
+<tr><td>
+<pre>
+<code>
+import casadi.*
+x = MX.sym('x')
+disp(jacobian(sin(x),x))
+</code>
+</pre>
+</td><td>
+<pre>
+<code>
+from casadi import *
+x = MX.sym("x")
+print(jacobian(sin(x),x))
+</code>
+</pre>
+</td></tr>
+</table>
+<p>Get started with the <a href="https://github.com/casadi/casadi/releases/download/3.7.0/casadi-example_pack-v3.7.0.zip">example pack</a>. Onboarding pointers have been gathered by the community at our <a href="https://github.com/casadi/casadi/wiki/Onboarding-Guide">wiki</a>.</p>
+
+                            
+                          </div>
+                          <div id="notesTab-37" role="tabpanel" class="tab-pane fade">
+                            
+                              <h2 id="symbolic-expressions">Symbolic expressions</h2>
+<ul>
+<li>
+<p>A uniform <code>sum</code> operation is now exposed to the user, next to existing <code>sum1</code>/<code>sum2</code>. In Python, it behaves exactly like <code>np.sum</code>. In Matlab, it follows the conventions of the builtin Matlab <code>sum</code>. <strong>breaking</strong> If you have been doing <code>from casadi import *</code>, you&rsquo;ll find that <code>sum</code> no longer refers to the builtin Python <code>sum</code>. You may use <code>import builtins;builtins.sum</code> to access that variant.</p>
+</li>
+<li>
+<p>You can now put Function calls (e.g. bsplines/lookup tables, Callbacks) into SX graphs. Consequently, you can more often perform <code>expand</code> on an MX graph (still it may not always be a good idea). You can force Functions to end up as SX call nodes with option <code>never_inline</code> true.</p>
+</li>
+<li>
+<p>You can now make call SX Functions with MX in an inlining fashion, y setting <code>always_inline</code> true.</p>
+</li>
+<li>
+<p>New functionality <code>extract_parametric</code>. The purpose of <code>extract_parametric</code> is ultimately to save on evaluation time of an expression, by extracting out the parts that are only solely dependent on parameters.
+Here is an example of CasADi Function with a contraction of a 100-by-100 input in its graph, dependent only on parameters:</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="p">=</span> <span class="n">MX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span> <span class="p">=</span> <span class="n">MX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;p&#39;</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">q</span> <span class="p">=</span> <span class="n">MX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;q&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">expr</span> <span class="p">=</span> <span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">sumsqr</span><span class="p">(</span><span class="n">p</span><span class="p">))</span><span class="o">*</span><span class="n">q</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">f</span> <span class="p">=</span> <span class="n">Function</span><span class="p">(</span><span class="s">&#39;f&#39;</span><span class="p">,{</span><span class="n">x</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">q</span><span class="p">},{</span><span class="n">expr</span><span class="p">})</span> <span class="c">% f:(i0,i1[100x100],i2)-&gt;(o0) MXFunction</span>
+</span></span><span class="line"><span class="cl"><span class="c">% Suppose we call this Function a lot of times with different values for x but equal values for p and q</span>
+</span></span><span class="line"><span class="cl"><span class="c">% Recomputing sumsqr(p) every time would be a waste.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% Distill out the parts of the expression that only dependent on parameters p and q.</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="n">expr_ret</span><span class="p">,</span> <span class="n">symbols</span><span class="p">,</span> <span class="n">parametric</span><span class="p">]</span> <span class="p">=</span> <span class="n">extract_parametric</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="p">{</span><span class="n">p</span><span class="p">,</span><span class="n">q</span><span class="p">},</span> <span class="n">struct</span><span class="p">(</span><span class="s">&#39;extract_trivial&#39;</span><span class="p">,</span> <span class="n">true</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% Construct now a hot function, called every time</span>
+</span></span><span class="line"><span class="cl"><span class="n">f_compact</span> <span class="p">=</span> <span class="n">Function</span><span class="p">(</span><span class="s">&#39;f_compact&#39;</span><span class="p">,[{</span><span class="n">x</span><span class="p">}</span> <span class="n">symbols</span><span class="p">],{</span><span class="n">expr_ret</span><span class="p">})</span> <span class="c">% f_compact:(i0,i1,i2)-&gt;(o0) MXFunction</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% And a precompute that can be evaluated at initalization / outside a hot loop.</span>
+</span></span><span class="line"><span class="cl"><span class="n">f_precompute</span> <span class="p">=</span> <span class="n">Function</span><span class="p">(</span><span class="s">&#39;f_precompute&#39;</span><span class="p">,{</span><span class="n">p</span><span class="p">,</span><span class="n">q</span><span class="p">},</span><span class="n">parametric</span><span class="p">)</span>   <span class="c">% f_precompute:(i0[100x100],i1)-&gt;(o0,o1) MXFunction</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% Numerical check</span>
+</span></span><span class="line"><span class="cl"><span class="n">rng</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">x_num</span> <span class="p">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">p_num</span> <span class="p">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">q_num</span> <span class="p">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="n">e_0</span><span class="p">,</span> <span class="n">e_1</span><span class="p">]</span> <span class="p">=</span> <span class="n">f_precompute</span><span class="p">(</span><span class="n">p_num</span><span class="p">,</span><span class="n">q_num</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">f_compact</span><span class="p">(</span><span class="n">x_num</span><span class="p">,</span><span class="n">e_0</span><span class="p">,</span><span class="n">e_1</span><span class="p">)</span> <span class="c">% -0.116384</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">f</span><span class="p">(</span><span class="n">x_num</span><span class="p">,</span><span class="n">p_num</span><span class="p">,</span><span class="n">q_num</span><span class="p">)</span> <span class="c">% -0.116384</span>
+</span></span></code></pre></div><ul>
+<li>New functionality <code>separate_linear</code>. The purpose is to separate out parts of an expression graph that are constant or linear.  Note that the partitioning is done with a straightforward pass through the graph. There are no computer-algebra-system type of transformations performed to influence the partitioning.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[expr_const,expr_lin,expr_nonlin] = separate_linear(cos(p)+7*x+x*y, [x,y], p)
+</span></span><span class="line"><span class="cl">expr_const: cos(p)
+</span></span><span class="line"><span class="cl">expr_lin: 7*x
+</span></span><span class="line"><span class="cl">expr_nonlin: x*y
+</span></span></code></pre></div><ul>
+<li>
+<p>Several bugfixes related to arguments shaped (0-by-n) or (n-by-0). <strong>breaking</strong> Your code may be relying on broken implementations of <code>diagcat</code> and <code>jtimes</code>.</p>
+</li>
+<li>
+<p>A bug was fixed related to <code>0^0</code> in MX.
+<strong>breaking</strong> The fix may impact you if you used <code>**(-1)</code> (Python) or <code>.^(-1)</code> (Matlab) (element-wise power) on sparse matrices, e.g. for scaling matrices.</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">v</span> <span class="o">=</span> <span class="n">DM</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">diag</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="c1"># Sparse matrix with only diagonal entries</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Used to return a sparse matrix with diagonal entries inverted</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Now returns a dense matrix full of infs on the off-diagonals.</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">diag</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># If you had this use case before, you can do the element-wise power on the vector progenitor:</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">diag</span><span class="p">(</span><span class="n">v</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Or use matrix-wise operations</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">inv</span><span class="p">(</span><span class="n">diag</span><span class="p">(</span><span class="n">v</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">mpower</span><span class="p">(</span><span class="n">diag</span><span class="p">(</span><span class="n">v</span><span class="p">),</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+</span></span></code></pre></div><h2 id="ad">AD</h2>
+<ul>
+<li>The ability to perform algorithmic differentiation on nlp solvers incurs some overhead and surprises for novice users, even when unused. <strong>breaking</strong> The default settings of <code>calc_lam_p</code> and <code>no_nlp_grad</code> for <code>nlpsol</code> have now been made <code>false</code> and <code>true</code> respectively, eliminating that overhead.</li>
+</ul>
+<h2 id="code-generation">Code-generation</h2>
+<ul>
+<li>We now avoid copying over input arguments into a local workvector before acting upon them.
+This very relevant if you perform sublinear operations on large inputs (e.g. parametric lookup tables, <a href="https://github.com/casadi/casadi/issues/3962)">https://github.com/casadi/casadi/issues/3962)</a>. Influenced by <code>GlobalOptions</code>&rsquo;s <code>setCopyElisionMinSize</code>.</li>
+<li><strong>Breaking</strong> Dense sparsity patterns in the input/output scheme of generated functions are now compactly represented. You can use option <code>force_canonical</code> true to revert to old behaviour.</li>
+<li>Added a &lsquo;memory pool&rsquo; feature #3812</li>
+</ul>
+<h2 id="solversplugins">Solvers/plugins</h2>
+<ul>
+<li>Important bugfixes to fatrop interface</li>
+<li><strong>breaking</strong> Rootfinder was refactored internally to use a different naming convention. When you use the expression-oriented interface, no changes are needed. If you use the Function-based interface, you will need changes. For example, a code that read:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">rfp</span> <span class="o">=</span> <span class="n">ca</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="s1">&#39;rfp&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">X_unknown</span><span class="p">,</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">U</span><span class="p">],</span> <span class="p">[</span><span class="n">g</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;V0&#39;</span><span class="p">,</span> <span class="s1">&#39;X0&#39;</span><span class="p">,</span> <span class="s1">&#39;U&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;V&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">ca</span><span class="o">.</span><span class="n">rootfinder</span><span class="p">(</span><span class="s1">&#39;ifcn&#39;</span><span class="p">,</span> <span class="s1">&#39;kinsol&#39;</span><span class="p">,</span> <span class="n">rfp</span><span class="p">)</span> <span class="c1"># output (V0[6],X0[2],U)-&gt;(V[6])</span>
+</span></span></code></pre></div><p>Should be adapted to:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># For the unknown, drop the trailing &#39;0&#39; from the label</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># For the residual output, pick anything as long as there is no name collision</span>
+</span></span><span class="line"><span class="cl"><span class="n">rfp</span> <span class="o">=</span> <span class="n">ca</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="s1">&#39;rfp&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">X_unknown</span><span class="p">,</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">U</span><span class="p">],</span> <span class="p">[</span><span class="n">g</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;X0&#39;</span><span class="p">,</span> <span class="s1">&#39;U&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;res&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">ca</span><span class="o">.</span><span class="n">rootfinder</span><span class="p">(</span><span class="s1">&#39;ifcn&#39;</span><span class="p">,</span> <span class="s1">&#39;kinsol&#39;</span><span class="p">,</span> <span class="n">rfp</span><span class="p">)</span> <span class="c1"># still outputs (V0[6],X0[2],U)-&gt;(V[6])</span>
+</span></span></code></pre></div><h2 id="opti-stack">Opti Stack</h2>
+<ul>
+<li>New <code>set_linear_scale</code> syntax for decision variables, and a <code>linear_scale</code> argument to <code>subject_to</code>.</li>
+<li><code>show_infeasibilities</code> is now easier to interpret when <code>detect_simple_bounds</code> is active.</li>
+</ul>
+<h2 id="function">Function</h2>
+<ul>
+<li><strong>breaking</strong> Serialization: Functions that include an Integrator, Rootfinder or FMU Function.</li>
+<li><code>dump</code> <code>dump_in</code> <code>dump_out</code> options now create directories when needed.</li>
+</ul>
+<h2 id="thread-safety">Thread safety</h2>
+<ul>
+<li>CasADi used to be thread-safe for numerical evaluation. Now it is thread-safe for symbolic manipulation too.</li>
+</ul>
+<h2 id="c">C++</h2>
+<ul>
+<li><strong>breaking</strong> The casadi cmake target now has a namespace. The preferred way of configuring your cmake is:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">find_package(casadi CONFIG REQUIRED)
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">add_executable(casadi_demo casadi_demo.cpp)
+</span></span><span class="line"><span class="cl">target_link_libraries(casadi_demo casadi::casadi)
+</span></span></code></pre></div><h2 id="python">Python</h2>
+<ul>
+<li>CasADi-Python interfaces now releases the GIL. This is a preparation for eventually post python 3.13 GIL free releases.</li>
+</ul>
+<h2 id="daebuilder--fmi-interoperability">DaeBuilder / FMI interoperability</h2>
+<ul>
+<li>DaeBuilder can now accept the name of an fmu file, unzip it in a temporary folder and clean up that folder when it is no longer needed.</li>
+<li>The DaeBuilder class has had a major revision, both in terms of syntax and in functionality. With the new release, the syntax stays much closer to FMI/Modelica. If you are using or planning to use this class, we recommend you to read the updated section on DaeBuilder in the user guide.</li>
+<li>FMU import now supports FMI 3.0 (in addition to FMI 2.0). The FMU export, as before, only supports FMI 3.0. In addition, additional derivative information is handled by the interface including adjoints (FMI 3 only) and forward directional derivatives (which were previously only used to construct sparse Jacobians).</li>
+<li>The interface to formulate DaeBuilder symbolically has been updated with the goal of eventually supporting the proposed <a href="https://github.com/modelica/ModelicaSpecification/tree/MCP/0031/RationaleMCP/0031">Base Modelica standard</a> in terms of functionality. We are currently not planning to distribute a Modelica parser with CasADi, but we are coordinating the Base Modelica effort with developers of the open-source <a href="https://github.com/cognipilot/rumoca">Rumoca</a> tool. Rumoca includes a proof-of-concept implementation for converting Modelica into CasADi/DaeBuilder Python scripts.</li>
+<li>The FMU export has been improved and the CasADi examples collection now contains two examples (vdp and bouncing ball, the latter with event support) where the generated FMUs can be simulated with FMPy.</li>
+<li>DaeBuilder has been extended to support events defined via when-equations, for now only compatible with symbolic modeling (not using standard FMUs), including for FMU export. The event systems can be simulated and have sensitivities analytically calculated, as discussed below.</li>
+<li>After numerous fixes to the interface, the FMU import has now been successfully used to import model exchange FMUs generated with multiple tools, including MATLAB/Simulink, OpenModelica, Dymola and Modelon Impact/OCT. For a list of FMI-compatible tools, see the <a href="https://fmi-standard.org/">FMI website</a>.</li>
+</ul>
+<h2 id="hybrid-simulation-and-sensitivity-analysis">Hybrid simulation and sensitivity analysis</h2>
+<p>The integrator class has been extended to support state events. This is a prototype implementation, currently only tested with Sundials/CVODES. First order analytic sensitivity calculations (but not yet other forms of sensitivity analysis) is possible for systems with events, including propagation of sensitivities through zero-crossing functions and events dynamics. The approach is compatible with when equations formulated in DaeBuilder (see above), but can also be used stand-alone. For details, see the <a href="https://doi.org/10.3384/ecp20799">implementation paper</a>.</p>
+<h2 id="building-and-distribution">Building and distribution</h2>
+<ul>
+<li>CMake install now observes CMAKE_INSTALL_LIBDIR, etc..</li>
+<li>There is now a RELOCATABLE option in CMake (default ON) that avoids spilling absolute paths into CasADi. #3896</li>
+<li>To cater for C++ users, we started a vcpkg port for casadi. For now, just AD though, no plugins yet.</li>
+<li>The CMake presets have been updated to allow for an easier source build on Windows or Linux, especially when using VS Code. Just select a preset in VS Code and use the CMake GUI in VS Code to select build options.</li>
+</ul>
+<h2 id="misc">Misc</h2>
+<ul>
+<li>Various bugfixes and patches listed in <a href="https://github.com/casadi/casadi/milestone/22">https://github.com/casadi/casadi/milestone/22</a></li>
+</ul>
+<h2 id="plugin-versions-used-in-binaries">Plugin versions used in binaries</h2>
+<h3 id="370">3.7.0</h3>
+<ul>
+<li>sundials-interface, Interface to the ODE/DAE integrator suite SUNDIALS.</li>
+<li>csparse-interface, Interface to the sparse direct linear solver CSparse.</li>
+<li>superscs-interface, Interface to QP solver SUPERSCS.</li>
+<li>osqp-interface, Interface to QP solver OSQP.</li>
+<li>tinyxml-interface, Interface to the XML parser TinyXML.</li>
+<li>qpoases-interface, Interface to the active-set QP solver qpOASES.</li>
+<li>blocksqp-interface, Interface to the NLP solver blockSQP.</li>
+<li>cplex-mockup-build, Use mockup CPLEX (BUILD_MOCKUPS_VERSION=master) from downloaded source (BUILD_MOCKUPS_GIT_REPO=https://github.com/casadi/mockups.git).</li>
+<li>snopt-mockup-build, Use mockup SNOPT (BUILD_MOCKUPS_VERSION=master) from downloaded source (BUILD_MOCKUPS_GIT_REPO=https://github.com/casadi/mockups.git).</li>
+<li>knitro-mockup-build, Use mockup KNITRO (BUILD_MOCKUPS_VERSION=master) from downloaded source (BUILD_MOCKUPS_GIT_REPO=https://github.com/casadi/mockups.git).</li>
+<li>gurobi-mockup-build, Use mockup GUROBI (BUILD_MOCKUPS_VERSION=master) from downloaded source (BUILD_MOCKUPS_GIT_REPO=https://github.com/casadi/mockups.git).</li>
+<li>worhp-mockup-build, Use mockup WORHP (BUILD_MOCKUPS_VERSION=master) from downloaded source (BUILD_MOCKUPS_GIT_REPO=https://github.com/casadi/mockups.git).</li>
+<li>hsl-mockup-build, Use mockup WORHP (BUILD_MOCKUPS_VERSION=master) from downloaded source (BUILD_MOCKUPS_GIT_REPO=https://github.com/casadi/mockups.git).</li>
+<li>madnlp-mockup-build, Use mockup MadNLP (BUILD_MOCKUPS_VERSION=master) from downloaded source (BUILD_MOCKUPS_GIT_REPO=https://github.com/casadi/mockups.git).</li>
+<li>alpaqa-sourcebuild, Build Alpaqa (BUILD_ALPAQA_VERSION=develop) from downloaded source (BUILD_ALPAQA_GIT_REPO=https://github.com/jgillis/alpaqa).</li>
+<li>highs-sourcebuild, Build HiGHS (BUILD_HIGHS_VERSION=v1.10.0) from downloaded source (BUILD_HIGHS_GIT_REPO=https://github.com/ERGO-Code/HiGHS).</li>
+<li>daqp-sourcebuild, Build DAQP (BUILD_DAQP_VERSION=master) from downloaded source (BUILD_DAQP_GIT_REPO=https://github.com/jgillis/daqp.git).</li>
+<li>proxqp-sourcebuild, Build PROXQP (BUILD_PROXQP_VERSION=v0.3.2) from downloaded source (BUILD_PROXQP_GIT_REPO=https://github.com/Simple-Robotics/proxsuite.git).</li>
+<li>osqp-sourcebuild, Build OSQP (BUILD_OSQP_VERSION=v0.6.3) from downloaded source (BUILD_OSQP_GIT_REPO=https://github.com/osqp/osqp.git).</li>
+<li>superscs-sourcebuild, Build SuperSCS (BUILD_SUPERSCS_VERSION=4d2d1bd03ed4cf93e684a880b233760ce34ca69c) from downloaded source (BUILD_SUPERSCS_GIT_REPO=https://github.com/jgillis/scs.git).</li>
+<li>sleqp-sourcebuild, Build SLEQP (BUILD_SLEQP_VERSION=patch-1) from downloaded source (BUILD_SLEQP_GIT_REPO=https://github.com/jgillis/sleqp.git).</li>
+<li>bonmin-sourcebuild, Build BONMIN (BUILD_BONMIN_VERSION=releases/1.8.9) from downloaded source (BUILD_BONMIN_GIT_REPO=https://github.com/coin-or/Bonmin.git).</li>
+<li>ipopt-sourcebuild, Build IPOPT (BUILD_IPOPT_VERSION=3.14.11.mod) from downloaded source (BUILD_IPOPT_GIT_REPO=https://github.com/jgillis/Ipopt-1.git).</li>
+<li>cbc-sourcebuild, Build CBC (BUILD_CBC_VERSION=releases/2.10.11) from downloaded source.</li>
+<li>clp-sourcebuild, Build CLP (BUILD_CLP_VERSION=releases/1.17.9) from downloaded source (BUILD_CLP_GIT_REPO=https://github.com/coin-or/Clp.git).</li>
+<li>mumps-sourcebuild, Build MUMPS (BUILD_MUMPS_TP_VERSION=releases/3.0.2) from downloaded source (BUILD_MUMPS_TP_GIT_REPO=https://github.com/coin-or-tools/ThirdParty-Mumps.git).</li>
+<li>spral-sourcebuild, Build SPRAL (BUILD_SPRAL_VERSION=d385d2c9e858366d257cafaaf05760ffa6543e26) from downloaded source (BUILD_SPRAL_GIT_REPO=https://github.com/ralna/spral.git).</li>
+<li>metis-sourcebuild, Build METIS (BUILD_METIS_TP_VERSION=6997f64) from downloaded source.</li>
+<li>fatrop-sourcebuild, Build FATROP (BUILD_FATROP_VERSION=v0.0.4.post1) from downloaded source (BUILD_FATROP_GIT_REPO=https://github.com/meco-group/fatrop.git).</li>
+<li>hpipm-sourcebuild, Build HPIPM (BUILD_HPIPM_VERSION=0e0c9f4e0d4081dceafa9b37c396db50bce0e81a) from downloaded source (BUILD_HPIPM_GIT_REPO=https://github.com/jgillis/hpipm.git).</li>
+<li>trlib-sourcebuild, Build TRLIB (BUILD_TRLIB_VERSION=c7632b8b14152e78bc21721a3bd1a2432586b824) from downloaded source (BUILD_TRLIB_GIT_REPO=https://github.com/jgillis/trlib.git).</li>
+<li>blasfeo-sourcebuild, Build BLASFEO (BUILD_BLASFEO_VERSION=edf92b396adddd9e548b9786f87ad290a0971329) from downloaded source (BUILD_BLASFEO_GIT_REPO=https://github.com/giaf/blasfeo.git).</li>
+<li>lapack-sourcebuild, Download and install OpenBLAS for LAPACK+BLAS</li>
+<li>eigen3-sourcebuild, Build Eigen (BUILD_EIGEN3_VERSION=3.4.0) from downloaded source (BUILD_EIGEN3_GIT_REPO=https://gitlab.com/libeigen/eigen.git).</li>
+<li>simde-sourcebuild, Build Simde (BUILD_SIMDE_VERSION=v0.7.2) from downloaded source.</li>
+<li>libzip-sourcebuild, Build LIBZIP (BUILD_LIBZIP_VERSION=v1.11.3) from downloaded source (BUILD_LIBZIP_GIT_REPO=https://github.com/nih-at/libzip).</li>
+<li>zlib-sourcebuild, Build ZLIB (BUILD_ZLIB_VERSION=v1.3.1) from downloaded source (BUILD_ZLIB_GIT_REPO=https://github.com/madler/zlib).</li>
+<li>cplex-interface, Interface to the QP solver CPLEX.</li>
+<li>gurobi-interface, Interface to the (mixed-integer) QP solver GUROBI</li>
+<li>knitro-interface, Interface to the NLP solver KNITRO.</li>
+<li>madnlp-interface, Interface to the NLP solver MadNLP.</li>
+<li>snopt-interface, Interface to the NLP solver KNITRO.</li>
+<li>worhp-interface, Interface to the NLP solver Worhp (requires gfortran, gomp).</li>
+<li>lapack-interface, Interface to LAPACK.</li>
+<li>mumps-interface, Interface to MUMPS.</li>
+<li>spral-interface, Interface to SPRAL.</li>
+<li>coinutils-sourcebuild, Build COINUTILS (BUILD_COINUTILS_VERSION=releases/2.11.10) from downloaded source.</li>
+<li>osi-sourcebuild, Build OSI (BUILD_OSI_VERSION=releases/0.108.9) from downloaded source.</li>
+<li>clp-interface, Interface to the LP solver CLP.</li>
+<li>cgl-sourcebuild, Build CGL (BUILD_CGL_VERSION=releases/0.60.8) from downloaded source.</li>
+<li>cbc-interface, Interface to the LP solver CBC.</li>
+<li>ipopt-interface, Interface to the NLP solver Ipopt.</li>
+<li>bonmin-interface, Interface to the MINLP framework Bonmin.</li>
+<li>highs-interface, Interface to the MILP / QP solver HiGHS.</li>
+<li>daqp-interface, Interface to the MILP / QP solver HiGHS.</li>
+<li>sleqp-interface, Interface to the NLP solver SLEQP.</li>
+<li>alpaqa-interface, Interface to the NLP solver Alpaqa.</li>
+<li>proxqp-interface, Interface to QP solver PROXQP.</li>
+<li>ampl-interface, Interface to the AMPL solver library.</li>
+<li>zlib-interface, Interface to the zlib.</li>
+<li>libzip-interface, Interface to the libzip.</li>
+<li>ghc-filesystem-interface, Interface to the ghc.</li>
+</ul>
+
+                            
+                          </div>
+                          <div id="installTab-37" role="tabpanel" class="tab-pane fade">
+                            
+                              <ul>
+<li>KNITRO on linux crashes with a segmentation fault without <code>LD_PRELOAD=&lt;knitro_lin_path&gt;/libiomp5.so</code>.</li>
+<li>Callbacks with one argument are broken in Matlab CasADi</li>
+</ul>
+
+                            
+                          </div>
+                        </div>
+                      
+                    
+
+                    <div class="card-footer release-info text-muted">
+                      <a href="https://github.com/casadi/casadi/releases/tag/3.7.0" target="_blank" title="Link to the tag published on GitHub">This tag on GitHub</a>
+                    </div>
+                  </div>
+                </div>
+              
+            
+            
+          
+        
+      
+
+        
+
+        
+      
+
+        
+
+        
+      
+
+        
+
+        
+      
+
+        
+
+        
+      
+
+        
+
+        
+      
+
+        
+
+        
+      
+
+        
+
+        
+      
+
+        
+
+        
+      
+
+        
+
+        
+      
+
+        
+
+        
+      
+
+        
+
+        
+      
+
+        
+
+        
+      
+
+        
+
+        
+      
+
+        
+
+          
+            
+
+            
+
+            
+
+              
+                  
+
+                
+                
+
+                
+                <div class="card text-left border-default mb-2" id="36">
+                
+                  
+                  <a class="card-header bg-white collapsed" data-toggle="collapse" href="#body-36" aria-expanded="false" aria-controls="body-36">
+                  
+                    
+                    <h4 class="text-default" style="display: inline-block; margin: 0;">CasADi v3.6.7</h4>
                     
                     
                     
@@ -153,7 +576,7 @@
                     <span class="release-info text-muted">released September 30, 2024</span>
                   </a>
                   
-                  <div class="collapse show" id="body-36">
+                  <div class="collapse" id="body-36">
                   
 
                     
@@ -2265,86 +2688,6 @@ print(jacobian(sin(x),x))
 
         
 
-        
-      
-
-        
-
-          
-            
-
-            
-
-            
-
-              
-            
-            
-          
-        
-      
-
-        
-
-          
-            
-
-            
-
-            
-
-              
-            
-            
-          
-        
-      
-
-        
-
-          
-            
-
-            
-
-            
-
-              
-            
-            
-          
-        
-      
-
-        
-
-          
-            
-
-            
-
-            
-
-              
-            
-            
-          
-        
-      
-
-        
-
-          
-            
-
-            
-
-            
-
-              
-            
-            
-          
         
       
 

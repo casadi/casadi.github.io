@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -92,9 +92,9 @@ $(function() {
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#ifndef SWIG</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    T text2type(<span class="keyword">const</span> std::string&amp; text) {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a> text2type(<span class="keyword">const</span> std::string&amp; text) {</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;      std::istringstream ss(text);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;      T ret;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;      <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a> ret;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      ss &gt;&gt; ret;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;      <span class="keywordflow">return</span> ret;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
@@ -102,7 +102,7 @@ $(function() {
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    std::vector&lt;T&gt; text2vector(<span class="keyword">const</span> std::string&amp; text) {</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;      std::istringstream ss(text);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      T tmp;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a> tmp;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      std::vector&lt;T&gt; ret;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      <span class="keywordflow">while</span> (ss &gt;&gt; tmp) ret.push_back(tmp);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      <span class="keywordflow">return</span> ret;</div>
@@ -176,7 +176,7 @@ $(function() {
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    }</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    T to(<span class="keyword">const</span> std::string&amp; cmd, casadi_int ind=-1)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a> to(<span class="keyword">const</span> std::string&amp; cmd, casadi_int ind=-1)<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;      <span class="keywordflow">return</span> text2type&lt;T&gt;(get_meta(cmd, ind));</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    }</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
@@ -207,7 +207,7 @@ $(function() {
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;} <span class="comment">// namespace casadi</span></div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160; </div>
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_IMPORTER_HPP</span></div>
-<div class="ttc" id="aclasscasadi_1_1DeserializingStream_html"><div class="ttname"><a href="../../d9/dc2/classcasadi_1_1DeserializingStream.html">casadi::DeserializingStream</a></div><div class="ttdoc">Helper class for Serialization.</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d45/serializing__stream_8hpp_source.html#l00072">serializing_stream.hpp:72</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1DeserializingStream_html"><div class="ttname"><a href="../../d9/dc2/classcasadi_1_1DeserializingStream.html">casadi::DeserializingStream</a></div><div class="ttdoc">Helper class for Serialization.</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d45/serializing__stream_8hpp_source.html#l00073">serializing_stream.hpp:73</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1Importer_html"><div class="ttname"><a href="../../de/d6f/classcasadi_1_1Importer.html">casadi::Importer</a></div><div class="ttdoc">Importer.</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dce/importer_8hpp_source.html#l00084">importer.hpp:86</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1Importer_html_a04b6f72b5aecb39687ad6027fbdacc8d"><div class="ttname"><a href="../../de/d6f/classcasadi_1_1Importer.html#a04b6f72b5aecb39687ad6027fbdacc8d">casadi::Importer::deserialize</a></div><div class="ttdeci">static Importer deserialize(DeserializingStream &amp;s)</div><div class="ttdoc">Deserialize with type disambiguation.</div></div>
 <div class="ttc" id="aclasscasadi_1_1Importer_html_a064914c381b130ca221d6a7ce69152b7"><div class="ttname"><a href="../../de/d6f/classcasadi_1_1Importer.html#a064914c381b130ca221d6a7ce69152b7">casadi::Importer::library</a></div><div class="ttdeci">std::string library() const</div><div class="ttdoc">Get library name.</div></div>
@@ -227,10 +227,11 @@ $(function() {
 <div class="ttc" id="aclasscasadi_1_1Importer_html_ad85fe3c7619fcba7936e355de82944fa"><div class="ttname"><a href="../../de/d6f/classcasadi_1_1Importer.html#ad85fe3c7619fcba7936e355de82944fa">casadi::Importer::plugin_name</a></div><div class="ttdeci">std::string plugin_name() const</div><div class="ttdoc">Query plugin name.</div></div>
 <div class="ttc" id="aclasscasadi_1_1Importer_html_adbca32bbf2fd94b62b48bbd6079dcffb"><div class="ttname"><a href="../../de/d6f/classcasadi_1_1Importer.html#adbca32bbf2fd94b62b48bbd6079dcffb">casadi::Importer::inlined</a></div><div class="ttdeci">bool inlined(const std::string &amp;symname) const</div><div class="ttdoc">Check if a function is inlined.</div></div>
 <div class="ttc" id="aclasscasadi_1_1Importer_html_ae7becc035c9000ed3d7f38b8fd665b55"><div class="ttname"><a href="../../de/d6f/classcasadi_1_1Importer.html#ae7becc035c9000ed3d7f38b8fd665b55">casadi::Importer::operator-&gt;</a></div><div class="ttdeci">const ImporterInternal * operator-&gt;() const</div></div>
-<div class="ttc" id="aclasscasadi_1_1SerializingStream_html"><div class="ttname"><a href="../../d1/d00/classcasadi_1_1SerializingStream.html">casadi::SerializingStream</a></div><div class="ttdoc">Helper class for Serialization.</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d45/serializing__stream_8hpp_source.html#l00213">serializing_stream.hpp:213</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1SharedObject_html"><div class="ttname"><a href="../../d5/d4a/classcasadi_1_1SharedObject.html">casadi::SharedObject</a></div><div class="ttdoc">SharedObject implements a reference counting framework similar for efficient and.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d68/shared__object_8hpp_source.html#l00084">shared_object.hpp:84</a></div></div>
-<div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../db/da5/binary__mx__impl_8hpp_source.html#l00036">binary_mx_impl.hpp:36</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1SerializingStream_html"><div class="ttname"><a href="../../d1/d00/classcasadi_1_1SerializingStream.html">casadi::SerializingStream</a></div><div class="ttdoc">Helper class for Serialization.</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d45/serializing__stream_8hpp_source.html#l00215">serializing_stream.hpp:215</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1SharedObject_html"><div class="ttname"><a href="../../d5/d4a/classcasadi_1_1SharedObject.html">casadi::SharedObject</a></div><div class="ttdoc">GenericShared implements a reference counting framework similar for efficient and.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d68/shared__object_8hpp_source.html#l00078">shared_object.hpp:79</a></div></div>
+<div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/archiver_8hpp_source.html#l00032">archiver.hpp:32</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_a8b909f6932a91230738731512b99127e"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">casadi::Dict</a></div><div class="ttdeci">GenericType::Dict Dict</div><div class="ttdoc">C++ equivalent of Python's dict or MATLAB's struct.</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d30/generic__type_8hpp_source.html#l00258">generic_type.hpp:258</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">casadi::Category::T</a></div><div class="ttdeci">@ T</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </body>
 </html>

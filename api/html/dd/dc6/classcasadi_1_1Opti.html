@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -55,6 +55,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="../../d7/db3/classcasadi_1_1Opti-members.html">List of all members</a> &#124;
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#friends">Friends</a>  </div>
@@ -108,14 +109,22 @@ Inheritance diagram for casadi::Opti:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d7/db9/classcasadi_1_1Opti__inherit__graph.png" border="0" usemap="#acasadi_1_1Opti_inherit__map" alt="Inheritance graph"/></div>
 <map name="acasadi_1_1Opti_inherit__map" id="acasadi_1_1Opti_inherit__map">
-<area shape="rect" title="A simplified interface for NLP modeling/solving." alt="" coords="279,80,378,107"/>
-<area shape="rect" href="../../d1/dbf/classcasadi_1_1OptiAdvanced.html" title=" " alt="" coords="247,155,410,181"/>
-<area shape="rect" title=" " alt="" coords="5,5,236,32"/>
-<area shape="rect" title=" " alt="" coords="260,5,397,32"/>
-<area shape="rect" href="../../d5/d4a/classcasadi_1_1SharedObject.html" title="SharedObject implements a reference counting framework similar for efficient and." alt="" coords="421,5,580,32"/>
+<area shape="rect" title="A simplified interface for NLP modeling/solving." alt="" coords="279,184,378,211"/>
+<area shape="rect" href="../../d1/dbf/classcasadi_1_1OptiAdvanced.html" title=" " alt="" coords="247,259,410,285"/>
+<area shape="rect" title=" " alt="" coords="5,109,236,136"/>
+<area shape="rect" title=" " alt="" coords="260,109,397,136"/>
+<area shape="rect" href="../../d5/d4a/classcasadi_1_1SharedObject.html" title="GenericShared implements a reference counting framework similar for efficient and." alt="" coords="421,109,580,136"/>
+<area shape="rect" href="../../da/d35/classcasadi_1_1GenericShared.html" title=" " alt="" coords="391,5,610,61"/>
 </map>
 <center><span class="legend">[<a href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:ad6d82029342dadbc9c77ddc8ef8084f2"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html#ad6d82029342dadbc9c77ddc8ef8084f2">internal_base_type</a> = SharedObjectInternal</td></tr>
+<tr class="separator:ad6d82029342dadbc9c77ddc8ef8084f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f1144d06a1c4605f76be361f8c86230"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html#a6f1144d06a1c4605f76be361f8c86230">base_type</a> = <a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html">SharedObject</a></td></tr>
+<tr class="separator:a6f1144d06a1c4605f76be361f8c86230"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a627d5c4c074f0c22f3969132710bdac2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#a627d5c4c074f0c22f3969132710bdac2">Opti</a> (const std::string &amp;problem_type=&quot;nlp&quot;)</td></tr>
@@ -124,24 +133,26 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6b4c4bdbfdffd9caf80c77c321087d96"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#a6b4c4bdbfdffd9caf80c77c321087d96">variable</a> (casadi_int n=1, casadi_int m=1, const std::string &amp;attribute=&quot;full&quot;)</td></tr>
 <tr class="memdesc:a6b4c4bdbfdffd9caf80c77c321087d96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a decision variable (symbol)  <a href="../../dd/dc6/classcasadi_1_1Opti.html#a6b4c4bdbfdffd9caf80c77c321087d96">More...</a><br /></td></tr>
 <tr class="separator:a6b4c4bdbfdffd9caf80c77c321087d96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4b5c6182fe9b31c9c1eb0846da46673"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#ac4b5c6182fe9b31c9c1eb0846da46673">variable</a> (const <a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html">Sparsity</a> &amp;sp, const std::string &amp;attribute=&quot;full&quot;)</td></tr>
+<tr class="separator:ac4b5c6182fe9b31c9c1eb0846da46673"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4414d8359d993e4dddc237783c306372"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#a4414d8359d993e4dddc237783c306372">variable</a> (const <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &amp;symbol, const std::string &amp;attribute=&quot;full&quot;)</td></tr>
+<tr class="separator:a4414d8359d993e4dddc237783c306372"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9285fcffa42e37b40bc402b3d4ba16ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#a9285fcffa42e37b40bc402b3d4ba16ac">parameter</a> (casadi_int n=1, casadi_int m=1, const std::string &amp;attribute=&quot;full&quot;)</td></tr>
 <tr class="memdesc:a9285fcffa42e37b40bc402b3d4ba16ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a parameter (symbol); fixed during optimization.  <a href="../../dd/dc6/classcasadi_1_1Opti.html#a9285fcffa42e37b40bc402b3d4ba16ac">More...</a><br /></td></tr>
 <tr class="separator:a9285fcffa42e37b40bc402b3d4ba16ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adbbc9aeb8f0e0ebadc9a22265d0f2d1e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#adbbc9aeb8f0e0ebadc9a22265d0f2d1e">minimize</a> (const <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &amp;<a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#a6b7cf5176aeecb4576c694c1ca8a3990">f</a>)</td></tr>
-<tr class="memdesc:adbbc9aeb8f0e0ebadc9a22265d0f2d1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set objective.  <a href="../../dd/dc6/classcasadi_1_1Opti.html#adbbc9aeb8f0e0ebadc9a22265d0f2d1e">More...</a><br /></td></tr>
-<tr class="separator:adbbc9aeb8f0e0ebadc9a22265d0f2d1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2aabfaa56f8da9c1b296f98fbb2280df"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#a2aabfaa56f8da9c1b296f98fbb2280df">parameter</a> (const <a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html">Sparsity</a> &amp;sp, const std::string &amp;attribute=&quot;full&quot;)</td></tr>
+<tr class="separator:a2aabfaa56f8da9c1b296f98fbb2280df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a448a82427a8af099f3f7f7387be9f651"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#a448a82427a8af099f3f7f7387be9f651">parameter</a> (const <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &amp;symbol, const std::string &amp;attribute=&quot;full&quot;)</td></tr>
+<tr class="separator:a448a82427a8af099f3f7f7387be9f651"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dae4795c31f61a28173a5d71829b447"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#a2dae4795c31f61a28173a5d71829b447">minimize</a> (const <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &amp;<a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#a6b7cf5176aeecb4576c694c1ca8a3990">f</a>, double linear_scale=1)</td></tr>
+<tr class="memdesc:a2dae4795c31f61a28173a5d71829b447"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set objective.  <a href="../../dd/dc6/classcasadi_1_1Opti.html#a2dae4795c31f61a28173a5d71829b447">More...</a><br /></td></tr>
+<tr class="separator:a2dae4795c31f61a28173a5d71829b447"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a280a6b8e1c776d80c76634a0c7468b55"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#a280a6b8e1c776d80c76634a0c7468b55">subject_to</a> ()</td></tr>
 <tr class="memdesc:a280a6b8e1c776d80c76634a0c7468b55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear constraints.  <a href="../../dd/dc6/classcasadi_1_1Opti.html#a280a6b8e1c776d80c76634a0c7468b55">More...</a><br /></td></tr>
 <tr class="separator:a280a6b8e1c776d80c76634a0c7468b55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd0526c5d6f2c552a3e9395c5b91a7cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#acd0526c5d6f2c552a3e9395c5b91a7cd">solver</a> (const std::string &amp;solver, const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;plugin_options=<a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>(), const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;solver_options=<a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>())</td></tr>
 <tr class="memdesc:acd0526c5d6f2c552a3e9395c5b91a7cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a solver.  <a href="../../dd/dc6/classcasadi_1_1Opti.html#acd0526c5d6f2c552a3e9395c5b91a7cd">More...</a><br /></td></tr>
 <tr class="separator:acd0526c5d6f2c552a3e9395c5b91a7cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad71861c0756c941c4228d606f598cda2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/dbf/classcasadi_1_1OptiSol.html">OptiSol</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#ad71861c0756c941c4228d606f598cda2">solve</a> ()</td></tr>
-<tr class="memdesc:ad71861c0756c941c4228d606f598cda2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crunch the numbers; solve the problem.  <a href="../../dd/dc6/classcasadi_1_1Opti.html#ad71861c0756c941c4228d606f598cda2">More...</a><br /></td></tr>
-<tr class="separator:ad71861c0756c941c4228d606f598cda2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8ebc3dcbf1319627962fed34c023a24"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/dbf/classcasadi_1_1OptiSol.html">OptiSol</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#af8ebc3dcbf1319627962fed34c023a24">solve_limited</a> ()</td></tr>
-<tr class="memdesc:af8ebc3dcbf1319627962fed34c023a24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crunch the numbers; solve the problem.  <a href="../../dd/dc6/classcasadi_1_1Opti.html#af8ebc3dcbf1319627962fed34c023a24">More...</a><br /></td></tr>
-<tr class="separator:af8ebc3dcbf1319627962fed34c023a24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34e35cff57be45300754ffda607f7a9b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#a34e35cff57be45300754ffda607f7a9b">stats</a> () const</td></tr>
 <tr class="memdesc:a34e35cff57be45300754ffda607f7a9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get statistics.  <a href="../../dd/dc6/classcasadi_1_1Opti.html#a34e35cff57be45300754ffda607f7a9b">More...</a><br /></td></tr>
 <tr class="separator:a34e35cff57be45300754ffda607f7a9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -156,6 +167,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a052f76a0843c7f673a420d8e14de9b99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd7d8c026524f610c5f17f09c937f085"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#acd7d8c026524f610c5f17f09c937f085">value_parameters</a> () const</td></tr>
 <tr class="separator:acd7d8c026524f610c5f17f09c937f085"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13c110991b84faf766262959b5466fb7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#a13c110991b84faf766262959b5466fb7">scale_helper</a> (const <a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a> &amp;h) const</td></tr>
+<tr class="memdesc:a13c110991b84faf766262959b5466fb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scale a helper function constructed via opti.x, opti.g, ...  <a href="../../dd/dc6/classcasadi_1_1Opti.html#a13c110991b84faf766262959b5466fb7">More...</a><br /></td></tr>
+<tr class="separator:a13c110991b84faf766262959b5466fb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1ebc93ea861a48ec21c5cb9a63c0c34"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#ad1ebc93ea861a48ec21c5cb9a63c0c34">dual</a> (const <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &amp;m) const</td></tr>
 <tr class="memdesc:ad1ebc93ea861a48ec21c5cb9a63c0c34"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the dual variable  <a href="../../dd/dc6/classcasadi_1_1Opti.html#ad1ebc93ea861a48ec21c5cb9a63c0c34">More...</a><br /></td></tr>
 <tr class="separator:ad1ebc93ea861a48ec21c5cb9a63c0c34"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -185,6 +199,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a540abc610141b6dfc64f74dedf378405"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb08de53ddc8a7a46c02f1de5e04d0f9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#acb08de53ddc8a7a46c02f1de5e04d0f9">ubg</a> () const</td></tr>
 <tr class="separator:acb08de53ddc8a7a46c02f1de5e04d0f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ea0df9559448b4e2b100097e7f1887f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#a1ea0df9559448b4e2b100097e7f1887f">x_linear_scale</a> () const</td></tr>
+<tr class="separator:a1ea0df9559448b4e2b100097e7f1887f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa485b7a578016373183c70555e645fdb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#aa485b7a578016373183c70555e645fdb">x_linear_scale_offset</a> () const</td></tr>
+<tr class="separator:aa485b7a578016373183c70555e645fdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae13382834cc5b5bf134f83862ddb25e4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#ae13382834cc5b5bf134f83862ddb25e4">g_linear_scale</a> () const</td></tr>
+<tr class="separator:ae13382834cc5b5bf134f83862ddb25e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af77aea779e0b0ca0a0c0dd76d8ddff19"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#af77aea779e0b0ca0a0c0dd76d8ddff19">f_linear_scale</a> () const</td></tr>
+<tr class="separator:af77aea779e0b0ca0a0c0dd76d8ddff19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae26371c89f364d793bcfcc8efe101f4f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#ae26371c89f364d793bcfcc8efe101f4f">lam_g</a> () const</td></tr>
 <tr class="memdesc:ae26371c89f364d793bcfcc8efe101f4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get all (scalarised) dual variables as a symbolic column vector.  <a href="../../dd/dc6/classcasadi_1_1Opti.html#ae26371c89f364d793bcfcc8efe101f4f">More...</a><br /></td></tr>
 <tr class="separator:ae26371c89f364d793bcfcc8efe101f4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -217,19 +239,27 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a02941134f82aa5eb7c14e83fb475c4c0"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html#a02941134f82aa5eb7c14e83fb475c4c0">class_name</a> () const</td></tr>
 <tr class="memdesc:a02941134f82aa5eb7c14e83fb475c4c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get class name.  <a href="../../d5/d4a/classcasadi_1_1SharedObject.html#a02941134f82aa5eb7c14e83fb475c4c0">More...</a><br /></td></tr>
 <tr class="separator:a02941134f82aa5eb7c14e83fb475c4c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d6952169894b2d43694a7577252bdfc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html#a2d6952169894b2d43694a7577252bdfc">is_null</a> () const</td></tr>
-<tr class="memdesc:a2d6952169894b2d43694a7577252bdfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is a null pointer?  <a href="../../d5/d4a/classcasadi_1_1SharedObject.html#a2d6952169894b2d43694a7577252bdfc">More...</a><br /></td></tr>
-<tr class="separator:a2d6952169894b2d43694a7577252bdfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03c5f1b2f15e9cd97a87596bd037f2dd"><td class="memItemLeft" align="right" valign="top">casadi_int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html#a03c5f1b2f15e9cd97a87596bd037f2dd">__hash__</a> () const</td></tr>
-<tr class="memdesc:a03c5f1b2f15e9cd97a87596bd037f2dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a number that is unique for a given Node.  <a href="../../d5/d4a/classcasadi_1_1SharedObject.html#a03c5f1b2f15e9cd97a87596bd037f2dd">More...</a><br /></td></tr>
-<tr class="separator:a03c5f1b2f15e9cd97a87596bd037f2dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cd34e33937f28d74c88dbb2ce6c7786"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d35/classcasadi_1_1GenericShared.html#a3cd34e33937f28d74c88dbb2ce6c7786">debug_repr</a> () const</td></tr>
+<tr class="separator:a3cd34e33937f28d74c88dbb2ce6c7786"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd28957366899587b9da638343fe41b5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d35/classcasadi_1_1GenericShared.html#abd28957366899587b9da638343fe41b5">is_null</a> () const</td></tr>
+<tr class="memdesc:abd28957366899587b9da638343fe41b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is a null pointer?  <a href="../../da/d35/classcasadi_1_1GenericShared.html#abd28957366899587b9da638343fe41b5">More...</a><br /></td></tr>
+<tr class="separator:abd28957366899587b9da638343fe41b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15b15ed5fcdea82954ff4cf896825803"><td class="memItemLeft" align="right" valign="top">casadi_int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d35/classcasadi_1_1GenericShared.html#a15b15ed5fcdea82954ff4cf896825803">__hash__</a> () const</td></tr>
+<tr class="memdesc:a15b15ed5fcdea82954ff4cf896825803"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a number that is unique for a given Node.  <a href="../../da/d35/classcasadi_1_1GenericShared.html#a15b15ed5fcdea82954ff4cf896825803">More...</a><br /></td></tr>
+<tr class="separator:a15b15ed5fcdea82954ff4cf896825803"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
-<tr class="memitem:abaafc3b4ffcf7d634ab1f3cb3580dfd6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#abaafc3b4ffcf7d634ab1f3cb3580dfd6">subject_to</a> (const <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &amp;<a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#afd9623b98b657afc9e685eb6dbbfa036">g</a>)</td></tr>
-<tr class="memdesc:abaafc3b4ffcf7d634ab1f3cb3580dfd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add constraints.  <a href="../../dd/dc6/classcasadi_1_1Opti.html#abaafc3b4ffcf7d634ab1f3cb3580dfd6">More...</a><br /></td></tr>
-<tr class="separator:abaafc3b4ffcf7d634ab1f3cb3580dfd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae14b2d5be2eb5051fe5d950fe1833e52"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#ae14b2d5be2eb5051fe5d950fe1833e52">subject_to</a> (const std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt; &amp;<a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#afd9623b98b657afc9e685eb6dbbfa036">g</a>)</td></tr>
-<tr class="memdesc:ae14b2d5be2eb5051fe5d950fe1833e52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add constraints.  <a href="../../dd/dc6/classcasadi_1_1Opti.html#ae14b2d5be2eb5051fe5d950fe1833e52">More...</a><br /></td></tr>
-<tr class="separator:ae14b2d5be2eb5051fe5d950fe1833e52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a483da2e181466ea48c7cf68df5cb3658"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#a483da2e181466ea48c7cf68df5cb3658">subject_to</a> (const <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &amp;<a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#afd9623b98b657afc9e685eb6dbbfa036">g</a>, const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;options=<a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>())</td></tr>
+<tr class="memdesc:a483da2e181466ea48c7cf68df5cb3658"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add constraints.  <a href="../../dd/dc6/classcasadi_1_1Opti.html#a483da2e181466ea48c7cf68df5cb3658">More...</a><br /></td></tr>
+<tr class="separator:a483da2e181466ea48c7cf68df5cb3658"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4224015da0f3be780981cec3fd79e386"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#a4224015da0f3be780981cec3fd79e386">subject_to</a> (const std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt; &amp;<a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#afd9623b98b657afc9e685eb6dbbfa036">g</a>, const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;options=<a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>())</td></tr>
+<tr class="memdesc:a4224015da0f3be780981cec3fd79e386"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add constraints.  <a href="../../dd/dc6/classcasadi_1_1Opti.html#a4224015da0f3be780981cec3fd79e386">More...</a><br /></td></tr>
+<tr class="separator:a4224015da0f3be780981cec3fd79e386"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18cc88d90c55df9ffd1c6d3c12dbadf3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#a18cc88d90c55df9ffd1c6d3c12dbadf3">subject_to</a> (const <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &amp;<a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#afd9623b98b657afc9e685eb6dbbfa036">g</a>, const <a class="el" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a> &amp;linear_scale, const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;options=<a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>())</td></tr>
+<tr class="memdesc:a18cc88d90c55df9ffd1c6d3c12dbadf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add constraints.  <a href="../../dd/dc6/classcasadi_1_1Opti.html#a18cc88d90c55df9ffd1c6d3c12dbadf3">More...</a><br /></td></tr>
+<tr class="separator:a18cc88d90c55df9ffd1c6d3c12dbadf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ed63c3fe4738892e1112de72de47ddd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#a7ed63c3fe4738892e1112de72de47ddd">subject_to</a> (const std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt; &amp;<a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#afd9623b98b657afc9e685eb6dbbfa036">g</a>, const <a class="el" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a> &amp;linear_scale, const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;options=<a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>())</td></tr>
+<tr class="memdesc:a7ed63c3fe4738892e1112de72de47ddd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add constraints.  <a href="../../dd/dc6/classcasadi_1_1Opti.html#a7ed63c3fe4738892e1112de72de47ddd">More...</a><br /></td></tr>
+<tr class="separator:a7ed63c3fe4738892e1112de72de47ddd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
 <tr class="memitem:ad39fec82fcdea67f33a5299bc46c6113"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#ad39fec82fcdea67f33a5299bc46c6113">set_initial</a> (const <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &amp;<a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#ae5528d1b30ce17b1934f2e39ddd8b3a9">x</a>, const <a class="el" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a> &amp;v)</td></tr>
 <tr class="separator:ad39fec82fcdea67f33a5299bc46c6113"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -246,12 +276,22 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a142cdecc5b35b87774c11ac2fc41d287"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#a142cdecc5b35b87774c11ac2fc41d287">set_domain</a> (const <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &amp;<a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#ae5528d1b30ce17b1934f2e39ddd8b3a9">x</a>, const std::string &amp;domain)</td></tr>
 <tr class="memdesc:a142cdecc5b35b87774c11ac2fc41d287"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set domain of a decision variable.  <a href="../../dd/dc6/classcasadi_1_1Opti.html#a142cdecc5b35b87774c11ac2fc41d287">More...</a><br /></td></tr>
 <tr class="separator:a142cdecc5b35b87774c11ac2fc41d287"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:a853a4e3c8861724ba6c76d45c5d45968"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#a853a4e3c8861724ba6c76d45c5d45968">set_linear_scale</a> (const <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &amp;<a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#ae5528d1b30ce17b1934f2e39ddd8b3a9">x</a>, const <a class="el" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a> &amp;scale, const <a class="el" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a> &amp;offset=0)</td></tr>
+<tr class="memdesc:a853a4e3c8861724ba6c76d45c5d45968"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set scale of a decision variable.  <a href="../../dd/dc6/classcasadi_1_1Opti.html#a853a4e3c8861724ba6c76d45c5d45968">More...</a><br /></td></tr>
+<tr class="separator:a853a4e3c8861724ba6c76d45c5d45968"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad71861c0756c941c4228d606f598cda2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/dbf/classcasadi_1_1OptiSol.html">OptiSol</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#ad71861c0756c941c4228d606f598cda2">solve</a> ()</td></tr>
+<tr class="memdesc:ad71861c0756c941c4228d606f598cda2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crunch the numbers; solve the problem.  <a href="../../dd/dc6/classcasadi_1_1Opti.html#ad71861c0756c941c4228d606f598cda2">More...</a><br /></td></tr>
+<tr class="separator:ad71861c0756c941c4228d606f598cda2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8ebc3dcbf1319627962fed34c023a24"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/dbf/classcasadi_1_1OptiSol.html">OptiSol</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#af8ebc3dcbf1319627962fed34c023a24">solve_limited</a> ()</td></tr>
+<tr class="memdesc:af8ebc3dcbf1319627962fed34c023a24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crunch the numbers; solve the problem.  <a href="../../dd/dc6/classcasadi_1_1Opti.html#af8ebc3dcbf1319627962fed34c023a24">More...</a><br /></td></tr>
+<tr class="separator:af8ebc3dcbf1319627962fed34c023a24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a026c0b2c131fcda9eb3be22042e12209"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d23/namespacecasadi.html#a95dbe520c1aae05731638df85ea93d64">native_DM</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#a026c0b2c131fcda9eb3be22042e12209">value</a> (const <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &amp;<a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#ae5528d1b30ce17b1934f2e39ddd8b3a9">x</a>, const std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt; &amp;values=std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt;()) const</td></tr>
 <tr class="separator:a026c0b2c131fcda9eb3be22042e12209"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a231e34fbc03674729790704456ab96a7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d23/namespacecasadi.html#a95dbe520c1aae05731638df85ea93d64">native_DM</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#a231e34fbc03674729790704456ab96a7">value</a> (const <a class="el" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a> &amp;<a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#ae5528d1b30ce17b1934f2e39ddd8b3a9">x</a>, const std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt; &amp;values=std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt;()) const</td></tr>
+<tr class="memdesc:a231e34fbc03674729790704456ab96a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set domain of a decision variable.  <a href="../../dd/dc6/classcasadi_1_1Opti.html#a231e34fbc03674729790704456ab96a7">More...</a><br /></td></tr>
 <tr class="separator:a231e34fbc03674729790704456ab96a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04c9b7e5cc842cc77c4f3481b91b7584"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d23/namespacecasadi.html#a95dbe520c1aae05731638df85ea93d64">native_DM</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#a04c9b7e5cc842cc77c4f3481b91b7584">value</a> (const <a class="el" href="../../d7/d23/namespacecasadi.html#a77ea10c3c8f78d7a80e15b83af5b7a82">SX</a> &amp;<a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#ae5528d1b30ce17b1934f2e39ddd8b3a9">x</a>, const std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt; &amp;values=std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt;()) const</td></tr>
+<tr class="memdesc:a04c9b7e5cc842cc77c4f3481b91b7584"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set domain of a decision variable.  <a href="../../dd/dc6/classcasadi_1_1Opti.html#a04c9b7e5cc842cc77c4f3481b91b7584">More...</a><br /></td></tr>
 <tr class="separator:a04c9b7e5cc842cc77c4f3481b91b7584"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
 <tr class="memitem:a7f28a168a85b12f46f3847f642dddb4c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#a7f28a168a85b12f46f3847f642dddb4c">to_function</a> (const std::string &amp;name, const std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt; &amp;args, const std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt; &amp;res, const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;opts=<a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>())</td></tr>
@@ -282,6 +322,55 @@ Friends</h2></td></tr>
 <tr class="memitem:ad5ddf7a50b2df162f40eb72b77919b0f"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#ad5ddf7a50b2df162f40eb72b77919b0f">InternalOptiCallback</a></td></tr>
 <tr class="separator:ad5ddf7a50b2df162f40eb72b77919b0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a6f1144d06a1c4605f76be361f8c86230"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f1144d06a1c4605f76be361f8c86230">&#9670;&nbsp;</a></span>base_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html#a6f1144d06a1c4605f76be361f8c86230">casadi::SharedObject::base_type</a> =  <a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html">SharedObject</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d8/d68/shared__object_8hpp_source.html#l00103">103</a> of file <a class="el" href="../../d8/d68/shared__object_8hpp_source.html">shared_object.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ad6d82029342dadbc9c77ddc8ef8084f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6d82029342dadbc9c77ddc8ef8084f2">&#9670;&nbsp;</a></span>internal_base_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html#ad6d82029342dadbc9c77ddc8ef8084f2">casadi::SharedObject::internal_base_type</a> =  SharedObjectInternal</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d8/d68/shared__object_8hpp_source.html#l00102">102</a> of file <a class="el" href="../../d8/d68/shared__object_8hpp_source.html">shared_object.hpp</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a627d5c4c074f0c22f3969132710bdac2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a627d5c4c074f0c22f3969132710bdac2">&#9670;&nbsp;</a></span>Opti()</h2>
@@ -309,8 +398,8 @@ Friends</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a03c5f1b2f15e9cd97a87596bd037f2dd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a03c5f1b2f15e9cd97a87596bd037f2dd">&#9670;&nbsp;</a></span>__hash__()</h2>
+<a id="a15b15ed5fcdea82954ff4cf896825803"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15b15ed5fcdea82954ff4cf896825803">&#9670;&nbsp;</a></span>__hash__()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -319,10 +408,7 @@ Friends</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">casadi_int casadi::SharedObject::__hash__ </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td class="memname">casadi_int <a class="el" href="../../da/d35/classcasadi_1_1GenericShared.html">casadi::GenericShared</a>&lt; <a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html">SharedObject</a> , SharedObjectInternal  &gt;::__hash__</td>
         </tr>
       </table>
   </td>
@@ -333,6 +419,8 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>If the Object does not point to any node, "0" is returned.</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_av">https://github.com/casadi/casadi/wiki/L_av</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00124">124</a> of file <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html">generic_shared_impl.hpp</a>.</p>
 
 </div>
 </div>
@@ -399,7 +487,7 @@ Friends</h2></td></tr>
 <p>Python prohibits such syntax directly</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1k">https://github.com/casadi/casadi/wiki/L_1k</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l00368">368</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l00397">397</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
 
 </div>
 </div>
@@ -507,6 +595,30 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<a id="a3cd34e33937f28d74c88dbb2ce6c7786"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3cd34e33937f28d74c88dbb2ce6c7786">&#9670;&nbsp;</a></span>debug_repr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string <a class="el" href="../../da/d35/classcasadi_1_1GenericShared.html">casadi::GenericShared</a>&lt; <a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html">SharedObject</a> , SharedObjectInternal  &gt;::debug_repr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00113">113</a> of file <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html">generic_shared_impl.hpp</a>.</p>
+
+</div>
+</div>
 <a id="a53c172bc6379c782fa67d13c4348c1e9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a53c172bc6379c782fa67d13c4348c1e9">&#9670;&nbsp;</a></span>disp()</h2>
 
@@ -573,6 +685,23 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<a id="af77aea779e0b0ca0a0c0dd76d8ddff19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af77aea779e0b0ca0a0c0dd76d8ddff19">&#9670;&nbsp;</a></span>f_linear_scale()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double casadi::Opti::f_linear_scale </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="afd9623b98b657afc9e685eb6dbbfa036"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afd9623b98b657afc9e685eb6dbbfa036">&#9670;&nbsp;</a></span>g()</h2>
 
@@ -588,6 +717,23 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_26d">https://github.com/casadi/casadi/wiki/L_26d</a> </p>
+
+</div>
+</div>
+<a id="ae13382834cc5b5bf134f83862ddb25e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae13382834cc5b5bf134f83862ddb25e4">&#9670;&nbsp;</a></span>g_linear_scale()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a> casadi::Opti::g_linear_scale </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -627,8 +773,8 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="a2d6952169894b2d43694a7577252bdfc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d6952169894b2d43694a7577252bdfc">&#9670;&nbsp;</a></span>is_null()</h2>
+<a id="abd28957366899587b9da638343fe41b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd28957366899587b9da638343fe41b5">&#9670;&nbsp;</a></span>is_null()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -637,10 +783,7 @@ Friends</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool casadi::SharedObject::is_null </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td class="memname">bool <a class="el" href="../../da/d35/classcasadi_1_1GenericShared.html">casadi::GenericShared</a>&lt; <a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html">SharedObject</a> , SharedObjectInternal  &gt;::is_null</td>
         </tr>
       </table>
   </td>
@@ -649,6 +792,8 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00117">117</a> of file <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html">generic_shared_impl.hpp</a>.</p>
 
 </div>
 </div>
@@ -690,8 +835,8 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="adbbc9aeb8f0e0ebadc9a22265d0f2d1e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adbbc9aeb8f0e0ebadc9a22265d0f2d1e">&#9670;&nbsp;</a></span>minimize()</h2>
+<a id="a2dae4795c31f61a28173a5d71829b447"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2dae4795c31f61a28173a5d71829b447">&#9670;&nbsp;</a></span>minimize()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -700,8 +845,18 @@ Friends</h2></td></tr>
           <td class="memname">void casadi::Opti::minimize </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &amp;&#160;</td>
-          <td class="paramname"><em>f</em></td><td>)</td>
+          <td class="paramname"><em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>linear_scale</em> = <code>1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -783,7 +938,7 @@ Friends</h2></td></tr>
 </div>
 </div>
 <a id="a9285fcffa42e37b40bc402b3d4ba16ac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9285fcffa42e37b40bc402b3d4ba16ac">&#9670;&nbsp;</a></span>parameter()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a9285fcffa42e37b40bc402b3d4ba16ac">&#9670;&nbsp;</a></span>parameter() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -826,6 +981,62 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<a id="a448a82427a8af099f3f7f7387be9f651"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a448a82427a8af099f3f7f7387be9f651">&#9670;&nbsp;</a></span>parameter() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> casadi::Opti::parameter </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &amp;&#160;</td>
+          <td class="paramname"><em>symbol</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>attribute</em> = <code>&quot;full&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2aabfaa56f8da9c1b296f98fbb2280df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2aabfaa56f8da9c1b296f98fbb2280df">&#9670;&nbsp;</a></span>parameter() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> casadi::Opti::parameter </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html">Sparsity</a> &amp;&#160;</td>
+          <td class="paramname"><em>sp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>attribute</em> = <code>&quot;full&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a57331e9e83e96ec0ea926c8142d9f99c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a57331e9e83e96ec0ea926c8142d9f99c">&#9670;&nbsp;</a></span>return_status()</h2>
 
@@ -843,6 +1054,25 @@ Friends</h2></td></tr>
 <pre class="fragment">   passed as-is from nlpsol
 </pre><p> No stability can be guaranteed about this part of the API</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1g">https://github.com/casadi/casadi/wiki/L_1g</a> </p>
+
+</div>
+</div>
+<a id="a13c110991b84faf766262959b5466fb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13c110991b84faf766262959b5466fb7">&#9670;&nbsp;</a></span>scale_helper()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a> casadi::Opti::scale_helper </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a> &amp;&#160;</td>
+          <td class="paramname"><em>h</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2ci">https://github.com/casadi/casadi/wiki/L_2ci</a> </p>
 
 </div>
 </div>
@@ -932,6 +1162,52 @@ Friends</h2></td></tr>
 <p>Set initial guess for decision variables </p><pre class="fragment">* opti.set_initial(x, 2)
 * opti.set_initial(10*x(1), 2)
 * </pre> 
+</div>
+</div>
+<a id="a853a4e3c8861724ba6c76d45c5d45968"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a853a4e3c8861724ba6c76d45c5d45968">&#9670;&nbsp;</a></span>set_linear_scale()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void casadi::Opti::set_linear_scale </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &amp;&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a> &amp;&#160;</td>
+          <td class="paramname"><em>scale</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a> &amp;&#160;</td>
+          <td class="paramname"><em>offset</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>(x-offset)/scale will be used in the optimization problem</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>decision variable </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">scale</td><td>scaling value (default: 1) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">offset</td><td>scaling value (default: 0)</td></tr>
+  </table>
+  </dd>
+</dl>
+<pre class="fragment">* opti.set_linear_scale(x, 20)
+* opti.set_linear_scale(x, 20, 273.15)
+* </pre><p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2bs">https://github.com/casadi/casadi/wiki/L_2bs</a> </p>
+
 </div>
 </div>
 <a id="a9aeff3d95982967d06de3a50a116a2c0"></a>
@@ -1083,7 +1359,7 @@ Friends</h2></td></tr>
 </div>
 </div>
 <a id="a280a6b8e1c776d80c76634a0c7468b55"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a280a6b8e1c776d80c76634a0c7468b55">&#9670;&nbsp;</a></span>subject_to() <span class="overload">[1/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a280a6b8e1c776d80c76634a0c7468b55">&#9670;&nbsp;</a></span>subject_to() <span class="overload">[1/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1099,8 +1375,8 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="abaafc3b4ffcf7d634ab1f3cb3580dfd6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abaafc3b4ffcf7d634ab1f3cb3580dfd6">&#9670;&nbsp;</a></span>subject_to() <span class="overload">[2/3]</span></h2>
+<a id="a483da2e181466ea48c7cf68df5cb3658"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a483da2e181466ea48c7cf68df5cb3658">&#9670;&nbsp;</a></span>subject_to() <span class="overload">[2/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1109,8 +1385,18 @@ Friends</h2></td></tr>
           <td class="memname">void casadi::Opti::subject_to </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &amp;&#160;</td>
-          <td class="paramname"><em>g</em></td><td>)</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;&#160;</td>
+          <td class="paramname"><em>options</em> = <code><a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1136,8 +1422,61 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="ae14b2d5be2eb5051fe5d950fe1833e52"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae14b2d5be2eb5051fe5d950fe1833e52">&#9670;&nbsp;</a></span>subject_to() <span class="overload">[3/3]</span></h2>
+<a id="a18cc88d90c55df9ffd1c6d3c12dbadf3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18cc88d90c55df9ffd1c6d3c12dbadf3">&#9670;&nbsp;</a></span>subject_to() <span class="overload">[3/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void casadi::Opti::subject_to </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &amp;&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a> &amp;&#160;</td>
+          <td class="paramname"><em>linear_scale</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;&#160;</td>
+          <td class="paramname"><em>options</em> = <code><a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Examples: </p><pre class="fragment">* \begin{itemize}
+* opti.subject_to( sqrt(x+y) &gt;= 1);
+* opti.subject_to( sqrt(x+y) &gt; 1)}: same as above
+* opti.subject_to( 1&lt;= sqrt(x+y) )}: same as above
+* opti.subject_to( 5*x+y==1 )}: equality
+*
+* Python
+* opti.subject_to([x*y&gt;=1,x==3])
+* opti.subject_to(opti.bounded(0,x,1))
+*
+* MATLAB
+* opti.subject_to({x*y&gt;=1,x==3})
+* opti.subject_to( 0&lt;=x&lt;=1 )
+* </pre><p>Related functionalities:</p><ul>
+<li>opti.lbg,opti.g,opti.ubg represent the vector of flattened constraints</li>
+<li><p class="startli">opti.debug.show_infeasibilities() may be used to inspect which constraints are violated</p>
+<p class="startli">Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1b">https://github.com/casadi/casadi/wiki/L_1b</a> </p>
+</li>
+</ul>
+
+</div>
+</div>
+<a id="a4224015da0f3be780981cec3fd79e386"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4224015da0f3be780981cec3fd79e386">&#9670;&nbsp;</a></span>subject_to() <span class="overload">[4/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1146,8 +1485,71 @@ Friends</h2></td></tr>
           <td class="memname">void casadi::Opti::subject_to </td>
           <td>(</td>
           <td class="paramtype">const std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>g</em></td><td>)</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;&#160;</td>
+          <td class="paramname"><em>options</em> = <code><a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Examples: </p><pre class="fragment">* \begin{itemize}
+* opti.subject_to( sqrt(x+y) &gt;= 1);
+* opti.subject_to( sqrt(x+y) &gt; 1)}: same as above
+* opti.subject_to( 1&lt;= sqrt(x+y) )}: same as above
+* opti.subject_to( 5*x+y==1 )}: equality
+*
+* Python
+* opti.subject_to([x*y&gt;=1,x==3])
+* opti.subject_to(opti.bounded(0,x,1))
+*
+* MATLAB
+* opti.subject_to({x*y&gt;=1,x==3})
+* opti.subject_to( 0&lt;=x&lt;=1 )
+* </pre><p>Related functionalities:</p><ul>
+<li>opti.lbg,opti.g,opti.ubg represent the vector of flattened constraints</li>
+<li><p class="startli">opti.debug.show_infeasibilities() may be used to inspect which constraints are violated</p>
+<p class="startli">Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1b">https://github.com/casadi/casadi/wiki/L_1b</a> </p>
+</li>
+</ul>
+
+</div>
+</div>
+<a id="a7ed63c3fe4738892e1112de72de47ddd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ed63c3fe4738892e1112de72de47ddd">&#9670;&nbsp;</a></span>subject_to() <span class="overload">[5/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void casadi::Opti::subject_to </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a> &amp;&#160;</td>
+          <td class="paramname"><em>linear_scale</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;&#160;</td>
+          <td class="paramname"><em>options</em> = <code><a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1364,7 +1766,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l00411">411</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l00440">440</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
 
 </div>
 </div>
@@ -1486,14 +1888,16 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Obtain value of expression at the current value</p>
-<p>In regular mode, teh current value is the converged solution In debug mode, the value can be non-converged</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">values</td><td>Optional assignment expressions (e.g. x==3) to overrule the current value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>decision variable </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">type</td><td>'real', 'integer' (default: real)</td></tr>
   </table>
   </dd>
 </dl>
+<pre class="fragment">* opti.set_domain(x, "real")
+* opti.set_domain(x, "integer")
+* </pre><p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_27t">https://github.com/casadi/casadi/wiki/L_27t</a> </p>
 
 </div>
 </div>
@@ -1558,14 +1962,16 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Obtain value of expression at the current value</p>
-<p>In regular mode, teh current value is the converged solution In debug mode, the value can be non-converged</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">values</td><td>Optional assignment expressions (e.g. x==3) to overrule the current value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>decision variable </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">type</td><td>'real', 'integer' (default: real)</td></tr>
   </table>
   </dd>
 </dl>
+<pre class="fragment">* opti.set_domain(x, "real")
+* opti.set_domain(x, "integer")
+* </pre><p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_27t">https://github.com/casadi/casadi/wiki/L_27t</a> </p>
 
 </div>
 </div>
@@ -1605,7 +2011,7 @@ Friends</h2></td></tr>
 </div>
 </div>
 <a id="a6b4c4bdbfdffd9caf80c77c321087d96"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6b4c4bdbfdffd9caf80c77c321087d96">&#9670;&nbsp;</a></span>variable()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b4c4bdbfdffd9caf80c77c321087d96">&#9670;&nbsp;</a></span>variable() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1648,6 +2054,62 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<a id="a4414d8359d993e4dddc237783c306372"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4414d8359d993e4dddc237783c306372">&#9670;&nbsp;</a></span>variable() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> casadi::Opti::variable </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &amp;&#160;</td>
+          <td class="paramname"><em>symbol</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>attribute</em> = <code>&quot;full&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac4b5c6182fe9b31c9c1eb0846da46673"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4b5c6182fe9b31c9c1eb0846da46673">&#9670;&nbsp;</a></span>variable() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> casadi::Opti::variable </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html">Sparsity</a> &amp;&#160;</td>
+          <td class="paramname"><em>sp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>attribute</em> = <code>&quot;full&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ae5528d1b30ce17b1934f2e39ddd8b3a9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae5528d1b30ce17b1934f2e39ddd8b3a9">&#9670;&nbsp;</a></span>x()</h2>
 
@@ -1663,6 +2125,40 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_26b">https://github.com/casadi/casadi/wiki/L_26b</a> </p>
+
+</div>
+</div>
+<a id="a1ea0df9559448b4e2b100097e7f1887f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ea0df9559448b4e2b100097e7f1887f">&#9670;&nbsp;</a></span>x_linear_scale()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a> casadi::Opti::x_linear_scale </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa485b7a578016373183c70555e645fdb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa485b7a578016373183c70555e645fdb">&#9670;&nbsp;</a></span>x_linear_scale_offset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a> casadi::Opti::x_linear_scale_offset </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

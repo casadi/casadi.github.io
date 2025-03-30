@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -54,7 +54,12 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <hr  />
-  <h4>AmplInterface <a class="anchor" id="plugin_Nlpsol_AmplInterface"></a> </h4>
+  <h4>ampl <a class="anchor" id="plugin_Nlpsol_ampl"></a> </h4>
+<dl class="section user"><dt></dt><dd></dd></dl>
+<p>Interface to AMPL</p>
+<dl class="section author"><dt>Author</dt><dd>Joel Andersson </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2017</dd></dl>
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_22b">https://github.com/casadi/casadi/wiki/L_22b</a></p>
 <p><br  />
 </p><dl class="section user"><dt></dt><dd><a class="anchor" id="options"></a><table class="doxtable">
 <caption>List of available options</caption>
@@ -505,6 +510,45 @@ $(function() {
 <dl class="section user"><dt></dt><dd></dd></dl>
 <p>A textbook SQPMethod</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_22u">https://github.com/casadi/casadi/wiki/L_22u</a></p>
+<p><br  />
+</p><dl class="section user"><dt></dt><dd><a class="anchor" id="options"></a><table class="doxtable">
+<caption>List of available options</caption>
+<tr>
+<th>Id</th><th>Type</th><th>Description </th></tr>
+<tr>
+<td>beta</td><td>OT_DOUBLE</td><td>Line-search parameter, restoration factor of stepsize </td></tr>
+<tr>
+<td>c1</td><td>OT_DOUBLE</td><td>Armijo condition, coefficient of decrease in merit </td></tr>
+<tr>
+<td>hessian_approximation</td><td>OT_STRING</td><td>limited-memory|exact </td></tr>
+<tr>
+<td>lbfgs_memory</td><td>OT_INT</td><td>Size of L-BFGS memory. </td></tr>
+<tr>
+<td>max_iter</td><td>OT_INT</td><td>Maximum number of SQP iterations </td></tr>
+<tr>
+<td>max_iter_ls</td><td>OT_INT</td><td>Maximum number of linesearch iterations </td></tr>
+<tr>
+<td>merit_memory</td><td>OT_INT</td><td>Size of memory to store history of merit function values </td></tr>
+<tr>
+<td>min_iter</td><td>OT_INT</td><td>Minimum number of SQP iterations </td></tr>
+<tr>
+<td>min_step_size</td><td>OT_DOUBLE</td><td>The size (inf-norm) of the step size should not become smaller than this. </td></tr>
+<tr>
+<td>print_header</td><td>OT_BOOL</td><td>Print the header with problem statistics </td></tr>
+<tr>
+<td>print_iteration</td><td>OT_BOOL</td><td>Print the iterations </td></tr>
+<tr>
+<td>qpsol</td><td>OT_STRING</td><td>The QP solver to be used by the SQP method [qrqp] </td></tr>
+<tr>
+<td>qpsol_options</td><td>OT_DICT</td><td>Options to be passed to the QP solver </td></tr>
+<tr>
+<td>regularize</td><td>OT_BOOL</td><td>Automatic regularization of Lagrange Hessian. </td></tr>
+<tr>
+<td>tol_du</td><td>OT_DOUBLE</td><td>Stopping criterion for dual infeasability </td></tr>
+<tr>
+<td>tol_pr</td><td>OT_DOUBLE</td><td>Stopping criterion for primal infeasibility </td></tr>
+</table>
+</dd></dl>
 <hr  />
   <h4>scpgen <a class="anchor" id="plugin_Nlpsol_scpgen"></a> </h4>
 <dl class="section user"><dt></dt><dd></dd></dl>

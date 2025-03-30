@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -153,9 +153,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa63e643b6fa75b2178d53d942e653ae1"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d19/classcasadi_1_1MXNode.html#aa63e643b6fa75b2178d53d942e653ae1">codegen_decref</a> (<a class="el" href="../../d1/da2/classcasadi_1_1CodeGenerator.html">CodeGenerator</a> &amp;g, std::set&lt; void * &gt; &amp;added) const</td></tr>
 <tr class="memdesc:aa63e643b6fa75b2178d53d942e653ae1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Codegen decref.  <a href="../../d0/d19/classcasadi_1_1MXNode.html#aa63e643b6fa75b2178d53d942e653ae1">More...</a><br /></td></tr>
 <tr class="separator:aa63e643b6fa75b2178d53d942e653ae1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a35df9a646dacd3f9b84a8f450eea2f6c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d19/classcasadi_1_1MXNode.html#a35df9a646dacd3f9b84a8f450eea2f6c">generate</a> (<a class="el" href="../../d1/da2/classcasadi_1_1CodeGenerator.html">CodeGenerator</a> &amp;g, const std::vector&lt; casadi_int &gt; &amp;arg, const std::vector&lt; casadi_int &gt; &amp;res) const</td></tr>
-<tr class="memdesc:a35df9a646dacd3f9b84a8f450eea2f6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate code for the operation.  <a href="../../d0/d19/classcasadi_1_1MXNode.html#a35df9a646dacd3f9b84a8f450eea2f6c">More...</a><br /></td></tr>
-<tr class="separator:a35df9a646dacd3f9b84a8f450eea2f6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8514a41c46fa8a52d326e83fac21272"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d19/classcasadi_1_1MXNode.html#aa8514a41c46fa8a52d326e83fac21272">generate</a> (<a class="el" href="../../d1/da2/classcasadi_1_1CodeGenerator.html">CodeGenerator</a> &amp;g, const std::vector&lt; casadi_int &gt; &amp;arg, const std::vector&lt; casadi_int &gt; &amp;res, const std::vector&lt; bool &gt; &amp;arg_is_ref, std::vector&lt; bool &gt; &amp;res_is_ref) const</td></tr>
+<tr class="memdesc:aa8514a41c46fa8a52d326e83fac21272"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate code for the operation.  <a href="../../d0/d19/classcasadi_1_1MXNode.html#aa8514a41c46fa8a52d326e83fac21272">More...</a><br /></td></tr>
+<tr class="separator:aa8514a41c46fa8a52d326e83fac21272"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86defb7ddebf7ee35176b99c4b2b9fca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d19/classcasadi_1_1MXNode.html#a86defb7ddebf7ee35176b99c4b2b9fca">generate_copy</a> (<a class="el" href="../../d1/da2/classcasadi_1_1CodeGenerator.html">CodeGenerator</a> &amp;g, const std::vector&lt; casadi_int &gt; &amp;arg, const std::vector&lt; casadi_int &gt; &amp;res, const std::vector&lt; bool &gt; &amp;arg_is_ref, std::vector&lt; bool &gt; &amp;res_is_ref, casadi_int i) const</td></tr>
+<tr class="separator:a86defb7ddebf7ee35176b99c4b2b9fca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3a38a261f6f087938d1633f85cd468d"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d19/classcasadi_1_1MXNode.html#ae3a38a261f6f087938d1633f85cd468d">eval</a> (const double **arg, double **res, casadi_int *iw, double *w) const</td></tr>
 <tr class="memdesc:ae3a38a261f6f087938d1633f85cd468d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate numerically.  <a href="../../d0/d19/classcasadi_1_1MXNode.html#ae3a38a261f6f087938d1633f85cd468d">More...</a><br /></td></tr>
 <tr class="separator:ae3a38a261f6f087938d1633f85cd468d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -165,6 +167,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a311901cafb9fb7eb98afae2e0f9c1c21"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d19/classcasadi_1_1MXNode.html#a311901cafb9fb7eb98afae2e0f9c1c21">eval_mx</a> (const std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt; &amp;arg, std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt; &amp;res) const</td></tr>
 <tr class="memdesc:a311901cafb9fb7eb98afae2e0f9c1c21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate symbolically (<a class="el" href="../../de/d57/classcasadi_1_1MX.html" title="MX - Matrix expression.">MX</a>)  <a href="../../d0/d19/classcasadi_1_1MXNode.html#a311901cafb9fb7eb98afae2e0f9c1c21">More...</a><br /></td></tr>
 <tr class="separator:a311901cafb9fb7eb98afae2e0f9c1c21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6ad6e4f98c685b306e65a1469208e91"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d19/classcasadi_1_1MXNode.html#ad6ad6e4f98c685b306e65a1469208e91">eval_linear</a> (const std::vector&lt; std::array&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a>, 3 &gt; &gt; &amp;arg, std::vector&lt; std::array&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a>, 3 &gt; &gt; &amp;res) const</td></tr>
+<tr class="memdesc:ad6ad6e4f98c685b306e65a1469208e91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate the <a class="el" href="../../de/d57/classcasadi_1_1MX.html" title="MX - Matrix expression.">MX</a> node on a const/linear/nonlinear partition.  <a href="../../d0/d19/classcasadi_1_1MXNode.html#ad6ad6e4f98c685b306e65a1469208e91">More...</a><br /></td></tr>
+<tr class="separator:ad6ad6e4f98c685b306e65a1469208e91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d2120356d19e99a5be98825bc46ebdf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d19/classcasadi_1_1MXNode.html#a0d2120356d19e99a5be98825bc46ebdf">eval_linear_unary</a> (const std::vector&lt; std::array&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a>, 3 &gt; &gt; &amp;arg, std::vector&lt; std::array&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a>, 3 &gt; &gt; &amp;res) const</td></tr>
+<tr class="memdesc:a0d2120356d19e99a5be98825bc46ebdf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate the <a class="el" href="../../de/d57/classcasadi_1_1MX.html" title="MX - Matrix expression.">MX</a> node on a const/linear/nonlinear partition.  <a href="../../d0/d19/classcasadi_1_1MXNode.html#a0d2120356d19e99a5be98825bc46ebdf">More...</a><br /></td></tr>
+<tr class="separator:a0d2120356d19e99a5be98825bc46ebdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb03b77eaf85cd0e94fc044a10ccaa29"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d19/classcasadi_1_1MXNode.html#afb03b77eaf85cd0e94fc044a10ccaa29">eval_linear_rearrange</a> (const std::vector&lt; std::array&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a>, 3 &gt; &gt; &amp;arg, std::vector&lt; std::array&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a>, 3 &gt; &gt; &amp;res) const</td></tr>
+<tr class="memdesc:afb03b77eaf85cd0e94fc044a10ccaa29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate the <a class="el" href="../../de/d57/classcasadi_1_1MX.html" title="MX - Matrix expression.">MX</a> node on a const/linear/nonlinear partition.  <a href="../../d0/d19/classcasadi_1_1MXNode.html#afb03b77eaf85cd0e94fc044a10ccaa29">More...</a><br /></td></tr>
+<tr class="separator:afb03b77eaf85cd0e94fc044a10ccaa29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64dc5006fdd74bcf9fc64f7602cae9e3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d19/classcasadi_1_1MXNode.html#a64dc5006fdd74bcf9fc64f7602cae9e3">ad_forward</a> (const std::vector&lt; std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt; &gt; &amp;fseed, std::vector&lt; std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt; &gt; &amp;fsens) const</td></tr>
 <tr class="memdesc:a64dc5006fdd74bcf9fc64f7602cae9e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate forward mode directional derivatives.  <a href="../../d0/d19/classcasadi_1_1MXNode.html#a64dc5006fdd74bcf9fc64f7602cae9e3">More...</a><br /></td></tr>
 <tr class="separator:a64dc5006fdd74bcf9fc64f7602cae9e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -287,6 +298,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad6d2e9ed80a9d209be59a180381350d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d19/classcasadi_1_1MXNode.html#ad6d2e9ed80a9d209be59a180381350d9">set_dep</a> (const std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt; &amp;<a class="el" href="../../d0/d19/classcasadi_1_1MXNode.html#aa1bd7fd6ee89fa43cbb8d75f3274fdf5">dep</a>)</td></tr>
 <tr class="memdesc:ad6d2e9ed80a9d209be59a180381350d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set multiple dependencies.  <a href="../../d0/d19/classcasadi_1_1MXNode.html#ad6d2e9ed80a9d209be59a180381350d9">More...</a><br /></td></tr>
 <tr class="separator:ad6d2e9ed80a9d209be59a180381350d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a898d77b1de095ee7b002ba225632715e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d19/classcasadi_1_1MXNode.html#a898d77b1de095ee7b002ba225632715e">check_dep</a> () const</td></tr>
+<tr class="memdesc:a898d77b1de095ee7b002ba225632715e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check validatity of dependencies.  <a href="../../d0/d19/classcasadi_1_1MXNode.html#a898d77b1de095ee7b002ba225632715e">More...</a><br /></td></tr>
+<tr class="separator:a898d77b1de095ee7b002ba225632715e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68aedab64a5eab804d3b4191f9d56703"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d19/classcasadi_1_1MXNode.html#a68aedab64a5eab804d3b4191f9d56703">to_double</a> () const</td></tr>
 <tr class="memdesc:a68aedab64a5eab804d3b4191f9d56703"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the value (only for scalar constant nodes)  <a href="../../d0/d19/classcasadi_1_1MXNode.html#a68aedab64a5eab804d3b4191f9d56703">More...</a><br /></td></tr>
 <tr class="separator:a68aedab64a5eab804d3b4191f9d56703"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -825,7 +839,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1qo">https://github.com/casadi/casadi/wiki/L_1qo</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00121">121</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00122">122</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -853,6 +867,31 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1ql">https://github.com/casadi/casadi/wiki/L_1ql</a> </p>
+
+</div>
+</div>
+<a id="a898d77b1de095ee7b002ba225632715e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a898d77b1de095ee7b002ba225632715e">&#9670;&nbsp;</a></span>check_dep()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void casadi::MXNode::check_dep </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -917,7 +956,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1qr">https://github.com/casadi/casadi/wiki/L_1qr</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00136">136</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00137">137</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -956,7 +995,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1qq">https://github.com/casadi/casadi/wiki/L_1qq</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00131">131</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00132">132</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -1071,7 +1110,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1rm">https://github.com/casadi/casadi/wiki/L_1rm</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00319">319</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00354">354</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -1220,6 +1259,118 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ad6ad6e4f98c685b306e65a1469208e91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6ad6e4f98c685b306e65a1469208e91">&#9670;&nbsp;</a></span>eval_linear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void casadi::MXNode::eval_linear </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::array&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a>, 3 &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>arg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::array&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a>, 3 &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>res</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_28b">https://github.com/casadi/casadi/wiki/L_28b</a> </p>
+
+</div>
+</div>
+<a id="afb03b77eaf85cd0e94fc044a10ccaa29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb03b77eaf85cd0e94fc044a10ccaa29">&#9670;&nbsp;</a></span>eval_linear_rearrange()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void casadi::MXNode::eval_linear_rearrange </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::array&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a>, 3 &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>arg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::array&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a>, 3 &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>res</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Default implementation for operations that do not modify numerical values, but only rearrange them.</p>
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2cj">https://github.com/casadi/casadi/wiki/L_2cj</a> </p>
+
+</div>
+</div>
+<a id="a0d2120356d19e99a5be98825bc46ebdf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d2120356d19e99a5be98825bc46ebdf">&#9670;&nbsp;</a></span>eval_linear_unary()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void casadi::MXNode::eval_linear_unary </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::array&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a>, 3 &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>arg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::array&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a>, 3 &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>res</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_28c">https://github.com/casadi/casadi/wiki/L_28c</a> </p>
+
+</div>
+</div>
 <a id="a311901cafb9fb7eb98afae2e0f9c1c21"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a311901cafb9fb7eb98afae2e0f9c1c21">&#9670;&nbsp;</a></span>eval_mx()</h2>
 
@@ -1310,8 +1461,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a35df9a646dacd3f9b84a8f450eea2f6c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a35df9a646dacd3f9b84a8f450eea2f6c">&#9670;&nbsp;</a></span>generate()</h2>
+<a id="aa8514a41c46fa8a52d326e83fac21272"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8514a41c46fa8a52d326e83fac21272">&#9670;&nbsp;</a></span>generate()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1335,7 +1486,19 @@ Protected Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const std::vector&lt; casadi_int &gt; &amp;&#160;</td>
-          <td class="paramname"><em>res</em>&#160;</td>
+          <td class="paramname"><em>res</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; bool &gt; &amp;&#160;</td>
+          <td class="paramname"><em>arg_is_ref</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; bool &gt; &amp;&#160;</td>
+          <td class="paramname"><em>res_is_ref</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1351,7 +1514,67 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1qs">https://github.com/casadi/casadi/wiki/L_1qs</a> </p>
 
-<p>Reimplemented in <a class="el" href="../../da/dd8/classcasadi_1_1TrilSolveUnity.html#ae6348f85dbd8249da6ae2ad62343516b">casadi::TrilSolveUnity&lt; Tr &gt;</a>, <a class="el" href="../../d5/de2/classcasadi_1_1TriuSolveUnity.html#a59f1ddbc2587717dc94e7ec9cde34865">casadi::TriuSolveUnity&lt; Tr &gt;</a>, <a class="el" href="../../db/d1e/classcasadi_1_1TrilSolve.html#af8aa9d8784e739a386bb874c85e1b372">casadi::TrilSolve&lt; Tr &gt;</a>, <a class="el" href="../../dd/dd6/classcasadi_1_1TriuSolve.html#a066f76427d5afd28e0518237973e9edb">casadi::TriuSolve&lt; Tr &gt;</a>, <a class="el" href="../../de/dc4/classcasadi_1_1LinsolCall.html#a5681c6e2d0856dab5037d91a6dade2be">casadi::LinsolCall&lt; Tr &gt;</a>, <a class="el" href="../../df/da2/classcasadi_1_1Output.html#aa377f08df962d789dfbb22db06d80091">casadi::Output</a>, and <a class="el" href="../../d1/d44/classcasadi_1_1Input.html#ae0b3476c819aee97dd725f8cc825b755">casadi::Input</a>.</p>
+<p>Reimplemented in <a class="el" href="../../da/dd8/classcasadi_1_1TrilSolveUnity.html#a0e61a0b8a47cfaa7ec348344112a622f">casadi::TrilSolveUnity&lt; Tr &gt;</a>, <a class="el" href="../../d5/de2/classcasadi_1_1TriuSolveUnity.html#a0aaf6c3edbf4eda60869c6a33f37d6a1">casadi::TriuSolveUnity&lt; Tr &gt;</a>, <a class="el" href="../../db/d1e/classcasadi_1_1TrilSolve.html#ae49fef9e5f2bb652ddb67f4d791c6393">casadi::TrilSolve&lt; Tr &gt;</a>, <a class="el" href="../../dd/dd6/classcasadi_1_1TriuSolve.html#ad8733d0d44af1b96c65938d60d29535d">casadi::TriuSolve&lt; Tr &gt;</a>, <a class="el" href="../../de/dc4/classcasadi_1_1LinsolCall.html#a5de5cee04cbcff383304cc46c4e0a374">casadi::LinsolCall&lt; Tr &gt;</a>, <a class="el" href="../../df/da2/classcasadi_1_1Output.html#a178af7c9b074a4bb54bb2646de878924">casadi::Output</a>, and <a class="el" href="../../d1/d44/classcasadi_1_1Input.html#a9c175a626d56b8a343da37b606470921">casadi::Input</a>.</p>
+
+</div>
+</div>
+<a id="a86defb7ddebf7ee35176b99c4b2b9fca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86defb7ddebf7ee35176b99c4b2b9fca">&#9670;&nbsp;</a></span>generate_copy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void casadi::MXNode::generate_copy </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d1/da2/classcasadi_1_1CodeGenerator.html">CodeGenerator</a> &amp;&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; casadi_int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>arg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; casadi_int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>res</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; bool &gt; &amp;&#160;</td>
+          <td class="paramname"><em>arg_is_ref</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; bool &gt; &amp;&#160;</td>
+          <td class="paramname"><em>res_is_ref</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">casadi_int&#160;</td>
+          <td class="paramname"><em>i</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -3415,8 +3638,8 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1r8">https://github.com/casadi/casadi/wiki/L_1r8</a> </p>
-
+<p>Not thread-safe </p><pre class="fragment">Extra doc: https://github.com/casadi/casadi/wiki/L_1r8 
+</pre> 
 </div>
 </div>
 <a id="a0c1a0e20af37e8ea6a81cfda7589c8ab"></a>
@@ -3443,7 +3666,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1rb">https://github.com/casadi/casadi/wiki/L_1rb</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00252">252</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00287">287</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -3471,7 +3694,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1qp">https://github.com/casadi/casadi/wiki/L_1qp</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00126">126</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00127">127</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -3556,7 +3779,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1qk">https://github.com/casadi/casadi/wiki/L_1qk</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00100">100</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00101">101</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -3594,7 +3817,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00302">302</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00337">337</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -3665,7 +3888,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1qi">https://github.com/casadi/casadi/wiki/L_1qi</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00090">90</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00091">91</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -3693,7 +3916,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1qg">https://github.com/casadi/casadi/wiki/L_1qg</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00080">80</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00081">81</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -3721,7 +3944,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1qf">https://github.com/casadi/casadi/wiki/L_1qf</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00075">75</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00076">76</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -3749,7 +3972,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1ra">https://github.com/casadi/casadi/wiki/L_1ra</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00247">247</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00282">282</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -3777,7 +4000,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1qj">https://github.com/casadi/casadi/wiki/L_1qj</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00095">95</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00096">96</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -3805,7 +4028,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1r3">https://github.com/casadi/casadi/wiki/L_1r3</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00200">200</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00231">231</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -3834,7 +4057,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1qh">https://github.com/casadi/casadi/wiki/L_1qh</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00085">85</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00086">86</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -3862,7 +4085,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1qe">https://github.com/casadi/casadi/wiki/L_1qe</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00070">70</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00071">71</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -4026,7 +4249,7 @@ template&lt;class T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00343">343</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00378">378</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -4054,7 +4277,7 @@ template&lt;class T &gt; </div>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1rk">https://github.com/casadi/casadi/wiki/L_1rk</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00307">307</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00342">342</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -4109,7 +4332,7 @@ template&lt;class T &gt; </div>
 
 <p>Reimplemented in <a class="el" href="../../dd/de8/classcasadi_1_1Solve.html#ab63da023ad9253d2f188ab1e3402c8a0">casadi::Solve&lt; Tr &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00419">419</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00457">457</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -4189,7 +4412,7 @@ template&lt;class T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00354">354</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00389">389</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -4219,7 +4442,7 @@ template&lt;class T &gt; </div>
 
 <p>Reimplemented in <a class="el" href="../../df/da2/classcasadi_1_1Output.html#a3e241243abb2a9d4caa8b918c5eadbc8">casadi::Output</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00329">329</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00364">364</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -4246,7 +4469,7 @@ template&lt;class T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00353">353</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00388">388</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -4393,8 +4616,8 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1r9">https://github.com/casadi/casadi/wiki/L_1r9</a> </p>
-
+<p>Not thread-safe </p><pre class="fragment">Extra doc: https://github.com/casadi/casadi/wiki/L_1r9 
+</pre> 
 </div>
 </div>
 <a id="ad95661f927ac81b5072114a375f98d8e"></a>
@@ -4729,7 +4952,7 @@ template&lt;class T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00357">357</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00392">392</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -4756,7 +4979,7 @@ template&lt;class T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00355">355</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00390">390</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -4783,7 +5006,7 @@ template&lt;class T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00356">356</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00391">391</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -4912,7 +5135,7 @@ template&lt;class T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00337">337</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00372">372</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -5077,7 +5300,7 @@ template&lt;class T &gt; </div>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1rq">https://github.com/casadi/casadi/wiki/L_1rq</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00374">374</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00409">409</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -5105,7 +5328,7 @@ template&lt;class T &gt; </div>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1rs">https://github.com/casadi/casadi/wiki/L_1rs</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00384">384</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00419">419</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -5133,7 +5356,7 @@ template&lt;class T &gt; </div>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1rr">https://github.com/casadi/casadi/wiki/L_1rr</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00379">379</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00414">414</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -5163,7 +5386,7 @@ template&lt;class T &gt; </div>
 
 <p>Reimplemented in <a class="el" href="../../de/dc4/classcasadi_1_1LinsolCall.html#a2b498f7c3df362d51dc6dfd1ffd3c794">casadi::LinsolCall&lt; Tr &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00389">389</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00424">424</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -5226,7 +5449,7 @@ template&lt;class T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00404">404</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00442">442</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -5304,7 +5527,7 @@ template&lt;class T &gt; </div>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1sj">https://github.com/casadi/casadi/wiki/L_1sj</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00724">724</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00762">762</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -5328,7 +5551,7 @@ template&lt;class T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00741">741</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00779">779</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -5425,7 +5648,7 @@ template&lt;class T &gt; </div>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1sk">https://github.com/casadi/casadi/wiki/L_1sk</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00729">729</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00767">767</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>
@@ -5450,7 +5673,7 @@ template&lt;class T &gt; </div>
 </div><div class="memdoc">
 <p>Temporary variables to be used in user algorithms like sorting, the user is responsible of making sure that use is thread-safe The variable is initialized to zero </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00719">719</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d72/mx__node_8hpp_source.html#l00757">757</a> of file <a class="el" href="../../d0/d72/mx__node_8hpp_source.html">mx_node.hpp</a>.</p>
 
 </div>
 </div>

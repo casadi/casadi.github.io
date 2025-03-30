@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -92,6 +92,7 @@ Inheritance diagram for casadi::GenericMatrix&lt; MatType &gt;:</div>
 <div class="center"><img src="../../dc/d1e/classcasadi_1_1GenericMatrix__inherit__graph.png" border="0" usemap="#acasadi_1_1GenericMatrix_3_01MatType_01_4_inherit__map" alt="Inheritance graph"/></div>
 <map name="acasadi_1_1GenericMatrix_3_01MatType_01_4_inherit__map" id="acasadi_1_1GenericMatrix_3_01MatType_01_4_inherit__map">
 <area shape="rect" title="Matrix base class." alt="" coords="279,57,443,98"/>
+<area shape="rect" href="../../da/d45/classcasadi_1_1Matrix.html" title=" " alt="" coords="491,64,679,91"/>
 <area shape="rect" href="../../dc/d32/structcasadi_1_1GenericMatrixCommon.html" title="Empty Base." alt="" coords="7,5,229,32"/>
 <area shape="rect" title=" " alt="" coords="5,57,231,98"/>
 <area shape="rect" title=" " alt="" coords="46,122,190,163"/>
@@ -427,6 +428,19 @@ Friends</h2></td></tr>
 <tr class="memitem:ga6768c2027a55455b74abc43de906373e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dc2/group__expression__tools.html#ga6768c2027a55455b74abc43de906373e">linear_coeff</a> (const MatType &amp;expr, const MatType &amp;var, MatType &amp;A, MatType &amp;b, bool check=true)</td></tr>
 <tr class="memdesc:ga6768c2027a55455b74abc43de906373e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recognizes linear form in vector expression.  <a href="../../d9/dc2/group__expression__tools.html#ga6768c2027a55455b74abc43de906373e">More...</a><br /></td></tr>
 <tr class="separator:ga6768c2027a55455b74abc43de906373e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga04b8750405df883c4459d60e468c532a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dc2/group__expression__tools.html#ga04b8750405df883c4459d60e468c532a">extract_parametric</a> (const MatType &amp;expr, const MatType &amp;par, MatType &amp;expr_ret, std::vector&lt; MatType &gt; &amp;symbols, std::vector&lt; MatType &gt; &amp;parametric, const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;opts=<a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>())</td></tr>
+<tr class="memdesc:ga04b8750405df883c4459d60e468c532a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extract purely parametric parts from an expression graph.  <a href="../../d9/dc2/group__expression__tools.html#ga04b8750405df883c4459d60e468c532a">More...</a><br /></td></tr>
+<tr class="separator:ga04b8750405df883c4459d60e468c532a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga17243783fecd3af9dfee83cc8fce92e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dc2/group__expression__tools.html#ga17243783fecd3af9dfee83cc8fce92e4">extract_parametric</a> (const std::vector&lt; MatType &gt; &amp;expr, const MatType &amp;par, std::vector&lt; MatType &gt; &amp;expr_ret, std::vector&lt; MatType &gt; &amp;symbols, std::vector&lt; MatType &gt; &amp;parametric, const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;opts=<a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>())</td></tr>
+<tr class="separator:ga17243783fecd3af9dfee83cc8fce92e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga61b8dddabb81221506addeb109b0c4c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dc2/group__expression__tools.html#ga61b8dddabb81221506addeb109b0c4c2">extract_parametric</a> (const std::vector&lt; MatType &gt; &amp;expr, const std::vector&lt; MatType &gt; &amp;par, std::vector&lt; MatType &gt; &amp;expr_ret, std::vector&lt; MatType &gt; &amp;symbols, std::vector&lt; MatType &gt; &amp;parametric, const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;opts=<a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>())</td></tr>
+<tr class="separator:ga61b8dddabb81221506addeb109b0c4c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf6d87073d04836d97708b81310562f34"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dc2/group__expression__tools.html#gaf6d87073d04836d97708b81310562f34">extract_parametric</a> (const MatType &amp;expr, const std::vector&lt; MatType &gt; &amp;par, MatType &amp;expr_ret, std::vector&lt; MatType &gt; &amp;symbols, std::vector&lt; MatType &gt; &amp;parametric, const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;opts=<a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>())</td></tr>
+<tr class="separator:gaf6d87073d04836d97708b81310562f34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0f0efb1505605fdb02e6b2b7d77c4136"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dc2/group__expression__tools.html#ga0f0efb1505605fdb02e6b2b7d77c4136">separate_linear</a> (const MatType &amp;expr, const MatType &amp;sym_lin, const MatType &amp;sym_const, MatType &amp;expr_const, MatType &amp;expr_lin, MatType &amp;expr_nonlin)</td></tr>
+<tr class="separator:ga0f0efb1505605fdb02e6b2b7d77c4136"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3deaa22d167f65b5e30e6e4a1ed1cbf1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dc2/group__expression__tools.html#ga3deaa22d167f65b5e30e6e4a1ed1cbf1">separate_linear</a> (const MatType &amp;expr, const std::vector&lt; MatType &gt; &amp;sym_lin, const std::vector&lt; MatType &gt; &amp;sym_const, MatType &amp;expr_const, MatType &amp;expr_lin, MatType &amp;expr_nonlin)</td></tr>
+<tr class="separator:ga3deaa22d167f65b5e30e6e4a1ed1cbf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga54079d163fb4384209ab5a6a939c8e57"><td class="memItemLeft" align="right" valign="top">casadi_int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dc2/group__expression__tools.html#ga54079d163fb4384209ab5a6a939c8e57">n_nodes</a> (const MatType &amp;A)</td></tr>
 <tr class="separator:ga54079d163fb4384209ab5a6a939c8e57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1cd06d9a6c1c638b449a96e7a2daa636"><td class="memItemLeft" align="right" valign="top">MatType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dc2/group__expression__tools.html#ga1cd06d9a6c1c638b449a96e7a2daa636">simplify</a> (const MatType &amp;x)</td></tr>
@@ -451,6 +465,16 @@ Friends</h2></td></tr>
 <tr class="memitem:ga77c34722ef2f2f47eb8f9d136bb9d48c"><td class="memItemLeft" align="right" valign="top">MatType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dc2/group__expression__tools.html#ga77c34722ef2f2f47eb8f9d136bb9d48c">einstein</a> (const MatType &amp;A, const MatType &amp;B, const std::vector&lt; casadi_int &gt; &amp;dim_a, const std::vector&lt; casadi_int &gt; &amp;dim_b, const std::vector&lt; casadi_int &gt; &amp;dim_c, const std::vector&lt; casadi_int &gt; &amp;a, const std::vector&lt; casadi_int &gt; &amp;b, const std::vector&lt; casadi_int &gt; &amp;c)</td></tr>
 <tr class="memdesc:ga77c34722ef2f2f47eb8f9d136bb9d48c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute any contraction of two dense tensors, using index/einstein notation.  <a href="../../d9/dc2/group__expression__tools.html#ga77c34722ef2f2f47eb8f9d136bb9d48c">More...</a><br /></td></tr>
 <tr class="separator:ga77c34722ef2f2f47eb8f9d136bb9d48c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:ga623ca0d89caf79ef062ecb7ef871b12e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dc2/group__expression__tools.html#ga623ca0d89caf79ef062ecb7ef871b12e">contains</a> (const std::vector&lt; MatType &gt; &amp;v, const MatType &amp;n)</td></tr>
+<tr class="memdesc:ga623ca0d89caf79ef062ecb7ef871b12e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if expression n is listed in v.  <a href="../../d9/dc2/group__expression__tools.html#ga623ca0d89caf79ef062ecb7ef871b12e">More...</a><br /></td></tr>
+<tr class="separator:ga623ca0d89caf79ef062ecb7ef871b12e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga32db6e4386c82a84359f3ccbaba6fd27"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dc2/group__expression__tools.html#ga32db6e4386c82a84359f3ccbaba6fd27">contains_all</a> (const std::vector&lt; MatType &gt; &amp;v, const std::vector&lt; MatType &gt; &amp;n)</td></tr>
+<tr class="memdesc:ga32db6e4386c82a84359f3ccbaba6fd27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if expression n is listed in v.  <a href="../../d9/dc2/group__expression__tools.html#ga32db6e4386c82a84359f3ccbaba6fd27">More...</a><br /></td></tr>
+<tr class="separator:ga32db6e4386c82a84359f3ccbaba6fd27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga62bde519d4935058c0cb656a18e0a1f3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dc2/group__expression__tools.html#ga62bde519d4935058c0cb656a18e0a1f3">contains_any</a> (const std::vector&lt; MatType &gt; &amp;v, const std::vector&lt; MatType &gt; &amp;n)</td></tr>
+<tr class="memdesc:ga62bde519d4935058c0cb656a18e0a1f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if expression n is listed in v.  <a href="../../d9/dc2/group__expression__tools.html#ga62bde519d4935058c0cb656a18e0a1f3">More...</a><br /></td></tr>
+<tr class="separator:ga62bde519d4935058c0cb656a18e0a1f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
 <tr class="memitem:ga40e7da4399badfab763abc187ed7ac14"><td class="memItemLeft" align="right" valign="top">MatType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dc2/group__expression__tools.html#ga40e7da4399badfab763abc187ed7ac14">hessian</a> (const MatType &amp;ex, const MatType &amp;arg, const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;opts=<a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>())</td></tr>
 <tr class="memdesc:ga40e7da4399badfab763abc187ed7ac14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hessian and (optionally) gradient.  <a href="../../d9/dc2/group__expression__tools.html#ga40e7da4399badfab763abc187ed7ac14">More...</a><br /></td></tr>
@@ -1026,7 +1050,7 @@ template&lt;typename MatType &gt; </div>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1di">https://github.com/casadi/casadi/wiki/L_1di</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01096">1096</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01275">1275</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
 
 </div>
 </div>
@@ -1057,7 +1081,7 @@ template&lt;typename MatType &gt; </div>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1di">https://github.com/casadi/casadi/wiki/L_1di</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01099">1099</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01278">1278</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
 
 </div>
 </div>
@@ -1088,7 +1112,7 @@ template&lt;typename MatType &gt; </div>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1di">https://github.com/casadi/casadi/wiki/L_1di</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01100">1100</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01279">1279</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
 
 </div>
 </div>
@@ -1303,7 +1327,7 @@ template&lt;typename MatType &gt; </div>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1de">https://github.com/casadi/casadi/wiki/L_1de</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01055">1055</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01234">1234</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
 
 </div>
 </div>
@@ -1363,7 +1387,7 @@ template&lt;typename MatType &gt; </div>
 <p>with nrow-by-ncol symbolic primitives</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1dg">https://github.com/casadi/casadi/wiki/L_1dg</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01074">1074</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01253">1253</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
 
 </div>
 </div>
@@ -1410,7 +1434,7 @@ template&lt;typename MatType &gt; </div>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1da">https://github.com/casadi/casadi/wiki/L_1da</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01027">1027</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01206">1206</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
 
 </div>
 </div>
@@ -1451,7 +1475,7 @@ template&lt;typename MatType &gt; </div>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1dc">https://github.com/casadi/casadi/wiki/L_1dc</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01041">1041</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01220">1220</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
 
 </div>
 </div>
@@ -1499,7 +1523,7 @@ template&lt;typename MatType &gt; </div>
 <p>with symbolic primitives of given sparsity</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1dd">https://github.com/casadi/casadi/wiki/L_1dd</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01176">1176</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01355">1355</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
 
 </div>
 </div>
@@ -1553,7 +1577,7 @@ template&lt;typename MatType &gt; </div>
 <p>symbolic primitives with given sparsity</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1df">https://github.com/casadi/casadi/wiki/L_1df</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01189">1189</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01368">1368</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
 
 </div>
 </div>
@@ -1594,7 +1618,7 @@ template&lt;typename MatType &gt; </div>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1db">https://github.com/casadi/casadi/wiki/L_1db</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01034">1034</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01213">1213</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
 
 </div>
 </div>
@@ -1634,8 +1658,10 @@ template&lt;typename MatType &gt; </div>
 </table>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1dh">https://github.com/casadi/casadi/wiki/L_1dh</a> </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="../../d3/d4e/misc_2all_8cc-example.html#a1">misc/all.cc</a>.</dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01083">1083</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01262">1262</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
 
 </div>
 </div>
@@ -1666,7 +1692,7 @@ template&lt;typename MatType &gt; </div>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1dh">https://github.com/casadi/casadi/wiki/L_1dh</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01086">1086</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01265">1265</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
 
 </div>
 </div>
@@ -1697,7 +1723,7 @@ template&lt;typename MatType &gt; </div>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1dh">https://github.com/casadi/casadi/wiki/L_1dh</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01087">1087</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01266">1266</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
 
 </div>
 </div>

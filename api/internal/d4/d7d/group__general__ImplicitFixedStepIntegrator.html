@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -65,7 +65,7 @@ $(function() {
 <tr>
 <td>always_inline</td><td>OT_BOOL</td><td>Force inlining.</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
-<td>augmented_options</td><td>OT_DICT</td><td>Options to be passed down to the augmented integrator, if one is constructed.</td><td><a class="el" href="../../db/d3d/classcasadi_1_1Integrator.html" title="Internal storage for integrator related data.">casadi::Integrator</a> </td></tr>
+<td>augmented_options</td><td>OT_DICT</td><td>Options to be passed down to the augmented integrator, if one is constructed</td><td><a class="el" href="../../db/d3d/classcasadi_1_1Integrator.html" title="Internal storage for integrator related data.">casadi::Integrator</a> </td></tr>
 <tr>
 <td>cache</td><td>OT_DICT</td><td>Prepopulate the function cache. Default: empty</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
@@ -99,7 +99,9 @@ $(function() {
 <tr>
 <td>error_on_fail</td><td>OT_BOOL</td><td>Throw exceptions when function evaluation fails (default true).</td><td><a class="el" href="../../db/da0/classcasadi_1_1ProtoFunction.html" title="Base class for FunctionInternal and LinsolInternal.">casadi::ProtoFunction</a> </td></tr>
 <tr>
-<td>expand</td><td>OT_BOOL</td><td>Replace MX with SX expressions in problem formulation [false]</td><td><a class="el" href="../../db/d3d/classcasadi_1_1Integrator.html" title="Internal storage for integrator related data.">casadi::Integrator</a> </td></tr>
+<td>event_tol</td><td>OT_DOUBLE</td><td>Termination tolerance for the event iteration</td><td><a class="el" href="../../db/d3d/classcasadi_1_1Integrator.html" title="Internal storage for integrator related data.">casadi::Integrator</a> </td></tr>
+<tr>
+<td>expand</td><td>OT_BOOL</td><td>Replace MX with SX expressions in problem formulation [false] This happens before creating derivatives unless indicated by postpone_expand</td><td><a class="el" href="../../d2/df9/classcasadi_1_1OracleFunction.html" title="Base class for functions that perform calculation with an oracle.">casadi::OracleFunction</a> </td></tr>
 <tr>
 <td>external_transform</td><td>OT_VECTORVECTOR</td><td>List of external_transform instruction arguments. Default: empty</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
@@ -137,6 +139,10 @@ $(function() {
 <tr>
 <td>jit_temp_suffix</td><td>OT_BOOL</td><td>Use a temporary (seemingly random) filename suffix for generated code and libraries. This is desired for thread-safety. This behaviour may defeat caching compiler wrappers. Default: true</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
+<td>max_event_iter</td><td>OT_INT</td><td>Maximum number of iterations to zero in on a single event</td><td><a class="el" href="../../db/d3d/classcasadi_1_1Integrator.html" title="Internal storage for integrator related data.">casadi::Integrator</a> </td></tr>
+<tr>
+<td>max_events</td><td>OT_INT</td><td>Maximum total number of events</td><td><a class="el" href="../../db/d3d/classcasadi_1_1Integrator.html" title="Internal storage for integrator related data.">casadi::Integrator</a> </td></tr>
+<tr>
 <td>max_io</td><td>OT_INT</td><td>Acceptable number of inputs and outputs. Warn if exceeded.</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
 <td>max_num_dir</td><td>OT_INT</td><td>Specify the maximum number of directions for derivative functions. Overrules the builtin optimized_num_dir.</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
@@ -158,6 +164,8 @@ $(function() {
 <td>post_expand</td><td>OT_BOOL</td><td>After construction, expand this Function. Default: False</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
 <td>post_expand_options</td><td>OT_DICT</td><td>Options to be passed to post-construction expansion. Default: empty</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
+<tr>
+<td>postpone_expand</td><td>OT_BOOL</td><td>When expand is active, postpone it until after creation of derivatives. Default: False</td><td><a class="el" href="../../d2/df9/classcasadi_1_1OracleFunction.html" title="Base class for functions that perform calculation with an oracle.">casadi::OracleFunction</a> </td></tr>
 <tr>
 <td>print_in</td><td>OT_BOOL</td><td>Print numerical values of inputs [default: false]</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
@@ -188,6 +196,8 @@ $(function() {
 <td>t0</td><td>OT_DOUBLE</td><td>[DEPRECATED] Beginning of the time horizon</td><td><a class="el" href="../../db/d3d/classcasadi_1_1Integrator.html" title="Internal storage for integrator related data.">casadi::Integrator</a> </td></tr>
 <tr>
 <td>tf</td><td>OT_DOUBLE</td><td>[DEPRECATED] End of the time horizon</td><td><a class="el" href="../../db/d3d/classcasadi_1_1Integrator.html" title="Internal storage for integrator related data.">casadi::Integrator</a> </td></tr>
+<tr>
+<td>transition</td><td>OT_FUNCTION</td><td>Function to be called a zero-crossing events</td><td><a class="el" href="../../db/d3d/classcasadi_1_1Integrator.html" title="Internal storage for integrator related data.">casadi::Integrator</a> </td></tr>
 <tr>
 <td>user_data</td><td>OT_VOIDPTR</td><td>A user-defined field that can be used to identify the function or pass additional information</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>

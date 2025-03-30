@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -130,18 +130,18 @@ $(function() {
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  std::vector&lt;std::string&gt; attribute_names() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  T attribute(<span class="keyword">const</span> std::string&amp; att_name)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a> attribute(<span class="keyword">const</span> std::string&amp; att_name)<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="comment">// Find the attribute, if any</span></div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keyword">auto</span> it = this-&gt;attributes.find(att_name);</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    casadi_assert(it != this-&gt;attributes.end(), <span class="stringliteral">&quot;Could not find attribute &quot;</span> + att_name);</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="comment">// Attribute found, read it</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    T ret;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a> ret;</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    read(it-&gt;second, &amp;ret);</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordflow">return</span> ret;</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  }</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  T attribute(<span class="keyword">const</span> std::string&amp; att_name, <span class="keyword">const</span> T&amp; def_att)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a> attribute(<span class="keyword">const</span> std::string&amp; att_name, <span class="keyword">const</span> T&amp; def_att)<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="comment">// Find the attribute, if any</span></div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keyword">auto</span> it = this-&gt;attributes.find(att_name);</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">if</span> (it == this-&gt;attributes.end()) {</div>
@@ -149,7 +149,7 @@ $(function() {
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;      <span class="keywordflow">return</span> def_att;</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;      <span class="comment">// Attribute found, read it</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;      T ret;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;      <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a> ret;</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;      read(it-&gt;second, &amp;ret);</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;      <span class="keywordflow">return</span> ret;</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    }</div>
@@ -176,21 +176,24 @@ $(function() {
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  <span class="keyword">static</span> <span class="keywordtype">void</span> read(<span class="keyword">const</span> std::string&amp; str, casadi_int* val);</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;  <span class="keyword">static</span> <span class="keywordtype">void</span> read(<span class="keyword">const</span> std::string&amp; str, <span class="keywordtype">double</span>* val);</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;  <span class="keyword">static</span> <span class="keywordtype">void</span> read(<span class="keyword">const</span> std::string&amp; str, <span class="keywordtype">size_t</span>* val);</div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  <span class="keyword">static</span> <span class="keywordtype">void</span> read(<span class="keyword">const</span> std::string&amp; str, std::vector&lt;casadi_int&gt;* val);</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  <span class="keyword">static</span> <span class="keywordtype">void</span> read(<span class="keyword">const</span> std::string&amp; str, <span class="keywordtype">double</span>* val);</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;  <span class="keyword">static</span> <span class="keywordtype">void</span> read(<span class="keyword">const</span> std::string&amp; str, std::vector&lt;std::string&gt;* val);</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;  <span class="keyword">static</span> <span class="keywordtype">void</span> read(<span class="keyword">const</span> std::string&amp; str, std::vector&lt;casadi_int&gt;* val);</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;  CASADI_EXPORT <span class="keyword">friend</span> std::ostream&amp; operator&lt;&lt;(std::ostream &amp;stream, <span class="keyword">const</span> XmlNode&amp; node);</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;  <span class="keyword">static</span> <span class="keywordtype">void</span> read(<span class="keyword">const</span> std::string&amp; str, std::vector&lt;std::string&gt;* val);</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  <span class="keywordtype">void</span> dump(std::ostream &amp;stream, casadi_int indent = 0) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;};</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;} <span class="comment">// namespace casadi</span></div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_XML_NODE_HPP</span></div>
-<div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../db/da5/binary__mx__impl_8hpp_source.html#l00036">binary_mx_impl.hpp:36</a></div></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  CASADI_EXPORT <span class="keyword">friend</span> std::ostream&amp; operator&lt;&lt;(std::ostream &amp;stream, <span class="keyword">const</span> XmlNode&amp; node);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;  <span class="keywordtype">void</span> dump(std::ostream &amp;stream, casadi_int indent = 0) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;};</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;} <span class="comment">// namespace casadi</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_XML_NODE_HPP</span></div>
+<div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/archiver_8hpp_source.html#l00032">archiver.hpp:32</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">casadi::Category::T</a></div><div class="ttdeci">@ T</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </body>
 </html>

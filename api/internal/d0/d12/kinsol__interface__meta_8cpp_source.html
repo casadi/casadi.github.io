@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -87,77 +87,64 @@ $(function() {
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;      <span class="keyword">const</span> std::string <a class="code" href="../../d6/def/classcasadi_1_1KinsolInterface.html#a0db5b67f148ac74a24b92ca8f94e2b27">casadi::KinsolInterface::meta_doc</a>=</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;      <span class="stringliteral">&quot;\n&quot;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="stringliteral">&quot;KINSOL interface from the Sundials suite\n&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="stringliteral">&quot;&gt;List of available options\n&quot;</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="stringliteral">&quot;+-----------------+-----------------+-----------------+-----------------+\n&quot;</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="stringliteral">&quot;|       Id        |      Type       |     Default     |   Description   |\n&quot;</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="stringliteral">&quot;+=================+=================+=================+=================+\n&quot;</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="stringliteral">&quot;| abstol          | OT_DOUBLE         | 0.000           | Stopping        |\n&quot;</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="stringliteral">&quot;|                 |                 |                 | criterion       |\n&quot;</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="stringliteral">&quot;|                 |                 |                 | tolerance       |\n&quot;</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="stringliteral">&quot;+-----------------+-----------------+-----------------+-----------------+\n&quot;</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="stringliteral">&quot;| disable_interna | OT_BOOL      | false           | Disable KINSOL  |\n&quot;</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="stringliteral">&quot;| l_warnings      |                 |                 | internal        |\n&quot;</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="stringliteral">&quot;|                 |                 |                 | warning         |\n&quot;</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="stringliteral">&quot;|                 |                 |                 | messages        |\n&quot;</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="stringliteral">&quot;+-----------------+-----------------+-----------------+-----------------+\n&quot;</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="stringliteral">&quot;| exact_jacobian  | OT_BOOL      | true            |                 |\n&quot;</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="stringliteral">&quot;+-----------------+-----------------+-----------------+-----------------+\n&quot;</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="stringliteral">&quot;| f_scale         | OT_DOUBLEVECTOR   |                 |                 |\n&quot;</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="stringliteral">&quot;+-----------------+-----------------+-----------------+-----------------+\n&quot;</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="stringliteral">&quot;| iterative_solve | OT_STRING       | \&quot;gmres\&quot;         | gmres|bcgstab|t |\n&quot;</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="stringliteral">&quot;| r               |                 |                 | fqmr            |\n&quot;</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="stringliteral">&quot;+-----------------+-----------------+-----------------+-----------------+\n&quot;</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="stringliteral">&quot;| linear_solver_t | OT_STRING       | \&quot;dense\&quot;         | dense|banded|it |\n&quot;</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="stringliteral">&quot;| ype             |                 |                 | erative|user_de |\n&quot;</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="stringliteral">&quot;|                 |                 |                 | fined           |\n&quot;</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="stringliteral">&quot;+-----------------+-----------------+-----------------+-----------------+\n&quot;</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="stringliteral">&quot;| lower_bandwidth | OT_INT      |                 |                 |\n&quot;</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="stringliteral">&quot;+-----------------+-----------------+-----------------+-----------------+\n&quot;</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="stringliteral">&quot;| max_iter        | OT_INT      | 0               | Maximum number  |\n&quot;</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="stringliteral">&quot;|                 |                 |                 | of Newton       |\n&quot;</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="stringliteral">&quot;|                 |                 |                 | iterations.     |\n&quot;</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="stringliteral">&quot;|                 |                 |                 | Putting 0 sets  |\n&quot;</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="stringliteral">&quot;|                 |                 |                 | the default     |\n&quot;</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="stringliteral">&quot;|                 |                 |                 | value of        |\n&quot;</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="stringliteral">&quot;|                 |                 |                 | KinSol.         |\n&quot;</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="stringliteral">&quot;+-----------------+-----------------+-----------------+-----------------+\n&quot;</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="stringliteral">&quot;| max_krylov      | OT_INT      | 0               |                 |\n&quot;</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="stringliteral">&quot;+-----------------+-----------------+-----------------+-----------------+\n&quot;</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="stringliteral">&quot;| pretype         | OT_STRING       | \&quot;none\&quot;          | (none|left|righ |\n&quot;</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="stringliteral">&quot;|                 |                 |                 | t|both)         |\n&quot;</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="stringliteral">&quot;+-----------------+-----------------+-----------------+-----------------+\n&quot;</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="stringliteral">&quot;| strategy        | OT_STRING       | \&quot;none\&quot;          | Globalization   |\n&quot;</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="stringliteral">&quot;|                 |                 |                 | strategy (none| |\n&quot;</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="stringliteral">&quot;|                 |                 |                 | linesearch)     |\n&quot;</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="stringliteral">&quot;+-----------------+-----------------+-----------------+-----------------+\n&quot;</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="stringliteral">&quot;| u_scale         | OT_DOUBLEVECTOR   |                 |                 |\n&quot;</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="stringliteral">&quot;+-----------------+-----------------+-----------------+-----------------+\n&quot;</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="stringliteral">&quot;| upper_bandwidth | OT_INT      |                 |                 |\n&quot;</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="stringliteral">&quot;+-----------------+-----------------+-----------------+-----------------+\n&quot;</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="stringliteral">&quot;| use_preconditio | OT_BOOL      | false           | precondition an |\n&quot;</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="stringliteral">&quot;| ner             |                 |                 | iterative       |\n&quot;</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="stringliteral">&quot;|                 |                 |                 | solver          |\n&quot;</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="stringliteral">&quot;+-----------------+-----------------+-----------------+-----------------+\n&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="stringliteral">&quot;KINSOL interface from the Sundials suite\n&quot;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="stringliteral">&quot;Extra doc: https://github.com/casadi/casadi/wiki/L_226 \n&quot;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="stringliteral">&quot;&gt;List of available options\n&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="stringliteral">&quot;+---------------------------+-----------------+----------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="stringliteral">&quot;|            Id             |      Type       |        Description         |\n&quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="stringliteral">&quot;+===========================+=================+============================+\n&quot;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="stringliteral">&quot;| abstol                    | OT_DOUBLE       | Stopping criterion         |\n&quot;</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="stringliteral">&quot;|                           |                 | tolerance                  |\n&quot;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="stringliteral">&quot;+---------------------------+-----------------+----------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="stringliteral">&quot;| disable_internal_warnings | OT_BOOL         | Disable KINSOL internal    |\n&quot;</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="stringliteral">&quot;|                           |                 | warning messages           |\n&quot;</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="stringliteral">&quot;+---------------------------+-----------------+----------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="stringliteral">&quot;| exact_jacobian            | OT_BOOL         | Use exact Jacobian         |\n&quot;</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="stringliteral">&quot;|                           |                 | information                |\n&quot;</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="stringliteral">&quot;+---------------------------+-----------------+----------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="stringliteral">&quot;| f_scale                   | OT_DOUBLEVECTOR | Equation scaling factors   |\n&quot;</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="stringliteral">&quot;+---------------------------+-----------------+----------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="stringliteral">&quot;| iterative_solver          | OT_STRING       | gmres|bcgstab|tfqmr        |\n&quot;</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="stringliteral">&quot;+---------------------------+-----------------+----------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="stringliteral">&quot;| linear_solver_type        | OT_STRING       | dense|banded|iterative|use |\n&quot;</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="stringliteral">&quot;|                           |                 | r_defined                  |\n&quot;</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="stringliteral">&quot;+---------------------------+-----------------+----------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="stringliteral">&quot;| lower_bandwidth           | OT_INT          | Lower bandwidth for banded |\n&quot;</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="stringliteral">&quot;|                           |                 | linear solvers             |\n&quot;</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="stringliteral">&quot;+---------------------------+-----------------+----------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="stringliteral">&quot;| max_iter                  | OT_INT          | Maximum number of Newton   |\n&quot;</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="stringliteral">&quot;|                           |                 | iterations. Putting 0 sets |\n&quot;</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="stringliteral">&quot;|                           |                 | the default value of       |\n&quot;</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="stringliteral">&quot;|                           |                 | KinSol.                    |\n&quot;</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="stringliteral">&quot;+---------------------------+-----------------+----------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="stringliteral">&quot;| max_krylov                | OT_INT          | Maximum Krylov space       |\n&quot;</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="stringliteral">&quot;|                           |                 | dimension                  |\n&quot;</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="stringliteral">&quot;+---------------------------+-----------------+----------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="stringliteral">&quot;| pretype                   | OT_STRING       | Type of preconditioner     |\n&quot;</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="stringliteral">&quot;+---------------------------+-----------------+----------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="stringliteral">&quot;| print_level               | OT_INT          | Verbosity level            |\n&quot;</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="stringliteral">&quot;+---------------------------+-----------------+----------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="stringliteral">&quot;| strategy                  | OT_STRING       | Globalization strategy     |\n&quot;</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="stringliteral">&quot;+---------------------------+-----------------+----------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="stringliteral">&quot;| u_scale                   | OT_DOUBLEVECTOR | Variable scaling factors   |\n&quot;</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="stringliteral">&quot;+---------------------------+-----------------+----------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="stringliteral">&quot;| upper_bandwidth           | OT_INT          | Upper bandwidth for banded |\n&quot;</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="stringliteral">&quot;|                           |                 | linear solvers             |\n&quot;</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="stringliteral">&quot;+---------------------------+-----------------+----------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="stringliteral">&quot;| use_preconditioner        | OT_BOOL         | Precondition an iterative  |\n&quot;</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="stringliteral">&quot;|                           |                 | solver                     |\n&quot;</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="stringliteral">&quot;+---------------------------+-----------------+----------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="stringliteral">&quot;&gt;List of available monitors\n&quot;</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="stringliteral">&quot;+-----------+\n&quot;</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="stringliteral">&quot;|    Id     |\n&quot;</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="stringliteral">&quot;+===========+\n&quot;</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="stringliteral">&quot;| eval_djac |\n&quot;</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="stringliteral">&quot;+-----------+\n&quot;</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="stringliteral">&quot;| eval_f    |\n&quot;</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="stringliteral">&quot;+-----------+\n&quot;</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;;</div>
 <div class="ttc" id="aclasscasadi_1_1KinsolInterface_html_a0db5b67f148ac74a24b92ca8f94e2b27"><div class="ttname"><a href="../../d6/def/classcasadi_1_1KinsolInterface.html#a0db5b67f148ac74a24b92ca8f94e2b27">casadi::KinsolInterface::meta_doc</a></div><div class="ttdeci">static const std::string meta_doc</div><div class="ttdoc">A documentation string.</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d27/kinsol__interface_8hpp_source.html#l00162">kinsol_interface.hpp:162</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </body>

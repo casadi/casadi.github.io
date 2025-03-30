@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -124,9 +124,18 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a903bad714f833e2fdf5a232813b3ea89"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a854a7e47691b9c719e8c16449611d4a4"><td class="memItemLeft" align="right" valign="top">virtual const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d8b/classcasadi_1_1SXNode.html#a854a7e47691b9c719e8c16449611d4a4">name</a> () const</td></tr>
 <tr class="separator:a854a7e47691b9c719e8c16449611d4a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11b21c65cdc6f9a999876025b2ab729a"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d8b/classcasadi_1_1SXNode.html#a11b21c65cdc6f9a999876025b2ab729a">which_function</a> () const</td></tr>
+<tr class="memdesc:a11b21c65cdc6f9a999876025b2ab729a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get called function.  <a href="../../d7/d8b/classcasadi_1_1SXNode.html#a11b21c65cdc6f9a999876025b2ab729a">More...</a><br /></td></tr>
+<tr class="separator:a11b21c65cdc6f9a999876025b2ab729a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee57b5a965ea68b09d2c5dce5baceb6a"><td class="memItemLeft" align="right" valign="top">virtual casadi_int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d8b/classcasadi_1_1SXNode.html#aee57b5a965ea68b09d2c5dce5baceb6a">which_output</a> () const</td></tr>
+<tr class="memdesc:aee57b5a965ea68b09d2c5dce5baceb6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get function output.  <a href="../../d7/d8b/classcasadi_1_1SXNode.html#aee57b5a965ea68b09d2c5dce5baceb6a">More...</a><br /></td></tr>
+<tr class="separator:aee57b5a965ea68b09d2c5dce5baceb6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4144c871f2c43d3f0ef56f6199884b10"><td class="memItemLeft" align="right" valign="top">virtual casadi_int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d8b/classcasadi_1_1SXNode.html#a4144c871f2c43d3f0ef56f6199884b10">n_dep</a> () const</td></tr>
 <tr class="memdesc:a4144c871f2c43d3f0ef56f6199884b10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of dependencies.  <a href="../../d7/d8b/classcasadi_1_1SXNode.html#a4144c871f2c43d3f0ef56f6199884b10">More...</a><br /></td></tr>
 <tr class="separator:a4144c871f2c43d3f0ef56f6199884b10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05833fe908ddfe953a4e7ecc68232fbf"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../d0/d06/classcasadi_1_1SXElem.html">SXElem</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d8b/classcasadi_1_1SXNode.html#a05833fe908ddfe953a4e7ecc68232fbf">get_output</a> (casadi_int oind) const</td></tr>
+<tr class="memdesc:a05833fe908ddfe953a4e7ecc68232fbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get an output.  <a href="../../d7/d8b/classcasadi_1_1SXNode.html#a05833fe908ddfe953a4e7ecc68232fbf">More...</a><br /></td></tr>
+<tr class="separator:a05833fe908ddfe953a4e7ecc68232fbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a085fabe29ee4d88858b9234833fbe416"><td class="memItemLeft" align="right" valign="top">virtual const <a class="el" href="../../d0/d06/classcasadi_1_1SXElem.html">SXElem</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d8b/classcasadi_1_1SXNode.html#a085fabe29ee4d88858b9234833fbe416">dep</a> (casadi_int i) const</td></tr>
 <tr class="memdesc:a085fabe29ee4d88858b9234833fbe416"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the reference of a child  <a href="../../d7/d8b/classcasadi_1_1SXNode.html#a085fabe29ee4d88858b9234833fbe416">More...</a><br /></td></tr>
 <tr class="separator:a085fabe29ee4d88858b9234833fbe416"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -149,6 +158,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:abacb4b4df2e036d5c684f2e198d263a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab501c5059d58f646cfa9cda22bc0ed3d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d8b/classcasadi_1_1SXNode.html#ab501c5059d58f646cfa9cda22bc0ed3d">mark</a> () const</td></tr>
 <tr class="separator:ab501c5059d58f646cfa9cda22bc0ed3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15e5ae437581cdefbc89039cfc5640b3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d06/classcasadi_1_1SXElem.html">SXElem</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d8b/classcasadi_1_1SXNode.html#a15e5ae437581cdefbc89039cfc5640b3">shared_from_this</a> ()</td></tr>
+<tr class="memdesc:a15e5ae437581cdefbc89039cfc5640b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a shared object from the current internal object.  <a href="../../d7/d8b/classcasadi_1_1SXNode.html#a15e5ae437581cdefbc89039cfc5640b3">More...</a><br /></td></tr>
+<tr class="separator:a15e5ae437581cdefbc89039cfc5640b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b433fa7041bee76a9a18b400dc9f09c"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d0/d06/classcasadi_1_1SXElem.html">SXElem</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d8b/classcasadi_1_1SXNode.html#a8b433fa7041bee76a9a18b400dc9f09c">shared_from_this</a> () const</td></tr>
+<tr class="memdesc:a8b433fa7041bee76a9a18b400dc9f09c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a shared object from the current internal object.  <a href="../../d7/d8b/classcasadi_1_1SXNode.html#a8b433fa7041bee76a9a18b400dc9f09c">More...</a><br /></td></tr>
+<tr class="separator:a8b433fa7041bee76a9a18b400dc9f09c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0099648427ea8f32d00a0604573f47b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d8b/classcasadi_1_1SXNode.html#a0099648427ea8f32d00a0604573f47b0">serialize</a> (<a class="el" href="../../d1/d00/classcasadi_1_1SerializingStream.html">SerializingStream</a> &amp;s) const</td></tr>
 <tr class="memdesc:a0099648427ea8f32d00a0604573f47b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize an object.  <a href="../../d7/d8b/classcasadi_1_1SXNode.html#a0099648427ea8f32d00a0604573f47b0">More...</a><br /></td></tr>
 <tr class="separator:a0099648427ea8f32d00a0604573f47b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -187,6 +202,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:adc7eb304d5b469285dbbf907be80d6ff"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d8b/classcasadi_1_1SXNode.html#adc7eb304d5b469285dbbf907be80d6ff">is_minus_inf</a> () const</td></tr>
 <tr class="memdesc:adc7eb304d5b469285dbbf907be80d6ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">check properties of a node  <a href="../../d7/d8b/classcasadi_1_1SXNode.html#adc7eb304d5b469285dbbf907be80d6ff">More...</a><br /></td></tr>
 <tr class="separator:adc7eb304d5b469285dbbf907be80d6ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a730516c02af13d4cac7e6d999f7cf312"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d8b/classcasadi_1_1SXNode.html#a730516c02af13d4cac7e6d999f7cf312">is_call</a> () const</td></tr>
+<tr class="memdesc:a730516c02af13d4cac7e6d999f7cf312"><td class="mdescLeft">&#160;</td><td class="mdescRight">check properties of a node  <a href="../../d7/d8b/classcasadi_1_1SXNode.html#a730516c02af13d4cac7e6d999f7cf312">More...</a><br /></td></tr>
+<tr class="separator:a730516c02af13d4cac7e6d999f7cf312"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacbc0f3697e9467fa858896c059c22da"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d8b/classcasadi_1_1SXNode.html#aacbc0f3697e9467fa858896c059c22da">is_output</a> () const</td></tr>
+<tr class="memdesc:aacbc0f3697e9467fa858896c059c22da"><td class="mdescLeft">&#160;</td><td class="mdescRight">check properties of a node  <a href="../../d7/d8b/classcasadi_1_1SXNode.html#aacbc0f3697e9467fa858896c059c22da">More...</a><br /></td></tr>
+<tr class="separator:aacbc0f3697e9467fa858896c059c22da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac33b754e6ea4a2a5edfc907b52c8c5a2"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d8b/classcasadi_1_1SXNode.html#ac33b754e6ea4a2a5edfc907b52c8c5a2">has_output</a> () const</td></tr>
+<tr class="memdesc:ac33b754e6ea4a2a5edfc907b52c8c5a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">check properties of a node  <a href="../../d7/d8b/classcasadi_1_1SXNode.html#ac33b754e6ea4a2a5edfc907b52c8c5a2">More...</a><br /></td></tr>
+<tr class="separator:ac33b754e6ea4a2a5edfc907b52c8c5a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -257,14 +281,18 @@ Static Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00110">110</a> of file <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html">constant_sx.hpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                           {</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;      <span class="keywordtype">size_t</span> num_erased = <a class="code" href="../../df/de7/classcasadi_1_1RealtypeSX.html#a10e5befb07eee71b3ac34398bf1be275">cached_constants_</a>.erase(<a class="code" href="../../df/de7/classcasadi_1_1RealtypeSX.html#a7976a27ab7e75b557a82ccc760aca173">value</a>);</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;      assert(num_erased==1);</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;      (void)num_erased;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    }</div>
-<div class="ttc" id="aclasscasadi_1_1RealtypeSX_html_a10e5befb07eee71b3ac34398bf1be275"><div class="ttname"><a href="../../df/de7/classcasadi_1_1RealtypeSX.html#a10e5befb07eee71b3ac34398bf1be275">casadi::RealtypeSX::cached_constants_</a></div><div class="ttdeci">static CACHING_MAP&lt; double, RealtypeSX * &gt; cached_constants_</div><div class="ttdoc">Hash map of all constants currently allocated.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbe/constant__sx_8hpp_source.html#l00157">constant_sx.hpp:157</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1RealtypeSX_html_a7976a27ab7e75b557a82ccc760aca173"><div class="ttname"><a href="../../df/de7/classcasadi_1_1RealtypeSX.html#a7976a27ab7e75b557a82ccc760aca173">casadi::RealtypeSX::value</a></div><div class="ttdeci">double value</div><div class="ttdoc">Data members.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbe/constant__sx_8hpp_source.html#l00162">constant_sx.hpp:162</a></div></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor">#ifdef CASADI_WITH_THREADSAFE_SYMBOLICS</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="comment">// Safe access to cached_constants_</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    std::lock_guard&lt;std::mutex&gt; lock(mutex_cached_constants);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_WITH_THREADSAFE_SYMBOLICS</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;      <span class="keywordtype">size_t</span> num_erased = <a class="code" href="../../df/de7/classcasadi_1_1RealtypeSX.html#a10e5befb07eee71b3ac34398bf1be275">cached_constants_</a>.erase(<a class="code" href="../../df/de7/classcasadi_1_1RealtypeSX.html#a7976a27ab7e75b557a82ccc760aca173">value</a>);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;      assert(num_erased==1);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;      (void)num_erased;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    }</div>
+<div class="ttc" id="aclasscasadi_1_1RealtypeSX_html_a10e5befb07eee71b3ac34398bf1be275"><div class="ttname"><a href="../../df/de7/classcasadi_1_1RealtypeSX.html#a10e5befb07eee71b3ac34398bf1be275">casadi::RealtypeSX::cached_constants_</a></div><div class="ttdeci">static CACHING_MAP&lt; double, RealtypeSX * &gt; cached_constants_</div><div class="ttdoc">Hash map of all constants currently allocated.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbe/constant__sx_8hpp_source.html#l00165">constant_sx.hpp:165</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1RealtypeSX_html_a7976a27ab7e75b557a82ccc760aca173"><div class="ttname"><a href="../../df/de7/classcasadi_1_1RealtypeSX.html#a7976a27ab7e75b557a82ccc760aca173">casadi::RealtypeSX::value</a></div><div class="ttdeci">double value</div><div class="ttdoc">Data members.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbe/constant__sx_8hpp_source.html#l00174">constant_sx.hpp:174</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00157">cached_constants_</a>, and <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00162">value</a>.</p>
+<p class="reference">References <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00165">cached_constants_</a>, and <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00174">value</a>.</p>
 
 </div>
 </div>
@@ -294,32 +322,32 @@ Static Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_a6">https://github.com/casadi/casadi/wiki/L_a6</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00103">103</a> of file <a class="el" href="../../d1/d08/sx__node_8cpp_source.html">sx_node.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                                                                          {</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="comment">// Add or mark node in map</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    std::map&lt;const SXNode*, casadi_int&gt;::iterator it=nodeind.find(<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordflow">if</span> (it==nodeind.end()) {</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;      <span class="comment">// First time encountered, mark inlined</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;      nodeind.insert(it, std::make_pair(<span class="keyword">this</span>, 0));</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;      <span class="comment">// Handle dependencies with recursion</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;      <span class="keywordflow">for</span> (casadi_int i=0; i&lt;<a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#a4144c871f2c43d3f0ef56f6199884b10">n_dep</a>(); ++i) {</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#a085fabe29ee4d88858b9234833fbe416">dep</a>(i)-&gt;<a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#ad7208990bbf8e741a87242c1532a008a">can_inline</a>(nodeind);</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;      }</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (it-&gt;second==0 &amp;&amp; <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#abcb2cd459b63287b986e005910826dce">op</a>()!=<a class="code" href="../../d7/d23/namespacecasadi.html#af35251805e44185cb1f079ec41808618aae6785283527a2b4903fa3aa9f56d3d6">OP_PARAMETER</a>) {</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;      <span class="comment">// Node encountered before, do not inline (except if symbolic primitive)</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;      it-&gt;second = -1;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    }</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  }</div>
-<div class="ttc" id="aclasscasadi_1_1SXNode_html_a085fabe29ee4d88858b9234833fbe416"><div class="ttname"><a href="../../d7/d8b/classcasadi_1_1SXNode.html#a085fabe29ee4d88858b9234833fbe416">casadi::SXNode::dep</a></div><div class="ttdeci">virtual const SXElem &amp; dep(casadi_int i) const</div><div class="ttdoc">get the reference of a child</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/sx__node_8cpp_source.html#l00070">sx_node.cpp:70</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1SXNode_html_a4144c871f2c43d3f0ef56f6199884b10"><div class="ttname"><a href="../../d7/d8b/classcasadi_1_1SXNode.html#a4144c871f2c43d3f0ef56f6199884b10">casadi::SXNode::n_dep</a></div><div class="ttdeci">virtual casadi_int n_dep() const</div><div class="ttdoc">Number of dependencies.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d22/sx__node_8hpp_source.html#l00111">sx_node.hpp:111</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00113">113</a> of file <a class="el" href="../../d1/d08/sx__node_8cpp_source.html">sx_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                                                                          {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="comment">// Add or mark node in map</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    std::map&lt;const SXNode*, casadi_int&gt;::iterator it=nodeind.find(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">if</span> (it==nodeind.end()) {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;      <span class="comment">// First time encountered, mark inlined</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;      nodeind.insert(it, std::make_pair(<span class="keyword">this</span>, 0));</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;      <span class="comment">// Handle dependencies with recursion</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;      <span class="keywordflow">for</span> (casadi_int i=0; i&lt;<a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#a4144c871f2c43d3f0ef56f6199884b10">n_dep</a>(); ++i) {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#a085fabe29ee4d88858b9234833fbe416">dep</a>(i)-&gt;<a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#ad7208990bbf8e741a87242c1532a008a">can_inline</a>(nodeind);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;      }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (it-&gt;second==0 &amp;&amp; <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#abcb2cd459b63287b986e005910826dce">op</a>()!=<a class="code" href="../../d7/d23/namespacecasadi.html#af35251805e44185cb1f079ec41808618aae6785283527a2b4903fa3aa9f56d3d6">OP_PARAMETER</a>) {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      <span class="comment">// Node encountered before, do not inline (except if symbolic primitive)</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;      it-&gt;second = -1;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  }</div>
+<div class="ttc" id="aclasscasadi_1_1SXNode_html_a085fabe29ee4d88858b9234833fbe416"><div class="ttname"><a href="../../d7/d8b/classcasadi_1_1SXNode.html#a085fabe29ee4d88858b9234833fbe416">casadi::SXNode::dep</a></div><div class="ttdeci">virtual const SXElem &amp; dep(casadi_int i) const</div><div class="ttdoc">get the reference of a child</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/sx__node_8cpp_source.html#l00080">sx_node.cpp:80</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1SXNode_html_a4144c871f2c43d3f0ef56f6199884b10"><div class="ttname"><a href="../../d7/d8b/classcasadi_1_1SXNode.html#a4144c871f2c43d3f0ef56f6199884b10">casadi::SXNode::n_dep</a></div><div class="ttdeci">virtual casadi_int n_dep() const</div><div class="ttdoc">Number of dependencies.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d22/sx__node_8hpp_source.html#l00124">sx_node.hpp:124</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1SXNode_html_abcb2cd459b63287b986e005910826dce"><div class="ttname"><a href="../../d7/d8b/classcasadi_1_1SXNode.html#abcb2cd459b63287b986e005910826dce">casadi::SXNode::op</a></div><div class="ttdeci">virtual casadi_int op() const =0</div><div class="ttdoc">get the operation</div></div>
-<div class="ttc" id="aclasscasadi_1_1SXNode_html_ad7208990bbf8e741a87242c1532a008a"><div class="ttname"><a href="../../d7/d8b/classcasadi_1_1SXNode.html#ad7208990bbf8e741a87242c1532a008a">casadi::SXNode::can_inline</a></div><div class="ttdeci">void can_inline(std::map&lt; const SXNode *, casadi_int &gt; &amp;nodeind) const</div><div class="ttdoc">Find out which nodes can be inlined.</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/sx__node_8cpp_source.html#l00103">sx_node.cpp:103</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1SXNode_html_ad7208990bbf8e741a87242c1532a008a"><div class="ttname"><a href="../../d7/d8b/classcasadi_1_1SXNode.html#ad7208990bbf8e741a87242c1532a008a">casadi::SXNode::can_inline</a></div><div class="ttdeci">void can_inline(std::map&lt; const SXNode *, casadi_int &gt; &amp;nodeind) const</div><div class="ttdoc">Find out which nodes can be inlined.</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/sx__node_8cpp_source.html#l00113">sx_node.cpp:113</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_af35251805e44185cb1f079ec41808618aae6785283527a2b4903fa3aa9f56d3d6"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#af35251805e44185cb1f079ec41808618aae6785283527a2b4903fa3aa9f56d3d6">casadi::OP_PARAMETER</a></div><div class="ttdeci">@ OP_PARAMETER</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d90/calculus_8hpp_source.html#l00085">calculus.hpp:85</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00103">casadi::SXNode::can_inline()</a>, <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00070">casadi::SXNode::dep()</a>, <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00111">casadi::SXNode::n_dep()</a>, <a class="el" href="../../d7/d8b/classcasadi_1_1SXNode.html#abcb2cd459b63287b986e005910826dce">casadi::SXNode::op()</a>, and <a class="el" href="../../d1/d90/calculus_8hpp_source.html#l00085">casadi::OP_PARAMETER</a>.</p>
+<p class="reference">References <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00113">casadi::SXNode::can_inline()</a>, <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00080">casadi::SXNode::dep()</a>, <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00124">casadi::SXNode::n_dep()</a>, <a class="el" href="../../d7/d8b/classcasadi_1_1SXNode.html#abcb2cd459b63287b986e005910826dce">casadi::SXNode::op()</a>, and <a class="el" href="../../d1/d90/calculus_8hpp_source.html#l00085">casadi::OP_PARAMETER</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00103">casadi::SXNode::can_inline()</a>, and <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00078">casadi::SXNode::disp()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00113">casadi::SXNode::can_inline()</a>, and <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00088">casadi::SXNode::disp()</a>.</p>
 
 </div>
 </div>
@@ -378,29 +406,33 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00117">117</a> of file <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html">constant_sx.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                                                   {</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;      <span class="comment">// Try to find the constant</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;      CACHING_MAP&lt;double, RealtypeSX*&gt;::iterator it = <a class="code" href="../../df/de7/classcasadi_1_1RealtypeSX.html#a10e5befb07eee71b3ac34398bf1be275">cached_constants_</a>.find(<a class="code" href="../../df/de7/classcasadi_1_1RealtypeSX.html#a7976a27ab7e75b557a82ccc760aca173">value</a>);</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;      <span class="comment">// If not found, add it,</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;      <span class="keywordflow">if</span> (it==<a class="code" href="../../df/de7/classcasadi_1_1RealtypeSX.html#a10e5befb07eee71b3ac34398bf1be275">cached_constants_</a>.end()) {</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="comment">// Allocate a new object</span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        RealtypeSX* n = <span class="keyword">new</span> RealtypeSX(<a class="code" href="../../df/de7/classcasadi_1_1RealtypeSX.html#a7976a27ab7e75b557a82ccc760aca173">value</a>);</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="comment">// Add to hash_table</span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <a class="code" href="../../df/de7/classcasadi_1_1RealtypeSX.html#a10e5befb07eee71b3ac34398bf1be275">cached_constants_</a>.insert(it, std::make_pair(<a class="code" href="../../df/de7/classcasadi_1_1RealtypeSX.html#a7976a27ab7e75b557a82ccc760aca173">value</a>, n));</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00121">121</a> of file <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html">constant_sx.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                                                   {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor">#ifdef CASADI_WITH_THREADSAFE_SYMBOLICS</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="comment">// Safe access to cached_constants_</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    std::lock_guard&lt;std::mutex&gt; lock(mutex_cached_constants);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_WITH_THREADSAFE_SYMBOLICS</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;      <span class="comment">// Try to find the constant</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      CACHING_MAP&lt;double, RealtypeSX*&gt;::iterator it = <a class="code" href="../../df/de7/classcasadi_1_1RealtypeSX.html#a10e5befb07eee71b3ac34398bf1be275">cached_constants_</a>.find(<a class="code" href="../../df/de7/classcasadi_1_1RealtypeSX.html#a7976a27ab7e75b557a82ccc760aca173">value</a>);</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="comment">// Return it to caller</span></div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="keywordflow">return</span> n;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;      } <span class="keywordflow">else</span> { <span class="comment">// Else, returned the object</span></div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keywordflow">return</span> it-&gt;second;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;      }</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    }</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;      <span class="comment">// If not found, add it,</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;      <span class="keywordflow">if</span> (it==<a class="code" href="../../df/de7/classcasadi_1_1RealtypeSX.html#a10e5befb07eee71b3ac34398bf1be275">cached_constants_</a>.end()) {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="comment">// Allocate a new object</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        RealtypeSX* n = <span class="keyword">new</span> RealtypeSX(<a class="code" href="../../df/de7/classcasadi_1_1RealtypeSX.html#a7976a27ab7e75b557a82ccc760aca173">value</a>);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="comment">// Add to hash_table</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <a class="code" href="../../df/de7/classcasadi_1_1RealtypeSX.html#a10e5befb07eee71b3ac34398bf1be275">cached_constants_</a>.insert(it, std::make_pair(<a class="code" href="../../df/de7/classcasadi_1_1RealtypeSX.html#a7976a27ab7e75b557a82ccc760aca173">value</a>, n));</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="comment">// Return it to caller</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="keywordflow">return</span> n;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;      } <span class="keywordflow">else</span> { <span class="comment">// Else, returned the object</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <span class="keywordflow">return</span> it-&gt;second;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;      }</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00157">cached_constants_</a>, and <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00162">value</a>.</p>
+<p class="reference">References <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00165">cached_constants_</a>, and <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00174">value</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00465">casadi::ConstantSX_deserialize()</a>, and <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00064">casadi::SXElem::SXElem()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00489">casadi::ConstantSX_deserialize()</a>, and <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00071">casadi::SXElem::SXElem()</a>.</p>
 
 </div>
 </div>
@@ -429,12 +461,12 @@ Static Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_a3">https://github.com/casadi/casadi/wiki/L_a3</a> </p>
 
-<p>Reimplemented in <a class="el" href="../../d2/d8a/classcasadi_1_1UnarySX.html#a56db5d79bfc616756984bbd0310c03c5">casadi::UnarySX</a>, and <a class="el" href="../../dd/d51/classcasadi_1_1BinarySX.html#a969067028e9b2b28899e83ffcbc38724">casadi::BinarySX</a>.</p>
+<p>Reimplemented in <a class="el" href="../../d2/d8a/classcasadi_1_1UnarySX.html#a56db5d79bfc616756984bbd0310c03c5">casadi::UnarySX</a>, <a class="el" href="../../dd/d02/classcasadi_1_1OutputSX.html#a2b2cc5d281bf1a050ae55b567e2415ce">casadi::OutputSX</a>, <a class="el" href="../../de/d2d/classcasadi_1_1CallSX.html#a38f330722b91dfe0c4e74509937ac808">casadi::CallSX</a>, and <a class="el" href="../../dd/d51/classcasadi_1_1BinarySX.html#a969067028e9b2b28899e83ffcbc38724">casadi::BinarySX</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00074">74</a> of file <a class="el" href="../../d1/d08/sx__node_8cpp_source.html">sx_node.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                                  {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    casadi_error(<span class="stringliteral">&quot;&#39;dep&#39; not defined for &quot;</span> + <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#af9937392c393b48b6bfd8454cecf32a9">class_name</a>());</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00084">84</a> of file <a class="el" href="../../d1/d08/sx__node_8cpp_source.html">sx_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                                  {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    casadi_error(<span class="stringliteral">&quot;&#39;dep&#39; not defined for &quot;</span> + <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#af9937392c393b48b6bfd8454cecf32a9">class_name</a>());</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  }</div>
 <div class="ttc" id="aclasscasadi_1_1SXNode_html_af9937392c393b48b6bfd8454cecf32a9"><div class="ttname"><a href="../../d7/d8b/classcasadi_1_1SXNode.html#af9937392c393b48b6bfd8454cecf32a9">casadi::SXNode::class_name</a></div><div class="ttdeci">virtual std::string class_name() const =0</div><div class="ttdoc">Get type name.</div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d7/d8b/classcasadi_1_1SXNode.html#af9937392c393b48b6bfd8454cecf32a9">casadi::SXNode::class_name()</a>.</p>
@@ -466,16 +498,16 @@ Static Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_a2">https://github.com/casadi/casadi/wiki/L_a2</a> </p>
 
-<p>Reimplemented in <a class="el" href="../../d2/d8a/classcasadi_1_1UnarySX.html#ada69b1b3b3f023fb645747d12969235c">casadi::UnarySX</a>, and <a class="el" href="../../dd/d51/classcasadi_1_1BinarySX.html#ab3f220fc88b4aca574899604481dc01e">casadi::BinarySX</a>.</p>
+<p>Reimplemented in <a class="el" href="../../d2/d8a/classcasadi_1_1UnarySX.html#ada69b1b3b3f023fb645747d12969235c">casadi::UnarySX</a>, <a class="el" href="../../dd/d02/classcasadi_1_1OutputSX.html#a3c319956fb15533d903e33f2f2aa1490">casadi::OutputSX</a>, <a class="el" href="../../de/d2d/classcasadi_1_1CallSX.html#a8cd6ca63e4cc2189d16828c2b15e1708">casadi::CallSX</a>, and <a class="el" href="../../dd/d51/classcasadi_1_1BinarySX.html#ab3f220fc88b4aca574899604481dc01e">casadi::BinarySX</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00070">70</a> of file <a class="el" href="../../d1/d08/sx__node_8cpp_source.html">sx_node.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                                              {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    casadi_error(<span class="stringliteral">&quot;&#39;dep&#39; not defined for &quot;</span> + <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#af9937392c393b48b6bfd8454cecf32a9">class_name</a>());</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00080">80</a> of file <a class="el" href="../../d1/d08/sx__node_8cpp_source.html">sx_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                                              {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    casadi_error(<span class="stringliteral">&quot;&#39;dep&#39; not defined for &quot;</span> + <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#af9937392c393b48b6bfd8454cecf32a9">class_name</a>());</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d7/d8b/classcasadi_1_1SXNode.html#af9937392c393b48b6bfd8454cecf32a9">casadi::SXNode::class_name()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d1/d7b/sx__function_8cpp_source.html#l00582">casadi::SXFunction::ad_forward()</a>, <a class="el" href="../../d1/d7b/sx__function_8cpp_source.html#l00683">casadi::SXFunction::ad_reverse()</a>, <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00179">casadi::SXElem::binary()</a>, <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00103">casadi::SXNode::can_inline()</a>, <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00526">casadi::SXElem::dep()</a>, <a class="el" href="../../d4/d9e/solve__impl_8hpp_source.html#l00076">casadi::LinsolCall&lt; Tr &gt;::eval_sx()</a>, <a class="el" href="../../d1/d7b/sx__function_8cpp_source.html#l00211">casadi::SXFunction::init()</a>, <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00120">casadi::SXNode::print_compact()</a>, and <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00155">casadi::SXNode::safe_delete()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d1/d7b/sx__function_8cpp_source.html#l01042">casadi::SXFunction::ad_forward()</a>, <a class="el" href="../../d1/d7b/sx__function_8cpp_source.html#l01214">casadi::SXFunction::ad_reverse()</a>, <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00186">casadi::SXElem::binary()</a>, <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00113">casadi::SXNode::can_inline()</a>, <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00558">casadi::SXElem::dep()</a>, <a class="el" href="../../d4/d9e/solve__impl_8hpp_source.html#l00076">casadi::LinsolCall&lt; Tr &gt;::eval_sx()</a>, <a class="el" href="../../d1/d7b/sx__function_8cpp_source.html#l00837">casadi::SXFunction::eval_sx()</a>, <a class="el" href="../../d1/d7b/sx__function_8cpp_source.html#l00330">casadi::SXFunction::init()</a>, <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00130">casadi::SXNode::print_compact()</a>, and <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00184">casadi::SXNode::safe_delete()</a>.</p>
 
 </div>
 </div>
@@ -503,34 +535,34 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00209">209</a> of file <a class="el" href="../../d1/d08/sx__node_8cpp_source.html">sx_node.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                                                    {</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    casadi_int <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#abcb2cd459b63287b986e005910826dce">op</a>;</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    s.unpack(<span class="stringliteral">&quot;SXNode::op&quot;</span>, <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#abcb2cd459b63287b986e005910826dce">op</a>);</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160; </div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d2/d93/structcasadi_1_1casadi__math.html#a16e2522cb5efc0e2f482c969cae94965">casadi_math&lt;MX&gt;::is_binary</a>(<a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#abcb2cd459b63287b986e005910826dce">op</a>)) {</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="../../dd/d51/classcasadi_1_1BinarySX.html#a3eaa4c9fa4a23514ec779afcfc16e1e6">BinarySX::deserialize</a>(s, <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#abcb2cd459b63287b986e005910826dce">op</a>);</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="../../d2/d93/structcasadi_1_1casadi__math.html#afa3a651ffe034a6c582e01156c4562c9">casadi_math&lt;MX&gt;::is_unary</a>(<a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#abcb2cd459b63287b986e005910826dce">op</a>)) {</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="../../d2/d8a/classcasadi_1_1UnarySX.html#ac3da7c44b99e3553c74f8dad66799bf3">UnarySX::deserialize</a>(s, <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#abcb2cd459b63287b986e005910826dce">op</a>);</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    }</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <span class="keyword">auto</span> it = <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#a170fff8638d89352a8dd4ca66c911aa4">SXNode::deserialize_map</a>.find(<a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#abcb2cd459b63287b986e005910826dce">op</a>);</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    <span class="keywordflow">if</span> (it==<a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#a170fff8638d89352a8dd4ca66c911aa4">SXNode::deserialize_map</a>.end()) {</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;      casadi_error(<span class="stringliteral">&quot;Not implemented op &quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(casadi_int(<a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#abcb2cd459b63287b986e005910826dce">op</a>)));</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;      <span class="keywordflow">return</span> it-&gt;second(s);</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    }</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00243">243</a> of file <a class="el" href="../../d1/d08/sx__node_8cpp_source.html">sx_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                                                    {</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    casadi_int <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#abcb2cd459b63287b986e005910826dce">op</a>;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    s.unpack(<span class="stringliteral">&quot;SXNode::op&quot;</span>, <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#abcb2cd459b63287b986e005910826dce">op</a>);</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d2/d93/structcasadi_1_1casadi__math.html#a16e2522cb5efc0e2f482c969cae94965">casadi_math&lt;MX&gt;::is_binary</a>(<a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#abcb2cd459b63287b986e005910826dce">op</a>)) {</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="../../dd/d51/classcasadi_1_1BinarySX.html#a3eaa4c9fa4a23514ec779afcfc16e1e6">BinarySX::deserialize</a>(s, <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#abcb2cd459b63287b986e005910826dce">op</a>);</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="../../d2/d93/structcasadi_1_1casadi__math.html#afa3a651ffe034a6c582e01156c4562c9">casadi_math&lt;MX&gt;::is_unary</a>(<a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#abcb2cd459b63287b986e005910826dce">op</a>)) {</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="../../d2/d8a/classcasadi_1_1UnarySX.html#ac3da7c44b99e3553c74f8dad66799bf3">UnarySX::deserialize</a>(s, <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#abcb2cd459b63287b986e005910826dce">op</a>);</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    }</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <span class="keyword">auto</span> it = <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#a170fff8638d89352a8dd4ca66c911aa4">SXNode::deserialize_map</a>.find(<a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#abcb2cd459b63287b986e005910826dce">op</a>);</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <span class="keywordflow">if</span> (it==<a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#a170fff8638d89352a8dd4ca66c911aa4">SXNode::deserialize_map</a>.end()) {</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;      casadi_error(<span class="stringliteral">&quot;Not implemented op &quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(casadi_int(<a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#abcb2cd459b63287b986e005910826dce">op</a>)));</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;      <span class="keywordflow">return</span> it-&gt;second(s);</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    }</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;  }</div>
 <div class="ttc" id="aclasscasadi_1_1BinarySX_html_a3eaa4c9fa4a23514ec779afcfc16e1e6"><div class="ttname"><a href="../../dd/d51/classcasadi_1_1BinarySX.html#a3eaa4c9fa4a23514ec779afcfc16e1e6">casadi::BinarySX::deserialize</a></div><div class="ttdeci">static SXNode * deserialize(DeserializingStream &amp;s, casadi_int op)</div><div class="ttdoc">Deserialize without type information.</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d9e/binary__sx_8hpp_source.html#l00143">binary_sx.hpp:143</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1SXNode_html_a170fff8638d89352a8dd4ca66c911aa4"><div class="ttname"><a href="../../d7/d8b/classcasadi_1_1SXNode.html#a170fff8638d89352a8dd4ca66c911aa4">casadi::SXNode::deserialize_map</a></div><div class="ttdeci">static std::map&lt; casadi_int, SXNode *(*)(DeserializingStream &amp;)&gt; deserialize_map</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d22/sx__node_8hpp_source.html#l00181">sx_node.hpp:181</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1SXNode_html_a170fff8638d89352a8dd4ca66c911aa4"><div class="ttname"><a href="../../d7/d8b/classcasadi_1_1SXNode.html#a170fff8638d89352a8dd4ca66c911aa4">casadi::SXNode::deserialize_map</a></div><div class="ttdeci">static std::map&lt; casadi_int, SXNode *(*)(DeserializingStream &amp;)&gt; deserialize_map</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d22/sx__node_8hpp_source.html#l00209">sx_node.hpp:209</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1UnarySX_html_ac3da7c44b99e3553c74f8dad66799bf3"><div class="ttname"><a href="../../d2/d8a/classcasadi_1_1UnarySX.html#ac3da7c44b99e3553c74f8dad66799bf3">casadi::UnarySX::deserialize</a></div><div class="ttdeci">static SXNode * deserialize(DeserializingStream &amp;s, casadi_int op)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d50/unary__sx_8hpp_source.html#l00127">unary_sx.hpp:127</a></div></div>
-<div class="ttc" id="anamespacecasadi_html_a88082fbf80560c888949bb765d9ccea0"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">casadi::str</a></div><div class="ttdeci">std::string str(const T &amp;v)</div><div class="ttdoc">String representation, any type.</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d59/casadi__common_8hpp_source.html#l00244">casadi_common.hpp:244</a></div></div>
-<div class="ttc" id="astructcasadi_1_1casadi__math_html_a16e2522cb5efc0e2f482c969cae94965"><div class="ttname"><a href="../../d2/d93/structcasadi_1_1casadi__math.html#a16e2522cb5efc0e2f482c969cae94965">casadi::casadi_math::is_binary</a></div><div class="ttdeci">static bool is_binary(unsigned char op)</div><div class="ttdoc">Is binary operation?</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d90/calculus_8hpp_source.html#l01549">calculus.hpp:1549</a></div></div>
-<div class="ttc" id="astructcasadi_1_1casadi__math_html_afa3a651ffe034a6c582e01156c4562c9"><div class="ttname"><a href="../../d2/d93/structcasadi_1_1casadi__math.html#afa3a651ffe034a6c582e01156c4562c9">casadi::casadi_math::is_unary</a></div><div class="ttdeci">static bool is_unary(unsigned char op)</div><div class="ttdoc">Is unary operation?</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d90/calculus_8hpp_source.html#l01560">calculus.hpp:1560</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_a88082fbf80560c888949bb765d9ccea0"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">casadi::str</a></div><div class="ttdeci">std::string str(const T &amp;v)</div><div class="ttdoc">String representation, any type.</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d59/casadi__common_8hpp_source.html#l00247">casadi_common.hpp:247</a></div></div>
+<div class="ttc" id="astructcasadi_1_1casadi__math_html_a16e2522cb5efc0e2f482c969cae94965"><div class="ttname"><a href="../../d2/d93/structcasadi_1_1casadi__math.html#a16e2522cb5efc0e2f482c969cae94965">casadi::casadi_math::is_binary</a></div><div class="ttdeci">static bool is_binary(unsigned char op)</div><div class="ttdoc">Is binary operation?</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d90/calculus_8hpp_source.html#l01602">calculus.hpp:1602</a></div></div>
+<div class="ttc" id="astructcasadi_1_1casadi__math_html_afa3a651ffe034a6c582e01156c4562c9"><div class="ttname"><a href="../../d2/d93/structcasadi_1_1casadi__math.html#afa3a651ffe034a6c582e01156c4562c9">casadi::casadi_math::is_unary</a></div><div class="ttdeci">static bool is_unary(unsigned char op)</div><div class="ttdoc">Is unary operation?</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d90/calculus_8hpp_source.html#l01613">calculus.hpp:1613</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d1/d9e/binary__sx_8hpp_source.html#l00143">casadi::BinarySX::deserialize()</a>, <a class="el" href="../../de/d50/unary__sx_8hpp_source.html#l00127">casadi::UnarySX::deserialize()</a>, <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00181">casadi::SXNode::deserialize_map</a>, <a class="el" href="../../d7/d8b/classcasadi_1_1SXNode.html#abcb2cd459b63287b986e005910826dce">casadi::SXNode::op()</a>, <a class="el" href="../../dc/d59/casadi__common_8hpp_source.html#l00244">casadi::str()</a>, and <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00238">casadi::DeserializingStream::unpack()</a>.</p>
+<p class="reference">References <a class="el" href="../../d1/d9e/binary__sx_8hpp_source.html#l00143">casadi::BinarySX::deserialize()</a>, <a class="el" href="../../de/d50/unary__sx_8hpp_source.html#l00127">casadi::UnarySX::deserialize()</a>, <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00209">casadi::SXNode::deserialize_map</a>, <a class="el" href="../../d7/d8b/classcasadi_1_1SXNode.html#abcb2cd459b63287b986e005910826dce">casadi::SXNode::op()</a>, <a class="el" href="../../dc/d59/casadi__common_8hpp_source.html#l00247">casadi::str()</a>, and <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00239">casadi::DeserializingStream::unpack()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00623">casadi::SXElem::deserialize()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00659">casadi::SXElem::deserialize()</a>.</p>
 
 </div>
 </div>
@@ -569,28 +601,101 @@ Static Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_a5">https://github.com/casadi/casadi/wiki/L_a5</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00078">78</a> of file <a class="el" href="../../d1/d08/sx__node_8cpp_source.html">sx_node.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                                                       {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="comment">// Find out which noded can be inlined</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    std::map&lt;const SXNode*, casadi_int&gt; nodeind;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#ad7208990bbf8e741a87242c1532a008a">can_inline</a>(nodeind);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="comment">// Print expression</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    std::vector&lt;std::string&gt; intermed;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    std::string s = <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#ac69190e8677e6dd8ca44e1a9cfa1b260">print_compact</a>(nodeind, intermed);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="comment">// Print intermediate expressions</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">for</span> (casadi_int i=0; i&lt;intermed.size(); ++i)</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      stream &lt;&lt; <span class="stringliteral">&quot;@&quot;</span> &lt;&lt; (i+1) &lt;&lt; <span class="stringliteral">&quot;=&quot;</span> &lt;&lt; intermed[i] &lt;&lt; <span class="stringliteral">&quot;, &quot;</span>;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="comment">// Print this</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    stream &lt;&lt; s;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  }</div>
-<div class="ttc" id="aclasscasadi_1_1SXNode_html_ac69190e8677e6dd8ca44e1a9cfa1b260"><div class="ttname"><a href="../../d7/d8b/classcasadi_1_1SXNode.html#ac69190e8677e6dd8ca44e1a9cfa1b260">casadi::SXNode::print_compact</a></div><div class="ttdeci">std::string print_compact(std::map&lt; const SXNode *, casadi_int &gt; &amp;nodeind, std::vector&lt; std::string &gt; &amp;intermed) const</div><div class="ttdoc">Print compact.</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/sx__node_8cpp_source.html#l00120">sx_node.cpp:120</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00088">88</a> of file <a class="el" href="../../d1/d08/sx__node_8cpp_source.html">sx_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                                                       {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="comment">// Find out which noded can be inlined</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    std::map&lt;const SXNode*, casadi_int&gt; nodeind;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#ad7208990bbf8e741a87242c1532a008a">can_inline</a>(nodeind);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="comment">// Print expression</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    std::vector&lt;std::string&gt; intermed;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    std::string s = <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#ac69190e8677e6dd8ca44e1a9cfa1b260">print_compact</a>(nodeind, intermed);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="comment">// Print intermediate expressions</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">for</span> (casadi_int i=0; i&lt;intermed.size(); ++i)</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;      stream &lt;&lt; <span class="stringliteral">&quot;@&quot;</span> &lt;&lt; (i+1) &lt;&lt; <span class="stringliteral">&quot;=&quot;</span> &lt;&lt; intermed[i] &lt;&lt; <span class="stringliteral">&quot;, &quot;</span>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="comment">// Print this</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    stream &lt;&lt; s;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  }</div>
+<div class="ttc" id="aclasscasadi_1_1SXNode_html_ac69190e8677e6dd8ca44e1a9cfa1b260"><div class="ttname"><a href="../../d7/d8b/classcasadi_1_1SXNode.html#ac69190e8677e6dd8ca44e1a9cfa1b260">casadi::SXNode::print_compact</a></div><div class="ttdeci">std::string print_compact(std::map&lt; const SXNode *, casadi_int &gt; &amp;nodeind, std::vector&lt; std::string &gt; &amp;intermed) const</div><div class="ttdoc">Print compact.</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/sx__node_8cpp_source.html#l00130">sx_node.cpp:130</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00103">casadi::SXNode::can_inline()</a>, and <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00120">casadi::SXNode::print_compact()</a>.</p>
+<p class="reference">References <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00113">casadi::SXNode::can_inline()</a>, and <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00130">casadi::SXNode::print_compact()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00133">casadi::SXElem::disp()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00140">casadi::SXElem::disp()</a>.</p>
+
+</div>
+</div>
+<a id="a05833fe908ddfe953a4e7ecc68232fbf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05833fe908ddfe953a4e7ecc68232fbf">&#9670;&nbsp;</a></span>get_output()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d0/d06/classcasadi_1_1SXElem.html">SXElem</a> casadi::SXNode::get_output </td>
+          <td>(</td>
+          <td class="paramtype">casadi_int&#160;</td>
+          <td class="paramname"><em>oind</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_293">https://github.com/casadi/casadi/wiki/L_293</a> </p>
+
+<p>Reimplemented in <a class="el" href="../../de/d2d/classcasadi_1_1CallSX.html#a6863ec4f98cb6c60f680f2b78d95afff">casadi::CallSX</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00227">227</a> of file <a class="el" href="../../d1/d08/sx__node_8cpp_source.html">sx_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                                                 {</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    casadi_assert(oind==0, <span class="stringliteral">&quot;Output index out of bounds&quot;</span>);</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#a15e5ae437581cdefbc89039cfc5640b3">shared_from_this</a>();</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;  }</div>
+<div class="ttc" id="aclasscasadi_1_1SXNode_html_a15e5ae437581cdefbc89039cfc5640b3"><div class="ttname"><a href="../../d7/d8b/classcasadi_1_1SXNode.html#a15e5ae437581cdefbc89039cfc5640b3">casadi::SXNode::shared_from_this</a></div><div class="ttdeci">SXElem shared_from_this()</div><div class="ttdoc">Get a shared object from the current internal object.</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/sx__node_8cpp_source.html#l00261">sx_node.cpp:261</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00261">casadi::SXNode::shared_from_this()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00567">casadi::SXElem::get_output()</a>.</p>
+
+</div>
+</div>
+<a id="ac33b754e6ea4a2a5edfc907b52c8c5a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac33b754e6ea4a2a5edfc907b52c8c5a2">&#9670;&nbsp;</a></span>has_output()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool casadi::SXNode::has_output </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_9w">https://github.com/casadi/casadi/wiki/L_9w</a> </p>
+
+<p>Reimplemented in <a class="el" href="../../de/d2d/classcasadi_1_1CallSX.html#a4bb0799cd72ea0ddc345f41d1156d6f4">casadi::CallSX</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00082">82</a> of file <a class="el" href="../../d8/d22/sx__node_8hpp_source.html">sx_node.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;{ <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00469">casadi::SXElem::has_output()</a>.</p>
 
 </div>
 </div>
@@ -621,10 +726,43 @@ Static Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="../../d7/d8b/classcasadi_1_1SXNode.html#a30eb45f9b528efa22c9e67bc07314700">casadi::SXNode</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00144">144</a> of file <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html">constant_sx.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;{ <span class="keywordflow">return</span> fabs(<a class="code" href="../../df/de7/classcasadi_1_1RealtypeSX.html#a7976a27ab7e75b557a82ccc760aca173">value</a>)&lt;=tol; }</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00152">152</a> of file <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html">constant_sx.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;{ <span class="keywordflow">return</span> fabs(<a class="code" href="../../df/de7/classcasadi_1_1RealtypeSX.html#a7976a27ab7e75b557a82ccc760aca173">value</a>)&lt;=tol; }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00162">value</a>.</p>
+<p class="reference">References <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00174">value</a>.</p>
+
+</div>
+</div>
+<a id="a730516c02af13d4cac7e6d999f7cf312"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a730516c02af13d4cac7e6d999f7cf312">&#9670;&nbsp;</a></span>is_call()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool casadi::SXNode::is_call </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_9w">https://github.com/casadi/casadi/wiki/L_9w</a> </p>
+
+<p>Reimplemented in <a class="el" href="../../de/d2d/classcasadi_1_1CallSX.html#a80b1c4c9a8e9f754e782de8cafd134cd">casadi::CallSX</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00080">80</a> of file <a class="el" href="../../d8/d22/sx__node_8hpp_source.html">sx_node.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;{ <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00461">casadi::SXElem::is_call()</a>.</p>
 
 </div>
 </div>
@@ -736,7 +874,7 @@ Static Protected Attributes</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00078">78</a> of file <a class="el" href="../../d8/d22/sx__node_8hpp_source.html">sx_node.hpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;{ <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00477">casadi::SXElem::is_inf()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00509">casadi::SXElem::is_inf()</a>.</p>
 
 </div>
 </div>
@@ -769,7 +907,7 @@ Static Protected Attributes</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00070">70</a> of file <a class="el" href="../../d8/d22/sx__node_8hpp_source.html">sx_node.hpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;{ <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00179">casadi::SXElem::binary()</a>, and <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00449">casadi::SXElem::is_integer()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00186">casadi::SXElem::binary()</a>, and <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00481">casadi::SXElem::is_integer()</a>.</p>
 
 </div>
 </div>
@@ -802,7 +940,7 @@ Static Protected Attributes</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00079">79</a> of file <a class="el" href="../../d8/d22/sx__node_8hpp_source.html">sx_node.hpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;{ <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00481">casadi::SXElem::is_minus_inf()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00513">casadi::SXElem::is_minus_inf()</a>.</p>
 
 </div>
 </div>
@@ -835,7 +973,7 @@ Static Protected Attributes</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00076">76</a> of file <a class="el" href="../../d8/d22/sx__node_8hpp_source.html">sx_node.hpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;{ <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00179">casadi::SXElem::binary()</a>, and <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00469">casadi::SXElem::is_minus_one()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00186">casadi::SXElem::binary()</a>, and <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00501">casadi::SXElem::is_minus_one()</a>.</p>
 
 </div>
 </div>
@@ -868,7 +1006,7 @@ Static Protected Attributes</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00077">77</a> of file <a class="el" href="../../d8/d22/sx__node_8hpp_source.html">sx_node.hpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;{ <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00473">casadi::SXElem::is_nan()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00505">casadi::SXElem::is_nan()</a>.</p>
 
 </div>
 </div>
@@ -901,7 +1039,7 @@ Static Protected Attributes</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00075">75</a> of file <a class="el" href="../../d8/d22/sx__node_8hpp_source.html">sx_node.hpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;{ <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00179">casadi::SXElem::binary()</a>, and <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00465">casadi::SXElem::is_one()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00186">casadi::SXElem::binary()</a>, and <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00497">casadi::SXElem::is_one()</a>.</p>
 
 </div>
 </div>
@@ -930,12 +1068,45 @@ Static Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_9w">https://github.com/casadi/casadi/wiki/L_9w</a> </p>
 
-<p>Reimplemented in <a class="el" href="../../d2/d8a/classcasadi_1_1UnarySX.html#a7b1345e1f86f8ecdabdf3317f21c26e2">casadi::UnarySX</a>, <a class="el" href="../../d6/de8/classcasadi_1_1SymbolicSX.html#a2f14e93c0afa011de879852a05c21763">casadi::SymbolicSX</a>, and <a class="el" href="../../dd/d51/classcasadi_1_1BinarySX.html#a3ce25e5194a4724127bb4df897ea6d2b">casadi::BinarySX</a>.</p>
+<p>Reimplemented in <a class="el" href="../../d2/d8a/classcasadi_1_1UnarySX.html#a7b1345e1f86f8ecdabdf3317f21c26e2">casadi::UnarySX</a>, <a class="el" href="../../d6/de8/classcasadi_1_1SymbolicSX.html#a2f14e93c0afa011de879852a05c21763">casadi::SymbolicSX</a>, <a class="el" href="../../de/d2d/classcasadi_1_1CallSX.html#a512f8806b1fa1226a83c5bf00db9867a">casadi::CallSX</a>, and <a class="el" href="../../dd/d51/classcasadi_1_1BinarySX.html#a3ce25e5194a4724127bb4df897ea6d2b">casadi::BinarySX</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00073">73</a> of file <a class="el" href="../../d8/d22/sx__node_8hpp_source.html">sx_node.hpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;{ <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00493">casadi::SXElem::is_op()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00525">casadi::SXElem::is_op()</a>.</p>
+
+</div>
+</div>
+<a id="aacbc0f3697e9467fa858896c059c22da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aacbc0f3697e9467fa858896c059c22da">&#9670;&nbsp;</a></span>is_output()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool casadi::SXNode::is_output </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_9w">https://github.com/casadi/casadi/wiki/L_9w</a> </p>
+
+<p>Reimplemented in <a class="el" href="../../dd/d02/classcasadi_1_1OutputSX.html#a8c3a3eb8b1e2f524981cd46687714bbe">casadi::OutputSX</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00081">81</a> of file <a class="el" href="../../d8/d22/sx__node_8hpp_source.html">sx_node.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;{ <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00465">casadi::SXElem::is_output()</a>.</p>
 
 </div>
 </div>
@@ -965,8 +1136,8 @@ Static Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="../../d2/d8a/classcasadi_1_1UnarySX.html#a4633ea69650e5d7ddec12236625c8405">casadi::UnarySX</a>, and <a class="el" href="../../dd/d51/classcasadi_1_1BinarySX.html#a2f6448522e4d03145fa8a6a8b1c42cae">casadi::BinarySX</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00126">126</a> of file <a class="el" href="../../d8/d22/sx__node_8hpp_source.html">sx_node.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;{ <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00144">144</a> of file <a class="el" href="../../d8/d22/sx__node_8hpp_source.html">sx_node.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;{ <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -999,7 +1170,7 @@ Static Protected Attributes</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00071">71</a> of file <a class="el" href="../../d8/d22/sx__node_8hpp_source.html">sx_node.hpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;{ <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../d1/d7b/sx__function_8cpp_source.html#l00211">casadi::SXFunction::init()</a>, and <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00453">casadi::SXElem::is_symbolic()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d1/d7b/sx__function_8cpp_source.html#l00330">casadi::SXFunction::init()</a>, and <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00485">casadi::SXElem::is_symbolic()</a>.</p>
 
 </div>
 </div>
@@ -1032,7 +1203,7 @@ Static Protected Attributes</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00072">72</a> of file <a class="el" href="../../d8/d22/sx__node_8hpp_source.html">sx_node.hpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;{ <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00179">casadi::SXElem::binary()</a>, and <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00457">casadi::SXElem::is_zero()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00186">casadi::SXElem::binary()</a>, and <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00489">casadi::SXElem::is_zero()</a>.</p>
 
 </div>
 </div>
@@ -1059,13 +1230,13 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00099">99</a> of file <a class="el" href="../../d1/d08/sx__node_8cpp_source.html">sx_node.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                          {</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#a051381aa86d323cf501eb0d23bd2b6b2">temp</a> = -<a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#a051381aa86d323cf501eb0d23bd2b6b2">temp</a>-1;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  }</div>
-<div class="ttc" id="aclasscasadi_1_1SXNode_html_a051381aa86d323cf501eb0d23bd2b6b2"><div class="ttname"><a href="../../d7/d8b/classcasadi_1_1SXNode.html#a051381aa86d323cf501eb0d23bd2b6b2">casadi::SXNode::temp</a></div><div class="ttdeci">int temp</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d22/sx__node_8hpp_source.html#l00167">sx_node.hpp:167</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00109">109</a> of file <a class="el" href="../../d1/d08/sx__node_8cpp_source.html">sx_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                          {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#a051381aa86d323cf501eb0d23bd2b6b2">temp</a> = -<a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#a051381aa86d323cf501eb0d23bd2b6b2">temp</a>-1;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  }</div>
+<div class="ttc" id="aclasscasadi_1_1SXNode_html_a051381aa86d323cf501eb0d23bd2b6b2"><div class="ttname"><a href="../../d7/d8b/classcasadi_1_1SXNode.html#a051381aa86d323cf501eb0d23bd2b6b2">casadi::SXNode::temp</a></div><div class="ttdeci">int temp</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d22/sx__node_8hpp_source.html#l00191">sx_node.hpp:191</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00167">casadi::SXNode::temp</a>.</p>
+<p class="reference">References <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00191">casadi::SXNode::temp</a>.</p>
 
 </div>
 </div>
@@ -1092,12 +1263,12 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00095">95</a> of file <a class="el" href="../../d1/d08/sx__node_8cpp_source.html">sx_node.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                            {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#a051381aa86d323cf501eb0d23bd2b6b2">temp</a>&lt;0;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00105">105</a> of file <a class="el" href="../../d1/d08/sx__node_8cpp_source.html">sx_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                            {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#a051381aa86d323cf501eb0d23bd2b6b2">temp</a>&lt;0;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00167">casadi::SXNode::temp</a>.</p>
+<p class="reference">References <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00191">casadi::SXNode::temp</a>.</p>
 
 </div>
 </div>
@@ -1125,12 +1296,12 @@ Static Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_a1">https://github.com/casadi/casadi/wiki/L_a1</a> </p>
 
-<p>Reimplemented in <a class="el" href="../../d2/d8a/classcasadi_1_1UnarySX.html#a1331c1ec1ea08fb18cccceac7ef6db2e">casadi::UnarySX</a>, and <a class="el" href="../../dd/d51/classcasadi_1_1BinarySX.html#a66c0f0caa479553eb63e076b90b36ccb">casadi::BinarySX</a>.</p>
+<p>Reimplemented in <a class="el" href="../../d2/d8a/classcasadi_1_1UnarySX.html#a1331c1ec1ea08fb18cccceac7ef6db2e">casadi::UnarySX</a>, <a class="el" href="../../dd/d02/classcasadi_1_1OutputSX.html#af488cefee983d176d9944ddebe365c8a">casadi::OutputSX</a>, <a class="el" href="../../de/d2d/classcasadi_1_1CallSX.html#a043a648177f89b99e1beb7e796e45804">casadi::CallSX</a>, and <a class="el" href="../../dd/d51/classcasadi_1_1BinarySX.html#a66c0f0caa479553eb63e076b90b36ccb">casadi::BinarySX</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00111">111</a> of file <a class="el" href="../../d8/d22/sx__node_8hpp_source.html">sx_node.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;{ <span class="keywordflow">return</span> 0;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00124">124</a> of file <a class="el" href="../../d8/d22/sx__node_8hpp_source.html">sx_node.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;{ <span class="keywordflow">return</span> 0;}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00103">casadi::SXNode::can_inline()</a>, <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00531">casadi::SXElem::n_dep()</a>, <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00120">casadi::SXNode::print_compact()</a>, and <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00155">casadi::SXNode::safe_delete()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00113">casadi::SXNode::can_inline()</a>, <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00563">casadi::SXElem::n_dep()</a>, <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00130">casadi::SXNode::print_compact()</a>, and <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00184">casadi::SXNode::safe_delete()</a>.</p>
 
 </div>
 </div>
@@ -1159,14 +1330,14 @@ Static Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="../../d6/de8/classcasadi_1_1SymbolicSX.html#a99cb6cafe24022c92b48a64e7a695a19">casadi::SymbolicSX</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00066">66</a> of file <a class="el" href="../../d1/d08/sx__node_8cpp_source.html">sx_node.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                                      {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    casadi_error(<span class="stringliteral">&quot;&#39;name&#39; not defined for &quot;</span> + <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#af9937392c393b48b6bfd8454cecf32a9">class_name</a>());</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00076">76</a> of file <a class="el" href="../../d1/d08/sx__node_8cpp_source.html">sx_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                                      {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    casadi_error(<span class="stringliteral">&quot;&#39;name&#39; not defined for &quot;</span> + <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#af9937392c393b48b6bfd8454cecf32a9">class_name</a>());</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d7/d8b/classcasadi_1_1SXNode.html#af9937392c393b48b6bfd8454cecf32a9">casadi::SXNode::class_name()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00485">casadi::SXElem::name()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00517">casadi::SXElem::name()</a>.</p>
 
 </div>
 </div>
@@ -1287,45 +1458,67 @@ Static Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_a7">https://github.com/casadi/casadi/wiki/L_a7</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00120">120</a> of file <a class="el" href="../../d1/d08/sx__node_8cpp_source.html">sx_node.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                                                                         {</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="comment">// Get reference to node index</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    casadi_int&amp; ind = nodeind[<span class="keyword">this</span>];</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="comment">// If positive, already in intermediate expressions</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordflow">if</span> (ind&gt;0) {</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      std::stringstream ss;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;      ss &lt;&lt; <span class="stringliteral">&quot;@&quot;</span> &lt;&lt; ind;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;      <span class="keywordflow">return</span> ss.str();</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    }</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="comment">// Get expressions for dependencies</span></div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    std::string arg[2];</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordflow">for</span> (casadi_int i=0; i&lt;<a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#a4144c871f2c43d3f0ef56f6199884b10">n_dep</a>(); ++i) {</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;      arg[i] = <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#a085fabe29ee4d88858b9234833fbe416">dep</a>(i)-&gt;<a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#ac69190e8677e6dd8ca44e1a9cfa1b260">print_compact</a>(nodeind, intermed);</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    }</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="comment">// Get expression for this</span></div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    std::string s = <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#a9e331f78e6097c9bdd21c1180e762bbb">print</a>(arg[0], arg[1]);</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="comment">// Decide what to do with the expression</span></div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keywordflow">if</span> (ind==0) {</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;      <span class="comment">// Inline expression</span></div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;      <span class="keywordflow">return</span> s;</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;      <span class="comment">// Add to list of intermediate expressions and return reference</span></div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;      intermed.push_back(s);</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;      ind = intermed.size(); <span class="comment">// For subsequent references</span></div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;      std::stringstream ss;</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;      ss &lt;&lt; <span class="stringliteral">&quot;@&quot;</span> &lt;&lt; ind;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;      <span class="keywordflow">return</span> ss.str();</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    }</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00130">130</a> of file <a class="el" href="../../d1/d08/sx__node_8cpp_source.html">sx_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                                                                         {</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="comment">// Get reference to node index</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    casadi_int&amp; ind = nodeind[<span class="keyword">this</span>];</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="comment">// If positive, already in intermediate expressions</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keywordflow">if</span> (ind&gt;0) {</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;      std::stringstream ss;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;      ss &lt;&lt; <span class="stringliteral">&quot;@&quot;</span> &lt;&lt; ind;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;      <span class="keywordflow">return</span> ss.str();</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    }</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    std::string s;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#abcb2cd459b63287b986e005910826dce">op</a>()==<a class="code" href="../../d7/d23/namespacecasadi.html#af35251805e44185cb1f079ec41808618ab6df634985573b1864384f28d4a0e670">OP_CALL</a>) {</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;      <span class="keyword">const</span> Function&amp; f = <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#a11b21c65cdc6f9a999876025b2ab729a">which_function</a>();</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;      <span class="comment">// Get expressions for dependencies</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;      s = <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#a11b21c65cdc6f9a999876025b2ab729a">which_function</a>().<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a3eaf5bfbdd4400f6874e597b134ce8f3">name</a>() + <span class="stringliteral">&quot;(&quot;</span>;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;      casadi_int k = 0;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;      <span class="keywordflow">for</span> (casadi_int i=0; i&lt;f.n_in(); ++i) {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordflow">if</span> (f.nnz_in(i)&gt;1) s += <span class="stringliteral">&quot;[&quot;</span>;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <span class="keywordflow">for</span> (casadi_int j=0; j&lt;f.nnz_in(i); ++j) {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;          s += <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#a085fabe29ee4d88858b9234833fbe416">dep</a>(k++)-&gt;<a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#ac69190e8677e6dd8ca44e1a9cfa1b260">print_compact</a>(nodeind, intermed);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;          <span class="keywordflow">if</span> (j&lt;f.nnz_in(i)-1) s+=<span class="stringliteral">&quot;,&quot;</span>;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        }</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="keywordflow">if</span> (f.nnz_in(i)&gt;1) s += <span class="stringliteral">&quot;]&quot;</span>;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="keywordflow">if</span> (i&lt;f.n_in()-1) s+=<span class="stringliteral">&quot;,&quot;</span>;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;      }</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;      s += <span class="stringliteral">&quot;)&quot;</span>;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;      <span class="comment">// Get expressions for dependencies</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;      std::string arg[2];</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;      <span class="keywordflow">for</span> (casadi_int i=0; i&lt;<a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#a4144c871f2c43d3f0ef56f6199884b10">n_dep</a>(); ++i) {</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        arg[i] = <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#a085fabe29ee4d88858b9234833fbe416">dep</a>(i)-&gt;<a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#ac69190e8677e6dd8ca44e1a9cfa1b260">print_compact</a>(nodeind, intermed);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;      }</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;      <span class="comment">// Get expression for this</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;      s = <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#a9e331f78e6097c9bdd21c1180e762bbb">print</a>(arg[0], arg[1]);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    }</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="comment">// Decide what to do with the expression</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordflow">if</span> (ind==0) {</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;      <span class="comment">// Inline expression</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;      <span class="keywordflow">return</span> s;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;      <span class="comment">// Add to list of intermediate expressions and return reference</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;      intermed.push_back(s);</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;      ind = intermed.size(); <span class="comment">// For subsequent references</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;      std::stringstream ss;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;      ss &lt;&lt; <span class="stringliteral">&quot;@&quot;</span> &lt;&lt; ind;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;      <span class="keywordflow">return</span> ss.str();</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    }</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;  }</div>
+<div class="ttc" id="aclasscasadi_1_1Function_html_a3eaf5bfbdd4400f6874e597b134ce8f3"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#a3eaf5bfbdd4400f6874e597b134ce8f3">casadi::Function::name</a></div><div class="ttdeci">const std::string &amp; name() const</div><div class="ttdoc">Name of the function.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l01307">function.cpp:1307</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1SXNode_html_a11b21c65cdc6f9a999876025b2ab729a"><div class="ttname"><a href="../../d7/d8b/classcasadi_1_1SXNode.html#a11b21c65cdc6f9a999876025b2ab729a">casadi::SXNode::which_function</a></div><div class="ttdeci">virtual Function which_function() const</div><div class="ttdoc">Get called function.</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/sx__node_8cpp_source.html#l00064">sx_node.cpp:64</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1SXNode_html_a9e331f78e6097c9bdd21c1180e762bbb"><div class="ttname"><a href="../../d7/d8b/classcasadi_1_1SXNode.html#a9e331f78e6097c9bdd21c1180e762bbb">casadi::SXNode::print</a></div><div class="ttdeci">virtual std::string print(const std::string &amp;arg1, const std::string &amp;arg2) const =0</div><div class="ttdoc">Print expression.</div></div>
+<div class="ttc" id="anamespacecasadi_html_af35251805e44185cb1f079ec41808618ab6df634985573b1864384f28d4a0e670"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#af35251805e44185cb1f079ec41808618ab6df634985573b1864384f28d4a0e670">casadi::OP_CALL</a></div><div class="ttdeci">@ OP_CALL</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d90/calculus_8hpp_source.html#l00088">calculus.hpp:88</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00070">casadi::SXNode::dep()</a>, <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00111">casadi::SXNode::n_dep()</a>, <a class="el" href="../../d7/d8b/classcasadi_1_1SXNode.html#a9e331f78e6097c9bdd21c1180e762bbb">casadi::SXNode::print()</a>, and <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00120">casadi::SXNode::print_compact()</a>.</p>
+<p class="reference">References <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00080">casadi::SXNode::dep()</a>, <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00124">casadi::SXNode::n_dep()</a>, <a class="el" href="../../de/dea/function_8cpp_source.html#l00819">casadi::Function::n_in()</a>, <a class="el" href="../../de/dea/function_8cpp_source.html#l01307">casadi::Function::name()</a>, <a class="el" href="../../de/dea/function_8cpp_source.html#l00851">casadi::Function::nnz_in()</a>, <a class="el" href="../../d7/d8b/classcasadi_1_1SXNode.html#abcb2cd459b63287b986e005910826dce">casadi::SXNode::op()</a>, <a class="el" href="../../d1/d90/calculus_8hpp_source.html#l00088">casadi::OP_CALL</a>, <a class="el" href="../../d7/d8b/classcasadi_1_1SXNode.html#a9e331f78e6097c9bdd21c1180e762bbb">casadi::SXNode::print()</a>, <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00130">casadi::SXNode::print_compact()</a>, and <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00064">casadi::SXNode::which_function()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00078">casadi::SXNode::disp()</a>, and <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00120">casadi::SXNode::print_compact()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00088">casadi::SXNode::disp()</a>, and <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00130">casadi::SXNode::print_compact()</a>.</p>
 
 </div>
 </div>
@@ -1354,53 +1547,53 @@ Static Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_a9">https://github.com/casadi/casadi/wiki/L_a9</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00155">155</a> of file <a class="el" href="../../d1/d08/sx__node_8cpp_source.html">sx_node.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                                    {</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="comment">// Quick return if more owners</span></div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="keywordflow">if</span> (n-&gt;count&gt;0) <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="comment">// Delete straight away if it doesn&#39;t have any dependencies</span></div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keywordflow">if</span> (!n-&gt;n_dep()) {</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;      <span class="keyword">delete</span> n;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;      <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    }</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="comment">// Stack of expressions to be deleted</span></div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    std::stack&lt;SXNode*&gt; deletion_stack;</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="comment">// Add the node to the deletion stack</span></div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    deletion_stack.push(n);</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="comment">// Process stack</span></div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="keywordflow">while</span> (!deletion_stack.empty()) {</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;      <span class="comment">// Top element</span></div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;      <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#af8ef589add86f32516284efb41bd8304">SXNode</a> *t = deletion_stack.top();</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;      <span class="comment">// Check if the top element has dependencies with dependencies</span></div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;      <span class="keywordtype">bool</span> added_to_stack = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;      <span class="keywordflow">for</span> (casadi_int c2=0; c2&lt;t-&gt;n_dep(); ++c2) { <span class="comment">// for all dependencies of the dependency</span></div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="comment">// Get the node of the dependency of the top element</span></div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="comment">// and remove it from the smart pointer</span></div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#af8ef589add86f32516284efb41bd8304">SXNode</a> *n2 = t-&gt;dep(c2).assignNoDelete(<a class="code" href="../../d7/d25/classcasadi_1_1casadi__limits_3_01SXElem_01_4.html#a4c8b46851e9921fcb8b8c9bf3a8a21ca">casadi_limits&lt;SXElem&gt;::nan</a>);</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <span class="comment">// Check if this is the only reference to the element</span></div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <span class="keywordflow">if</span> (n2-&gt;count == 0) {</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;          <span class="comment">// Check if unary or binary</span></div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;          <span class="keywordflow">if</span> (!n2-&gt;n_dep()) {</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            <span class="comment">// Delete straight away if not binary</span></div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            <span class="keyword">delete</span> n2;</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;          } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            <span class="comment">// Add to deletion stack</span></div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            deletion_stack.push(n2);</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            added_to_stack = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;          }</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        }</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;      }</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;      <span class="comment">// Delete and pop from stack if nothing added to the stack</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;      <span class="keywordflow">if</span> (!added_to_stack) {</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        <span class="keyword">delete</span> deletion_stack.top();</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        deletion_stack.pop();</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;      }</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    }</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;  }</div>
-<div class="ttc" id="aclasscasadi_1_1SXNode_html_af8ef589add86f32516284efb41bd8304"><div class="ttname"><a href="../../d7/d8b/classcasadi_1_1SXNode.html#af8ef589add86f32516284efb41bd8304">casadi::SXNode::SXNode</a></div><div class="ttdeci">SXNode()</div><div class="ttdoc">constructor</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/sx__node_8cpp_source.html#l00038">sx_node.cpp:38</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1casadi__limits_3_01SXElem_01_4_html_a4c8b46851e9921fcb8b8c9bf3a8a21ca"><div class="ttname"><a href="../../d7/d25/classcasadi_1_1casadi__limits_3_01SXElem_01_4.html#a4c8b46851e9921fcb8b8c9bf3a8a21ca">casadi::casadi_limits&lt; SXElem &gt;::nan</a></div><div class="ttdeci">static const SXElem nan</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d5b/sx__elem_8hpp_source.html#l00298">sx_elem.hpp:298</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00184">184</a> of file <a class="el" href="../../d1/d08/sx__node_8cpp_source.html">sx_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                                    {</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="comment">// Quick return if more owners</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <span class="keywordflow">if</span> (n-&gt;count&gt;0) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="comment">// Delete straight away if it doesn&#39;t have any dependencies</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="keywordflow">if</span> (!n-&gt;n_dep()) {</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;      <span class="keyword">delete</span> n;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;      <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    }</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="comment">// Stack of expressions to be deleted</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    std::stack&lt;SXNode*&gt; deletion_stack;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="comment">// Add the node to the deletion stack</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    deletion_stack.push(n);</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="comment">// Process stack</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <span class="keywordflow">while</span> (!deletion_stack.empty()) {</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;      <span class="comment">// Top element</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;      <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#af8ef589add86f32516284efb41bd8304">SXNode</a> *t = deletion_stack.top();</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;      <span class="comment">// Check if the top element has dependencies with dependencies</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;      <span class="keywordtype">bool</span> added_to_stack = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;      <span class="keywordflow">for</span> (casadi_int c2=0; c2&lt;t-&gt;n_dep(); ++c2) { <span class="comment">// for all dependencies of the dependency</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        <span class="comment">// Get the node of the dependency of the top element</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        <span class="comment">// and remove it from the smart pointer</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#af8ef589add86f32516284efb41bd8304">SXNode</a> *n2 = t-&gt;dep(c2).assignNoDelete(<a class="code" href="../../d7/d25/classcasadi_1_1casadi__limits_3_01SXElem_01_4.html#a4c8b46851e9921fcb8b8c9bf3a8a21ca">casadi_limits&lt;SXElem&gt;::nan</a>);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        <span class="comment">// Check if this is the only reference to the element</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        <span class="keywordflow">if</span> (n2-&gt;count == 0) {</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;          <span class="comment">// Check if unary or binary</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;          <span class="keywordflow">if</span> (!n2-&gt;n_dep()) {</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            <span class="comment">// Delete straight away if not binary</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            <span class="keyword">delete</span> n2;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;          } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            <span class="comment">// Add to deletion stack</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            deletion_stack.push(n2);</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            added_to_stack = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;          }</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        }</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;      }</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;      <span class="comment">// Delete and pop from stack if nothing added to the stack</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;      <span class="keywordflow">if</span> (!added_to_stack) {</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        <span class="keyword">delete</span> deletion_stack.top();</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        deletion_stack.pop();</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;      }</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    }</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;  }</div>
+<div class="ttc" id="aclasscasadi_1_1SXNode_html_af8ef589add86f32516284efb41bd8304"><div class="ttname"><a href="../../d7/d8b/classcasadi_1_1SXNode.html#af8ef589add86f32516284efb41bd8304">casadi::SXNode::SXNode</a></div><div class="ttdeci">SXNode()</div><div class="ttdoc">constructor</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/sx__node_8cpp_source.html#l00040">sx_node.cpp:40</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1casadi__limits_3_01SXElem_01_4_html_a4c8b46851e9921fcb8b8c9bf3a8a21ca"><div class="ttname"><a href="../../d7/d25/classcasadi_1_1casadi__limits_3_01SXElem_01_4.html#a4c8b46851e9921fcb8b8c9bf3a8a21ca">casadi::casadi_limits&lt; SXElem &gt;::nan</a></div><div class="ttdeci">static const SXElem nan</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d5b/sx__elem_8hpp_source.html#l00323">sx_elem.hpp:323</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00111">casadi::SXElem::assignNoDelete()</a>, <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00170">casadi::SXNode::count</a>, <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00070">casadi::SXNode::dep()</a>, and <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00111">casadi::SXNode::n_dep()</a>.</p>
+<p class="reference">References <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00118">casadi::SXElem::assignNoDelete()</a>, <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00197">casadi::SXNode::count</a>, <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00080">casadi::SXNode::dep()</a>, and <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00124">casadi::SXNode::n_dep()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="../../d1/d9e/binary__sx_8hpp_source.html#l00075">casadi::BinarySX::~BinarySX()</a>, and <a class="el" href="../../de/d50/unary__sx_8hpp_source.html#l00071">casadi::UnarySX::~UnarySX()</a>.</p>
 
@@ -1431,14 +1624,14 @@ Static Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_aa">https://github.com/casadi/casadi/wiki/L_aa</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00204">204</a> of file <a class="el" href="../../d1/d08/sx__node_8cpp_source.html">sx_node.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                                                   {</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    s.pack(<span class="stringliteral">&quot;SXNode::op&quot;</span>, <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#abcb2cd459b63287b986e005910826dce">op</a>());</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#ac385a5898456340b5e40ee9f136ba846">serialize_node</a>(s);</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;  }</div>
-<div class="ttc" id="aclasscasadi_1_1SXNode_html_ac385a5898456340b5e40ee9f136ba846"><div class="ttname"><a href="../../d7/d8b/classcasadi_1_1SXNode.html#ac385a5898456340b5e40ee9f136ba846">casadi::SXNode::serialize_node</a></div><div class="ttdeci">virtual void serialize_node(SerializingStream &amp;s) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/sx__node_8cpp_source.html#l00200">sx_node.cpp:200</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00238">238</a> of file <a class="el" href="../../d1/d08/sx__node_8cpp_source.html">sx_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                                                   {</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    s.pack(<span class="stringliteral">&quot;SXNode::op&quot;</span>, <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#abcb2cd459b63287b986e005910826dce">op</a>());</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#ac385a5898456340b5e40ee9f136ba846">serialize_node</a>(s);</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;  }</div>
+<div class="ttc" id="aclasscasadi_1_1SXNode_html_ac385a5898456340b5e40ee9f136ba846"><div class="ttname"><a href="../../d7/d8b/classcasadi_1_1SXNode.html#ac385a5898456340b5e40ee9f136ba846">casadi::SXNode::serialize_node</a></div><div class="ttdeci">virtual void serialize_node(SerializingStream &amp;s) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/sx__node_8cpp_source.html#l00234">sx_node.cpp:234</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d7/d8b/classcasadi_1_1SXNode.html#abcb2cd459b63287b986e005910826dce">casadi::SXNode::op()</a>, <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00233">casadi::SerializingStream::pack()</a>, and <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00200">casadi::SXNode::serialize_node()</a>.</p>
+<p class="reference">References <a class="el" href="../../d7/d8b/classcasadi_1_1SXNode.html#abcb2cd459b63287b986e005910826dce">casadi::SXNode::op()</a>, <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00234">casadi::SerializingStream::pack()</a>, and <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00234">casadi::SXNode::serialize_node()</a>.</p>
 
 </div>
 </div>
@@ -1468,13 +1661,80 @@ Static Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="../../d7/d8b/classcasadi_1_1SXNode.html#ac385a5898456340b5e40ee9f136ba846">casadi::SXNode</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00146">146</a> of file <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html">constant_sx.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                                                             {</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;      s.pack(<span class="stringliteral">&quot;ConstantSX::type&quot;</span>, <span class="charliteral">&#39;r&#39;</span>);</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;      s.pack(<span class="stringliteral">&quot;ConstantSX::value&quot;</span>, <a class="code" href="../../df/de7/classcasadi_1_1RealtypeSX.html#a7976a27ab7e75b557a82ccc760aca173">value</a>);</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00154">154</a> of file <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html">constant_sx.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                                                             {</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;      s.pack(<span class="stringliteral">&quot;ConstantSX::type&quot;</span>, <span class="charliteral">&#39;r&#39;</span>);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;      s.pack(<span class="stringliteral">&quot;ConstantSX::value&quot;</span>, <a class="code" href="../../df/de7/classcasadi_1_1RealtypeSX.html#a7976a27ab7e75b557a82ccc760aca173">value</a>);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00233">casadi::SerializingStream::pack()</a>, and <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00162">value</a>.</p>
+<p class="reference">References <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00234">casadi::SerializingStream::pack()</a>, and <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00174">value</a>.</p>
+
+</div>
+</div>
+<a id="a15e5ae437581cdefbc89039cfc5640b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15e5ae437581cdefbc89039cfc5640b3">&#9670;&nbsp;</a></span>shared_from_this() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d0/d06/classcasadi_1_1SXElem.html">SXElem</a> casadi::SXNode::shared_from_this </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00261">261</a> of file <a class="el" href="../../d1/d08/sx__node_8cpp_source.html">sx_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                                  {</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#ae93c670bdc686fe1798f6ae76c4eaa4e">SXElem</a>(<span class="keyword">this</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;  }</div>
+<div class="ttc" id="aclasscasadi_1_1SXNode_html_ae93c670bdc686fe1798f6ae76c4eaa4e"><div class="ttname"><a href="../../d7/d8b/classcasadi_1_1SXNode.html#ae93c670bdc686fe1798f6ae76c4eaa4e">casadi::SXNode::SXElem</a></div><div class="ttdeci">friend class SXElem</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d22/sx__node_8hpp_source.html#l00050">sx_node.hpp:50</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00050">casadi::SXNode::SXElem</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00227">casadi::SXNode::get_output()</a>, and <a class="el" href="../../de/dfd/call__sx_8hpp_source.html#l00106">casadi::CallSX::get_output()</a>.</p>
+
+</div>
+</div>
+<a id="a8b433fa7041bee76a9a18b400dc9f09c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b433fa7041bee76a9a18b400dc9f09c">&#9670;&nbsp;</a></span>shared_from_this() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="../../d0/d06/classcasadi_1_1SXElem.html">SXElem</a> casadi::SXNode::shared_from_this </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00265">265</a> of file <a class="el" href="../../d1/d08/sx__node_8cpp_source.html">sx_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                                              {</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#ae93c670bdc686fe1798f6ae76c4eaa4e">SXElem</a>(<span class="keyword">const_cast&lt;</span><a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#af8ef589add86f32516284efb41bd8304">SXNode</a>*<span class="keyword">&gt;</span>(<span class="keyword">this</span>), <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;  }</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00050">casadi::SXNode::SXElem</a>.</p>
 
 </div>
 </div>
@@ -1504,10 +1764,10 @@ Static Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="../../db/d9d/classcasadi_1_1ConstantSX.html#af6da8525c62f6ad06026bce35933b904">casadi::ConstantSX</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00140">140</a> of file <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html">constant_sx.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="../../df/de7/classcasadi_1_1RealtypeSX.html#a7976a27ab7e75b557a82ccc760aca173">value</a>;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00148">148</a> of file <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html">constant_sx.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="../../df/de7/classcasadi_1_1RealtypeSX.html#a7976a27ab7e75b557a82ccc760aca173">value</a>;}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00162">value</a>.</p>
+<p class="reference">References <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00174">value</a>.</p>
 
 </div>
 </div>
@@ -1537,10 +1797,84 @@ Static Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="../../d7/d8b/classcasadi_1_1SXNode.html#a6de3e5a8ce64b57e95859f1fe3f73c9d">casadi::SXNode</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00141">141</a> of file <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html">constant_sx.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;{ <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>casadi_int<span class="keyword">&gt;</span>(<a class="code" href="../../df/de7/classcasadi_1_1RealtypeSX.html#a7976a27ab7e75b557a82ccc760aca173">value</a>);}</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00149">149</a> of file <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html">constant_sx.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;{ <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>casadi_int<span class="keyword">&gt;</span>(<a class="code" href="../../df/de7/classcasadi_1_1RealtypeSX.html#a7976a27ab7e75b557a82ccc760aca173">value</a>);}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00162">value</a>.</p>
+<p class="reference">References <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00174">value</a>.</p>
+
+</div>
+</div>
+<a id="a11b21c65cdc6f9a999876025b2ab729a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11b21c65cdc6f9a999876025b2ab729a">&#9670;&nbsp;</a></span>which_function()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a> casadi::SXNode::which_function </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_291">https://github.com/casadi/casadi/wiki/L_291</a> </p>
+
+<p>Reimplemented in <a class="el" href="../../de/d2d/classcasadi_1_1CallSX.html#a828e5d9f8768407f5b15c6e5291f7217">casadi::CallSX</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00064">64</a> of file <a class="el" href="../../d1/d08/sx__node_8cpp_source.html">sx_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                                        {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    casadi_error(<span class="stringliteral">&quot;&#39;which_function&#39; not defined for class &quot;</span> + <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#af9937392c393b48b6bfd8454cecf32a9">class_name</a>());</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  }</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../d7/d8b/classcasadi_1_1SXNode.html#af9937392c393b48b6bfd8454cecf32a9">casadi::SXNode::class_name()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00130">casadi::SXNode::print_compact()</a>, and <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00473">casadi::SXElem::which_function()</a>.</p>
+
+</div>
+</div>
+<a id="aee57b5a965ea68b09d2c5dce5baceb6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee57b5a965ea68b09d2c5dce5baceb6a">&#9670;&nbsp;</a></span>which_output()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">casadi_int casadi::SXNode::which_output </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_292">https://github.com/casadi/casadi/wiki/L_292</a> </p>
+
+<p>Reimplemented in <a class="el" href="../../dd/d02/classcasadi_1_1OutputSX.html#a545d7facf8393a51c15957a55a396406">casadi::OutputSX</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00068">68</a> of file <a class="el" href="../../d1/d08/sx__node_8cpp_source.html">sx_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                                        {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    casadi_error(<span class="stringliteral">&quot;&#39;which_output&#39; not defined for class &quot;</span> + <a class="code" href="../../d7/d8b/classcasadi_1_1SXNode.html#af9937392c393b48b6bfd8454cecf32a9">class_name</a>());</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  }</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../d7/d8b/classcasadi_1_1SXNode.html#af9937392c393b48b6bfd8454cecf32a9">casadi::SXNode::class_name()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00477">casadi::SXElem::which_output()</a>.</p>
 
 </div>
 </div>
@@ -1567,9 +1901,9 @@ Static Protected Attributes</h2></td></tr>
 <p>(storage is allocated for it in sx_element.cpp)</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1js">https://github.com/casadi/casadi/wiki/L_1js</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00157">157</a> of file <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html">constant_sx.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00165">165</a> of file <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html">constant_sx.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00117">create()</a>, and <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00110">~RealtypeSX()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00121">create()</a>, and <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00110">~RealtypeSX()</a>.</p>
 
 </div>
 </div>
@@ -1593,9 +1927,9 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00170">170</a> of file <a class="el" href="../../d8/d22/sx__node_8hpp_source.html">sx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00197">197</a> of file <a class="el" href="../../d8/d22/sx__node_8hpp_source.html">sx_node.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00111">casadi::SXElem::assignNoDelete()</a>, <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00091">casadi::SXElem::operator=()</a>, <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00155">casadi::SXNode::safe_delete()</a>, <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00046">casadi::SXElem::SXElem()</a>, <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00038">casadi::SXNode::SXNode()</a>, <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00396">casadi::UniversalNodeOwner::UniversalNodeOwner()</a>, <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00379">casadi::InfSX::~InfSX()</a>, <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00414">casadi::MinusInfSX::~MinusInfSX()</a>, <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00337">casadi::MinusOneSX::~MinusOneSX()</a>, <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00448">casadi::NanSX::~NanSX()</a>, <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00300">casadi::OneSX::~OneSX()</a>, <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00087">casadi::SXElem::~SXElem()</a>, <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00043">casadi::SXNode::~SXNode()</a>, and <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00259">casadi::ZeroSX::~ZeroSX()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00118">casadi::SXElem::assignNoDelete()</a>, <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00098">casadi::SXElem::operator=()</a>, <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00184">casadi::SXNode::safe_delete()</a>, <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00053">casadi::SXElem::SXElem()</a>, <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00040">casadi::SXNode::SXNode()</a>, <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00407">casadi::UniversalNodeOwner::UniversalNodeOwner()</a>, <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00403">casadi::InfSX::~InfSX()</a>, <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00438">casadi::MinusInfSX::~MinusInfSX()</a>, <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00361">casadi::MinusOneSX::~MinusOneSX()</a>, <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00472">casadi::NanSX::~NanSX()</a>, <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00324">casadi::OneSX::~OneSX()</a>, <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00094">casadi::SXElem::~SXElem()</a>, <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00045">casadi::SXNode::~SXNode()</a>, and <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00283">casadi::ZeroSX::~ZeroSX()</a>.</p>
 
 </div>
 </div>
@@ -1620,13 +1954,17 @@ Static Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    {<a class="code" href="../../d7/d23/namespacecasadi.html#af35251805e44185cb1f079ec41808618aae6785283527a2b4903fa3aa9f56d3d6">OP_PARAMETER</a>, <a class="code" href="../../d6/de8/classcasadi_1_1SymbolicSX.html#a34a388bc374e2cfacb1cb2af642475a2">SymbolicSX::deserialize</a>},</div>
-<div class="line">    {<a class="code" href="../../d7/d23/namespacecasadi.html#af35251805e44185cb1f079ec41808618a69909c231708b235ccc215d93ca907f8">OP_CONST</a>, <a class="code" href="../../d7/d23/namespacecasadi.html#ad633b0dea26019f308595e359b53b805">ConstantSX_deserialize</a>}}</div>
+<div class="line">    {<a class="code" href="../../d7/d23/namespacecasadi.html#af35251805e44185cb1f079ec41808618a69909c231708b235ccc215d93ca907f8">OP_CONST</a>, <a class="code" href="../../d7/d23/namespacecasadi.html#ad633b0dea26019f308595e359b53b805">ConstantSX_deserialize</a>},</div>
+<div class="line">    {<a class="code" href="../../d7/d23/namespacecasadi.html#af35251805e44185cb1f079ec41808618ab6df634985573b1864384f28d4a0e670">OP_CALL</a>, <a class="code" href="../../de/d2d/classcasadi_1_1CallSX.html#a37a10a13f982d4162db355b839f16b8c">CallSX::deserialize</a>},</div>
+<div class="line">    {-1, <a class="code" href="../../dd/d02/classcasadi_1_1OutputSX.html#a6ca4d5d87ad8413c8642599a6d187901">OutputSX::deserialize</a>}}</div>
+<div class="ttc" id="aclasscasadi_1_1CallSX_html_a37a10a13f982d4162db355b839f16b8c"><div class="ttname"><a href="../../de/d2d/classcasadi_1_1CallSX.html#a37a10a13f982d4162db355b839f16b8c">casadi::CallSX::deserialize</a></div><div class="ttdeci">static SXNode * deserialize(DeserializingStream &amp;s)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dfd/call__sx_8hpp_source.html#l00161">call_sx.hpp:161</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1OutputSX_html_a6ca4d5d87ad8413c8642599a6d187901"><div class="ttname"><a href="../../dd/d02/classcasadi_1_1OutputSX.html#a6ca4d5d87ad8413c8642599a6d187901">casadi::OutputSX::deserialize</a></div><div class="ttdeci">static SXNode * deserialize(DeserializingStream &amp;s)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dfc/output__sx_8hpp_source.html#l00152">output_sx.hpp:152</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1SymbolicSX_html_a34a388bc374e2cfacb1cb2af642475a2"><div class="ttname"><a href="../../d6/de8/classcasadi_1_1SymbolicSX.html#a34a388bc374e2cfacb1cb2af642475a2">casadi::SymbolicSX::deserialize</a></div><div class="ttdeci">static SXNode * deserialize(DeserializingStream &amp;s)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d10/symbolic__sx_8hpp_source.html#l00077">symbolic_sx.hpp:77</a></div></div>
-<div class="ttc" id="anamespacecasadi_html_ad633b0dea26019f308595e359b53b805"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#ad633b0dea26019f308595e359b53b805">casadi::ConstantSX_deserialize</a></div><div class="ttdeci">SXNode * ConstantSX_deserialize(DeserializingStream &amp;s)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbe/constant__sx_8hpp_source.html#l00465">constant_sx.hpp:465</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_ad633b0dea26019f308595e359b53b805"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#ad633b0dea26019f308595e359b53b805">casadi::ConstantSX_deserialize</a></div><div class="ttdeci">SXNode * ConstantSX_deserialize(DeserializingStream &amp;s)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbe/constant__sx_8hpp_source.html#l00489">constant_sx.hpp:489</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00181">181</a> of file <a class="el" href="../../d8/d22/sx__node_8hpp_source.html">sx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00209">209</a> of file <a class="el" href="../../d8/d22/sx__node_8hpp_source.html">sx_node.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00209">casadi::SXNode::deserialize()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00243">casadi::SXNode::deserialize()</a>.</p>
 
 </div>
 </div>
@@ -1650,9 +1988,9 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00161">161</a> of file <a class="el" href="../../d8/d22/sx__node_8hpp_source.html">sx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00179">179</a> of file <a class="el" href="../../d8/d22/sx__node_8hpp_source.html">sx_node.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00179">casadi::SXElem::binary()</a>, <a class="el" href="../../da/d06/sx__instantiator_8cpp_source.html#l00046">casadi::Matrix&lt; Scalar &gt;::get_max_depth()</a>, <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00155">casadi::SXElem::is_doubled()</a>, and <a class="el" href="../../da/d06/sx__instantiator_8cpp_source.html#l00041">casadi::Matrix&lt; Scalar &gt;::set_max_depth()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00186">casadi::SXElem::binary()</a>, <a class="el" href="../../da/d06/sx__instantiator_8cpp_source.html#l00047">casadi::Matrix&lt; Scalar &gt;::get_max_depth()</a>, <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00162">casadi::SXElem::is_doubled()</a>, and <a class="el" href="../../da/d06/sx__instantiator_8cpp_source.html#l00042">casadi::Matrix&lt; Scalar &gt;::set_max_depth()</a>.</p>
 
 </div>
 </div>
@@ -1677,9 +2015,9 @@ Static Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Temporary variables to be used in user algorithms like sorting, the user is responsible of making sure that use is thread-safe The variable is initialized to zero </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00167">167</a> of file <a class="el" href="../../d8/d22/sx__node_8hpp_source.html">sx_node.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/d22/sx__node_8hpp_source.html#l00191">191</a> of file <a class="el" href="../../d8/d22/sx__node_8hpp_source.html">sx_node.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d1/d7b/sx__function_8cpp_source.html#l00211">casadi::SXFunction::init()</a>, <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00099">casadi::SXNode::mark()</a>, <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00095">casadi::SXNode::marked()</a>, and <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00038">casadi::SXNode::SXNode()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d1/d7b/sx__function_8cpp_source.html#l00330">casadi::SXFunction::init()</a>, <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00109">casadi::SXNode::mark()</a>, <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00105">casadi::SXNode::marked()</a>, and <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00040">casadi::SXNode::SXNode()</a>.</p>
 
 </div>
 </div>
@@ -1704,9 +2042,9 @@ Static Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1jt">https://github.com/casadi/casadi/wiki/L_1jt</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00162">162</a> of file <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html">constant_sx.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00174">174</a> of file <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html">constant_sx.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00117">create()</a>, <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00144">is_almost_zero()</a>, <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00146">serialize_node()</a>, <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00140">to_double()</a>, <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00141">to_int()</a>, and <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00110">~RealtypeSX()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00121">create()</a>, <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00152">is_almost_zero()</a>, <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00154">serialize_node()</a>, <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00148">to_double()</a>, <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00149">to_int()</a>, and <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00110">~RealtypeSX()</a>.</p>
 
 </div>
 </div>

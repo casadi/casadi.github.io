@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -81,13 +81,82 @@ $(function() {
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">      #include &quot;shell_compiler.hpp&quot;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">      #include &lt;string&gt;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;      <span class="keyword">const</span> std::string <a class="code" href="../../d6/d62/classcasadi_1_1ShellCompiler.html#a74d7d66d29ed9266b808eea8843dfdca">casadi::ShellCompiler::meta_doc</a>=</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;      <span class="stringliteral">&quot;\n&quot;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">      #include &quot;shell_compiler.hpp&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">      #include &lt;string&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;      <span class="keyword">const</span> std::string <a class="code" href="../../d6/d62/classcasadi_1_1ShellCompiler.html#a74d7d66d29ed9266b808eea8843dfdca">casadi::ShellCompiler::meta_doc</a>=</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;      <span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="stringliteral">&quot;Interface to the JIT compiler SHELL\n&quot;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="stringliteral">&quot;Extra doc: https://github.com/casadi/casadi/wiki/L_22w \n&quot;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="stringliteral">&quot;&gt;List of available options\n&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="stringliteral">&quot;+----------------------+-----------------+---------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="stringliteral">&quot;|          Id          |      Type       |           Description           |\n&quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="stringliteral">&quot;+======================+=================+=================================+\n&quot;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="stringliteral">&quot;| cleanup              | OT_BOOL         | Cleanup temporary files when    |\n&quot;</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="stringliteral">&quot;|                      |                 | unloading. Default: true        |\n&quot;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="stringliteral">&quot;+----------------------+-----------------+---------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="stringliteral">&quot;| compiler             | OT_STRING       | Compiler command                |\n&quot;</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="stringliteral">&quot;+----------------------+-----------------+---------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="stringliteral">&quot;| compiler_flags       | OT_STRINGVECTOR | Alias for &#39;compiler_flags&#39;      |\n&quot;</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="stringliteral">&quot;+----------------------+-----------------+---------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="stringliteral">&quot;| compiler_output_flag | OT_STRING       | Compiler flag to denote object  |\n&quot;</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="stringliteral">&quot;|                      |                 | output. Default: &#39;-o &#39;          |\n&quot;</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="stringliteral">&quot;+----------------------+-----------------+---------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="stringliteral">&quot;| compiler_setup       | OT_STRING       | Compiler setup command.         |\n&quot;</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="stringliteral">&quot;|                      |                 | Intended to be fixed. The       |\n&quot;</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="stringliteral">&quot;|                      |                 | &#39;flag&#39; option is the prefered   |\n&quot;</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="stringliteral">&quot;|                      |                 | way to set custom flags.        |\n&quot;</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="stringliteral">&quot;+----------------------+-----------------+---------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="stringliteral">&quot;| directory            | OT_STRING       | Directory to put temporary      |\n&quot;</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="stringliteral">&quot;|                      |                 | objects in. Must end with a     |\n&quot;</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="stringliteral">&quot;|                      |                 | file separator.                 |\n&quot;</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="stringliteral">&quot;+----------------------+-----------------+---------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="stringliteral">&quot;| extra_suffixes       | OT_STRINGVECTOR | List of suffixes for extra      |\n&quot;</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="stringliteral">&quot;|                      |                 | files that the compiler may     |\n&quot;</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="stringliteral">&quot;|                      |                 | generate. Default: None         |\n&quot;</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="stringliteral">&quot;+----------------------+-----------------+---------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="stringliteral">&quot;| flags                | OT_STRINGVECTOR | Compile flags for the JIT       |\n&quot;</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="stringliteral">&quot;|                      |                 | compiler. Default: None         |\n&quot;</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="stringliteral">&quot;+----------------------+-----------------+---------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="stringliteral">&quot;| linker               | OT_STRING       | Linker command                  |\n&quot;</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="stringliteral">&quot;+----------------------+-----------------+---------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="stringliteral">&quot;| linker_flags         | OT_STRINGVECTOR | Linker flags for the JIT        |\n&quot;</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="stringliteral">&quot;|                      |                 | compiler. Default: None         |\n&quot;</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="stringliteral">&quot;+----------------------+-----------------+---------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="stringliteral">&quot;| linker_output_flag   | OT_STRING       | Linker flag to denote shared    |\n&quot;</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="stringliteral">&quot;|                      |                 | library output. Default: &#39;-o &#39;  |\n&quot;</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="stringliteral">&quot;+----------------------+-----------------+---------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="stringliteral">&quot;| linker_setup         | OT_STRING       | Linker setup command. Intended  |\n&quot;</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="stringliteral">&quot;|                      |                 | to be fixed. The &#39;flag&#39; option  |\n&quot;</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="stringliteral">&quot;|                      |                 | is the prefered way to set      |\n&quot;</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="stringliteral">&quot;|                      |                 | custom flags.                   |\n&quot;</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="stringliteral">&quot;+----------------------+-----------------+---------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="stringliteral">&quot;| name                 | OT_STRING       | The file name used to write out |\n&quot;</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="stringliteral">&quot;|                      |                 | compiled objects/libraries. The |\n&quot;</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="stringliteral">&quot;|                      |                 | actual file names used depend   |\n&quot;</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="stringliteral">&quot;|                      |                 | on &#39;temp_suffix&#39; and include    |\n&quot;</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="stringliteral">&quot;|                      |                 | extensions. Default:            |\n&quot;</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="stringliteral">&quot;|                      |                 | &#39;tmp_casadi_compiler_shell&#39;     |\n&quot;</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="stringliteral">&quot;+----------------------+-----------------+---------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="stringliteral">&quot;| temp_suffix          | OT_BOOL         | Use a temporary (seemingly      |\n&quot;</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="stringliteral">&quot;|                      |                 | random) filename suffix for     |\n&quot;</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="stringliteral">&quot;|                      |                 | file names. This is desired for |\n&quot;</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="stringliteral">&quot;|                      |                 | thread-safety. This behaviour   |\n&quot;</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="stringliteral">&quot;|                      |                 | may defeat caching compiler     |\n&quot;</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="stringliteral">&quot;|                      |                 | wrappers. Default: true         |\n&quot;</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="stringliteral">&quot;+----------------------+-----------------+---------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;;</div>
 <div class="ttc" id="aclasscasadi_1_1ShellCompiler_html_a74d7d66d29ed9266b808eea8843dfdca"><div class="ttname"><a href="../../d6/d62/classcasadi_1_1ShellCompiler.html#a74d7d66d29ed9266b808eea8843dfdca">casadi::ShellCompiler::meta_doc</a></div><div class="ttdeci">static const std::string meta_doc</div><div class="ttdoc">A documentation string.</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbf/shell__compiler_8hpp_source.html#l00077">shell_compiler.hpp:77</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </body>

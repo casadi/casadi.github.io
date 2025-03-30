@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -632,9 +632,9 @@ $(function() {
 <div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;  <span class="keywordtype">int</span> SetNonzerosVector&lt;Add&gt;::</div>
 <div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;  eval_gen(<span class="keyword">const</span> T** arg, T** res, casadi_int* iw, T* w)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;    <span class="keyword">const</span> T* idata0 = arg[0];</div>
-<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;    <span class="keyword">const</span> T* idata = arg[1];</div>
-<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;    T* odata = res[0];</div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>* idata0 = arg[0];</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>* idata = arg[1];</div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>* odata = res[0];</div>
 <div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;    <span class="keywordflow">if</span> (idata0 != odata) {</div>
 <div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;      std::copy(idata0, idata0+this-&gt;dep(0).nnz(), odata);</div>
 <div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;    }</div>
@@ -664,13 +664,13 @@ $(function() {
 <div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;  <span class="keywordtype">int</span> SetNonzerosSlice&lt;Add&gt;::</div>
 <div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;  eval_gen(<span class="keyword">const</span> T** arg, T** res, casadi_int* iw, T* w)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;    <span class="keyword">const</span> T* idata0 = arg[0];</div>
-<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;    <span class="keyword">const</span> T* idata = arg[1];</div>
-<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;    T* odata = res[0];</div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>* idata0 = arg[0];</div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>* idata = arg[1];</div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>* odata = res[0];</div>
 <div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;    <span class="keywordflow">if</span> (idata0 != odata) {</div>
 <div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;      std::copy(idata0, idata0+this-&gt;dep(0).nnz(), odata);</div>
 <div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;    }</div>
-<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;    T* odata_stop = odata + s_.stop;</div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>* odata_stop = odata + s_.stop;</div>
 <div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;    <span class="keywordflow">for</span> (odata += s_.start; odata != odata_stop; odata += s_.step) {</div>
 <div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;      <span class="keywordflow">if</span> (Add) {</div>
 <div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;        *odata += *idata++;</div>
@@ -697,14 +697,14 @@ $(function() {
 <div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;  <span class="keywordtype">int</span> SetNonzerosSlice2&lt;Add&gt;::</div>
 <div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;  eval_gen(<span class="keyword">const</span> T** arg, T** res, casadi_int* iw, T* w)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;    <span class="keyword">const</span> T* idata0 = arg[0];</div>
-<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;    <span class="keyword">const</span> T* idata = arg[1];</div>
-<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;    T* odata = res[0];</div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>* idata0 = arg[0];</div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>* idata = arg[1];</div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>* odata = res[0];</div>
 <div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;    <span class="keywordflow">if</span> (idata0 != odata) {</div>
 <div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;      std::copy(idata0, idata0 + this-&gt;dep(0).nnz(), odata);</div>
 <div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;    }</div>
-<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;    T* outer_stop = odata + outer_.stop;</div>
-<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;    T* outer = odata + outer_.start;</div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>* outer_stop = odata + outer_.stop;</div>
+<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>* outer = odata + outer_.start;</div>
 <div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;    <span class="keywordflow">for</span> (; outer != outer_stop; outer += outer_.step) {</div>
 <div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;      <span class="keywordflow">for</span> (T* inner = outer+inner_.start;</div>
 <div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;          inner != outer+inner_.stop;</div>
@@ -916,146 +916,156 @@ $(function() {
 <div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;  <span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> Add&gt;</div>
 <div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;  <span class="keywordtype">void</span> SetNonzerosVector&lt;Add&gt;::</div>
 <div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;  generate(CodeGenerator&amp; g,</div>
-<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;           <span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; arg, <span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; res)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;    <span class="comment">// Copy first argument if not inplace</span></div>
-<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;    <span class="keywordflow">if</span> (arg[0]!=res[0]) {</div>
-<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;      g &lt;&lt; g.copy(g.work(arg[0], this-&gt;dep(0).nnz()), this-&gt;nnz(),</div>
-<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;                          g.work(res[0], this-&gt;nnz())) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;    }</div>
-<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160; </div>
-<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;    <span class="comment">// Condegen the indices</span></div>
-<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;    std::string ind = g.constant(this-&gt;nz_);</div>
+<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;           <span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; arg,</div>
+<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;           <span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; res,</div>
+<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;           <span class="keyword">const</span> std::vector&lt;bool&gt;&amp; arg_is_ref,</div>
+<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;           std::vector&lt;bool&gt;&amp; res_is_ref)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;    <span class="comment">// Copy first argument if not inplace</span></div>
+<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;    <span class="keywordflow">if</span> (arg[0]!=res[0] || arg_is_ref[0]) {</div>
+<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;      g &lt;&lt; g.copy(g.work(arg[0], this-&gt;dep(0).nnz(), arg_is_ref[0]), this-&gt;nnz(),</div>
+<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;                          g.work(res[0], this-&gt;nnz(), <span class="keyword">false</span>)) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;    }</div>
 <div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160; </div>
-<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;    <span class="comment">// Perform the operation inplace</span></div>
-<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;    g.local(<span class="stringliteral">&quot;cii&quot;</span>, <span class="stringliteral">&quot;const casadi_int&quot;</span>, <span class="stringliteral">&quot;*&quot;</span>);</div>
-<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;    g.local(<span class="stringliteral">&quot;rr&quot;</span>, <span class="stringliteral">&quot;casadi_real&quot;</span>, <span class="stringliteral">&quot;*&quot;</span>);</div>
-<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;    g.local(<span class="stringliteral">&quot;ss&quot;</span>, <span class="stringliteral">&quot;casadi_real&quot;</span>, <span class="stringliteral">&quot;*&quot;</span>);</div>
-<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;    g &lt;&lt; <span class="stringliteral">&quot;for (cii=&quot;</span> &lt;&lt; ind &lt;&lt; <span class="stringliteral">&quot;, rr=&quot;</span> &lt;&lt; g.work(res[0], this-&gt;nnz()) &lt;&lt; <span class="stringliteral">&quot;, &quot;</span></div>
-<div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;      &lt;&lt; <span class="stringliteral">&quot;ss=&quot;</span> &lt;&lt; g.work(arg[1], this-&gt;dep(1).nnz()) &lt;&lt; <span class="stringliteral">&quot;; cii!=&quot;</span> &lt;&lt; ind</div>
-<div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;      &lt;&lt; <span class="stringliteral">&quot;+&quot;</span> &lt;&lt; this-&gt;nz_.size() &lt;&lt; <span class="stringliteral">&quot;; ++cii, ++ss) &quot;</span>;</div>
-<div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d7/d23/namespacecasadi.html#a528bcf5fe0380bc5227f0c5cbf1e6621">has_negative</a>(this-&gt;nz_)) {</div>
-<div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;      g &lt;&lt; <span class="stringliteral">&quot;if (*cii&gt;=0) &quot;</span>;</div>
-<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;    }</div>
-<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;    g &lt;&lt; <span class="stringliteral">&quot;rr[*cii] &quot;</span> &lt;&lt; (Add?<span class="stringliteral">&quot;+=&quot;</span>:<span class="stringliteral">&quot;=&quot;</span>) &lt;&lt; <span class="stringliteral">&quot; *ss;\n&quot;</span>;</div>
-<div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;  }</div>
-<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160; </div>
-<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;  <span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> Add&gt;</div>
-<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;  <span class="keywordtype">void</span> SetNonzerosSlice&lt;Add&gt;::</div>
-<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;  generate(CodeGenerator&amp; g,</div>
-<div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;           <span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; arg, <span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; res)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;    <span class="comment">// Copy first argument if not inplace</span></div>
-<div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;    <span class="keywordflow">if</span> (arg[0]!=res[0]) {</div>
-<div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160;      g &lt;&lt; g.copy(g.work(arg[0], this-&gt;dep(0).nnz()), this-&gt;nnz(),</div>
-<div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160;                          g.work(res[0], this-&gt;nnz())) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;    }</div>
-<div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160; </div>
-<div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160;    <span class="comment">// Perform the operation inplace</span></div>
-<div class="line"><a name="l00895"></a><span class="lineno">  895</span>&#160;    g.local(<span class="stringliteral">&quot;rr&quot;</span>, <span class="stringliteral">&quot;casadi_real&quot;</span>, <span class="stringliteral">&quot;*&quot;</span>);</div>
-<div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160;    g.local(<span class="stringliteral">&quot;ss&quot;</span>, <span class="stringliteral">&quot;casadi_real&quot;</span>, <span class="stringliteral">&quot;*&quot;</span>);</div>
-<div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160;    g &lt;&lt; <span class="stringliteral">&quot;for (rr=&quot;</span> &lt;&lt; g.work(res[0], this-&gt;nnz()) &lt;&lt; <span class="stringliteral">&quot;+&quot;</span> &lt;&lt; s_.start &lt;&lt; <span class="stringliteral">&quot;, ss=&quot;</span></div>
-<div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160;      &lt;&lt; g.work(arg[1], this-&gt;dep(1).nnz()) &lt;&lt; <span class="stringliteral">&quot;; rr!=&quot;</span></div>
-<div class="line"><a name="l00899"></a><span class="lineno">  899</span>&#160;      &lt;&lt; g.work(res[0], this-&gt;nnz()) &lt;&lt; <span class="stringliteral">&quot;+&quot;</span> &lt;&lt; s_.stop</div>
-<div class="line"><a name="l00900"></a><span class="lineno">  900</span>&#160;      &lt;&lt; <span class="stringliteral">&quot;; rr+=&quot;</span> &lt;&lt; s_.step &lt;&lt; <span class="stringliteral">&quot;)&quot;</span></div>
-<div class="line"><a name="l00901"></a><span class="lineno">  901</span>&#160;      &lt;&lt; <span class="stringliteral">&quot; *rr &quot;</span> &lt;&lt; (Add?<span class="stringliteral">&quot;+=&quot;</span>:<span class="stringliteral">&quot;=&quot;</span>) &lt;&lt; <span class="stringliteral">&quot; *ss++;\n&quot;</span>;</div>
-<div class="line"><a name="l00902"></a><span class="lineno">  902</span>&#160;  }</div>
-<div class="line"><a name="l00903"></a><span class="lineno">  903</span>&#160; </div>
-<div class="line"><a name="l00904"></a><span class="lineno">  904</span>&#160;  <span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> Add&gt;</div>
-<div class="line"><a name="l00905"></a><span class="lineno">  905</span>&#160;  <span class="keywordtype">void</span> SetNonzerosSlice2&lt;Add&gt;::</div>
-<div class="line"><a name="l00906"></a><span class="lineno">  906</span>&#160;  generate(CodeGenerator&amp; g,</div>
-<div class="line"><a name="l00907"></a><span class="lineno">  907</span>&#160;           <span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; arg, <span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; res)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00908"></a><span class="lineno">  908</span>&#160;    <span class="comment">// Copy first argument if not inplace</span></div>
-<div class="line"><a name="l00909"></a><span class="lineno">  909</span>&#160;    <span class="keywordflow">if</span> (arg[0]!=res[0]) {</div>
-<div class="line"><a name="l00910"></a><span class="lineno">  910</span>&#160;      g &lt;&lt; g.copy(g.work(arg[0], this-&gt;dep(0).nnz()), this-&gt;nnz(),</div>
-<div class="line"><a name="l00911"></a><span class="lineno">  911</span>&#160;                          g.work(res[0], this-&gt;nnz())) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a name="l00912"></a><span class="lineno">  912</span>&#160;    }</div>
-<div class="line"><a name="l00913"></a><span class="lineno">  913</span>&#160; </div>
-<div class="line"><a name="l00914"></a><span class="lineno">  914</span>&#160;    <span class="comment">// Perform the operation inplace</span></div>
-<div class="line"><a name="l00915"></a><span class="lineno">  915</span>&#160;    g.local(<span class="stringliteral">&quot;rr&quot;</span>, <span class="stringliteral">&quot;casadi_real&quot;</span>, <span class="stringliteral">&quot;*&quot;</span>);</div>
-<div class="line"><a name="l00916"></a><span class="lineno">  916</span>&#160;    g.local(<span class="stringliteral">&quot;ss&quot;</span>, <span class="stringliteral">&quot;casadi_real&quot;</span>, <span class="stringliteral">&quot;*&quot;</span>);</div>
-<div class="line"><a name="l00917"></a><span class="lineno">  917</span>&#160;    g.local(<span class="stringliteral">&quot;tt&quot;</span>, <span class="stringliteral">&quot;casadi_real&quot;</span>, <span class="stringliteral">&quot;*&quot;</span>);</div>
-<div class="line"><a name="l00918"></a><span class="lineno">  918</span>&#160;    g &lt;&lt; <span class="stringliteral">&quot;for (rr=&quot;</span> &lt;&lt; g.work(res[0], this-&gt;nnz()) &lt;&lt; <span class="stringliteral">&quot;+&quot;</span> &lt;&lt; outer_.start</div>
-<div class="line"><a name="l00919"></a><span class="lineno">  919</span>&#160;      &lt;&lt; <span class="stringliteral">&quot;, ss=&quot;</span> &lt;&lt; g.work(arg[1], this-&gt;dep(1).nnz()) &lt;&lt; <span class="stringliteral">&quot;; rr!=&quot;</span></div>
-<div class="line"><a name="l00920"></a><span class="lineno">  920</span>&#160;      &lt;&lt; g.work(res[0], this-&gt;nnz()) &lt;&lt; <span class="stringliteral">&quot;+&quot;</span> &lt;&lt; outer_.stop</div>
-<div class="line"><a name="l00921"></a><span class="lineno">  921</span>&#160;      &lt;&lt; <span class="stringliteral">&quot;; rr+=&quot;</span> &lt;&lt; outer_.step &lt;&lt; <span class="stringliteral">&quot;)&quot;</span></div>
-<div class="line"><a name="l00922"></a><span class="lineno">  922</span>&#160;      &lt;&lt; <span class="stringliteral">&quot; for (tt=rr+&quot;</span> &lt;&lt; inner_.start &lt;&lt; <span class="stringliteral">&quot;; tt!=rr+&quot;</span> &lt;&lt; inner_.stop</div>
-<div class="line"><a name="l00923"></a><span class="lineno">  923</span>&#160;      &lt;&lt; <span class="stringliteral">&quot;; tt+=&quot;</span> &lt;&lt; inner_.step &lt;&lt; <span class="stringliteral">&quot;)&quot;</span></div>
-<div class="line"><a name="l00924"></a><span class="lineno">  924</span>&#160;      &lt;&lt; <span class="stringliteral">&quot; *tt &quot;</span> &lt;&lt; (Add?<span class="stringliteral">&quot;+=&quot;</span>:<span class="stringliteral">&quot;=&quot;</span>) &lt;&lt; <span class="stringliteral">&quot; *ss++;\n&quot;</span>;</div>
-<div class="line"><a name="l00925"></a><span class="lineno">  925</span>&#160;  }</div>
-<div class="line"><a name="l00926"></a><span class="lineno">  926</span>&#160; </div>
-<div class="line"><a name="l00927"></a><span class="lineno">  927</span>&#160;  <span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> Add&gt;</div>
-<div class="line"><a name="l00928"></a><span class="lineno">  928</span>&#160;  <span class="keywordtype">void</span> SetNonzerosVector&lt;Add&gt;::serialize_body(SerializingStream&amp; s)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00929"></a><span class="lineno">  929</span>&#160;    MXNode::serialize_body(s);</div>
-<div class="line"><a name="l00930"></a><span class="lineno">  930</span>&#160;    s.pack(<span class="stringliteral">&quot;SetNonzerosVector::nonzeros&quot;</span>, nz_);</div>
-<div class="line"><a name="l00931"></a><span class="lineno">  931</span>&#160;  }</div>
-<div class="line"><a name="l00932"></a><span class="lineno">  932</span>&#160; </div>
-<div class="line"><a name="l00933"></a><span class="lineno">  933</span>&#160;  <span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> Add&gt;</div>
-<div class="line"><a name="l00934"></a><span class="lineno">  934</span>&#160;  SetNonzerosVector&lt;Add&gt;::SetNonzerosVector(DeserializingStream&amp; s) : SetNonzeros&lt;Add&gt;(s) {</div>
-<div class="line"><a name="l00935"></a><span class="lineno">  935</span>&#160;    s.unpack(<span class="stringliteral">&quot;SetNonzerosVector::nonzeros&quot;</span>, nz_);</div>
-<div class="line"><a name="l00936"></a><span class="lineno">  936</span>&#160;  }</div>
-<div class="line"><a name="l00937"></a><span class="lineno">  937</span>&#160; </div>
-<div class="line"><a name="l00938"></a><span class="lineno">  938</span>&#160;  <span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> Add&gt;</div>
-<div class="line"><a name="l00939"></a><span class="lineno">  939</span>&#160;  <span class="keywordtype">void</span> SetNonzerosVector&lt;Add&gt;::serialize_type(SerializingStream&amp; s)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00940"></a><span class="lineno">  940</span>&#160;    MXNode::serialize_type(s);</div>
-<div class="line"><a name="l00941"></a><span class="lineno">  941</span>&#160;    s.pack(<span class="stringliteral">&quot;SetNonzeros::type&quot;</span>, <span class="charliteral">&#39;a&#39;</span>);</div>
-<div class="line"><a name="l00942"></a><span class="lineno">  942</span>&#160;  }</div>
-<div class="line"><a name="l00943"></a><span class="lineno">  943</span>&#160; </div>
-<div class="line"><a name="l00944"></a><span class="lineno">  944</span>&#160;  <span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> Add&gt;</div>
-<div class="line"><a name="l00945"></a><span class="lineno">  945</span>&#160;  <span class="keywordtype">void</span> SetNonzerosSlice&lt;Add&gt;::serialize_body(SerializingStream&amp; s)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00946"></a><span class="lineno">  946</span>&#160;    MXNode::serialize_body(s);</div>
-<div class="line"><a name="l00947"></a><span class="lineno">  947</span>&#160;    s.pack(<span class="stringliteral">&quot;SetNonzerosSlice::slice&quot;</span>, s_);</div>
-<div class="line"><a name="l00948"></a><span class="lineno">  948</span>&#160;  }</div>
-<div class="line"><a name="l00949"></a><span class="lineno">  949</span>&#160; </div>
-<div class="line"><a name="l00950"></a><span class="lineno">  950</span>&#160;  <span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> Add&gt;</div>
-<div class="line"><a name="l00951"></a><span class="lineno">  951</span>&#160;  SetNonzerosSlice&lt;Add&gt;::SetNonzerosSlice(DeserializingStream&amp; s) : SetNonzeros&lt;Add&gt;(s) {</div>
-<div class="line"><a name="l00952"></a><span class="lineno">  952</span>&#160;    s.unpack(<span class="stringliteral">&quot;SetNonzerosSlice::slice&quot;</span>, s_);</div>
-<div class="line"><a name="l00953"></a><span class="lineno">  953</span>&#160;  }</div>
-<div class="line"><a name="l00954"></a><span class="lineno">  954</span>&#160; </div>
-<div class="line"><a name="l00955"></a><span class="lineno">  955</span>&#160;  <span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> Add&gt;</div>
-<div class="line"><a name="l00956"></a><span class="lineno">  956</span>&#160;  <span class="keywordtype">void</span> SetNonzerosSlice&lt;Add&gt;::serialize_type(SerializingStream&amp; s)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00957"></a><span class="lineno">  957</span>&#160;    MXNode::serialize_type(s);</div>
-<div class="line"><a name="l00958"></a><span class="lineno">  958</span>&#160;    s.pack(<span class="stringliteral">&quot;SetNonzeros::type&quot;</span>, <span class="charliteral">&#39;b&#39;</span>);</div>
-<div class="line"><a name="l00959"></a><span class="lineno">  959</span>&#160;  }</div>
-<div class="line"><a name="l00960"></a><span class="lineno">  960</span>&#160; </div>
-<div class="line"><a name="l00961"></a><span class="lineno">  961</span>&#160;  <span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> Add&gt;</div>
-<div class="line"><a name="l00962"></a><span class="lineno">  962</span>&#160;  <span class="keywordtype">void</span> SetNonzerosSlice2&lt;Add&gt;::serialize_body(SerializingStream&amp; s)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00963"></a><span class="lineno">  963</span>&#160;    MXNode::serialize_body(s);</div>
-<div class="line"><a name="l00964"></a><span class="lineno">  964</span>&#160;    s.pack(<span class="stringliteral">&quot;SetNonzerosSlice2::inner&quot;</span>, inner_);</div>
-<div class="line"><a name="l00965"></a><span class="lineno">  965</span>&#160;    s.pack(<span class="stringliteral">&quot;SetNonzerosSlice2::outer&quot;</span>, outer_);</div>
-<div class="line"><a name="l00966"></a><span class="lineno">  966</span>&#160;  }</div>
-<div class="line"><a name="l00967"></a><span class="lineno">  967</span>&#160; </div>
-<div class="line"><a name="l00968"></a><span class="lineno">  968</span>&#160;  <span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> Add&gt;</div>
-<div class="line"><a name="l00969"></a><span class="lineno">  969</span>&#160;  SetNonzerosSlice2&lt;Add&gt;::SetNonzerosSlice2(DeserializingStream&amp; s) : SetNonzeros&lt;Add&gt;(s) {</div>
-<div class="line"><a name="l00970"></a><span class="lineno">  970</span>&#160;    s.unpack(<span class="stringliteral">&quot;SetNonzerosSlice2::inner&quot;</span>, inner_);</div>
-<div class="line"><a name="l00971"></a><span class="lineno">  971</span>&#160;    s.unpack(<span class="stringliteral">&quot;SetNonzerosSlice2::outer&quot;</span>, outer_);</div>
-<div class="line"><a name="l00972"></a><span class="lineno">  972</span>&#160;  }</div>
-<div class="line"><a name="l00973"></a><span class="lineno">  973</span>&#160; </div>
-<div class="line"><a name="l00974"></a><span class="lineno">  974</span>&#160;  <span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> Add&gt;</div>
-<div class="line"><a name="l00975"></a><span class="lineno">  975</span>&#160;  <span class="keywordtype">void</span> SetNonzerosSlice2&lt;Add&gt;::serialize_type(SerializingStream&amp; s)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00976"></a><span class="lineno">  976</span>&#160;    MXNode::serialize_type(s);</div>
-<div class="line"><a name="l00977"></a><span class="lineno">  977</span>&#160;    s.pack(<span class="stringliteral">&quot;SetNonzeros::type&quot;</span>, <span class="charliteral">&#39;c&#39;</span>);</div>
-<div class="line"><a name="l00978"></a><span class="lineno">  978</span>&#160;  }</div>
-<div class="line"><a name="l00979"></a><span class="lineno">  979</span>&#160; </div>
-<div class="line"><a name="l00980"></a><span class="lineno">  980</span>&#160;  <span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> Add&gt;</div>
-<div class="line"><a name="l00981"></a><span class="lineno">  981</span>&#160;  MXNode* SetNonzeros&lt;Add&gt;::deserialize(DeserializingStream&amp; s) {</div>
-<div class="line"><a name="l00982"></a><span class="lineno">  982</span>&#160;    <span class="keywordtype">char</span> t;</div>
-<div class="line"><a name="l00983"></a><span class="lineno">  983</span>&#160;    s.unpack(<span class="stringliteral">&quot;SetNonzeros::type&quot;</span>, t);</div>
-<div class="line"><a name="l00984"></a><span class="lineno">  984</span>&#160;    <span class="keywordflow">switch</span> (t) {</div>
-<div class="line"><a name="l00985"></a><span class="lineno">  985</span>&#160;      <span class="keywordflow">case</span> <span class="charliteral">&#39;a&#39;</span>: <span class="keywordflow">return</span> <span class="keyword">new</span> SetNonzerosVector&lt;Add&gt;(s);</div>
-<div class="line"><a name="l00986"></a><span class="lineno">  986</span>&#160;      <span class="keywordflow">case</span> <span class="charliteral">&#39;b&#39;</span>: <span class="keywordflow">return</span> <span class="keyword">new</span> SetNonzerosSlice&lt;Add&gt;(s);</div>
-<div class="line"><a name="l00987"></a><span class="lineno">  987</span>&#160;      <span class="keywordflow">case</span> <span class="charliteral">&#39;c&#39;</span>: <span class="keywordflow">return</span> <span class="keyword">new</span> SetNonzerosSlice2&lt;Add&gt;(s);</div>
-<div class="line"><a name="l00988"></a><span class="lineno">  988</span>&#160;      <span class="keywordflow">default</span>: casadi_assert_dev(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00989"></a><span class="lineno">  989</span>&#160;    }</div>
-<div class="line"><a name="l00990"></a><span class="lineno">  990</span>&#160;  }</div>
-<div class="line"><a name="l00991"></a><span class="lineno">  991</span>&#160; </div>
-<div class="line"><a name="l00992"></a><span class="lineno">  992</span>&#160;} <span class="comment">// namespace casadi</span></div>
-<div class="line"><a name="l00993"></a><span class="lineno">  993</span>&#160; </div>
-<div class="line"><a name="l00995"></a><span class="lineno">  995</span>&#160; </div>
-<div class="line"><a name="l00996"></a><span class="lineno">  996</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_SETNONZEROS_IMPL_HPP</span></div>
-<div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../db/da5/binary__mx__impl_8hpp_source.html#l00036">binary_mx_impl.hpp:36</a></div></div>
+<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;    <span class="comment">// Condegen the indices</span></div>
+<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;    std::string ind = g.constant(this-&gt;nz_);</div>
+<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160; </div>
+<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;    <span class="comment">// Perform the operation inplace</span></div>
+<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;    g.local(<span class="stringliteral">&quot;cii&quot;</span>, <span class="stringliteral">&quot;const casadi_int&quot;</span>, <span class="stringliteral">&quot;*&quot;</span>);</div>
+<div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;    g.local(<span class="stringliteral">&quot;rr&quot;</span>, <span class="stringliteral">&quot;casadi_real&quot;</span>, <span class="stringliteral">&quot;*&quot;</span>);</div>
+<div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;    g.local(<span class="stringliteral">&quot;cs&quot;</span>, <span class="stringliteral">&quot;const casadi_real&quot;</span>, <span class="stringliteral">&quot;*&quot;</span>);</div>
+<div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;    g &lt;&lt; <span class="stringliteral">&quot;for (cii=&quot;</span> &lt;&lt; ind &lt;&lt; <span class="stringliteral">&quot;, rr=&quot;</span> &lt;&lt; g.work(res[0], this-&gt;nnz(), <span class="keyword">false</span>) &lt;&lt; <span class="stringliteral">&quot;, &quot;</span></div>
+<div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;      &lt;&lt; <span class="stringliteral">&quot;cs=&quot;</span> &lt;&lt; g.work(arg[1], this-&gt;dep(1).nnz(), arg_is_ref[1]) &lt;&lt; <span class="stringliteral">&quot;; cii!=&quot;</span> &lt;&lt; ind</div>
+<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;      &lt;&lt; <span class="stringliteral">&quot;+&quot;</span> &lt;&lt; this-&gt;nz_.size() &lt;&lt; <span class="stringliteral">&quot;; ++cii, ++cs) &quot;</span>;</div>
+<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d7/d23/namespacecasadi.html#a528bcf5fe0380bc5227f0c5cbf1e6621">has_negative</a>(this-&gt;nz_)) {</div>
+<div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;      g &lt;&lt; <span class="stringliteral">&quot;if (*cii&gt;=0) &quot;</span>;</div>
+<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;    }</div>
+<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;    g &lt;&lt; <span class="stringliteral">&quot;rr[*cii] &quot;</span> &lt;&lt; (Add?<span class="stringliteral">&quot;+=&quot;</span>:<span class="stringliteral">&quot;=&quot;</span>) &lt;&lt; <span class="stringliteral">&quot; *cs;\n&quot;</span>;</div>
+<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;  }</div>
+<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160; </div>
+<div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;  <span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> Add&gt;</div>
+<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;  <span class="keywordtype">void</span> SetNonzerosSlice&lt;Add&gt;::</div>
+<div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;  generate(CodeGenerator&amp; g,</div>
+<div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160;           <span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; arg,</div>
+<div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160;           <span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; res,</div>
+<div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;           <span class="keyword">const</span> std::vector&lt;bool&gt;&amp; arg_is_ref,</div>
+<div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160;           std::vector&lt;bool&gt;&amp; res_is_ref)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160;    <span class="comment">// Copy first argument if not inplace</span></div>
+<div class="line"><a name="l00895"></a><span class="lineno">  895</span>&#160;    <span class="keywordflow">if</span> (arg[0]!=res[0] || arg_is_ref[0]) {</div>
+<div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160;      g &lt;&lt; g.copy(g.work(arg[0], this-&gt;dep(0).nnz(), arg_is_ref[0]), this-&gt;nnz(),</div>
+<div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160;                          g.work(res[0], this-&gt;nnz(), <span class="keyword">false</span>)) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160;    }</div>
+<div class="line"><a name="l00899"></a><span class="lineno">  899</span>&#160; </div>
+<div class="line"><a name="l00900"></a><span class="lineno">  900</span>&#160;    <span class="comment">// Perform the operation inplace</span></div>
+<div class="line"><a name="l00901"></a><span class="lineno">  901</span>&#160;    g.local(<span class="stringliteral">&quot;rr&quot;</span>, <span class="stringliteral">&quot;casadi_real&quot;</span>, <span class="stringliteral">&quot;*&quot;</span>);</div>
+<div class="line"><a name="l00902"></a><span class="lineno">  902</span>&#160;    g.local(<span class="stringliteral">&quot;cs&quot;</span>, <span class="stringliteral">&quot;const casadi_real&quot;</span>, <span class="stringliteral">&quot;*&quot;</span>);</div>
+<div class="line"><a name="l00903"></a><span class="lineno">  903</span>&#160;    g &lt;&lt; <span class="stringliteral">&quot;for (rr=&quot;</span> &lt;&lt; g.work(res[0], this-&gt;nnz(), <span class="keyword">false</span>) &lt;&lt; <span class="stringliteral">&quot;+&quot;</span> &lt;&lt; s_.start &lt;&lt; <span class="stringliteral">&quot;, cs=&quot;</span></div>
+<div class="line"><a name="l00904"></a><span class="lineno">  904</span>&#160;      &lt;&lt; g.work(arg[1], this-&gt;dep(1).nnz(), arg_is_ref[1]) &lt;&lt; <span class="stringliteral">&quot;; rr!=&quot;</span></div>
+<div class="line"><a name="l00905"></a><span class="lineno">  905</span>&#160;      &lt;&lt; g.work(res[0], this-&gt;nnz(), <span class="keyword">false</span>) &lt;&lt; <span class="stringliteral">&quot;+&quot;</span> &lt;&lt; s_.stop</div>
+<div class="line"><a name="l00906"></a><span class="lineno">  906</span>&#160;      &lt;&lt; <span class="stringliteral">&quot;; rr+=&quot;</span> &lt;&lt; s_.step &lt;&lt; <span class="stringliteral">&quot;)&quot;</span></div>
+<div class="line"><a name="l00907"></a><span class="lineno">  907</span>&#160;      &lt;&lt; <span class="stringliteral">&quot; *rr &quot;</span> &lt;&lt; (Add?<span class="stringliteral">&quot;+=&quot;</span>:<span class="stringliteral">&quot;=&quot;</span>) &lt;&lt; <span class="stringliteral">&quot; *cs++;\n&quot;</span>;</div>
+<div class="line"><a name="l00908"></a><span class="lineno">  908</span>&#160;  }</div>
+<div class="line"><a name="l00909"></a><span class="lineno">  909</span>&#160; </div>
+<div class="line"><a name="l00910"></a><span class="lineno">  910</span>&#160;  <span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> Add&gt;</div>
+<div class="line"><a name="l00911"></a><span class="lineno">  911</span>&#160;  <span class="keywordtype">void</span> SetNonzerosSlice2&lt;Add&gt;::</div>
+<div class="line"><a name="l00912"></a><span class="lineno">  912</span>&#160;  generate(CodeGenerator&amp; g,</div>
+<div class="line"><a name="l00913"></a><span class="lineno">  913</span>&#160;           <span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; arg,</div>
+<div class="line"><a name="l00914"></a><span class="lineno">  914</span>&#160;           <span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; res,</div>
+<div class="line"><a name="l00915"></a><span class="lineno">  915</span>&#160;           <span class="keyword">const</span> std::vector&lt;bool&gt;&amp; arg_is_ref,</div>
+<div class="line"><a name="l00916"></a><span class="lineno">  916</span>&#160;           std::vector&lt;bool&gt;&amp; res_is_ref)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00917"></a><span class="lineno">  917</span>&#160;    <span class="comment">// Copy first argument if not inplace</span></div>
+<div class="line"><a name="l00918"></a><span class="lineno">  918</span>&#160;    <span class="keywordflow">if</span> (arg[0]!=res[0] || arg_is_ref[0]) {</div>
+<div class="line"><a name="l00919"></a><span class="lineno">  919</span>&#160;      g &lt;&lt; g.copy(g.work(arg[0], this-&gt;dep(0).nnz(), arg_is_ref[0]), this-&gt;nnz(),</div>
+<div class="line"><a name="l00920"></a><span class="lineno">  920</span>&#160;                          g.work(res[0], this-&gt;nnz(), <span class="keyword">false</span>)) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><a name="l00921"></a><span class="lineno">  921</span>&#160;    }</div>
+<div class="line"><a name="l00922"></a><span class="lineno">  922</span>&#160; </div>
+<div class="line"><a name="l00923"></a><span class="lineno">  923</span>&#160;    <span class="comment">// Perform the operation inplace</span></div>
+<div class="line"><a name="l00924"></a><span class="lineno">  924</span>&#160;    g.local(<span class="stringliteral">&quot;rr&quot;</span>, <span class="stringliteral">&quot;casadi_real&quot;</span>, <span class="stringliteral">&quot;*&quot;</span>);</div>
+<div class="line"><a name="l00925"></a><span class="lineno">  925</span>&#160;    g.local(<span class="stringliteral">&quot;cs&quot;</span>, <span class="stringliteral">&quot;const casadi_real&quot;</span>, <span class="stringliteral">&quot;*&quot;</span>);</div>
+<div class="line"><a name="l00926"></a><span class="lineno">  926</span>&#160;    g.local(<span class="stringliteral">&quot;tt&quot;</span>, <span class="stringliteral">&quot;casadi_real&quot;</span>, <span class="stringliteral">&quot;*&quot;</span>);</div>
+<div class="line"><a name="l00927"></a><span class="lineno">  927</span>&#160;    g &lt;&lt; <span class="stringliteral">&quot;for (rr=&quot;</span> &lt;&lt; g.work(res[0], this-&gt;nnz(), <span class="keyword">false</span>) &lt;&lt; <span class="stringliteral">&quot;+&quot;</span> &lt;&lt; outer_.start</div>
+<div class="line"><a name="l00928"></a><span class="lineno">  928</span>&#160;      &lt;&lt; <span class="stringliteral">&quot;, cs=&quot;</span> &lt;&lt; g.work(arg[1], this-&gt;dep(1).nnz(), arg_is_ref[1]) &lt;&lt; <span class="stringliteral">&quot;; rr!=&quot;</span></div>
+<div class="line"><a name="l00929"></a><span class="lineno">  929</span>&#160;      &lt;&lt; g.work(res[0], this-&gt;nnz(), <span class="keyword">false</span>) &lt;&lt; <span class="stringliteral">&quot;+&quot;</span> &lt;&lt; outer_.stop</div>
+<div class="line"><a name="l00930"></a><span class="lineno">  930</span>&#160;      &lt;&lt; <span class="stringliteral">&quot;; rr+=&quot;</span> &lt;&lt; outer_.step &lt;&lt; <span class="stringliteral">&quot;)&quot;</span></div>
+<div class="line"><a name="l00931"></a><span class="lineno">  931</span>&#160;      &lt;&lt; <span class="stringliteral">&quot; for (tt=rr+&quot;</span> &lt;&lt; inner_.start &lt;&lt; <span class="stringliteral">&quot;; tt!=rr+&quot;</span> &lt;&lt; inner_.stop</div>
+<div class="line"><a name="l00932"></a><span class="lineno">  932</span>&#160;      &lt;&lt; <span class="stringliteral">&quot;; tt+=&quot;</span> &lt;&lt; inner_.step &lt;&lt; <span class="stringliteral">&quot;)&quot;</span></div>
+<div class="line"><a name="l00933"></a><span class="lineno">  933</span>&#160;      &lt;&lt; <span class="stringliteral">&quot; *tt &quot;</span> &lt;&lt; (Add?<span class="stringliteral">&quot;+=&quot;</span>:<span class="stringliteral">&quot;=&quot;</span>) &lt;&lt; <span class="stringliteral">&quot; *cs++;\n&quot;</span>;</div>
+<div class="line"><a name="l00934"></a><span class="lineno">  934</span>&#160;  }</div>
+<div class="line"><a name="l00935"></a><span class="lineno">  935</span>&#160; </div>
+<div class="line"><a name="l00936"></a><span class="lineno">  936</span>&#160;  <span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> Add&gt;</div>
+<div class="line"><a name="l00937"></a><span class="lineno">  937</span>&#160;  <span class="keywordtype">void</span> SetNonzerosVector&lt;Add&gt;::serialize_body(SerializingStream&amp; s)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00938"></a><span class="lineno">  938</span>&#160;    MXNode::serialize_body(s);</div>
+<div class="line"><a name="l00939"></a><span class="lineno">  939</span>&#160;    s.pack(<span class="stringliteral">&quot;SetNonzerosVector::nonzeros&quot;</span>, nz_);</div>
+<div class="line"><a name="l00940"></a><span class="lineno">  940</span>&#160;  }</div>
+<div class="line"><a name="l00941"></a><span class="lineno">  941</span>&#160; </div>
+<div class="line"><a name="l00942"></a><span class="lineno">  942</span>&#160;  <span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> Add&gt;</div>
+<div class="line"><a name="l00943"></a><span class="lineno">  943</span>&#160;  SetNonzerosVector&lt;Add&gt;::SetNonzerosVector(DeserializingStream&amp; s) : SetNonzeros&lt;Add&gt;(s) {</div>
+<div class="line"><a name="l00944"></a><span class="lineno">  944</span>&#160;    s.unpack(<span class="stringliteral">&quot;SetNonzerosVector::nonzeros&quot;</span>, nz_);</div>
+<div class="line"><a name="l00945"></a><span class="lineno">  945</span>&#160;  }</div>
+<div class="line"><a name="l00946"></a><span class="lineno">  946</span>&#160; </div>
+<div class="line"><a name="l00947"></a><span class="lineno">  947</span>&#160;  <span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> Add&gt;</div>
+<div class="line"><a name="l00948"></a><span class="lineno">  948</span>&#160;  <span class="keywordtype">void</span> SetNonzerosVector&lt;Add&gt;::serialize_type(SerializingStream&amp; s)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00949"></a><span class="lineno">  949</span>&#160;    MXNode::serialize_type(s);</div>
+<div class="line"><a name="l00950"></a><span class="lineno">  950</span>&#160;    s.pack(<span class="stringliteral">&quot;SetNonzeros::type&quot;</span>, <span class="charliteral">&#39;a&#39;</span>);</div>
+<div class="line"><a name="l00951"></a><span class="lineno">  951</span>&#160;  }</div>
+<div class="line"><a name="l00952"></a><span class="lineno">  952</span>&#160; </div>
+<div class="line"><a name="l00953"></a><span class="lineno">  953</span>&#160;  <span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> Add&gt;</div>
+<div class="line"><a name="l00954"></a><span class="lineno">  954</span>&#160;  <span class="keywordtype">void</span> SetNonzerosSlice&lt;Add&gt;::serialize_body(SerializingStream&amp; s)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00955"></a><span class="lineno">  955</span>&#160;    MXNode::serialize_body(s);</div>
+<div class="line"><a name="l00956"></a><span class="lineno">  956</span>&#160;    s.pack(<span class="stringliteral">&quot;SetNonzerosSlice::slice&quot;</span>, s_);</div>
+<div class="line"><a name="l00957"></a><span class="lineno">  957</span>&#160;  }</div>
+<div class="line"><a name="l00958"></a><span class="lineno">  958</span>&#160; </div>
+<div class="line"><a name="l00959"></a><span class="lineno">  959</span>&#160;  <span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> Add&gt;</div>
+<div class="line"><a name="l00960"></a><span class="lineno">  960</span>&#160;  SetNonzerosSlice&lt;Add&gt;::SetNonzerosSlice(DeserializingStream&amp; s) : SetNonzeros&lt;Add&gt;(s) {</div>
+<div class="line"><a name="l00961"></a><span class="lineno">  961</span>&#160;    s.unpack(<span class="stringliteral">&quot;SetNonzerosSlice::slice&quot;</span>, s_);</div>
+<div class="line"><a name="l00962"></a><span class="lineno">  962</span>&#160;  }</div>
+<div class="line"><a name="l00963"></a><span class="lineno">  963</span>&#160; </div>
+<div class="line"><a name="l00964"></a><span class="lineno">  964</span>&#160;  <span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> Add&gt;</div>
+<div class="line"><a name="l00965"></a><span class="lineno">  965</span>&#160;  <span class="keywordtype">void</span> SetNonzerosSlice&lt;Add&gt;::serialize_type(SerializingStream&amp; s)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00966"></a><span class="lineno">  966</span>&#160;    MXNode::serialize_type(s);</div>
+<div class="line"><a name="l00967"></a><span class="lineno">  967</span>&#160;    s.pack(<span class="stringliteral">&quot;SetNonzeros::type&quot;</span>, <span class="charliteral">&#39;b&#39;</span>);</div>
+<div class="line"><a name="l00968"></a><span class="lineno">  968</span>&#160;  }</div>
+<div class="line"><a name="l00969"></a><span class="lineno">  969</span>&#160; </div>
+<div class="line"><a name="l00970"></a><span class="lineno">  970</span>&#160;  <span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> Add&gt;</div>
+<div class="line"><a name="l00971"></a><span class="lineno">  971</span>&#160;  <span class="keywordtype">void</span> SetNonzerosSlice2&lt;Add&gt;::serialize_body(SerializingStream&amp; s)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00972"></a><span class="lineno">  972</span>&#160;    MXNode::serialize_body(s);</div>
+<div class="line"><a name="l00973"></a><span class="lineno">  973</span>&#160;    s.pack(<span class="stringliteral">&quot;SetNonzerosSlice2::inner&quot;</span>, inner_);</div>
+<div class="line"><a name="l00974"></a><span class="lineno">  974</span>&#160;    s.pack(<span class="stringliteral">&quot;SetNonzerosSlice2::outer&quot;</span>, outer_);</div>
+<div class="line"><a name="l00975"></a><span class="lineno">  975</span>&#160;  }</div>
+<div class="line"><a name="l00976"></a><span class="lineno">  976</span>&#160; </div>
+<div class="line"><a name="l00977"></a><span class="lineno">  977</span>&#160;  <span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> Add&gt;</div>
+<div class="line"><a name="l00978"></a><span class="lineno">  978</span>&#160;  SetNonzerosSlice2&lt;Add&gt;::SetNonzerosSlice2(DeserializingStream&amp; s) : SetNonzeros&lt;Add&gt;(s) {</div>
+<div class="line"><a name="l00979"></a><span class="lineno">  979</span>&#160;    s.unpack(<span class="stringliteral">&quot;SetNonzerosSlice2::inner&quot;</span>, inner_);</div>
+<div class="line"><a name="l00980"></a><span class="lineno">  980</span>&#160;    s.unpack(<span class="stringliteral">&quot;SetNonzerosSlice2::outer&quot;</span>, outer_);</div>
+<div class="line"><a name="l00981"></a><span class="lineno">  981</span>&#160;  }</div>
+<div class="line"><a name="l00982"></a><span class="lineno">  982</span>&#160; </div>
+<div class="line"><a name="l00983"></a><span class="lineno">  983</span>&#160;  <span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> Add&gt;</div>
+<div class="line"><a name="l00984"></a><span class="lineno">  984</span>&#160;  <span class="keywordtype">void</span> SetNonzerosSlice2&lt;Add&gt;::serialize_type(SerializingStream&amp; s)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00985"></a><span class="lineno">  985</span>&#160;    MXNode::serialize_type(s);</div>
+<div class="line"><a name="l00986"></a><span class="lineno">  986</span>&#160;    s.pack(<span class="stringliteral">&quot;SetNonzeros::type&quot;</span>, <span class="charliteral">&#39;c&#39;</span>);</div>
+<div class="line"><a name="l00987"></a><span class="lineno">  987</span>&#160;  }</div>
+<div class="line"><a name="l00988"></a><span class="lineno">  988</span>&#160; </div>
+<div class="line"><a name="l00989"></a><span class="lineno">  989</span>&#160;  <span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> Add&gt;</div>
+<div class="line"><a name="l00990"></a><span class="lineno">  990</span>&#160;  MXNode* SetNonzeros&lt;Add&gt;::deserialize(DeserializingStream&amp; s) {</div>
+<div class="line"><a name="l00991"></a><span class="lineno">  991</span>&#160;    <span class="keywordtype">char</span> t;</div>
+<div class="line"><a name="l00992"></a><span class="lineno">  992</span>&#160;    s.unpack(<span class="stringliteral">&quot;SetNonzeros::type&quot;</span>, t);</div>
+<div class="line"><a name="l00993"></a><span class="lineno">  993</span>&#160;    <span class="keywordflow">switch</span> (t) {</div>
+<div class="line"><a name="l00994"></a><span class="lineno">  994</span>&#160;      <span class="keywordflow">case</span> <span class="charliteral">&#39;a&#39;</span>: <span class="keywordflow">return</span> <span class="keyword">new</span> SetNonzerosVector&lt;Add&gt;(s);</div>
+<div class="line"><a name="l00995"></a><span class="lineno">  995</span>&#160;      <span class="keywordflow">case</span> <span class="charliteral">&#39;b&#39;</span>: <span class="keywordflow">return</span> <span class="keyword">new</span> SetNonzerosSlice&lt;Add&gt;(s);</div>
+<div class="line"><a name="l00996"></a><span class="lineno">  996</span>&#160;      <span class="keywordflow">case</span> <span class="charliteral">&#39;c&#39;</span>: <span class="keywordflow">return</span> <span class="keyword">new</span> SetNonzerosSlice2&lt;Add&gt;(s);</div>
+<div class="line"><a name="l00997"></a><span class="lineno">  997</span>&#160;      <span class="keywordflow">default</span>: casadi_assert_dev(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00998"></a><span class="lineno">  998</span>&#160;    }</div>
+<div class="line"><a name="l00999"></a><span class="lineno">  999</span>&#160;  }</div>
+<div class="line"><a name="l01000"></a><span class="lineno"> 1000</span>&#160; </div>
+<div class="line"><a name="l01001"></a><span class="lineno"> 1001</span>&#160;} <span class="comment">// namespace casadi</span></div>
+<div class="line"><a name="l01002"></a><span class="lineno"> 1002</span>&#160; </div>
+<div class="line"><a name="l01004"></a><span class="lineno"> 1004</span>&#160; </div>
+<div class="line"><a name="l01005"></a><span class="lineno"> 1005</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_SETNONZEROS_IMPL_HPP</span></div>
+<div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/archiver_8hpp_source.html#l00032">archiver.hpp:32</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_a528bcf5fe0380bc5227f0c5cbf1e6621"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a528bcf5fe0380bc5227f0c5cbf1e6621">casadi::has_negative</a></div><div class="ttdeci">bool has_negative(const std::vector&lt; T &gt; &amp;v)</div><div class="ttdoc">Check if the vector has negative entries.</div></div>
 <div class="ttc" id="anamespacecasadi_html_a5f0c45733f03553417d8fe9235105912"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a5f0c45733f03553417d8fe9235105912">casadi::is_slice</a></div><div class="ttdeci">bool CASADI_EXPORT is_slice(const IM &amp;x, bool ind1=false)</div><div class="ttdoc">Is the IM a Slice.</div></div>
 <div class="ttc" id="anamespacecasadi_html_a789f46f8454048c51c2b5b26aed8cd41"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a789f46f8454048c51c2b5b26aed8cd41">casadi::to_slice2</a></div><div class="ttdeci">std::pair&lt; Slice, Slice &gt; CASADI_EXPORT to_slice2(const std::vector&lt; casadi_int &gt; &amp;v)</div><div class="ttdoc">Construct nested slices from an index vector (requires is_slice2(v) to be true)</div></div>
 <div class="ttc" id="anamespacecasadi_html_a86b62e4d32b70eac24b1479f477be637"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a86b62e4d32b70eac24b1479f477be637">casadi::is_slice2</a></div><div class="ttdeci">bool CASADI_EXPORT is_slice2(const std::vector&lt; casadi_int &gt; &amp;v)</div><div class="ttdoc">Check if an index vector can be represented more efficiently as two nested slices.</div></div>
+<div class="ttc" id="anamespacecasadi_html_aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">casadi::Category::T</a></div><div class="ttdeci">@ T</div></div>
 <div class="ttc" id="anamespacecasadi_html_affb587f39472ad4d659825d932d0499d"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#affb587f39472ad4d659825d932d0499d">casadi::to_slice</a></div><div class="ttdeci">Slice CASADI_EXPORT to_slice(const IM &amp;x, bool ind1=false)</div><div class="ttdoc">Convert IM to Slice.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </body>

@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -69,7 +69,7 @@ $(function() {
 <tr>
 <td>always_inline</td><td>OT_BOOL</td><td>Force inlining.</td><td>casadi::FunctionInternal </td></tr>
 <tr>
-<td>augmented_options</td><td>OT_DICT</td><td>Options to be passed down to the augmented integrator, if one is constructed.</td><td>casadi::Integrator </td></tr>
+<td>augmented_options</td><td>OT_DICT</td><td>Options to be passed down to the augmented integrator, if one is constructed</td><td>casadi::Integrator </td></tr>
 <tr>
 <td>cache</td><td>OT_DICT</td><td>Prepopulate the function cache. Default: empty</td><td>casadi::FunctionInternal </td></tr>
 <tr>
@@ -113,7 +113,9 @@ $(function() {
 <tr>
 <td>error_on_fail</td><td>OT_BOOL</td><td>Throw exceptions when function evaluation fails (default true).</td><td>casadi::ProtoFunction </td></tr>
 <tr>
-<td>expand</td><td>OT_BOOL</td><td>Replace MX with SX expressions in problem formulation [false]</td><td>casadi::Integrator </td></tr>
+<td>event_tol</td><td>OT_DOUBLE</td><td>Termination tolerance for the event iteration</td><td>casadi::Integrator </td></tr>
+<tr>
+<td>expand</td><td>OT_BOOL</td><td>Replace MX with SX expressions in problem formulation [false] This happens before creating derivatives unless indicated by postpone_expand</td><td>casadi::OracleFunction </td></tr>
 <tr>
 <td>external_transform</td><td>OT_VECTORVECTOR</td><td>List of external_transform instruction arguments. Default: empty</td><td>casadi::FunctionInternal </td></tr>
 <tr>
@@ -163,6 +165,10 @@ $(function() {
 <tr>
 <td>linear_solver_options</td><td>OT_DICT</td><td>Options to be passed to the linear solver</td><td>casadi::SundialsInterface </td></tr>
 <tr>
+<td>max_event_iter</td><td>OT_INT</td><td>Maximum number of iterations to zero in on a single event</td><td>casadi::Integrator </td></tr>
+<tr>
+<td>max_events</td><td>OT_INT</td><td>Maximum total number of events</td><td>casadi::Integrator </td></tr>
+<tr>
 <td>max_io</td><td>OT_INT</td><td>Acceptable number of inputs and outputs. Warn if exceeded.</td><td>casadi::FunctionInternal </td></tr>
 <tr>
 <td>max_krylov</td><td>OT_INT</td><td>Maximum Krylov subspace size</td><td>casadi::SundialsInterface </td></tr>
@@ -198,6 +204,8 @@ $(function() {
 <td>post_expand</td><td>OT_BOOL</td><td>After construction, expand this Function. Default: False</td><td>casadi::FunctionInternal </td></tr>
 <tr>
 <td>post_expand_options</td><td>OT_DICT</td><td>Options to be passed to post-construction expansion. Default: empty</td><td>casadi::FunctionInternal </td></tr>
+<tr>
+<td>postpone_expand</td><td>OT_BOOL</td><td>When expand is active, postpone it until after creation of derivatives. Default: False</td><td>casadi::OracleFunction </td></tr>
 <tr>
 <td>print_in</td><td>OT_BOOL</td><td>Print numerical values of inputs [default: false]</td><td>casadi::FunctionInternal </td></tr>
 <tr>
@@ -246,6 +254,8 @@ $(function() {
 <td>t0</td><td>OT_DOUBLE</td><td>[DEPRECATED] Beginning of the time horizon</td><td>casadi::Integrator </td></tr>
 <tr>
 <td>tf</td><td>OT_DOUBLE</td><td>[DEPRECATED] End of the time horizon</td><td>casadi::Integrator </td></tr>
+<tr>
+<td>transition</td><td>OT_FUNCTION</td><td>Function to be called a zero-crossing events</td><td>casadi::Integrator </td></tr>
 <tr>
 <td>use_preconditioner</td><td>OT_BOOL</td><td>Precondition the iterative solver [default: true]</td><td>casadi::SundialsInterface </td></tr>
 <tr>

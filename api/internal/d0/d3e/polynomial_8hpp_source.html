@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -104,9 +104,9 @@ $(function() {
 <div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="../../de/d61/classcasadi_1_1Polynomial.html#add7c202dfb66da6c28f8c182c890de62">   56</a></span>&#160;    <a class="code" href="../../de/d61/classcasadi_1_1Polynomial.html#add7c202dfb66da6c28f8c182c890de62">Polynomial</a>(<span class="keyword">const</span> std::vector&lt;T&gt;&amp; coeff) : p_(coeff.begin(), coeff.end()) {}</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="../../de/d61/classcasadi_1_1Polynomial.html#ac7c79d0c2e348fa69b034ccb376a25bc">   60</a></span>&#160;    T <a class="code" href="../../de/d61/classcasadi_1_1Polynomial.html#ac7c79d0c2e348fa69b034ccb376a25bc">operator()</a>(<span class="keyword">const</span> T&amp; x)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="../../de/d61/classcasadi_1_1Polynomial.html#ac7c79d0c2e348fa69b034ccb376a25bc">   60</a></span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a> <a class="code" href="../../de/d61/classcasadi_1_1Polynomial.html#ac7c79d0c2e348fa69b034ccb376a25bc">operator()</a>(<span class="keyword">const</span> T&amp; x)<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      <span class="keyword">auto</span> it = p_.rbegin();</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      T ret = *it++;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a> ret = *it++;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      <span class="keywordflow">while</span> (it!=p_.rend()) {</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        ret *= x;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        ret += *it++;</div>
@@ -169,8 +169,9 @@ $(function() {
 <div class="ttc" id="aclasscasadi_1_1Polynomial_html_ac7c79d0c2e348fa69b034ccb376a25bc"><div class="ttname"><a href="../../de/d61/classcasadi_1_1Polynomial.html#ac7c79d0c2e348fa69b034ccb376a25bc">casadi::Polynomial::operator()</a></div><div class="ttdeci">T operator()(const T &amp;x) const</div><div class="ttdoc">Evaluate numerically.</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d3e/polynomial_8hpp_source.html#l00060">polynomial.hpp:60</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1Polynomial_html_add7c202dfb66da6c28f8c182c890de62"><div class="ttname"><a href="../../de/d61/classcasadi_1_1Polynomial.html#add7c202dfb66da6c28f8c182c890de62">casadi::Polynomial::Polynomial</a></div><div class="ttdeci">Polynomial(const std::vector&lt; T &gt; &amp;coeff)</div><div class="ttdoc">Construct from a vector of polynomial coefficients.</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d3e/polynomial_8hpp_source.html#l00056">polynomial.hpp:56</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1Polynomial_html_aebdebf6e1790027e0417ed733f4bb1ab"><div class="ttname"><a href="../../de/d61/classcasadi_1_1Polynomial.html#aebdebf6e1790027e0417ed733f4bb1ab">casadi::Polynomial::p_</a></div><div class="ttdeci">std::vector&lt; double &gt; p_</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d3e/polynomial_8hpp_source.html#l00120">polynomial.hpp:120</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1Printable_html"><div class="ttname"><a href="../../d7/d82/classcasadi_1_1Printable.html">casadi::Printable</a></div><div class="ttdoc">Base class for objects that have a natural string representation.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dbf/printable_8hpp_source.html#l00054">printable.hpp:54</a></div></div>
-<div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/da2/assertion_8cpp_source.html#l00029">assertion.cpp:29</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1Printable_html"><div class="ttname"><a href="../../d7/d82/classcasadi_1_1Printable.html">casadi::Printable</a></div><div class="ttdoc">Base class for objects that have a natural string representation.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dbf/printable_8hpp_source.html#l00062">printable.hpp:62</a></div></div>
+<div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d03/archiver_8cpp_source.html#l00028">archiver.cpp:28</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">casadi::Category::T</a></div><div class="ttdeci">@ T</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </body>
 </html>

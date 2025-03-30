@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -88,9 +88,9 @@ $(function() {
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;generic_type.hpp&quot;</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d7/d23/namespacecasadi.html">casadi</a> {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#ifndef SWIG</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="../../db/d35/structcasadi_1_1Options.html">   41</a></span>&#160;  <span class="keyword">struct </span>CASADI_EXPORT <a class="code" href="../../db/d35/structcasadi_1_1Options.html">Options</a> {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="../../db/d35/structcasadi_1_1Options.html">   40</a></span>&#160;  <span class="keyword">struct </span>CASADI_EXPORT <a class="code" href="../../db/d35/structcasadi_1_1Options.html">Options</a> {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#ifndef SWIG</span></div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">// Base classes, whose options are also valid for the derived class</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="../../db/d35/structcasadi_1_1Options.html#a18b38a7d7886c7bcc6cb8a7cb9410777">   43</a></span>&#160;    std::vector&lt;const Options*&gt; <a class="code" href="../../db/d35/structcasadi_1_1Options.html#a18b38a7d7886c7bcc6cb8a7cb9410777">bases</a>;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
@@ -109,54 +109,57 @@ $(function() {
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="comment">// Locate an entry</span></div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../da/d3e/structcasadi_1_1Options_1_1Entry.html">Options::Entry</a>* <a class="code" href="../../d7/d23/namespacecasadi.html#a5ebcfb144f8b57dc6cbc57604517dd8c">find</a>(<span class="keyword">const</span> std::string&amp; name) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="comment">// Get all entries</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    std::vector&lt;std::string&gt; <a class="code" href="../../d7/d23/namespacecasadi.html#aae6002a1729ebaf663e390e56757f1b0">all</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="comment">// Get type of an entry</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    std::string type(<span class="keyword">const</span> std::string&amp; name) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="comment">// Get description for an entry</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    std::string info(<span class="keyword">const</span> std::string&amp; name) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="comment">// Print all entries</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">void</span> disp(std::ostream&amp; stream) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">double</span> word_distance(<span class="keyword">const</span> std::string &amp;a, <span class="keyword">const</span> std::string &amp;b);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    std::vector&lt;std::string&gt; suggestions(<span class="keyword">const</span> std::string&amp; word, casadi_int amount=5) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">void</span> best_matches(<span class="keyword">const</span> std::string&amp; word,</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                      std::vector&lt;std::pair&lt;double, std::string&gt; &gt;&amp; best) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">bool</span> has_dot(<span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>&amp; opts);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">bool</span> has_null(<span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>&amp; opts);</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">bool</span> is_sane(<span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>&amp; opts);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keyword">static</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> sanitize(<span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>&amp; opts);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordtype">void</span> check(<span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>&amp; opts) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordtype">void</span> print_all(std::ostream &amp;stream) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordtype">void</span> print_one(<span class="keyword">const</span> std::string &amp;name, std::ostream &amp;stream) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  };</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// SWIG</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment"></span>} <span class="comment">// namespace casadi</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// SWIG</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="comment">// Get all entries</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    std::vector&lt;std::string&gt; <a class="code" href="../../d7/d23/namespacecasadi.html#aae6002a1729ebaf663e390e56757f1b0">all</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="comment">// Get type of an entry</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    std::string type(<span class="keyword">const</span> std::string&amp; name) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="comment">// Get description for an entry</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    std::string info(<span class="keyword">const</span> std::string&amp; name) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#ifndef SWIG</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="comment">// Print all entries</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">void</span> disp(std::ostream&amp; stream) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// SWIG</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">double</span> word_distance(<span class="keyword">const</span> std::string &amp;a, <span class="keyword">const</span> std::string &amp;b);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    std::vector&lt;std::string&gt; suggestions(<span class="keyword">const</span> std::string&amp; word, casadi_int amount=5) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">void</span> best_matches(<span class="keyword">const</span> std::string&amp; word,</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                      std::vector&lt;std::pair&lt;double, std::string&gt; &gt;&amp; best) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">bool</span> has_dot(<span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>&amp; opts);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">bool</span> has_null(<span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>&amp; opts);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">bool</span> is_sane(<span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>&amp; opts);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keyword">static</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> sanitize(<span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>&amp; opts, <span class="keywordtype">bool</span> top_level=<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">void</span> check(<span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>&amp; opts) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordtype">void</span> print_all(std::ostream &amp;stream) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordtype">void</span> print_one(<span class="keyword">const</span> std::string &amp;name, std::ostream &amp;stream) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  };</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_OPTIONS_HPP</span></div>
-<div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/da2/assertion_8cpp_source.html#l00029">assertion.cpp:29</a></div></div>
-<div class="ttc" id="anamespacecasadi_html_a5ebcfb144f8b57dc6cbc57604517dd8c"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a5ebcfb144f8b57dc6cbc57604517dd8c">casadi::find</a></div><div class="ttdeci">std::vector&lt; casadi_int &gt; find(const std::vector&lt; T &gt; &amp;v)</div><div class="ttdoc">find nonzeros</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d18/casadi__misc_8hpp_source.html#l00611">casadi_misc.hpp:611</a></div></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;} <span class="comment">// namespace casadi</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_OPTIONS_HPP</span></div>
+<div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d03/archiver_8cpp_source.html#l00028">archiver.cpp:28</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_a5ebcfb144f8b57dc6cbc57604517dd8c"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a5ebcfb144f8b57dc6cbc57604517dd8c">casadi::find</a></div><div class="ttdeci">std::vector&lt; casadi_int &gt; find(const std::vector&lt; T &gt; &amp;v)</div><div class="ttdoc">find nonzeros</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d18/casadi__misc_8hpp_source.html#l00618">casadi_misc.hpp:618</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_a74a07d00866ce86187cc0f081d340015"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a74a07d00866ce86187cc0f081d340015">casadi::TypeID</a></div><div class="ttdeci">TypeID</div><div class="ttdoc">Types of options.</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d30/generic__type_8hpp_source.html#l00043">generic_type.hpp:43</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_a8b909f6932a91230738731512b99127e"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">casadi::Dict</a></div><div class="ttdeci">GenericType::Dict Dict</div><div class="ttdoc">C++ equivalent of Python's dict or MATLAB's struct.</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d30/generic__type_8hpp_source.html#l00258">generic_type.hpp:258</a></div></div>
-<div class="ttc" id="anamespacecasadi_html_aae6002a1729ebaf663e390e56757f1b0"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#aae6002a1729ebaf663e390e56757f1b0">casadi::all</a></div><div class="ttdeci">bool all(const std::vector&lt; bool &gt; &amp;v)</div><div class="ttdoc">Check if all arguments are true.</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/da7/casadi__misc_8cpp_source.html#l00076">casadi_misc.cpp:76</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_aae6002a1729ebaf663e390e56757f1b0"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#aae6002a1729ebaf663e390e56757f1b0">casadi::all</a></div><div class="ttdeci">bool all(const std::vector&lt; bool &gt; &amp;v)</div><div class="ttdoc">Check if all arguments are true.</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/da7/casadi__misc_8cpp_source.html#l00077">casadi_misc.cpp:77</a></div></div>
 <div class="ttc" id="astructcasadi_1_1Options_1_1Entry_html"><div class="ttname"><a href="../../da/d3e/structcasadi_1_1Options_1_1Entry.html">casadi::Options::Entry</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/d95/options_8hpp_source.html#l00046">options.hpp:46</a></div></div>
 <div class="ttc" id="astructcasadi_1_1Options_1_1Entry_html_a5027789ac3c77db32550fdafd8122338"><div class="ttname"><a href="../../da/d3e/structcasadi_1_1Options_1_1Entry.html#a5027789ac3c77db32550fdafd8122338">casadi::Options::Entry::type</a></div><div class="ttdeci">TypeID type</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d95/options_8hpp_source.html#l00047">options.hpp:47</a></div></div>
 <div class="ttc" id="astructcasadi_1_1Options_1_1Entry_html_a72df589f1a557d9ae8716438f394de8a"><div class="ttname"><a href="../../da/d3e/structcasadi_1_1Options_1_1Entry.html#a72df589f1a557d9ae8716438f394de8a">casadi::Options::Entry::description</a></div><div class="ttdeci">std::string description</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d95/options_8hpp_source.html#l00048">options.hpp:48</a></div></div>
-<div class="ttc" id="astructcasadi_1_1Options_html"><div class="ttname"><a href="../../db/d35/structcasadi_1_1Options.html">casadi::Options</a></div><div class="ttdoc">Options metadata for a class.</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d95/options_8hpp_source.html#l00041">options.hpp:41</a></div></div>
+<div class="ttc" id="astructcasadi_1_1Options_html"><div class="ttname"><a href="../../db/d35/structcasadi_1_1Options.html">casadi::Options</a></div><div class="ttdoc">Options metadata for a class.</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d95/options_8hpp_source.html#l00040">options.hpp:40</a></div></div>
 <div class="ttc" id="astructcasadi_1_1Options_html_a18b38a7d7886c7bcc6cb8a7cb9410777"><div class="ttname"><a href="../../db/d35/structcasadi_1_1Options.html#a18b38a7d7886c7bcc6cb8a7cb9410777">casadi::Options::bases</a></div><div class="ttdeci">std::vector&lt; const Options * &gt; bases</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d95/options_8hpp_source.html#l00043">options.hpp:43</a></div></div>
 <div class="ttc" id="astructcasadi_1_1Options_html_a6ade3f65b6f0ab57f5755d827b9bbfe2"><div class="ttname"><a href="../../db/d35/structcasadi_1_1Options.html#a6ade3f65b6f0ab57f5755d827b9bbfe2">casadi::Options::entries</a></div><div class="ttdeci">std::map&lt; std::string, Entry &gt; entries</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d95/options_8hpp_source.html#l00055">options.hpp:55</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

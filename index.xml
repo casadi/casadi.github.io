@@ -2,220 +2,182 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>CasADi</title>
-    <link>https://web.casadi.org/</link>
+    <link>https://web.casadi.org/index.html</link>
     <description>Recent content on CasADi</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 17 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://web.casadi.org/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="https://web.casadi.org/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Welcome to CasADi</title>
-      <link>https://web.casadi.org/home/card-subtitle/</link>
-      <pubDate>Mon, 13 Oct 2014 20:07:19 +0000</pubDate>
+      <title></title>
+      <link>https://web.casadi.org/bottom-banner/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://web.casadi.org/home/card-subtitle/</guid>
-      <description>Build efficient optimal control software, with minimal effort. CasADi is an open-source tool for nonlinear optimization and algorithmic differentiation.
-It facilitates rapid &amp;mdash; yet efficient &amp;mdash; implementation of different methods for numerical optimal control, both in an offline context and for nonlinear model predictive control (NMPC).</description>
+      <guid>https://web.casadi.org/bottom-banner/</guid>
+      <description>📣Next hands-on CasADi class: November 18-20</description>
     </item>
     
     <item>
-      <title>Features</title>
-      <link>https://web.casadi.org/home/card-ad/</link>
-      <pubDate>Mon, 13 Oct 2014 20:07:19 +0000</pubDate>
+      <title></title>
+      <link>https://web.casadi.org/docs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://web.casadi.org/home/card-ad/</guid>
-      <description>Algorithmic Differentiation (AD) CasADi&#39;s backbone is a symbolic framework implementing forward and reverse mode of AD on expression graphs to construct gradients, large-and-sparse Jacobians and Hessians. These expression graphs, encapsulated in Function objects, can be evaluated in a virtual machine or be exported to stand-alone C code. import casadi.* % Create scalar/matrix symbols x = MX.sym(&amp;#39;x&amp;#39;,5); % Compose into expressions y = norm(x,2); % Sensitivity of expression -&amp;gt; new expression grad_y = gradient(y,x) % Create a Function to evaluate expression f = Function(&amp;#39;f&amp;#39;,{x},{grad_y}); % Evaluate numerically grad_y_num = f([1;2;3;4;5]) from casadi import * # Create scalar/matrix symbols x = MX.</description>
+      <guid>https://web.casadi.org/docs/</guid>
+      <description>Welcome to CasADi’s documentation!¶ 1. Introduction¶ CasADi is an open-source software tool for numerical optimization in general and optimal control (i.e. optimization involving differential equations) in particular. The project was started by Joel Andersson and Joris Gillis while PhD students at the Optimization in Engineering Center (OPTEC) of the KU Leuven under supervision of Moritz Diehl.
+This document aims at giving a condensed introduction to CasADi. After reading it, you should be able to formulate and manipulate expressions in CasADi’s symbolic framework, generate derivative information efficiently using algorithmic differentiation, to set up, solve and perform forward and adjoint sensitivity analysis for systems of ordinary differential equations (ODE) or differential-algebraic equations (DAE) as well as to formulate and solve nonlinear programs (NLP) problems and optimal control problems (OCP).</description>
     </item>
     
     <item>
-      <title>Features</title>
-      <link>https://web.casadi.org/home/card-integrator/</link>
-      <pubDate>Mon, 13 Oct 2014 20:07:19 +0000</pubDate>
+      <title></title>
+      <link>https://web.casadi.org/python-api/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://web.casadi.org/home/card-integrator/</guid>
-      <description>Dynamic systems $$ \begin{align} \left\\{ \begin{array}{ccll} \dot{x}_1 &amp;=&amp; (1-x_2^2) \\, x_1 - x_2, \quad &amp;x_1(0)=0 \\\\ \dot{x}_2 &amp;=&amp; x_1, \quad &amp;x_2(0)=1 \end{array} \right. \end{align} $$ import casadi.* x = MX.sym(&amp;#39;x&amp;#39;,2); % Two states % Expression for ODE right-hand side z = 1-x(2)^2; rhs = [z*x(1)-x(2);x(1)]; ode = struct; % ODE declaration ode.x = x; % states ode.ode = rhs; % right-hand side % Construct a Function that integrates over 4s F = integrator(&amp;#39;F&amp;#39;,&amp;#39;cvodes&amp;#39;,ode,0,4); % Start from x=[0;1] res = F(&amp;#39;x0&amp;#39;,[0;1]); disp(res.</description>
+      <guid>https://web.casadi.org/python-api/</guid>
+      <description>CasADi Python API¶ 1. Expression tools¶ acos(*args)¶ Arc cosine: x -&amp;gt; acos(x)
+acos(float x) -&amp;gt; float acos(DM x) -&amp;gt; DM acos(SX x) -&amp;gt; SX acos(MX x) -&amp;gt; MX Extra doc: https://github.com/casadi/casadi/wiki/L_p8
+Doc source: https://github.com/casadi/casadi/blob/main/casadi/core/generic_expression.hpp#L374
+Implementation: https://github.com/casadi/casadi/blob/main/casadi/core/generic_expression.hpp#L374-L376
+acosh(*args)¶ Inverse hyperbolic cosine: x -&amp;gt; acosh(x)
+acosh(float x) -&amp;gt; float acosh(DM x) -&amp;gt; DM acosh(SX x) -&amp;gt; SX acosh(MX x) -&amp;gt; MX Extra doc: https://github.com/casadi/casadi/wiki/L_pe
+Doc source: https://github.com/casadi/casadi/blob/main/casadi/core/generic_expression.hpp#L446
+Implementation: https://github.com/casadi/casadi/blob/main/casadi/core/generic_expression.hpp#L446-L448
+adj(*args)¶ Matrix adjoint.</description>
     </item>
     
     <item>
-      <title>Features</title>
-      <link>https://web.casadi.org/home/card-nlp/</link>
-      <pubDate>Mon, 13 Oct 2014 20:07:19 +0000</pubDate>
+      <title>CasADi master class</title>
+      <link>https://web.casadi.org/master2020/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://web.casadi.org/home/card-nlp/</guid>
-      <description>Nonlinear and quadratic programming Nonlinear programs (NLPs), possibly with integer variables (MINLP), can be solved using block structure or general sparsity exploiting sequential quadratic programming (SQP) or interfaces to IPOPT/BONMIN, BlockSQP, WORHP, KNITRO, SNOPT, SLEQP, and Alpaqa. Solution sensitivities, up to arbitrary order, can be calculated analytically. Quadratic programs (QPs), possibly with integer variables (MIQP), can be solved using a primal-dual active-set method [3] or interfaces to CPLEX, GUROBI, HPIPM, OOQP, qpOASES or HiGHS.</description>
+      <guid>https://web.casadi.org/master2020/</guid>
+      <description>CasADi master class (This event is in the past. Check the workshop page for future events)
+16-18 March 2020 – Leuven, Belgium
+Due to COVID-19, rescheduled to 27-29 July 2020 and completely online.
+(download this description as flyer)
+Target audience Academic/industrial CasADi users that want to get a deeper understanding of CasADi, in order to speed up existing applications or create advanced implementations. Unlike the fall course, there is no focus on mathematics.</description>
     </item>
     
     <item>
-      <title>Features</title>
-      <link>https://web.casadi.org/home/card-ocp/</link>
-      <pubDate>Mon, 13 Oct 2014 20:07:19 +0000</pubDate>
+      <title>CasADi master class 2024</title>
+      <link>https://web.casadi.org/master2024/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://web.casadi.org/home/card-ocp/</guid>
-      <description>Composition of the above import casadi.* x = MX.sym(&amp;#39;x&amp;#39;,2); % Two states p = MX.sym(&amp;#39;p&amp;#39;); % Free parameter % Expression for ODE right-hand side z = 1-x(2)^2; rhs = [z*x(1)-x(2)+2*tanh(p);x(1)]; % ODE declaration with free parameter ode = struct(&amp;#39;x&amp;#39;,x,&amp;#39;p&amp;#39;,p,&amp;#39;ode&amp;#39;,rhs); % Construct a Function that integrates over 1s F = integrator(&amp;#39;F&amp;#39;,&amp;#39;cvodes&amp;#39;,ode,0,1); % Control vector u = MX.sym(&amp;#39;u&amp;#39;,5,1); x = [0;1]; % Initial state for k=1:5 % Integrate 1s forward in time: % call integrator symbolically res = F(&amp;#39;x0&amp;#39;,x,&amp;#39;p&amp;#39;,u(k)); x = res.</description>
+      <guid>https://web.casadi.org/master2024/</guid>
+      <description>CasADi master class March 18-20, 2024 – Leuven, Belgium
+(download this description as flyer)
+Target audience Academic/industrial CasADi users that want to get a deeper understanding of CasADi, in order to speed up existing applications or create advanced implementations. Unlike the fall course, there is no focus on mathematics.
+CasADi? Originating from KU Leuven’s “Optimization in Engineering Center” under guidance of prof. Moritz Diehl, CasADi [1] is an open-source software framework for nonlinear optimization and algorithmic differentiation.</description>
     </item>
     
     <item>
-      <title>Get started</title>
-      <link>https://web.casadi.org/home/card-users/</link>
-      <pubDate>Mon, 13 Oct 2014 20:07:19 +0000</pubDate>
+      <title>Events</title>
+      <link>https://web.casadi.org/events/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://web.casadi.org/home/card-users/</guid>
-      <description>Applications CasADi saves time prototyping formulations, solving complex engineering problems, and building professional optimization tools. The landscape of its academic and industrial applications is diverse:
-trajectory optimization optimal control OCP moving horizon estimation MHE model predictive control MPC NLP MINLP ODE differential equations algebraic loops DAE optimal experiment OED pseudo spectral direct collocation single shooting multiple shooting indirect methods machine learning distributed MPC multi-objective pareto front robust optimization scenario tree hierarchical control sigma points design control co-design stochastic optimization multi-level MPC time optimal path following iterative learning Gauss-Newton energy medical stabilization cost curves grey-box model Collision Avoidance Lagrangian Duality economic MPC NMPC self-reflective real-time offline online Lagrange mechanics object-oriented multi-stage path constraints non-steady periodic cyclic feasibility study offset-free mpc Gaussian belief space continuous systems discrete systems redundant manipulators inverse kinematics Jacobian Hessian gradient Lyapunov Examples of software with a CasADi backend: JModelica.</description>
-    </item>
-    
-    <item>
-      <title>Get started</title>
-      <link>https://web.casadi.org/home/card-get-started/</link>
-      <pubDate>Mon, 13 Oct 2014 20:07:19 +0000</pubDate>
-      
-      <guid>https://web.casadi.org/home/card-get-started/</guid>
-      <description> ## Ready to try? Jump right in by getting CasADi and exploring the example pack, joining a workshop or online course, or watching a small tutorial. </description>
-    </item>
-    
-    <item>
-      <title>Welcome to CasADi</title>
-      <link>https://web.casadi.org/home/card-paper/</link>
-      <pubDate>Mon, 13 Oct 2014 20:07:19 +0000</pubDate>
-      
-      <guid>https://web.casadi.org/home/card-paper/</guid>
-      <description> ## Paper about CasADi A detailed description of the tool and its implementation can be found in a recent paper in Mathematical Programming Computation (preprint). Please cite this paper if you use CasADi in your academic work. </description>
-    </item>
-    
-    <item>
-      <title>Keep informed</title>
-      <link>https://web.casadi.org/home/card-newsletter/</link>
-      <pubDate>Mon, 13 Oct 2014 20:07:19 +0000</pubDate>
-      
-      <guid>https://web.casadi.org/home/card-newsletter/</guid>
-      <description> ## Keep informed Subscribe to our newsletter or follow us on the social media links below. </description>
-    </item>
-    
-    <item>
-      <title>Matlab coder meets CasADi codegen</title>
-      <link>https://web.casadi.org/blog/matlab-coder/</link>
-      <pubDate>Fri, 17 May 2024 00:00:00 +0000</pubDate>
-      
-      <guid>https://web.casadi.org/blog/matlab-coder/</guid>
-      <description>In this post we show how CasADi codegen can be integrated seemlessly with Matlab Coder. Matlab Coder is capable of transforming a Matlab function into C code. CasADi codegen is somewhat similar: it generates C code out of a CasADi Function.
-Some context Running CasADi generated code inside a mex file is nothing new. Indeed, it has been featured in the user guide for many years. Calls to such a mex file would play nicely with Matlab Coder out-of-the-box.</description>
-    </item>
-    
-    <item>
-      <title>CasADi-driven MPC in Simulink (part 2)</title>
-      <link>https://web.casadi.org/blog/mpc-simulink2/</link>
-      <pubDate>Thu, 19 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://web.casadi.org/blog/mpc-simulink2/</guid>
-      <description>In this post, we have a new take on nonlinear MPC in Simulink using CasADi.
-Interpreter mode In an earlier post on MPC in Simulink, we used an interpreted &amp;lsquo;Matlab system&amp;rsquo; block in the simulink diagram. This is flexible, but slow because of interpreter overhead.
-code-generation mode In an earlier post on S-Functions, we showed how Casadi-generated C code can be embedded efficiently in a Simulink diagram using S-functions. The result is fast, but has restrictions: only SqpMethod combined with Qrqp or Osqp solver can be code-generated (as of 3.</description>
-    </item>
-    
-    <item>
-      <title>Sensitivities of parametric NLP</title>
-      <link>https://web.casadi.org/blog/nlp_sens/</link>
-      <pubDate>Mon, 28 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://web.casadi.org/blog/nlp_sens/</guid>
-      <description>In this post, we explore the parametric sensitivities of a nonlinear program (NLP). While we use &amp;lsquo;Opti stack&amp;rsquo; syntax for modeling, differentiability of NLP solvers works all the same without Opti.
-Parametric nonlinear programming Let&amp;rsquo;s start by defining an NLP that depends on a parameter $p \in \mathbb{R}$ that should not be optimized for: $$ \begin{align} \displaystyle \underset{x,y} {\text{minimize}}\quad &amp;amp;\displaystyle (1-x)^2+0.2(y-x^2)^2 \newline \text{subject to} \, \quad &amp;amp; \frac{p^2}{4} \leq (x+0.5)^2+y^2 \leq p^2 \newline &amp;amp; x\geq 0 \end{align} $$</description>
-    </item>
-    
-    <item>
-      <title>Parfor</title>
-      <link>https://web.casadi.org/blog/parfor/</link>
-      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://web.casadi.org/blog/parfor/</guid>
-      <description>In this post we&amp;rsquo;ll explore how to use Matlab&amp;rsquo;s parfor with a CasADi nonlinear program.
-The nonlinear program (NLP) of interest is the following: $$ \begin{align} \displaystyle \underset{x,y} {\text{minimize}}\quad &amp;amp;\displaystyle (1-x)^2+(y-x^2)^2 \newline \text{subject to} \, \quad &amp;amp; x^2+y^2 \leq r \end{align} $$ Note that $r$ is a free parameter. Our goal is to collect each solution of the NLP as we loop over $r$. We could imagine performing such task when tracing a pareto front of a multi-objective optimization, for which the parameter would be the a weight to combine those objectives.</description>
-    </item>
-    
-    <item>
-      <title>Tensorflow and CasADi</title>
-      <link>https://web.casadi.org/blog/tensorflow/</link>
-      <pubDate>Mon, 30 Jul 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://web.casadi.org/blog/tensorflow/</guid>
-      <description>In this post we&amp;rsquo;ll explore how to couple Tensorflow and CasADi. Thanks to Jonas Koch (student @ Applied Mathematics WWU Muenster) for delivering inspiration and example code.
-One-dimensional regression with GPflow An important part of machine learning is about regression: fitting a (non-)linear model through sparse data. This is an unconstrained optimization problem for which dedicated algorithms and software are readily available.
-Let&amp;rsquo;s create some datapoints to fit, a perturbed sine.</description>
-    </item>
-    
-    <item>
-      <title>Breaking free of CasADi&#39;s solvers</title>
-      <link>https://web.casadi.org/blog/fmincon/</link>
-      <pubDate>Fri, 13 Jul 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://web.casadi.org/blog/fmincon/</guid>
-      <description>Once you&amp;rsquo;ve modeled your optimization problem in CasADi, you don&amp;rsquo;t have to stick to the solvers we interface.
-In this post, we briefly demonstrate how we can make CasADi and Matlab&amp;rsquo;s fmincon cooperate.
-Trivial unconstrained problem Let&amp;rsquo;s consider a very simple scalar unconstrained optimization:
-$$ \begin{align} \displaystyle \underset{x} {\text{minimize}}\quad &amp;amp; \sin(x)^2 \ \end{align} $$
-You can solve this with fminunc:
-fminunc(@(x) sin(x)^2, 0.1) The first argument, an anonymous function, can contain any code, including CasADi code.</description>
-    </item>
-    
-    <item>
-      <title>CasADi codegen and S-Functions</title>
-      <link>https://web.casadi.org/blog/s-function/</link>
-      <pubDate>Fri, 13 Jul 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://web.casadi.org/blog/s-function/</guid>
-      <description>While the user guide does explain code-generation in full detail, it is handy to have a demonstration in a real environment like Matlab&amp;rsquo;s S-functions.
-The problem We will design a Simulink block that implements a nonlinear mapping from ($\mathbf{R}^2$, $\mathbf{R}$) to ($\mathbf{R}$,$\mathbf{R}^2$):
-import casadi.* x = MX.sym(&amp;#39;x&amp;#39;,2); y = MX.sym(&amp;#39;y&amp;#39;); w = dot(x,y*x); z = sin(x)+y+w; f = Function(&amp;#39;f&amp;#39;,{x,y},{w,z}); Code-generating You may generate code from this with:
-f.generate(&amp;#39;f.c&amp;#39;) However, we&amp;rsquo;ll use the more advanced syntax since we have advanced requirements.</description>
-    </item>
-    
-    <item>
-      <title>On the importance of NLP scaling</title>
-      <link>https://web.casadi.org/blog/nlp-scaling/</link>
-      <pubDate>Fri, 15 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://web.casadi.org/blog/nlp-scaling/</guid>
-      <description>&lt;p&gt;During my master&amp;rsquo;s thesis at KULeuven on optimal control, one of the take-aways were that it&amp;rsquo;s important to scale your variables. It helps convergence if the variables are in the order of 0.01 to 100.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Optimal control problems in a nutshell</title>
-      <link>https://web.casadi.org/blog/ocp/</link>
-      <pubDate>Fri, 15 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://web.casadi.org/blog/ocp/</guid>
-      <description>&lt;p&gt;Optimization.
-There&amp;rsquo;s a mathematical term that sounds familiar to the general public.
-Everyone can imagine engineers working hard to make your car run 1% more fuel-efficient,
-or to slightly increase profit margins for a chemical company.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Easy NLP modeling in CasADi with Opti</title>
-      <link>https://web.casadi.org/blog/opti/</link>
-      <pubDate>Thu, 14 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://web.casadi.org/blog/opti/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://install33.casadi.org&#34;&gt;Release 3.3.0&lt;/a&gt; of CasADi introduced a compact syntax for NLP modeling, using a set of helper classes, collectively known as &amp;lsquo;Opti stack&amp;rsquo;.&lt;/p&gt;
-&lt;p&gt;In this post, we briefly demonstrates this functionality.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>CasADi-driven MPC in Simulink (part 1)</title>
-      <link>https://web.casadi.org/blog/mpc-simulink/</link>
-      <pubDate>Wed, 08 Mar 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://web.casadi.org/blog/mpc-simulink/</guid>
-      <description>&lt;p&gt;CasADi is not a monolithic tool. We can easily couple it to other software to have more fun.
-Today we&amp;rsquo;ll be exploring a &lt;em&gt;simple&lt;/em&gt; coupling with Simulink. We&amp;rsquo;ll be showing off nonlinear MPC (NMPC).&lt;/p&gt;</description>
+      <guid>https://web.casadi.org/events/</guid>
+      <description>This an overview of past and future workshops/courses involving CasADi:
+Future events Hands-on CasADi course on optimal control, Leuven, Belgium, 18-20 November 2024, announcement Permanent courses Hands-on CasADi course on optimal control, self-paced online learning CasADi master class, self-paced online learning Keep informed about future events via our newsletter. You may also pre-register to a future course to get priority in registration.
+Past events CasADi master class, Leuven, Belgium, 18-20 March 2024, announcement</description>
     </item>
     
     <item>
       <title>Get CasADi</title>
-      <link>https://web.casadi.org/get/footer/</link>
+      <link>https://web.casadi.org/get/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://web.casadi.org/get/footer/</guid>
-      <description>Extra links for the adventurous: more versions, nighly builds, source build instructions.</description>
+      <guid>https://web.casadi.org/get/</guid>
+      <description>Install CasADi? Pick a version from below&amp;hellip; &amp;hellip; or try out CasADi live in your browser (Python, Octave/Matlab).</description>
+    </item>
+    
+    <item>
+      <title>Hands-on CasADi course on optimal control</title>
+      <link>https://web.casadi.org/hasselt2019/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://web.casadi.org/hasselt2019/</guid>
+      <description>Hands-on CasADi course on optimal control 18-20 November 2019 – Hasselt, Belgium
+(This event is in the past. Check the workshop page for future events)
+(download this description as flyer)
+Target audience Academic/industrial researchers or tool-developers that seek practical ways to tackle large/complex continuous optimization problems, and optimal control problems in particular.
+CasADi? Originating from KU Leuven’s “Optimization in Engineering Center” under guidance of prof. Moritz Diehl, CasADi [1] is an open-source software framework for nonlinear optimization and algorithmic differentiation.</description>
+    </item>
+    
+    <item>
+      <title>Hands-on CasADi course on optimal control</title>
+      <link>https://web.casadi.org/ocp2020/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://web.casadi.org/ocp2020/</guid>
+      <description>Hands-on CasADi course on optimal control (This event is in the past. Check the workshop page for future events)
+16-18 November 2020 – Leuven, Belgium online live event
+(download this description as flyer)
+Target audience Academic/industrial researchers or tool-developers that seek practical ways to tackle large/complex continuous optimization problems, and optimal control problems in particular.
+CasADi? Originating from KU Leuven’s “Optimization in Engineering Center” under guidance of prof. Moritz Diehl, CasADi [1] is an open-source software framework for nonlinear optimization and algorithmic differentiation.</description>
+    </item>
+    
+    <item>
+      <title>Hands-on CasADi course on optimal control</title>
+      <link>https://web.casadi.org/ocp2023/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://web.casadi.org/ocp2023/</guid>
+      <description>Hands-on CasADi course on optimal control (This event is in the past. Check the workshop page for future events)
+November 20-22, 2023 – Leuven, Belgium
+(download this description as flyer)
+Target audience Academic/industrial researchers or tool-developers that seek practical ways to tackle large/complex continuous optimization problems, and optimal control problems in particular. People seeking to quickly gain familiarity with CasADi through a broad range of practical exercises.
+CasADi? Originating from KU Leuven’s “Optimization in Engineering Center” under guidance of prof.</description>
+    </item>
+    
+    <item>
+      <title>Hands-on CasADi course on optimal control 2024</title>
+      <link>https://web.casadi.org/ocp2024/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://web.casadi.org/ocp2024/</guid>
+      <description>Hands-on CasADi course on optimal control November 18-20, 2024 – Leuven, Belgium
+(download this description as flyer)
+Target audience Academic/industrial researchers or tool-developers that seek practical ways to tackle large/complex continuous optimization problems, and optimal control problems in particular. People seeking to quickly gain familiarity with CasADi through a broad range of practical exercises.
+CasADi? Originating from KU Leuven’s “Optimization in Engineering Center” under guidance of prof. Moritz Diehl, CasADi [1] is an open-source software framework for nonlinear optimization and algorithmic differentiation.</description>
+    </item>
+    
+    <item>
+      <title>Mini-course on optimal control with CasADi</title>
+      <link>https://web.casadi.org/leuven2018/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://web.casadi.org/leuven2018/</guid>
+      <description>Mini-course on optimal control with CasADi 19-21 November 2018 – Leuven, Belgium
+(This event is in the past. Check the workshop page for future events)
+(download this description as flyer)
+Target audience Academic/industrial researchers or tool-developers that seek practical ways to tackle large/complex continuous optimization problems, and optimal control problems in particular.
+CasADi? Originating from KU Leuven’s “Optimization in Engineering Center” under guidance of prof. Moritz Diehl, CasADi [1] is an open-source software framework for nonlinear optimization and algorithmic differentiation.</description>
+    </item>
+    
+    <item>
+      <title>Publications</title>
+      <link>https://web.casadi.org/publications/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://web.casadi.org/publications/</guid>
+      <description>Main publication If you use CasADi in your academic work, please cite the following paper:
+@Article{Andersson2019, author = {Joel A E Andersson and Joris Gillis and Greg Horn and James B Rawlings and Moritz Diehl}, title = {{CasADi} -- {A} software framework for nonlinear optimization and optimal control}, journal = {Mathematical Programming Computation}, volume = {11}, number = {1}, pages = {1--36}, year = {2019}, publisher = {Springer}, doi = {10.</description>
+    </item>
+    
+    <item>
+      <title>Source</title>
+      <link>https://web.casadi.org/source/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://web.casadi.org/source/</guid>
+      <description>Source Outline CasADi is written in modern C++ code, and licensed under the LGPL, meaning the code can be used royalty-free even in commercial applications. Interfaces to other Python, Octave, Matlab are provided through SWIG.
+Source builds The source code is hosted on Github. While the core depends only on the C++ Standard Library, source builds can be daunting because of the interfaces to numerical codes. We highly recommend following the Try/install page instead.</description>
+    </item>
+    
+    <item>
+      <title>Support</title>
+      <link>https://web.casadi.org/support/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://web.casadi.org/support/</guid>
+      <description>Support Community If you find simple bugs or lack some feature that you think would be relatively easy for us to add, the simplest thing is simply to write to the forum. We read the forum post regularly and try to respond as soon as possible. The only thing we expect for this kind of support is that you cite us, whenever you use CasADi in scientific work. There is also an onboarding guide with FAQ over at the CasADi wiki</description>
     </item>
     
   </channel>

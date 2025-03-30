@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -108,7 +108,7 @@ $(function() {
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      w[j] = nz_a[k] * S[i] * S[j];</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="comment">// Add D_x to diagonal</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    w[i] += D[i];</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    w[i] += <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5af623e75af30e62bbd73d6df5b50bb7b5">D</a>[i];</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="comment">// Copy column to KKT</span></div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">for</span> (k=kkt_colind[i]; k&lt;kkt_colind[i+1]; ++k) {</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      j = kkt_row[k];</div>
@@ -121,9 +121,10 @@ $(function() {
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  }</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="comment">// Copy -D_g to diagonal</span></div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keywordflow">for</span> (i=nx; i&lt;nz; ++i) {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    nz_kkt[iw[i - nx]++] = -D[i];</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    nz_kkt[iw[i - nx]++] = -<a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5af623e75af30e62bbd73d6df5b50bb7b5">D</a>[i];</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  }</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
+<div class="ttc" id="anamespacecasadi_html_aa64898f5cc9589e1fd4ed7684d96d7a5af623e75af30e62bbd73d6df5b50bb7b5"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5af623e75af30e62bbd73d6df5b50bb7b5">casadi::Category::D</a></div><div class="ttdeci">@ D</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </body>
 </html>

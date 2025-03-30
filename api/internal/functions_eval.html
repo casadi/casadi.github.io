@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -66,6 +66,18 @@ $(function() {
 </li>
 <li>AUX_BILIN
 : <a class="el" href="d1/da2/classcasadi_1_1CodeGenerator.html#acb9e5d52881b89783af1aed9c128af84a917f314e7415a2f674dcf6880af0bf92">casadi::CodeGenerator</a>
+</li>
+<li>AUX_BLAZING_1D_BOOR_EVAL
+: <a class="el" href="d1/da2/classcasadi_1_1CodeGenerator.html#acb9e5d52881b89783af1aed9c128af84a91dccde07f55846b614172a7199ce3a0">casadi::CodeGenerator</a>
+</li>
+<li>AUX_BLAZING_2D_BOOR_EVAL
+: <a class="el" href="d1/da2/classcasadi_1_1CodeGenerator.html#acb9e5d52881b89783af1aed9c128af84a55e1e8ebbdb582401c89c56058bf3c11">casadi::CodeGenerator</a>
+</li>
+<li>AUX_BLAZING_3D_BOOR_EVAL
+: <a class="el" href="d1/da2/classcasadi_1_1CodeGenerator.html#acb9e5d52881b89783af1aed9c128af84ada92a47af9f6f96b2e3c50b727d8751b">casadi::CodeGenerator</a>
+</li>
+<li>AUX_BLAZING_DE_BOOR
+: <a class="el" href="d1/da2/classcasadi_1_1CodeGenerator.html#acb9e5d52881b89783af1aed9c128af84a649e616aa71222df4d18b6d99a27c1b5">casadi::CodeGenerator</a>
 </li>
 <li>AUX_BOUNDS_CONSISTENCY
 : <a class="el" href="d1/da2/classcasadi_1_1CodeGenerator.html#acb9e5d52881b89783af1aed9c128af84a6be35439825c5f107bdf58cc4ec520bb">casadi::CodeGenerator</a>
@@ -235,6 +247,9 @@ $(function() {
 <li>AUX_PRINTF
 : <a class="el" href="d1/da2/classcasadi_1_1CodeGenerator.html#acb9e5d52881b89783af1aed9c128af84a1e140561c4de695b7b2dd56aa759e595">casadi::CodeGenerator</a>
 </li>
+<li>AUX_PRINTME
+: <a class="el" href="d1/da2/classcasadi_1_1CodeGenerator.html#acb9e5d52881b89783af1aed9c128af84a1715d3bdcc35f61c689be43e57c5618a">casadi::CodeGenerator</a>
+</li>
 <li>AUX_PROJECT
 : <a class="el" href="d1/da2/classcasadi_1_1CodeGenerator.html#acb9e5d52881b89783af1aed9c128af84a68aceed2a1b9536a0b5efdc4bc5a8250">casadi::CodeGenerator</a>
 </li>
@@ -362,6 +377,9 @@ $(function() {
 <li>BDYN_ADJ_Z
 : <a class="el" href="db/d3d/classcasadi_1_1Integrator.html#a299ad390543c6c551565c85ce810f11dafab34fae4985a03e1c9ce598fbca0ee7">casadi::Integrator</a>
 </li>
+<li>BDYN_ADJ_ZERO
+: <a class="el" href="db/d3d/classcasadi_1_1Integrator.html#a7af268d1b5813847468e8bc65a4650b7ae87916c969b5cd9012fefa26ca28df51">casadi::Integrator</a>
+</li>
 <li>BDYN_NUM_IN
 : <a class="el" href="db/d3d/classcasadi_1_1Integrator.html#a7af268d1b5813847468e8bc65a4650b7a12d0abc54d52b69804106d5e2324545b">casadi::Integrator</a>
 </li>
@@ -376,6 +394,9 @@ $(function() {
 </li>
 <li>BDYN_OUT_QUAD
 : <a class="el" href="db/d3d/classcasadi_1_1Integrator.html#a7af268d1b5813847468e8bc65a4650b7a9d925d5edc623a40489a54151c0c5789">casadi::Integrator</a>
+</li>
+<li>BDYN_OUT_ZERO
+: <a class="el" href="db/d3d/classcasadi_1_1Integrator.html#a7af268d1b5813847468e8bc65a4650b7a210a68da442525bdb45066a6e25e3f60">casadi::Integrator</a>
 </li>
 <li>BDYN_P
 : <a class="el" href="db/d3d/classcasadi_1_1Integrator.html#a7af268d1b5813847468e8bc65a4650b7a466bd6cd8c50db4f196a9967bff3304a">casadi::Integrator</a>
@@ -407,60 +428,6 @@ $(function() {
 <h3><a id="index_d"></a>- d -</h3><ul>
 <li>DAE_ALG
 : <a class="el" href="db/d3d/classcasadi_1_1Integrator.html#a36a37b35af1357d27eb75e0e0b7e4cfaab32614413e5ad4737ecf1978d972f98d">casadi::Integrator</a>
-</li>
-<li>DAE_BUILDER_ALG
-: <a class="el" href="d5/de1/classcasadi_1_1DaeBuilderInternal.html#a43c6271a4fc9c673275ea888c7a27c1dacf847e1fb58ecb903e94d7a6b910a846">casadi::DaeBuilderInternal</a>
-</li>
-<li>DAE_BUILDER_C
-: <a class="el" href="d5/de1/classcasadi_1_1DaeBuilderInternal.html#ac34800d173f07c767da6faafa0cf8866a9e8244975f855a50138915e8f9553b02">casadi::DaeBuilderInternal</a>
-</li>
-<li>DAE_BUILDER_D
-: <a class="el" href="d5/de1/classcasadi_1_1DaeBuilderInternal.html#ac34800d173f07c767da6faafa0cf8866a8db7e13909ea4116eecf1da4fada8c25">casadi::DaeBuilderInternal</a>
-</li>
-<li>DAE_BUILDER_DDEF
-: <a class="el" href="d5/de1/classcasadi_1_1DaeBuilderInternal.html#a43c6271a4fc9c673275ea888c7a27c1dacc92d5c0bc63d78aae35d4f1b42482c1">casadi::DaeBuilderInternal</a>
-</li>
-<li>DAE_BUILDER_NUM_IN
-: <a class="el" href="d5/de1/classcasadi_1_1DaeBuilderInternal.html#ac34800d173f07c767da6faafa0cf8866a12477ce7bc094069a1eb395d77170418">casadi::DaeBuilderInternal</a>
-</li>
-<li>DAE_BUILDER_NUM_OUT
-: <a class="el" href="d5/de1/classcasadi_1_1DaeBuilderInternal.html#a43c6271a4fc9c673275ea888c7a27c1da0b8e91c42fffd76f5ce85d2813f633f4">casadi::DaeBuilderInternal</a>
-</li>
-<li>DAE_BUILDER_ODE
-: <a class="el" href="d5/de1/classcasadi_1_1DaeBuilderInternal.html#a43c6271a4fc9c673275ea888c7a27c1da5dacbcd5e3b50529d71137797c61a5b8">casadi::DaeBuilderInternal</a>
-</li>
-<li>DAE_BUILDER_P
-: <a class="el" href="d5/de1/classcasadi_1_1DaeBuilderInternal.html#ac34800d173f07c767da6faafa0cf8866a6043f35416c67e6c3f2886565d54bdb3">casadi::DaeBuilderInternal</a>
-</li>
-<li>DAE_BUILDER_Q
-: <a class="el" href="d5/de1/classcasadi_1_1DaeBuilderInternal.html#ac34800d173f07c767da6faafa0cf8866a2b6456c64d42f042142abcde51bb2c93">casadi::DaeBuilderInternal</a>
-</li>
-<li>DAE_BUILDER_QUAD
-: <a class="el" href="d5/de1/classcasadi_1_1DaeBuilderInternal.html#a43c6271a4fc9c673275ea888c7a27c1da19e32a0e1fb570b3d5a2d86448e50b71">casadi::DaeBuilderInternal</a>
-</li>
-<li>DAE_BUILDER_T
-: <a class="el" href="d5/de1/classcasadi_1_1DaeBuilderInternal.html#ac34800d173f07c767da6faafa0cf8866a4612f0133e6a24f1b87347e66c84c1e3">casadi::DaeBuilderInternal</a>
-</li>
-<li>DAE_BUILDER_U
-: <a class="el" href="d5/de1/classcasadi_1_1DaeBuilderInternal.html#ac34800d173f07c767da6faafa0cf8866a299b1500d3b4f61e206852f5b55dc551">casadi::DaeBuilderInternal</a>
-</li>
-<li>DAE_BUILDER_W
-: <a class="el" href="d5/de1/classcasadi_1_1DaeBuilderInternal.html#ac34800d173f07c767da6faafa0cf8866a745e856d629c1e7478f6a2dddd42a12a">casadi::DaeBuilderInternal</a>
-</li>
-<li>DAE_BUILDER_WDEF
-: <a class="el" href="d5/de1/classcasadi_1_1DaeBuilderInternal.html#a43c6271a4fc9c673275ea888c7a27c1dabe072a9d0108d4b3a0f24d2e6f73f7e8">casadi::DaeBuilderInternal</a>
-</li>
-<li>DAE_BUILDER_X
-: <a class="el" href="d5/de1/classcasadi_1_1DaeBuilderInternal.html#ac34800d173f07c767da6faafa0cf8866a1750a5c3822f6adab2d6b606a1db29b2">casadi::DaeBuilderInternal</a>
-</li>
-<li>DAE_BUILDER_Y
-: <a class="el" href="d5/de1/classcasadi_1_1DaeBuilderInternal.html#ac34800d173f07c767da6faafa0cf8866a9548a9e8fa4d9d76bcf2200957476972">casadi::DaeBuilderInternal</a>
-</li>
-<li>DAE_BUILDER_YDEF
-: <a class="el" href="d5/de1/classcasadi_1_1DaeBuilderInternal.html#a43c6271a4fc9c673275ea888c7a27c1da054aa2d1bfcd0e5a7cd4f02b6860ee93">casadi::DaeBuilderInternal</a>
-</li>
-<li>DAE_BUILDER_Z
-: <a class="el" href="d5/de1/classcasadi_1_1DaeBuilderInternal.html#ac34800d173f07c767da6faafa0cf8866a6b4658abd72f9f53c3f2494d70b4a01b">casadi::DaeBuilderInternal</a>
 </li>
 <li>DAE_NUM_OUT
 : <a class="el" href="db/d3d/classcasadi_1_1Integrator.html#a36a37b35af1357d27eb75e0e0b7e4cfaa1223e23f92f2c2396e6480f7bd99b697">casadi::Integrator</a>
@@ -608,8 +575,14 @@ $(function() {
 <li>SERIALIZED_MX
 : <a class="el" href="d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29a1846a84a51136fa09c717c6794ab6c17">casadi::SerializerBase</a>
 </li>
+<li>SERIALIZED_MX_v1
+: <a class="el" href="d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29ab3f9bd8495938468151d48bd52c06327">casadi::SerializerBase</a>
+</li>
 <li>SERIALIZED_MX_VECTOR
 : <a class="el" href="d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29adb55287d0239d20ec0919caf8f96743e">casadi::SerializerBase</a>
+</li>
+<li>SERIALIZED_MX_VECTOR_v1
+: <a class="el" href="d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29a319af6d60741c97bdf4171c41f07c19d">casadi::SerializerBase</a>
 </li>
 <li>SERIALIZED_SPARSITY
 : <a class="el" href="d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29a8632975d490cb5a120f4b710f4037df6">casadi::SerializerBase</a>
@@ -626,8 +599,14 @@ $(function() {
 <li>SERIALIZED_SX
 : <a class="el" href="d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29a0c6488415e280970496751fe7c988c4e">casadi::SerializerBase</a>
 </li>
+<li>SERIALIZED_SX_v1
+: <a class="el" href="d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29a052e4b9d7e91ffff58d0c10f92bf7982">casadi::SerializerBase</a>
+</li>
 <li>SERIALIZED_SX_VECTOR
 : <a class="el" href="d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29ae7f80f1fe6ca1b8d68306457ce86c91b">casadi::SerializerBase</a>
+</li>
+<li>SERIALIZED_SX_VECTOR_v1
+: <a class="el" href="d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29aa2e5de181c018e14c92a3b33b8dbf4ac">casadi::SerializerBase</a>
 </li>
 <li>STRUCTURE_AUTO
 : <a class="el" href="d3/d37/classcasadi_1_1FatropConicInterface.html#af67188abb5b143b2dff28cefb52b9353a45d81c3e3e293ed431cc025b0235f26c">casadi::FatropConicInterface</a>

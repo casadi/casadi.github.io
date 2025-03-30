@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -118,13 +118,13 @@ $(function() {
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  void (*<a class="code" href="../../d7/dad/classcasadi_1_1Logger.html#ac8768a0fed4ce7b9181e4a4700828a6b">Logger::flush</a>)(<span class="keywordtype">bool</span> error) =<a class="code" href="../../d7/dad/classcasadi_1_1Logger.html#a696c08b7fce5f22364a6a2d8dc5885f1">Logger::flushDefault</a>;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
 <div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="../../d7/d23/namespacecasadi.html#af24bd1ac16f9be39dd0fbc56646e2115">   61</a></span>&#160;  std::ostream&amp; <a class="code" href="../../d7/d23/namespacecasadi.html#af24bd1ac16f9be39dd0fbc56646e2115">uout</a>() {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="comment">// Singleton pattern</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="comment">// Singleton pattern, lazily instantiated</span></div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keyword">static</span> <a class="code" href="../../d8/dc9/classcasadi_1_1Logger_1_1Stream.html">Logger::Stream&lt;false&gt;</a> instance;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">return</span> instance;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  }</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
 <div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">   67</a></span>&#160;  std::ostream&amp; <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="comment">// Singleton pattern</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="comment">// Singleton pattern, lazily instantiated</span></div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">static</span> <a class="code" href="../../d8/dc9/classcasadi_1_1Logger_1_1Stream.html">Logger::Stream&lt;true&gt;</a> instance;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">return</span> instance;</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  }</div>
@@ -163,7 +163,7 @@ $(function() {
 <div class="ttc" id="aclasscasadi_1_1Logger_html_a76f03d491cf598b77ff6e9a6130b6beb"><div class="ttname"><a href="../../d7/dad/classcasadi_1_1Logger.html#a76f03d491cf598b77ff6e9a6130b6beb">casadi::Logger::writeDefault</a></div><div class="ttdeci">static void writeDefault(const char *s, std::streamsize num, bool error)</div><div class="ttdoc">By default, print to std::cout or std::cerr.</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/de4/casadi__logger_8hpp_source.html#l00060">casadi_logger.hpp:60</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1Logger_html_aac8f1ed33d78fe0eef60c39ef782dec9"><div class="ttname"><a href="../../d7/dad/classcasadi_1_1Logger.html#aac8f1ed33d78fe0eef60c39ef782dec9">casadi::Logger::WriteFunThreadSafe</a></div><div class="ttdeci">static void WriteFunThreadSafe(const char *s, std::streamsize num, bool error)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dd5/casadi__logger_8cpp_source.html#l00042">casadi_logger.cpp:42</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1Logger_html_ac8768a0fed4ce7b9181e4a4700828a6b"><div class="ttname"><a href="../../d7/dad/classcasadi_1_1Logger.html#ac8768a0fed4ce7b9181e4a4700828a6b">casadi::Logger::flush</a></div><div class="ttdeci">static void(* flush)(bool error)</div><div class="ttdoc">Flush buffers.</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/de4/casadi__logger_8hpp_source.html#l00054">casadi_logger.hpp:54</a></div></div>
-<div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/da2/assertion_8cpp_source.html#l00029">assertion.cpp:29</a></div></div>
+<div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d03/archiver_8cpp_source.html#l00028">archiver.cpp:28</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_a2374d2cd69297ee44b5ed1ca90e9e5bc"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">casadi::uerr</a></div><div class="ttdeci">std::ostream &amp; uerr()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dd5/casadi__logger_8cpp_source.html#l00067">casadi_logger.cpp:67</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_af24bd1ac16f9be39dd0fbc56646e2115"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#af24bd1ac16f9be39dd0fbc56646e2115">casadi::uout</a></div><div class="ttdeci">std::ostream &amp; uout()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dd5/casadi__logger_8cpp_source.html#l00061">casadi_logger.cpp:61</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

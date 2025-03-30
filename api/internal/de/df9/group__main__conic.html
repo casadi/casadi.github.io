@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -80,7 +80,7 @@ nq: shape of psd constraint matrix</pre><p>If H is not positive-definite, the so
 <p>&lt;=&gt;</p>
 <p>soc(x, y) psd</p>
 <p>This can be proven with soc(x, y)=[y*I x; x' y] using the Shur complement.</p>
-<h3><a class="anchor" id="autotoc_md0"></a>
+<h3><a class="anchor" id="autotoc_md2"></a>
 General information</h3>
 <p><br  />
 </p><dl class="section user"><dt></dt><dd><a class="anchor" id="options"></a><table class="doxtable">
@@ -235,9 +235,10 @@ General information</h3>
 <tr>
 <td>CONIC_LAM_X</td><td>lam_x</td><td>The dual solution corresponding to simple bounds. </td></tr>
 </table>
-<h3><a class="anchor" id="autotoc_md1"></a>
+<h3><a class="anchor" id="autotoc_md3"></a>
 List of plugins</h3>
 <p>- <a href='#plugin_Conic_cbc'>cbc</a> </p>
+<p>- <a href='#plugin_Conic_clarabel'>clarabel</a> </p>
 <p>- <a href='#plugin_Conic_clp'>clp</a> </p>
 <p>- <a href='#plugin_Conic_cplex'>cplex</a> </p>
 <p>- <a href='#plugin_Conic_daqp'>daqp</a> </p>
@@ -276,6 +277,19 @@ List of plugins</h3>
 <td>sos_types</td><td>OT_INTVECTOR</td><td>Specify 1 or 2 for each SOS group. </td></tr>
 <tr>
 <td>sos_weights</td><td>OT_DOUBLEVECTORVECTOR</td><td>Weights corresponding to SOS entries. </td></tr>
+</table>
+</dd></dl>
+<hr  />
+  <h4>clarabel <a class="anchor" id="plugin_Conic_clarabel"></a> </h4>
+<dl class="section user"><dt></dt><dd>Interface to the Clarabel solver for sparse Quadratic Programs. See the Clarabel documentation (e.g. clarabel.dev) for more details.</dd></dl>
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2bu">https://github.com/casadi/casadi/wiki/L_2bu</a></p>
+<p><br  />
+</p><dl class="section user"><dt></dt><dd><a class="anchor" id="options"></a><table class="doxtable">
+<caption>List of available options</caption>
+<tr>
+<th>Id</th><th>Type</th><th>Description </th></tr>
+<tr>
+<td>clarabel</td><td>OT_DICT</td><td><a class="el" href="../../db/d35/structcasadi_1_1Options.html" title="Options metadata for a class.">Options</a> to be passed to Clarabel. </td></tr>
 </table>
 </dd></dl>
 <hr  />
@@ -332,7 +346,7 @@ List of plugins</h3>
   <h4>daqp <a class="anchor" id="plugin_Conic_daqp"></a> </h4>
 <dl class="section user"><dt></dt><dd></dd></dl>
 <p>Interface to Daqp solver for sparse Quadratic Programs, see daqp.dev for more information and <a href="https://www.maths.ed.ac.uk/hall/Daqp/DaqpOptions.html">https://www.maths.ed.ac.uk/hall/Daqp/DaqpOptions.html</a> for a list of options.</p>
-<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_27p">https://github.com/casadi/casadi/wiki/L_27p</a></p>
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_29l">https://github.com/casadi/casadi/wiki/L_29l</a></p>
 <p><br  />
 </p><dl class="section user"><dt></dt><dd><a class="anchor" id="options"></a><table class="doxtable">
 <caption>List of available options</caption>
@@ -405,7 +419,7 @@ List of plugins</h3>
   <h4>highs <a class="anchor" id="plugin_Conic_highs"></a> </h4>
 <dl class="section user"><dt></dt><dd></dd></dl>
 <p>Interface to HiGHS solver for sparse Quadratic Programs, see highs.dev for more information and <a href="https://www.maths.ed.ac.uk/hall/HiGHS/HighsOptions.html">https://www.maths.ed.ac.uk/hall/HiGHS/HighsOptions.html</a> for a list of options.</p>
-<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_22f">https://github.com/casadi/casadi/wiki/L_22f</a></p>
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_29k">https://github.com/casadi/casadi/wiki/L_29k</a></p>
 <p><br  />
 </p><dl class="section user"><dt></dt><dd><a class="anchor" id="options"></a><table class="doxtable">
 <caption>List of available options</caption>

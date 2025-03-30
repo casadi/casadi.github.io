@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -58,7 +58,7 @@ $(function() {
 <p>For a function [y0, y1, ...,yi, .., yn] = F(x0, x1, ..., xj, ..., xm), where xj is unknown and yi=0, defines a new function [y0, y1, ...,xj, .., yn] = G(x0, x1, ..., xj_guess, ..., xm),</p>
 <p>xj and yi must have the same dimension and d(yi)/d(xj) must be invertable.</p>
 <p>By default, the first input is unknown and the first output is the residual.</p>
-<h3><a class="anchor" id="autotoc_md16"></a>
+<h3><a class="anchor" id="autotoc_md20"></a>
 General information</h3>
 <p><br  />
 </p><dl class="section user"><dt></dt><dd><a class="anchor" id="options"></a><table class="doxtable">
@@ -90,11 +90,11 @@ General information</h3>
 <tr>
 <td>dump_dir</td><td>OT_STRING</td><td>Directory to dump inputs/outputs to. Make sure the directory exists [.]</td><td>casadi::FunctionInternal </td></tr>
 <tr>
-<td>dump_format</td><td>OT_STRING</td><td>Choose file format to dump matrices. See <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#afa6f63479ca1e79d1fe4d16ec6c14682">DM.from_file</a> [mtx]</td><td>casadi::FunctionInternal </td></tr>
+<td>dump_format</td><td>OT_STRING</td><td>Choose file format to dump matrices. See <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e">DM.from_file</a> [mtx]</td><td>casadi::FunctionInternal </td></tr>
 <tr>
-<td>dump_in</td><td>OT_BOOL</td><td>Dump numerical values of inputs to file (readable with <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#afa6f63479ca1e79d1fe4d16ec6c14682">DM.from_file</a>) [default: false]</td><td>casadi::FunctionInternal </td></tr>
+<td>dump_in</td><td>OT_BOOL</td><td>Dump numerical values of inputs to file (readable with <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e">DM.from_file</a>) [default: false]</td><td>casadi::FunctionInternal </td></tr>
 <tr>
-<td>dump_out</td><td>OT_BOOL</td><td>Dump numerical values of outputs to file (readable with <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#afa6f63479ca1e79d1fe4d16ec6c14682">DM.from_file</a>) [default: false]</td><td>casadi::FunctionInternal </td></tr>
+<td>dump_out</td><td>OT_BOOL</td><td>Dump numerical values of outputs to file (readable with <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e">DM.from_file</a>) [default: false]</td><td>casadi::FunctionInternal </td></tr>
 <tr>
 <td>enable_fd</td><td>OT_BOOL</td><td>Enable derivative calculation by finite differencing. [default: false]]</td><td>casadi::FunctionInternal </td></tr>
 <tr>
@@ -106,7 +106,7 @@ General information</h3>
 <tr>
 <td>error_on_fail</td><td>OT_BOOL</td><td>Throw exceptions when function evaluation fails (default true).</td><td>casadi::ProtoFunction </td></tr>
 <tr>
-<td>expand</td><td>OT_BOOL</td><td>Replace <a class="el" href="../../de/d57/classcasadi_1_1MX.html" title="MX - Matrix expression.">MX</a> with SX expressions in problem formulation [false]</td><td>casadi::OracleFunction </td></tr>
+<td>expand</td><td>OT_BOOL</td><td>Replace <a class="el" href="../../de/d57/classcasadi_1_1MX.html" title="MX - Matrix expression.">MX</a> with SX expressions in problem formulation [false] This happens before creating derivatives unless indicated by postpone_expand</td><td>casadi::OracleFunction </td></tr>
 <tr>
 <td>external_transform</td><td>OT_VECTORVECTOR</td><td>List of external_transform instruction arguments. Default: empty</td><td>casadi::FunctionInternal </td></tr>
 <tr>
@@ -166,6 +166,8 @@ General information</h3>
 <tr>
 <td>post_expand_options</td><td>OT_DICT</td><td>Options to be passed to post-construction expansion. Default: empty</td><td>casadi::FunctionInternal </td></tr>
 <tr>
+<td>postpone_expand</td><td>OT_BOOL</td><td>When expand is active, postpone it until after creation of derivatives. Default: False</td><td>casadi::OracleFunction </td></tr>
+<tr>
 <td>print_in</td><td>OT_BOOL</td><td>Print numerical values of inputs [default: false]</td><td>casadi::FunctionInternal </td></tr>
 <tr>
 <td>print_out</td><td>OT_BOOL</td><td>Print numerical values of outputs [default: false]</td><td>casadi::FunctionInternal </td></tr>
@@ -203,7 +205,7 @@ General information</h3>
 <tr>
 <td>ROOTFINDER_X</td><td>x</td><td>Solution to the system of equations. </td></tr>
 </table>
-<h3><a class="anchor" id="autotoc_md17"></a>
+<h3><a class="anchor" id="autotoc_md21"></a>
 List of plugins</h3>
 <p>- <a href='#plugin_Rootfinder_kinsol'>kinsol</a> </p>
 <p>- <a href='#plugin_Rootfinder_fast_newton'>fast_newton</a> </p>

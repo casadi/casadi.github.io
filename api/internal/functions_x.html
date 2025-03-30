@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -54,10 +54,10 @@ $(function() {
 <h3><a id="index_x"></a>- x -</h3><ul>
 <li>x
 : <a class="el" href="d6/d57/structcasadi_1_1Block.html#a3bdf8f1032bab18f84dd6594e39bb8a0">casadi::Block</a>
-, <a class="el" href="d4/db5/classcasadi_1_1DaeBuilder.html#af2895212e584b504bce1005f2f84ccb0">casadi::DaeBuilder</a>
-, <a class="el" href="d1/d61/structcasadi_1_1FixedStepMemory.html#a42573a24a1bf73d6872ccb5d7ddc94f4">casadi::FixedStepMemory</a>
+, <a class="el" href="d4/db5/classcasadi_1_1DaeBuilder.html#a876ccbcf8c41c96f1b49664062dea08e">casadi::DaeBuilder</a>
 , <a class="el" href="da/dad/structcasadi_1_1HpmpcMemory.html#a23e893575b6ef4381569b02dd67734d5">casadi::HpmpcMemory</a>
 , <a class="el" href="d4/d99/structcasadi_1_1ImplicitToNlpMemory.html#a21b5beaa6cc007fbe8a515279800f8ec">casadi::ImplicitToNlpMemory</a>
+, <a class="el" href="d8/d75/structcasadi_1_1IntegratorMemory.html#a6a37b437a0c7639dfb83108fc3a9e709">casadi::IntegratorMemory</a>
 , <a class="el" href="de/dec/structcasadi_1_1NewtonMemory.html#a1aab639b2045f8fd34d3812ae19cbcdc">casadi::NewtonMemory</a>
 , <a class="el" href="d1/d89/classcasadi_1_1NlpBuilder.html#a48a8097dac4c545fac2454f2954b21d6">casadi::NlpBuilder</a>
 , <a class="el" href="dd/dc6/classcasadi_1_1Opti.html#ae5528d1b30ce17b1934f2e39ddd8b3a9">casadi::Opti</a>
@@ -91,7 +91,7 @@ $(function() {
 <li>x_
 : <a class="el" href="dc/d35/classcasadi_1_1ConstantDM.html#a3cd2b94fa2a1c5405985eebbbad689fb">casadi::ConstantDM</a>
 , <a class="el" href="d5/da7/classcasadi_1_1ConstantFile.html#aa5020adb73a4b37bd25c412d496b8b3d">casadi::ConstantFile</a>
-, <a class="el" href="d5/de1/classcasadi_1_1DaeBuilderInternal.html#ad4e0b465bab43e241c4938d9f951d96c">casadi::DaeBuilderInternal</a>
+, <a class="el" href="dc/d5b/classcasadi_1_1ConstantPool.html#a577f8cc49a8e117a0e1fedb44697e527">casadi::ConstantPool</a>
 , <a class="el" href="df/d48/classcasadi_1_1SqicInterface.html#aea9b6108d02d1516be87137e5e448f3f">casadi::SqicInterface</a>
 </li>
 <li>x_blocks
@@ -100,8 +100,8 @@ $(function() {
 , <a class="el" href="df/d97/classcasadi_1_1HpmpcInterface.html#af7e59636346b428e1d67f12ec3ea4cbe">casadi::HpmpcInterface</a>
 </li>
 <li>x_describe()
-: <a class="el" href="d1/dbf/classcasadi_1_1OptiAdvanced.html#abc47a1f9aef2395af893b9f49f4ce476">casadi::OptiAdvanced</a>
-, <a class="el" href="de/dd6/classcasadi_1_1OptiNode.html#acd8b75c6087f790a7c6c9b105e670fc4">casadi::OptiNode</a>
+: <a class="el" href="d1/dbf/classcasadi_1_1OptiAdvanced.html#a9b98e2c0257616fe7e76ef6f73bb8105">casadi::OptiAdvanced</a>
+, <a class="el" href="de/dd6/classcasadi_1_1OptiNode.html#a35573d7b11279cec101530d2a33ee880">casadi::OptiNode</a>
 </li>
 <li>x_eq
 : <a class="el" href="d5/d5f/structcasadi__fatrop__conic__data.html#ad88c9162be8caf08756f178376bf1bec">casadi_fatrop_conic_data&lt; T1 &gt;</a>
@@ -125,12 +125,17 @@ $(function() {
 <li>x_lb
 : <a class="el" href="d1/d89/classcasadi_1_1NlpBuilder.html#a2f413b3b0e322afe190f19890be385cc">casadi::NlpBuilder</a>
 </li>
+<li>x_linear_scale()
+: <a class="el" href="dd/dc6/classcasadi_1_1Opti.html#a1ea0df9559448b4e2b100097e7f1887f">casadi::Opti</a>
+, <a class="el" href="de/dd6/classcasadi_1_1OptiNode.html#a703246bab96d336d75aeed849dd43f6e">casadi::OptiNode</a>
+</li>
+<li>x_linear_scale_offset()
+: <a class="el" href="dd/dc6/classcasadi_1_1Opti.html#aa485b7a578016373183c70555e645fdb">casadi::Opti</a>
+, <a class="el" href="de/dd6/classcasadi_1_1OptiNode.html#aa203d48c6354c93e2f538287f2a511e6">casadi::OptiNode</a>
+</li>
 <li>x_lookup()
 : <a class="el" href="d1/dbf/classcasadi_1_1OptiAdvanced.html#a2f5a6f06eb1218c6d4bbd0bb87e2a42b">casadi::OptiAdvanced</a>
 , <a class="el" href="de/dd6/classcasadi_1_1OptiNode.html#aa3138b4f02fa0e10453841806a765598">casadi::OptiNode</a>
-</li>
-<li>x_prev
-: <a class="el" href="d1/d61/structcasadi_1_1FixedStepMemory.html#aa8e8b30725bf3063eb0150cb579485d0">casadi::FixedStepMemory</a>
 </li>
 <li>x_tape
 : <a class="el" href="d1/d61/structcasadi_1_1FixedStepMemory.html#a9f4f412185cd489e948ee4a60b0b72e8">casadi::FixedStepMemory</a>
@@ -145,7 +150,8 @@ $(function() {
 : <a class="el" href="d0/d5f/structcasadi_1_1SlicotDpleMemory.html#a789dca19eb5ccad8d9164cb52a9f0c76">casadi::SlicotDpleMemory</a>
 </li>
 <li>xdot
-: <a class="el" href="d4/dea/structcasadi__fmi__memory.html#ae34edc5ab80775675a6e295a5877ad0f">casadi_fmi_memory</a>
+: <a class="el" href="d8/d75/structcasadi_1_1IntegratorMemory.html#af9ec588f45bbe5b0440055a9be7c14c0">casadi::IntegratorMemory</a>
+, <a class="el" href="d4/dea/structcasadi__fmi__memory.html#ae34edc5ab80775675a6e295a5877ad0f">casadi_fmi_memory</a>
 </li>
 <li>XFunction()
 : <a class="el" href="d7/d72/classcasadi_1_1XFunction.html#a920c928750c9f820865bb017f14ae0ee">casadi::XFunction&lt; DerivedType, MatType, NodeType &gt;</a>
@@ -178,12 +184,6 @@ $(function() {
 </li>
 <li>xx
 : <a class="el" href="d7/d4f/structcasadi_1_1SnoptMemory.html#a2a621263350542c6d8e3654ab1db2f09">casadi::SnoptMemory</a>
-</li>
-<li>xz
-: <a class="el" href="d7/dc4/structcasadi_1_1SundialsMemory.html#ae52cf455355414771c228b66c15306fd">casadi::SundialsMemory</a>
-</li>
-<li>xzdot
-: <a class="el" href="d7/dc4/structcasadi_1_1SundialsMemory.html#a338c561526416bba8e2345d6f41c61ce">casadi::SundialsMemory</a>
 </li>
 </ul>
 </div><!-- contents -->

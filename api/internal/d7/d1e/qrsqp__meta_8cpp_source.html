@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -88,7 +88,65 @@ $(function() {
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;      <span class="keyword">const</span> std::string <a class="code" href="../../da/d2d/classcasadi_1_1Qrsqp.html#abdd6f61e09d212ed61dab58664869afb">casadi::Qrsqp::meta_doc</a>=</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;      <span class="stringliteral">&quot;\n&quot;</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="stringliteral">&quot;A textbook SQPMethod\n&quot;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="stringliteral">&quot;Extra doc: https://github.com/casadi/casadi/wiki/L_22u \n&quot;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="stringliteral">&quot;&gt;List of available options\n&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="stringliteral">&quot;+-----------------------+-----------+--------------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="stringliteral">&quot;|          Id           |   Type    |             Description              |\n&quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="stringliteral">&quot;+=======================+===========+======================================+\n&quot;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="stringliteral">&quot;| beta                  | OT_DOUBLE | Line-search parameter, restoration   |\n&quot;</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="stringliteral">&quot;|                       |           | factor of stepsize                   |\n&quot;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="stringliteral">&quot;+-----------------------+-----------+--------------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="stringliteral">&quot;| c1                    | OT_DOUBLE | Armijo condition, coefficient of     |\n&quot;</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="stringliteral">&quot;|                       |           | decrease in merit                    |\n&quot;</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="stringliteral">&quot;+-----------------------+-----------+--------------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="stringliteral">&quot;| hessian_approximation | OT_STRING | limited-memory|exact                 |\n&quot;</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="stringliteral">&quot;+-----------------------+-----------+--------------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="stringliteral">&quot;| lbfgs_memory          | OT_INT    | Size of L-BFGS memory.               |\n&quot;</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="stringliteral">&quot;+-----------------------+-----------+--------------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="stringliteral">&quot;| max_iter              | OT_INT    | Maximum number of SQP iterations     |\n&quot;</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="stringliteral">&quot;+-----------------------+-----------+--------------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="stringliteral">&quot;| max_iter_ls           | OT_INT    | Maximum number of linesearch         |\n&quot;</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="stringliteral">&quot;|                       |           | iterations                           |\n&quot;</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="stringliteral">&quot;+-----------------------+-----------+--------------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="stringliteral">&quot;| merit_memory          | OT_INT    | Size of memory to store history of   |\n&quot;</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="stringliteral">&quot;|                       |           | merit function values                |\n&quot;</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="stringliteral">&quot;+-----------------------+-----------+--------------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="stringliteral">&quot;| min_iter              | OT_INT    | Minimum number of SQP iterations     |\n&quot;</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="stringliteral">&quot;+-----------------------+-----------+--------------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="stringliteral">&quot;| min_step_size         | OT_DOUBLE | The size (inf-norm) of the step size |\n&quot;</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="stringliteral">&quot;|                       |           | should not become smaller than this. |\n&quot;</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="stringliteral">&quot;+-----------------------+-----------+--------------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="stringliteral">&quot;| print_header          | OT_BOOL   | Print the header with problem        |\n&quot;</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="stringliteral">&quot;|                       |           | statistics                           |\n&quot;</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="stringliteral">&quot;+-----------------------+-----------+--------------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="stringliteral">&quot;| print_iteration       | OT_BOOL   | Print the iterations                 |\n&quot;</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="stringliteral">&quot;+-----------------------+-----------+--------------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="stringliteral">&quot;| qpsol                 | OT_STRING | The QP solver to be used by the SQP  |\n&quot;</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="stringliteral">&quot;|                       |           | method [qrqp]                        |\n&quot;</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="stringliteral">&quot;+-----------------------+-----------+--------------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="stringliteral">&quot;| qpsol_options         | OT_DICT   | Options to be passed to the QP       |\n&quot;</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="stringliteral">&quot;|                       |           | solver                               |\n&quot;</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="stringliteral">&quot;+-----------------------+-----------+--------------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="stringliteral">&quot;| regularize            | OT_BOOL   | Automatic regularization of Lagrange |\n&quot;</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="stringliteral">&quot;|                       |           | Hessian.                             |\n&quot;</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="stringliteral">&quot;+-----------------------+-----------+--------------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="stringliteral">&quot;| tol_du                | OT_DOUBLE | Stopping criterion for dual          |\n&quot;</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="stringliteral">&quot;|                       |           | infeasability                        |\n&quot;</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="stringliteral">&quot;+-----------------------+-----------+--------------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="stringliteral">&quot;| tol_pr                | OT_DOUBLE | Stopping criterion for primal        |\n&quot;</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="stringliteral">&quot;|                       |           | infeasibility                        |\n&quot;</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="stringliteral">&quot;+-----------------------+-----------+--------------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;;</div>
 <div class="ttc" id="aclasscasadi_1_1Qrsqp_html_abdd6f61e09d212ed61dab58664869afb"><div class="ttname"><a href="../../da/d2d/classcasadi_1_1Qrsqp.html#abdd6f61e09d212ed61dab58664869afb">casadi::Qrsqp::meta_doc</a></div><div class="ttdeci">static const std::string meta_doc</div><div class="ttdoc">A documentation string.</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d2c/qrsqp_8hpp_source.html#l00182">qrsqp.hpp:182</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </body>

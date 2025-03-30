@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -123,7 +123,7 @@ $(function() {
 <tr>
 <td>eval_errors_fatal</td><td>OT_BOOL</td><td>When errors occur during evaluation of f,g,...,stop the iterations</td><td><a class="el" href="../../d8/dc2/classcasadi_1_1Nlpsol.html" title="NLP solver storage class.">casadi::Nlpsol</a> </td></tr>
 <tr>
-<td>expand</td><td>OT_BOOL</td><td>Replace MX with SX expressions in problem formulation [false]</td><td><a class="el" href="../../d2/df9/classcasadi_1_1OracleFunction.html" title="Base class for functions that perform calculation with an oracle.">casadi::OracleFunction</a> </td></tr>
+<td>expand</td><td>OT_BOOL</td><td>Replace MX with SX expressions in problem formulation [false] This happens before creating derivatives unless indicated by postpone_expand</td><td><a class="el" href="../../d2/df9/classcasadi_1_1OracleFunction.html" title="Base class for functions that perform calculation with an oracle.">casadi::OracleFunction</a> </td></tr>
 <tr>
 <td>external_transform</td><td>OT_VECTORVECTOR</td><td>List of external_transform instruction arguments. Default: empty</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
@@ -187,6 +187,8 @@ $(function() {
 <tr>
 <td>post_expand_options</td><td>OT_DICT</td><td>Options to be passed to post-construction expansion. Default: empty</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
+<td>postpone_expand</td><td>OT_BOOL</td><td>When expand is active, postpone it until after creation of derivatives. Default: False</td><td><a class="el" href="../../d2/df9/classcasadi_1_1OracleFunction.html" title="Base class for functions that perform calculation with an oracle.">casadi::OracleFunction</a> </td></tr>
+<tr>
 <td>print_in</td><td>OT_BOOL</td><td>Print numerical values of inputs [default: false]</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
 <td>print_out</td><td>OT_BOOL</td><td>Print numerical values of outputs [default: false]</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
@@ -205,7 +207,7 @@ $(function() {
 <tr>
 <td>show_eval_warnings</td><td>OT_BOOL</td><td>Show warnings generated from function evaluations [true]</td><td><a class="el" href="../../d2/df9/classcasadi_1_1OracleFunction.html" title="Base class for functions that perform calculation with an oracle.">casadi::OracleFunction</a> </td></tr>
 <tr>
-<td>solver</td><td>OT_STRING</td><td>AMPL solver binary</td><td><a class="el" href="../../db/d74/classcasadi_1_1AmplInterface.html" title="&#39;AmplInterface&#39; plugin for Nlpsol">casadi::AmplInterface</a> </td></tr>
+<td>solver</td><td>OT_STRING</td><td>AMPL solver binary</td><td><a class="el" href="../../db/d74/classcasadi_1_1AmplInterface.html" title="&#39;ampl&#39; plugin for Nlpsol">casadi::AmplInterface</a> </td></tr>
 <tr>
 <td>specific_options</td><td>OT_DICT</td><td>Options for specific auto-generated functions, overwriting the defaults from common_options. Nested dictionary.</td><td><a class="el" href="../../d2/df9/classcasadi_1_1OracleFunction.html" title="Base class for functions that perform calculation with an oracle.">casadi::OracleFunction</a> </td></tr>
 <tr>

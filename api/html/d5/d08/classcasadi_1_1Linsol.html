@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -55,6 +55,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="../../d9/ddd/classcasadi_1_1Linsol-members.html">List of all members</a> &#124;
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a>  </div>
   <div class="headertitle">
@@ -69,9 +70,9 @@ $(function() {
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Create a solver for linear systems of equations Solves the linear system A*X = B or A^T*X = B for X with A square and non-singular</p>
 <p>If A is structurally singular, an error will be thrown during init. If A is numerically singular, the prepare step will fail.</p>
-<h3><a class="anchor" id="autotoc_md12"></a>
+<h3><a class="anchor" id="autotoc_md16"></a>
 General information</h3>
-<h3><a class="anchor" id="autotoc_md13"></a>
+<h3><a class="anchor" id="autotoc_md17"></a>
 List of plugins</h3>
 <p>- <a href='#plugin_Linsol_csparsecholesky'>csparsecholesky</a> </p>
 <p>- <a href='#plugin_Linsol_csparse'>csparse</a> </p>
@@ -154,11 +155,33 @@ List of plugins</h3>
 <dl class="section user"><dt></dt><dd></dd></dl>
 <p>Linear solver using sparse direct LDL factorization</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_233">https://github.com/casadi/casadi/wiki/L_233</a></p>
+<p><br  />
+</p><dl class="section user"><dt></dt><dd><a class="anchor" id="options"></a><table class="doxtable">
+<caption>List of available options</caption>
+<tr>
+<th>Id</th><th>Type</th><th>Description </th></tr>
+<tr>
+<td>incomplete</td><td>OT_BOOL</td><td>Incomplete factorization, without any fill-in </td></tr>
+<tr>
+<td>preordering</td><td>OT_BOOL</td><td>Approximate minimal degree (AMD) preordering </td></tr>
+</table>
+</dd></dl>
 <hr  />
   <h4>qr <a class="anchor" id="plugin_Linsol_qr"></a> </h4>
 <dl class="section user"><dt></dt><dd></dd></dl>
 <p>Linear solver using sparse direct QR factorization</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_22z">https://github.com/casadi/casadi/wiki/L_22z</a></p>
+<p><br  />
+</p><dl class="section user"><dt></dt><dd><a class="anchor" id="options"></a><table class="doxtable">
+<caption>List of available options</caption>
+<tr>
+<th>Id</th><th>Type</th><th>Description </th></tr>
+<tr>
+<td>cache</td><td>OT_DOUBLE</td><td>Amount of factorisations to remember (thread-local) [0] </td></tr>
+<tr>
+<td>eps</td><td>OT_DOUBLE</td><td>Minimum R entry before singularity is declared [1e-12] </td></tr>
+</table>
+</dd></dl>
 <hr  />
   <h4>tridiag <a class="anchor" id="plugin_Linsol_tridiag"></a> </h4>
 <dl class="section user"><dt></dt><dd></dd></dl>
@@ -191,13 +214,21 @@ Inheritance diagram for casadi::Linsol:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d9/d88/classcasadi_1_1Linsol__inherit__graph.png" border="0" usemap="#acasadi_1_1Linsol_inherit__map" alt="Inheritance graph"/></div>
 <map name="acasadi_1_1Linsol_inherit__map" id="acasadi_1_1Linsol_inherit__map">
-<area shape="rect" title="Linear solver." alt="" coords="248,80,359,107"/>
-<area shape="rect" href="../../d5/d4a/classcasadi_1_1SharedObject.html" title="SharedObject implements a reference counting framework similar for efficient and." alt="" coords="5,5,164,32"/>
-<area shape="rect" title=" " alt="" coords="188,5,419,32"/>
-<area shape="rect" title=" " alt="" coords="443,5,591,32"/>
+<area shape="rect" title="Linear solver." alt="" coords="278,184,389,211"/>
+<area shape="rect" href="../../d5/d4a/classcasadi_1_1SharedObject.html" title="GenericShared implements a reference counting framework similar for efficient and." alt="" coords="35,109,194,136"/>
+<area shape="rect" href="../../da/d35/classcasadi_1_1GenericShared.html" title=" " alt="" coords="5,5,224,61"/>
+<area shape="rect" title=" " alt="" coords="218,109,449,136"/>
+<area shape="rect" title=" " alt="" coords="473,109,621,136"/>
 </map>
 <center><span class="legend">[<a href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:ad6d82029342dadbc9c77ddc8ef8084f2"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html#ad6d82029342dadbc9c77ddc8ef8084f2">internal_base_type</a> = SharedObjectInternal</td></tr>
+<tr class="separator:ad6d82029342dadbc9c77ddc8ef8084f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f1144d06a1c4605f76be361f8c86230"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html#a6f1144d06a1c4605f76be361f8c86230">base_type</a> = <a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html">SharedObject</a></td></tr>
+<tr class="separator:a6f1144d06a1c4605f76be361f8c86230"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a4b1aacf4333696b459876ae70de800fd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d08/classcasadi_1_1Linsol.html#a4b1aacf4333696b459876ae70de800fd">Linsol</a> ()</td></tr>
@@ -241,12 +272,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6611a65747f60a8170c54f3338c01922"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html#a6611a65747f60a8170c54f3338c01922">get_str</a> (bool more=false) const</td></tr>
 <tr class="memdesc:a6611a65747f60a8170c54f3338c01922"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get string representation.  <a href="../../d5/d4a/classcasadi_1_1SharedObject.html#a6611a65747f60a8170c54f3338c01922">More...</a><br /></td></tr>
 <tr class="separator:a6611a65747f60a8170c54f3338c01922"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d6952169894b2d43694a7577252bdfc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html#a2d6952169894b2d43694a7577252bdfc">is_null</a> () const</td></tr>
-<tr class="memdesc:a2d6952169894b2d43694a7577252bdfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is a null pointer?  <a href="../../d5/d4a/classcasadi_1_1SharedObject.html#a2d6952169894b2d43694a7577252bdfc">More...</a><br /></td></tr>
-<tr class="separator:a2d6952169894b2d43694a7577252bdfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03c5f1b2f15e9cd97a87596bd037f2dd"><td class="memItemLeft" align="right" valign="top">casadi_int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html#a03c5f1b2f15e9cd97a87596bd037f2dd">__hash__</a> () const</td></tr>
-<tr class="memdesc:a03c5f1b2f15e9cd97a87596bd037f2dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a number that is unique for a given Node.  <a href="../../d5/d4a/classcasadi_1_1SharedObject.html#a03c5f1b2f15e9cd97a87596bd037f2dd">More...</a><br /></td></tr>
-<tr class="separator:a03c5f1b2f15e9cd97a87596bd037f2dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cd34e33937f28d74c88dbb2ce6c7786"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d35/classcasadi_1_1GenericShared.html#a3cd34e33937f28d74c88dbb2ce6c7786">debug_repr</a> () const</td></tr>
+<tr class="separator:a3cd34e33937f28d74c88dbb2ce6c7786"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd28957366899587b9da638343fe41b5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d35/classcasadi_1_1GenericShared.html#abd28957366899587b9da638343fe41b5">is_null</a> () const</td></tr>
+<tr class="memdesc:abd28957366899587b9da638343fe41b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is a null pointer?  <a href="../../da/d35/classcasadi_1_1GenericShared.html#abd28957366899587b9da638343fe41b5">More...</a><br /></td></tr>
+<tr class="separator:abd28957366899587b9da638343fe41b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15b15ed5fcdea82954ff4cf896825803"><td class="memItemLeft" align="right" valign="top">casadi_int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d35/classcasadi_1_1GenericShared.html#a15b15ed5fcdea82954ff4cf896825803">__hash__</a> () const</td></tr>
+<tr class="memdesc:a15b15ed5fcdea82954ff4cf896825803"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a number that is unique for a given Node.  <a href="../../da/d35/classcasadi_1_1GenericShared.html#a15b15ed5fcdea82954ff4cf896825803">More...</a><br /></td></tr>
+<tr class="separator:a15b15ed5fcdea82954ff4cf896825803"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
 <tr class="memitem:ab2fc23220110d999daca22f3e109aa3b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d08/classcasadi_1_1Linsol.html#ab2fc23220110d999daca22f3e109aa3b">solve</a> (const <a class="el" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a> &amp;A, const <a class="el" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a> &amp;B, bool tr=false) const</td></tr>
 <tr class="separator:ab2fc23220110d999daca22f3e109aa3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -268,6 +301,55 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memdesc:a9994896446fb7d3455f201060fc335ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get solver specific documentation.  <a href="../../d5/d08/classcasadi_1_1Linsol.html#a9994896446fb7d3455f201060fc335ed">More...</a><br /></td></tr>
 <tr class="separator:a9994896446fb7d3455f201060fc335ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a6f1144d06a1c4605f76be361f8c86230"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f1144d06a1c4605f76be361f8c86230">&#9670;&nbsp;</a></span>base_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html#a6f1144d06a1c4605f76be361f8c86230">casadi::SharedObject::base_type</a> =  <a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html">SharedObject</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d8/d68/shared__object_8hpp_source.html#l00103">103</a> of file <a class="el" href="../../d8/d68/shared__object_8hpp_source.html">shared_object.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ad6d82029342dadbc9c77ddc8ef8084f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6d82029342dadbc9c77ddc8ef8084f2">&#9670;&nbsp;</a></span>internal_base_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html#ad6d82029342dadbc9c77ddc8ef8084f2">casadi::SharedObject::internal_base_type</a> =  SharedObjectInternal</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d8/d68/shared__object_8hpp_source.html#l00102">102</a> of file <a class="el" href="../../d8/d68/shared__object_8hpp_source.html">shared_object.hpp</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a4b1aacf4333696b459876ae70de800fd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4b1aacf4333696b459876ae70de800fd">&#9670;&nbsp;</a></span>Linsol() <span class="overload">[1/2]</span></h2>
@@ -335,8 +417,8 @@ Static Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a03c5f1b2f15e9cd97a87596bd037f2dd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a03c5f1b2f15e9cd97a87596bd037f2dd">&#9670;&nbsp;</a></span>__hash__()</h2>
+<a id="a15b15ed5fcdea82954ff4cf896825803"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15b15ed5fcdea82954ff4cf896825803">&#9670;&nbsp;</a></span>__hash__()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -345,10 +427,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">casadi_int casadi::SharedObject::__hash__ </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td class="memname">casadi_int <a class="el" href="../../da/d35/classcasadi_1_1GenericShared.html">casadi::GenericShared</a>&lt; <a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html">SharedObject</a> , SharedObjectInternal  &gt;::__hash__</td>
         </tr>
       </table>
   </td>
@@ -359,6 +438,8 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>If the Object does not point to any node, "0" is returned.</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_av">https://github.com/casadi/casadi/wiki/L_av</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00124">124</a> of file <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html">generic_shared_impl.hpp</a>.</p>
 
 </div>
 </div>
@@ -385,6 +466,30 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_au">https://github.com/casadi/casadi/wiki/L_au</a> </p>
+
+</div>
+</div>
+<a id="a3cd34e33937f28d74c88dbb2ce6c7786"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3cd34e33937f28d74c88dbb2ce6c7786">&#9670;&nbsp;</a></span>debug_repr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string <a class="el" href="../../da/d35/classcasadi_1_1GenericShared.html">casadi::GenericShared</a>&lt; <a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html">SharedObject</a> , SharedObjectInternal  &gt;::debug_repr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00113">113</a> of file <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html">generic_shared_impl.hpp</a>.</p>
 
 </div>
 </div>
@@ -474,7 +579,7 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d68/shared__object_8hpp_source.html#l00138">138</a> of file <a class="el" href="../../d8/d68/shared__object_8hpp_source.html">shared_object.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/d68/shared__object_8hpp_source.html#l00091">91</a> of file <a class="el" href="../../d8/d68/shared__object_8hpp_source.html">shared_object.hpp</a>.</p>
 
 </div>
 </div>
@@ -504,8 +609,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a2d6952169894b2d43694a7577252bdfc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d6952169894b2d43694a7577252bdfc">&#9670;&nbsp;</a></span>is_null()</h2>
+<a id="abd28957366899587b9da638343fe41b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd28957366899587b9da638343fe41b5">&#9670;&nbsp;</a></span>is_null()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -514,10 +619,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool casadi::SharedObject::is_null </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td class="memname">bool <a class="el" href="../../da/d35/classcasadi_1_1GenericShared.html">casadi::GenericShared</a>&lt; <a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html">SharedObject</a> , SharedObjectInternal  &gt;::is_null</td>
         </tr>
       </table>
   </td>
@@ -526,6 +628,8 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00117">117</a> of file <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html">generic_shared_impl.hpp</a>.</p>
 
 </div>
 </div>

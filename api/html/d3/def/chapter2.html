@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -91,7 +91,7 @@ Compilation</h1>
 <p>First, you have to get CasADi from <a href="http://www.casadi.org/">http://www.casadi.org/</a> or check out the git repository from GitHub. </p><div class="fragment"><div class="line">$ git clone https:<span class="comment">//github.com/casadi/casadi.git -b tested casadi</span></div>
 </div><!-- fragment --><p> Set the environment variable <code>CMAKE_PREFIX_PATH</code> to inform CMake where the dependecies are located. For example if Sundials headers and libraries are installed under <code>$HOME/local/</code>, then type </p><div class="fragment"><div class="line">export CMAKE_PREFIX_PATH=$HOME/local/</div>
 </div><!-- fragment --><p> Go to directory of the source tree, create a directory called e.g. <code>./build</code> where all compilation-related files will be created. </p><div class="fragment"><div class="line">cd <a class="code" href="../../d7/d23/namespacecasadi.html">casadi</a>; mkdir build; cd build</div>
-<div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../db/da5/binary__mx__impl_8hpp_source.html#l00036">binary_mx_impl.hpp:36</a></div></div>
+<div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/archiver_8hpp_source.html#l00032">archiver.hpp:32</a></div></div>
 </div><!-- fragment --><p> Generate the <code>Makefile</code> by typing </p><div class="fragment"><div class="line">cmake ..</div>
 </div><!-- fragment --><p> Check the output of CMake if the dependencies are correctly located. The interfaces without underlying libraries and headers won't be compiled. Adjust CMake variables (e.g. CMAKE_INSTALL_PREFIX if you want to install headers and libraries) by typing </p><div class="fragment"><div class="line">ccmake ..</div>
 </div><!-- fragment --><p> Now compile the C++ libraries. </p><div class="fragment"><div class="line">make</div>

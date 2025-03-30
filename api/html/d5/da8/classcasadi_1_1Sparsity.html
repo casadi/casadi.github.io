@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -55,6 +55,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="../../d3/d58/classcasadi_1_1Sparsity-members.html">List of all members</a> &#124;
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a>  </div>
   <div class="headertitle">
@@ -76,28 +77,36 @@ $(function() {
 </ol>
 <p>Note that with this format, it is cheap to loop over all the non-zero elements of a particular column, at constant time per element, but expensive to jump to access a location (i, j).</p>
 <p>If the matrix is dense, i.e. length(row) == <a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html#a2cc94e3e2589c79e886a8f0deec1395c" title="Get the number of rows.">size1()</a>*size2(), the format reduces to standard dense column major format, which allows access to an arbitrary element in constant time.</p>
-<p>Since the object is reference counted (it inherits from <a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html" title="SharedObject implements a reference counting framework similar for efficient and.">SharedObject</a>), several matrices are allowed to share the same sparsity pattern.</p>
+<p>Since the object is reference counted (it inherits from <a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html" title="GenericShared implements a reference counting framework similar for efficient and.">SharedObject</a>), several matrices are allowed to share the same sparsity pattern.</p>
 <p>The implementations of methods marked as such in this class has been taken from the CSparse package and modified to fit CasADi data structures and separation of sparsity pattern calculation and numerical evaluation. These functions are Copyright(c) Timothy A. Davis, 2006-2009 and licensed as a derivative work under the GNU LGPL</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="../../da/d45/classcasadi_1_1Matrix.html" title="Sparse matrix class. SX and DM are specializations.">Matrix</a></dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Joel Andersson </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2010-2015</dd></dl>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_b9">https://github.com/casadi/casadi/wiki/L_b9</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/da8/sparsity_8hpp_source.html#l00096">96</a> of file <a class="el" href="../../da/da8/sparsity_8hpp_source.html">sparsity.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/da8/sparsity_8hpp_source.html#l00103">103</a> of file <a class="el" href="../../da/da8/sparsity_8hpp_source.html">sparsity.hpp</a>.</p>
 </div><div class="dynheader">
 Inheritance diagram for casadi::Sparsity:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../dd/d38/classcasadi_1_1Sparsity__inherit__graph.png" border="0" usemap="#acasadi_1_1Sparsity_inherit__map" alt="Inheritance graph"/></div>
 <map name="acasadi_1_1Sparsity_inherit__map" id="acasadi_1_1Sparsity_inherit__map">
-<area shape="rect" title="General sparsity class." alt="" coords="284,129,409,156"/>
-<area shape="rect" href="../../d5/d4a/classcasadi_1_1SharedObject.html" title="SharedObject implements a reference counting framework similar for efficient and." alt="" coords="41,5,200,32"/>
-<area shape="rect" title=" " alt="" coords="8,57,233,98"/>
-<area shape="rect" title=" " alt="" coords="49,122,193,163"/>
-<area shape="rect" title=" " alt="" coords="5,188,236,215"/>
-<area shape="rect" title=" " alt="" coords="39,239,202,265"/>
+<area shape="rect" title="General sparsity class." alt="" coords="551,144,676,171"/>
+<area shape="rect" href="../../d5/d4a/classcasadi_1_1SharedObject.html" title="GenericShared implements a reference counting framework similar for efficient and." alt="" coords="308,20,467,47"/>
+<area shape="rect" href="../../da/d35/classcasadi_1_1GenericShared.html" title=" " alt="" coords="5,5,224,61"/>
+<area shape="rect" title=" " alt="" coords="275,71,500,113"/>
+<area shape="rect" title=" " alt="" coords="315,137,459,178"/>
+<area shape="rect" title=" " alt="" coords="272,203,503,229"/>
+<area shape="rect" title=" " alt="" coords="306,253,469,280"/>
 </map>
 <center><span class="legend">[<a href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:ad6d82029342dadbc9c77ddc8ef8084f2"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html#ad6d82029342dadbc9c77ddc8ef8084f2">internal_base_type</a> = SharedObjectInternal</td></tr>
+<tr class="separator:ad6d82029342dadbc9c77ddc8ef8084f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f1144d06a1c4605f76be361f8c86230"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html#a6f1144d06a1c4605f76be361f8c86230">base_type</a> = <a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html">SharedObject</a></td></tr>
+<tr class="separator:a6f1144d06a1c4605f76be361f8c86230"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a0de5961719559244b8bea0e1c320c0e3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html#a0de5961719559244b8bea0e1c320c0e3">Sparsity</a> (casadi_int dummy=0)</td></tr>
@@ -117,9 +126,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a76017e87f03bdfb491aedbcd4ad50c85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a778c552f8985aa7fca536bb58167ae04"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html">Sparsity</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html#a778c552f8985aa7fca536bb58167ae04">get_diag</a> (std::vector&lt; casadi_int &gt; &amp;mapping) const</td></tr>
 <tr class="separator:a778c552f8985aa7fca536bb58167ae04"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a165237cc90c78acb452f1cd1b15d062e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; casadi_int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html#a165237cc90c78acb452f1cd1b15d062e">compress</a> () const</td></tr>
-<tr class="memdesc:a165237cc90c78acb452f1cd1b15d062e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compress a sparsity pattern.  <a href="../../d5/da8/classcasadi_1_1Sparsity.html#a165237cc90c78acb452f1cd1b15d062e">More...</a><br /></td></tr>
-<tr class="separator:a165237cc90c78acb452f1cd1b15d062e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab3c4f2e4c441aae2a8822206e1b6132"><td class="memItemLeft" align="right" valign="top">std::vector&lt; casadi_int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html#aab3c4f2e4c441aae2a8822206e1b6132">compress</a> (bool canonical=true) const</td></tr>
+<tr class="memdesc:aab3c4f2e4c441aae2a8822206e1b6132"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compress a sparsity pattern.  <a href="../../d5/da8/classcasadi_1_1Sparsity.html#aab3c4f2e4c441aae2a8822206e1b6132">More...</a><br /></td></tr>
+<tr class="separator:aab3c4f2e4c441aae2a8822206e1b6132"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac080d1a35907f602f1bd2e9f158331b4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html#ac080d1a35907f602f1bd2e9f158331b4">operator!=</a> (const <a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html">Sparsity</a> &amp;y) const</td></tr>
 <tr class="memdesc:ac080d1a35907f602f1bd2e9f158331b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if two sparsity patterns are difference.  <a href="../../d5/da8/classcasadi_1_1Sparsity.html#ac080d1a35907f602f1bd2e9f158331b4">More...</a><br /></td></tr>
 <tr class="separator:ac080d1a35907f602f1bd2e9f158331b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -357,12 +366,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6611a65747f60a8170c54f3338c01922"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html#a6611a65747f60a8170c54f3338c01922">get_str</a> (bool more=false) const</td></tr>
 <tr class="memdesc:a6611a65747f60a8170c54f3338c01922"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get string representation.  <a href="../../d5/d4a/classcasadi_1_1SharedObject.html#a6611a65747f60a8170c54f3338c01922">More...</a><br /></td></tr>
 <tr class="separator:a6611a65747f60a8170c54f3338c01922"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d6952169894b2d43694a7577252bdfc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html#a2d6952169894b2d43694a7577252bdfc">is_null</a> () const</td></tr>
-<tr class="memdesc:a2d6952169894b2d43694a7577252bdfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is a null pointer?  <a href="../../d5/d4a/classcasadi_1_1SharedObject.html#a2d6952169894b2d43694a7577252bdfc">More...</a><br /></td></tr>
-<tr class="separator:a2d6952169894b2d43694a7577252bdfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03c5f1b2f15e9cd97a87596bd037f2dd"><td class="memItemLeft" align="right" valign="top">casadi_int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html#a03c5f1b2f15e9cd97a87596bd037f2dd">__hash__</a> () const</td></tr>
-<tr class="memdesc:a03c5f1b2f15e9cd97a87596bd037f2dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a number that is unique for a given Node.  <a href="../../d5/d4a/classcasadi_1_1SharedObject.html#a03c5f1b2f15e9cd97a87596bd037f2dd">More...</a><br /></td></tr>
-<tr class="separator:a03c5f1b2f15e9cd97a87596bd037f2dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cd34e33937f28d74c88dbb2ce6c7786"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d35/classcasadi_1_1GenericShared.html#a3cd34e33937f28d74c88dbb2ce6c7786">debug_repr</a> () const</td></tr>
+<tr class="separator:a3cd34e33937f28d74c88dbb2ce6c7786"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd28957366899587b9da638343fe41b5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d35/classcasadi_1_1GenericShared.html#abd28957366899587b9da638343fe41b5">is_null</a> () const</td></tr>
+<tr class="memdesc:abd28957366899587b9da638343fe41b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is a null pointer?  <a href="../../da/d35/classcasadi_1_1GenericShared.html#abd28957366899587b9da638343fe41b5">More...</a><br /></td></tr>
+<tr class="separator:abd28957366899587b9da638343fe41b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15b15ed5fcdea82954ff4cf896825803"><td class="memItemLeft" align="right" valign="top">casadi_int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d35/classcasadi_1_1GenericShared.html#a15b15ed5fcdea82954ff4cf896825803">__hash__</a> () const</td></tr>
+<tr class="memdesc:a15b15ed5fcdea82954ff4cf896825803"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a number that is unique for a given Node.  <a href="../../da/d35/classcasadi_1_1GenericShared.html#a15b15ed5fcdea82954ff4cf896825803">More...</a><br /></td></tr>
+<tr class="separator:a15b15ed5fcdea82954ff4cf896825803"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Check if two sparsity patterns are identical</div></td></tr>
 <tr class="memitem:a84eee5f847557e9530c83c5076f1f18f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html#a84eee5f847557e9530c83c5076f1f18f">is_equal</a> (const <a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html">Sparsity</a> &amp;y) const</td></tr>
 <tr class="separator:a84eee5f847557e9530c83c5076f1f18f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -514,6 +525,55 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ae0aaa945ebe8bf450ce4eb2d64f75533"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html">Sparsity</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html#ae0aaa945ebe8bf450ce4eb2d64f75533">compressed</a> (const std::vector&lt; casadi_int &gt; &amp;v, bool order_rows=false)</td></tr>
 <tr class="separator:ae0aaa945ebe8bf450ce4eb2d64f75533"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a6f1144d06a1c4605f76be361f8c86230"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f1144d06a1c4605f76be361f8c86230">&#9670;&nbsp;</a></span>base_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html#a6f1144d06a1c4605f76be361f8c86230">casadi::SharedObject::base_type</a> =  <a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html">SharedObject</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d8/d68/shared__object_8hpp_source.html#l00103">103</a> of file <a class="el" href="../../d8/d68/shared__object_8hpp_source.html">shared_object.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ad6d82029342dadbc9c77ddc8ef8084f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6d82029342dadbc9c77ddc8ef8084f2">&#9670;&nbsp;</a></span>internal_base_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html#ad6d82029342dadbc9c77ddc8ef8084f2">casadi::SharedObject::internal_base_type</a> =  SharedObjectInternal</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d8/d68/shared__object_8hpp_source.html#l00102">102</a> of file <a class="el" href="../../d8/d68/shared__object_8hpp_source.html">shared_object.hpp</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a0de5961719559244b8bea0e1c320c0e3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0de5961719559244b8bea0e1c320c0e3">&#9670;&nbsp;</a></span>Sparsity() <span class="overload">[1/4]</span></h2>
@@ -644,8 +704,8 @@ Static Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a03c5f1b2f15e9cd97a87596bd037f2dd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a03c5f1b2f15e9cd97a87596bd037f2dd">&#9670;&nbsp;</a></span>__hash__()</h2>
+<a id="a15b15ed5fcdea82954ff4cf896825803"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15b15ed5fcdea82954ff4cf896825803">&#9670;&nbsp;</a></span>__hash__()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -654,10 +714,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">casadi_int casadi::SharedObject::__hash__ </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td class="memname">casadi_int <a class="el" href="../../da/d35/classcasadi_1_1GenericShared.html">casadi::GenericShared</a>&lt; <a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html">SharedObject</a> , SharedObjectInternal  &gt;::__hash__</td>
         </tr>
       </table>
   </td>
@@ -668,6 +725,8 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>If the Object does not point to any node, "0" is returned.</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_av">https://github.com/casadi/casadi/wiki/L_av</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00124">124</a> of file <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html">generic_shared_impl.hpp</a>.</p>
 
 </div>
 </div>
@@ -1006,7 +1065,7 @@ banded(n, 1) is tri-diagonal matrix <br  />
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/da8/sparsity_8hpp_source.html#l00333">333</a> of file <a class="el" href="../../da/da8/sparsity_8hpp_source.html">sparsity.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/da8/sparsity_8hpp_source.html#l00340">340</a> of file <a class="el" href="../../da/da8/sparsity_8hpp_source.html">sparsity.hpp</a>.</p>
 
 </div>
 </div>
@@ -1046,8 +1105,8 @@ banded(n, 1) is tri-diagonal matrix <br  />
 
 </div>
 </div>
-<a id="a165237cc90c78acb452f1cd1b15d062e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a165237cc90c78acb452f1cd1b15d062e">&#9670;&nbsp;</a></span>compress()</h2>
+<a id="aab3c4f2e4c441aae2a8822206e1b6132"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab3c4f2e4c441aae2a8822206e1b6132">&#9670;&nbsp;</a></span>compress()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1055,7 +1114,8 @@ banded(n, 1) is tri-diagonal matrix <br  />
         <tr>
           <td class="memname">std::vector&lt;casadi_int&gt; casadi::Sparsity::compress </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>canonical</em> = <code>true</code></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -1097,6 +1157,30 @@ banded(n, 1) is tri-diagonal matrix <br  />
 </table>
 </div><div class="memdoc">
 <p>Create from a single vector containing the pattern in compressed column storage format: The format: The first two entries are the number of rows (nrow) and columns (ncol) The next ncol+1 entries are the column offsets (colind). Note that the last element, colind[ncol], gives the number of nonzeros The last colind[ncol] entries are the row indices </p>
+
+</div>
+</div>
+<a id="a3cd34e33937f28d74c88dbb2ce6c7786"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3cd34e33937f28d74c88dbb2ce6c7786">&#9670;&nbsp;</a></span>debug_repr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string <a class="el" href="../../da/d35/classcasadi_1_1GenericShared.html">casadi::GenericShared</a>&lt; <a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html">SharedObject</a> , SharedObjectInternal  &gt;::debug_repr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00113">113</a> of file <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html">generic_shared_impl.hpp</a>.</p>
 
 </div>
 </div>
@@ -1162,7 +1246,7 @@ banded(n, 1) is tri-diagonal matrix <br  />
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_be">https://github.com/casadi/casadi/wiki/L_be</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/da8/sparsity_8hpp_source.html#l00155">155</a> of file <a class="el" href="../../da/da8/sparsity_8hpp_source.html">sparsity.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/da8/sparsity_8hpp_source.html#l00162">162</a> of file <a class="el" href="../../da/da8/sparsity_8hpp_source.html">sparsity.hpp</a>.</p>
 
 </div>
 </div>
@@ -1345,7 +1429,7 @@ banded(n, 1) is tri-diagonal matrix <br  />
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_bi">https://github.com/casadi/casadi/wiki/L_bi</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/da8/sparsity_8hpp_source.html#l00183">183</a> of file <a class="el" href="../../da/da8/sparsity_8hpp_source.html">sparsity.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/da8/sparsity_8hpp_source.html#l00190">190</a> of file <a class="el" href="../../da/da8/sparsity_8hpp_source.html">sparsity.hpp</a>.</p>
 
 </div>
 </div>
@@ -1411,7 +1495,7 @@ banded(n, 1) is tri-diagonal matrix <br  />
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_bi">https://github.com/casadi/casadi/wiki/L_bi</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/da8/sparsity_8hpp_source.html#l00185">185</a> of file <a class="el" href="../../da/da8/sparsity_8hpp_source.html">sparsity.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/da8/sparsity_8hpp_source.html#l00192">192</a> of file <a class="el" href="../../da/da8/sparsity_8hpp_source.html">sparsity.hpp</a>.</p>
 
 </div>
 </div>
@@ -2026,7 +2110,7 @@ banded(n, 1) is tri-diagonal matrix <br  />
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d68/shared__object_8hpp_source.html#l00138">138</a> of file <a class="el" href="../../d8/d68/shared__object_8hpp_source.html">shared_object.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/d68/shared__object_8hpp_source.html#l00091">91</a> of file <a class="el" href="../../d8/d68/shared__object_8hpp_source.html">shared_object.hpp</a>.</p>
 
 </div>
 </div>
@@ -2289,8 +2373,8 @@ banded(n, 1) is tri-diagonal matrix <br  />
 
 </div>
 </div>
-<a id="a2d6952169894b2d43694a7577252bdfc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d6952169894b2d43694a7577252bdfc">&#9670;&nbsp;</a></span>is_null()</h2>
+<a id="abd28957366899587b9da638343fe41b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd28957366899587b9da638343fe41b5">&#9670;&nbsp;</a></span>is_null()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2299,10 +2383,7 @@ banded(n, 1) is tri-diagonal matrix <br  />
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool casadi::SharedObject::is_null </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td class="memname">bool <a class="el" href="../../da/d35/classcasadi_1_1GenericShared.html">casadi::GenericShared</a>&lt; <a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html">SharedObject</a> , SharedObjectInternal  &gt;::is_null</td>
         </tr>
       </table>
   </td>
@@ -2311,6 +2392,8 @@ banded(n, 1) is tri-diagonal matrix <br  />
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00117">117</a> of file <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html">generic_shared_impl.hpp</a>.</p>
 
 </div>
 </div>
@@ -2980,7 +3063,7 @@ banded(n, 1) is tri-diagonal matrix <br  />
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/da8/sparsity_8hpp_source.html#l00295">295</a> of file <a class="el" href="../../da/da8/sparsity_8hpp_source.html">sparsity.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/da8/sparsity_8hpp_source.html#l00302">302</a> of file <a class="el" href="../../da/da8/sparsity_8hpp_source.html">sparsity.hpp</a>.</p>
 
 </div>
 </div>
@@ -3047,7 +3130,7 @@ banded(n, 1) is tri-diagonal matrix <br  />
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/da8/sparsity_8hpp_source.html#l00291">291</a> of file <a class="el" href="../../da/da8/sparsity_8hpp_source.html">sparsity.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/da8/sparsity_8hpp_source.html#l00298">298</a> of file <a class="el" href="../../da/da8/sparsity_8hpp_source.html">sparsity.hpp</a>.</p>
 
 </div>
 </div>
@@ -3400,7 +3483,7 @@ banded(n, 1) is tri-diagonal matrix <br  />
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/da8/sparsity_8hpp_source.html#l00327">327</a> of file <a class="el" href="../../da/da8/sparsity_8hpp_source.html">sparsity.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/da8/sparsity_8hpp_source.html#l00334">334</a> of file <a class="el" href="../../da/da8/sparsity_8hpp_source.html">sparsity.hpp</a>.</p>
 
 </div>
 </div>
@@ -3454,7 +3537,7 @@ banded(n, 1) is tri-diagonal matrix <br  />
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_bd">https://github.com/casadi/casadi/wiki/L_bd</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/da8/sparsity_8hpp_source.html#l00146">146</a> of file <a class="el" href="../../da/da8/sparsity_8hpp_source.html">sparsity.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/da8/sparsity_8hpp_source.html#l00153">153</a> of file <a class="el" href="../../da/da8/sparsity_8hpp_source.html">sparsity.hpp</a>.</p>
 
 </div>
 </div>
@@ -4066,7 +4149,7 @@ banded(n, 1) is tri-diagonal matrix <br  />
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/da8/sparsity_8hpp_source.html#l01128">1128</a> of file <a class="el" href="../../da/da8/sparsity_8hpp_source.html">sparsity.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/da8/sparsity_8hpp_source.html#l01140">1140</a> of file <a class="el" href="../../da/da8/sparsity_8hpp_source.html">sparsity.hpp</a>.</p>
 
 </div>
 </div>

@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -224,7 +224,7 @@ $(function() {
 <div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    }</div>
 <div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160; </div>
 <div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    <span class="keyword">inline</span> <span class="keyword">friend</span> MatType transpose(<span class="keyword">const</span> MatType&amp; X) {</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;      <span class="keywordflow">return</span> X.T();</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5a02129bb861061d1a052c592e2dc6b383">X</a>.T();</div>
 <div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    }</div>
 <div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160; </div>
 <div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    <span class="keyword">inline</span> <span class="keyword">friend</span> MatType vec(<span class="keyword">const</span> MatType&amp; x) {</div>
@@ -348,159 +348,175 @@ $(function() {
 <div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160; </div>
 <div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;    <span class="keyword">inline</span> <span class="keyword">friend</span> MatType sum2(<span class="keyword">const</span> MatType &amp;x) { <span class="keywordflow">return</span> MatType::sum2(x);}</div>
 <div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160; </div>
-<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;  };</div>
-<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// SWIG</span></div>
-<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160; </div>
-<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;<span class="preprocessor">#ifndef SWIG</span></div>
-<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> MatType&gt;</div>
-<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;  MatType SparsityInterface&lt;MatType&gt;::vec(<span class="keyword">const</span> MatType&amp; x) {</div>
-<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;    <span class="keywordflow">if</span> (x.size2()==1) <span class="keywordflow">return</span> x;</div>
-<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;    <span class="keywordflow">return</span> reshape(x, x.numel(), 1);</div>
-<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;  }</div>
-<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160; </div>
-<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> MatType&gt;</div>
-<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;  MatType SparsityInterface&lt;MatType&gt;::repmat(<span class="keyword">const</span> MatType&amp; x, casadi_int n, casadi_int m) {</div>
-<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;    <span class="keywordflow">if</span> (n==1 &amp;&amp; m==1) <span class="keywordflow">return</span> x;</div>
-<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;    MatType allrows = vertcat(std::vector&lt;MatType&gt;(n, x));</div>
-<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;    <span class="keywordflow">if</span> (n==0) allrows = MatType(0, x.size2());</div>
-<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;    MatType ret = horzcat(std::vector&lt;MatType&gt;(m, allrows));</div>
-<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;    <span class="keywordflow">if</span> (m==0) ret = MatType(allrows.size1(), 0);</div>
-<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;    <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;  }</div>
-<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160; </div>
-<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> MatType&gt;</div>
-<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;  std::vector&lt; std::vector&lt; MatType &gt; &gt;</div>
-<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;  SparsityInterface&lt;MatType&gt;::blocksplit(<span class="keyword">const</span> MatType&amp; x,</div>
-<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;                                         <span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; vert_offset,</div>
-<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;                                         <span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; horz_offset) {</div>
-<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;    std::vector&lt;MatType&gt; rows = MatType::vertsplit(x, vert_offset);</div>
-<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;    std::vector&lt; std::vector&lt; MatType &gt; &gt; ret;</div>
-<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp;&amp; r : rows) ret.push_back(MatType::horzsplit(r, horz_offset));</div>
-<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;    <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;  }</div>
-<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160; </div>
-<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> MatType&gt;</div>
-<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;  std::vector&lt; std::vector&lt; MatType &gt; &gt;</div>
-<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;  SparsityInterface&lt;MatType&gt;::blocksplit(<span class="keyword">const</span> MatType&amp; x,</div>
-<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;      casadi_int vert_incr, casadi_int horz_incr) {</div>
-<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;    casadi_assert_dev(horz_incr&gt;=1);</div>
-<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;    casadi_assert_dev(vert_incr&gt;=1);</div>
-<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;    casadi_int sz1 = x.size1();</div>
-<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;    std::vector&lt;casadi_int&gt; offset1 = range(0, sz1, vert_incr);</div>
-<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;    offset1.push_back(sz1);</div>
-<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;    casadi_int sz2 = x.size2();</div>
-<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;    std::vector&lt;casadi_int&gt; offset2 = range(0, sz2, horz_incr);</div>
-<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;    offset2.push_back(sz2);</div>
-<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;    <span class="keywordflow">return</span> blocksplit(x, offset1, offset2);</div>
-<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;  }</div>
-<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160; </div>
-<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> MatType&gt;</div>
-<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;  std::vector&lt;casadi_int&gt;</div>
-<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;  SparsityInterface&lt;MatType&gt;::offset(<span class="keyword">const</span> std::vector&lt; MatType &gt; &amp;v, <span class="keywordtype">bool</span> vert) {</div>
-<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;    std::vector&lt;casadi_int&gt; ret(v.size()+1);</div>
-<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;    ret[0]=0;</div>
-<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;    <span class="keywordflow">for</span> (casadi_int i=0; i&lt;v.size(); ++i) {</div>
-<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;      ret[i+1] = ret[i] + (vert ? v[i].size1() : v[i].size2());</div>
-<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;    }</div>
-<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;    <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;  }</div>
-<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160; </div>
-<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> MatType&gt;</div>
-<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;  MatType SparsityInterface&lt;MatType&gt;::veccat(<span class="keyword">const</span> std::vector&lt; MatType &gt;&amp; x) {</div>
-<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;    std::vector&lt; MatType &gt; x_vec = x;</div>
-<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">typename</span> std::vector&lt; MatType &gt;::iterator it=x_vec.begin();</div>
-<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;         it!=x_vec.end(); ++it) {</div>
-<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;      *it = vec(*it);</div>
-<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;    }</div>
-<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;    <span class="keywordflow">if</span> (x_vec.empty()) {</div>
-<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;      <span class="keywordflow">return</span> MatType(0, 1);</div>
-<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;      <span class="keywordflow">return</span> vertcat(x_vec);</div>
-<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;    }</div>
-<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;  }</div>
-<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160; </div>
-<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> MatType&gt;</div>
-<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;  std::vector&lt; MatType &gt;</div>
-<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;  SparsityInterface&lt;MatType&gt;::diagsplit(<span class="keyword">const</span> MatType&amp; x,</div>
-<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;      <span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; output_offset) {</div>
-<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;    casadi_assert(x.is_square(), <span class="stringliteral">&quot;diagsplit(x,incr)::input must be square but got &quot;</span></div>
-<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;                          + x.dim()  + <span class="stringliteral">&quot;.&quot;</span>);</div>
-<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;    <span class="keywordflow">return</span> MatType::diagsplit(x, output_offset, output_offset);</div>
-<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;  }</div>
-<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160; </div>
-<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> MatType&gt;</div>
-<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;  std::vector&lt; MatType &gt;</div>
-<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;  SparsityInterface&lt;MatType&gt;::diagsplit(<span class="keyword">const</span> MatType&amp; x, casadi_int incr) {</div>
-<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;    casadi_assert_dev(incr&gt;=1);</div>
-<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;    casadi_assert(x.is_square(), <span class="stringliteral">&quot;diagsplit(x,incr)::input must be square but got &quot;</span></div>
-<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;                          + x.dim()  + <span class="stringliteral">&quot;.&quot;</span>);</div>
-<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;    std::vector&lt;casadi_int&gt; offset2 = range(0, x.size2(), incr);</div>
-<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;    offset2.push_back(x.size2());</div>
-<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;    <span class="keywordflow">return</span> MatType::diagsplit(x, offset2);</div>
-<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;  }</div>
-<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160; </div>
-<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> MatType&gt;</div>
-<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;  std::vector&lt; MatType &gt;</div>
-<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;  SparsityInterface&lt;MatType&gt;::diagsplit(<span class="keyword">const</span> MatType&amp; x, casadi_int incr1, casadi_int incr2) {</div>
-<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;    casadi_assert_dev(incr1&gt;=1);</div>
-<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;    casadi_assert_dev(incr2&gt;=1);</div>
-<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;    std::vector&lt;casadi_int&gt; offset1 = range(0, x.size1(), incr1);</div>
-<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;    offset1.push_back(x.size1());</div>
-<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;    std::vector&lt;casadi_int&gt; offset2 = range(0, x.size2(), incr2);</div>
-<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;    offset2.push_back(x.size2());</div>
-<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;    <span class="keywordflow">return</span> MatType::diagsplit(x, offset1, offset2);</div>
-<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;  }</div>
-<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160; </div>
-<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> MatType&gt;</div>
-<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;  MatType SparsityInterface&lt;MatType&gt;::mtimes(<span class="keyword">const</span> std::vector&lt;MatType&gt; &amp;args) {</div>
-<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;    casadi_assert(!args.empty(),</div>
-<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;                          <span class="stringliteral">&quot;mul(std::vector&lt;MatType&gt; &amp;args): &quot;</span></div>
-<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;                          <span class="stringliteral">&quot;supplied list must not be empty.&quot;</span>);</div>
-<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;    MatType ret = args[0];</div>
-<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;    <span class="keywordflow">for</span> (casadi_int i=1; i&lt;args.size(); ++i) ret = MatType::mtimes(ret, args[i]);</div>
-<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;    <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;  }</div>
-<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160; </div>
-<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> MatType&gt;</div>
-<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;  std::vector&lt;MatType &gt; SparsityInterface&lt;MatType&gt;::horzsplit(<span class="keyword">const</span> MatType&amp; x, casadi_int incr) {</div>
-<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;    casadi_assert_dev(incr&gt;=1);</div>
-<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;    casadi_int sz2 = x.size2();</div>
-<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;    std::vector&lt;casadi_int&gt; offset2 = range(0, sz2, incr);</div>
-<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;    offset2.push_back(sz2);</div>
-<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;    <span class="keywordflow">return</span> MatType::horzsplit(x, offset2);</div>
-<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;  }</div>
-<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160; </div>
-<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> MatType&gt;</div>
-<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;  std::vector&lt;MatType &gt; SparsityInterface&lt;MatType&gt;::vertsplit(<span class="keyword">const</span> MatType&amp; x, casadi_int incr) {</div>
-<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;    casadi_assert_dev(incr&gt;=1);</div>
-<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;    casadi_int sz1 = x.size1();</div>
-<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;    std::vector&lt;casadi_int&gt; offset1 = range(0, sz1, incr);</div>
-<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;    offset1.push_back(sz1);</div>
-<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;    <span class="keywordflow">return</span> MatType::vertsplit(x, offset1);</div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;    <span class="keyword">inline</span> <span class="keyword">friend</span> MatType sum(<span class="keyword">const</span> MatType &amp;x) {</div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;      <span class="keywordflow">if</span> (x.is_vector()) {</div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;        <span class="keywordflow">if</span> (x.is_column()) {</div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;          <span class="keywordflow">return</span> MatType::sum1(x);</div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;          <span class="keywordflow">return</span> MatType::sum2(x);</div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;        }</div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;      }</div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;      <span class="keywordflow">if</span> (x.size1()&gt;x.size2()) {</div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;        <span class="keywordflow">return</span> MatType::sum2(MatType::sum1(x));</div>
+<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;      } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;        <span class="keywordflow">return</span> MatType::sum1(MatType::sum2(x));</div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;      }</div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;    }</div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160; </div>
+<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;  };</div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// SWIG</span></div>
+<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160; </div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;<span class="preprocessor">#ifndef SWIG</span></div>
+<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> MatType&gt;</div>
+<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;  MatType SparsityInterface&lt;MatType&gt;::vec(<span class="keyword">const</span> MatType&amp; x) {</div>
+<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;    <span class="keywordflow">if</span> (x.size2()==1) <span class="keywordflow">return</span> x;</div>
+<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;    <span class="keywordflow">return</span> reshape(x, x.numel(), 1);</div>
+<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;  }</div>
+<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160; </div>
+<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> MatType&gt;</div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;  MatType SparsityInterface&lt;MatType&gt;::repmat(<span class="keyword">const</span> MatType&amp; x, casadi_int n, casadi_int m) {</div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;    <span class="keywordflow">if</span> (n==1 &amp;&amp; m==1) <span class="keywordflow">return</span> x;</div>
+<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;    MatType allrows = vertcat(std::vector&lt;MatType&gt;(n, x));</div>
+<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;    <span class="keywordflow">if</span> (n==0) allrows = MatType(0, x.size2());</div>
+<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;    MatType ret = horzcat(std::vector&lt;MatType&gt;(m, allrows));</div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;    <span class="keywordflow">if</span> (m==0) ret = MatType(allrows.size1(), 0);</div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;    <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;  }</div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160; </div>
+<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> MatType&gt;</div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;  std::vector&lt; std::vector&lt; MatType &gt; &gt;</div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;  SparsityInterface&lt;MatType&gt;::blocksplit(<span class="keyword">const</span> MatType&amp; x,</div>
+<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;                                         <span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; vert_offset,</div>
+<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;                                         <span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; horz_offset) {</div>
+<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;    std::vector&lt;MatType&gt; rows = MatType::vertsplit(x, vert_offset);</div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;    std::vector&lt; std::vector&lt; MatType &gt; &gt; ret;</div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp;&amp; r : rows) ret.push_back(MatType::horzsplit(r, horz_offset));</div>
+<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;    <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;  }</div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160; </div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> MatType&gt;</div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;  std::vector&lt; std::vector&lt; MatType &gt; &gt;</div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;  SparsityInterface&lt;MatType&gt;::blocksplit(<span class="keyword">const</span> MatType&amp; x,</div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;      casadi_int vert_incr, casadi_int horz_incr) {</div>
+<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;    casadi_assert_dev(horz_incr&gt;=1);</div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;    casadi_assert_dev(vert_incr&gt;=1);</div>
+<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;    casadi_int sz1 = x.size1();</div>
+<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;    std::vector&lt;casadi_int&gt; offset1 = range(0, sz1, vert_incr);</div>
+<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;    offset1.push_back(sz1);</div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;    casadi_int sz2 = x.size2();</div>
+<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;    std::vector&lt;casadi_int&gt; offset2 = range(0, sz2, horz_incr);</div>
+<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;    offset2.push_back(sz2);</div>
+<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;    <span class="keywordflow">return</span> blocksplit(x, offset1, offset2);</div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;  }</div>
+<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160; </div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> MatType&gt;</div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;  std::vector&lt;casadi_int&gt;</div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;  SparsityInterface&lt;MatType&gt;::offset(<span class="keyword">const</span> std::vector&lt; MatType &gt; &amp;v, <span class="keywordtype">bool</span> vert) {</div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;    std::vector&lt;casadi_int&gt; ret(v.size()+1);</div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;    ret[0]=0;</div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;    <span class="keywordflow">for</span> (casadi_int i=0; i&lt;v.size(); ++i) {</div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;      ret[i+1] = ret[i] + (vert ? v[i].size1() : v[i].size2());</div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;    }</div>
+<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;    <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;  }</div>
+<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160; </div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> MatType&gt;</div>
+<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;  MatType SparsityInterface&lt;MatType&gt;::veccat(<span class="keyword">const</span> std::vector&lt; MatType &gt;&amp; x) {</div>
+<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;    std::vector&lt; MatType &gt; x_vec = x;</div>
+<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">typename</span> std::vector&lt; MatType &gt;::iterator it=x_vec.begin();</div>
+<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;         it!=x_vec.end(); ++it) {</div>
+<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;      *it = vec(*it);</div>
+<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;    }</div>
+<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;    <span class="keywordflow">if</span> (x_vec.empty()) {</div>
+<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;      <span class="keywordflow">return</span> MatType(0, 1);</div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;      <span class="keywordflow">return</span> vertcat(x_vec);</div>
+<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;    }</div>
+<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;  }</div>
+<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160; </div>
+<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> MatType&gt;</div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;  std::vector&lt; MatType &gt;</div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;  SparsityInterface&lt;MatType&gt;::diagsplit(<span class="keyword">const</span> MatType&amp; x,</div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;      <span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; output_offset) {</div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;    casadi_assert(x.is_square(), <span class="stringliteral">&quot;diagsplit(x,incr)::input must be square but got &quot;</span></div>
+<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;                          + x.dim()  + <span class="stringliteral">&quot;.&quot;</span>);</div>
+<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;    <span class="keywordflow">return</span> MatType::diagsplit(x, output_offset, output_offset);</div>
+<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;  }</div>
+<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160; </div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> MatType&gt;</div>
+<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;  std::vector&lt; MatType &gt;</div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;  SparsityInterface&lt;MatType&gt;::diagsplit(<span class="keyword">const</span> MatType&amp; x, casadi_int incr) {</div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;    casadi_assert_dev(incr&gt;=1);</div>
+<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;    casadi_assert(x.is_square(), <span class="stringliteral">&quot;diagsplit(x,incr)::input must be square but got &quot;</span></div>
+<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;                          + x.dim()  + <span class="stringliteral">&quot;.&quot;</span>);</div>
+<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;    std::vector&lt;casadi_int&gt; offset2 = range(0, x.size2(), incr);</div>
+<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;    offset2.push_back(x.size2());</div>
+<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;    <span class="keywordflow">return</span> MatType::diagsplit(x, offset2);</div>
+<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;  }</div>
+<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160; </div>
+<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> MatType&gt;</div>
+<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;  std::vector&lt; MatType &gt;</div>
+<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;  SparsityInterface&lt;MatType&gt;::diagsplit(<span class="keyword">const</span> MatType&amp; x, casadi_int incr1, casadi_int incr2) {</div>
+<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;    casadi_assert_dev(incr1&gt;=1);</div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;    casadi_assert_dev(incr2&gt;=1);</div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;    std::vector&lt;casadi_int&gt; offset1 = range(0, x.size1(), incr1);</div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;    offset1.push_back(x.size1());</div>
+<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;    std::vector&lt;casadi_int&gt; offset2 = range(0, x.size2(), incr2);</div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;    offset2.push_back(x.size2());</div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;    <span class="keywordflow">return</span> MatType::diagsplit(x, offset1, offset2);</div>
+<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;  }</div>
+<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160; </div>
+<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> MatType&gt;</div>
+<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;  MatType SparsityInterface&lt;MatType&gt;::mtimes(<span class="keyword">const</span> std::vector&lt;MatType&gt; &amp;args) {</div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;    casadi_assert(!args.empty(),</div>
+<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;                          <span class="stringliteral">&quot;mul(std::vector&lt;MatType&gt; &amp;args): &quot;</span></div>
+<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;                          <span class="stringliteral">&quot;supplied list must not be empty.&quot;</span>);</div>
+<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;    MatType ret = args[0];</div>
+<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;    <span class="keywordflow">for</span> (casadi_int i=1; i&lt;args.size(); ++i) ret = MatType::mtimes(ret, args[i]);</div>
+<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;    <span class="keywordflow">return</span> ret;</div>
 <div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;  }</div>
-<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> MatType&gt;</div>
-<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;  std::vector&lt;MatType &gt; SparsityInterface&lt;MatType&gt;::horzsplit_n(<span class="keyword">const</span> MatType&amp; x, casadi_int n) {</div>
-<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;    casadi_assert(n&gt;=0, <span class="stringliteral">&quot;horzsplit_n(x,n): n (&quot;</span> + str(n) + <span class="stringliteral">&quot;) must be non-negative&quot;</span>);</div>
-<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;    <span class="keywordflow">if</span> (x.size2()==0) <span class="keywordflow">return</span> std::vector&lt;MatType&gt;(n, x);</div>
-<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;    casadi_assert(x.size2() % n==0, <span class="stringliteral">&quot;horzsplit_n(x,n): x.size2() (&quot;</span> + str(x.size2()) +</div>
-<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;                     <span class="stringliteral">&quot;) must be a multiple of n (&quot;</span> + str(n) + <span class="stringliteral">&quot;)&quot;</span>);</div>
-<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;    <span class="keywordflow">return</span> horzsplit(x, x.size2()/n);</div>
-<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;  }</div>
-<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> MatType&gt;</div>
-<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;  std::vector&lt;MatType &gt; SparsityInterface&lt;MatType&gt;::vertsplit_n(<span class="keyword">const</span> MatType&amp; x, casadi_int n) {</div>
-<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;    casadi_assert(n&gt;=0, <span class="stringliteral">&quot;vertsplit_n(x,n): n (&quot;</span> + str(n) + <span class="stringliteral">&quot;) must be non-negative&quot;</span>);</div>
-<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;    <span class="keywordflow">if</span> (x.size1()==0) <span class="keywordflow">return</span> std::vector&lt;MatType&gt;(n, x);</div>
-<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;    casadi_assert(x.size1() % n==0, <span class="stringliteral">&quot;vertsplit(x,n): x.size1() (&quot;</span> + str(x.size1()) +</div>
-<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;                     <span class="stringliteral">&quot;) must be a multiple of n (&quot;</span> + str(n) + <span class="stringliteral">&quot;)&quot;</span>);</div>
-<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;    <span class="keywordflow">return</span> vertsplit(x, x.size1()/n);</div>
-<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;  }</div>
-<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160; </div>
-<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// SWIG</span></div>
-<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160; </div>
-<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;} <span class="comment">// namespace casadi</span></div>
-<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160; </div>
-<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_SPARSITY_INTERFACE_HPP</span></div>
-<div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../db/da5/binary__mx__impl_8hpp_source.html#l00036">binary_mx_impl.hpp:36</a></div></div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160; </div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> MatType&gt;</div>
+<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;  std::vector&lt;MatType &gt; SparsityInterface&lt;MatType&gt;::horzsplit(<span class="keyword">const</span> MatType&amp; x, casadi_int incr) {</div>
+<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;    casadi_assert_dev(incr&gt;=1);</div>
+<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;    casadi_int sz2 = x.size2();</div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;    std::vector&lt;casadi_int&gt; offset2 = range(0, sz2, incr);</div>
+<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;    offset2.push_back(sz2);</div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;    <span class="keywordflow">return</span> MatType::horzsplit(x, offset2);</div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;  }</div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160; </div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> MatType&gt;</div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;  std::vector&lt;MatType &gt; SparsityInterface&lt;MatType&gt;::vertsplit(<span class="keyword">const</span> MatType&amp; x, casadi_int incr) {</div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;    casadi_assert_dev(incr&gt;=1);</div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;    casadi_int sz1 = x.size1();</div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;    std::vector&lt;casadi_int&gt; offset1 = range(0, sz1, incr);</div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;    offset1.push_back(sz1);</div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;    <span class="keywordflow">return</span> MatType::vertsplit(x, offset1);</div>
+<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;  }</div>
+<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> MatType&gt;</div>
+<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;  std::vector&lt;MatType &gt; SparsityInterface&lt;MatType&gt;::horzsplit_n(<span class="keyword">const</span> MatType&amp; x, casadi_int n) {</div>
+<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;    casadi_assert(n&gt;=0, <span class="stringliteral">&quot;horzsplit_n(x,n): n (&quot;</span> + str(n) + <span class="stringliteral">&quot;) must be non-negative&quot;</span>);</div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;    <span class="keywordflow">if</span> (x.size2()==0) <span class="keywordflow">return</span> std::vector&lt;MatType&gt;(n, x);</div>
+<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;    casadi_assert(x.size2() % n==0, <span class="stringliteral">&quot;horzsplit_n(x,n): x.size2() (&quot;</span> + str(x.size2()) +</div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;                     <span class="stringliteral">&quot;) must be a multiple of n (&quot;</span> + str(n) + <span class="stringliteral">&quot;)&quot;</span>);</div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;    <span class="keywordflow">return</span> horzsplit(x, x.size2()/n);</div>
+<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;  }</div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> MatType&gt;</div>
+<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;  std::vector&lt;MatType &gt; SparsityInterface&lt;MatType&gt;::vertsplit_n(<span class="keyword">const</span> MatType&amp; x, casadi_int n) {</div>
+<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;    casadi_assert(n&gt;=0, <span class="stringliteral">&quot;vertsplit_n(x,n): n (&quot;</span> + str(n) + <span class="stringliteral">&quot;) must be non-negative&quot;</span>);</div>
+<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;    <span class="keywordflow">if</span> (x.size1()==0) <span class="keywordflow">return</span> std::vector&lt;MatType&gt;(n, x);</div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;    casadi_assert(x.size1() % n==0, <span class="stringliteral">&quot;vertsplit(x,n): x.size1() (&quot;</span> + str(x.size1()) +</div>
+<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;                     <span class="stringliteral">&quot;) must be a multiple of n (&quot;</span> + str(n) + <span class="stringliteral">&quot;)&quot;</span>);</div>
+<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;    <span class="keywordflow">return</span> vertsplit(x, x.size1()/n);</div>
+<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;  }</div>
+<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160; </div>
+<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// SWIG</span></div>
+<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160; </div>
+<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;} <span class="comment">// namespace casadi</span></div>
+<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160; </div>
+<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_SPARSITY_INTERFACE_HPP</span></div>
+<div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/archiver_8hpp_source.html#l00032">archiver.hpp:32</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_aa64898f5cc9589e1fd4ed7684d96d7a5a02129bb861061d1a052c592e2dc6b383"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5a02129bb861061d1a052c592e2dc6b383">casadi::Category::X</a></div><div class="ttdeci">@ X</div></div>
 <div class="ttc" id="astructcasadi_1_1SparsityInterfaceCommon_html"><div class="ttname"><a href="../../d2/d9a/structcasadi_1_1SparsityInterfaceCommon.html">casadi::SparsityInterfaceCommon</a></div><div class="ttdoc">Empty Base.</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/df8/sparsity__interface_8hpp_source.html#l00037">sparsity_interface.hpp:37</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </body>

@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -65,11 +65,11 @@ $(function() {
 <tr>
 <td>always_inline</td><td>OT_BOOL</td><td>Force inlining.</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
-<td>beta</td><td>OT_DOUBLE</td><td>Line-search parameter, restoration factor of stepsize</td><td><a class="el" href="../../da/d2d/classcasadi_1_1Qrsqp.html" title="&#39;sqsqp&#39; plugin for Nlpsol">casadi::Qrsqp</a> </td></tr>
+<td>beta</td><td>OT_DOUBLE</td><td>Line-search parameter, restoration factor of stepsize</td><td><a class="el" href="../../da/d2d/classcasadi_1_1Qrsqp.html" title="&#39;qrsqp&#39; plugin for Nlpsol">casadi::Qrsqp</a> </td></tr>
 <tr>
 <td>bound_consistency</td><td>OT_BOOL</td><td>Ensure that primal-dual solution is consistent with the bounds</td><td><a class="el" href="../../d8/dc2/classcasadi_1_1Nlpsol.html" title="NLP solver storage class.">casadi::Nlpsol</a> </td></tr>
 <tr>
-<td>c1</td><td>OT_DOUBLE</td><td>Armijo condition, coefficient of decrease in merit</td><td><a class="el" href="../../da/d2d/classcasadi_1_1Qrsqp.html" title="&#39;sqsqp&#39; plugin for Nlpsol">casadi::Qrsqp</a> </td></tr>
+<td>c1</td><td>OT_DOUBLE</td><td>Armijo condition, coefficient of decrease in merit</td><td><a class="el" href="../../da/d2d/classcasadi_1_1Qrsqp.html" title="&#39;qrsqp&#39; plugin for Nlpsol">casadi::Qrsqp</a> </td></tr>
 <tr>
 <td>cache</td><td>OT_DICT</td><td>Prepopulate the function cache. Default: empty</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
@@ -127,7 +127,7 @@ $(function() {
 <tr>
 <td>eval_errors_fatal</td><td>OT_BOOL</td><td>When errors occur during evaluation of f,g,...,stop the iterations</td><td><a class="el" href="../../d8/dc2/classcasadi_1_1Nlpsol.html" title="NLP solver storage class.">casadi::Nlpsol</a> </td></tr>
 <tr>
-<td>expand</td><td>OT_BOOL</td><td>Replace MX with SX expressions in problem formulation [false]</td><td><a class="el" href="../../d2/df9/classcasadi_1_1OracleFunction.html" title="Base class for functions that perform calculation with an oracle.">casadi::OracleFunction</a> </td></tr>
+<td>expand</td><td>OT_BOOL</td><td>Replace MX with SX expressions in problem formulation [false] This happens before creating derivatives unless indicated by postpone_expand</td><td><a class="el" href="../../d2/df9/classcasadi_1_1OracleFunction.html" title="Base class for functions that perform calculation with an oracle.">casadi::OracleFunction</a> </td></tr>
 <tr>
 <td>external_transform</td><td>OT_VECTORVECTOR</td><td>List of external_transform instruction arguments. Default: empty</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
@@ -139,7 +139,7 @@ $(function() {
 <tr>
 <td>gather_stats</td><td>OT_BOOL</td><td>Deprecated option (ignored): Statistics are now always collected.</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
-<td>hessian_approximation</td><td>OT_STRING</td><td>limited-memory|exact</td><td><a class="el" href="../../da/d2d/classcasadi_1_1Qrsqp.html" title="&#39;sqsqp&#39; plugin for Nlpsol">casadi::Qrsqp</a> </td></tr>
+<td>hessian_approximation</td><td>OT_STRING</td><td>limited-memory|exact</td><td><a class="el" href="../../da/d2d/classcasadi_1_1Qrsqp.html" title="&#39;qrsqp&#39; plugin for Nlpsol">casadi::Qrsqp</a> </td></tr>
 <tr>
 <td>ignore_check_vec</td><td>OT_BOOL</td><td>If set to true, the input shape of F will not be checked.</td><td><a class="el" href="../../d8/dc2/classcasadi_1_1Nlpsol.html" title="NLP solver storage class.">casadi::Nlpsol</a> </td></tr>
 <tr>
@@ -173,23 +173,23 @@ $(function() {
 <tr>
 <td>jit_temp_suffix</td><td>OT_BOOL</td><td>Use a temporary (seemingly random) filename suffix for generated code and libraries. This is desired for thread-safety. This behaviour may defeat caching compiler wrappers. Default: true</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
-<td>lbfgs_memory</td><td>OT_INT</td><td>Size of L-BFGS memory.</td><td><a class="el" href="../../da/d2d/classcasadi_1_1Qrsqp.html" title="&#39;sqsqp&#39; plugin for Nlpsol">casadi::Qrsqp</a> </td></tr>
+<td>lbfgs_memory</td><td>OT_INT</td><td>Size of L-BFGS memory.</td><td><a class="el" href="../../da/d2d/classcasadi_1_1Qrsqp.html" title="&#39;qrsqp&#39; plugin for Nlpsol">casadi::Qrsqp</a> </td></tr>
 <tr>
 <td>max_io</td><td>OT_INT</td><td>Acceptable number of inputs and outputs. Warn if exceeded.</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
-<td>max_iter</td><td>OT_INT</td><td>Maximum number of SQP iterations</td><td><a class="el" href="../../da/d2d/classcasadi_1_1Qrsqp.html" title="&#39;sqsqp&#39; plugin for Nlpsol">casadi::Qrsqp</a> </td></tr>
+<td>max_iter</td><td>OT_INT</td><td>Maximum number of SQP iterations</td><td><a class="el" href="../../da/d2d/classcasadi_1_1Qrsqp.html" title="&#39;qrsqp&#39; plugin for Nlpsol">casadi::Qrsqp</a> </td></tr>
 <tr>
-<td>max_iter_ls</td><td>OT_INT</td><td>Maximum number of linesearch iterations</td><td><a class="el" href="../../da/d2d/classcasadi_1_1Qrsqp.html" title="&#39;sqsqp&#39; plugin for Nlpsol">casadi::Qrsqp</a> </td></tr>
+<td>max_iter_ls</td><td>OT_INT</td><td>Maximum number of linesearch iterations</td><td><a class="el" href="../../da/d2d/classcasadi_1_1Qrsqp.html" title="&#39;qrsqp&#39; plugin for Nlpsol">casadi::Qrsqp</a> </td></tr>
 <tr>
 <td>max_num_dir</td><td>OT_INT</td><td>Specify the maximum number of directions for derivative functions. Overrules the builtin optimized_num_dir.</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
-<td>merit_memory</td><td>OT_INT</td><td>Size of memory to store history of merit function values</td><td><a class="el" href="../../da/d2d/classcasadi_1_1Qrsqp.html" title="&#39;sqsqp&#39; plugin for Nlpsol">casadi::Qrsqp</a> </td></tr>
+<td>merit_memory</td><td>OT_INT</td><td>Size of memory to store history of merit function values</td><td><a class="el" href="../../da/d2d/classcasadi_1_1Qrsqp.html" title="&#39;qrsqp&#39; plugin for Nlpsol">casadi::Qrsqp</a> </td></tr>
 <tr>
-<td>min_iter</td><td>OT_INT</td><td>Minimum number of SQP iterations</td><td><a class="el" href="../../da/d2d/classcasadi_1_1Qrsqp.html" title="&#39;sqsqp&#39; plugin for Nlpsol">casadi::Qrsqp</a> </td></tr>
+<td>min_iter</td><td>OT_INT</td><td>Minimum number of SQP iterations</td><td><a class="el" href="../../da/d2d/classcasadi_1_1Qrsqp.html" title="&#39;qrsqp&#39; plugin for Nlpsol">casadi::Qrsqp</a> </td></tr>
 <tr>
 <td>min_lam</td><td>OT_DOUBLE</td><td>Minimum allowed multiplier value</td><td><a class="el" href="../../d8/dc2/classcasadi_1_1Nlpsol.html" title="NLP solver storage class.">casadi::Nlpsol</a> </td></tr>
 <tr>
-<td>min_step_size</td><td>OT_DOUBLE</td><td>The size (inf-norm) of the step size should not become smaller than this.</td><td><a class="el" href="../../da/d2d/classcasadi_1_1Qrsqp.html" title="&#39;sqsqp&#39; plugin for Nlpsol">casadi::Qrsqp</a> </td></tr>
+<td>min_step_size</td><td>OT_DOUBLE</td><td>The size (inf-norm) of the step size should not become smaller than this.</td><td><a class="el" href="../../da/d2d/classcasadi_1_1Qrsqp.html" title="&#39;qrsqp&#39; plugin for Nlpsol">casadi::Qrsqp</a> </td></tr>
 <tr>
 <td>monitor</td><td>OT_STRINGVECTOR</td><td>Set of user problem functions to be monitored</td><td><a class="el" href="../../d2/df9/classcasadi_1_1OracleFunction.html" title="Base class for functions that perform calculation with an oracle.">casadi::OracleFunction</a> </td></tr>
 <tr>
@@ -205,25 +205,27 @@ $(function() {
 <tr>
 <td>post_expand_options</td><td>OT_DICT</td><td>Options to be passed to post-construction expansion. Default: empty</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
-<td>print_header</td><td>OT_BOOL</td><td>Print the header with problem statistics</td><td><a class="el" href="../../da/d2d/classcasadi_1_1Qrsqp.html" title="&#39;sqsqp&#39; plugin for Nlpsol">casadi::Qrsqp</a> </td></tr>
+<td>postpone_expand</td><td>OT_BOOL</td><td>When expand is active, postpone it until after creation of derivatives. Default: False</td><td><a class="el" href="../../d2/df9/classcasadi_1_1OracleFunction.html" title="Base class for functions that perform calculation with an oracle.">casadi::OracleFunction</a> </td></tr>
+<tr>
+<td>print_header</td><td>OT_BOOL</td><td>Print the header with problem statistics</td><td><a class="el" href="../../da/d2d/classcasadi_1_1Qrsqp.html" title="&#39;qrsqp&#39; plugin for Nlpsol">casadi::Qrsqp</a> </td></tr>
 <tr>
 <td>print_in</td><td>OT_BOOL</td><td>Print numerical values of inputs [default: false]</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
-<td>print_iteration</td><td>OT_BOOL</td><td>Print the iterations</td><td><a class="el" href="../../da/d2d/classcasadi_1_1Qrsqp.html" title="&#39;sqsqp&#39; plugin for Nlpsol">casadi::Qrsqp</a> </td></tr>
+<td>print_iteration</td><td>OT_BOOL</td><td>Print the iterations</td><td><a class="el" href="../../da/d2d/classcasadi_1_1Qrsqp.html" title="&#39;qrsqp&#39; plugin for Nlpsol">casadi::Qrsqp</a> </td></tr>
 <tr>
 <td>print_out</td><td>OT_BOOL</td><td>Print numerical values of outputs [default: false]</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
 <td>print_time</td><td>OT_BOOL</td><td>print information about execution time. Implies record_time.</td><td><a class="el" href="../../db/da0/classcasadi_1_1ProtoFunction.html" title="Base class for FunctionInternal and LinsolInternal.">casadi::ProtoFunction</a> </td></tr>
 <tr>
-<td>qpsol</td><td>OT_STRING</td><td>The QP solver to be used by the SQP method [qrqp]</td><td><a class="el" href="../../da/d2d/classcasadi_1_1Qrsqp.html" title="&#39;sqsqp&#39; plugin for Nlpsol">casadi::Qrsqp</a> </td></tr>
+<td>qpsol</td><td>OT_STRING</td><td>The QP solver to be used by the SQP method [qrqp]</td><td><a class="el" href="../../da/d2d/classcasadi_1_1Qrsqp.html" title="&#39;qrsqp&#39; plugin for Nlpsol">casadi::Qrsqp</a> </td></tr>
 <tr>
-<td>qpsol_options</td><td>OT_DICT</td><td>Options to be passed to the QP solver</td><td><a class="el" href="../../da/d2d/classcasadi_1_1Qrsqp.html" title="&#39;sqsqp&#39; plugin for Nlpsol">casadi::Qrsqp</a> </td></tr>
+<td>qpsol_options</td><td>OT_DICT</td><td>Options to be passed to the QP solver</td><td><a class="el" href="../../da/d2d/classcasadi_1_1Qrsqp.html" title="&#39;qrsqp&#39; plugin for Nlpsol">casadi::Qrsqp</a> </td></tr>
 <tr>
 <td>record_time</td><td>OT_BOOL</td><td>record information about execution time, for retrieval with stats().</td><td><a class="el" href="../../db/da0/classcasadi_1_1ProtoFunction.html" title="Base class for FunctionInternal and LinsolInternal.">casadi::ProtoFunction</a> </td></tr>
 <tr>
 <td>regularity_check</td><td>OT_BOOL</td><td>Throw exceptions when NaN or Inf appears during evaluation</td><td><a class="el" href="../../db/da0/classcasadi_1_1ProtoFunction.html" title="Base class for FunctionInternal and LinsolInternal.">casadi::ProtoFunction</a> </td></tr>
 <tr>
-<td>regularize</td><td>OT_BOOL</td><td>Automatic regularization of Lagrange Hessian.</td><td><a class="el" href="../../da/d2d/classcasadi_1_1Qrsqp.html" title="&#39;sqsqp&#39; plugin for Nlpsol">casadi::Qrsqp</a> </td></tr>
+<td>regularize</td><td>OT_BOOL</td><td>Automatic regularization of Lagrange Hessian.</td><td><a class="el" href="../../da/d2d/classcasadi_1_1Qrsqp.html" title="&#39;qrsqp&#39; plugin for Nlpsol">casadi::Qrsqp</a> </td></tr>
 <tr>
 <td>reverse_options</td><td>OT_DICT</td><td>Options to be passed to a reverse mode constructor</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
@@ -235,9 +237,9 @@ $(function() {
 <tr>
 <td>specific_options</td><td>OT_DICT</td><td>Options for specific auto-generated functions, overwriting the defaults from common_options. Nested dictionary.</td><td><a class="el" href="../../d2/df9/classcasadi_1_1OracleFunction.html" title="Base class for functions that perform calculation with an oracle.">casadi::OracleFunction</a> </td></tr>
 <tr>
-<td>tol_du</td><td>OT_DOUBLE</td><td>Stopping criterion for dual infeasability</td><td><a class="el" href="../../da/d2d/classcasadi_1_1Qrsqp.html" title="&#39;sqsqp&#39; plugin for Nlpsol">casadi::Qrsqp</a> </td></tr>
+<td>tol_du</td><td>OT_DOUBLE</td><td>Stopping criterion for dual infeasability</td><td><a class="el" href="../../da/d2d/classcasadi_1_1Qrsqp.html" title="&#39;qrsqp&#39; plugin for Nlpsol">casadi::Qrsqp</a> </td></tr>
 <tr>
-<td>tol_pr</td><td>OT_DOUBLE</td><td>Stopping criterion for primal infeasibility</td><td><a class="el" href="../../da/d2d/classcasadi_1_1Qrsqp.html" title="&#39;sqsqp&#39; plugin for Nlpsol">casadi::Qrsqp</a> </td></tr>
+<td>tol_pr</td><td>OT_DOUBLE</td><td>Stopping criterion for primal infeasibility</td><td><a class="el" href="../../da/d2d/classcasadi_1_1Qrsqp.html" title="&#39;qrsqp&#39; plugin for Nlpsol">casadi::Qrsqp</a> </td></tr>
 <tr>
 <td>user_data</td><td>OT_VOIDPTR</td><td>A user-defined field that can be used to identify the function or pass additional information</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>

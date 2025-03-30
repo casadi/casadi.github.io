@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -68,7 +68,7 @@ $(function() {
 <p><code>#include &lt;<a class="el" href="../../db/d1c/serializer_8hpp_source.html">serializer.hpp</a>&gt;</code></p>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="../../db/d1c/serializer_8hpp_source.html#l00214">214</a> of file <a class="el" href="../../db/d1c/serializer_8hpp_source.html">serializer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d1c/serializer_8hpp_source.html#l00222">222</a> of file <a class="el" href="../../db/d1c/serializer_8hpp_source.html">serializer.hpp</a>.</p>
 </div><div class="dynheader">
 Inheritance diagram for casadi::FileSerializer:</div>
 <div class="dyncontent">
@@ -83,9 +83,9 @@ Inheritance diagram for casadi::FileSerializer:</div>
 Public Types</h2></td></tr>
 <tr class="memitem:a9d054731208815f4809e6dba626b8f29"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29">SerializationType</a> { <br />
 &#160;&#160;<a class="el" href="../../d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29a8632975d490cb5a120f4b710f4037df6">SERIALIZED_SPARSITY</a>
-, <a class="el" href="../../d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29a1846a84a51136fa09c717c6794ab6c17">SERIALIZED_MX</a>
+, <a class="el" href="../../d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29ab3f9bd8495938468151d48bd52c06327">SERIALIZED_MX_v1</a>
 , <a class="el" href="../../d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29ad42e02f415dce39556d742a5143347d0">SERIALIZED_DM</a>
-, <a class="el" href="../../d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29a0c6488415e280970496751fe7c988c4e">SERIALIZED_SX</a>
+, <a class="el" href="../../d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29a052e4b9d7e91ffff58d0c10f92bf7982">SERIALIZED_SX_v1</a>
 , <br />
 &#160;&#160;<a class="el" href="../../d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29ac4cf6033c71bd76066ee8dc0d5a40049">SERIALIZED_LINSOL</a>
 , <a class="el" href="../../d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29a16f9c8bde80b56d8fc83d24f1f59b5cc">SERIALIZED_FUNCTION</a>
@@ -95,10 +95,10 @@ Public Types</h2></td></tr>
 &#160;&#160;<a class="el" href="../../d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29a10dae7896893355af4fd55cc035900ce">SERIALIZED_DOUBLE</a>
 , <a class="el" href="../../d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29a4bb24c0e17b0926b5beef9d31fffb380">SERIALIZED_STRING</a>
 , <a class="el" href="../../d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29af5a9824149739fdea96897db8fff5756">SERIALIZED_SPARSITY_VECTOR</a>
-, <a class="el" href="../../d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29adb55287d0239d20ec0919caf8f96743e">SERIALIZED_MX_VECTOR</a>
+, <a class="el" href="../../d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29a319af6d60741c97bdf4171c41f07c19d">SERIALIZED_MX_VECTOR_v1</a>
 , <br />
 &#160;&#160;<a class="el" href="../../d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29aebf386bb3a1973046f3f12bc9fe0d518">SERIALIZED_DM_VECTOR</a>
-, <a class="el" href="../../d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29ae7f80f1fe6ca1b8d68306457ce86c91b">SERIALIZED_SX_VECTOR</a>
+, <a class="el" href="../../d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29aa2e5de181c018e14c92a3b33b8dbf4ac">SERIALIZED_SX_VECTOR_v1</a>
 , <a class="el" href="../../d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29a7e29f5c094673011d7493975b1333bb1">SERIALIZED_LINSOL_VECTOR</a>
 , <a class="el" href="../../d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29a1eed83cfd706d7288f84a92acda368dc">SERIALIZED_FUNCTION_VECTOR</a>
 , <br />
@@ -106,6 +106,11 @@ Public Types</h2></td></tr>
 , <a class="el" href="../../d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29a05c12f10a24a28f020ed508bb6b0d502">SERIALIZED_INT_VECTOR</a>
 , <a class="el" href="../../d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29aa76e653cb1c61792c36844e0454c8407">SERIALIZED_DOUBLE_VECTOR</a>
 , <a class="el" href="../../d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29a6bfe41af3f2b4d0bb6ea452bc70b913e">SERIALIZED_STRING_VECTOR</a>
+, <br />
+&#160;&#160;<a class="el" href="../../d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29a1846a84a51136fa09c717c6794ab6c17">SERIALIZED_MX</a>
+, <a class="el" href="../../d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29a0c6488415e280970496751fe7c988c4e">SERIALIZED_SX</a>
+, <a class="el" href="../../d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29adb55287d0239d20ec0919caf8f96743e">SERIALIZED_MX_VECTOR</a>
+, <a class="el" href="../../d5/d36/classcasadi_1_1SerializerBase.html#a9d054731208815f4809e6dba626b8f29ae7f80f1fe6ca1b8d68306457ce86c91b">SERIALIZED_SX_VECTOR</a>
 <br />
  }</td></tr>
 <tr class="separator:a9d054731208815f4809e6dba626b8f29"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -201,9 +206,9 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a9d054731208815f4809e6dba626b8f29a8632975d490cb5a120f4b710f4037df6"></a>SERIALIZED_SPARSITY&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a9d054731208815f4809e6dba626b8f29a1846a84a51136fa09c717c6794ab6c17"></a>SERIALIZED_MX&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9d054731208815f4809e6dba626b8f29ab3f9bd8495938468151d48bd52c06327"></a>SERIALIZED_MX_v1&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a9d054731208815f4809e6dba626b8f29ad42e02f415dce39556d742a5143347d0"></a>SERIALIZED_DM&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a9d054731208815f4809e6dba626b8f29a0c6488415e280970496751fe7c988c4e"></a>SERIALIZED_SX&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9d054731208815f4809e6dba626b8f29a052e4b9d7e91ffff58d0c10f92bf7982"></a>SERIALIZED_SX_v1&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a9d054731208815f4809e6dba626b8f29ac4cf6033c71bd76066ee8dc0d5a40049"></a>SERIALIZED_LINSOL&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a9d054731208815f4809e6dba626b8f29a16f9c8bde80b56d8fc83d24f1f59b5cc"></a>SERIALIZED_FUNCTION&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a9d054731208815f4809e6dba626b8f29a12cd5a805ee428396052754aac515140"></a>SERIALIZED_GENERICTYPE&#160;</td><td class="fielddoc"></td></tr>
@@ -211,15 +216,19 @@ Protected Attributes</h2></td></tr>
 <tr><td class="fieldname"><a id="a9d054731208815f4809e6dba626b8f29a10dae7896893355af4fd55cc035900ce"></a>SERIALIZED_DOUBLE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a9d054731208815f4809e6dba626b8f29a4bb24c0e17b0926b5beef9d31fffb380"></a>SERIALIZED_STRING&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a9d054731208815f4809e6dba626b8f29af5a9824149739fdea96897db8fff5756"></a>SERIALIZED_SPARSITY_VECTOR&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a9d054731208815f4809e6dba626b8f29adb55287d0239d20ec0919caf8f96743e"></a>SERIALIZED_MX_VECTOR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9d054731208815f4809e6dba626b8f29a319af6d60741c97bdf4171c41f07c19d"></a>SERIALIZED_MX_VECTOR_v1&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a9d054731208815f4809e6dba626b8f29aebf386bb3a1973046f3f12bc9fe0d518"></a>SERIALIZED_DM_VECTOR&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a9d054731208815f4809e6dba626b8f29ae7f80f1fe6ca1b8d68306457ce86c91b"></a>SERIALIZED_SX_VECTOR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9d054731208815f4809e6dba626b8f29aa2e5de181c018e14c92a3b33b8dbf4ac"></a>SERIALIZED_SX_VECTOR_v1&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a9d054731208815f4809e6dba626b8f29a7e29f5c094673011d7493975b1333bb1"></a>SERIALIZED_LINSOL_VECTOR&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a9d054731208815f4809e6dba626b8f29a1eed83cfd706d7288f84a92acda368dc"></a>SERIALIZED_FUNCTION_VECTOR&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a9d054731208815f4809e6dba626b8f29a89065b99535ec0c5d5d853d33ead461e"></a>SERIALIZED_GENERICTYPE_VECTOR&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a9d054731208815f4809e6dba626b8f29a05c12f10a24a28f020ed508bb6b0d502"></a>SERIALIZED_INT_VECTOR&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a9d054731208815f4809e6dba626b8f29aa76e653cb1c61792c36844e0454c8407"></a>SERIALIZED_DOUBLE_VECTOR&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a9d054731208815f4809e6dba626b8f29a6bfe41af3f2b4d0bb6ea452bc70b913e"></a>SERIALIZED_STRING_VECTOR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9d054731208815f4809e6dba626b8f29a1846a84a51136fa09c717c6794ab6c17"></a>SERIALIZED_MX&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9d054731208815f4809e6dba626b8f29a0c6488415e280970496751fe7c988c4e"></a>SERIALIZED_SX&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9d054731208815f4809e6dba626b8f29adb55287d0239d20ec0919caf8f96743e"></a>SERIALIZED_MX_VECTOR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9d054731208815f4809e6dba626b8f29ae7f80f1fe6ca1b8d68306457ce86c91b"></a>SERIALIZED_SX_VECTOR&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 <p class="definition">Definition at line <a class="el" href="../../db/d1c/serializer_8hpp_source.html#l00078">78</a> of file <a class="el" href="../../db/d1c/serializer_8hpp_source.html">serializer.hpp</a>.</p>
@@ -918,7 +927,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../db/d1c/serializer_8hpp_source.html#l00109">109</a> of file <a class="el" href="../../db/d1c/serializer_8hpp_source.html">serializer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d1c/serializer_8hpp_source.html#l00113">113</a> of file <a class="el" href="../../db/d1c/serializer_8hpp_source.html">serializer.hpp</a>.</p>
 
 </div>
 </div>
@@ -942,7 +951,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../db/d1c/serializer_8hpp_source.html#l00108">108</a> of file <a class="el" href="../../db/d1c/serializer_8hpp_source.html">serializer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d1c/serializer_8hpp_source.html#l00112">112</a> of file <a class="el" href="../../db/d1c/serializer_8hpp_source.html">serializer.hpp</a>.</p>
 
 </div>
 </div>

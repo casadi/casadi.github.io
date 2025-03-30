@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a2d71bf95dbd3fa5f6725504bcba67dd52869d91" id="a2d71bf95dbd3fa5f6725504bcba67dd52869d91" >revision 3.6.7</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -70,13 +70,13 @@ $(function() {
 <p><code>#include &lt;<a class="el" href="../../db/dc6/mx_8hpp_source.html">mx.hpp</a>&gt;</code></p>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="../../de/d57/classcasadi_1_1MX.html" title="MX - Matrix expression.">MX</a> class is used to build up trees made up from MXNodes. It is a more general graph representation than the scalar expression, SX, and much less efficient for small objects. On the other hand, the class allows much more general operations than does SX, in particular matrix valued operations and calls to arbitrary differentiable functions.</p>
-<p>The <a class="el" href="../../de/d57/classcasadi_1_1MX.html" title="MX - Matrix expression.">MX</a> class is designed to have identical syntax with the Matrix&lt;&gt; template class, and uses DM (i.e. Matrix&lt;double&gt;) as its internal representation of the values at a node. By keeping the syntaxes identical, it is possible to switch from one class to the other, as well as inlining <a class="el" href="../../de/d57/classcasadi_1_1MX.html" title="MX - Matrix expression.">MX</a> functions to <a class="el" href="../../d3/dec/structcasadi_1_1SXElem.html">SXElem</a> functions.</p>
+<p>The <a class="el" href="../../de/d57/classcasadi_1_1MX.html" title="MX - Matrix expression.">MX</a> class is designed to have identical syntax with the Matrix&lt;&gt; template class, and uses DM (i.e. <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html">Matrix&lt;double&gt;</a>) as its internal representation of the values at a node. By keeping the syntaxes identical, it is possible to switch from one class to the other, as well as inlining <a class="el" href="../../de/d57/classcasadi_1_1MX.html" title="MX - Matrix expression.">MX</a> functions to <a class="el" href="../../d3/dec/structcasadi_1_1SXElem.html">SXElem</a> functions.</p>
 <p>Note that an operation is always "lazy", making a matrix multiplication will create a matrix multiplication node, not perform the actual multiplication.</p>
 <dl class="section author"><dt>Author</dt><dd>Joel Andersson </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2010-2011</dd></dl>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_py">https://github.com/casadi/casadi/wiki/L_py</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dc6/mx_8hpp_source.html#l00080">80</a> of file <a class="el" href="../../db/dc6/mx_8hpp_source.html">mx.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/dc6/mx_8hpp_source.html#l00088">88</a> of file <a class="el" href="../../db/dc6/mx_8hpp_source.html">mx.hpp</a>.</p>
 </div><div class="dynheader">
 Inheritance diagram for casadi::MX:</div>
 <div class="dyncontent">
@@ -88,10 +88,11 @@ Inheritance diagram for casadi::MX:</div>
 <area shape="rect" title=" " alt="" coords="281,122,511,149"/>
 <area shape="rect" title=" " alt="" coords="331,173,461,199"/>
 <area shape="rect" href="../../dc/df3/classcasadi_1_1GenericMatrix.html" title=" " alt="" coords="314,224,478,265"/>
-<area shape="rect" href="../../dc/d32/structcasadi_1_1GenericMatrixCommon.html" title="Empty Base." alt="" coords="7,173,229,199"/>
-<area shape="rect" title=" " alt="" coords="5,224,231,265"/>
-<area shape="rect" title=" " alt="" coords="26,290,210,317"/>
-<area shape="rect" href="../../d5/d4a/classcasadi_1_1SharedObject.html" title="SharedObject implements a reference counting framework similar for efficient and." alt="" coords="317,290,475,317"/>
+<area shape="rect" href="../../dc/d32/structcasadi_1_1GenericMatrixCommon.html" title="Empty Base." alt="" coords="7,143,229,170"/>
+<area shape="rect" title=" " alt="" coords="5,195,231,236"/>
+<area shape="rect" title=" " alt="" coords="26,261,210,287"/>
+<area shape="rect" href="../../d5/d4a/classcasadi_1_1SharedObject.html" title="GenericShared implements a reference counting framework similar for efficient and." alt="" coords="317,293,475,319"/>
+<area shape="rect" href="../../da/d35/classcasadi_1_1GenericShared.html" title=" " alt="" coords="9,311,227,367"/>
 </map>
 <center><span class="legend">[<a href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -100,6 +101,10 @@ Public Types</h2></td></tr>
 <tr class="memitem:abc38f98f528142d3a4fb48384ee22eab"><td class="memItemLeft" align="right" valign="top">typedef std::map&lt; std::string, <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d57/classcasadi_1_1MX.html#abc38f98f528142d3a4fb48384ee22eab">MXDict</a></td></tr>
 <tr class="memdesc:abc38f98f528142d3a4fb48384ee22eab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Readability typedef.  <a href="../../de/d57/classcasadi_1_1MX.html#abc38f98f528142d3a4fb48384ee22eab">More...</a><br /></td></tr>
 <tr class="separator:abc38f98f528142d3a4fb48384ee22eab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6d82029342dadbc9c77ddc8ef8084f2"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html#ad6d82029342dadbc9c77ddc8ef8084f2">internal_base_type</a> = SharedObjectInternal</td></tr>
+<tr class="separator:ad6d82029342dadbc9c77ddc8ef8084f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f1144d06a1c4605f76be361f8c86230"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html#a6f1144d06a1c4605f76be361f8c86230">base_type</a> = <a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html">SharedObject</a></td></tr>
+<tr class="separator:a6f1144d06a1c4605f76be361f8c86230"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -118,6 +123,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a41a1ba22ef27bea1ca9a3665809b6467"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d57/classcasadi_1_1MX.html#a41a1ba22ef27bea1ca9a3665809b6467">MX</a> (const <a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html">Sparsity</a> &amp;sp, const std::string &amp;fname)</td></tr>
 <tr class="memdesc:a41a1ba22ef27bea1ca9a3665809b6467"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct matrix with a given sparsity and a file with nonzeros.  <a href="../../de/d57/classcasadi_1_1MX.html#a41a1ba22ef27bea1ca9a3665809b6467">More...</a><br /></td></tr>
 <tr class="separator:a41a1ba22ef27bea1ca9a3665809b6467"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa404ce6140781b47c6617474cab79d8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d57/classcasadi_1_1MX.html#aaa404ce6140781b47c6617474cab79d8">MX</a> (const <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html">Matrix</a>&lt; double &gt; &amp;val, const std::string &amp;<a class="el" href="../../de/d57/classcasadi_1_1MX.html#a36f9a8ff0c5e507a637df711ca00291b">name</a>)</td></tr>
+<tr class="memdesc:aaa404ce6140781b47c6617474cab79d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct matrix with a given sparsity and nonzeros,.  <a href="../../de/d57/classcasadi_1_1MX.html#aaa404ce6140781b47c6617474cab79d8">More...</a><br /></td></tr>
+<tr class="separator:aaa404ce6140781b47c6617474cab79d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a960602b45f7146b0d608c8a642123787"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d57/classcasadi_1_1MX.html#a960602b45f7146b0d608c8a642123787">MX</a> (double x)</td></tr>
 <tr class="memdesc:a960602b45f7146b0d608c8a642123787"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create scalar constant (also implicit type conversion)  <a href="../../de/d57/classcasadi_1_1MX.html#a960602b45f7146b0d608c8a642123787">More...</a><br /></td></tr>
 <tr class="separator:a960602b45f7146b0d608c8a642123787"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -130,6 +138,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4cf7bd9afaf68324d7977c79c38b3736"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html">Sparsity</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d57/classcasadi_1_1MX.html#a4cf7bd9afaf68324d7977c79c38b3736">get_sparsity</a> () const</td></tr>
 <tr class="memdesc:a4cf7bd9afaf68324d7977c79c38b3736"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get an owning reference to the sparsity pattern.  <a href="../../de/d57/classcasadi_1_1MX.html#a4cf7bd9afaf68324d7977c79c38b3736">More...</a><br /></td></tr>
 <tr class="separator:a4cf7bd9afaf68324d7977c79c38b3736"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd8bb253bdee545eaa2d5f1c89901aa0"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d57/classcasadi_1_1MX.html#acd8bb253bdee545eaa2d5f1c89901aa0">get_nonzeros</a> () const</td></tr>
+<tr class="memdesc:acd8bb253bdee545eaa2d5f1c89901aa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get nonzeros as list of scalar MXes.  <a href="../../de/d57/classcasadi_1_1MX.html#acd8bb253bdee545eaa2d5f1c89901aa0">More...</a><br /></td></tr>
+<tr class="separator:acd8bb253bdee545eaa2d5f1c89901aa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07554675caed52ccbce177e646f5db7b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d57/classcasadi_1_1MX.html#a07554675caed52ccbce177e646f5db7b">erase</a> (const std::vector&lt; casadi_int &gt; &amp;rr, const std::vector&lt; casadi_int &gt; &amp;cc, bool ind1=false)</td></tr>
 <tr class="memdesc:a07554675caed52ccbce177e646f5db7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Erase a submatrix (leaving structural zeros in its place)  <a href="../../de/d57/classcasadi_1_1MX.html#a07554675caed52ccbce177e646f5db7b">More...</a><br /></td></tr>
 <tr class="separator:a07554675caed52ccbce177e646f5db7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -328,12 +339,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6611a65747f60a8170c54f3338c01922"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html#a6611a65747f60a8170c54f3338c01922">get_str</a> (bool more=false) const</td></tr>
 <tr class="memdesc:a6611a65747f60a8170c54f3338c01922"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get string representation.  <a href="../../d5/d4a/classcasadi_1_1SharedObject.html#a6611a65747f60a8170c54f3338c01922">More...</a><br /></td></tr>
 <tr class="separator:a6611a65747f60a8170c54f3338c01922"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d6952169894b2d43694a7577252bdfc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html#a2d6952169894b2d43694a7577252bdfc">is_null</a> () const</td></tr>
-<tr class="memdesc:a2d6952169894b2d43694a7577252bdfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is a null pointer?  <a href="../../d5/d4a/classcasadi_1_1SharedObject.html#a2d6952169894b2d43694a7577252bdfc">More...</a><br /></td></tr>
-<tr class="separator:a2d6952169894b2d43694a7577252bdfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03c5f1b2f15e9cd97a87596bd037f2dd"><td class="memItemLeft" align="right" valign="top">casadi_int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html#a03c5f1b2f15e9cd97a87596bd037f2dd">__hash__</a> () const</td></tr>
-<tr class="memdesc:a03c5f1b2f15e9cd97a87596bd037f2dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a number that is unique for a given Node.  <a href="../../d5/d4a/classcasadi_1_1SharedObject.html#a03c5f1b2f15e9cd97a87596bd037f2dd">More...</a><br /></td></tr>
-<tr class="separator:a03c5f1b2f15e9cd97a87596bd037f2dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cd34e33937f28d74c88dbb2ce6c7786"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d35/classcasadi_1_1GenericShared.html#a3cd34e33937f28d74c88dbb2ce6c7786">debug_repr</a> () const</td></tr>
+<tr class="separator:a3cd34e33937f28d74c88dbb2ce6c7786"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd28957366899587b9da638343fe41b5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d35/classcasadi_1_1GenericShared.html#abd28957366899587b9da638343fe41b5">is_null</a> () const</td></tr>
+<tr class="memdesc:abd28957366899587b9da638343fe41b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is a null pointer?  <a href="../../da/d35/classcasadi_1_1GenericShared.html#abd28957366899587b9da638343fe41b5">More...</a><br /></td></tr>
+<tr class="separator:abd28957366899587b9da638343fe41b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15b15ed5fcdea82954ff4cf896825803"><td class="memItemLeft" align="right" valign="top">casadi_int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d35/classcasadi_1_1GenericShared.html#a15b15ed5fcdea82954ff4cf896825803">__hash__</a> () const</td></tr>
+<tr class="memdesc:a15b15ed5fcdea82954ff4cf896825803"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a number that is unique for a given Node.  <a href="../../da/d35/classcasadi_1_1GenericShared.html#a15b15ed5fcdea82954ff4cf896825803">More...</a><br /></td></tr>
+<tr class="separator:a15b15ed5fcdea82954ff4cf896825803"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
 <tr class="memitem:a1eb87a5f771298113104cd5e2e7bc3f6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d57/classcasadi_1_1MX.html#a1eb87a5f771298113104cd5e2e7bc3f6">split_primitives</a> (const <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &amp;x) const</td></tr>
 <tr class="memdesc:a1eb87a5f771298113104cd5e2e7bc3f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Split up an expression along symbolic primitives.  <a href="../../de/d57/classcasadi_1_1MX.html#a1eb87a5f771298113104cd5e2e7bc3f6">More...</a><br /></td></tr>
@@ -584,9 +597,13 @@ Friends</h2></td></tr>
 <tr class="memitem:gaff92af00cd421ba4f64a029379ebdc6a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dc2/group__expression__tools.html#gaff92af00cd421ba4f64a029379ebdc6a">graph_substitute</a> (const <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &amp;ex, const std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt; &amp;v, const std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt; &amp;vdef)</td></tr>
 <tr class="memdesc:gaff92af00cd421ba4f64a029379ebdc6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Substitute single expression in graph.  <a href="../../d9/dc2/group__expression__tools.html#gaff92af00cd421ba4f64a029379ebdc6a">More...</a><br /></td></tr>
 <tr class="separator:gaff92af00cd421ba4f64a029379ebdc6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8a3dc4a60f5fec88271389798d30dcb9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dc2/group__expression__tools.html#ga8a3dc4a60f5fec88271389798d30dcb9">graph_substitute</a> (const <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &amp;ex, const std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt; &amp;v, const std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt; &amp;vdef, bool &amp;updated)</td></tr>
+<tr class="separator:ga8a3dc4a60f5fec88271389798d30dcb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa0cf4d58ae09d5e5588c2f16ba5293ba"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dc2/group__expression__tools.html#gaa0cf4d58ae09d5e5588c2f16ba5293ba">graph_substitute</a> (const std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt; &amp;ex, const std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt; &amp;v, const std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt; &amp;vdef)</td></tr>
 <tr class="memdesc:gaa0cf4d58ae09d5e5588c2f16ba5293ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Substitute multiple expressions in graph.  <a href="../../d9/dc2/group__expression__tools.html#gaa0cf4d58ae09d5e5588c2f16ba5293ba">More...</a><br /></td></tr>
 <tr class="separator:gaa0cf4d58ae09d5e5588c2f16ba5293ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabb459b8d1666d661a1b096c6d54b3dea"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dc2/group__expression__tools.html#gabb459b8d1666d661a1b096c6d54b3dea">graph_substitute</a> (const std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt; &amp;ex, const std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt; &amp;v, const std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt; &amp;vdef, bool &amp;updated)</td></tr>
+<tr class="separator:gabb459b8d1666d661a1b096c6d54b3dea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac70829f5ffd7755d736fd80564269abc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dc2/group__expression__tools.html#gac70829f5ffd7755d736fd80564269abc">matrix_expand</a> (const <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &amp;e, const std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt; &amp;boundary=std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt;(), const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;options=<a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>())</td></tr>
 <tr class="memdesc:gac70829f5ffd7755d736fd80564269abc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expand <a class="el" href="../../de/d57/classcasadi_1_1MX.html" title="MX - Matrix expression.">MX</a> graph to SXFunction call.  <a href="../../d9/dc2/group__expression__tools.html#gac70829f5ffd7755d736fd80564269abc">More...</a><br /></td></tr>
 <tr class="separator:gac70829f5ffd7755d736fd80564269abc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -626,6 +643,54 @@ Friends</h2></td></tr>
 <tr class="separator:ga47da6e445e04f2f5530e500462f4596b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a6f1144d06a1c4605f76be361f8c86230"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f1144d06a1c4605f76be361f8c86230">&#9670;&nbsp;</a></span>base_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html#a6f1144d06a1c4605f76be361f8c86230">casadi::SharedObject::base_type</a> =  <a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html">SharedObject</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d8/d68/shared__object_8hpp_source.html#l00103">103</a> of file <a class="el" href="../../d8/d68/shared__object_8hpp_source.html">shared_object.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ad6d82029342dadbc9c77ddc8ef8084f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6d82029342dadbc9c77ddc8ef8084f2">&#9670;&nbsp;</a></span>internal_base_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html#ad6d82029342dadbc9c77ddc8ef8084f2">casadi::SharedObject::internal_base_type</a> =  SharedObjectInternal</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d8/d68/shared__object_8hpp_source.html#l00102">102</a> of file <a class="el" href="../../d8/d68/shared__object_8hpp_source.html">shared_object.hpp</a>.</p>
+
+</div>
+</div>
 <a id="abc38f98f528142d3a4fb48384ee22eab"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abc38f98f528142d3a4fb48384ee22eab">&#9670;&nbsp;</a></span>MXDict</h2>
 
@@ -638,13 +703,13 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../db/dc6/mx_8hpp_source.html#l00907">907</a> of file <a class="el" href="../../db/dc6/mx_8hpp_source.html">mx.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/dc6/mx_8hpp_source.html#l00964">964</a> of file <a class="el" href="../../db/dc6/mx_8hpp_source.html">mx.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa4441bb8871323c857f68f940af84e9d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa4441bb8871323c857f68f940af84e9d">&#9670;&nbsp;</a></span>MX() <span class="overload">[1/7]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4441bb8871323c857f68f940af84e9d">&#9670;&nbsp;</a></span>MX() <span class="overload">[1/8]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -662,7 +727,7 @@ Friends</h2></td></tr>
 </div>
 </div>
 <a id="a850d9e35a76ab4f8edcc716dd973c283"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a850d9e35a76ab4f8edcc716dd973c283">&#9670;&nbsp;</a></span>MX() <span class="overload">[2/7]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a850d9e35a76ab4f8edcc716dd973c283">&#9670;&nbsp;</a></span>MX() <span class="overload">[2/8]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -691,7 +756,7 @@ Friends</h2></td></tr>
 </div>
 </div>
 <a id="a96d776604d43f93b1c8c58cfa113beb6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a96d776604d43f93b1c8c58cfa113beb6">&#9670;&nbsp;</a></span>MX() <span class="overload">[3/7]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a96d776604d43f93b1c8c58cfa113beb6">&#9670;&nbsp;</a></span>MX() <span class="overload">[3/8]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -719,7 +784,7 @@ Friends</h2></td></tr>
 </div>
 </div>
 <a id="a579f6d45b24be9e4b2360357491c0541"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a579f6d45b24be9e4b2360357491c0541">&#9670;&nbsp;</a></span>MX() <span class="overload">[4/7]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a579f6d45b24be9e4b2360357491c0541">&#9670;&nbsp;</a></span>MX() <span class="overload">[4/8]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -748,7 +813,7 @@ Friends</h2></td></tr>
 </div>
 </div>
 <a id="a41a1ba22ef27bea1ca9a3665809b6467"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a41a1ba22ef27bea1ca9a3665809b6467">&#9670;&nbsp;</a></span>MX() <span class="overload">[5/7]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a41a1ba22ef27bea1ca9a3665809b6467">&#9670;&nbsp;</a></span>MX() <span class="overload">[5/8]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -776,8 +841,38 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<a id="aaa404ce6140781b47c6617474cab79d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa404ce6140781b47c6617474cab79d8">&#9670;&nbsp;</a></span>MX() <span class="overload">[6/8]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">casadi::MX::MX </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html">Matrix</a>&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>configurable in codegen via a pool</p>
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2aa">https://github.com/casadi/casadi/wiki/L_2aa</a> </p>
+
+</div>
+</div>
 <a id="a960602b45f7146b0d608c8a642123787"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a960602b45f7146b0d608c8a642123787">&#9670;&nbsp;</a></span>MX() <span class="overload">[6/7]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a960602b45f7146b0d608c8a642123787">&#9670;&nbsp;</a></span>MX() <span class="overload">[7/8]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -796,7 +891,7 @@ Friends</h2></td></tr>
 </div>
 </div>
 <a id="acf175760e8c3b56cd7ed0d22d38fad16"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acf175760e8c3b56cd7ed0d22d38fad16">&#9670;&nbsp;</a></span>MX() <span class="overload">[7/7]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#acf175760e8c3b56cd7ed0d22d38fad16">&#9670;&nbsp;</a></span>MX() <span class="overload">[8/8]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -815,8 +910,8 @@ Friends</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a03c5f1b2f15e9cd97a87596bd037f2dd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a03c5f1b2f15e9cd97a87596bd037f2dd">&#9670;&nbsp;</a></span>__hash__()</h2>
+<a id="a15b15ed5fcdea82954ff4cf896825803"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15b15ed5fcdea82954ff4cf896825803">&#9670;&nbsp;</a></span>__hash__()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -825,10 +920,7 @@ Friends</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">casadi_int casadi::SharedObject::__hash__ </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td class="memname">casadi_int <a class="el" href="../../da/d35/classcasadi_1_1GenericShared.html">casadi::GenericShared</a>&lt; <a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html">SharedObject</a> , SharedObjectInternal  &gt;::__hash__</td>
         </tr>
       </table>
   </td>
@@ -839,6 +931,8 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>If the Object does not point to any node, "0" is returned.</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_av">https://github.com/casadi/casadi/wiki/L_av</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00124">124</a> of file <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html">generic_shared_impl.hpp</a>.</p>
 
 </div>
 </div>
@@ -1111,6 +1205,30 @@ Friends</h2></td></tr>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1av">https://github.com/casadi/casadi/wiki/L_1av</a> </p>
 
 <p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l00124">124</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a3cd34e33937f28d74c88dbb2ce6c7786"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3cd34e33937f28d74c88dbb2ce6c7786">&#9670;&nbsp;</a></span>debug_repr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string <a class="el" href="../../da/d35/classcasadi_1_1GenericShared.html">casadi::GenericShared</a>&lt; <a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html">SharedObject</a> , SharedObjectInternal  &gt;::debug_repr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00113">113</a> of file <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html">generic_shared_impl.hpp</a>.</p>
 
 </div>
 </div>
@@ -1599,7 +1717,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Get a submatrix, two arguments </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dc6/mx_8hpp_source.html#l00467">467</a> of file <a class="el" href="../../db/dc6/mx_8hpp_source.html">mx.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/dc6/mx_8hpp_source.html#l00498">498</a> of file <a class="el" href="../../db/dc6/mx_8hpp_source.html">mx.hpp</a>.</p>
 
 </div>
 </div>
@@ -1650,7 +1768,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Get a submatrix, two arguments </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dc6/mx_8hpp_source.html#l00462">462</a> of file <a class="el" href="../../db/dc6/mx_8hpp_source.html">mx.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/dc6/mx_8hpp_source.html#l00493">493</a> of file <a class="el" href="../../db/dc6/mx_8hpp_source.html">mx.hpp</a>.</p>
 
 </div>
 </div>
@@ -1695,7 +1813,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Get a submatrix, single argument </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dc6/mx_8hpp_source.html#l00449">449</a> of file <a class="el" href="../../db/dc6/mx_8hpp_source.html">mx.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/dc6/mx_8hpp_source.html#l00480">480</a> of file <a class="el" href="../../db/dc6/mx_8hpp_source.html">mx.hpp</a>.</p>
 
 </div>
 </div>
@@ -2015,7 +2133,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Get a submatrix, two arguments </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dc6/mx_8hpp_source.html#l00458">458</a> of file <a class="el" href="../../db/dc6/mx_8hpp_source.html">mx.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/dc6/mx_8hpp_source.html#l00489">489</a> of file <a class="el" href="../../db/dc6/mx_8hpp_source.html">mx.hpp</a>.</p>
 
 </div>
 </div>
@@ -2285,6 +2403,27 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<a id="acd8bb253bdee545eaa2d5f1c89901aa0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd8bb253bdee545eaa2d5f1c89901aa0">&#9670;&nbsp;</a></span>get_nonzeros()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a>&gt; casadi::MX::get_nonzeros </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Since <a class="el" href="../../de/d57/classcasadi_1_1MX.html" title="MX - Matrix expression.">MX</a> is not a containter, the scalar MXes may be complex When the expression satisfies is_valid_input, the results may be simple</p>
+<p>For example: vertcat(x,y).nonzeros() will return {x,y}</p>
+<dl class="section see"><dt>See also</dt><dd>expr.nz[:]</dd></dl>
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2bh">https://github.com/casadi/casadi/wiki/L_2bh</a> </p>
+
+</div>
+</div>
 <a id="a001a798ac8e646e6bb4b46d927372e03"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a001a798ac8e646e6bb4b46d927372e03">&#9670;&nbsp;</a></span>get_nz() <span class="overload">[1/7]</span></h2>
 
@@ -2326,7 +2465,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Get a set of nonzeros </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dc6/mx_8hpp_source.html#l00496">496</a> of file <a class="el" href="../../db/dc6/mx_8hpp_source.html">mx.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/dc6/mx_8hpp_source.html#l00527">527</a> of file <a class="el" href="../../db/dc6/mx_8hpp_source.html">mx.hpp</a>.</p>
 
 </div>
 </div>
@@ -2629,7 +2768,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_qd">https://github.com/casadi/casadi/wiki/L_qd</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dc6/mx_8hpp_source.html#l00189">189</a> of file <a class="el" href="../../db/dc6/mx_8hpp_source.html">mx.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/dc6/mx_8hpp_source.html#l00205">205</a> of file <a class="el" href="../../db/dc6/mx_8hpp_source.html">mx.hpp</a>.</p>
 
 </div>
 </div>
@@ -2657,7 +2796,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d68/shared__object_8hpp_source.html#l00138">138</a> of file <a class="el" href="../../d8/d68/shared__object_8hpp_source.html">shared_object.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/d68/shared__object_8hpp_source.html#l00091">91</a> of file <a class="el" href="../../d8/d68/shared__object_8hpp_source.html">shared_object.hpp</a>.</p>
 
 </div>
 </div>
@@ -3106,8 +3245,8 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="a2d6952169894b2d43694a7577252bdfc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d6952169894b2d43694a7577252bdfc">&#9670;&nbsp;</a></span>is_null()</h2>
+<a id="abd28957366899587b9da638343fe41b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd28957366899587b9da638343fe41b5">&#9670;&nbsp;</a></span>is_null()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -3116,10 +3255,7 @@ Friends</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool casadi::SharedObject::is_null </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td class="memname">bool <a class="el" href="../../da/d35/classcasadi_1_1GenericShared.html">casadi::GenericShared</a>&lt; <a class="el" href="../../d5/d4a/classcasadi_1_1SharedObject.html">SharedObject</a> , SharedObjectInternal  &gt;::is_null</td>
         </tr>
       </table>
   </td>
@@ -3128,6 +3264,8 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00117">117</a> of file <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html">generic_shared_impl.hpp</a>.</p>
 
 </div>
 </div>
@@ -4046,7 +4184,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1di">https://github.com/casadi/casadi/wiki/L_1di</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01096">1096</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01275">1275</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
 
 </div>
 </div>
@@ -4075,7 +4213,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1di">https://github.com/casadi/casadi/wiki/L_1di</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01099">1099</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01278">1278</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
 
 </div>
 </div>
@@ -4104,7 +4242,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1di">https://github.com/casadi/casadi/wiki/L_1di</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01100">1100</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01279">1279</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
 
 </div>
 </div>
@@ -4691,7 +4829,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Set a set of nonzeros </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dc6/mx_8hpp_source.html#l00509">509</a> of file <a class="el" href="../../db/dc6/mx_8hpp_source.html">mx.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/dc6/mx_8hpp_source.html#l00540">540</a> of file <a class="el" href="../../db/dc6/mx_8hpp_source.html">mx.hpp</a>.</p>
 
 </div>
 </div>
@@ -5072,7 +5210,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1de">https://github.com/casadi/casadi/wiki/L_1de</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01055">1055</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01234">1234</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
 
 </div>
 </div>
@@ -5130,7 +5268,7 @@ Friends</h2></td></tr>
 <p>with nrow-by-ncol symbolic primitives</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1dg">https://github.com/casadi/casadi/wiki/L_1dg</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01074">1074</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01253">1253</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
 
 </div>
 </div>
@@ -5175,7 +5313,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1da">https://github.com/casadi/casadi/wiki/L_1da</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01027">1027</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01206">1206</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
 
 </div>
 </div>
@@ -5214,7 +5352,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1dc">https://github.com/casadi/casadi/wiki/L_1dc</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01041">1041</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01220">1220</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
 
 </div>
 </div>
@@ -5260,7 +5398,7 @@ Friends</h2></td></tr>
 <p>with symbolic primitives of given sparsity</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1dd">https://github.com/casadi/casadi/wiki/L_1dd</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01050">1050</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01229">1229</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
 
 </div>
 </div>
@@ -5312,7 +5450,7 @@ Friends</h2></td></tr>
 <p>symbolic primitives with given sparsity</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1df">https://github.com/casadi/casadi/wiki/L_1df</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01066">1066</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01245">1245</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
 
 </div>
 </div>
@@ -5351,7 +5489,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1db">https://github.com/casadi/casadi/wiki/L_1db</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01034">1034</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01213">1213</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
 
 </div>
 </div>
@@ -5465,7 +5603,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_pz">https://github.com/casadi/casadi/wiki/L_pz</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dc6/mx_8hpp_source.html#l00089">89</a> of file <a class="el" href="../../db/dc6/mx_8hpp_source.html">mx.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/dc6/mx_8hpp_source.html#l00097">97</a> of file <a class="el" href="../../db/dc6/mx_8hpp_source.html">mx.hpp</a>.</p>
 
 </div>
 </div>
@@ -5575,7 +5713,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1dh">https://github.com/casadi/casadi/wiki/L_1dh</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01083">1083</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01262">1262</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
 
 </div>
 </div>
@@ -5604,7 +5742,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1dh">https://github.com/casadi/casadi/wiki/L_1dh</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01086">1086</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01265">1265</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
 
 </div>
 </div>
@@ -5633,7 +5771,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1dh">https://github.com/casadi/casadi/wiki/L_1dh</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01087">1087</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01266">1266</a> of file <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html">generic_matrix.hpp</a>.</p>
 
 </div>
 </div>
