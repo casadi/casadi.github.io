@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/9763952a9aa742c5be3b53dc1a1d033a57235328" id="9763952a9aa742c5be3b53dc1a1d033a57235328" >revision 3.7.1</a></div>
   </td>
  </tr>
  </tbody>
@@ -147,8 +147,8 @@ $(function() {
 , <a class="el" href="d9/dff/structcasadi__ipqp__data.html#a5c15a7ed36d52bc5a036a7392b21277a">casadi_ipqp_data&lt; T1 &gt;</a>
 , <a class="el" href="d3/d8d/structcasadi__qrqp__data.html#a08d6ff74a944807924b3a5ba7867fc7c">casadi_qrqp_data&lt; T1 &gt;</a>
 </li>
-<li>taylor()
-: <a class="el" href="da/d45/classcasadi_1_1Matrix.html#a6fd4102272ee45b9ce61f3867434da41">casadi::Matrix&lt; Scalar &gt;</a>
+<li>taylor
+: <a class="el" href="d9/dc2/group__expression__tools.html#ga8e98bfcc272a2c1639c7baaa12178822">casadi::Matrix&lt; Scalar &gt;</a>
 </li>
 <li>tcur
 : <a class="el" href="d7/dc4/structcasadi_1_1SundialsMemory.html#a5cebdd09e53417af73c62d96f1f3f170">casadi::SundialsMemory</a>
@@ -202,29 +202,29 @@ $(function() {
 <li>theirs_usp
 : <a class="el" href="d4/df6/structcasadi__hpipm__prob.html#ad9d6b55d32ca4880f3ffb8d7ffd15489">casadi_hpipm_prob&lt; T1 &gt;</a>
 </li>
-<li>theirs_usp_
-: <a class="el" href="d3/d37/classcasadi_1_1FatropConicInterface.html#a19bf89f554b2a0b292aa9b7f1c5b089c">casadi::FatropConicInterface</a>
-</li>
 <li>theirs_Usp_
 : <a class="el" href="d3/d37/classcasadi_1_1FatropConicInterface.html#a235a0759442ba65648f79856aa048c71">casadi::FatropConicInterface</a>
 </li>
 <li>theirs_usp_
-: <a class="el" href="d2/d94/classcasadi_1_1HpipmInterface.html#ad72d865950a3cdf02db8cc7e8640256f">casadi::HpipmInterface</a>
+: <a class="el" href="d3/d37/classcasadi_1_1FatropConicInterface.html#a19bf89f554b2a0b292aa9b7f1c5b089c">casadi::FatropConicInterface</a>
 </li>
 <li>theirs_Usp_
 : <a class="el" href="d2/d94/classcasadi_1_1HpipmInterface.html#a1a1f94c529bcfb4649bcd60d110aa5c0">casadi::HpipmInterface</a>
 </li>
 <li>theirs_usp_
-: <a class="el" href="df/d97/classcasadi_1_1HpmpcInterface.html#a76988488260750a06479b5e1d4613c4e">casadi::HpmpcInterface</a>
+: <a class="el" href="d2/d94/classcasadi_1_1HpipmInterface.html#ad72d865950a3cdf02db8cc7e8640256f">casadi::HpipmInterface</a>
 </li>
 <li>theirs_Usp_
 : <a class="el" href="df/d97/classcasadi_1_1HpmpcInterface.html#a57ee156f9299fc949007713631f666ef">casadi::HpmpcInterface</a>
 </li>
-<li>theirs_Xsp
-: <a class="el" href="d4/df6/structcasadi__hpipm__prob.html#a6110ae538959fc874a73ad6288317d60">casadi_hpipm_prob&lt; T1 &gt;</a>
+<li>theirs_usp_
+: <a class="el" href="df/d97/classcasadi_1_1HpmpcInterface.html#a76988488260750a06479b5e1d4613c4e">casadi::HpmpcInterface</a>
 </li>
 <li>theirs_xsp
 : <a class="el" href="d4/df6/structcasadi__hpipm__prob.html#a5d1657e9ce1d7f70c3c9b0091965bd55">casadi_hpipm_prob&lt; T1 &gt;</a>
+</li>
+<li>theirs_Xsp
+: <a class="el" href="d4/df6/structcasadi__hpipm__prob.html#a6110ae538959fc874a73ad6288317d60">casadi_hpipm_prob&lt; T1 &gt;</a>
 </li>
 <li>theirs_Xsp_
 : <a class="el" href="d3/d37/classcasadi_1_1FatropConicInterface.html#a18dee33e9a6b23a331a8e3400a8414b1">casadi::FatropConicInterface</a>
@@ -237,12 +237,10 @@ $(function() {
 </li>
 <li>theirs_xsp_
 : <a class="el" href="d2/d94/classcasadi_1_1HpipmInterface.html#a7de2f2ac584094cb5809cdd0e7e2438a">casadi::HpipmInterface</a>
+, <a class="el" href="df/d97/classcasadi_1_1HpmpcInterface.html#abcc9bc46a6deff8df1f1011c0689add8">casadi::HpmpcInterface</a>
 </li>
 <li>theirs_Xsp_
 : <a class="el" href="df/d97/classcasadi_1_1HpmpcInterface.html#a3eb7b3da7cbbd6944ac8d5b70712fdae">casadi::HpmpcInterface</a>
-</li>
-<li>theirs_xsp_
-: <a class="el" href="df/d97/classcasadi_1_1HpmpcInterface.html#abcc9bc46a6deff8df1f1011c0689add8">casadi::HpmpcInterface</a>
 </li>
 <li>theta_max_
 : <a class="el" href="db/d26/classcasadi_1_1Blocksqp.html#af1a8f013edbe2425279309655f44d94c">casadi::Blocksqp</a>
@@ -263,8 +261,8 @@ $(function() {
 : <a class="el" href="d4/db5/classcasadi_1_1DaeBuilder.html#a5859e847d88059d68d8b052ef4c6ca63">casadi::DaeBuilder</a>
 , <a class="el" href="d5/de1/classcasadi_1_1DaeBuilderInternal.html#afd3861adf266b8ee50913d14654b9d10">casadi::DaeBuilderInternal</a>
 </li>
-<li>times
-: <a class="el" href="d9/dc2/group__expression__tools.html#ga5bbe0cce43cbdb399b9563e69ff423b5">casadi::GenericExpression&lt; ExType &gt;</a>
+<li>times()
+: <a class="el" href="d9/dc2/group__expression__tools.html#ga971b9cc4e4a4f792db6262b6668b0070">casadi::GenericExpression&lt; ExType &gt;</a>
 </li>
 <li>tinfeas
 : <a class="el" href="d3/d8d/structcasadi__qrqp__data.html#a804101c2d1bbd8a309705f2abfcae99c">casadi_qrqp_data&lt; T1 &gt;</a>
@@ -402,10 +400,12 @@ $(function() {
 </li>
 <li>tocache()
 : <a class="el" href="d2/dab/classcasadi_1_1FunctionInternal.html#adac10fd9ecd485930a2a32ff879d4566">casadi::FunctionInternal</a>
+, <a class="el" href="d5/de2/classcasadi_1_1RevWeakCache.html#aa73b9960fa0d22084de785297318adc3">casadi::RevWeakCache&lt; K, T &gt;</a>
 , <a class="el" href="d5/d7e/classcasadi_1_1WeakCache.html#a181bb1b7a917d6e7938c3b992378087b">casadi::WeakCache&lt; K, T &gt;</a>
 </li>
 <li>tocache_if_missing()
 : <a class="el" href="d2/dab/classcasadi_1_1FunctionInternal.html#a0ea4a978e4ba83dd355756cc013228cb">casadi::FunctionInternal</a>
+, <a class="el" href="d5/de2/classcasadi_1_1RevWeakCache.html#a196818ede2516e139d4c846b69e950cd">casadi::RevWeakCache&lt; K, T &gt;</a>
 , <a class="el" href="d5/d7e/classcasadi_1_1WeakCache.html#ab59f5e941b98b9f085bde80f1a2444ec">casadi::WeakCache&lt; K, T &gt;</a>
 </li>
 <li>tol

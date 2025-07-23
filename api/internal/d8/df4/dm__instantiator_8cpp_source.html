@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/9763952a9aa742c5be3b53dc1a1d033a57235328" id="9763952a9aa742c5be3b53dc1a1d033a57235328" >revision 3.7.1</a></div>
   </td>
  </tr>
  </tbody>
@@ -267,8 +267,8 @@ $(function() {
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;      <span class="keyword">const</span> Sparsity&amp; sp, <span class="keyword">const</span> <span class="keywordtype">double</span>* nonzeros,</div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;      <span class="keyword">const</span> std::string&amp; format_hint) {</div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    std::string format = Sparsity::file_format(filename, format_hint, {<span class="stringliteral">&quot;mtx&quot;</span>, <span class="stringliteral">&quot;txt&quot;</span>});</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    std::ofstream out;</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    Filesystem::open(out, filename);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="keyword">auto</span> out_ptr = Filesystem::ofstream_ptr(filename);</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    std::ostream&amp; out = *out_ptr;</div>
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <span class="keywordflow">if</span> (format==<span class="stringliteral">&quot;mtx&quot;</span>) {</div>
 <div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;      <a class="code" href="../../d7/d23/namespacecasadi.html#aa1ffa862591361262a6456d9439c616f">normalized_setup</a>(out);</div>
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;      out &lt;&lt; <span class="stringliteral">&quot;%%MatrixMarket matrix coordinate real general&quot;</span> &lt;&lt; std::endl;</div>
@@ -320,8 +320,8 @@ $(function() {
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;  <span class="keyword">template</span>&lt;&gt;</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;  <a class="code" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a> CASADI_EXPORT DM::from_file(<span class="keyword">const</span> std::string&amp; filename, <span class="keyword">const</span> std::string&amp; format_hint) {</div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    std::string format = Sparsity::file_format(filename, format_hint, {<span class="stringliteral">&quot;mtx&quot;</span>, <span class="stringliteral">&quot;txt&quot;</span>});</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    std::ifstream in(filename);</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    casadi_assert(in.good(), <span class="stringliteral">&quot;Could not open &#39;&quot;</span> + filename + <span class="stringliteral">&quot;&#39;.&quot;</span>);</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="keyword">auto</span> in_ptr = Filesystem::ifstream_ptr(filename);</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    std::istream&amp; in = *in_ptr;</div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <span class="keywordflow">if</span> (format==<span class="stringliteral">&quot;txt&quot;</span>) {</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;      std::string line;</div>
@@ -465,8 +465,8 @@ $(function() {
 <div class="ttc" id="anamespacecasadi_html_aa1ffa862591361262a6456d9439c616f"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#aa1ffa862591361262a6456d9439c616f">casadi::normalized_setup</a></div><div class="ttdeci">void normalized_setup(std::istream &amp;stream)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/da7/casadi__misc_8cpp_source.html#l00404">casadi_misc.cpp:404</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_aac4a4ea8b33b7bc31c5c6d82ee43180f"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#aac4a4ea8b33b7bc31c5c6d82ee43180f">casadi::nan</a></div><div class="ttdeci">const double nan</div><div class="ttdoc">Not a number.</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d90/calculus_8hpp_source.html#l00053">calculus.hpp:53</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_acf4e4e693df7cfbd8b89ad5ff8aec939"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">casadi::DM</a></div><div class="ttdeci">Matrix&lt; double &gt; DM</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d97/dm__fwd_8hpp_source.html#l00033">dm_fwd.hpp:33</a></div></div>
-<div class="ttc" id="anamespacecasadi_html_af7d3de744c643042bbc9eae4b3fe4bfc"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#af7d3de744c643042bbc9eae4b3fe4bfc">casadi::normalized_in</a></div><div class="ttdeci">int normalized_in(std::istream &amp;stream, double &amp;ret)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d18/casadi__misc_8hpp_source.html#l00440">casadi_misc.hpp:440</a></div></div>
-<div class="ttc" id="anamespacecasadi_html_afd6173bd9974f6079699014ab68af211"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#afd6173bd9974f6079699014ab68af211">casadi::normalized_out</a></div><div class="ttdeci">void normalized_out(std::ostream &amp;stream, double val)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d18/casadi__misc_8hpp_source.html#l00429">casadi_misc.hpp:429</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_af7d3de744c643042bbc9eae4b3fe4bfc"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#af7d3de744c643042bbc9eae4b3fe4bfc">casadi::normalized_in</a></div><div class="ttdeci">int normalized_in(std::istream &amp;stream, double &amp;ret)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d18/casadi__misc_8hpp_source.html#l00454">casadi_misc.hpp:454</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_afd6173bd9974f6079699014ab68af211"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#afd6173bd9974f6079699014ab68af211">casadi::normalized_out</a></div><div class="ttdeci">void normalized_out(std::ostream &amp;stream, double val)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d18/casadi__misc_8hpp_source.html#l00443">casadi_misc.hpp:443</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </body>
 </html>

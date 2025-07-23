@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/9763952a9aa742c5be3b53dc1a1d033a57235328" id="9763952a9aa742c5be3b53dc1a1d033a57235328" >revision 3.7.1</a></div>
   </td>
  </tr>
  </tbody>
@@ -86,124 +86,125 @@ $(function() {
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#define CASADI_NLP_BUILDER_HPP</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;mx.hpp&quot;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d7/d23/namespacecasadi.html">casadi</a> {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="../../d1/d89/classcasadi_1_1NlpBuilder.html">   39</a></span>&#160;  <span class="keyword">class </span>CASADI_EXPORT <a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html">NlpBuilder</a></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    : <span class="keyword">public</span> SWIG_IF_ELSE(PrintableCommon, Printable&lt;NlpBuilder&gt;) {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a48a8097dac4c545fac2454f2954b21d6">   49</a></span>&#160;    std::vector&lt;MX&gt; <a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a48a8097dac4c545fac2454f2954b21d6">x</a>;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#ac1770cd0a5f4ac15e7cafff68ad32c98">   52</a></span>&#160;    <a class="code" href="../../de/d57/classcasadi_1_1MX.html">MX</a> <a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#ac1770cd0a5f4ac15e7cafff68ad32c98">f</a>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a88b7ab667d16ccd80d2d911d327c1ec7">   55</a></span>&#160;    std::vector&lt;MX&gt; <a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a88b7ab667d16ccd80d2d911d327c1ec7">g</a>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a2f413b3b0e322afe190f19890be385cc">   58</a></span>&#160;    std::vector&lt;double&gt; <a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a2f413b3b0e322afe190f19890be385cc">x_lb</a>, x_ub;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a71a4179f9fd7939934e263f3e7f56bee">   61</a></span>&#160;    std::vector&lt;double&gt; <a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a71a4179f9fd7939934e263f3e7f56bee">g_lb</a>, g_ub;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#ad7d4797afde2de51fc583d52cc1b22ac">   64</a></span>&#160;    std::vector&lt;double&gt; <a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#ad7d4797afde2de51fc583d52cc1b22ac">x_init</a>;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a41e9e1a62d8776c947db8d5d27af18e4">   67</a></span>&#160;    std::vector&lt;double&gt; <a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a41e9e1a62d8776c947db8d5d27af18e4">lambda_init</a>;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a40192ec7edbdea61931aa48bc328587b">   70</a></span>&#160;    std::vector&lt;bool&gt; <a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a40192ec7edbdea61931aa48bc328587b">discrete</a>;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#ac6701f5359b348b9440b5e08f63f3048">   74</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#ac6701f5359b348b9440b5e08f63f3048">import_nl</a>(<span class="keyword">const</span> std::string&amp; filename, <span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>&amp; opts = <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>());</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#aa18a5cdf479b0cf89b6c84ab9e5d0a0c">   77</a></span>&#160;    std::string <a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#aa18a5cdf479b0cf89b6c84ab9e5d0a0c">type_name</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> <span class="stringliteral">&quot;NlpBuilder&quot;</span>;}</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a0bcc6e7175ef00ace61fdda1daed9c31">   80</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a0bcc6e7175ef00ace61fdda1daed9c31">disp</a>(std::ostream&amp; stream, <span class="keywordtype">bool</span> more=<span class="keyword">false</span>) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a8e12ec737a6121ec1c126faf32be0317">   83</a></span>&#160;    std::string <a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a8e12ec737a6121ec1c126faf32be0317">get_str</a>(<span class="keywordtype">bool</span> more=<span class="keyword">false</span>)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      std::stringstream ss;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      disp(ss, more);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      <span class="keywordflow">return</span> ss.str();</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  };</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">#ifndef SWIG</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="keyword">class </span>CASADI_EXPORT NlImporter {</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="comment">// Constructor</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    NlImporter(NlpBuilder&amp; nlp, <span class="keyword">const</span> std::string&amp; filename, <span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>&amp; opts);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="comment">// Destructor</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    ~NlImporter();</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordtype">int</span> read_int();</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">char</span> read_char();</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">double</span> read_double();</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordtype">short</span> read_short();</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordtype">long</span> read_long();</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="comment">// Reference to the class</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    NlpBuilder&amp; nlp_;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="comment">// Options</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordtype">bool</span> verbose_;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="comment">// Binary mode</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordtype">bool</span> binary_;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="comment">// File stream</span></div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    std::ifstream s_;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="comment">// All variables, including dependent</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    std::vector&lt;MX&gt; v_;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="comment">// Number of objectives and constraints</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    casadi_int n_var_, n_con_, n_obj_, n_eq_, n_lcon_;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="comment">// nonlinear vars in constraints, objectives, both</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="comment">// see JuliaOpt/AmplNLWriter.jl/src/nl_write.jl</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    casadi_int nlvc_, nlvo_, nlvb_;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="comment">// Number of discrete variables // see JuliaOpt/AmplNLWriter.jl/src/nl_write.jl</span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    casadi_int nbv_, niv_, nlvbi_, nlvci_, nlvoi_;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="comment">// objective sign</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    MX sign_;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="comment">// Parse the file</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordtype">void</span> parse();</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="comment">// Imported function description</span></div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keywordtype">void</span> F_segment();</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="comment">// Suffix values</span></div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keywordtype">void</span> S_segment();</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="comment">// Defined variable definition</span></div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordtype">void</span> V_segment();</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="comment">// Algebraic constraint body</span></div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keywordtype">void</span> C_segment();</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="comment">// Logical constraint expression</span></div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keywordtype">void</span> L_segment();</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="comment">// Objective function</span></div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="keywordtype">void</span> O_segment();</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="comment">// Dual initial guess</span></div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keywordtype">void</span> d_segment();</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="comment">// Primal initial guess</span></div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keywordtype">void</span> x_segment();</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="comment">// Bounds on algebraic constraint bodies (&quot;ranges&quot;)</span></div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordtype">void</span> r_segment();</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="comment">// Bounds on variable</span></div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="keywordtype">void</span> b_segment();</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="comment">// Jacobian row counts</span></div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="keywordtype">void</span> k_segment();</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="comment">// Linear terms in the constraint function</span></div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="keywordtype">void</span> J_segment();</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="comment">// Linear terms in the objective function</span></div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordtype">void</span> G_segment();</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    MX expr();</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  };</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// SWIG</span></div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;} <span class="comment">// namespace casadi</span></div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_NLP_BUILDER_HPP</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d7/d23/namespacecasadi.html">casadi</a> {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="../../d1/d89/classcasadi_1_1NlpBuilder.html">   40</a></span>&#160;  <span class="keyword">class </span>CASADI_EXPORT <a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html">NlpBuilder</a></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    : <span class="keyword">public</span> SWIG_IF_ELSE(PrintableCommon, Printable&lt;NlpBuilder&gt;) {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a48a8097dac4c545fac2454f2954b21d6">   50</a></span>&#160;    std::vector&lt;MX&gt; <a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a48a8097dac4c545fac2454f2954b21d6">x</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#ac1770cd0a5f4ac15e7cafff68ad32c98">   53</a></span>&#160;    <a class="code" href="../../de/d57/classcasadi_1_1MX.html">MX</a> <a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#ac1770cd0a5f4ac15e7cafff68ad32c98">f</a>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a88b7ab667d16ccd80d2d911d327c1ec7">   56</a></span>&#160;    std::vector&lt;MX&gt; <a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a88b7ab667d16ccd80d2d911d327c1ec7">g</a>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a2f413b3b0e322afe190f19890be385cc">   59</a></span>&#160;    std::vector&lt;double&gt; <a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a2f413b3b0e322afe190f19890be385cc">x_lb</a>, x_ub;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a71a4179f9fd7939934e263f3e7f56bee">   62</a></span>&#160;    std::vector&lt;double&gt; <a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a71a4179f9fd7939934e263f3e7f56bee">g_lb</a>, g_ub;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#ad7d4797afde2de51fc583d52cc1b22ac">   65</a></span>&#160;    std::vector&lt;double&gt; <a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#ad7d4797afde2de51fc583d52cc1b22ac">x_init</a>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a41e9e1a62d8776c947db8d5d27af18e4">   68</a></span>&#160;    std::vector&lt;double&gt; <a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a41e9e1a62d8776c947db8d5d27af18e4">lambda_init</a>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a40192ec7edbdea61931aa48bc328587b">   71</a></span>&#160;    std::vector&lt;bool&gt; <a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a40192ec7edbdea61931aa48bc328587b">discrete</a>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#ac6701f5359b348b9440b5e08f63f3048">   75</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#ac6701f5359b348b9440b5e08f63f3048">import_nl</a>(<span class="keyword">const</span> std::string&amp; filename, <span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>&amp; opts = <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>());</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#aa18a5cdf479b0cf89b6c84ab9e5d0a0c">   78</a></span>&#160;    std::string <a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#aa18a5cdf479b0cf89b6c84ab9e5d0a0c">type_name</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> <span class="stringliteral">&quot;NlpBuilder&quot;</span>;}</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a0bcc6e7175ef00ace61fdda1daed9c31">   81</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a0bcc6e7175ef00ace61fdda1daed9c31">disp</a>(std::ostream&amp; stream, <span class="keywordtype">bool</span> more=<span class="keyword">false</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a8e12ec737a6121ec1c126faf32be0317">   84</a></span>&#160;    std::string <a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a8e12ec737a6121ec1c126faf32be0317">get_str</a>(<span class="keywordtype">bool</span> more=<span class="keyword">false</span>)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      std::stringstream ss;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      disp(ss, more);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      <span class="keywordflow">return</span> ss.str();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  };</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#ifndef SWIG</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <span class="keyword">class </span>CASADI_EXPORT NlImporter {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="comment">// Constructor</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    NlImporter(NlpBuilder&amp; nlp, <span class="keyword">const</span> std::string&amp; filename, <span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>&amp; opts);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="comment">// Destructor</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    ~NlImporter();</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">int</span> read_int();</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">char</span> read_char();</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordtype">double</span> read_double();</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordtype">short</span> read_short();</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordtype">long</span> read_long();</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="comment">// Reference to the class</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    NlpBuilder&amp; nlp_;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="comment">// Options</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordtype">bool</span> verbose_;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="comment">// Binary mode</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordtype">bool</span> binary_;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="comment">// File stream</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    std::unique_ptr&lt;std::istream&gt; s_ptr_;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="comment">// All variables, including dependent</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    std::vector&lt;MX&gt; v_;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="comment">// Number of objectives and constraints</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    casadi_int n_var_, n_con_, n_obj_, n_eq_, n_lcon_;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="comment">// nonlinear vars in constraints, objectives, both</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="comment">// see JuliaOpt/AmplNLWriter.jl/src/nl_write.jl</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    casadi_int nlvc_, nlvo_, nlvb_;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="comment">// Number of discrete variables // see JuliaOpt/AmplNLWriter.jl/src/nl_write.jl</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    casadi_int nbv_, niv_, nlvbi_, nlvci_, nlvoi_;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="comment">// objective sign</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    MX sign_;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="comment">// Parse the file</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordtype">void</span> parse();</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="comment">// Imported function description</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordtype">void</span> F_segment();</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="comment">// Suffix values</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordtype">void</span> S_segment();</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="comment">// Defined variable definition</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordtype">void</span> V_segment();</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="comment">// Algebraic constraint body</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="keywordtype">void</span> C_segment();</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="comment">// Logical constraint expression</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordtype">void</span> L_segment();</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="comment">// Objective function</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="keywordtype">void</span> O_segment();</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="comment">// Dual initial guess</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keywordtype">void</span> d_segment();</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="comment">// Primal initial guess</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keywordtype">void</span> x_segment();</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="comment">// Bounds on algebraic constraint bodies (&quot;ranges&quot;)</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keywordtype">void</span> r_segment();</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="comment">// Bounds on variable</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keywordtype">void</span> b_segment();</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="comment">// Jacobian row counts</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordtype">void</span> k_segment();</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="comment">// Linear terms in the constraint function</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keywordtype">void</span> J_segment();</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="comment">// Linear terms in the objective function</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keywordtype">void</span> G_segment();</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    MX expr();</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  };</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// SWIG</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;} <span class="comment">// namespace casadi</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_NLP_BUILDER_HPP</span></div>
 <div class="ttc" id="aclasscasadi_1_1MX_html"><div class="ttname"><a href="../../de/d57/classcasadi_1_1MX.html">casadi::MX</a></div><div class="ttdoc">MX - Matrix expression.</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dc6/mx_8hpp_source.html#l00088">mx.hpp:92</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html">casadi::NlpBuilder</a></div><div class="ttdoc">A symbolic NLP representation.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00039">nlp_builder.hpp:40</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html">casadi::NlpBuilder</a></div><div class="ttdoc">A symbolic NLP representation.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00040">nlp_builder.hpp:41</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_a0bcc6e7175ef00ace61fdda1daed9c31"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a0bcc6e7175ef00ace61fdda1daed9c31">casadi::NlpBuilder::disp</a></div><div class="ttdeci">void disp(std::ostream &amp;stream, bool more=false) const</div><div class="ttdoc">Print a description of the object.</div></div>
-<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_a2f413b3b0e322afe190f19890be385cc"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a2f413b3b0e322afe190f19890be385cc">casadi::NlpBuilder::x_lb</a></div><div class="ttdeci">std::vector&lt; double &gt; x_lb</div><div class="ttdoc">Bounds on x.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00058">nlp_builder.hpp:58</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_a40192ec7edbdea61931aa48bc328587b"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a40192ec7edbdea61931aa48bc328587b">casadi::NlpBuilder::discrete</a></div><div class="ttdeci">std::vector&lt; bool &gt; discrete</div><div class="ttdoc">Discrete variables.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00070">nlp_builder.hpp:70</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_a41e9e1a62d8776c947db8d5d27af18e4"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a41e9e1a62d8776c947db8d5d27af18e4">casadi::NlpBuilder::lambda_init</a></div><div class="ttdeci">std::vector&lt; double &gt; lambda_init</div><div class="ttdoc">Dual initial guess.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00067">nlp_builder.hpp:67</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_a48a8097dac4c545fac2454f2954b21d6"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a48a8097dac4c545fac2454f2954b21d6">casadi::NlpBuilder::x</a></div><div class="ttdeci">std::vector&lt; MX &gt; x</div><div class="ttdoc">Variables.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00049">nlp_builder.hpp:49</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_a71a4179f9fd7939934e263f3e7f56bee"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a71a4179f9fd7939934e263f3e7f56bee">casadi::NlpBuilder::g_lb</a></div><div class="ttdeci">std::vector&lt; double &gt; g_lb</div><div class="ttdoc">Bounds on g.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00061">nlp_builder.hpp:61</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_a88b7ab667d16ccd80d2d911d327c1ec7"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a88b7ab667d16ccd80d2d911d327c1ec7">casadi::NlpBuilder::g</a></div><div class="ttdeci">std::vector&lt; MX &gt; g</div><div class="ttdoc">Constraints.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00055">nlp_builder.hpp:55</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_a8e12ec737a6121ec1c126faf32be0317"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a8e12ec737a6121ec1c126faf32be0317">casadi::NlpBuilder::get_str</a></div><div class="ttdeci">std::string get_str(bool more=false) const</div><div class="ttdoc">Get string representation.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00083">nlp_builder.hpp:83</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_aa18a5cdf479b0cf89b6c84ab9e5d0a0c"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#aa18a5cdf479b0cf89b6c84ab9e5d0a0c">casadi::NlpBuilder::type_name</a></div><div class="ttdeci">std::string type_name() const</div><div class="ttdoc">Readable name of the class.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00077">nlp_builder.hpp:77</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_ac1770cd0a5f4ac15e7cafff68ad32c98"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#ac1770cd0a5f4ac15e7cafff68ad32c98">casadi::NlpBuilder::f</a></div><div class="ttdeci">MX f</div><div class="ttdoc">Objective.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00052">nlp_builder.hpp:52</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_a2f413b3b0e322afe190f19890be385cc"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a2f413b3b0e322afe190f19890be385cc">casadi::NlpBuilder::x_lb</a></div><div class="ttdeci">std::vector&lt; double &gt; x_lb</div><div class="ttdoc">Bounds on x.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00059">nlp_builder.hpp:59</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_a40192ec7edbdea61931aa48bc328587b"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a40192ec7edbdea61931aa48bc328587b">casadi::NlpBuilder::discrete</a></div><div class="ttdeci">std::vector&lt; bool &gt; discrete</div><div class="ttdoc">Discrete variables.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00071">nlp_builder.hpp:71</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_a41e9e1a62d8776c947db8d5d27af18e4"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a41e9e1a62d8776c947db8d5d27af18e4">casadi::NlpBuilder::lambda_init</a></div><div class="ttdeci">std::vector&lt; double &gt; lambda_init</div><div class="ttdoc">Dual initial guess.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00068">nlp_builder.hpp:68</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_a48a8097dac4c545fac2454f2954b21d6"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a48a8097dac4c545fac2454f2954b21d6">casadi::NlpBuilder::x</a></div><div class="ttdeci">std::vector&lt; MX &gt; x</div><div class="ttdoc">Variables.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00050">nlp_builder.hpp:50</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_a71a4179f9fd7939934e263f3e7f56bee"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a71a4179f9fd7939934e263f3e7f56bee">casadi::NlpBuilder::g_lb</a></div><div class="ttdeci">std::vector&lt; double &gt; g_lb</div><div class="ttdoc">Bounds on g.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00062">nlp_builder.hpp:62</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_a88b7ab667d16ccd80d2d911d327c1ec7"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a88b7ab667d16ccd80d2d911d327c1ec7">casadi::NlpBuilder::g</a></div><div class="ttdeci">std::vector&lt; MX &gt; g</div><div class="ttdoc">Constraints.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00056">nlp_builder.hpp:56</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_a8e12ec737a6121ec1c126faf32be0317"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a8e12ec737a6121ec1c126faf32be0317">casadi::NlpBuilder::get_str</a></div><div class="ttdeci">std::string get_str(bool more=false) const</div><div class="ttdoc">Get string representation.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00084">nlp_builder.hpp:84</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_aa18a5cdf479b0cf89b6c84ab9e5d0a0c"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#aa18a5cdf479b0cf89b6c84ab9e5d0a0c">casadi::NlpBuilder::type_name</a></div><div class="ttdeci">std::string type_name() const</div><div class="ttdoc">Readable name of the class.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00078">nlp_builder.hpp:78</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_ac1770cd0a5f4ac15e7cafff68ad32c98"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#ac1770cd0a5f4ac15e7cafff68ad32c98">casadi::NlpBuilder::f</a></div><div class="ttdeci">MX f</div><div class="ttdoc">Objective.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00053">nlp_builder.hpp:53</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_ac6701f5359b348b9440b5e08f63f3048"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#ac6701f5359b348b9440b5e08f63f3048">casadi::NlpBuilder::import_nl</a></div><div class="ttdeci">void import_nl(const std::string &amp;filename, const Dict &amp;opts=Dict())</div><div class="ttdoc">Import an .nl file.</div></div>
-<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_ad7d4797afde2de51fc583d52cc1b22ac"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#ad7d4797afde2de51fc583d52cc1b22ac">casadi::NlpBuilder::x_init</a></div><div class="ttdeci">std::vector&lt; double &gt; x_init</div><div class="ttdoc">Primal initial guess.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00064">nlp_builder.hpp:64</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_ad7d4797afde2de51fc583d52cc1b22ac"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#ad7d4797afde2de51fc583d52cc1b22ac">casadi::NlpBuilder::x_init</a></div><div class="ttdeci">std::vector&lt; double &gt; x_init</div><div class="ttdoc">Primal initial guess.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00065">nlp_builder.hpp:65</a></div></div>
 <div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/archiver_8hpp_source.html#l00032">archiver.hpp:32</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_a8b909f6932a91230738731512b99127e"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">casadi::Dict</a></div><div class="ttdeci">GenericType::Dict Dict</div><div class="ttdoc">C++ equivalent of Python's dict or MATLAB's struct.</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d30/generic__type_8hpp_source.html#l00258">generic_type.hpp:258</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

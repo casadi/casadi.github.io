@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/9763952a9aa742c5be3b53dc1a1d033a57235328" id="9763952a9aa742c5be3b53dc1a1d033a57235328" >revision 3.7.1</a></div>
   </td>
  </tr>
  </tbody>
@@ -66,7 +66,7 @@ $(function() {
 <div class="textblock"><p>\Helper class for .nl import The .nl format is described in "Writing .nl Files" paper by David M. Gay (2005) </p><dl class="section date"><dt>Date</dt><dd>2016 </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Joel Andersson </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d4a/nlp__builder_8hpp_source.html#l00096">96</a> of file <a class="el" href="../../d8/d4a/nlp__builder_8hpp_source.html">nlp_builder.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/d4a/nlp__builder_8hpp_source.html#l00097">97</a> of file <a class="el" href="../../d8/d4a/nlp__builder_8hpp_source.html">nlp_builder.hpp</a>.</p>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -108,150 +108,151 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d1/d63/nlp__builder_8cpp_source.html#l00047">47</a> of file <a class="el" href="../../d1/d63/nlp__builder_8cpp_source.html">nlp_builder.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  : nlp_(nlp) {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="comment">// Set default options</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    verbose_=<span class="keyword">false</span>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="comment">// Read user options</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp;&amp; op : opts) {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      <span class="keywordflow">if</span> (op.first == <span class="stringliteral">&quot;verbose&quot;</span>) {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        verbose_ = op.second;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        std::stringstream ss;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        ss &lt;&lt; <span class="stringliteral">&quot;Unknown option \&quot;&quot;</span> &lt;&lt; op.first &lt;&lt; <span class="stringliteral">&quot;\&quot;&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">throw</span> CasadiException(ss.str());</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      }</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="comment">// Open file for reading</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    s_.open(<a class="code" href="../../d7/d23/namespacecasadi.html#af458c814614ff5d0ee766186ea8b2176">filename</a>.c_str());</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">if</span> (verbose_) casadi_message(<span class="stringliteral">&quot;Reading file \&quot;&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#af458c814614ff5d0ee766186ea8b2176">filename</a> + <span class="stringliteral">&quot;\&quot;&quot;</span>);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="comment">// Read the header of the NL-file (first 10 lines)</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">const</span> casadi_int header_sz = 10;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    std::vector&lt;std::string&gt; header(header_sz);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">for</span> (casadi_int k=0; k&lt;header_sz; ++k) {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      getline(s_, header[k]);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment">// Assert that the file is not in binary form</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">if</span> (header.at(0).at(0)==<span class="charliteral">&#39;g&#39;</span>) {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      binary_ = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (header.at(0).at(0)==<span class="charliteral">&#39;b&#39;</span>) {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      binary_ = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      casadi_error(<span class="stringliteral">&quot;File could not be read&quot;</span>);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="comment">// Get the number of objectives and constraints</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    std::stringstream ss(header[1]);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    ss &gt;&gt; n_var_ &gt;&gt; n_con_ &gt;&gt; n_obj_ &gt;&gt; n_eq_ &gt;&gt; n_lcon_;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">if</span> (verbose_) {</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      casadi_message(<span class="stringliteral">&quot;n_var=&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(n_var_) + <span class="stringliteral">&quot;, n_con =&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(n_con_) + <span class="stringliteral">&quot;, &quot;</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                     <span class="stringliteral">&quot;n_obj=&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(n_obj_) + <span class="stringliteral">&quot;, n_eq=&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(n_eq_) + <span class="stringliteral">&quot;, &quot;</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                     <span class="stringliteral">&quot;n_lcon=&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(n_lcon_));</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="comment">// Get the number of nonlinear vars in constraints, objectives, both</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    std::stringstream ss4(header[4]);</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    ss4 &gt;&gt; nlvc_ &gt;&gt; nlvo_ &gt;&gt; nlvb_;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">if</span> (verbose_) {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;      casadi_message(<span class="stringliteral">&quot;nlvc=&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(nlvc_) + <span class="stringliteral">&quot;, nlvo=&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(nlvo_) + <span class="stringliteral">&quot;, nlvb=&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(nlvb_));</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    }</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="comment">// Get the number of discrete variables</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    std::stringstream ss6(header[6]);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    ss6 &gt;&gt; nbv_ &gt;&gt; niv_ &gt;&gt; nlvbi_ &gt;&gt; nlvci_ &gt;&gt; nlvoi_;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">if</span> (verbose_) {</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;      casadi_message(<span class="stringliteral">&quot;nbv=&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(nbv_) + <span class="stringliteral">&quot;, niv =&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(niv_) + <span class="stringliteral">&quot;, &quot;</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                     <span class="stringliteral">&quot;nlvbi=&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(nlvbi_) + <span class="stringliteral">&quot;, nlvci=&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(nlvci_) + <span class="stringliteral">&quot;, &quot;</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                     <span class="stringliteral">&quot;nlvoi=&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(nlvoi_));</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    }</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="comment">// Allocate variables</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a48a8097dac4c545fac2454f2954b21d6">x</a> = <a class="code" href="../../dc/df3/classcasadi_1_1GenericMatrix.html#ab41ea4b948928d72a290821a2af7da7e">MX::sym</a>(<span class="stringliteral">&quot;x&quot;</span>, 1, 1, n_var_);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="comment">// Allocate f and c</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#ac1770cd0a5f4ac15e7cafff68ad32c98">f</a> = 0;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a88b7ab667d16ccd80d2d911d327c1ec7">g</a>.resize(n_con_, 0);</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="comment">// Allocate bounds for x and primal initial guess</span></div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a2f413b3b0e322afe190f19890be385cc">x_lb</a>.resize(n_var_, -<a class="code" href="../../d7/d23/namespacecasadi.html#a95c51a9b5a27285486518b3b31c723e3">inf</a>);</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a44be14075a9fbf465ccb9fe5034e60a7">x_ub</a>.resize(n_var_,  <a class="code" href="../../d7/d23/namespacecasadi.html#a95c51a9b5a27285486518b3b31c723e3">inf</a>);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#ad7d4797afde2de51fc583d52cc1b22ac">x_init</a>.resize(n_var_, 0);</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="comment">// Allocate bounds for g and dual initial guess</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a71a4179f9fd7939934e263f3e7f56bee">g_lb</a>.resize(n_con_, -<a class="code" href="../../d7/d23/namespacecasadi.html#a95c51a9b5a27285486518b3b31c723e3">inf</a>);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a3eea8e577ace9f4d067548d030f90cf3">g_ub</a>.resize(n_con_,  <a class="code" href="../../d7/d23/namespacecasadi.html#a95c51a9b5a27285486518b3b31c723e3">inf</a>);</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a41e9e1a62d8776c947db8d5d27af18e4">lambda_init</a>.resize(n_con_, 0);</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="comment">// Allocate binary variables vector</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a40192ec7edbdea61931aa48bc328587b">discrete</a>.clear();</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="comment">//D. M. Gay and M. Hill, &#39;Hooking Your Solver to AMPL&#39; October, 1997.</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="comment">// continuous in an objective and in a constraint</span></div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordflow">for</span> (casadi_int j=0; j&lt;nlvb_-nlvbi_; ++j) nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a40192ec7edbdea61931aa48bc328587b">discrete</a>.push_back(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="comment">// integer in an objective and in a constraint</span></div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keywordflow">for</span> (casadi_int j=0; j&lt;nlvbi_; ++j) nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a40192ec7edbdea61931aa48bc328587b">discrete</a>.push_back(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="comment">// continuous just in constraints</span></div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordflow">for</span> (casadi_int j=0; j&lt;nlvc_ - (nlvb_ + nlvci_); ++j) nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a40192ec7edbdea61931aa48bc328587b">discrete</a>.push_back(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="comment">// integer just in constraints</span></div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keywordflow">for</span> (casadi_int j=0; j&lt;nlvci_; ++j) nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a40192ec7edbdea61931aa48bc328587b">discrete</a>.push_back(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="comment">// continuous just in objectives</span></div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="keywordflow">for</span> (casadi_int j=0; j&lt;nlvo_ - (nlvc_ + nlvoi_); ++j) nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a40192ec7edbdea61931aa48bc328587b">discrete</a>.push_back(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="comment">// integer just in objectives</span></div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keywordflow">for</span> (casadi_int j=0; j &lt; nlvoi_; ++j) nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a40192ec7edbdea61931aa48bc328587b">discrete</a>.push_back(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="comment">// linear</span></div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    casadi_int max_nlvc_nlvo = (nlvc_ &lt; nlvo_) ? nlvo_ : nlvc_;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="keywordflow">for</span> (casadi_int j=0; j&lt;n_var_-(max_nlvc_nlvo+niv_+nbv_); ++j) nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a40192ec7edbdea61931aa48bc328587b">discrete</a>.push_back(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="comment">// binary</span></div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordflow">for</span> (casadi_int j = 0; j&lt;nbv_; ++j) nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a40192ec7edbdea61931aa48bc328587b">discrete</a>.push_back(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="comment">// other integer</span></div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordflow">for</span> (casadi_int j = 0; j&lt;niv_; ++j) nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a40192ec7edbdea61931aa48bc328587b">discrete</a>.push_back(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    casadi_assert(nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a40192ec7edbdea61931aa48bc328587b">discrete</a>.size()==n_var_,</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;      <span class="stringliteral">&quot;Number of variables in the header don&#39;t match&quot;</span>);</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="comment">// All variables, including dependent</span></div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    v_ = nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a48a8097dac4c545fac2454f2954b21d6">x</a>;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keywordflow">if</span> (binary_) {</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;      std::streampos offset = s_.tellg();</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;      s_.close();</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;      s_.open(<a class="code" href="../../d7/d23/namespacecasadi.html#af458c814614ff5d0ee766186ea8b2176">filename</a>.c_str(), std::ifstream::binary);</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;      s_.seekg(offset);</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    }</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="comment">// Read segments</span></div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    parse();</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="comment">// multiple the objective sign</span></div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#ac1770cd0a5f4ac15e7cafff68ad32c98">f</a> = sign_*nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#ac1770cd0a5f4ac15e7cafff68ad32c98">f</a>;</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d1/d63/nlp__builder_8cpp_source.html#l00048">48</a> of file <a class="el" href="../../d1/d63/nlp__builder_8cpp_source.html">nlp_builder.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  : nlp_(nlp), s_ptr_(<a class="code" href="../../d3/d82/classcasadi_1_1Filesystem.html#ad58b613088e0ae642ecf403e800b6d04">Filesystem::ifstream_ptr</a>(<a class="code" href="../../d7/d23/namespacecasadi.html#af458c814614ff5d0ee766186ea8b2176">filename</a>)) {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="comment">// Set default options</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    verbose_=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    std::istream&amp; s = *s_ptr_;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="comment">// Read user options</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp;&amp; op : opts) {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      <span class="keywordflow">if</span> (op.first == <span class="stringliteral">&quot;verbose&quot;</span>) {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        verbose_ = op.second;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        std::stringstream ss;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        ss &lt;&lt; <span class="stringliteral">&quot;Unknown option \&quot;&quot;</span> &lt;&lt; op.first &lt;&lt; <span class="stringliteral">&quot;\&quot;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">throw</span> CasadiException(ss.str());</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment">// Open file for reading</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">if</span> (verbose_) casadi_message(<span class="stringliteral">&quot;Reading file \&quot;&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#af458c814614ff5d0ee766186ea8b2176">filename</a> + <span class="stringliteral">&quot;\&quot;&quot;</span>);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="comment">// Read the header of the NL-file (first 10 lines)</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">const</span> casadi_int header_sz = 10;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    std::vector&lt;std::string&gt; header(header_sz);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">for</span> (casadi_int k=0; k&lt;header_sz; ++k) {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      getline(s, header[k]);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="comment">// Assert that the file is not in binary form</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">if</span> (header.at(0).at(0)==<span class="charliteral">&#39;g&#39;</span>) {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      binary_ = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (header.at(0).at(0)==<span class="charliteral">&#39;b&#39;</span>) {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      binary_ = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      casadi_error(<span class="stringliteral">&quot;File could not be read&quot;</span>);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="comment">// Get the number of objectives and constraints</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    std::stringstream ss(header[1]);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    ss &gt;&gt; n_var_ &gt;&gt; n_con_ &gt;&gt; n_obj_ &gt;&gt; n_eq_ &gt;&gt; n_lcon_;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordflow">if</span> (verbose_) {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      casadi_message(<span class="stringliteral">&quot;n_var=&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(n_var_) + <span class="stringliteral">&quot;, n_con =&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(n_con_) + <span class="stringliteral">&quot;, &quot;</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                     <span class="stringliteral">&quot;n_obj=&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(n_obj_) + <span class="stringliteral">&quot;, n_eq=&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(n_eq_) + <span class="stringliteral">&quot;, &quot;</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                     <span class="stringliteral">&quot;n_lcon=&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(n_lcon_));</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="comment">// Get the number of nonlinear vars in constraints, objectives, both</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    std::stringstream ss4(header[4]);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    ss4 &gt;&gt; nlvc_ &gt;&gt; nlvo_ &gt;&gt; nlvb_;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">if</span> (verbose_) {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;      casadi_message(<span class="stringliteral">&quot;nlvc=&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(nlvc_) + <span class="stringliteral">&quot;, nlvo=&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(nlvo_) + <span class="stringliteral">&quot;, nlvb=&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(nlvb_));</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="comment">// Get the number of discrete variables</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    std::stringstream ss6(header[6]);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    ss6 &gt;&gt; nbv_ &gt;&gt; niv_ &gt;&gt; nlvbi_ &gt;&gt; nlvci_ &gt;&gt; nlvoi_;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">if</span> (verbose_) {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;      casadi_message(<span class="stringliteral">&quot;nbv=&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(nbv_) + <span class="stringliteral">&quot;, niv =&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(niv_) + <span class="stringliteral">&quot;, &quot;</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                     <span class="stringliteral">&quot;nlvbi=&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(nlvbi_) + <span class="stringliteral">&quot;, nlvci=&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(nlvci_) + <span class="stringliteral">&quot;, &quot;</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                     <span class="stringliteral">&quot;nlvoi=&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(nlvoi_));</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="comment">// Allocate variables</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a48a8097dac4c545fac2454f2954b21d6">x</a> = <a class="code" href="../../dc/df3/classcasadi_1_1GenericMatrix.html#ab41ea4b948928d72a290821a2af7da7e">MX::sym</a>(<span class="stringliteral">&quot;x&quot;</span>, 1, 1, n_var_);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="comment">// Allocate f and c</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#ac1770cd0a5f4ac15e7cafff68ad32c98">f</a> = 0;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a88b7ab667d16ccd80d2d911d327c1ec7">g</a>.resize(n_con_, 0);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="comment">// Allocate bounds for x and primal initial guess</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a2f413b3b0e322afe190f19890be385cc">x_lb</a>.resize(n_var_, -<a class="code" href="../../d7/d23/namespacecasadi.html#a95c51a9b5a27285486518b3b31c723e3">inf</a>);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a44be14075a9fbf465ccb9fe5034e60a7">x_ub</a>.resize(n_var_,  <a class="code" href="../../d7/d23/namespacecasadi.html#a95c51a9b5a27285486518b3b31c723e3">inf</a>);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#ad7d4797afde2de51fc583d52cc1b22ac">x_init</a>.resize(n_var_, 0);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="comment">// Allocate bounds for g and dual initial guess</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a71a4179f9fd7939934e263f3e7f56bee">g_lb</a>.resize(n_con_, -<a class="code" href="../../d7/d23/namespacecasadi.html#a95c51a9b5a27285486518b3b31c723e3">inf</a>);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a3eea8e577ace9f4d067548d030f90cf3">g_ub</a>.resize(n_con_,  <a class="code" href="../../d7/d23/namespacecasadi.html#a95c51a9b5a27285486518b3b31c723e3">inf</a>);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a41e9e1a62d8776c947db8d5d27af18e4">lambda_init</a>.resize(n_con_, 0);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="comment">// Allocate binary variables vector</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a40192ec7edbdea61931aa48bc328587b">discrete</a>.clear();</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="comment">//D. M. Gay and M. Hill, &#39;Hooking Your Solver to AMPL&#39; October, 1997.</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="comment">// continuous in an objective and in a constraint</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keywordflow">for</span> (casadi_int j=0; j&lt;nlvb_-nlvbi_; ++j) nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a40192ec7edbdea61931aa48bc328587b">discrete</a>.push_back(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="comment">// integer in an objective and in a constraint</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordflow">for</span> (casadi_int j=0; j&lt;nlvbi_; ++j) nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a40192ec7edbdea61931aa48bc328587b">discrete</a>.push_back(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="comment">// continuous just in constraints</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keywordflow">for</span> (casadi_int j=0; j&lt;nlvc_ - (nlvb_ + nlvci_); ++j) nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a40192ec7edbdea61931aa48bc328587b">discrete</a>.push_back(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="comment">// integer just in constraints</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordflow">for</span> (casadi_int j=0; j&lt;nlvci_; ++j) nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a40192ec7edbdea61931aa48bc328587b">discrete</a>.push_back(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="comment">// continuous just in objectives</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keywordflow">for</span> (casadi_int j=0; j&lt;nlvo_ - (nlvc_ + nlvoi_); ++j) nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a40192ec7edbdea61931aa48bc328587b">discrete</a>.push_back(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="comment">// integer just in objectives</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keywordflow">for</span> (casadi_int j=0; j &lt; nlvoi_; ++j) nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a40192ec7edbdea61931aa48bc328587b">discrete</a>.push_back(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="comment">// linear</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    casadi_int max_nlvc_nlvo = (nlvc_ &lt; nlvo_) ? nlvo_ : nlvc_;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keywordflow">for</span> (casadi_int j=0; j&lt;n_var_-(max_nlvc_nlvo+niv_+nbv_); ++j) nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a40192ec7edbdea61931aa48bc328587b">discrete</a>.push_back(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="comment">// binary</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="keywordflow">for</span> (casadi_int j = 0; j&lt;nbv_; ++j) nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a40192ec7edbdea61931aa48bc328587b">discrete</a>.push_back(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="comment">// other integer</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keywordflow">for</span> (casadi_int j = 0; j&lt;niv_; ++j) nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a40192ec7edbdea61931aa48bc328587b">discrete</a>.push_back(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    casadi_assert(nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a40192ec7edbdea61931aa48bc328587b">discrete</a>.size()==n_var_,</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;      <span class="stringliteral">&quot;Number of variables in the header don&#39;t match&quot;</span>);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="comment">// All variables, including dependent</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    v_ = nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a48a8097dac4c545fac2454f2954b21d6">x</a>;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keywordflow">if</span> (binary_) {</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;      std::streampos offset = s.tellg();</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;      s_ptr_.reset();</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;      s_ptr_ = <a class="code" href="../../d3/d82/classcasadi_1_1Filesystem.html#ad58b613088e0ae642ecf403e800b6d04">Filesystem::ifstream_ptr</a>(<a class="code" href="../../d7/d23/namespacecasadi.html#af458c814614ff5d0ee766186ea8b2176">filename</a>, std::ifstream::binary);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;      s_ptr_-&gt;seekg(offset);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    }</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="comment">// Read segments</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    parse();</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="comment">// multiple the objective sign</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#ac1770cd0a5f4ac15e7cafff68ad32c98">f</a> = sign_*nlp_.<a class="code" href="../../d1/d89/classcasadi_1_1NlpBuilder.html#ac1770cd0a5f4ac15e7cafff68ad32c98">f</a>;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  }</div>
+<div class="ttc" id="aclasscasadi_1_1Filesystem_html_ad58b613088e0ae642ecf403e800b6d04"><div class="ttname"><a href="../../d3/d82/classcasadi_1_1Filesystem.html#ad58b613088e0ae642ecf403e800b6d04">casadi::Filesystem::ifstream_ptr</a></div><div class="ttdeci">static std::unique_ptr&lt; std::istream &gt; ifstream_ptr(const std::string &amp;path, std::ios_base::openmode mode=std::ios_base::in, bool fail=true)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d8f/filesystem_8cpp_source.html#l00135">filesystem.cpp:135</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1GenericMatrix_html_ab41ea4b948928d72a290821a2af7da7e"><div class="ttname"><a href="../../dc/df3/classcasadi_1_1GenericMatrix.html#ab41ea4b948928d72a290821a2af7da7e">casadi::GenericMatrix&lt; MX &gt;::sym</a></div><div class="ttdeci">static MX sym(const std::string &amp;name, casadi_int nrow=1, casadi_int ncol=1)</div><div class="ttdoc">Create an nrow-by-ncol symbolic primitive.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d90/generic__matrix_8hpp_source.html#l01206">generic_matrix.hpp:1206</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_a2f413b3b0e322afe190f19890be385cc"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a2f413b3b0e322afe190f19890be385cc">casadi::NlpBuilder::x_lb</a></div><div class="ttdeci">std::vector&lt; double &gt; x_lb</div><div class="ttdoc">Bounds on x.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00058">nlp_builder.hpp:58</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_a3eea8e577ace9f4d067548d030f90cf3"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a3eea8e577ace9f4d067548d030f90cf3">casadi::NlpBuilder::g_ub</a></div><div class="ttdeci">std::vector&lt; double &gt; g_ub</div><div class="ttdoc">Variables.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00061">nlp_builder.hpp:61</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_a40192ec7edbdea61931aa48bc328587b"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a40192ec7edbdea61931aa48bc328587b">casadi::NlpBuilder::discrete</a></div><div class="ttdeci">std::vector&lt; bool &gt; discrete</div><div class="ttdoc">Discrete variables.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00070">nlp_builder.hpp:70</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_a41e9e1a62d8776c947db8d5d27af18e4"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a41e9e1a62d8776c947db8d5d27af18e4">casadi::NlpBuilder::lambda_init</a></div><div class="ttdeci">std::vector&lt; double &gt; lambda_init</div><div class="ttdoc">Dual initial guess.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00067">nlp_builder.hpp:67</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_a44be14075a9fbf465ccb9fe5034e60a7"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a44be14075a9fbf465ccb9fe5034e60a7">casadi::NlpBuilder::x_ub</a></div><div class="ttdeci">std::vector&lt; double &gt; x_ub</div><div class="ttdoc">Variables.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00058">nlp_builder.hpp:58</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_a48a8097dac4c545fac2454f2954b21d6"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a48a8097dac4c545fac2454f2954b21d6">casadi::NlpBuilder::x</a></div><div class="ttdeci">std::vector&lt; MX &gt; x</div><div class="ttdoc">Variables.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00049">nlp_builder.hpp:49</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_a71a4179f9fd7939934e263f3e7f56bee"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a71a4179f9fd7939934e263f3e7f56bee">casadi::NlpBuilder::g_lb</a></div><div class="ttdeci">std::vector&lt; double &gt; g_lb</div><div class="ttdoc">Bounds on g.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00061">nlp_builder.hpp:61</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_a88b7ab667d16ccd80d2d911d327c1ec7"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a88b7ab667d16ccd80d2d911d327c1ec7">casadi::NlpBuilder::g</a></div><div class="ttdeci">std::vector&lt; MX &gt; g</div><div class="ttdoc">Constraints.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00055">nlp_builder.hpp:55</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_ac1770cd0a5f4ac15e7cafff68ad32c98"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#ac1770cd0a5f4ac15e7cafff68ad32c98">casadi::NlpBuilder::f</a></div><div class="ttdeci">MX f</div><div class="ttdoc">Objective.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00052">nlp_builder.hpp:52</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_ad7d4797afde2de51fc583d52cc1b22ac"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#ad7d4797afde2de51fc583d52cc1b22ac">casadi::NlpBuilder::x_init</a></div><div class="ttdeci">std::vector&lt; double &gt; x_init</div><div class="ttdoc">Primal initial guess.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00064">nlp_builder.hpp:64</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_a2f413b3b0e322afe190f19890be385cc"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a2f413b3b0e322afe190f19890be385cc">casadi::NlpBuilder::x_lb</a></div><div class="ttdeci">std::vector&lt; double &gt; x_lb</div><div class="ttdoc">Bounds on x.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00059">nlp_builder.hpp:59</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_a3eea8e577ace9f4d067548d030f90cf3"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a3eea8e577ace9f4d067548d030f90cf3">casadi::NlpBuilder::g_ub</a></div><div class="ttdeci">std::vector&lt; double &gt; g_ub</div><div class="ttdoc">Variables.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00062">nlp_builder.hpp:62</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_a40192ec7edbdea61931aa48bc328587b"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a40192ec7edbdea61931aa48bc328587b">casadi::NlpBuilder::discrete</a></div><div class="ttdeci">std::vector&lt; bool &gt; discrete</div><div class="ttdoc">Discrete variables.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00071">nlp_builder.hpp:71</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_a41e9e1a62d8776c947db8d5d27af18e4"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a41e9e1a62d8776c947db8d5d27af18e4">casadi::NlpBuilder::lambda_init</a></div><div class="ttdeci">std::vector&lt; double &gt; lambda_init</div><div class="ttdoc">Dual initial guess.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00068">nlp_builder.hpp:68</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_a44be14075a9fbf465ccb9fe5034e60a7"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a44be14075a9fbf465ccb9fe5034e60a7">casadi::NlpBuilder::x_ub</a></div><div class="ttdeci">std::vector&lt; double &gt; x_ub</div><div class="ttdoc">Variables.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00059">nlp_builder.hpp:59</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_a48a8097dac4c545fac2454f2954b21d6"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a48a8097dac4c545fac2454f2954b21d6">casadi::NlpBuilder::x</a></div><div class="ttdeci">std::vector&lt; MX &gt; x</div><div class="ttdoc">Variables.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00050">nlp_builder.hpp:50</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_a71a4179f9fd7939934e263f3e7f56bee"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a71a4179f9fd7939934e263f3e7f56bee">casadi::NlpBuilder::g_lb</a></div><div class="ttdeci">std::vector&lt; double &gt; g_lb</div><div class="ttdoc">Bounds on g.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00062">nlp_builder.hpp:62</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_a88b7ab667d16ccd80d2d911d327c1ec7"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#a88b7ab667d16ccd80d2d911d327c1ec7">casadi::NlpBuilder::g</a></div><div class="ttdeci">std::vector&lt; MX &gt; g</div><div class="ttdoc">Constraints.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00056">nlp_builder.hpp:56</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_ac1770cd0a5f4ac15e7cafff68ad32c98"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#ac1770cd0a5f4ac15e7cafff68ad32c98">casadi::NlpBuilder::f</a></div><div class="ttdeci">MX f</div><div class="ttdoc">Objective.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00053">nlp_builder.hpp:53</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1NlpBuilder_html_ad7d4797afde2de51fc583d52cc1b22ac"><div class="ttname"><a href="../../d1/d89/classcasadi_1_1NlpBuilder.html#ad7d4797afde2de51fc583d52cc1b22ac">casadi::NlpBuilder::x_init</a></div><div class="ttdeci">std::vector&lt; double &gt; x_init</div><div class="ttdoc">Primal initial guess.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d4a/nlp__builder_8hpp_source.html#l00065">nlp_builder.hpp:65</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_a88082fbf80560c888949bb765d9ccea0"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">casadi::str</a></div><div class="ttdeci">std::string str(const T &amp;v)</div><div class="ttdoc">String representation, any type.</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d59/casadi__common_8hpp_source.html#l00247">casadi_common.hpp:247</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_a95c51a9b5a27285486518b3b31c723e3"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a95c51a9b5a27285486518b3b31c723e3">casadi::inf</a></div><div class="ttdeci">const double inf</div><div class="ttdoc">infinity</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d90/calculus_8hpp_source.html#l00050">calculus.hpp:50</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_af458c814614ff5d0ee766186ea8b2176"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#af458c814614ff5d0ee766186ea8b2176">casadi::filename</a></div><div class="ttdeci">std::string filename(const std::string &amp;path)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d16/ghc_8cpp_source.html#l00055">ghc.cpp:55</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d8/d4a/nlp__builder_8hpp_source.html#l00070">casadi::NlpBuilder::discrete</a>, <a class="el" href="../../d8/d4a/nlp__builder_8hpp_source.html#l00052">casadi::NlpBuilder::f</a>, <a class="el" href="../../dc/d16/ghc_8cpp_source.html#l00055">casadi::filename()</a>, <a class="el" href="../../d8/d4a/nlp__builder_8hpp_source.html#l00055">casadi::NlpBuilder::g</a>, <a class="el" href="../../d8/d4a/nlp__builder_8hpp_source.html#l00061">casadi::NlpBuilder::g_lb</a>, <a class="el" href="../../d8/d4a/nlp__builder_8hpp_source.html#l00061">casadi::NlpBuilder::g_ub</a>, <a class="el" href="../../d1/d90/calculus_8hpp_source.html#l00050">casadi::inf</a>, <a class="el" href="../../d8/d4a/nlp__builder_8hpp_source.html#l00067">casadi::NlpBuilder::lambda_init</a>, <a class="el" href="../../dc/d59/casadi__common_8hpp_source.html#l00247">casadi::str()</a>, <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01206">casadi::GenericMatrix&lt; MX &gt;::sym()</a>, <a class="el" href="../../d8/d4a/nlp__builder_8hpp_source.html#l00049">casadi::NlpBuilder::x</a>, <a class="el" href="../../d8/d4a/nlp__builder_8hpp_source.html#l00064">casadi::NlpBuilder::x_init</a>, <a class="el" href="../../d8/d4a/nlp__builder_8hpp_source.html#l00058">casadi::NlpBuilder::x_lb</a>, and <a class="el" href="../../d8/d4a/nlp__builder_8hpp_source.html#l00058">casadi::NlpBuilder::x_ub</a>.</p>
+<p class="reference">References <a class="el" href="../../d8/d4a/nlp__builder_8hpp_source.html#l00071">casadi::NlpBuilder::discrete</a>, <a class="el" href="../../d8/d4a/nlp__builder_8hpp_source.html#l00053">casadi::NlpBuilder::f</a>, <a class="el" href="../../dc/d16/ghc_8cpp_source.html#l00055">casadi::filename()</a>, <a class="el" href="../../d8/d4a/nlp__builder_8hpp_source.html#l00056">casadi::NlpBuilder::g</a>, <a class="el" href="../../d8/d4a/nlp__builder_8hpp_source.html#l00062">casadi::NlpBuilder::g_lb</a>, <a class="el" href="../../d8/d4a/nlp__builder_8hpp_source.html#l00062">casadi::NlpBuilder::g_ub</a>, <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00135">casadi::Filesystem::ifstream_ptr()</a>, <a class="el" href="../../d1/d90/calculus_8hpp_source.html#l00050">casadi::inf</a>, <a class="el" href="../../d8/d4a/nlp__builder_8hpp_source.html#l00068">casadi::NlpBuilder::lambda_init</a>, <a class="el" href="../../dc/d59/casadi__common_8hpp_source.html#l00247">casadi::str()</a>, <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01206">casadi::GenericMatrix&lt; MX &gt;::sym()</a>, <a class="el" href="../../d8/d4a/nlp__builder_8hpp_source.html#l00050">casadi::NlpBuilder::x</a>, <a class="el" href="../../d8/d4a/nlp__builder_8hpp_source.html#l00065">casadi::NlpBuilder::x_init</a>, <a class="el" href="../../d8/d4a/nlp__builder_8hpp_source.html#l00059">casadi::NlpBuilder::x_lb</a>, and <a class="el" href="../../d8/d4a/nlp__builder_8hpp_source.html#l00059">casadi::NlpBuilder::x_ub</a>.</p>
 
 </div>
 </div>
@@ -270,11 +271,11 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d1/d63/nlp__builder_8cpp_source.html#l00176">176</a> of file <a class="el" href="../../d1/d63/nlp__builder_8cpp_source.html">nlp_builder.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                          {</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="comment">// Close the NL file</span></div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    s_.close();</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d1/d63/nlp__builder_8cpp_source.html#l00177">177</a> of file <a class="el" href="../../d1/d63/nlp__builder_8cpp_source.html">nlp_builder.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                          {</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <span class="comment">// Close the NL file</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    s_ptr_.reset();</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;  }</div>
 </div><!-- fragment -->
 </div>
 </div>

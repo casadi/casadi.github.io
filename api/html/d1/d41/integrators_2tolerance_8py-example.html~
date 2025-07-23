@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/9763952a9aa742c5be3b53dc1a1d033a57235328" id="9763952a9aa742c5be3b53dc1a1d033a57235328" >revision 3.7.1</a></div>
   </td>
  </tr>
  </tbody>
@@ -102,8 +102,8 @@ $(function() {
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;figure()</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordflow">for</span> tol <span class="keywordflow">in</span> tolerances:</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  opts = {<span class="stringliteral">&#39;reltol&#39;</span>:10.0**tol, <span class="stringliteral">&#39;abstol&#39;</span>:10.0**tol, <span class="stringliteral">&#39;grid&#39;</span>:ts, <span class="stringliteral">&#39;output_t0&#39;</span>:<span class="keyword">True</span>}</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  F = <a class="code" href="../../dd/d1b/group__integrator.html#gaeff67b23fd72e2f42dc41a35fa6a2441">integrator</a>(<span class="stringliteral">&#39;F&#39;</span>, <span class="stringliteral">&#39;cvodes&#39;</span>, dae, opts)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  opts = {<span class="stringliteral">&#39;reltol&#39;</span>:10.0**tol, <span class="stringliteral">&#39;abstol&#39;</span>:10.0**tol}</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  F = <a class="code" href="../../dd/d1b/group__integrator.html#gaeff67b23fd72e2f42dc41a35fa6a2441">integrator</a>(<span class="stringliteral">&#39;F&#39;</span>, <span class="stringliteral">&#39;cvodes&#39;</span>, dae, 0, ts, opts)</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  res = F(x0=[1,0])</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  plot(ts,array(res[<span class="stringliteral">&#39;xf&#39;</span>])[0,:].T,label=<span class="stringliteral">&#39;tol = 1e%d&#39;</span> % tol)</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;legend( loc=<span class="stringliteral">&#39;upper left&#39;</span>)</div>
@@ -119,20 +119,19 @@ $(function() {
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  opts = {}</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  opts[<span class="stringliteral">&#39;reltol&#39;</span>] = tol</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  opts[<span class="stringliteral">&#39;abstol&#39;</span>] = tol</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  opts[<span class="stringliteral">&#39;tf&#39;</span>] = tend</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  F = <a class="code" href="../../dd/d1b/group__integrator.html#gaeff67b23fd72e2f42dc41a35fa6a2441">integrator</a>(<span class="stringliteral">&#39;F&#39;</span>, <span class="stringliteral">&#39;cvodes&#39;</span>, dae, opts)</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  res = F(x0=[1,0])</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  endresult.append(res[<span class="stringliteral">&#39;xf&#39;</span>][0])</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;endresult = vcat(endresult)</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;figure()</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;loglog(tolerances,(array(endresult)-1),<span class="stringliteral">&#39;b&#39;</span>,label=<span class="stringliteral">&#39;Positive error&#39;</span>)</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;loglog(tolerances,-(array(endresult)-1),<span class="stringliteral">&#39;r&#39;</span>,label=<span class="stringliteral">&#39;Negative error&#39;</span>)</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;xlabel(<span class="stringliteral">&#39;Integrator relative tolerance&#39;</span>)</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;ylabel(<span class="stringliteral">&#39;Error at the end of integration time&#39;</span>)</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;legend(loc=<span class="stringliteral">&#39;upper left&#39;</span>)</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;show()</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  F = <a class="code" href="../../dd/d1b/group__integrator.html#gaeff67b23fd72e2f42dc41a35fa6a2441">integrator</a>(<span class="stringliteral">&#39;F&#39;</span>, <span class="stringliteral">&#39;cvodes&#39;</span>, dae, 0, tend, opts)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  res = F(x0=[1,0])</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  endresult.append(res[<span class="stringliteral">&#39;xf&#39;</span>][0])</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;endresult = vcat(endresult)</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;figure()</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;loglog(tolerances,(array(endresult)-1),<span class="stringliteral">&#39;b&#39;</span>,label=<span class="stringliteral">&#39;Positive error&#39;</span>)</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;loglog(tolerances,-(array(endresult)-1),<span class="stringliteral">&#39;r&#39;</span>,label=<span class="stringliteral">&#39;Negative error&#39;</span>)</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;xlabel(<span class="stringliteral">&#39;Integrator relative tolerance&#39;</span>)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;ylabel(<span class="stringliteral">&#39;Error at the end of integration time&#39;</span>)</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;legend(loc=<span class="stringliteral">&#39;upper left&#39;</span>)</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;show()</div>
 </div><!-- fragment --> </div><!-- contents -->
 </body>
 </html>

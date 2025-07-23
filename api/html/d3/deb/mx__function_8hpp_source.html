@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/9763952a9aa742c5be3b53dc1a1d033a57235328" id="9763952a9aa742c5be3b53dc1a1d033a57235328" >revision 3.7.1</a></div>
   </td>
  </tr>
  </tbody>
@@ -197,54 +197,62 @@ $(function() {
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <span class="comment">// Print the input arguments of an instruction</span></div>
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="keywordtype">void</span> print_arg(std::ostream &amp;stream, casadi_int k, <span class="keyword">const</span> AlgEl&amp; el, <span class="keyword">const</span> <span class="keywordtype">double</span>** arg) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160; </div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="comment">// Print the output arguments of an instruction</span></div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <span class="keywordtype">void</span> print_res(std::ostream &amp;stream, casadi_int k, <span class="keyword">const</span> AlgEl&amp; el, <span class="keywordtype">double</span>** res) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160; </div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    <span class="keyword">const</span> MX mx_in(casadi_int ind) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="keyword">const</span> std::vector&lt;MX&gt; mx_in() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="comment">// Print the input arguments of an instruction</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <span class="keywordtype">void</span> print_arg(CodeGenerator&amp; g, casadi_int k, <span class="keyword">const</span> AlgEl&amp; el,</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        <span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; arg, <span class="keyword">const</span> std::vector&lt;bool&gt;&amp; arg_is_ref) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160; </div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <span class="comment">// Print the output arguments of an instruction</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <span class="keywordtype">void</span> print_res(std::ostream &amp;stream, casadi_int k, <span class="keyword">const</span> AlgEl&amp; el, <span class="keywordtype">double</span>** res) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    <span class="comment">// Print the output arguments of an instruction</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="keywordtype">void</span> print_res(CodeGenerator&amp; g, casadi_int k, <span class="keyword">const</span> AlgEl&amp; el,</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        <span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; res, <span class="keyword">const</span> std::vector&lt;bool&gt;&amp; res_is_ref) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; </div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    std::vector&lt;MX&gt; free_mx()<span class="keyword"> const override </span>{<span class="keywordflow">return</span> free_vars_;}</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keywordtype">bool</span> has_free()<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> !free_vars_.empty();}</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <span class="keyword">const</span> MX mx_in(casadi_int ind) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <span class="keyword">const</span> std::vector&lt;MX&gt; mx_in() <span class="keyword">const override</span>;</div>
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    std::vector&lt;std::string&gt; get_free()<span class="keyword"> const override </span>{</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;      std::vector&lt;std::string&gt; ret;</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp;&amp; e : free_vars_) ret.push_back(e.name());</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;      <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    }</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    casadi_int n_nodes()<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> algorithm_.size();}</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    casadi_int n_instructions()<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> algorithm_.size();}</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160; </div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    MX instruction_MX(casadi_int k) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160; </div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    casadi_int instruction_id(casadi_int k)<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> algorithm_.at(k).op;}</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <span class="keywordtype">double</span> get_default_in(casadi_int ind)<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> default_in_.at(ind);}</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160; </div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    std::vector&lt;casadi_int&gt; instruction_input(casadi_int k) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    std::vector&lt;casadi_int&gt; instruction_output(casadi_int k) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160; </div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    <span class="keywordtype">void</span> export_code_body(<span class="keyword">const</span> std::string&amp; lang,</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;      std::ostream &amp;stream, <span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>&amp; options) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160; </div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    <span class="keywordtype">void</span> substitute_inplace(std::vector&lt;MX&gt;&amp; vdef, std::vector&lt;MX&gt;&amp; ex) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160; </div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    <span class="comment">// Get all embedded functions, recursively</span></div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    <span class="keywordtype">void</span> find(std::map&lt;FunctionInternal*, Function&gt;&amp; all_fun, casadi_int max_depth) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160; </div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    <span class="keywordtype">void</span> change_option(<span class="keyword">const</span> std::string&amp; option_name, <span class="keyword">const</span> GenericType&amp; option_value) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    std::vector&lt;MX&gt; free_mx()<span class="keyword"> const override </span>{<span class="keywordflow">return</span> free_vars_;}</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="keywordtype">bool</span> has_free()<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> !free_vars_.empty();}</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160; </div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    std::vector&lt;std::string&gt; get_free()<span class="keyword"> const override </span>{</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;      std::vector&lt;std::string&gt; ret;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp;&amp; e : free_vars_) ret.push_back(e.name());</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;      <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    }</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    casadi_int n_nodes()<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> algorithm_.size();}</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160; </div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    casadi_int n_instructions()<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> algorithm_.size();}</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160; </div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    MX instruction_MX(casadi_int k) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160; </div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    casadi_int instruction_id(casadi_int k)<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> algorithm_.at(k).op;}</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160; </div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <span class="keywordtype">double</span> get_default_in(casadi_int ind)<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> default_in_.at(ind);}</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160; </div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    std::vector&lt;casadi_int&gt; instruction_input(casadi_int k) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160; </div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    std::vector&lt;casadi_int&gt; instruction_output(casadi_int k) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160; </div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="keywordtype">void</span> export_code_body(<span class="keyword">const</span> std::string&amp; lang,</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;      std::ostream &amp;stream, <span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>&amp; options) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    <span class="keywordtype">void</span> substitute_inplace(std::vector&lt;MX&gt;&amp; vdef, std::vector&lt;MX&gt;&amp; ex) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160; </div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;  <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    <span class="keyword">explicit</span> MXFunction(DeserializingStream&amp; s);</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;  };</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160; </div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;} <span class="comment">// namespace casadi</span></div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_MX_FUNCTION_HPP</span></div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    <span class="comment">// Get all embedded functions, recursively</span></div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    <span class="keywordtype">void</span> find(std::map&lt;FunctionInternal*, Function&gt;&amp; all_fun, casadi_int max_depth) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160; </div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    <span class="keywordtype">void</span> change_option(<span class="keyword">const</span> std::string&amp; option_name, <span class="keyword">const</span> GenericType&amp; option_value) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;  <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="keyword">explicit</span> MXFunction(DeserializingStream&amp; s);</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;  };</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160; </div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;} <span class="comment">// namespace casadi</span></div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_MX_FUNCTION_HPP</span></div>
 <div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/archiver_8hpp_source.html#l00032">archiver.hpp:32</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_a746c394d3baa8e4be2ab21cebff17077"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a746c394d3baa8e4be2ab21cebff17077">casadi::MXVector</a></div><div class="ttdeci">std::vector&lt; MX &gt; MXVector</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dc6/mx_8hpp_source.html#l01006">mx.hpp:1006</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_a8b909f6932a91230738731512b99127e"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">casadi::Dict</a></div><div class="ttdeci">GenericType::Dict Dict</div><div class="ttdoc">C++ equivalent of Python's dict or MATLAB's struct.</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d30/generic__type_8hpp_source.html#l00258">generic_type.hpp:258</a></div></div>

@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/9763952a9aa742c5be3b53dc1a1d033a57235328" id="9763952a9aa742c5be3b53dc1a1d033a57235328" >revision 3.7.1</a></div>
   </td>
  </tr>
  </tbody>
@@ -165,9 +165,9 @@ General information</h3>
 <tr>
 <td>dump_format</td><td>OT_STRING</td><td>Choose file format to dump matrices. See <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e">DM.from_file</a> [mtx]</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
-<td>dump_in</td><td>OT_BOOL</td><td>Dump numerical values of inputs to file (readable with <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e">DM.from_file</a>) [default: false]</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
+<td>dump_in</td><td>OT_BOOL</td><td>Dump numerical values of inputs to file (readable with <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e">DM.from_file</a>) [default: false] A counter is used to generate unique names. The counter may be reset using reset_dump_count.</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
-<td>dump_out</td><td>OT_BOOL</td><td>Dump numerical values of outputs to file (readable with <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e">DM.from_file</a>) [default: false]</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
+<td>dump_out</td><td>OT_BOOL</td><td>Dump numerical values of outputs to file (readable with <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e">DM.from_file</a>) [default: false] A counter is used to generate unique names. The counter may be reset using reset_dump_count.</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
 <td>enable_fd</td><td>OT_BOOL</td><td>Enable derivative calculation by finite differencing. [default: false]]</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
@@ -226,6 +226,8 @@ General information</h3>
 <td>post_expand</td><td>OT_BOOL</td><td>After construction, expand this <a class="el" href="../../da/da4/classcasadi_1_1Function.html" title="Function object.">Function</a>. Default: False</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
 <td>post_expand_options</td><td>OT_DICT</td><td><a class="el" href="../../db/d35/structcasadi_1_1Options.html" title="Options metadata for a class.">Options</a> to be passed to post-construction expansion. Default: empty</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
+<tr>
+<td>print_canonical</td><td>OT_BOOL</td><td>When printing numerical matrices, use a format that is exact and reproducible in generated C code.</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
 <td>print_in</td><td>OT_BOOL</td><td>Print numerical values of inputs [default: false]</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
@@ -851,7 +853,7 @@ List of plugins</h3>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../de/dea/function_8cpp_source.html#l00336">casadi::Function::create()</a>, and <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00312">casadi::PluginInterface&lt; Conic &gt;::instantiate()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../da/d41/feasiblesqpmethod_8cpp_source.html#l00197">casadi::Feasiblesqpmethod::init()</a>, <a class="el" href="../../d8/dee/qrsqp_8cpp_source.html#l00117">casadi::Qrsqp::init()</a>, <a class="el" href="../../d7/d42/scpgen_8cpp_source.html#l00126">casadi::Scpgen::init()</a>, <a class="el" href="../../d8/dfc/sqpmethod_8cpp_source.html#l00157">casadi::Sqpmethod::init()</a>, and <a class="el" href="../../df/d70/conic_8cpp_source.html#l00112">casadi::qpsol_nlp()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../da/d41/feasiblesqpmethod_8cpp_source.html#l00197">casadi::Feasiblesqpmethod::init()</a>, <a class="el" href="../../d8/dee/qrsqp_8cpp_source.html#l00117">casadi::Qrsqp::init()</a>, <a class="el" href="../../d7/d42/scpgen_8cpp_source.html#l00126">casadi::Scpgen::init()</a>, <a class="el" href="../../d8/dfc/sqpmethod_8cpp_source.html#l00157">casadi::Sqpmethod::init()</a>, and <a class="el" href="../../df/d70/conic_8cpp_source.html#l00111">casadi::qpsol_nlp()</a>.</p>
 
 </div>
 </div>
@@ -884,13 +886,12 @@ List of plugins</h3>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d70/conic_8cpp_source.html#l00049">49</a> of file <a class="el" href="../../df/d70/conic_8cpp_source.html">conic.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                                                                 {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    std::ofstream file;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    Filesystem::open(file, filename);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="../../db/d30/group__conic.html#gac9d632a0859052933ccec0c152aa9c83">conic_debug</a>(f, file);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  }</div>
-<div class="ttc" id="agroup__conic_html_gac9d632a0859052933ccec0c152aa9c83"><div class="ttname"><a href="../../db/d30/group__conic.html#gac9d632a0859052933ccec0c152aa9c83">casadi::conic_debug</a></div><div class="ttdeci">void conic_debug(const Function &amp;f, std::ostream &amp;file)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d70/conic_8cpp_source.html#l00055">conic.cpp:55</a></div></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">auto</span> file_ptr = Filesystem::ofstream_ptr(filename);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="../../db/d30/group__conic.html#gac9d632a0859052933ccec0c152aa9c83">conic_debug</a>(f, *file_ptr);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  }</div>
+<div class="ttc" id="agroup__conic_html_gac9d632a0859052933ccec0c152aa9c83"><div class="ttname"><a href="../../db/d30/group__conic.html#gac9d632a0859052933ccec0c152aa9c83">casadi::conic_debug</a></div><div class="ttdeci">void conic_debug(const Function &amp;f, std::ostream &amp;file)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d70/conic_8cpp_source.html#l00054">conic.cpp:54</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../dc/d16/ghc_8cpp_source.html#l00055">casadi::filename()</a>, and <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00115">casadi::Filesystem::open()</a>.</p>
+<p class="reference">References <a class="el" href="../../dc/d16/ghc_8cpp_source.html#l00055">casadi::filename()</a>, and <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00115">casadi::Filesystem::ofstream_ptr()</a>.</p>
 
 </div>
 </div>
@@ -921,14 +922,14 @@ List of plugins</h3>
 </div><div class="memdoc">
 <p>Generate native code in the interfaced language for debugging </p>
 
-<p class="definition">Definition at line <a class="el" href="../../df/d70/conic_8cpp_source.html#l00055">55</a> of file <a class="el" href="../../df/d70/conic_8cpp_source.html">conic.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                                                        {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    casadi_assert_dev(!f.is_null());</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keyword">const</span> Conic* n = f.get&lt;Conic&gt;();</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">return</span> n-&gt;generateNativeCode(file);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../df/d70/conic_8cpp_source.html#l00054">54</a> of file <a class="el" href="../../df/d70/conic_8cpp_source.html">conic.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                                                        {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    casadi_assert_dev(!f.is_null());</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">const</span> Conic* n = f.get&lt;Conic&gt;();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">return</span> n-&gt;generateNativeCode(file);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../df/d70/conic_8cpp_source.html#l00506">casadi::Conic::generateNativeCode()</a>, <a class="el" href="../../de/dea/function_8cpp_source.html#l00353">casadi::Function::get()</a>, and <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00109">casadi::GenericShared&lt; Shared, Internal &gt;::is_null()</a>.</p>
+<p class="reference">References <a class="el" href="../../df/d70/conic_8cpp_source.html#l00505">casadi::Conic::generateNativeCode()</a>, <a class="el" href="../../de/dea/function_8cpp_source.html#l00353">casadi::Function::get()</a>, and <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00113">casadi::GenericShared&lt; Shared, Internal &gt;::is_null()</a>.</p>
 
 </div>
 </div>
@@ -948,16 +949,16 @@ List of plugins</h3>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1ee">https://github.com/casadi/casadi/wiki/L_1ee</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../df/d70/conic_8cpp_source.html#l00061">61</a> of file <a class="el" href="../../df/d70/conic_8cpp_source.html">conic.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                                  {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    std::vector&lt;std::string&gt; ret(<a class="code" href="../../db/d30/group__conic.html#ga7afd2b9ac01dc94849805a857411c508">conic_n_in</a>());</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i&lt;ret.size(); ++i) ret[i]=<a class="code" href="../../db/d30/group__conic.html#ga6eba457e233266329c5ec7524cb95513">conic_in</a>(i);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  }</div>
-<div class="ttc" id="agroup__conic_html_ga6eba457e233266329c5ec7524cb95513"><div class="ttname"><a href="../../db/d30/group__conic.html#ga6eba457e233266329c5ec7524cb95513">casadi::conic_in</a></div><div class="ttdeci">std::string conic_in(casadi_int ind)</div><div class="ttdoc">Get QP solver input scheme name by index.</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d70/conic_8cpp_source.html#l00073">conic.cpp:73</a></div></div>
-<div class="ttc" id="agroup__conic_html_ga7afd2b9ac01dc94849805a857411c508"><div class="ttname"><a href="../../db/d30/group__conic.html#ga7afd2b9ac01dc94849805a857411c508">casadi::conic_n_in</a></div><div class="ttdeci">casadi_int conic_n_in()</div><div class="ttdoc">Get the number of QP solver inputs.</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d70/conic_8cpp_source.html#l00103">conic.cpp:103</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../df/d70/conic_8cpp_source.html#l00060">60</a> of file <a class="el" href="../../df/d70/conic_8cpp_source.html">conic.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                                  {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    std::vector&lt;std::string&gt; ret(<a class="code" href="../../db/d30/group__conic.html#ga7afd2b9ac01dc94849805a857411c508">conic_n_in</a>());</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i&lt;ret.size(); ++i) ret[i]=<a class="code" href="../../db/d30/group__conic.html#ga6eba457e233266329c5ec7524cb95513">conic_in</a>(i);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  }</div>
+<div class="ttc" id="agroup__conic_html_ga6eba457e233266329c5ec7524cb95513"><div class="ttname"><a href="../../db/d30/group__conic.html#ga6eba457e233266329c5ec7524cb95513">casadi::conic_in</a></div><div class="ttdeci">std::string conic_in(casadi_int ind)</div><div class="ttdoc">Get QP solver input scheme name by index.</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d70/conic_8cpp_source.html#l00072">conic.cpp:72</a></div></div>
+<div class="ttc" id="agroup__conic_html_ga7afd2b9ac01dc94849805a857411c508"><div class="ttname"><a href="../../db/d30/group__conic.html#ga7afd2b9ac01dc94849805a857411c508">casadi::conic_n_in</a></div><div class="ttdeci">casadi_int conic_n_in()</div><div class="ttdoc">Get the number of QP solver inputs.</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d70/conic_8cpp_source.html#l00102">conic.cpp:102</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../df/d70/conic_8cpp_source.html#l00103">casadi::conic_n_in()</a>.</p>
+<p class="reference">References <a class="el" href="../../df/d70/conic_8cpp_source.html#l00102">casadi::conic_n_in()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="../../d0/dea/conic__impl_8hpp_source.html#l00075">casadi::Conic::get_name_in()</a>.</p>
 
@@ -980,25 +981,25 @@ List of plugins</h3>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1eg">https://github.com/casadi/casadi/wiki/L_1eg</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../df/d70/conic_8cpp_source.html#l00073">73</a> of file <a class="el" href="../../df/d70/conic_8cpp_source.html">conic.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                                     {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">switch</span> (<span class="keyword">static_cast&lt;</span><a class="code" href="../../d7/d23/namespacecasadi.html#a34bce76c4159a28fab7b3240c17791f8">ConicInput</a><span class="keyword">&gt;</span>(ind)) {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a34bce76c4159a28fab7b3240c17791f8ab53756eabc2f7c7602f2906ce4927d21">CONIC_H</a>:      <span class="keywordflow">return</span> <span class="stringliteral">&quot;h&quot;</span>;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a34bce76c4159a28fab7b3240c17791f8a50a85f35dc17620d5c204646387184ba">CONIC_G</a>:      <span class="keywordflow">return</span> <span class="stringliteral">&quot;g&quot;</span>;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a34bce76c4159a28fab7b3240c17791f8a49c44b4e64df3cf9bbdc31164f974655">CONIC_A</a>:      <span class="keywordflow">return</span> <span class="stringliteral">&quot;a&quot;</span>;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a34bce76c4159a28fab7b3240c17791f8a669050ec4b395fadecc48f11da080f75">CONIC_Q</a>:      <span class="keywordflow">return</span> <span class="stringliteral">&quot;q&quot;</span>;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a34bce76c4159a28fab7b3240c17791f8ad7f5312980278cc8931b56107cb320bc">CONIC_P</a>:      <span class="keywordflow">return</span> <span class="stringliteral">&quot;p&quot;</span>;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a34bce76c4159a28fab7b3240c17791f8a6ebf4c6de903d8eb232fba1cec76b7e3">CONIC_LBA</a>:    <span class="keywordflow">return</span> <span class="stringliteral">&quot;lba&quot;</span>;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a34bce76c4159a28fab7b3240c17791f8a31328ca84782e133dad6f93bb23afea3">CONIC_UBA</a>:    <span class="keywordflow">return</span> <span class="stringliteral">&quot;uba&quot;</span>;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a34bce76c4159a28fab7b3240c17791f8ab928e4c94cd06b6805013b5bc2e302ac">CONIC_LBX</a>:    <span class="keywordflow">return</span> <span class="stringliteral">&quot;lbx&quot;</span>;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a34bce76c4159a28fab7b3240c17791f8aab2583690867ff62548247a6b1e91dab">CONIC_UBX</a>:    <span class="keywordflow">return</span> <span class="stringliteral">&quot;ubx&quot;</span>;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a34bce76c4159a28fab7b3240c17791f8a39f461e3c5b1294be6998742d6d24a02">CONIC_X0</a>:     <span class="keywordflow">return</span> <span class="stringliteral">&quot;x0&quot;</span>;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a34bce76c4159a28fab7b3240c17791f8ad750b605e461c8e7b0c51ace9111789e">CONIC_LAM_X0</a>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;lam_x0&quot;</span>;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a34bce76c4159a28fab7b3240c17791f8ab88a92c8d0d0a9facf5797009031644d">CONIC_LAM_A0</a>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;lam_a0&quot;</span>;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a34bce76c4159a28fab7b3240c17791f8ac4343487e1301e3af3c2dfd0a2734e48">CONIC_NUM_IN</a>: <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">return</span> std::string();</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../df/d70/conic_8cpp_source.html#l00072">72</a> of file <a class="el" href="../../df/d70/conic_8cpp_source.html">conic.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                                     {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">switch</span> (<span class="keyword">static_cast&lt;</span><a class="code" href="../../d7/d23/namespacecasadi.html#a34bce76c4159a28fab7b3240c17791f8">ConicInput</a><span class="keyword">&gt;</span>(ind)) {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a34bce76c4159a28fab7b3240c17791f8ab53756eabc2f7c7602f2906ce4927d21">CONIC_H</a>:      <span class="keywordflow">return</span> <span class="stringliteral">&quot;h&quot;</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a34bce76c4159a28fab7b3240c17791f8a50a85f35dc17620d5c204646387184ba">CONIC_G</a>:      <span class="keywordflow">return</span> <span class="stringliteral">&quot;g&quot;</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a34bce76c4159a28fab7b3240c17791f8a49c44b4e64df3cf9bbdc31164f974655">CONIC_A</a>:      <span class="keywordflow">return</span> <span class="stringliteral">&quot;a&quot;</span>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a34bce76c4159a28fab7b3240c17791f8a669050ec4b395fadecc48f11da080f75">CONIC_Q</a>:      <span class="keywordflow">return</span> <span class="stringliteral">&quot;q&quot;</span>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a34bce76c4159a28fab7b3240c17791f8ad7f5312980278cc8931b56107cb320bc">CONIC_P</a>:      <span class="keywordflow">return</span> <span class="stringliteral">&quot;p&quot;</span>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a34bce76c4159a28fab7b3240c17791f8a6ebf4c6de903d8eb232fba1cec76b7e3">CONIC_LBA</a>:    <span class="keywordflow">return</span> <span class="stringliteral">&quot;lba&quot;</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a34bce76c4159a28fab7b3240c17791f8a31328ca84782e133dad6f93bb23afea3">CONIC_UBA</a>:    <span class="keywordflow">return</span> <span class="stringliteral">&quot;uba&quot;</span>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a34bce76c4159a28fab7b3240c17791f8ab928e4c94cd06b6805013b5bc2e302ac">CONIC_LBX</a>:    <span class="keywordflow">return</span> <span class="stringliteral">&quot;lbx&quot;</span>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a34bce76c4159a28fab7b3240c17791f8aab2583690867ff62548247a6b1e91dab">CONIC_UBX</a>:    <span class="keywordflow">return</span> <span class="stringliteral">&quot;ubx&quot;</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a34bce76c4159a28fab7b3240c17791f8a39f461e3c5b1294be6998742d6d24a02">CONIC_X0</a>:     <span class="keywordflow">return</span> <span class="stringliteral">&quot;x0&quot;</span>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a34bce76c4159a28fab7b3240c17791f8ad750b605e461c8e7b0c51ace9111789e">CONIC_LAM_X0</a>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;lam_x0&quot;</span>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a34bce76c4159a28fab7b3240c17791f8ab88a92c8d0d0a9facf5797009031644d">CONIC_LAM_A0</a>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;lam_a0&quot;</span>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a34bce76c4159a28fab7b3240c17791f8ac4343487e1301e3af3c2dfd0a2734e48">CONIC_NUM_IN</a>: <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">return</span> std::string();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  }</div>
 <div class="ttc" id="anamespacecasadi_html_a34bce76c4159a28fab7b3240c17791f8"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a34bce76c4159a28fab7b3240c17791f8">casadi::ConicInput</a></div><div class="ttdeci">ConicInput</div><div class="ttdoc">Input arguments of a QP problem.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d96/conic_8hpp_source.html#l00170">conic.hpp:170</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_a34bce76c4159a28fab7b3240c17791f8a31328ca84782e133dad6f93bb23afea3"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a34bce76c4159a28fab7b3240c17791f8a31328ca84782e133dad6f93bb23afea3">casadi::CONIC_UBA</a></div><div class="ttdeci">@ CONIC_UBA</div><div class="ttdoc">dense, (nc x 1)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d96/conic_8hpp_source.html#l00181">conic.hpp:181</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_a34bce76c4159a28fab7b3240c17791f8a39f461e3c5b1294be6998742d6d24a02"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a34bce76c4159a28fab7b3240c17791f8a39f461e3c5b1294be6998742d6d24a02">casadi::CONIC_X0</a></div><div class="ttdeci">@ CONIC_X0</div><div class="ttdoc">dense, (n x 1)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d96/conic_8hpp_source.html#l00187">conic.hpp:187</a></div></div>
@@ -1034,14 +1035,14 @@ List of plugins</h3>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1ei">https://github.com/casadi/casadi/wiki/L_1ei</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../df/d70/conic_8cpp_source.html#l00103">103</a> of file <a class="el" href="../../df/d70/conic_8cpp_source.html">conic.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                          {</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a34bce76c4159a28fab7b3240c17791f8ac4343487e1301e3af3c2dfd0a2734e48">CONIC_NUM_IN</a>;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../df/d70/conic_8cpp_source.html#l00102">102</a> of file <a class="el" href="../../df/d70/conic_8cpp_source.html">conic.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                          {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a34bce76c4159a28fab7b3240c17791f8ac4343487e1301e3af3c2dfd0a2734e48">CONIC_NUM_IN</a>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d7/d96/conic_8hpp_source.html#l00196">casadi::CONIC_NUM_IN</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d70/conic_8cpp_source.html#l00061">casadi::conic_in()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d70/conic_8cpp_source.html#l00060">casadi::conic_in()</a>.</p>
 
 </div>
 </div>
@@ -1061,15 +1062,15 @@ List of plugins</h3>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1ej">https://github.com/casadi/casadi/wiki/L_1ej</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../df/d70/conic_8cpp_source.html#l00107">107</a> of file <a class="el" href="../../df/d70/conic_8cpp_source.html">conic.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                           {</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d23/namespacecasadi.html#affec1f380df22cc4934c68b5487b7396abba1e52c8953b50177c0c34297e7dabe">CONIC_NUM_OUT</a>;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../df/d70/conic_8cpp_source.html#l00106">106</a> of file <a class="el" href="../../df/d70/conic_8cpp_source.html">conic.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                           {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d23/namespacecasadi.html#affec1f380df22cc4934c68b5487b7396abba1e52c8953b50177c0c34297e7dabe">CONIC_NUM_OUT</a>;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  }</div>
 <div class="ttc" id="anamespacecasadi_html_affec1f380df22cc4934c68b5487b7396abba1e52c8953b50177c0c34297e7dabe"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#affec1f380df22cc4934c68b5487b7396abba1e52c8953b50177c0c34297e7dabe">casadi::CONIC_NUM_OUT</a></div><div class="ttdeci">@ CONIC_NUM_OUT</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d96/conic_8hpp_source.html#l00208">conic.hpp:208</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d7/d96/conic_8hpp_source.html#l00208">casadi::CONIC_NUM_OUT</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d70/conic_8cpp_source.html#l00067">casadi::conic_out()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d70/conic_8cpp_source.html#l00066">casadi::conic_out()</a>.</p>
 
 </div>
 </div>
@@ -1100,10 +1101,10 @@ List of plugins</h3>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1em">https://github.com/casadi/casadi/wiki/L_1em</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../df/d70/conic_8cpp_source.html#l00572">572</a> of file <a class="el" href="../../df/d70/conic_8cpp_source.html">conic.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;                                                                          {</div>
-<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;    <span class="keywordflow">return</span> Conic::plugin_options(name).info(op);</div>
-<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../df/d70/conic_8cpp_source.html#l00571">571</a> of file <a class="el" href="../../df/d70/conic_8cpp_source.html">conic.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;                                                                          {</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;    <span class="keywordflow">return</span> Conic::plugin_options(name).info(op);</div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;  }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d5/d1e/options_8cpp_source.html#l00295">casadi::Options::info()</a>, and <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00155">casadi::PluginInterface&lt; Conic &gt;::plugin_options()</a>.</p>
 
@@ -1136,10 +1137,10 @@ List of plugins</h3>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1el">https://github.com/casadi/casadi/wiki/L_1el</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../df/d70/conic_8cpp_source.html#l00568">568</a> of file <a class="el" href="../../df/d70/conic_8cpp_source.html">conic.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;                                                                          {</div>
-<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;    <span class="keywordflow">return</span> Conic::plugin_options(name).type(op);</div>
-<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../df/d70/conic_8cpp_source.html#l00567">567</a> of file <a class="el" href="../../df/d70/conic_8cpp_source.html">conic.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;                                                                          {</div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;    <span class="keywordflow">return</span> Conic::plugin_options(name).type(op);</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;  }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00155">casadi::PluginInterface&lt; Conic &gt;::plugin_options()</a>, and <a class="el" href="../../d5/d1e/options_8cpp_source.html#l00289">casadi::Options::type()</a>.</p>
 
@@ -1162,10 +1163,10 @@ List of plugins</h3>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1ek">https://github.com/casadi/casadi/wiki/L_1ek</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../df/d70/conic_8cpp_source.html#l00564">564</a> of file <a class="el" href="../../df/d70/conic_8cpp_source.html">conic.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;                                                            {</div>
-<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;    <span class="keywordflow">return</span> Conic::plugin_options(name).all();</div>
-<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../df/d70/conic_8cpp_source.html#l00563">563</a> of file <a class="el" href="../../df/d70/conic_8cpp_source.html">conic.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;                                                            {</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;    <span class="keywordflow">return</span> Conic::plugin_options(name).all();</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;  }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d5/d1e/options_8cpp_source.html#l00283">casadi::Options::all()</a>, and <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00155">casadi::PluginInterface&lt; Conic &gt;::plugin_options()</a>.</p>
 
@@ -1187,16 +1188,16 @@ List of plugins</h3>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1ef">https://github.com/casadi/casadi/wiki/L_1ef</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../df/d70/conic_8cpp_source.html#l00067">67</a> of file <a class="el" href="../../df/d70/conic_8cpp_source.html">conic.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                                   {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    std::vector&lt;std::string&gt; ret(<a class="code" href="../../db/d30/group__conic.html#gaccbec1b391dfe5def95c94410cb7d2a1">conic_n_out</a>());</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i&lt;ret.size(); ++i) ret[i]=<a class="code" href="../../db/d30/group__conic.html#ga276213253ac38f9ceb37fcdb7e02c739">conic_out</a>(i);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  }</div>
-<div class="ttc" id="agroup__conic_html_ga276213253ac38f9ceb37fcdb7e02c739"><div class="ttname"><a href="../../db/d30/group__conic.html#ga276213253ac38f9ceb37fcdb7e02c739">casadi::conic_out</a></div><div class="ttdeci">std::string conic_out(casadi_int ind)</div><div class="ttdoc">Get output scheme name by index.</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d70/conic_8cpp_source.html#l00092">conic.cpp:92</a></div></div>
-<div class="ttc" id="agroup__conic_html_gaccbec1b391dfe5def95c94410cb7d2a1"><div class="ttname"><a href="../../db/d30/group__conic.html#gaccbec1b391dfe5def95c94410cb7d2a1">casadi::conic_n_out</a></div><div class="ttdeci">casadi_int conic_n_out()</div><div class="ttdoc">Get the number of QP solver outputs.</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d70/conic_8cpp_source.html#l00107">conic.cpp:107</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../df/d70/conic_8cpp_source.html#l00066">66</a> of file <a class="el" href="../../df/d70/conic_8cpp_source.html">conic.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                                   {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    std::vector&lt;std::string&gt; ret(<a class="code" href="../../db/d30/group__conic.html#gaccbec1b391dfe5def95c94410cb7d2a1">conic_n_out</a>());</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i&lt;ret.size(); ++i) ret[i]=<a class="code" href="../../db/d30/group__conic.html#ga276213253ac38f9ceb37fcdb7e02c739">conic_out</a>(i);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  }</div>
+<div class="ttc" id="agroup__conic_html_ga276213253ac38f9ceb37fcdb7e02c739"><div class="ttname"><a href="../../db/d30/group__conic.html#ga276213253ac38f9ceb37fcdb7e02c739">casadi::conic_out</a></div><div class="ttdeci">std::string conic_out(casadi_int ind)</div><div class="ttdoc">Get output scheme name by index.</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d70/conic_8cpp_source.html#l00091">conic.cpp:91</a></div></div>
+<div class="ttc" id="agroup__conic_html_gaccbec1b391dfe5def95c94410cb7d2a1"><div class="ttname"><a href="../../db/d30/group__conic.html#gaccbec1b391dfe5def95c94410cb7d2a1">casadi::conic_n_out</a></div><div class="ttdeci">casadi_int conic_n_out()</div><div class="ttdoc">Get the number of QP solver outputs.</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d70/conic_8cpp_source.html#l00106">conic.cpp:106</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../df/d70/conic_8cpp_source.html#l00107">casadi::conic_n_out()</a>.</p>
+<p class="reference">References <a class="el" href="../../df/d70/conic_8cpp_source.html#l00106">casadi::conic_n_out()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="../../d0/dea/conic__impl_8hpp_source.html#l00076">casadi::Conic::get_name_out()</a>.</p>
 
@@ -1219,17 +1220,17 @@ List of plugins</h3>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1eh">https://github.com/casadi/casadi/wiki/L_1eh</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../df/d70/conic_8cpp_source.html#l00092">92</a> of file <a class="el" href="../../df/d70/conic_8cpp_source.html">conic.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                                      {</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">switch</span> (<span class="keyword">static_cast&lt;</span><a class="code" href="../../d7/d23/namespacecasadi.html#affec1f380df22cc4934c68b5487b7396">ConicOutput</a><span class="keyword">&gt;</span>(ind)) {</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#affec1f380df22cc4934c68b5487b7396a0641eb7ab606b8fca60b3de581315ed2">CONIC_X</a>:     <span class="keywordflow">return</span> <span class="stringliteral">&quot;x&quot;</span>;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#affec1f380df22cc4934c68b5487b7396a30a549a645090d10496e0d23eb97e88d">CONIC_COST</a>:  <span class="keywordflow">return</span> <span class="stringliteral">&quot;cost&quot;</span>;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#affec1f380df22cc4934c68b5487b7396a168ae0cb4cca405da44086ec35fde581">CONIC_LAM_A</a>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;lam_a&quot;</span>;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#affec1f380df22cc4934c68b5487b7396ab20b25de0e807f0b5e82b130e2926391">CONIC_LAM_X</a>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;lam_x&quot;</span>;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#affec1f380df22cc4934c68b5487b7396abba1e52c8953b50177c0c34297e7dabe">CONIC_NUM_OUT</a>: <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    }</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordflow">return</span> std::string();</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../df/d70/conic_8cpp_source.html#l00091">91</a> of file <a class="el" href="../../df/d70/conic_8cpp_source.html">conic.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                                      {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">switch</span> (<span class="keyword">static_cast&lt;</span><a class="code" href="../../d7/d23/namespacecasadi.html#affec1f380df22cc4934c68b5487b7396">ConicOutput</a><span class="keyword">&gt;</span>(ind)) {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#affec1f380df22cc4934c68b5487b7396a0641eb7ab606b8fca60b3de581315ed2">CONIC_X</a>:     <span class="keywordflow">return</span> <span class="stringliteral">&quot;x&quot;</span>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#affec1f380df22cc4934c68b5487b7396a30a549a645090d10496e0d23eb97e88d">CONIC_COST</a>:  <span class="keywordflow">return</span> <span class="stringliteral">&quot;cost&quot;</span>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#affec1f380df22cc4934c68b5487b7396a168ae0cb4cca405da44086ec35fde581">CONIC_LAM_A</a>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;lam_a&quot;</span>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#affec1f380df22cc4934c68b5487b7396ab20b25de0e807f0b5e82b130e2926391">CONIC_LAM_X</a>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;lam_x&quot;</span>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d7/d23/namespacecasadi.html#affec1f380df22cc4934c68b5487b7396abba1e52c8953b50177c0c34297e7dabe">CONIC_NUM_OUT</a>: <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordflow">return</span> std::string();</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  }</div>
 <div class="ttc" id="anamespacecasadi_html_affec1f380df22cc4934c68b5487b7396"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#affec1f380df22cc4934c68b5487b7396">casadi::ConicOutput</a></div><div class="ttdeci">ConicOutput</div><div class="ttdoc">Output arguments of an QP Solver.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d96/conic_8hpp_source.html#l00199">conic.hpp:199</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_affec1f380df22cc4934c68b5487b7396a0641eb7ab606b8fca60b3de581315ed2"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#affec1f380df22cc4934c68b5487b7396a0641eb7ab606b8fca60b3de581315ed2">casadi::CONIC_X</a></div><div class="ttdeci">@ CONIC_X</div><div class="ttdoc">The primal solution.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d96/conic_8hpp_source.html#l00201">conic.hpp:201</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_affec1f380df22cc4934c68b5487b7396a168ae0cb4cca405da44086ec35fde581"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#affec1f380df22cc4934c68b5487b7396a168ae0cb4cca405da44086ec35fde581">casadi::CONIC_LAM_A</a></div><div class="ttdeci">@ CONIC_LAM_A</div><div class="ttdoc">The dual solution corresponding to linear bounds.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d96/conic_8hpp_source.html#l00205">conic.hpp:205</a></div></div>
@@ -1353,13 +1354,13 @@ List of plugins</h3>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../df/d70/conic_8cpp_source.html#l00267">267</a> of file <a class="el" href="../../df/d70/conic_8cpp_source.html">conic.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                                                     {</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d23/namespacecasadi.html#af26ac705af41dd34574399b0d8ea0a1b">qpsol_nlp</a>(name, solver, qp, opts);</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;  }</div>
-<div class="ttc" id="anamespacecasadi_html_af26ac705af41dd34574399b0d8ea0a1b"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#af26ac705af41dd34574399b0d8ea0a1b">casadi::qpsol_nlp</a></div><div class="ttdeci">Function qpsol_nlp(const std::string &amp;name, const std::string &amp;solver, const std::map&lt; std::string, M &gt; &amp;qp, const Dict &amp;opts)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d70/conic_8cpp_source.html#l00112">conic.cpp:112</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../df/d70/conic_8cpp_source.html#l00266">266</a> of file <a class="el" href="../../df/d70/conic_8cpp_source.html">conic.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                                                     {</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d23/namespacecasadi.html#af26ac705af41dd34574399b0d8ea0a1b">qpsol_nlp</a>(name, solver, qp, opts);</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;  }</div>
+<div class="ttc" id="anamespacecasadi_html_af26ac705af41dd34574399b0d8ea0a1b"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#af26ac705af41dd34574399b0d8ea0a1b">casadi::qpsol_nlp</a></div><div class="ttdeci">Function qpsol_nlp(const std::string &amp;name, const std::string &amp;solver, const std::map&lt; std::string, M &gt; &amp;qp, const Dict &amp;opts)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d70/conic_8cpp_source.html#l00111">conic.cpp:111</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../df/d70/conic_8cpp_source.html#l00112">casadi::qpsol_nlp()</a>.</p>
+<p class="reference">References <a class="el" href="../../df/d70/conic_8cpp_source.html#l00111">casadi::qpsol_nlp()</a>.</p>
 
 </div>
 </div>
@@ -1401,14 +1402,14 @@ List of plugins</h3>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../df/d70/conic_8cpp_source.html#l00262">262</a> of file <a class="el" href="../../df/d70/conic_8cpp_source.html">conic.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                                                     {</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d23/namespacecasadi.html#af26ac705af41dd34574399b0d8ea0a1b">qpsol_nlp</a>(name, solver, qp, opts);</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../df/d70/conic_8cpp_source.html#l00261">261</a> of file <a class="el" href="../../df/d70/conic_8cpp_source.html">conic.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                                                     {</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d23/namespacecasadi.html#af26ac705af41dd34574399b0d8ea0a1b">qpsol_nlp</a>(name, solver, qp, opts);</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;  }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../df/d70/conic_8cpp_source.html#l00112">casadi::qpsol_nlp()</a>.</p>
+<p class="reference">References <a class="el" href="../../df/d70/conic_8cpp_source.html#l00111">casadi::qpsol_nlp()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d3/db1/optistack__internal_8cpp_source.html#l01270">casadi::OptiNode::solver_construct()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d3/db1/optistack__internal_8cpp_source.html#l01274">casadi::OptiNode::solver_construct()</a>.</p>
 
 </div>
 </div>

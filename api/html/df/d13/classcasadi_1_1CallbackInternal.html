@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/9763952a9aa742c5be3b53dc1a1d033a57235328" id="9763952a9aa742c5be3b53dc1a1d033a57235328" >revision 3.7.1</a></div>
   </td>
  </tr>
  </tbody>
@@ -102,6 +102,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9ac78c06d95a770afc769b74a6c298ef"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d13/classcasadi_1_1CallbackInternal.html#a9ac78c06d95a770afc769b74a6c298ef">uses_output</a> () const override</td></tr>
 <tr class="memdesc:a9ac78c06d95a770afc769b74a6c298ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Do the derivative functions need nondifferentiated outputs?  <a href="../../df/d13/classcasadi_1_1CallbackInternal.html#a9ac78c06d95a770afc769b74a6c298ef">More...</a><br /></td></tr>
 <tr class="separator:a9ac78c06d95a770afc769b74a6c298ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fba8e67d52a36054b1d70ddcbdbfe34"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d13/classcasadi_1_1CallbackInternal.html#a8fba8e67d52a36054b1d70ddcbdbfe34">factory</a> (const std::string &amp;name, const std::vector&lt; std::string &gt; &amp;s_in, const std::vector&lt; std::string &gt; &amp;s_out, const <a class="el" href="../../da/da4/classcasadi_1_1Function.html#ae2cf81e9230d66a90c413b5c680d49d8">Function::AuxOut</a> &amp;aux, const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;opts) const override</td></tr>
+<tr class="memdesc:a8fba8e67d52a36054b1d70ddcbdbfe34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Customize calls to the function factory.  <a href="../../df/d13/classcasadi_1_1CallbackInternal.html#a8fba8e67d52a36054b1d70ddcbdbfe34">More...</a><br /></td></tr>
+<tr class="separator:a8fba8e67d52a36054b1d70ddcbdbfe34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
 <tr class="memitem:a595f5b59f0fff7c1a90149f522b03763"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d13/classcasadi_1_1CallbackInternal.html#a595f5b59f0fff7c1a90149f522b03763">get_n_in</a> () override</td></tr>
 <tr class="memdesc:a595f5b59f0fff7c1a90149f522b03763"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of function inputs and outputs.  <a href="../../df/d13/classcasadi_1_1CallbackInternal.html#a595f5b59f0fff7c1a90149f522b03763">More...</a><br /></td></tr>
@@ -348,6 +351,61 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_184">https://github.com/casadi/casadi/wiki/L_184</a> </p>
+
+</div>
+</div>
+<a id="a8fba8e67d52a36054b1d70ddcbdbfe34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fba8e67d52a36054b1d70ddcbdbfe34">&#9670;&nbsp;</a></span>factory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a> casadi::CallbackInternal::factory </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>s_in</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>s_out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../da/da4/classcasadi_1_1Function.html#ae2cf81e9230d66a90c413b5c680d49d8">Function::AuxOut</a> &amp;&#160;</td>
+          <td class="paramname"><em>aux</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;&#160;</td>
+          <td class="paramname"><em>opts</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2df">https://github.com/casadi/casadi/wiki/L_2df</a> </p>
 
 </div>
 </div>
@@ -992,7 +1050,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d5/d6b/callback__internal_8hpp_source.html#l00154">154</a> of file <a class="el" href="../../d5/d6b/callback__internal_8hpp_source.html">callback_internal.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d5/d6b/callback__internal_8hpp_source.html#l00163">163</a> of file <a class="el" href="../../d5/d6b/callback__internal_8hpp_source.html">callback_internal.hpp</a>.</p>
 
 </div>
 </div>
@@ -1009,7 +1067,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_18b">https://github.com/casadi/casadi/wiki/L_18b</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d5/d6b/callback__internal_8hpp_source.html#l00150">150</a> of file <a class="el" href="../../d5/d6b/callback__internal_8hpp_source.html">callback_internal.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d5/d6b/callback__internal_8hpp_source.html#l00159">159</a> of file <a class="el" href="../../d5/d6b/callback__internal_8hpp_source.html">callback_internal.hpp</a>.</p>
 
 </div>
 </div>
@@ -1025,7 +1083,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d5/d6b/callback__internal_8hpp_source.html#l00153">153</a> of file <a class="el" href="../../d5/d6b/callback__internal_8hpp_source.html">callback_internal.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d5/d6b/callback__internal_8hpp_source.html#l00162">162</a> of file <a class="el" href="../../d5/d6b/callback__internal_8hpp_source.html">callback_internal.hpp</a>.</p>
 
 </div>
 </div>
@@ -1041,7 +1099,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d5/d6b/callback__internal_8hpp_source.html#l00153">153</a> of file <a class="el" href="../../d5/d6b/callback__internal_8hpp_source.html">callback_internal.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d5/d6b/callback__internal_8hpp_source.html#l00162">162</a> of file <a class="el" href="../../d5/d6b/callback__internal_8hpp_source.html">callback_internal.hpp</a>.</p>
 
 </div>
 </div>

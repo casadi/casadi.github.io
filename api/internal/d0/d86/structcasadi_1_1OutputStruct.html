@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/9763952a9aa742c5be3b53dc1a1d033a57235328" id="9763952a9aa742c5be3b53dc1a1d033a57235328" >revision 3.7.1</a></div>
   </td>
  </tr>
  </tbody>
@@ -177,99 +177,99 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l00654">654</a> of file <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html">fmu_function.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;                                                                   {</div>
-<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;  <span class="comment">// Return value</span></div>
-<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;  <a class="code" href="../../d0/d86/structcasadi_1_1OutputStruct.html#abcc63159d45f90ea9b0964fbfd30f6ae">OutputStruct</a> s;</div>
-<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;  <span class="comment">// Look for prefix</span></div>
-<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="../../d7/d23/namespacecasadi.html#a2260f2c68afa7188fa07dce03d04ecb6">has_prefix</a>(n)) {</div>
-<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;    <span class="comment">// Get the prefix</span></div>
-<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;    std::string pref, rem;</div>
-<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;    pref = <a class="code" href="../../d7/d23/namespacecasadi.html#af41f5b6b2ef0e61bdc66c1c80dffd298">pop_prefix</a>(n, &amp;rem);</div>
-<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;    <span class="keywordflow">if</span> (pref == <span class="stringliteral">&quot;jac&quot;</span>) {</div>
-<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;      <span class="comment">// Jacobian block</span></div>
-<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;      casadi_assert(<a class="code" href="../../d7/d23/namespacecasadi.html#a2260f2c68afa7188fa07dce03d04ecb6">has_prefix</a>(rem), <span class="stringliteral">&quot;Two arguments expected for Jacobian block&quot;</span>);</div>
-<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;      pref = <a class="code" href="../../d7/d23/namespacecasadi.html#af41f5b6b2ef0e61bdc66c1c80dffd298">pop_prefix</a>(rem, &amp;rem);</div>
-<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;      <span class="keywordflow">if</span> (pref == <span class="stringliteral">&quot;adj&quot;</span>) {</div>
-<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;        <span class="comment">// Jacobian of adjoint sensitivity</span></div>
-<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;        casadi_assert(<a class="code" href="../../d7/d23/namespacecasadi.html#a2260f2c68afa7188fa07dce03d04ecb6">has_prefix</a>(rem), <span class="stringliteral">&quot;Two arguments expected for Jacobian block&quot;</span>);</div>
-<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;        pref = <a class="code" href="../../d7/d23/namespacecasadi.html#af41f5b6b2ef0e61bdc66c1c80dffd298">pop_prefix</a>(rem, &amp;rem);</div>
-<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../d7/d23/namespacecasadi.html#a2260f2c68afa7188fa07dce03d04ecb6">has_prefix</a>(rem)) {</div>
-<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;          <span class="comment">// Jacobian with respect to a sensitivity seed</span></div>
-<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;          std::string sens = pref;</div>
-<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;          pref = <a class="code" href="../../d7/d23/namespacecasadi.html#af41f5b6b2ef0e61bdc66c1c80dffd298">pop_prefix</a>(rem, &amp;rem);</div>
-<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;          <span class="keywordflow">if</span> (pref == <span class="stringliteral">&quot;adj&quot;</span>) {</div>
-<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;            <span class="comment">// Jacobian of adjoint sensitivity w.r.t. adjoint seed -&gt; Transpose of Jacobian</span></div>
-<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;            s.type = <a class="code" href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00a074656d1d5920b2b4b974e5741efe6f7">OutputType::JAC_TRANS</a>;</div>
-<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;            s.ind = fmu ? fmu-&gt;index_out(rem) : -1;</div>
-<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;            <span class="keywordflow">if</span> (name_out) name_out-&gt;push_back(rem);</div>
-<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;            s.wrt = fmu ? fmu-&gt;index_in(sens) : -1;</div>
-<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;            <span class="keywordflow">if</span> (name_in) name_in-&gt;push_back(sens);</div>
-<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;          } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (pref == <span class="stringliteral">&quot;out&quot;</span>) {</div>
-<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;            <span class="comment">// Jacobian w.r.t. to dummy output</span></div>
-<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;            s.type = <a class="code" href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00a55ba2071befb7a1610dbb933b2fdb392">OutputType::JAC_ADJ_OUT</a>;</div>
-<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;            s.ind = fmu ? fmu-&gt;index_in(sens) : -1;</div>
-<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;            <span class="keywordflow">if</span> (name_in) name_in-&gt;push_back(sens);</div>
-<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;            s.wrt = fmu ? fmu-&gt;index_out(rem) : -1;</div>
-<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;            <span class="keywordflow">if</span> (name_in) name_out-&gt;push_back(rem);</div>
-<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;          } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;            casadi_error(<span class="stringliteral">&quot;No such prefix: &quot;</span> + pref);</div>
-<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;          }</div>
-<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;          <span class="comment">// Hessian output</span></div>
-<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;          s.type = <a class="code" href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00a07ebd2eafdec871b14fcf3f9e948a765">OutputType::HESS</a>;</div>
-<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;          s.ind = fmu ? fmu-&gt;index_in(pref) : -1;</div>
-<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;          <span class="keywordflow">if</span> (name_in) name_in-&gt;push_back(pref);</div>
-<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;          s.wrt = fmu ? fmu-&gt;index_in(rem) : -1;</div>
-<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;          <span class="keywordflow">if</span> (name_in) name_in-&gt;push_back(rem);</div>
-<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;        }</div>
-<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;      } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../d7/d23/namespacecasadi.html#a2260f2c68afa7188fa07dce03d04ecb6">has_prefix</a>(rem)) {</div>
-<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;          std::string out = pref;</div>
-<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;          pref = <a class="code" href="../../d7/d23/namespacecasadi.html#af41f5b6b2ef0e61bdc66c1c80dffd298">pop_prefix</a>(rem, &amp;rem);</div>
-<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;          <span class="keywordflow">if</span> (pref == <span class="stringliteral">&quot;adj&quot;</span>) {</div>
-<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;            <span class="comment">// Jacobian of regular output w.r.t. adjoint sensitivity seed</span></div>
-<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;            s.type = <a class="code" href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00af0ebe0bf934a15c4fce8696434460b99">OutputType::JAC_REG_ADJ</a>;</div>
-<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;            s.ind = fmu ? fmu-&gt;index_out(out) : -1;</div>
-<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;            <span class="keywordflow">if</span> (name_out) name_out-&gt;push_back(out);</div>
-<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;            s.wrt = fmu ? fmu-&gt;index_out(rem) : -1;</div>
-<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;            <span class="keywordflow">if</span> (name_out) name_out-&gt;push_back(rem);</div>
-<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;          } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;            casadi_error(<span class="stringliteral">&quot;No such prefix: &quot;</span> + pref);</div>
-<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;          }</div>
-<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;          <span class="comment">// Regular Jacobian</span></div>
-<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;          s.type = <a class="code" href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00ad64f706ab1bd015ea46e765c09bbdb9b">OutputType::JAC</a>;</div>
-<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;          s.ind = fmu ? fmu-&gt;index_out(pref) : -1;</div>
-<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;          <span class="keywordflow">if</span> (name_out) name_out-&gt;push_back(pref);</div>
-<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;          s.wrt = fmu ? fmu-&gt;index_in(rem) : -1;</div>
-<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;          <span class="keywordflow">if</span> (name_in) name_in-&gt;push_back(rem);</div>
-<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;        }</div>
-<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;      }</div>
-<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (pref == <span class="stringliteral">&quot;fwd&quot;</span>) {</div>
-<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;      <span class="comment">// Forward sensitivity</span></div>
-<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;      s.type = <a class="code" href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00ac9261effebe177a8679909dd7ec2552e">OutputType::FWD</a>;</div>
-<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;      s.ind = fmu ? fmu-&gt;index_out(rem) : -1;</div>
-<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;      <span class="keywordflow">if</span> (name_out) name_out-&gt;push_back(rem);</div>
-<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (pref == <span class="stringliteral">&quot;adj&quot;</span>) {</div>
-<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;      <span class="comment">// Adjoint sensitivity</span></div>
-<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;      s.type = <a class="code" href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00aceed0f25375463248ba00191daef547c">OutputType::ADJ</a>;</div>
-<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;      s.wrt = fmu ? fmu-&gt;index_in(rem) : -1;</div>
-<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;      <span class="keywordflow">if</span> (name_in) name_in-&gt;push_back(rem);</div>
-<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;      <span class="comment">// No such prefix</span></div>
-<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;      casadi_error(<span class="stringliteral">&quot;No such prefix: &quot;</span> + pref);</div>
-<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;    }</div>
-<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;    <span class="comment">// No prefix - regular output</span></div>
-<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;    s.type = <a class="code" href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00af4cf3fe4b67244332eecec055742d449">OutputType::REG</a>;</div>
-<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;    s.ind = fmu ? fmu-&gt;index_out(n) : -1;</div>
-<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;    <span class="keywordflow">if</span> (name_out) name_out-&gt;push_back(n);</div>
-<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;  }</div>
-<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;  <span class="comment">// Return output struct</span></div>
-<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;  <span class="keywordflow">return</span> s;</div>
-<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;}</div>
-<div class="ttc" id="anamespacecasadi_html_a2260f2c68afa7188fa07dce03d04ecb6"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a2260f2c68afa7188fa07dce03d04ecb6">casadi::has_prefix</a></div><div class="ttdeci">bool has_prefix(const std::string &amp;s)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d23/fmu__function_8cpp_source.html#l01363">fmu_function.cpp:1363</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l00656">656</a> of file <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html">fmu_function.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;                                                                   {</div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;  <span class="comment">// Return value</span></div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;  <a class="code" href="../../d0/d86/structcasadi_1_1OutputStruct.html#abcc63159d45f90ea9b0964fbfd30f6ae">OutputStruct</a> s;</div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;  <span class="comment">// Look for prefix</span></div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="../../d7/d23/namespacecasadi.html#a2260f2c68afa7188fa07dce03d04ecb6">has_prefix</a>(n)) {</div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;    <span class="comment">// Get the prefix</span></div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;    std::string pref, rem;</div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;    pref = <a class="code" href="../../d7/d23/namespacecasadi.html#af41f5b6b2ef0e61bdc66c1c80dffd298">pop_prefix</a>(n, &amp;rem);</div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;    <span class="keywordflow">if</span> (pref == <span class="stringliteral">&quot;jac&quot;</span>) {</div>
+<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;      <span class="comment">// Jacobian block</span></div>
+<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;      casadi_assert(<a class="code" href="../../d7/d23/namespacecasadi.html#a2260f2c68afa7188fa07dce03d04ecb6">has_prefix</a>(rem), <span class="stringliteral">&quot;Two arguments expected for Jacobian block&quot;</span>);</div>
+<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;      pref = <a class="code" href="../../d7/d23/namespacecasadi.html#af41f5b6b2ef0e61bdc66c1c80dffd298">pop_prefix</a>(rem, &amp;rem);</div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;      <span class="keywordflow">if</span> (pref == <span class="stringliteral">&quot;adj&quot;</span>) {</div>
+<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;        <span class="comment">// Jacobian of adjoint sensitivity</span></div>
+<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;        casadi_assert(<a class="code" href="../../d7/d23/namespacecasadi.html#a2260f2c68afa7188fa07dce03d04ecb6">has_prefix</a>(rem), <span class="stringliteral">&quot;Two arguments expected for Jacobian block&quot;</span>);</div>
+<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;        pref = <a class="code" href="../../d7/d23/namespacecasadi.html#af41f5b6b2ef0e61bdc66c1c80dffd298">pop_prefix</a>(rem, &amp;rem);</div>
+<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../d7/d23/namespacecasadi.html#a2260f2c68afa7188fa07dce03d04ecb6">has_prefix</a>(rem)) {</div>
+<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;          <span class="comment">// Jacobian with respect to a sensitivity seed</span></div>
+<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;          std::string sens = pref;</div>
+<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;          pref = <a class="code" href="../../d7/d23/namespacecasadi.html#af41f5b6b2ef0e61bdc66c1c80dffd298">pop_prefix</a>(rem, &amp;rem);</div>
+<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;          <span class="keywordflow">if</span> (pref == <span class="stringliteral">&quot;adj&quot;</span>) {</div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;            <span class="comment">// Jacobian of adjoint sensitivity w.r.t. adjoint seed -&gt; Transpose of Jacobian</span></div>
+<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;            s.type = <a class="code" href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00a074656d1d5920b2b4b974e5741efe6f7">OutputType::JAC_TRANS</a>;</div>
+<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;            s.ind = fmu ? fmu-&gt;index_out(rem) : -1;</div>
+<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;            <span class="keywordflow">if</span> (name_out) name_out-&gt;push_back(rem);</div>
+<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;            s.wrt = fmu ? fmu-&gt;index_in(sens) : -1;</div>
+<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;            <span class="keywordflow">if</span> (name_in) name_in-&gt;push_back(sens);</div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;          } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (pref == <span class="stringliteral">&quot;out&quot;</span>) {</div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;            <span class="comment">// Jacobian w.r.t. to dummy output</span></div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;            s.type = <a class="code" href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00a55ba2071befb7a1610dbb933b2fdb392">OutputType::JAC_ADJ_OUT</a>;</div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;            s.ind = fmu ? fmu-&gt;index_in(sens) : -1;</div>
+<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;            <span class="keywordflow">if</span> (name_in) name_in-&gt;push_back(sens);</div>
+<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;            s.wrt = fmu ? fmu-&gt;index_out(rem) : -1;</div>
+<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;            <span class="keywordflow">if</span> (name_in) name_out-&gt;push_back(rem);</div>
+<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;          } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;            casadi_error(<span class="stringliteral">&quot;No such prefix: &quot;</span> + pref);</div>
+<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;          }</div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;          <span class="comment">// Hessian output</span></div>
+<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;          s.type = <a class="code" href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00a07ebd2eafdec871b14fcf3f9e948a765">OutputType::HESS</a>;</div>
+<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;          s.ind = fmu ? fmu-&gt;index_in(pref) : -1;</div>
+<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;          <span class="keywordflow">if</span> (name_in) name_in-&gt;push_back(pref);</div>
+<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;          s.wrt = fmu ? fmu-&gt;index_in(rem) : -1;</div>
+<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;          <span class="keywordflow">if</span> (name_in) name_in-&gt;push_back(rem);</div>
+<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;        }</div>
+<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;      } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../d7/d23/namespacecasadi.html#a2260f2c68afa7188fa07dce03d04ecb6">has_prefix</a>(rem)) {</div>
+<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;          std::string out = pref;</div>
+<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;          pref = <a class="code" href="../../d7/d23/namespacecasadi.html#af41f5b6b2ef0e61bdc66c1c80dffd298">pop_prefix</a>(rem, &amp;rem);</div>
+<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;          <span class="keywordflow">if</span> (pref == <span class="stringliteral">&quot;adj&quot;</span>) {</div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;            <span class="comment">// Jacobian of regular output w.r.t. adjoint sensitivity seed</span></div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;            s.type = <a class="code" href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00af0ebe0bf934a15c4fce8696434460b99">OutputType::JAC_REG_ADJ</a>;</div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;            s.ind = fmu ? fmu-&gt;index_out(out) : -1;</div>
+<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;            <span class="keywordflow">if</span> (name_out) name_out-&gt;push_back(out);</div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;            s.wrt = fmu ? fmu-&gt;index_out(rem) : -1;</div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;            <span class="keywordflow">if</span> (name_out) name_out-&gt;push_back(rem);</div>
+<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;          } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;            casadi_error(<span class="stringliteral">&quot;No such prefix: &quot;</span> + pref);</div>
+<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;          }</div>
+<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;          <span class="comment">// Regular Jacobian</span></div>
+<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;          s.type = <a class="code" href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00ad64f706ab1bd015ea46e765c09bbdb9b">OutputType::JAC</a>;</div>
+<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;          s.ind = fmu ? fmu-&gt;index_out(pref) : -1;</div>
+<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;          <span class="keywordflow">if</span> (name_out) name_out-&gt;push_back(pref);</div>
+<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;          s.wrt = fmu ? fmu-&gt;index_in(rem) : -1;</div>
+<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;          <span class="keywordflow">if</span> (name_in) name_in-&gt;push_back(rem);</div>
+<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;        }</div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;      }</div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (pref == <span class="stringliteral">&quot;fwd&quot;</span>) {</div>
+<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;      <span class="comment">// Forward sensitivity</span></div>
+<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;      s.type = <a class="code" href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00ac9261effebe177a8679909dd7ec2552e">OutputType::FWD</a>;</div>
+<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;      s.ind = fmu ? fmu-&gt;index_out(rem) : -1;</div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;      <span class="keywordflow">if</span> (name_out) name_out-&gt;push_back(rem);</div>
+<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (pref == <span class="stringliteral">&quot;adj&quot;</span>) {</div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;      <span class="comment">// Adjoint sensitivity</span></div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;      s.type = <a class="code" href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00aceed0f25375463248ba00191daef547c">OutputType::ADJ</a>;</div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;      s.wrt = fmu ? fmu-&gt;index_in(rem) : -1;</div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;      <span class="keywordflow">if</span> (name_in) name_in-&gt;push_back(rem);</div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;      <span class="comment">// No such prefix</span></div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;      casadi_error(<span class="stringliteral">&quot;No such prefix: &quot;</span> + pref);</div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;    }</div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;    <span class="comment">// No prefix - regular output</span></div>
+<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;    s.type = <a class="code" href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00af4cf3fe4b67244332eecec055742d449">OutputType::REG</a>;</div>
+<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;    s.ind = fmu ? fmu-&gt;index_out(n) : -1;</div>
+<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;    <span class="keywordflow">if</span> (name_out) name_out-&gt;push_back(n);</div>
+<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;  }</div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;  <span class="comment">// Return output struct</span></div>
+<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;  <span class="keywordflow">return</span> s;</div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;}</div>
+<div class="ttc" id="anamespacecasadi_html_a2260f2c68afa7188fa07dce03d04ecb6"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a2260f2c68afa7188fa07dce03d04ecb6">casadi::has_prefix</a></div><div class="ttdeci">bool has_prefix(const std::string &amp;s)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d23/fmu__function_8cpp_source.html#l01365">fmu_function.cpp:1365</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_aad8771490629202de985fb3e70e27c00a074656d1d5920b2b4b974e5741efe6f7"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00a074656d1d5920b2b4b974e5741efe6f7">casadi::OutputType::JAC_TRANS</a></div><div class="ttdeci">@ JAC_TRANS</div></div>
 <div class="ttc" id="anamespacecasadi_html_aad8771490629202de985fb3e70e27c00a07ebd2eafdec871b14fcf3f9e948a765"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00a07ebd2eafdec871b14fcf3f9e948a765">casadi::OutputType::HESS</a></div><div class="ttdeci">@ HESS</div></div>
 <div class="ttc" id="anamespacecasadi_html_aad8771490629202de985fb3e70e27c00a55ba2071befb7a1610dbb933b2fdb392"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00a55ba2071befb7a1610dbb933b2fdb392">casadi::OutputType::JAC_ADJ_OUT</a></div><div class="ttdeci">@ JAC_ADJ_OUT</div></div>
@@ -278,12 +278,12 @@ Public Attributes</h2></td></tr>
 <div class="ttc" id="anamespacecasadi_html_aad8771490629202de985fb3e70e27c00ad64f706ab1bd015ea46e765c09bbdb9b"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00ad64f706ab1bd015ea46e765c09bbdb9b">casadi::OutputType::JAC</a></div><div class="ttdeci">@ JAC</div></div>
 <div class="ttc" id="anamespacecasadi_html_aad8771490629202de985fb3e70e27c00af0ebe0bf934a15c4fce8696434460b99"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00af0ebe0bf934a15c4fce8696434460b99">casadi::OutputType::JAC_REG_ADJ</a></div><div class="ttdeci">@ JAC_REG_ADJ</div></div>
 <div class="ttc" id="anamespacecasadi_html_aad8771490629202de985fb3e70e27c00af4cf3fe4b67244332eecec055742d449"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00af4cf3fe4b67244332eecec055742d449">casadi::OutputType::REG</a></div><div class="ttdeci">@ REG</div></div>
-<div class="ttc" id="anamespacecasadi_html_af41f5b6b2ef0e61bdc66c1c80dffd298"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#af41f5b6b2ef0e61bdc66c1c80dffd298">casadi::pop_prefix</a></div><div class="ttdeci">std::string pop_prefix(const std::string &amp;s, std::string *rem)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d23/fmu__function_8cpp_source.html#l01367">fmu_function.cpp:1367</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_af41f5b6b2ef0e61bdc66c1c80dffd298"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#af41f5b6b2ef0e61bdc66c1c80dffd298">casadi::pop_prefix</a></div><div class="ttdeci">std::string pop_prefix(const std::string &amp;s, std::string *rem)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d23/fmu__function_8cpp_source.html#l01369">fmu_function.cpp:1369</a></div></div>
 <div class="ttc" id="astructcasadi_1_1OutputStruct_html_abcc63159d45f90ea9b0964fbfd30f6ae"><div class="ttname"><a href="../../d0/d86/structcasadi_1_1OutputStruct.html#abcc63159d45f90ea9b0964fbfd30f6ae">casadi::OutputStruct::OutputStruct</a></div><div class="ttdeci">OutputStruct()</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d8c/fmu__function_8hpp_source.html#l00125">fmu_function.hpp:125</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00aceed0f25375463248ba00191daef547c">casadi::ADJ</a>, <a class="el" href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00ac9261effebe177a8679909dd7ec2552e">casadi::FWD</a>, <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l01363">casadi::has_prefix()</a>, <a class="el" href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00a07ebd2eafdec871b14fcf3f9e948a765">casadi::HESS</a>, <a class="el" href="../../db/d8c/fmu__function_8hpp_source.html#l00115">ind</a>, <a class="el" href="../../de/d74/fmu_8cpp_source.html#l00623">casadi::FmuInternal::index_in()</a>, <a class="el" href="../../de/d74/fmu_8cpp_source.html#l00633">casadi::FmuInternal::index_out()</a>, <a class="el" href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00ad64f706ab1bd015ea46e765c09bbdb9b">casadi::JAC</a>, <a class="el" href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00a55ba2071befb7a1610dbb933b2fdb392">casadi::JAC_ADJ_OUT</a>, <a class="el" href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00af0ebe0bf934a15c4fce8696434460b99">casadi::JAC_REG_ADJ</a>, <a class="el" href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00a074656d1d5920b2b4b974e5741efe6f7">casadi::JAC_TRANS</a>, <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l01367">casadi::pop_prefix()</a>, <a class="el" href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00af4cf3fe4b67244332eecec055742d449">casadi::REG</a>, <a class="el" href="../../db/d8c/fmu__function_8hpp_source.html#l00113">type</a>, and <a class="el" href="../../db/d8c/fmu__function_8hpp_source.html#l00117">wrt</a>.</p>
+<p class="reference">References <a class="el" href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00aceed0f25375463248ba00191daef547c">casadi::ADJ</a>, <a class="el" href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00ac9261effebe177a8679909dd7ec2552e">casadi::FWD</a>, <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l01365">casadi::has_prefix()</a>, <a class="el" href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00a07ebd2eafdec871b14fcf3f9e948a765">casadi::HESS</a>, <a class="el" href="../../db/d8c/fmu__function_8hpp_source.html#l00115">ind</a>, <a class="el" href="../../de/d74/fmu_8cpp_source.html#l00645">casadi::FmuInternal::index_in()</a>, <a class="el" href="../../de/d74/fmu_8cpp_source.html#l00655">casadi::FmuInternal::index_out()</a>, <a class="el" href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00ad64f706ab1bd015ea46e765c09bbdb9b">casadi::JAC</a>, <a class="el" href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00a55ba2071befb7a1610dbb933b2fdb392">casadi::JAC_ADJ_OUT</a>, <a class="el" href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00af0ebe0bf934a15c4fce8696434460b99">casadi::JAC_REG_ADJ</a>, <a class="el" href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00a074656d1d5920b2b4b974e5741efe6f7">casadi::JAC_TRANS</a>, <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l01369">casadi::pop_prefix()</a>, <a class="el" href="../../d7/d23/namespacecasadi.html#aad8771490629202de985fb3e70e27c00af4cf3fe4b67244332eecec055742d449">casadi::REG</a>, <a class="el" href="../../db/d8c/fmu__function_8hpp_source.html#l00113">type</a>, and <a class="el" href="../../db/d8c/fmu__function_8hpp_source.html#l00117">wrt</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l00110">casadi::FmuFunction::FmuFunction()</a>, and <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l00568">casadi::FmuFunction::identify_io()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l00112">casadi::FmuFunction::FmuFunction()</a>, and <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l00570">casadi::FmuFunction::identify_io()</a>.</p>
 
 </div>
 </div>
@@ -334,7 +334,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../db/d8c/fmu__function_8hpp_source.html#l00115">115</a> of file <a class="el" href="../../db/d8c/fmu__function_8hpp_source.html">fmu_function.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l00763">casadi::FmuFunction::get_sparsity_out()</a>, <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l00271">casadi::FmuFunction::init()</a>, and <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l00654">parse()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l00765">casadi::FmuFunction::get_sparsity_out()</a>, <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l00273">casadi::FmuFunction::init()</a>, and <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l00656">parse()</a>.</p>
 
 </div>
 </div>
@@ -352,7 +352,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../db/d8c/fmu__function_8hpp_source.html#l00119">119</a> of file <a class="el" href="../../db/d8c/fmu__function_8hpp_source.html">fmu_function.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l00271">casadi::FmuFunction::init()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l00273">casadi::FmuFunction::init()</a>.</p>
 
 </div>
 </div>
@@ -370,7 +370,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../db/d8c/fmu__function_8hpp_source.html#l00119">119</a> of file <a class="el" href="../../db/d8c/fmu__function_8hpp_source.html">fmu_function.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l00271">casadi::FmuFunction::init()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l00273">casadi::FmuFunction::init()</a>.</p>
 
 </div>
 </div>
@@ -388,7 +388,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../db/d8c/fmu__function_8hpp_source.html#l00113">113</a> of file <a class="el" href="../../db/d8c/fmu__function_8hpp_source.html">fmu_function.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l00271">casadi::FmuFunction::init()</a>, and <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l00654">parse()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l00273">casadi::FmuFunction::init()</a>, and <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l00656">parse()</a>.</p>
 
 </div>
 </div>
@@ -406,7 +406,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../db/d8c/fmu__function_8hpp_source.html#l00117">117</a> of file <a class="el" href="../../db/d8c/fmu__function_8hpp_source.html">fmu_function.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l00763">casadi::FmuFunction::get_sparsity_out()</a>, and <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l00654">parse()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l00765">casadi::FmuFunction::get_sparsity_out()</a>, and <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l00656">parse()</a>.</p>
 
 </div>
 </div>

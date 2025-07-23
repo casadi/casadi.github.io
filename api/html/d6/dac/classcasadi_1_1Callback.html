@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/9763952a9aa742c5be3b53dc1a1d033a57235328" id="9763952a9aa742c5be3b53dc1a1d033a57235328" >revision 3.7.1</a></div>
   </td>
  </tr>
  </tbody>
@@ -150,6 +150,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab3e03b8b2a269aa7ff4ba9a2a1f551a9"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/dac/classcasadi_1_1Callback.html#ab3e03b8b2a269aa7ff4ba9a2a1f551a9">uses_output</a> () const</td></tr>
 <tr class="memdesc:ab3e03b8b2a269aa7ff4ba9a2a1f551a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Do the derivative functions need nondifferentiated outputs?  <a href="../../d6/dac/classcasadi_1_1Callback.html#ab3e03b8b2a269aa7ff4ba9a2a1f551a9">More...</a><br /></td></tr>
 <tr class="separator:ab3e03b8b2a269aa7ff4ba9a2a1f551a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10b0410b16c05c60caf9000017fa7283"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/dac/classcasadi_1_1Callback.html#a10b0410b16c05c60caf9000017fa7283">get_factory</a> (const std::string &amp;<a class="el" href="../../da/da4/classcasadi_1_1Function.html#a1896c329a83d4e5c7faf7cd0b619e10e">name</a>, const std::vector&lt; std::string &gt; &amp;s_in, const std::vector&lt; std::string &gt; &amp;s_out, const <a class="el" href="../../da/da4/classcasadi_1_1Function.html#ae2cf81e9230d66a90c413b5c680d49d8">Function::AuxOut</a> &amp;aux, const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;opts) const</td></tr>
+<tr class="memdesc:a10b0410b16c05c60caf9000017fa7283"><td class="mdescLeft">&#160;</td><td class="mdescRight">Customize calls to the function factory.  <a href="../../d6/dac/classcasadi_1_1Callback.html#a10b0410b16c05c60caf9000017fa7283">More...</a><br /></td></tr>
+<tr class="separator:a10b0410b16c05c60caf9000017fa7283"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a0767200ca463d43d8f8abdd81cc31e"><td class="memItemLeft" align="right" valign="top">casadi_int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/da4/classcasadi_1_1Function.html#a9a0767200ca463d43d8f8abdd81cc31e">n_in</a> () const</td></tr>
 <tr class="memdesc:a9a0767200ca463d43d8f8abdd81cc31e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of function inputs.  <a href="../../da/da4/classcasadi_1_1Function.html#a9a0767200ca463d43d8f8abdd81cc31e">More...</a><br /></td></tr>
 <tr class="separator:a9a0767200ca463d43d8f8abdd81cc31e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -224,6 +227,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aeeefc3add8766ee83d49079f37c863ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/da4/classcasadi_1_1Function.html#aeeefc3add8766ee83d49079f37c863ce">change_option</a> (const std::string &amp;option_name, const <a class="el" href="../../d6/d82/classcasadi_1_1GenericType.html">GenericType</a> &amp;option_value)</td></tr>
 <tr class="memdesc:aeeefc3add8766ee83d49079f37c863ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change option after object creation for debugging.  <a href="../../da/da4/classcasadi_1_1Function.html#aeeefc3add8766ee83d49079f37c863ce">More...</a><br /></td></tr>
 <tr class="separator:aeeefc3add8766ee83d49079f37c863ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b25438f45f871536828ffa9675b3772"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/da4/classcasadi_1_1Function.html#a4b25438f45f871536828ffa9675b3772">reset_dump_count</a> ()</td></tr>
+<tr class="memdesc:a4b25438f45f871536828ffa9675b3772"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset the counter used to name dump files.  <a href="../../da/da4/classcasadi_1_1Function.html#a4b25438f45f871536828ffa9675b3772">More...</a><br /></td></tr>
+<tr class="separator:a4b25438f45f871536828ffa9675b3772"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af4e6d7e8a7e1e9aa4f94b8b277f6e217"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/da4/classcasadi_1_1Function.html#af4e6d7e8a7e1e9aa4f94b8b277f6e217">jacobian_old</a> (casadi_int iind, casadi_int oind) const</td></tr>
 <tr class="memdesc:af4e6d7e8a7e1e9aa4f94b8b277f6e217"><td class="mdescLeft">&#160;</td><td class="mdescRight">[DEPRECATED] Replaced by <a class="el" href="../../da/da4/classcasadi_1_1Function.html#ae8b12cf152c8e4872d9fe31d36d3192d">Function::factory</a>.  <a href="../../da/da4/classcasadi_1_1Function.html#af4e6d7e8a7e1e9aa4f94b8b277f6e217">More...</a><br /></td></tr>
 <tr class="separator:af4e6d7e8a7e1e9aa4f94b8b277f6e217"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -900,7 +906,7 @@ Static Public Member Functions</h2></td></tr>
 <p>If the Object does not point to any node, "0" is returned.</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_av">https://github.com/casadi/casadi/wiki/L_av</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00124">124</a> of file <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html">generic_shared_impl.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00123">123</a> of file <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html">generic_shared_impl.hpp</a>.</p>
 
 </div>
 </div>
@@ -2020,7 +2026,7 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00113">113</a> of file <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html">generic_shared_impl.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00112">112</a> of file <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html">generic_shared_impl.hpp</a>.</p>
 
 </div>
 </div>
@@ -3011,6 +3017,61 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a10b0410b16c05c60caf9000017fa7283"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10b0410b16c05c60caf9000017fa7283">&#9670;&nbsp;</a></span>get_factory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a> casadi::Callback::get_factory </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>s_in</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>s_out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../da/da4/classcasadi_1_1Function.html#ae2cf81e9230d66a90c413b5c680d49d8">Function::AuxOut</a> &amp;&#160;</td>
+          <td class="paramname"><em>aux</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;&#160;</td>
+          <td class="paramname"><em>opts</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2de">https://github.com/casadi/casadi/wiki/L_2de</a> </p>
+
+</div>
+</div>
 <a id="a317f9bac677d411a53b7fda82dad521e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a317f9bac677d411a53b7fda82dad521e">&#9670;&nbsp;</a></span>get_forward()</h2>
 
@@ -3188,7 +3249,7 @@ Static Public Member Functions</h2></td></tr>
 <p>with respect to all output elements</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_ok">https://github.com/casadi/casadi/wiki/L_ok</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/dd5/casadi_2core_2callback_8hpp_source.html#l00219">219</a> of file <a class="el" href="../../d8/dd5/casadi_2core_2callback_8hpp_source.html">casadi/core/callback.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/dd5/casadi_2core_2callback_8hpp_source.html#l00228">228</a> of file <a class="el" href="../../d8/dd5/casadi_2core_2callback_8hpp_source.html">casadi/core/callback.hpp</a>.</p>
 
 </div>
 </div>
@@ -3661,7 +3722,7 @@ Static Public Member Functions</h2></td></tr>
 <p>with respect to all output elements</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_ok">https://github.com/casadi/casadi/wiki/L_ok</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/dd5/casadi_2core_2callback_8hpp_source.html#l00218">218</a> of file <a class="el" href="../../d8/dd5/casadi_2core_2callback_8hpp_source.html">casadi/core/callback.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/dd5/casadi_2core_2callback_8hpp_source.html#l00227">227</a> of file <a class="el" href="../../d8/dd5/casadi_2core_2callback_8hpp_source.html">casadi/core/callback.hpp</a>.</p>
 
 </div>
 </div>
@@ -4350,7 +4411,7 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00117">117</a> of file <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html">generic_shared_impl.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00116">116</a> of file <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html">generic_shared_impl.hpp</a>.</p>
 
 </div>
 </div>
@@ -5445,7 +5506,7 @@ Static Public Member Functions</h2></td></tr>
 <p>There is no guarantee that subsequent calls return unique answers</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1x4">https://github.com/casadi/casadi/wiki/L_1x4</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00955">955</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00960">960</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
 
 </div>
 </div>
@@ -5530,7 +5591,7 @@ Static Public Member Functions</h2></td></tr>
 <p>There is no guarantee that subsequent calls return unique answers</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1x5">https://github.com/casadi/casadi/wiki/L_1x5</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00973">973</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00978">978</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
 
 </div>
 </div>
@@ -6415,6 +6476,32 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a4b25438f45f871536828ffa9675b3772"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b25438f45f871536828ffa9675b3772">&#9670;&nbsp;</a></span>reset_dump_count()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void casadi::Function::reset_dump_count </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2dy">https://github.com/casadi/casadi/wiki/L_2dy</a> </p>
+
+</div>
+</div>
 <a id="a4b9f3f8cc13ab7cded12302d29948595"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4b9f3f8cc13ab7cded12302d29948595">&#9670;&nbsp;</a></span>reverse()</h2>
 
@@ -7056,7 +7143,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>[DEPRECATED] Get, if necessary generate, the sparsity of a Jacobian block </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00490">490</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00495">495</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
 
 </div>
 </div>
@@ -7107,7 +7194,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>[DEPRECATED] Get, if necessary generate, the sparsity of a Jacobian block </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00486">486</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00491">491</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
 
 </div>
 </div>
@@ -7158,7 +7245,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>[DEPRECATED] Get, if necessary generate, the sparsity of a Jacobian block </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00494">494</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00499">499</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
 
 </div>
 </div>
@@ -7323,7 +7410,7 @@ Static Public Member Functions</h2></td></tr>
 <p>There is no guarantee that subsequent calls return unique answers</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1x4">https://github.com/casadi/casadi/wiki/L_1x4</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00950">950</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00955">955</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
 
 </div>
 </div>
@@ -7408,7 +7495,7 @@ Static Public Member Functions</h2></td></tr>
 <p>There is no guarantee that subsequent calls return unique answers</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1x5">https://github.com/casadi/casadi/wiki/L_1x5</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00968">968</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00973">973</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
 
 </div>
 </div>

@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/9763952a9aa742c5be3b53dc1a1d033a57235328" id="9763952a9aa742c5be3b53dc1a1d033a57235328" >revision 3.7.1</a></div>
   </td>
  </tr>
  </tbody>
@@ -95,109 +95,110 @@ $(function() {
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="stringliteral">&quot;input(NLPSOL_X0) == output(NLPSOL_X). Indeed if bounds on X or \n&quot;</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="stringliteral">&quot;constraints are unmet, they will differ.\n&quot;</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="stringliteral">&quot;For a good tutorial on IPOPT, see http://drops.dagstuhl.de/volltexte/2009/2089/pdf/09061.WaechterAndreas.Paper.2089.pdf \n&quot;</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="stringliteral">&quot;A good resource about the algorithms in IPOPT is: Wachter and L. T. \n&quot;</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="stringliteral">&quot;Biegler, On the Implementation of an Interior-Point Filter Line-Search\n&quot;</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="stringliteral">&quot; Algorithm for Large-Scale Nonlinear Programming, Mathematical \n&quot;</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="stringliteral">&quot;Programming 106(1), pp. 25-57, 2006 (As Research Report RC 23149, IBM \n&quot;</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="stringliteral">&quot;T. J. Watson Research Center, Yorktown, USA\n&quot;</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="stringliteral">&quot;Caveats:\n&quot;</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="stringliteral">&quot;with default options, multipliers for the decision variables are wrong\n&quot;</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="stringliteral">&quot; for equality constraints. Change the &#39;fixed_variable_treatment&#39; to \n&quot;</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="stringliteral">&quot;&#39;make_constraint&#39; or &#39;relax_bounds&#39; to obtain correct results.\n&quot;</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="stringliteral">&quot;Extra doc: https://github.com/casadi/casadi/wiki/L_21y \n&quot;</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="stringliteral">&quot;For a good tutorial on IPOPT, see https://drops.dagstuhl.de/storage/16dagstuhl-seminar-proceedings/dsp-\n&quot;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="stringliteral">&quot;vol09061/DagSemProc.09061.16/DagSemProc.09061.16.pdf \n&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="stringliteral">&quot;A good resource about the algorithms in IPOPT is: Wachter and L. T. \n&quot;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="stringliteral">&quot;Biegler, On the Implementation of an Interior-Point Filter Line-Search\n&quot;</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="stringliteral">&quot; Algorithm for Large-Scale Nonlinear Programming, Mathematical \n&quot;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="stringliteral">&quot;Programming 106(1), pp. 25-57, 2006 (As Research Report RC 23149, IBM \n&quot;</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="stringliteral">&quot;T. J. Watson Research Center, Yorktown, USA\n&quot;</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="stringliteral">&quot;Caveats:\n&quot;</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="stringliteral">&quot;with default options, multipliers for the decision variables are wrong\n&quot;</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="stringliteral">&quot; for equality constraints. Change the &#39;fixed_variable_treatment&#39; to \n&quot;</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="stringliteral">&quot;&#39;make_constraint&#39; or &#39;relax_bounds&#39; to obtain correct results.\n&quot;</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="stringliteral">&quot;Extra doc: https://github.com/casadi/casadi/wiki/L_21y \n&quot;</span></div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="stringliteral">&quot;&gt;List of available options\n&quot;</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="stringliteral">&quot;|            Id            |    Type     |           Description           |\n&quot;</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="stringliteral">&quot;+==========================+=============+=================================+\n&quot;</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="stringliteral">&quot;| clip_inactive_lam        | OT_BOOL     | Explicitly set Lagrange         |\n&quot;</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="stringliteral">&quot;|                          |             | multipliers to 0 when bound is  |\n&quot;</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="stringliteral">&quot;|                          |             | deemed inactive (default:       |\n&quot;</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="stringliteral">&quot;|                          |             | false).                         |\n&quot;</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="stringliteral">&quot;| con_integer_md           | OT_DICT     | Integer metadata (a dictionary  |\n&quot;</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="stringliteral">&quot;|                          |             | with lists of integers) about   |\n&quot;</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="stringliteral">&quot;|                          |             | constraints to be passed to     |\n&quot;</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="stringliteral">&quot;|                          |             | IPOPT                           |\n&quot;</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="stringliteral">&quot;| con_numeric_md           | OT_DICT     | Numeric metadata (a dictionary  |\n&quot;</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="stringliteral">&quot;|                          |             | with lists of reals) about      |\n&quot;</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="stringliteral">&quot;|                          |             | constraints to be passed to     |\n&quot;</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="stringliteral">&quot;|                          |             | IPOPT                           |\n&quot;</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="stringliteral">&quot;| con_string_md            | OT_DICT     | String metadata (a dictionary   |\n&quot;</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="stringliteral">&quot;|                          |             | with lists of strings) about    |\n&quot;</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="stringliteral">&quot;|                          |             | constraints to be passed to     |\n&quot;</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="stringliteral">&quot;|                          |             | IPOPT                           |\n&quot;</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="stringliteral">&quot;| convexify_margin         | OT_DOUBLE   | When using a convexification    |\n&quot;</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="stringliteral">&quot;|                          |             | strategy, make sure that the    |\n&quot;</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="stringliteral">&quot;|                          |             | smallest eigenvalue is at least |\n&quot;</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="stringliteral">&quot;|                          |             | this (default: 1e-7).           |\n&quot;</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="stringliteral">&quot;| convexify_strategy       | OT_STRING   | NONE|regularize|eigen-          |\n&quot;</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="stringliteral">&quot;|                          |             | reflect|eigen-clip. Strategy to |\n&quot;</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="stringliteral">&quot;|                          |             | convexify the Lagrange Hessian  |\n&quot;</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="stringliteral">&quot;|                          |             | before passing it to the        |\n&quot;</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="stringliteral">&quot;|                          |             | solver.                         |\n&quot;</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="stringliteral">&quot;| grad_f                   | OT_FUNCTION | Function for calculating the    |\n&quot;</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="stringliteral">&quot;|                          |             | gradient of the objective       |\n&quot;</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="stringliteral">&quot;|                          |             | (column, autogenerated by       |\n&quot;</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="stringliteral">&quot;|                          |             | default)                        |\n&quot;</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="stringliteral">&quot;| hess_lag                 | OT_FUNCTION | Function for calculating the    |\n&quot;</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="stringliteral">&quot;|                          |             | Hessian of the Lagrangian       |\n&quot;</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="stringliteral">&quot;|                          |             | (autogenerated by default)      |\n&quot;</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="stringliteral">&quot;| inactive_lam_strategy    | OT_STRING   | Strategy to detect if a bound   |\n&quot;</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="stringliteral">&quot;|                          |             | is inactive. RELTOL: use        |\n&quot;</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="stringliteral">&quot;|                          |             | solver-defined constraint       |\n&quot;</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="stringliteral">&quot;|                          |             | tolerance *                     |\n&quot;</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="stringliteral">&quot;|                          |             | inactive_lam_value|abstol: use  |\n&quot;</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="stringliteral">&quot;|                          |             | inactive_lam_value              |\n&quot;</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="stringliteral">&quot;| inactive_lam_value       | OT_DOUBLE   | Value used in                   |\n&quot;</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="stringliteral">&quot;|                          |             | inactive_lam_strategy (default: |\n&quot;</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="stringliteral">&quot;|                          |             | 10).                            |\n&quot;</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="stringliteral">&quot;| ipopt                    | OT_DICT     | Options to be passed to IPOPT   |\n&quot;</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="stringliteral">&quot;| jac_g                    | OT_FUNCTION | Function for calculating the    |\n&quot;</span></div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="stringliteral">&quot;|                          |             | Jacobian of the constraints     |\n&quot;</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="stringliteral">&quot;|                          |             | (autogenerated by default)      |\n&quot;</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="stringliteral">&quot;| max_iter_eig             | OT_DOUBLE   | Maximum number of iterations to |\n&quot;</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="stringliteral">&quot;|                          |             | compute an eigenvalue           |\n&quot;</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="stringliteral">&quot;|                          |             | decomposition (default: 50).    |\n&quot;</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="stringliteral">&quot;| pass_nonlinear_variables | OT_BOOL     | Pass list of variables entering |\n&quot;</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="stringliteral">&quot;|                          |             | nonlinearly to IPOPT            |\n&quot;</span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="stringliteral">&quot;| var_integer_md           | OT_DICT     | Integer metadata (a dictionary  |\n&quot;</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="stringliteral">&quot;|                          |             | with lists of integers) about   |\n&quot;</span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="stringliteral">&quot;|                          |             | variables to be passed to IPOPT |\n&quot;</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="stringliteral">&quot;| var_numeric_md           | OT_DICT     | Numeric metadata (a dictionary  |\n&quot;</span></div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="stringliteral">&quot;|                          |             | with lists of reals) about      |\n&quot;</span></div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="stringliteral">&quot;|                          |             | variables to be passed to IPOPT |\n&quot;</span></div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="stringliteral">&quot;| var_string_md            | OT_DICT     | String metadata (a dictionary   |\n&quot;</span></div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="stringliteral">&quot;|                          |             | with lists of strings) about    |\n&quot;</span></div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="stringliteral">&quot;|                          |             | variables to be passed to IPOPT |\n&quot;</span></div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="stringliteral">&quot;&gt;List of available options\n&quot;</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="stringliteral">&quot;|            Id            |    Type     |           Description           |\n&quot;</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="stringliteral">&quot;+==========================+=============+=================================+\n&quot;</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="stringliteral">&quot;| clip_inactive_lam        | OT_BOOL     | Explicitly set Lagrange         |\n&quot;</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="stringliteral">&quot;|                          |             | multipliers to 0 when bound is  |\n&quot;</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="stringliteral">&quot;|                          |             | deemed inactive (default:       |\n&quot;</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="stringliteral">&quot;|                          |             | false).                         |\n&quot;</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="stringliteral">&quot;| con_integer_md           | OT_DICT     | Integer metadata (a dictionary  |\n&quot;</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="stringliteral">&quot;|                          |             | with lists of integers) about   |\n&quot;</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="stringliteral">&quot;|                          |             | constraints to be passed to     |\n&quot;</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="stringliteral">&quot;|                          |             | IPOPT                           |\n&quot;</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="stringliteral">&quot;| con_numeric_md           | OT_DICT     | Numeric metadata (a dictionary  |\n&quot;</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="stringliteral">&quot;|                          |             | with lists of reals) about      |\n&quot;</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="stringliteral">&quot;|                          |             | constraints to be passed to     |\n&quot;</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="stringliteral">&quot;|                          |             | IPOPT                           |\n&quot;</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="stringliteral">&quot;| con_string_md            | OT_DICT     | String metadata (a dictionary   |\n&quot;</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="stringliteral">&quot;|                          |             | with lists of strings) about    |\n&quot;</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="stringliteral">&quot;|                          |             | constraints to be passed to     |\n&quot;</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="stringliteral">&quot;|                          |             | IPOPT                           |\n&quot;</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="stringliteral">&quot;| convexify_margin         | OT_DOUBLE   | When using a convexification    |\n&quot;</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="stringliteral">&quot;|                          |             | strategy, make sure that the    |\n&quot;</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="stringliteral">&quot;|                          |             | smallest eigenvalue is at least |\n&quot;</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="stringliteral">&quot;|                          |             | this (default: 1e-7).           |\n&quot;</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="stringliteral">&quot;| convexify_strategy       | OT_STRING   | NONE|regularize|eigen-          |\n&quot;</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="stringliteral">&quot;|                          |             | reflect|eigen-clip. Strategy to |\n&quot;</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="stringliteral">&quot;|                          |             | convexify the Lagrange Hessian  |\n&quot;</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="stringliteral">&quot;|                          |             | before passing it to the        |\n&quot;</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="stringliteral">&quot;|                          |             | solver.                         |\n&quot;</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="stringliteral">&quot;| grad_f                   | OT_FUNCTION | Function for calculating the    |\n&quot;</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="stringliteral">&quot;|                          |             | gradient of the objective       |\n&quot;</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="stringliteral">&quot;|                          |             | (column, autogenerated by       |\n&quot;</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="stringliteral">&quot;|                          |             | default)                        |\n&quot;</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="stringliteral">&quot;| hess_lag                 | OT_FUNCTION | Function for calculating the    |\n&quot;</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="stringliteral">&quot;|                          |             | Hessian of the Lagrangian       |\n&quot;</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="stringliteral">&quot;|                          |             | (autogenerated by default)      |\n&quot;</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="stringliteral">&quot;| inactive_lam_strategy    | OT_STRING   | Strategy to detect if a bound   |\n&quot;</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="stringliteral">&quot;|                          |             | is inactive. RELTOL: use        |\n&quot;</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="stringliteral">&quot;|                          |             | solver-defined constraint       |\n&quot;</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="stringliteral">&quot;|                          |             | tolerance *                     |\n&quot;</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="stringliteral">&quot;|                          |             | inactive_lam_value|abstol: use  |\n&quot;</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="stringliteral">&quot;|                          |             | inactive_lam_value              |\n&quot;</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="stringliteral">&quot;| inactive_lam_value       | OT_DOUBLE   | Value used in                   |\n&quot;</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="stringliteral">&quot;|                          |             | inactive_lam_strategy (default: |\n&quot;</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="stringliteral">&quot;|                          |             | 10).                            |\n&quot;</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="stringliteral">&quot;| ipopt                    | OT_DICT     | Options to be passed to IPOPT   |\n&quot;</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="stringliteral">&quot;| jac_g                    | OT_FUNCTION | Function for calculating the    |\n&quot;</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="stringliteral">&quot;|                          |             | Jacobian of the constraints     |\n&quot;</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="stringliteral">&quot;|                          |             | (autogenerated by default)      |\n&quot;</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="stringliteral">&quot;| max_iter_eig             | OT_DOUBLE   | Maximum number of iterations to |\n&quot;</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="stringliteral">&quot;|                          |             | compute an eigenvalue           |\n&quot;</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="stringliteral">&quot;|                          |             | decomposition (default: 50).    |\n&quot;</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="stringliteral">&quot;| pass_nonlinear_variables | OT_BOOL     | Pass list of variables entering |\n&quot;</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="stringliteral">&quot;|                          |             | nonlinearly to IPOPT            |\n&quot;</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="stringliteral">&quot;| var_integer_md           | OT_DICT     | Integer metadata (a dictionary  |\n&quot;</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="stringliteral">&quot;|                          |             | with lists of integers) about   |\n&quot;</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="stringliteral">&quot;|                          |             | variables to be passed to IPOPT |\n&quot;</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="stringliteral">&quot;| var_numeric_md           | OT_DICT     | Numeric metadata (a dictionary  |\n&quot;</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="stringliteral">&quot;|                          |             | with lists of reals) about      |\n&quot;</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="stringliteral">&quot;|                          |             | variables to be passed to IPOPT |\n&quot;</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="stringliteral">&quot;| var_string_md            | OT_DICT     | String metadata (a dictionary   |\n&quot;</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="stringliteral">&quot;|                          |             | with lists of strings) about    |\n&quot;</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="stringliteral">&quot;|                          |             | variables to be passed to IPOPT |\n&quot;</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="stringliteral">&quot;+--------------------------+-------------+---------------------------------+\n&quot;</span></div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;;</div>
 <div class="ttc" id="aclasscasadi_1_1IpoptInterface_html_a2516c3107df26fafb553490f4bcf2608"><div class="ttname"><a href="../../d7/d2f/classcasadi_1_1IpoptInterface.html#a2516c3107df26fafb553490f4bcf2608">casadi::IpoptInterface::meta_doc</a></div><div class="ttdeci">static const std::string meta_doc</div><div class="ttdoc">A documentation string.</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d36/ipopt__interface_8hpp_source.html#l00188">ipopt_interface.hpp:188</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </body>

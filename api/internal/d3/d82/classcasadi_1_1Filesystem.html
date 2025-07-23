@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/9763952a9aa742c5be3b53dc1a1d033a57235328" id="9763952a9aa742c5be3b53dc1a1d033a57235328" >revision 3.7.1</a></div>
   </td>
  </tr>
  </tbody>
@@ -160,10 +160,12 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:ab62726afcb536106fd94215e0b970637"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af2083f444bb1dd7ed6be7fc86e71ba28"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d82/classcasadi_1_1Filesystem.html#af2083f444bb1dd7ed6be7fc86e71ba28">iterate_directory_names</a> (const std::string &amp;<a class="el" href="../../d7/d23/namespacecasadi.html#ae33b1eb2b246bddeb76129f4241ca54a">path</a>)</td></tr>
 <tr class="separator:af2083f444bb1dd7ed6be7fc86e71ba28"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0cfae4c50149c6fd49e3423418ee46d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d82/classcasadi_1_1Filesystem.html#af0cfae4c50149c6fd49e3423418ee46d">open</a> (std::ofstream &amp;, const std::string &amp;<a class="el" href="../../d7/d23/namespacecasadi.html#ae33b1eb2b246bddeb76129f4241ca54a">path</a>, std::ios_base::openmode mode=std::ios_base::out)</td></tr>
-<tr class="separator:af0cfae4c50149c6fd49e3423418ee46d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8cb5c8b462752ca00ca318df602a3bd"><td class="memItemLeft" align="right" valign="top">static std::ofstream *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d82/classcasadi_1_1Filesystem.html#af8cb5c8b462752ca00ca318df602a3bd">ofstream_ptr</a> (const std::string &amp;<a class="el" href="../../d7/d23/namespacecasadi.html#ae33b1eb2b246bddeb76129f4241ca54a">path</a>, std::ios_base::openmode mode=std::ios_base::out)</td></tr>
-<tr class="separator:af8cb5c8b462752ca00ca318df602a3bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4e8d226d2b4dd2262b4ad28f820aacc"><td class="memItemLeft" align="right" valign="top">static std::unique_ptr&lt; std::ostream &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d82/classcasadi_1_1Filesystem.html#ad4e8d226d2b4dd2262b4ad28f820aacc">ofstream_ptr</a> (const std::string &amp;<a class="el" href="../../d7/d23/namespacecasadi.html#ae33b1eb2b246bddeb76129f4241ca54a">path</a>, std::ios_base::openmode mode=std::ios_base::out)</td></tr>
+<tr class="separator:ad4e8d226d2b4dd2262b4ad28f820aacc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad58b613088e0ae642ecf403e800b6d04"><td class="memItemLeft" align="right" valign="top">static std::unique_ptr&lt; std::istream &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d82/classcasadi_1_1Filesystem.html#ad58b613088e0ae642ecf403e800b6d04">ifstream_ptr</a> (const std::string &amp;<a class="el" href="../../d7/d23/namespacecasadi.html#ae33b1eb2b246bddeb76129f4241ca54a">path</a>, std::ios_base::openmode mode=std::ios_base::in, bool fail=true)</td></tr>
+<tr class="separator:ad58b613088e0ae642ecf403e800b6d04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbdfb8d4080bf9cd9b7a94f907b3ac5d"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d82/classcasadi_1_1Filesystem.html#adbdfb8d4080bf9cd9b7a94f907b3ac5d">exists</a> (const std::string &amp;<a class="el" href="../../d7/d23/namespacecasadi.html#ae33b1eb2b246bddeb76129f4241ca54a">path</a>)</td></tr>
+<tr class="separator:adbdfb8d4080bf9cd9b7a94f907b3ac5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b18cf484e3156842905c15d6ab2dfd5"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d37/classcasadi_1_1PluginInterface.html#a1b18cf484e3156842905c15d6ab2dfd5">has_plugin</a> (const std::string &amp;pname, bool verbose=false)</td></tr>
 <tr class="memdesc:a1b18cf484e3156842905c15d6ab2dfd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a plugin is available or can be loaded.  <a href="../../d4/d37/classcasadi_1_1PluginInterface.html#a1b18cf484e3156842905c15d6ab2dfd5">More...</a><br /></td></tr>
 <tr class="separator:a1b18cf484e3156842905c15d6ab2dfd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -429,7 +431,7 @@ Static Public Attributes</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00087">assert_enabled()</a>, <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00291">casadi::PluginInterface&lt; Filesystem &gt;::getPlugin()</a>, and <a class="el" href="../../dd/d07/integration__tools_8cpp_source.html#l00793">casadi::path()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../de/d74/fmu_8cpp_source.html#l00569">casadi::FmuInternal::finalize()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../de/d74/fmu_8cpp_source.html#l00579">casadi::FmuInternal::finalize()</a>, <a class="el" href="../../dd/d55/resource__internal_8cpp_source.html#l00064">casadi::ZipResource::unpack()</a>, and <a class="el" href="../../dd/d55/resource__internal_8cpp_source.html#l00087">casadi::ZipMemResource::unpack()</a>.</p>
 
 </div>
 </div>
@@ -459,7 +461,7 @@ Static Public Attributes</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00087">87</a> of file <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html">filesystem.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                                {</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  casadi_assert(<a class="code" href="../../d3/d82/classcasadi_1_1Filesystem.html#ad4de314cb2318858c97d4c03e9ef5b35">Filesystem::is_enabled</a>(),</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="stringliteral">&quot;This action requires advanced filesystem access. Compile CasADi with WITH_GC=ON.&quot;</span>);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="stringliteral">&quot;This action requires advanced filesystem access. Compile CasADi with WITH_GHC_FILESYSTEM=ON.&quot;</span>);</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}</div>
 <div class="ttc" id="aclasscasadi_1_1Filesystem_html_ad4de314cb2318858c97d4c03e9ef5b35"><div class="ttname"><a href="../../d3/d82/classcasadi_1_1Filesystem.html#ad4de314cb2318858c97d4c03e9ef5b35">casadi::Filesystem::is_enabled</a></div><div class="ttdeci">static bool is_enabled()</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d8f/filesystem_8cpp_source.html#l00083">filesystem.cpp:83</a></div></div>
 </div><!-- fragment -->
@@ -586,7 +588,44 @@ Static Public Attributes</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00063">create_directories()</a>, <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00073">filename()</a>, <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00053">has_parent_path()</a>, <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00038">is_directory()</a>, and <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00058">parent_path()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00115">open()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00115">ofstream_ptr()</a>.</p>
+
+</div>
+</div>
+<a id="adbdfb8d4080bf9cd9b7a94f907b3ac5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbdfb8d4080bf9cd9b7a94f907b3ac5d">&#9670;&nbsp;</a></span>exists()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool casadi::Filesystem::exists </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00144">144</a> of file <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html">filesystem.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                                             {</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  <span class="keyword">auto</span> ret = <a class="code" href="../../d7/d23/namespacecasadi.html#a48beb3d1db869927872d8d2ab39297c8">ifstream_compat</a>(<a class="code" href="../../d7/d23/namespacecasadi.html#ae33b1eb2b246bddeb76129f4241ca54a">path</a>);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">bool</span><span class="keyword">&gt;</span>(ret);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;}</div>
+<div class="ttc" id="anamespacecasadi_html_a48beb3d1db869927872d8d2ab39297c8"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a48beb3d1db869927872d8d2ab39297c8">casadi::ifstream_compat</a></div><div class="ttdeci">std::unique_ptr&lt; std::istream &gt; ifstream_compat(const std::string &amp;utf8_path, std::ios::openmode mode)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6e/casadi__os_8cpp_source.html#l00380">casadi_os.cpp:380</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../d9/d6e/casadi__os_8cpp_source.html#l00380">casadi::ifstream_compat()</a>, and <a class="el" href="../../dd/d07/integration__tools_8cpp_source.html#l00793">casadi::path()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l00602">casadi::DaeBuilderInternal::load_fmi_description()</a>.</p>
 
 </div>
 </div>
@@ -622,7 +661,7 @@ Static Public Attributes</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00087">assert_enabled()</a>, <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00291">casadi::PluginInterface&lt; Filesystem &gt;::getPlugin()</a>, and <a class="el" href="../../dd/d07/integration__tools_8cpp_source.html#l00793">casadi::path()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00105">ensure_directory_exists()</a>, <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00115">open()</a>, and <a class="el" href="../../dd/d55/resource__internal_8cpp_source.html#l00064">casadi::ZipResource::unpack()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00105">ensure_directory_exists()</a>, and <a class="el" href="../../dd/d55/resource__internal_8cpp_source.html#l00064">casadi::ZipResource::unpack()</a>.</p>
 
 </div>
 </div>
@@ -704,7 +743,7 @@ Static Public Attributes</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00087">assert_enabled()</a>, <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00291">casadi::PluginInterface&lt; Filesystem &gt;::getPlugin()</a>, and <a class="el" href="../../dd/d07/integration__tools_8cpp_source.html#l00793">casadi::path()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00105">ensure_directory_exists()</a>, and <a class="el" href="../../d6/db8/importer__internal_8cpp_source.html#l00227">casadi::DllLibrary::init_handle()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00105">ensure_directory_exists()</a>, and <a class="el" href="../../d6/db8/importer__internal_8cpp_source.html#l00229">casadi::DllLibrary::init_handle()</a>.</p>
 
 </div>
 </div>
@@ -765,8 +804,63 @@ Static Public Attributes</h2></td></tr>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    }</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  }</div>
-<div class="ttc" id="anamespacecasadi_html_a5ebcfb144f8b57dc6cbc57604517dd8c"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a5ebcfb144f8b57dc6cbc57604517dd8c">casadi::find</a></div><div class="ttdeci">std::vector&lt; casadi_int &gt; find(const std::vector&lt; T &gt; &amp;v)</div><div class="ttdoc">find nonzeros</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d18/casadi__misc_8hpp_source.html#l00618">casadi_misc.hpp:618</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_a5ebcfb144f8b57dc6cbc57604517dd8c"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a5ebcfb144f8b57dc6cbc57604517dd8c">casadi::find</a></div><div class="ttdeci">std::vector&lt; casadi_int &gt; find(const std::vector&lt; T &gt; &amp;v)</div><div class="ttdoc">find nonzeros</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d18/casadi__misc_8hpp_source.html#l00632">casadi_misc.hpp:632</a></div></div>
 </div><!-- fragment -->
+</div>
+</div>
+<a id="ad58b613088e0ae642ecf403e800b6d04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad58b613088e0ae642ecf403e800b6d04">&#9670;&nbsp;</a></span>ifstream_ptr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt; std::istream &gt; casadi::Filesystem::ifstream_ptr </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::ios_base::openmode&#160;</td>
+          <td class="paramname"><em>mode</em> = <code>std::ios_base::in</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>fail</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00135">135</a> of file <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html">filesystem.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                                       {</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  <span class="keyword">auto</span> ret = <a class="code" href="../../d7/d23/namespacecasadi.html#a48beb3d1db869927872d8d2ab39297c8">ifstream_compat</a>(<a class="code" href="../../d7/d23/namespacecasadi.html#ae33b1eb2b246bddeb76129f4241ca54a">path</a>, mode);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  <span class="keywordflow">if</span> (fail &amp;&amp; !ret) {</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    casadi_error(<span class="stringliteral">&quot;Could not open &#39;&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#ae33b1eb2b246bddeb76129f4241ca54a">path</a> + <span class="stringliteral">&quot;&#39;.&quot;</span>);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  }</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;  <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../d9/d6e/casadi__os_8cpp_source.html#l00380">casadi::ifstream_compat()</a>, and <a class="el" href="../../dd/d07/integration__tools_8cpp_source.html#l00793">casadi::path()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../dd/d77/libzip_8cpp_source.html#l00126">casadi::add_file_to_zip()</a>, <a class="el" href="../../d0/d65/sparsity_8cpp_source.html#l01925">casadi::Sparsity::from_file()</a>, <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l04065">casadi::FunctionInternal::FunctionInternal()</a>, <a class="el" href="../../d8/d7e/clang__compiler_8cpp_source.html#l00248">casadi::ClangCompiler::getIncludes()</a>, <a class="el" href="../../d6/db8/importer__internal_8cpp_source.html#l00074">casadi::ImporterInternal::init()</a>, <a class="el" href="../../d1/d63/nlp__builder_8cpp_source.html#l00048">casadi::NlImporter::NlImporter()</a>, <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l03986">casadi::FunctionInternal::serialize_body()</a>, <a class="el" href="../../dd/d55/resource__internal_8cpp_source.html#l00243">casadi::ZipResource::serialize_body()</a>, and <a class="el" href="../../dd/da7/ampl__interface_8cpp_source.html#l00277">casadi::AmplInterface::solve()</a>.</p>
+
 </div>
 </div>
 <a id="a23dce46ce990b838c9f56740fe801e6a"></a>
@@ -888,7 +982,7 @@ Static Public Attributes</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00131">casadi::PluginInterface&lt; Filesystem &gt;::has_plugin()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00087">assert_enabled()</a>, <a class="el" href="../../de/d74/fmu_8cpp_source.html#l00569">casadi::FmuInternal::finalize()</a>, <a class="el" href="../../d6/db8/importer__internal_8cpp_source.html#l00227">casadi::DllLibrary::init_handle()</a>, <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l00602">casadi::DaeBuilderInternal::load_fmi_description()</a>, <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00115">open()</a>, <a class="el" href="../../d4/d01/resource_8cpp_source.html#l00035">casadi::Resource::Resource()</a>, and <a class="el" href="../../dd/d55/resource__internal_8cpp_source.html#l00064">casadi::ZipResource::unpack()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00087">assert_enabled()</a>, <a class="el" href="../../de/d74/fmu_8cpp_source.html#l00579">casadi::FmuInternal::finalize()</a>, <a class="el" href="../../d6/db8/importer__internal_8cpp_source.html#l00229">casadi::DllLibrary::init_handle()</a>, <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l00602">casadi::DaeBuilderInternal::load_fmi_description()</a>, <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00115">ofstream_ptr()</a>, <a class="el" href="../../d4/d01/resource_8cpp_source.html#l00035">casadi::Resource::Resource()</a>, and <a class="el" href="../../dd/d55/resource__internal_8cpp_source.html#l00064">casadi::ZipResource::unpack()</a>.</p>
 
 </div>
 </div>
@@ -983,7 +1077,7 @@ Static Public Attributes</h2></td></tr>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// WITH_DL</span></div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  }</div>
-<div class="ttc" id="anamespacecasadi_html_a6395b27f59899b46702fab89df48548a"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a6395b27f59899b46702fab89df48548a">casadi::get_search_paths</a></div><div class="ttdeci">std::vector&lt; std::string &gt; get_search_paths()</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6e/casadi__os_8cpp_source.html#l00049">casadi_os.cpp:49</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_a6395b27f59899b46702fab89df48548a"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a6395b27f59899b46702fab89df48548a">casadi::get_search_paths</a></div><div class="ttdeci">std::vector&lt; std::string &gt; get_search_paths()</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6e/casadi__os_8cpp_source.html#l00067">casadi_os.cpp:67</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1101,8 +1195,8 @@ Static Public Attributes</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="af8cb5c8b462752ca00ca318df602a3bd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af8cb5c8b462752ca00ca318df602a3bd">&#9670;&nbsp;</a></span>ofstream_ptr()</h2>
+<a id="ad4e8d226d2b4dd2262b4ad28f820aacc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4e8d226d2b4dd2262b4ad28f820aacc">&#9670;&nbsp;</a></span>ofstream_ptr()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1111,60 +1205,8 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::ofstream * casadi::Filesystem::ofstream_ptr </td>
+          <td class="memname">std::unique_ptr&lt; std::ostream &gt; casadi::Filesystem::ofstream_ptr </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>path</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::ios_base::openmode&#160;</td>
-          <td class="paramname"><em>mode</em> = <code>std::ios_base::out</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00134">134</a> of file <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html">filesystem.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                            {</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  std::ofstream* ret = <span class="keyword">new</span> std::ofstream();</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  <a class="code" href="../../d3/d82/classcasadi_1_1Filesystem.html#af0cfae4c50149c6fd49e3423418ee46d">Filesystem::open</a>(*ret, <a class="code" href="../../d7/d23/namespacecasadi.html#ae33b1eb2b246bddeb76129f4241ca54a">path</a>, mode);</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;}</div>
-<div class="ttc" id="aclasscasadi_1_1Filesystem_html_af0cfae4c50149c6fd49e3423418ee46d"><div class="ttname"><a href="../../d3/d82/classcasadi_1_1Filesystem.html#af0cfae4c50149c6fd49e3423418ee46d">casadi::Filesystem::open</a></div><div class="ttdeci">static void open(std::ofstream &amp;, const std::string &amp;path, std::ios_base::openmode mode=std::ios_base::out)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d8f/filesystem_8cpp_source.html#l00115">filesystem.cpp:115</a></div></div>
-</div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00115">open()</a>, and <a class="el" href="../../dd/d07/integration__tools_8cpp_source.html#l00793">casadi::path()</a>.</p>
-
-</div>
-</div>
-<a id="af0cfae4c50149c6fd49e3423418ee46d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af0cfae4c50149c6fd49e3423418ee46d">&#9670;&nbsp;</a></span>open()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void casadi::Filesystem::open </td>
-          <td>(</td>
-          <td class="paramtype">std::ofstream &amp;&#160;</td>
-          <td class="paramname"><em>stream</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>path</em>, </td>
         </tr>
@@ -1188,28 +1230,30 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00115">115</a> of file <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html">filesystem.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                              {</div>
+<div class="fragment"><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                            {</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="../../d3/d82/classcasadi_1_1Filesystem.html#ad4de314cb2318858c97d4c03e9ef5b35">is_enabled</a>()) {</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    casadi_assert(<a class="code" href="../../d3/d82/classcasadi_1_1Filesystem.html#ad2377e87c5f05f13ba3426baa433c1e9">ensure_directory_exists</a>(<a class="code" href="../../d3/d82/classcasadi_1_1Filesystem.html#a725eafdecbf5a4099317df839b6a5eda">filename</a>),</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;     <span class="stringliteral">&quot;Unable to create the required directory for &#39;&quot;</span> + <a class="code" href="../../d3/d82/classcasadi_1_1Filesystem.html#a725eafdecbf5a4099317df839b6a5eda">filename</a> + <span class="stringliteral">&quot;&#39;.&quot;</span>);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    casadi_assert(<a class="code" href="../../d3/d82/classcasadi_1_1Filesystem.html#ad2377e87c5f05f13ba3426baa433c1e9">ensure_directory_exists</a>(<a class="code" href="../../d7/d23/namespacecasadi.html#ae33b1eb2b246bddeb76129f4241ca54a">path</a>),</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;     <span class="stringliteral">&quot;Unable to create the required directory for &#39;&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#ae33b1eb2b246bddeb76129f4241ca54a">path</a> + <span class="stringliteral">&quot;&#39;.&quot;</span>);</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  }</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  stream.open(<a class="code" href="../../d3/d82/classcasadi_1_1Filesystem.html#a725eafdecbf5a4099317df839b6a5eda">filename</a>.c_str(), mode);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  <span class="keyword">auto</span> stream_ptr = <a class="code" href="../../d7/d23/namespacecasadi.html#a51b4192a175a7459a463769c25ab45ca">ofstream_compat</a>(<a class="code" href="../../d7/d23/namespacecasadi.html#ae33b1eb2b246bddeb76129f4241ca54a">path</a>, mode);</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="../../d3/d82/classcasadi_1_1Filesystem.html#ad4de314cb2318858c97d4c03e9ef5b35">is_enabled</a>()) {</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    casadi_assert(stream.good(),</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;      <span class="stringliteral">&quot;Error opening stream &#39;&quot;</span> + <a class="code" href="../../d3/d82/classcasadi_1_1Filesystem.html#a725eafdecbf5a4099317df839b6a5eda">filename</a> + <span class="stringliteral">&quot;&#39;.&quot;</span>);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    casadi_assert(stream_ptr,</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;      <span class="stringliteral">&quot;Error opening stream &#39;&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#ae33b1eb2b246bddeb76129f4241ca54a">path</a> + <span class="stringliteral">&quot;&#39;.&quot;</span>);</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    casadi_assert(stream.good(),</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      <span class="stringliteral">&quot;Error opening stream &#39;&quot;</span> + <a class="code" href="../../d3/d82/classcasadi_1_1Filesystem.html#a725eafdecbf5a4099317df839b6a5eda">filename</a> + <span class="stringliteral">&quot;&#39;. &quot;</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    casadi_assert(stream_ptr,</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      <span class="stringliteral">&quot;Error opening stream &#39;&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#ae33b1eb2b246bddeb76129f4241ca54a">path</a> + <span class="stringliteral">&quot;&#39;. &quot;</span></div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;      <span class="stringliteral">&quot;Does the directory exits? &quot;</span></div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;      <span class="stringliteral">&quot;Note that CasADi needs to be compiled with WITH_GC=ON &quot;</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;      <span class="stringliteral">&quot;Note that CasADi needs to be compiled with WITH_GHC_FILESYSTEM=ON &quot;</span></div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;      <span class="stringliteral">&quot;for directories to be automatically created&quot;</span>);</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  }</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  <span class="keywordflow">return</span> stream_ptr;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;}</div>
 <div class="ttc" id="aclasscasadi_1_1Filesystem_html_ad2377e87c5f05f13ba3426baa433c1e9"><div class="ttname"><a href="../../d3/d82/classcasadi_1_1Filesystem.html#ad2377e87c5f05f13ba3426baa433c1e9">casadi::Filesystem::ensure_directory_exists</a></div><div class="ttdeci">static bool ensure_directory_exists(const std::string &amp;path)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d8f/filesystem_8cpp_source.html#l00105">filesystem.cpp:105</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_a51b4192a175a7459a463769c25ab45ca"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a51b4192a175a7459a463769c25ab45ca">casadi::ofstream_compat</a></div><div class="ttdeci">std::unique_ptr&lt; std::ostream &gt; ofstream_compat(const std::string &amp;utf8_path, std::ios::openmode mode)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6e/casadi__os_8cpp_source.html#l00410">casadi_os.cpp:410</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00105">ensure_directory_exists()</a>, <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00073">filename()</a>, and <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00083">is_enabled()</a>.</p>
+<p class="reference">References <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00105">ensure_directory_exists()</a>, <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00083">is_enabled()</a>, <a class="el" href="../../d9/d6e/casadi__os_8cpp_source.html#l00410">casadi::ofstream_compat()</a>, and <a class="el" href="../../dd/d07/integration__tools_8cpp_source.html#l00793">casadi::path()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d70/conic_8cpp_source.html#l00049">casadi::conic_debug()</a>, <a class="el" href="../../de/dea/function_8cpp_source.html#l01261">casadi::Function::export_code()</a>, <a class="el" href="../../d1/d92/code__generator_8cpp_source.html#l00389">casadi::CodeGenerator::file_open()</a>, <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l00731">casadi::FunctionInternal::generate_in()</a>, <a class="el" href="../../de/dea/function_8cpp_source.html#l01202">casadi::Function::generate_in()</a>, <a class="el" href="../../de/dea/function_8cpp_source.html#l01217">casadi::Function::generate_out()</a>, <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l00747">casadi::FunctionInternal::generate_out()</a>, <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l00271">casadi::FmuFunction::init()</a>, <a class="el" href="../../d4/dce/linsol_8cpp_source.html#l00132">casadi::Linsol::nfact()</a>, <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00134">ofstream_ptr()</a>, and <a class="el" href="../../d0/d65/sparsity_8cpp_source.html#l01906">casadi::Sparsity::to_file()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d70/conic_8cpp_source.html#l00049">casadi::conic_debug()</a>, <a class="el" href="../../de/d74/fmu_8cpp_source.html#l00797">casadi::FmuInternal::eval_fd()</a>, <a class="el" href="../../de/dea/function_8cpp_source.html#l01270">casadi::Function::export_code()</a>, <a class="el" href="../../dd/d77/libzip_8cpp_source.html#l00067">casadi::extract_zip_internal()</a>, <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l04065">casadi::FunctionInternal::FunctionInternal()</a>, <a class="el" href="../../d1/d92/code__generator_8cpp_source.html#l00463">casadi::CodeGenerator::generate()</a>, <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l00749">casadi::FunctionInternal::generate_in()</a>, <a class="el" href="../../de/dea/function_8cpp_source.html#l01211">casadi::Function::generate_in()</a>, <a class="el" href="../../de/dea/function_8cpp_source.html#l01226">casadi::Function::generate_out()</a>, <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l00765">casadi::FunctionInternal::generate_out()</a>, <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l00985">casadi::DaeBuilderInternal::generate_wrapper()</a>, <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l00273">casadi::FmuFunction::init()</a>, <a class="el" href="../../d4/dce/linsol_8cpp_source.html#l00132">casadi::Linsol::nfact()</a>, <a class="el" href="../../dd/da7/ampl__interface_8cpp_source.html#l00277">casadi::AmplInterface::solve()</a>, <a class="el" href="../../d8/daf/sparsity__internal_8cpp_source.html#l03693">casadi::SparsityInternal::spy_matlab()</a>, <a class="el" href="../../d0/d65/sparsity_8cpp_source.html#l01906">casadi::Sparsity::to_file()</a>, and <a class="el" href="../../dd/d77/libzip_8cpp_source.html#l00299">casadi::zip_to_path()</a>.</p>
 
 </div>
 </div>
@@ -1245,7 +1289,7 @@ Static Public Attributes</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00087">assert_enabled()</a>, <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00291">casadi::PluginInterface&lt; Filesystem &gt;::getPlugin()</a>, and <a class="el" href="../../dd/d07/integration__tools_8cpp_source.html#l00793">casadi::path()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00105">ensure_directory_exists()</a>, and <a class="el" href="../../d6/db8/importer__internal_8cpp_source.html#l00227">casadi::DllLibrary::init_handle()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00105">ensure_directory_exists()</a>, and <a class="el" href="../../d6/db8/importer__internal_8cpp_source.html#l00229">casadi::DllLibrary::init_handle()</a>.</p>
 
 </div>
 </div>
@@ -1504,7 +1548,7 @@ Static Public Attributes</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00087">assert_enabled()</a>, <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00291">casadi::PluginInterface&lt; Filesystem &gt;::getPlugin()</a>, and <a class="el" href="../../dd/d07/integration__tools_8cpp_source.html#l00793">casadi::path()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../dd/d55/resource__internal_8cpp_source.html#l00132">casadi::ZipMemResource::~ZipMemResource()</a>, and <a class="el" href="../../dd/d55/resource__internal_8cpp_source.html#l00119">casadi::ZipResource::~ZipResource()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../dd/d55/resource__internal_8cpp_source.html#l00134">casadi::ZipMemResource::~ZipMemResource()</a>, and <a class="el" href="../../dd/d55/resource__internal_8cpp_source.html#l00121">casadi::ZipResource::~ZipResource()</a>.</p>
 
 </div>
 </div>
@@ -1540,7 +1584,7 @@ Static Public Attributes</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00087">assert_enabled()</a>, <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00291">casadi::PluginInterface&lt; Filesystem &gt;::getPlugin()</a>, and <a class="el" href="../../dd/d07/integration__tools_8cpp_source.html#l00793">casadi::path()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../dd/d55/resource__internal_8cpp_source.html#l00132">casadi::ZipMemResource::~ZipMemResource()</a>, and <a class="el" href="../../dd/d55/resource__internal_8cpp_source.html#l00119">casadi::ZipResource::~ZipResource()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../dd/d55/resource__internal_8cpp_source.html#l00134">casadi::ZipMemResource::~ZipMemResource()</a>, and <a class="el" href="../../dd/d55/resource__internal_8cpp_source.html#l00121">casadi::ZipResource::~ZipResource()</a>.</p>
 
 </div>
 </div>
@@ -1597,7 +1641,7 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../df/dda/filesystem__impl_8hpp_source.html#l00103">103</a> of file <a class="el" href="../../df/dda/filesystem__impl_8hpp_source.html">filesystem_impl.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/dda/filesystem__impl_8hpp_source.html#l00104">104</a> of file <a class="el" href="../../df/dda/filesystem__impl_8hpp_source.html">filesystem_impl.hpp</a>.</p>
 
 </div>
 </div>

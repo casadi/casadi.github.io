@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/9763952a9aa742c5be3b53dc1a1d033a57235328" id="9763952a9aa742c5be3b53dc1a1d033a57235328" >revision 3.7.1</a></div>
   </td>
  </tr>
  </tbody>
@@ -155,279 +155,284 @@ $(function() {
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                    <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                }</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                std::ofstream out_file(full_path, std::ios::binary);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                <span class="keywordflow">if</span> (!out_file) {</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                    <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Error: Cannot write file: &quot;</span> &lt;&lt; full_path &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                    zip_fclose(zf);</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                    <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                }</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                <span class="keywordtype">char</span> buffer[8192];</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                zip_int64_t bytes_read;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                <span class="keywordflow">while</span> ((bytes_read = zip_fread(zf, buffer, <span class="keyword">sizeof</span>(buffer))) &gt; 0) {</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                    out_file.write(buffer, bytes_read);</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                }</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                <span class="keywordflow">if</span> (bytes_read &lt; 0) {</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                    <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Error: Read failed for file in ZIP: &quot;</span> &lt;&lt; name &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                }</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                out_file.close();</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                zip_fclose(zf);</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            }</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        }</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        zip_close(za);</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    }</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
-<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="../../d7/d23/namespacecasadi.html#a60a5bfb63690525b0de7c4785110366e">  125</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a60a5bfb63690525b0de7c4785110366e">add_file_to_zip</a>(zip_t* archive, <span class="keyword">const</span> std::string&amp; file_path,</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            <span class="keyword">const</span> std::string&amp; archive_name) {</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        std::ifstream file(file_path, std::ios::binary | std::ios::ate);</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keywordflow">if</span> (!file) {</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Error: Cannot open file: &quot;</span> &lt;&lt; file_path &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        }</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        std::streamsize size = file.tellg();</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        file.seekg(0, std::ios::beg);</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keywordtype">char</span>* data = <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(malloc(size));  <span class="comment">// ← use malloc</span></div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="keywordflow">if</span> (!data) {</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Error: Memory allocation failed for file: &quot;</span> &lt;&lt; file_path &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        }</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        <span class="keywordflow">if</span> (!file.read(data, size)) {</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Error: Cannot read file: &quot;</span> &lt;&lt; file_path &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            free(data);</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        }</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        zip_error_t ziperr;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        zip_source_t* source = zip_source_buffer_create(data, size, 1, &amp;ziperr); <span class="comment">// ← freep = 1</span></div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordflow">if</span> (!source) {</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Error: Cannot create zip source for file: &quot;</span> &lt;&lt; file_path</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                   &lt;&lt; <span class="stringliteral">&quot;: &quot;</span> &lt;&lt; zip_error_strerror(&amp;ziperr) &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            free(data); <span class="comment">// not strictly needed, but safe</span></div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            zip_error_fini(&amp;ziperr);</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        }</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        zip_int64_t idx = zip_file_add(archive, archive_name.c_str(), source, ZIP_FL_ENC_UTF_8);</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="keywordflow">if</span> (idx &lt; 0) {</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            zip_source_free(source);  <span class="comment">// Only needed if not added</span></div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Error: Cannot add file to archive: &quot;</span> &lt;&lt; archive_name &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        }</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    }</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
-<div class="line"><a name="l00168"></a><span class="lineno"><a class="line" href="../../d7/d23/namespacecasadi.html#a9968494051ea2e6c7f58d6972fabc59f">  168</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a9968494051ea2e6c7f58d6972fabc59f">add_directory_recursive</a>(zip_t* archive,</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        <span class="keyword">const</span> std::string&amp; base_dir,</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <span class="keyword">const</span> std::string&amp; current_dir,</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        <span class="keyword">const</span> std::string&amp; rel_prefix) {</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="keyword">auto</span> filesystem = <a class="code" href="../../d4/d37/classcasadi_1_1PluginInterface.html#a6eaa8ad2519082026cc7c27bd143ffb2">Filesystem::getPlugin</a>(<span class="stringliteral">&quot;ghc&quot;</span>);</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        std::vector&lt;std::string&gt; entries = filesystem.exposed.iterate_directory_names(current_dir);</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> std::string&amp; full_path : entries) {</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            std::string rel_path = full_path.substr(base_dir.size() + 1);</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            <span class="keywordflow">if</span> (filesystem.exposed.is_directory(full_path)) {</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                zip_dir_add(archive, (rel_path + <span class="stringliteral">&quot;/&quot;</span>).c_str(), ZIP_FL_ENC_UTF_8);</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                <a class="code" href="../../d7/d23/namespacecasadi.html#a9968494051ea2e6c7f58d6972fabc59f">add_directory_recursive</a>(archive, base_dir, full_path, rel_path);</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                <a class="code" href="../../d7/d23/namespacecasadi.html#a60a5bfb63690525b0de7c4785110366e">add_file_to_zip</a>(archive, full_path, rel_path);</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            }</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        }</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    }</div>
-<div class="line"><a name="l00186"></a><span class="lineno"><a class="line" href="../../d7/d23/namespacecasadi.html#a9598940f813a1288654829ccc0a1f4a2">  186</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a9598940f813a1288654829ccc0a1f4a2">zip_to_stream</a>(<span class="keyword">const</span> std::string&amp; dir, std::ostream&amp; output) {</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        zip_error_t error;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        zip_error_init(&amp;error);</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        zip_source_t* src = zip_source_buffer_create(<span class="keyword">nullptr</span>, 0, 0, &amp;error);</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        <span class="keywordflow">if</span> (!src) {</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Failed to create zip source buffer: &quot;</span></div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                   &lt;&lt; zip_error_strerror(&amp;error) &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            zip_error_fini(&amp;error);</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        }</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        <span class="comment">// Prevent zip_close from destroying the source</span></div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        zip_source_keep(src);</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        zip_t* archive = zip_open_from_source(src, ZIP_TRUNCATE, &amp;error);</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <span class="keywordflow">if</span> (!archive) {</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Failed to open zip archive from source: &quot;</span></div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                   &lt;&lt; zip_error_strerror(&amp;error) &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            zip_source_free(src);</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            zip_error_fini(&amp;error);</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        }</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a9968494051ea2e6c7f58d6972fabc59f">add_directory_recursive</a>(archive, dir, dir, <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Exception while zipping directory: &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            zip_discard(archive);  <span class="comment">// also frees src</span></div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            zip_error_fini(&amp;error);</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        }</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        <span class="keywordflow">if</span> (zip_close(archive) != 0) {</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Failed to finalize zip archive: &quot;</span></div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                   &lt;&lt; zip_error_strerror(&amp;error) &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            zip_source_free(src);</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            zip_error_fini(&amp;error);</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        }</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        <span class="comment">// At this point, src contains the archive in memory.</span></div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        <span class="keywordflow">if</span> (zip_source_open(src) &lt; 0) {</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Failed to open zip source for reading.&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            zip_source_free(src);</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            zip_error_fini(&amp;error);</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        }</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        <span class="comment">// Seek to end to get size</span></div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        <span class="keywordflow">if</span> (zip_source_seek(src, 0, SEEK_END) &lt; 0) {</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Failed to seek to end of zip source.&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            zip_source_close(src);</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            zip_source_free(src);</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            zip_error_fini(&amp;error);</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        }</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        zip_int64_t size = zip_source_tell(src);</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        <span class="keywordflow">if</span> (size &lt; 0) {</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Failed to get size of zip source.&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            zip_source_close(src);</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            zip_source_free(src);</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            zip_error_fini(&amp;error);</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        }</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <span class="keywordflow">if</span> (zip_source_seek(src, 0, SEEK_SET) &lt; 0) {</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Failed to rewind zip source.&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            zip_source_close(src);</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            zip_source_free(src);</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            zip_error_fini(&amp;error);</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        }</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        <span class="keywordflow">if</span> (zip_source_seek(src, 0, SEEK_SET) &lt; 0) {</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Failed to rewind zip source.&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            zip_source_close(src);</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            zip_source_free(src);</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            zip_error_fini(&amp;error);</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        }</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        <span class="comment">// Efficient streaming read/write</span></div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        <span class="keywordtype">char</span> buf[8192];</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        zip_int64_t bytes_read;</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160; </div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        <span class="keywordflow">while</span> ((bytes_read = zip_source_read(src, buf, <span class="keyword">sizeof</span>(buf))) &gt; 0) {</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            output.write(buf, bytes_read);</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            <span class="keywordflow">if</span> (!output) {</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Write error while streaming zip data to output.&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                zip_source_close(src);</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                zip_source_free(src);</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                zip_error_fini(&amp;error);</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            }</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        }</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160; </div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        zip_source_close(src);</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        zip_source_free(src);</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        zip_error_fini(&amp;error);</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160; </div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        <span class="keywordflow">if</span> (bytes_read &lt; 0) {</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Error reading from zip source.&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        }</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    }</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160; </div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160; </div>
-<div class="line"><a name="l00297"></a><span class="lineno"><a class="line" href="../../d7/d23/namespacecasadi.html#a50dba143e767cd4b77cc03aa4efe32d8">  297</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a50dba143e767cd4b77cc03aa4efe32d8">zip_to_path</a>(<span class="keyword">const</span> std::string&amp; dir_path, <span class="keyword">const</span> std::string&amp; zip_path) {</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        std::ofstream ofs(zip_path, std::ios::binary);</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        <span class="keywordflow">if</span> (!ofs) {</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Failed to open output file: &quot;</span> &lt;&lt; zip_path &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        }</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160; </div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a9598940f813a1288654829ccc0a1f4a2">zip_to_stream</a>(dir_path, ofs);</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                <span class="keyword">auto</span> out_file_ptr = <a class="code" href="../../d3/d82/classcasadi_1_1Filesystem.html#ad4e8d226d2b4dd2262b4ad28f820aacc">Filesystem::ofstream_ptr</a>(full_path, std::ios::binary);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                std::ostream&amp; out_file = *out_file_ptr;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                <span class="keywordflow">if</span> (!out_file) {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                    <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Error: Cannot write file: &quot;</span> &lt;&lt; full_path &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                    zip_fclose(zf);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                    <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                <span class="keywordtype">char</span> buffer[8192];</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                zip_int64_t bytes_read;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                <span class="keywordflow">while</span> ((bytes_read = zip_fread(zf, buffer, <span class="keyword">sizeof</span>(buffer))) &gt; 0) {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                    out_file.write(buffer, bytes_read);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                <span class="keywordflow">if</span> (bytes_read &lt; 0) {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                    <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Error: Read failed for file in ZIP: &quot;</span> &lt;&lt; name &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                out_file_ptr.reset();</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                zip_fclose(zf);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        }</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        zip_close(za);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="../../d7/d23/namespacecasadi.html#a60a5bfb63690525b0de7c4785110366e">  126</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a60a5bfb63690525b0de7c4785110366e">add_file_to_zip</a>(zip_t* archive, <span class="keyword">const</span> std::string&amp; file_path,</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <span class="keyword">const</span> std::string&amp; archive_name) {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keyword">auto</span> file_ptr = <a class="code" href="../../d3/d82/classcasadi_1_1Filesystem.html#ad58b613088e0ae642ecf403e800b6d04">Filesystem::ifstream_ptr</a>(file_path, std::ios::binary | std::ios::ate);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        std::istream&amp; file = *file_ptr;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="keywordflow">if</span> (!file) {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Error: Cannot open file: &quot;</span> &lt;&lt; file_path &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        std::streamsize size = file.tellg();</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        file.seekg(0, std::ios::beg);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="keywordtype">char</span>* data = <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(malloc(size));  <span class="comment">// ← use malloc</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        <span class="keywordflow">if</span> (!data) {</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Error: Memory allocation failed for file: &quot;</span> &lt;&lt; file_path &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        }</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="keywordflow">if</span> (!file.read(data, size)) {</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Error: Cannot read file: &quot;</span> &lt;&lt; file_path &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            free(data);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        }</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        zip_error_t ziperr;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        zip_source_t* source = zip_source_buffer_create(data, size, 1, &amp;ziperr); <span class="comment">// ← freep = 1</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="keywordflow">if</span> (!source) {</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Error: Cannot create zip source for file: &quot;</span> &lt;&lt; file_path</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                   &lt;&lt; <span class="stringliteral">&quot;: &quot;</span> &lt;&lt; zip_error_strerror(&amp;ziperr) &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            free(data); <span class="comment">// not strictly needed, but safe</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            zip_error_fini(&amp;ziperr);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        }</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        zip_int64_t idx = zip_file_add(archive, archive_name.c_str(), source, ZIP_FL_ENC_UTF_8);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="keywordflow">if</span> (idx &lt; 0) {</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            zip_source_free(source);  <span class="comment">// Only needed if not added</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Error: Cannot add file to archive: &quot;</span> &lt;&lt; archive_name &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        }</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    }</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
+<div class="line"><a name="l00170"></a><span class="lineno"><a class="line" href="../../d7/d23/namespacecasadi.html#a9968494051ea2e6c7f58d6972fabc59f">  170</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a9968494051ea2e6c7f58d6972fabc59f">add_directory_recursive</a>(zip_t* archive,</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        <span class="keyword">const</span> std::string&amp; base_dir,</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="keyword">const</span> std::string&amp; current_dir,</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="keyword">const</span> std::string&amp; rel_prefix) {</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="keyword">auto</span> filesystem = <a class="code" href="../../d4/d37/classcasadi_1_1PluginInterface.html#a6eaa8ad2519082026cc7c27bd143ffb2">Filesystem::getPlugin</a>(<span class="stringliteral">&quot;ghc&quot;</span>);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        std::vector&lt;std::string&gt; entries = filesystem.exposed.iterate_directory_names(current_dir);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> std::string&amp; full_path : entries) {</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            std::string rel_path = full_path.substr(base_dir.size() + 1);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            <span class="keywordflow">if</span> (filesystem.exposed.is_directory(full_path)) {</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                zip_dir_add(archive, (rel_path + <span class="stringliteral">&quot;/&quot;</span>).c_str(), ZIP_FL_ENC_UTF_8);</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                <a class="code" href="../../d7/d23/namespacecasadi.html#a9968494051ea2e6c7f58d6972fabc59f">add_directory_recursive</a>(archive, base_dir, full_path, rel_path);</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                <a class="code" href="../../d7/d23/namespacecasadi.html#a60a5bfb63690525b0de7c4785110366e">add_file_to_zip</a>(archive, full_path, rel_path);</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            }</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        }</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    }</div>
+<div class="line"><a name="l00188"></a><span class="lineno"><a class="line" href="../../d7/d23/namespacecasadi.html#a9598940f813a1288654829ccc0a1f4a2">  188</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a9598940f813a1288654829ccc0a1f4a2">zip_to_stream</a>(<span class="keyword">const</span> std::string&amp; dir, std::ostream&amp; output) {</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        zip_error_t error;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        zip_error_init(&amp;error);</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        zip_source_t* src = zip_source_buffer_create(<span class="keyword">nullptr</span>, 0, 0, &amp;error);</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        <span class="keywordflow">if</span> (!src) {</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Failed to create zip source buffer: &quot;</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                   &lt;&lt; zip_error_strerror(&amp;error) &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            zip_error_fini(&amp;error);</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        }</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <span class="comment">// Prevent zip_close from destroying the source</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        zip_source_keep(src);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        zip_t* archive = zip_open_from_source(src, ZIP_TRUNCATE, &amp;error);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        <span class="keywordflow">if</span> (!archive) {</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Failed to open zip archive from source: &quot;</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                   &lt;&lt; zip_error_strerror(&amp;error) &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            zip_source_free(src);</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            zip_error_fini(&amp;error);</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        }</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a9968494051ea2e6c7f58d6972fabc59f">add_directory_recursive</a>(archive, dir, dir, <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Exception while zipping directory: &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            zip_discard(archive);  <span class="comment">// also frees src</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            zip_error_fini(&amp;error);</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        }</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160; </div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        <span class="keywordflow">if</span> (zip_close(archive) != 0) {</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Failed to finalize zip archive: &quot;</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                   &lt;&lt; zip_error_strerror(&amp;error) &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            zip_source_free(src);</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            zip_error_fini(&amp;error);</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        }</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; </div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        <span class="comment">// At this point, src contains the archive in memory.</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        <span class="keywordflow">if</span> (zip_source_open(src) &lt; 0) {</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Failed to open zip source for reading.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            zip_source_free(src);</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            zip_error_fini(&amp;error);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        }</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160; </div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        <span class="comment">// Seek to end to get size</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        <span class="keywordflow">if</span> (zip_source_seek(src, 0, SEEK_END) &lt; 0) {</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Failed to seek to end of zip source.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            zip_source_close(src);</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            zip_source_free(src);</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            zip_error_fini(&amp;error);</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        }</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        zip_int64_t size = zip_source_tell(src);</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        <span class="keywordflow">if</span> (size &lt; 0) {</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Failed to get size of zip source.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            zip_source_close(src);</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            zip_source_free(src);</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            zip_error_fini(&amp;error);</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        }</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        <span class="keywordflow">if</span> (zip_source_seek(src, 0, SEEK_SET) &lt; 0) {</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Failed to rewind zip source.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            zip_source_close(src);</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            zip_source_free(src);</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            zip_error_fini(&amp;error);</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        }</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        <span class="keywordflow">if</span> (zip_source_seek(src, 0, SEEK_SET) &lt; 0) {</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Failed to rewind zip source.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            zip_source_close(src);</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            zip_source_free(src);</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            zip_error_fini(&amp;error);</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        }</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        <span class="comment">// Efficient streaming read/write</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        <span class="keywordtype">char</span> buf[8192];</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        zip_int64_t bytes_read;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160; </div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        <span class="keywordflow">while</span> ((bytes_read = zip_source_read(src, buf, <span class="keyword">sizeof</span>(buf))) &gt; 0) {</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            output.write(buf, bytes_read);</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            <span class="keywordflow">if</span> (!output) {</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Write error while streaming zip data to output.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                zip_source_close(src);</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                zip_source_free(src);</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                zip_error_fini(&amp;error);</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;            }</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        }</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160; </div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        zip_source_close(src);</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        zip_source_free(src);</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        zip_error_fini(&amp;error);</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160; </div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        <span class="keywordflow">if</span> (bytes_read &lt; 0) {</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Error reading from zip source.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        }</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160; </div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    }</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160; </div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160; </div>
+<div class="line"><a name="l00299"></a><span class="lineno"><a class="line" href="../../d7/d23/namespacecasadi.html#a50dba143e767cd4b77cc03aa4efe32d8">  299</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a50dba143e767cd4b77cc03aa4efe32d8">zip_to_path</a>(<span class="keyword">const</span> std::string&amp; dir_path, <span class="keyword">const</span> std::string&amp; zip_path) {</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;        <span class="keyword">auto</span> ofs_ptr = <a class="code" href="../../d3/d82/classcasadi_1_1Filesystem.html#ad4e8d226d2b4dd2262b4ad28f820aacc">Filesystem::ofstream_ptr</a>(zip_path, std::ios::binary);</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        std::ostream&amp; ofs = *ofs_ptr;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        <span class="keywordflow">if</span> (!ofs) {</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Failed to open output file: &quot;</span> &lt;&lt; zip_path &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        }</div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160; </div>
-<div class="line"><a name="l00307"></a><span class="lineno"><a class="line" href="../../d7/d23/namespacecasadi.html#af11d6b17282ad509f875a3586d671ea0">  307</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="../../d7/d23/namespacecasadi.html#af11d6b17282ad509f875a3586d671ea0">zip_to_path2</a>(<span class="keyword">const</span> std::string&amp; dir_path, <span class="keyword">const</span> std::string&amp; zip_path) {</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        <span class="keywordtype">int</span> errorp;</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        zip_t* archive = zip_open(zip_path.c_str(), ZIP_CREATE | ZIP_TRUNCATE, &amp;errorp);</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        <span class="keywordflow">if</span> (!archive) {</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;            zip_error_t ziperror;</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            zip_error_init_with_code(&amp;ziperror, errorp);</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Error: Cannot open zip archive &quot;</span> &lt;&lt; zip_path &lt;&lt; <span class="stringliteral">&quot;: &quot;</span></div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                   &lt;&lt; zip_error_strerror(&amp;ziperror) &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;            zip_error_fini(&amp;ziperror);</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        }</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a9968494051ea2e6c7f58d6972fabc59f">add_directory_recursive</a>(archive, dir_path, dir_path, <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Exception while zipping directory: &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;            zip_discard(archive);</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        }</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        <span class="keywordflow">if</span> (zip_close(archive) &lt; 0) {</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Error: Cannot finalize zip archive: &quot;</span> &lt;&lt; zip_strerror(archive) &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;            zip_discard(archive);</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        }</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160; </div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    }</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a9598940f813a1288654829ccc0a1f4a2">zip_to_stream</a>(dir_path, ofs);</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    }</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160; </div>
+<div class="line"><a name="l00310"></a><span class="lineno"><a class="line" href="../../d7/d23/namespacecasadi.html#af11d6b17282ad509f875a3586d671ea0">  310</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="../../d7/d23/namespacecasadi.html#af11d6b17282ad509f875a3586d671ea0">zip_to_path2</a>(<span class="keyword">const</span> std::string&amp; dir_path, <span class="keyword">const</span> std::string&amp; zip_path) {</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        <span class="keywordtype">int</span> errorp;</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        zip_t* archive = zip_open(zip_path.c_str(), ZIP_CREATE | ZIP_TRUNCATE, &amp;errorp);</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        <span class="keywordflow">if</span> (!archive) {</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            zip_error_t ziperror;</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;            zip_error_init_with_code(&amp;ziperror, errorp);</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Error: Cannot open zip archive &quot;</span> &lt;&lt; zip_path &lt;&lt; <span class="stringliteral">&quot;: &quot;</span></div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                   &lt;&lt; zip_error_strerror(&amp;ziperror) &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            zip_error_fini(&amp;ziperror);</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        }</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160; </div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a9968494051ea2e6c7f58d6972fabc59f">add_directory_recursive</a>(archive, dir_path, dir_path, <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Exception while zipping directory: &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;            zip_discard(archive);</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        }</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160; </div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;        <span class="keywordflow">if</span> (zip_close(archive) &lt; 0) {</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;            <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() &lt;&lt; <span class="stringliteral">&quot;Error: Cannot finalize zip archive: &quot;</span> &lt;&lt; zip_strerror(archive) &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;            zip_discard(archive);</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        }</div>
 <div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160; </div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;   <span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span></div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;   <span class="keywordtype">int</span> CASADI_ARCHIVER_LIBZIP_EXPORT</div>
-<div class="line"><a name="l00338"></a><span class="lineno"><a class="line" href="../../d7/d23/namespacecasadi.html#a32b177c92f4f7f27d480c77893e946ff">  338</a></span>&#160;   <a class="code" href="../../d7/d23/namespacecasadi.html#a32b177c92f4f7f27d480c77893e946ff">casadi_register_archiver_libzip</a>(Archiver::Plugin* plugin) {</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;     plugin-&gt;name = <span class="stringliteral">&quot;libzip&quot;</span>;</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;     plugin-&gt;doc = <a class="code" href="../../d5/df4/classcasadi_1_1Libzip.html#afdb8fcb2210c19e5136bd5286c5724f9">Libzip::meta_doc</a>.c_str();</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;     plugin-&gt;version = CASADI_VERSION;</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;     plugin-&gt;exposed.unpack = &amp;<a class="code" href="../../d7/d23/namespacecasadi.html#a578a7defd800c589f5c7b184e8aee24a">extract_zip_from_path</a>;</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;     plugin-&gt;exposed.unpack_from_stringstream = &amp;<a class="code" href="../../d7/d23/namespacecasadi.html#aeb2cd8a3dc387cfc45d08314661163e0">extract_zip_from_stringstream</a>;</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;     plugin-&gt;exposed.pack = &amp;<a class="code" href="../../d7/d23/namespacecasadi.html#a50dba143e767cd4b77cc03aa4efe32d8">zip_to_path</a>;</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;     plugin-&gt;exposed.pack_to_stream = &amp;<a class="code" href="../../d7/d23/namespacecasadi.html#a9598940f813a1288654829ccc0a1f4a2">zip_to_stream</a>;</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;     <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;   }</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160; </div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;   <span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span></div>
-<div class="line"><a name="l00350"></a><span class="lineno"><a class="line" href="../../d7/d23/namespacecasadi.html#aee69d79f7669e167e84e6391e5f22369">  350</a></span>&#160;   <span class="keywordtype">void</span> CASADI_ARCHIVER_LIBZIP_EXPORT <a class="code" href="../../d7/d23/namespacecasadi.html#aee69d79f7669e167e84e6391e5f22369">casadi_load_archiver_libzip</a>() {</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;     <a class="code" href="../../d4/d37/classcasadi_1_1PluginInterface.html#ab196698d87ba2c1b65b3f806d613576b">Archiver::registerPlugin</a>(<a class="code" href="../../d7/d23/namespacecasadi.html#a32b177c92f4f7f27d480c77893e946ff">casadi_register_archiver_libzip</a>);</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;   }</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160; </div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160; </div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;} <span class="comment">// namespace casadi</span></div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    }</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160; </div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;   <span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span></div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;   <span class="keywordtype">int</span> CASADI_ARCHIVER_LIBZIP_EXPORT</div>
+<div class="line"><a name="l00341"></a><span class="lineno"><a class="line" href="../../d7/d23/namespacecasadi.html#a32b177c92f4f7f27d480c77893e946ff">  341</a></span>&#160;   <a class="code" href="../../d7/d23/namespacecasadi.html#a32b177c92f4f7f27d480c77893e946ff">casadi_register_archiver_libzip</a>(Archiver::Plugin* plugin) {</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;     plugin-&gt;name = <span class="stringliteral">&quot;libzip&quot;</span>;</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;     plugin-&gt;doc = <a class="code" href="../../d5/df4/classcasadi_1_1Libzip.html#afdb8fcb2210c19e5136bd5286c5724f9">Libzip::meta_doc</a>.c_str();</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;     plugin-&gt;version = CASADI_VERSION;</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;     plugin-&gt;exposed.unpack = &amp;<a class="code" href="../../d7/d23/namespacecasadi.html#a578a7defd800c589f5c7b184e8aee24a">extract_zip_from_path</a>;</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;     plugin-&gt;exposed.unpack_from_stringstream = &amp;<a class="code" href="../../d7/d23/namespacecasadi.html#aeb2cd8a3dc387cfc45d08314661163e0">extract_zip_from_stringstream</a>;</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;     plugin-&gt;exposed.pack = &amp;<a class="code" href="../../d7/d23/namespacecasadi.html#a50dba143e767cd4b77cc03aa4efe32d8">zip_to_path</a>;</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;     plugin-&gt;exposed.pack_to_stream = &amp;<a class="code" href="../../d7/d23/namespacecasadi.html#a9598940f813a1288654829ccc0a1f4a2">zip_to_stream</a>;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;     <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;   }</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160; </div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;   <span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span></div>
+<div class="line"><a name="l00353"></a><span class="lineno"><a class="line" href="../../d7/d23/namespacecasadi.html#aee69d79f7669e167e84e6391e5f22369">  353</a></span>&#160;   <span class="keywordtype">void</span> CASADI_ARCHIVER_LIBZIP_EXPORT <a class="code" href="../../d7/d23/namespacecasadi.html#aee69d79f7669e167e84e6391e5f22369">casadi_load_archiver_libzip</a>() {</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;     <a class="code" href="../../d4/d37/classcasadi_1_1PluginInterface.html#ab196698d87ba2c1b65b3f806d613576b">Archiver::registerPlugin</a>(<a class="code" href="../../d7/d23/namespacecasadi.html#a32b177c92f4f7f27d480c77893e946ff">casadi_register_archiver_libzip</a>);</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;   }</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160; </div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160; </div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;} <span class="comment">// namespace casadi</span></div>
+<div class="ttc" id="aclasscasadi_1_1Filesystem_html_ad4e8d226d2b4dd2262b4ad28f820aacc"><div class="ttname"><a href="../../d3/d82/classcasadi_1_1Filesystem.html#ad4e8d226d2b4dd2262b4ad28f820aacc">casadi::Filesystem::ofstream_ptr</a></div><div class="ttdeci">static std::unique_ptr&lt; std::ostream &gt; ofstream_ptr(const std::string &amp;path, std::ios_base::openmode mode=std::ios_base::out)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d8f/filesystem_8cpp_source.html#l00115">filesystem.cpp:115</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1Filesystem_html_ad58b613088e0ae642ecf403e800b6d04"><div class="ttname"><a href="../../d3/d82/classcasadi_1_1Filesystem.html#ad58b613088e0ae642ecf403e800b6d04">casadi::Filesystem::ifstream_ptr</a></div><div class="ttdeci">static std::unique_ptr&lt; std::istream &gt; ifstream_ptr(const std::string &amp;path, std::ios_base::openmode mode=std::ios_base::in, bool fail=true)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d8f/filesystem_8cpp_source.html#l00135">filesystem.cpp:135</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1Filesystem_html_affb851ba4e2bb8a6081f4b9e81a64672"><div class="ttname"><a href="../../d3/d82/classcasadi_1_1Filesystem.html#affb851ba4e2bb8a6081f4b9e81a64672">casadi::Filesystem::assert_enabled</a></div><div class="ttdeci">static void assert_enabled()</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d8f/filesystem_8cpp_source.html#l00087">filesystem.cpp:87</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1Libzip_html_afdb8fcb2210c19e5136bd5286c5724f9"><div class="ttname"><a href="../../d5/df4/classcasadi_1_1Libzip.html#afdb8fcb2210c19e5136bd5286c5724f9">casadi::Libzip::meta_doc</a></div><div class="ttdeci">static const std::string meta_doc</div><div class="ttdoc">A documentation string.</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1e/libzip_8hpp_source.html#l00053">libzip.hpp:53</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1PluginInterface_html_a6eaa8ad2519082026cc7c27bd143ffb2"><div class="ttname"><a href="../../d4/d37/classcasadi_1_1PluginInterface.html#a6eaa8ad2519082026cc7c27bd143ffb2">casadi::PluginInterface&lt; Filesystem &gt;::getPlugin</a></div><div class="ttdeci">static Plugin &amp; getPlugin(const std::string &amp;pname)</div><div class="ttdoc">Load and get the creator function.</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d3c/plugin__interface_8hpp_source.html#l00102">plugin_interface.hpp:291</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1PluginInterface_html_ab196698d87ba2c1b65b3f806d613576b"><div class="ttname"><a href="../../d4/d37/classcasadi_1_1PluginInterface.html#ab196698d87ba2c1b65b3f806d613576b">casadi::PluginInterface&lt; Archiver &gt;::registerPlugin</a></div><div class="ttdeci">static void registerPlugin(const Plugin &amp;plugin, bool needs_lock=true)</div><div class="ttdoc">Register an integrator in the factory.</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d3c/plugin__interface_8hpp_source.html#l00096">plugin_interface.hpp:274</a></div></div>
 <div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d03/archiver_8cpp_source.html#l00028">archiver.cpp:28</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_a2374d2cd69297ee44b5ed1ca90e9e5bc"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">casadi::uerr</a></div><div class="ttdeci">std::ostream &amp; uerr()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dd5/casadi__logger_8cpp_source.html#l00067">casadi_logger.cpp:67</a></div></div>
-<div class="ttc" id="anamespacecasadi_html_a32b177c92f4f7f27d480c77893e946ff"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a32b177c92f4f7f27d480c77893e946ff">casadi::casadi_register_archiver_libzip</a></div><div class="ttdeci">int CASADI_ARCHIVER_LIBZIP_EXPORT casadi_register_archiver_libzip(Archiver::Plugin *plugin)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d77/libzip_8cpp_source.html#l00338">libzip.cpp:338</a></div></div>
-<div class="ttc" id="anamespacecasadi_html_a50dba143e767cd4b77cc03aa4efe32d8"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a50dba143e767cd4b77cc03aa4efe32d8">casadi::zip_to_path</a></div><div class="ttdeci">bool zip_to_path(const std::string &amp;dir_path, const std::string &amp;zip_path)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d77/libzip_8cpp_source.html#l00297">libzip.cpp:297</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_a32b177c92f4f7f27d480c77893e946ff"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a32b177c92f4f7f27d480c77893e946ff">casadi::casadi_register_archiver_libzip</a></div><div class="ttdeci">int CASADI_ARCHIVER_LIBZIP_EXPORT casadi_register_archiver_libzip(Archiver::Plugin *plugin)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d77/libzip_8cpp_source.html#l00341">libzip.cpp:341</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_a50dba143e767cd4b77cc03aa4efe32d8"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a50dba143e767cd4b77cc03aa4efe32d8">casadi::zip_to_path</a></div><div class="ttdeci">bool zip_to_path(const std::string &amp;dir_path, const std::string &amp;zip_path)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d77/libzip_8cpp_source.html#l00299">libzip.cpp:299</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_a578a7defd800c589f5c7b184e8aee24a"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a578a7defd800c589f5c7b184e8aee24a">casadi::extract_zip_from_path</a></div><div class="ttdeci">bool extract_zip_from_path(const std::string &amp;zip_path, const std::string &amp;output_dir)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d77/libzip_8cpp_source.html#l00057">libzip.cpp:57</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_a5f8b5eda6c6b1f2df8d1990f1b5ed517"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a5f8b5eda6c6b1f2df8d1990f1b5ed517">casadi::extract_zip_internal</a></div><div class="ttdeci">bool extract_zip_internal(zip_t *za, const std::string &amp;output_dir)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d77/libzip_8cpp_source.html#l00067">libzip.cpp:67</a></div></div>
-<div class="ttc" id="anamespacecasadi_html_a60a5bfb63690525b0de7c4785110366e"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a60a5bfb63690525b0de7c4785110366e">casadi::add_file_to_zip</a></div><div class="ttdeci">bool add_file_to_zip(zip_t *archive, const std::string &amp;file_path, const std::string &amp;archive_name)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d77/libzip_8cpp_source.html#l00125">libzip.cpp:125</a></div></div>
-<div class="ttc" id="anamespacecasadi_html_a9598940f813a1288654829ccc0a1f4a2"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a9598940f813a1288654829ccc0a1f4a2">casadi::zip_to_stream</a></div><div class="ttdeci">bool zip_to_stream(const std::string &amp;dir, std::ostream &amp;output)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d77/libzip_8cpp_source.html#l00186">libzip.cpp:186</a></div></div>
-<div class="ttc" id="anamespacecasadi_html_a9968494051ea2e6c7f58d6972fabc59f"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a9968494051ea2e6c7f58d6972fabc59f">casadi::add_directory_recursive</a></div><div class="ttdeci">void add_directory_recursive(zip_t *archive, const std::string &amp;base_dir, const std::string &amp;current_dir, const std::string &amp;rel_prefix)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d77/libzip_8cpp_source.html#l00168">libzip.cpp:168</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_a60a5bfb63690525b0de7c4785110366e"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a60a5bfb63690525b0de7c4785110366e">casadi::add_file_to_zip</a></div><div class="ttdeci">bool add_file_to_zip(zip_t *archive, const std::string &amp;file_path, const std::string &amp;archive_name)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d77/libzip_8cpp_source.html#l00126">libzip.cpp:126</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_a9598940f813a1288654829ccc0a1f4a2"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a9598940f813a1288654829ccc0a1f4a2">casadi::zip_to_stream</a></div><div class="ttdeci">bool zip_to_stream(const std::string &amp;dir, std::ostream &amp;output)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d77/libzip_8cpp_source.html#l00188">libzip.cpp:188</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_a9968494051ea2e6c7f58d6972fabc59f"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a9968494051ea2e6c7f58d6972fabc59f">casadi::add_directory_recursive</a></div><div class="ttdeci">void add_directory_recursive(zip_t *archive, const std::string &amp;base_dir, const std::string &amp;current_dir, const std::string &amp;rel_prefix)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d77/libzip_8cpp_source.html#l00170">libzip.cpp:170</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_aeb2cd8a3dc387cfc45d08314661163e0"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#aeb2cd8a3dc387cfc45d08314661163e0">casadi::extract_zip_from_stringstream</a></div><div class="ttdeci">bool extract_zip_from_stringstream(std::stringstream &amp;src, const std::string &amp;output_dir)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d77/libzip_8cpp_source.html#l00034">libzip.cpp:34</a></div></div>
-<div class="ttc" id="anamespacecasadi_html_aee69d79f7669e167e84e6391e5f22369"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#aee69d79f7669e167e84e6391e5f22369">casadi::casadi_load_archiver_libzip</a></div><div class="ttdeci">void CASADI_ARCHIVER_LIBZIP_EXPORT casadi_load_archiver_libzip()</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d77/libzip_8cpp_source.html#l00350">libzip.cpp:350</a></div></div>
-<div class="ttc" id="anamespacecasadi_html_af11d6b17282ad509f875a3586d671ea0"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#af11d6b17282ad509f875a3586d671ea0">casadi::zip_to_path2</a></div><div class="ttdeci">bool zip_to_path2(const std::string &amp;dir_path, const std::string &amp;zip_path)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d77/libzip_8cpp_source.html#l00307">libzip.cpp:307</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_aee69d79f7669e167e84e6391e5f22369"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#aee69d79f7669e167e84e6391e5f22369">casadi::casadi_load_archiver_libzip</a></div><div class="ttdeci">void CASADI_ARCHIVER_LIBZIP_EXPORT casadi_load_archiver_libzip()</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d77/libzip_8cpp_source.html#l00353">libzip.cpp:353</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_af11d6b17282ad509f875a3586d671ea0"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#af11d6b17282ad509f875a3586d671ea0">casadi::zip_to_path2</a></div><div class="ttdeci">bool zip_to_path2(const std::string &amp;dir_path, const std::string &amp;zip_path)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d77/libzip_8cpp_source.html#l00310">libzip.cpp:310</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </body>
 </html>

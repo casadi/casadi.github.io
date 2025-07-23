@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/9763952a9aa742c5be3b53dc1a1d033a57235328" id="9763952a9aa742c5be3b53dc1a1d033a57235328" >revision 3.7.1</a></div>
   </td>
  </tr>
  </tbody>
@@ -83,6 +83,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d45/classcasadi_1_1CasadiMeta.html">CasadiMeta</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Collects global CasADi meta information.  <a href="../../d1/d45/classcasadi_1_1CasadiMeta.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/daa/classcasadi_1_1StreamStateGuard.html">StreamStateGuard</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/da2/classcasadi_1_1CodeGenerator.html">CodeGenerator</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper class for C code generation.  <a href="../../d1/da2/classcasadi_1_1CodeGenerator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -117,6 +119,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d35/classcasadi_1_1GenericShared.html">GenericShared</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d7e/classcasadi_1_1WeakCache.html">WeakCache</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/de2/classcasadi_1_1RevWeakCache.html">RevWeakCache</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d82/classcasadi_1_1GenericType.html">GenericType</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generic data type, can hold different types such as bool, casadi_int, std::string etc.  <a href="../../d6/d82/classcasadi_1_1GenericType.html#details">More...</a><br /></td></tr>
@@ -403,7 +407,9 @@ Enumerations</h2></td></tr>
 &#160;&#160;<a class="el" href="../../d7/d23/namespacecasadi.html#afc8865d476afd0264d50d40b62b96eb2a3a15441f47f6654db4c73d93321674cb">DDEF</a>
 , <a class="el" href="../../d7/d23/namespacecasadi.html#afc8865d476afd0264d50d40b62b96eb2a7abdcead58c8b0aaf94fbc30748dcfbf">WDEF</a>
 , <a class="el" href="../../d7/d23/namespacecasadi.html#afc8865d476afd0264d50d40b62b96eb2a57cec4137b614c87cb4e24a3d003a3e0">Y</a>
-, <a class="el" href="../../d7/d23/namespacecasadi.html#afc8865d476afd0264d50d40b62b96eb2a179ab5ea43d3a0dc9dd0c67e150d7810">NUMEL</a>
+, <a class="el" href="../../d7/d23/namespacecasadi.html#afc8865d476afd0264d50d40b62b96eb2a79521cdea3eff83f517d31c49f9082f5">RATE</a>
+, <br />
+&#160;&#160;<a class="el" href="../../d7/d23/namespacecasadi.html#afc8865d476afd0264d50d40b62b96eb2a179ab5ea43d3a0dc9dd0c67e150d7810">NUMEL</a>
 <br />
  }</td></tr>
 <tr class="separator:afc8865d476afd0264d50d40b62b96eb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1597,6 +1603,7 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="afc8865d476afd0264d50d40b62b96eb2a3a15441f47f6654db4c73d93321674cb"></a>DDEF&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="afc8865d476afd0264d50d40b62b96eb2a7abdcead58c8b0aaf94fbc30748dcfbf"></a>WDEF&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="afc8865d476afd0264d50d40b62b96eb2a57cec4137b614c87cb4e24a3d003a3e0"></a>Y&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afc8865d476afd0264d50d40b62b96eb2a79521cdea3eff83f517d31c49f9082f5"></a>RATE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="afc8865d476afd0264d50d40b62b96eb2a179ab5ea43d3a0dc9dd0c67e150d7810"></a>NUMEL&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
@@ -4058,7 +4065,7 @@ template&lt;&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d18/casadi__misc_8hpp_source.html#l00440">440</a> of file <a class="el" href="../../dc/d18/casadi__misc_8hpp_source.html">casadi_misc.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/d18/casadi__misc_8hpp_source.html#l00454">454</a> of file <a class="el" href="../../dc/d18/casadi__misc_8hpp_source.html">casadi_misc.hpp</a>.</p>
 
 </div>
 </div>
@@ -4096,7 +4103,7 @@ template&lt;&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d18/casadi__misc_8hpp_source.html#l00429">429</a> of file <a class="el" href="../../dc/d18/casadi__misc_8hpp_source.html">casadi_misc.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/d18/casadi__misc_8hpp_source.html#l00443">443</a> of file <a class="el" href="../../dc/d18/casadi__misc_8hpp_source.html">casadi_misc.hpp</a>.</p>
 
 </div>
 </div>

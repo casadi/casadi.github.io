@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/9763952a9aa742c5be3b53dc1a1d033a57235328" id="9763952a9aa742c5be3b53dc1a1d033a57235328" >revision 3.7.1</a></div>
   </td>
  </tr>
  </tbody>
@@ -179,9 +179,9 @@ General information</h3>
 <tr>
 <td>dump_format</td><td>OT_STRING</td><td>Choose file format to dump matrices. See <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e">DM.from_file</a> [mtx]</td><td>casadi::FunctionInternal </td></tr>
 <tr>
-<td>dump_in</td><td>OT_BOOL</td><td>Dump numerical values of inputs to file (readable with <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e">DM.from_file</a>) [default: false]</td><td>casadi::FunctionInternal </td></tr>
+<td>dump_in</td><td>OT_BOOL</td><td>Dump numerical values of inputs to file (readable with <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e">DM.from_file</a>) [default: false] A counter is used to generate unique names. The counter may be reset using reset_dump_count.</td><td>casadi::FunctionInternal </td></tr>
 <tr>
-<td>dump_out</td><td>OT_BOOL</td><td>Dump numerical values of outputs to file (readable with <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e">DM.from_file</a>) [default: false]</td><td>casadi::FunctionInternal </td></tr>
+<td>dump_out</td><td>OT_BOOL</td><td>Dump numerical values of outputs to file (readable with <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e">DM.from_file</a>) [default: false] A counter is used to generate unique names. The counter may be reset using reset_dump_count.</td><td>casadi::FunctionInternal </td></tr>
 <tr>
 <td>enable_fd</td><td>OT_BOOL</td><td>Enable derivative calculation by finite differencing. [default: false]]</td><td>casadi::FunctionInternal </td></tr>
 <tr>
@@ -262,6 +262,8 @@ General information</h3>
 <td>post_expand_options</td><td>OT_DICT</td><td>Options to be passed to post-construction expansion. Default: empty</td><td>casadi::FunctionInternal </td></tr>
 <tr>
 <td>postpone_expand</td><td>OT_BOOL</td><td>When expand is active, postpone it until after creation of derivatives. Default: False</td><td>casadi::OracleFunction </td></tr>
+<tr>
+<td>print_canonical</td><td>OT_BOOL</td><td>When printing numerical matrices, use a format that is exact and reproducible in generated C code.</td><td>casadi::FunctionInternal </td></tr>
 <tr>
 <td>print_in</td><td>OT_BOOL</td><td>Print numerical values of inputs [default: false]</td><td>casadi::FunctionInternal </td></tr>
 <tr>
@@ -493,7 +495,7 @@ List of plugins</h3>
 <dl class="section user"><dt></dt><dd></dd></dl>
 <p>When in warmstart mode, output NLPSOL_LAM_X may be used as input</p>
 <p>NOTE: Even when max_iter == 0, it is not guaranteed that input(NLPSOL_X0) == output(NLPSOL_X). Indeed if bounds on X or constraints are unmet, they will differ.</p>
-<p>For a good tutorial on BONMIN, see <a href="http://drops.dagstuhl.de/volltexte/2009/2089/pdf/09061.WaechterAndreas.Paper.2089.pdf">http://drops.dagstuhl.de/volltexte/2009/2089/pdf/09061.WaechterAndreas.Paper.2089.pdf</a></p>
+<p>For a good tutorial on BONMIN, see <a href="https://drops.dagstuhl.de/storage/16dagstuhl-seminar-proceedings/dsp-vol09061/DagSemProc.09061.16/DagSemProc.09061.16.pdf">https://drops.dagstuhl.de/storage/16dagstuhl-seminar-proceedings/dsp-vol09061/DagSemProc.09061.16/DagSemProc.09061.16.pdf</a></p>
 <p>A good resource about the algorithms in BONMIN is: Wachter and L. T. Biegler, On the Implementation of an Interior-Point Filter Line-Search Algorithm for Large-Scale Nonlinear Programming, Mathematical Programming 106(1), pp. 25-57, 2006 (As Research Report RC 23149, IBM T. J. Watson Research Center, Yorktown, USA</p>
 <p>Caveats:</p><ul>
 <li><p class="startli">with default options, multipliers for the decision variables are wrong for equality constraints. Change the 'fixed_variable_treatment' to 'make_constraint' or 'relax_bounds' to obtain correct results.</p>
@@ -591,7 +593,7 @@ List of plugins</h3>
 <dl class="section user"><dt></dt><dd></dd></dl>
 <p>When in warmstart mode, output NLPSOL_LAM_X may be used as input</p>
 <p>NOTE: Even when max_iter == 0, it is not guaranteed that input(NLPSOL_X0) == output(NLPSOL_X). Indeed if bounds on X or constraints are unmet, they will differ.</p>
-<p>For a good tutorial on IPOPT, see <a href="http://drops.dagstuhl.de/volltexte/2009/2089/pdf/09061.WaechterAndreas.Paper.2089.pdf">http://drops.dagstuhl.de/volltexte/2009/2089/pdf/09061.WaechterAndreas.Paper.2089.pdf</a></p>
+<p>For a good tutorial on IPOPT, see <a href="https://drops.dagstuhl.de/storage/16dagstuhl-seminar-proceedings/dsp-vol09061/DagSemProc.09061.16/DagSemProc.09061.16.pdf">https://drops.dagstuhl.de/storage/16dagstuhl-seminar-proceedings/dsp-vol09061/DagSemProc.09061.16/DagSemProc.09061.16.pdf</a></p>
 <p>A good resource about the algorithms in IPOPT is: Wachter and L. T. Biegler, On the Implementation of an Interior-Point Filter Line-Search Algorithm for Large-Scale Nonlinear Programming, Mathematical Programming 106(1), pp. 25-57, 2006 (As Research Report RC 23149, IBM T. J. Watson Research Center, Yorktown, USA</p>
 <p>Caveats:</p><ul>
 <li><p class="startli">with default options, multipliers for the decision variables are wrong for equality constraints. Change the 'fixed_variable_treatment' to 'make_constraint' or 'relax_bounds' to obtain correct results.</p>

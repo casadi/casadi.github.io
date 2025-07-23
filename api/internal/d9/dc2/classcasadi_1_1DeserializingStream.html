@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/1f5f284959d3c7591033b4ff03947ca7a44b3b11" id="1f5f284959d3c7591033b4ff03947ca7a44b3b11" >revision 3.7.0</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/9763952a9aa742c5be3b53dc1a1d033a57235328" id="9763952a9aa742c5be3b53dc1a1d033a57235328" >revision 3.7.1</a></div>
   </td>
  </tr>
  </tbody>
@@ -80,6 +80,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a0dd46a93264de9cc054588ea95c17df3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4e828ab2adf5790d804d1e5dcd1e34ff"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a4e828ab2adf5790d804d1e5dcd1e34ff">DeserializingStream</a> (const <a class="el" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html">DeserializingStream</a> &amp;)=delete</td></tr>
 <tr class="separator:a4e828ab2adf5790d804d1e5dcd1e34ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcc900116fc9844fe7e9ab9cf647be98"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#abcc900116fc9844fe7e9ab9cf647be98">setup</a> ()</td></tr>
+<tr class="separator:abcc900116fc9844fe7e9ab9cf647be98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37a0db52a1ec953e915fba2905c20384"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a> (<a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html">Sparsity</a> &amp;e)</td></tr>
 <tr class="memdesc:a37a0db52a1ec953e915fba2905c20384"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reconstruct an object from the input stream.  <a href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">More...</a><br /></td></tr>
 <tr class="separator:a37a0db52a1ec953e915fba2905c20384"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -170,36 +172,16 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00047">47</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                                                             : in(in_s), debug_(<span class="keyword">false</span>) {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      casadi_assert(in_s.good(), <span class="stringliteral">&quot;Invalid input stream. If you specified an input file, &quot;</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="stringliteral">&quot;make sure it exists relative to the current directory.&quot;</span>);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      <span class="comment">// Sanity check</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      casadi_int check;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(check);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      casadi_assert(check==<a class="code" href="../../d7/d23/namespacecasadi.html#a4826f8f5cc1235afdee93d0eaa9645ba">serialization_check</a>,</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="stringliteral">&quot;DeserializingStream sanity check failed. &quot;</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="stringliteral">&quot;Expected &quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(<a class="code" href="../../d7/d23/namespacecasadi.html#a4826f8f5cc1235afdee93d0eaa9645ba">serialization_check</a>) + <span class="stringliteral">&quot;, but got &quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(check) + <span class="stringliteral">&quot;.&quot;</span>);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      <span class="comment">// API version check</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      casadi_int v;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(v);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      casadi_assert(v==<a class="code" href="../../d7/d23/namespacecasadi.html#a64188ba8d44f88cf299e4cce7f67c708">serialization_protocol_version</a>,</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="stringliteral">&quot;Serialization protocol is not compatible. &quot;</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="stringliteral">&quot;Got version &quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(v) + <span class="stringliteral">&quot;, while &quot;</span> +</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(<a class="code" href="../../d7/d23/namespacecasadi.html#a64188ba8d44f88cf299e4cce7f67c708">serialization_protocol_version</a>) + <span class="stringliteral">&quot; was expected.&quot;</span>);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      <span class="keywordtype">bool</span> debug;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(debug);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;      debug_ = debug;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div>
-<div class="ttc" id="aclasscasadi_1_1DeserializingStream_html_a37a0db52a1ec953e915fba2905c20384"><div class="ttname"><a href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">casadi::DeserializingStream::unpack</a></div><div class="ttdeci">void unpack(Sparsity &amp;e)</div><div class="ttdoc">Reconstruct an object from the input stream.</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d62/serializing__stream_8cpp_source.html#l00239">serializing_stream.cpp:239</a></div></div>
-<div class="ttc" id="anamespacecasadi_html_a4826f8f5cc1235afdee93d0eaa9645ba"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a4826f8f5cc1235afdee93d0eaa9645ba">casadi::serialization_check</a></div><div class="ttdeci">static casadi_int serialization_check</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d62/serializing__stream_8cpp_source.html#l00045">serializing_stream.cpp:45</a></div></div>
-<div class="ttc" id="anamespacecasadi_html_a64188ba8d44f88cf299e4cce7f67c708"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a64188ba8d44f88cf299e4cce7f67c708">casadi::serialization_protocol_version</a></div><div class="ttdeci">static casadi_int serialization_protocol_version</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d62/serializing__stream_8cpp_source.html#l00044">serializing_stream.cpp:44</a></div></div>
-<div class="ttc" id="anamespacecasadi_html_a88082fbf80560c888949bb765d9ccea0"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">casadi::str</a></div><div class="ttdeci">std::string str(const T &amp;v)</div><div class="ttdoc">String representation, any type.</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d59/casadi__common_8hpp_source.html#l00247">casadi_common.hpp:247</a></div></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;      casadi_assert(in_s.good(), <span class="stringliteral">&quot;Invalid input stream. If you specified an input file, &quot;</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="stringliteral">&quot;make sure it exists relative to the current directory.&quot;</span>);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;      <span class="keywordflow">if</span> (in_s.peek() != std::char_traits&lt;char&gt;::eof()) {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#abcc900116fc9844fe7e9ab9cf647be98">setup</a>();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
+<div class="ttc" id="aclasscasadi_1_1DeserializingStream_html_abcc900116fc9844fe7e9ab9cf647be98"><div class="ttname"><a href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#abcc900116fc9844fe7e9ab9cf647be98">casadi::DeserializingStream::setup</a></div><div class="ttdeci">void setup()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d62/serializing__stream_8cpp_source.html#l00056">serializing_stream.cpp:56</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00045">casadi::serialization_check</a>, <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00044">casadi::serialization_protocol_version</a>, <a class="el" href="../../dc/d59/casadi__common_8hpp_source.html#l00247">casadi::str()</a>, and <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00239">unpack()</a>.</p>
+<p class="reference">References <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00056">setup()</a>.</p>
 
 </div>
 </div>
@@ -246,10 +228,10 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00440">440</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;                                                         {</div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    shared_map_ = &amp;s.shared_map_;</div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00446">446</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;                                                         {</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;    shared_map_ = &amp;s.shared_map_;</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -268,11 +250,60 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00448">448</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;                                  {</div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;    nodes_.clear();</div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00454">454</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;                                  {</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    nodes_.clear();</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;  }</div>
 </div><!-- fragment -->
+</div>
+</div>
+<a id="abcc900116fc9844fe7e9ab9cf647be98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcc900116fc9844fe7e9ab9cf647be98">&#9670;&nbsp;</a></span>setup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void casadi::DeserializingStream::setup </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00056">56</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                    {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      <span class="keywordflow">if</span> (set_up_) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      <span class="comment">// Sanity check</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      casadi_int check;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(check);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      casadi_assert(check==<a class="code" href="../../d7/d23/namespacecasadi.html#a4826f8f5cc1235afdee93d0eaa9645ba">serialization_check</a>,</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="stringliteral">&quot;DeserializingStream sanity check failed. &quot;</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="stringliteral">&quot;Expected &quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(<a class="code" href="../../d7/d23/namespacecasadi.html#a4826f8f5cc1235afdee93d0eaa9645ba">serialization_check</a>) + <span class="stringliteral">&quot;, but got &quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(check) + <span class="stringliteral">&quot;.&quot;</span>);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      <span class="comment">// API version check</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      casadi_int v;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(v);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      casadi_assert(v==<a class="code" href="../../d7/d23/namespacecasadi.html#a64188ba8d44f88cf299e4cce7f67c708">serialization_protocol_version</a>,</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="stringliteral">&quot;Serialization protocol is not compatible. &quot;</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="stringliteral">&quot;Got version &quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(v) + <span class="stringliteral">&quot;, while &quot;</span> +</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(<a class="code" href="../../d7/d23/namespacecasadi.html#a64188ba8d44f88cf299e4cce7f67c708">serialization_protocol_version</a>) + <span class="stringliteral">&quot; was expected.&quot;</span>);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      <span class="keywordtype">bool</span> debug;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(debug);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      debug_ = debug;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      set_up_ = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
+<div class="ttc" id="aclasscasadi_1_1DeserializingStream_html_a37a0db52a1ec953e915fba2905c20384"><div class="ttname"><a href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">casadi::DeserializingStream::unpack</a></div><div class="ttdeci">void unpack(Sparsity &amp;e)</div><div class="ttdoc">Reconstruct an object from the input stream.</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d62/serializing__stream_8cpp_source.html#l00245">serializing_stream.cpp:245</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_a4826f8f5cc1235afdee93d0eaa9645ba"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a4826f8f5cc1235afdee93d0eaa9645ba">casadi::serialization_check</a></div><div class="ttdeci">static casadi_int serialization_check</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d62/serializing__stream_8cpp_source.html#l00045">serializing_stream.cpp:45</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_a64188ba8d44f88cf299e4cce7f67c708"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a64188ba8d44f88cf299e4cce7f67c708">casadi::serialization_protocol_version</a></div><div class="ttdeci">static casadi_int serialization_protocol_version</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d62/serializing__stream_8cpp_source.html#l00044">serializing_stream.cpp:44</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_a88082fbf80560c888949bb765d9ccea0"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">casadi::str</a></div><div class="ttdeci">std::string str(const T &amp;v)</div><div class="ttdoc">String representation, any type.</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d59/casadi__common_8hpp_source.html#l00247">casadi_common.hpp:247</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00045">casadi::serialization_check</a>, <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00044">casadi::serialization_protocol_version</a>, <a class="el" href="../../dc/d59/casadi__common_8hpp_source.html#l00247">casadi::str()</a>, and <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00245">unpack()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00047">DeserializingStream()</a>.</p>
+
 </div>
 </div>
 <a id="ab1d90ebde19d1847c6b3f865da004fd4"></a>
@@ -291,15 +322,15 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00177">177</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                                            {</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;      assert_decoration(<span class="charliteral">&#39;b&#39;</span>);</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;      <span class="keywordtype">char</span> n;</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;      <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(n);</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;      e = n;</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00183">183</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                                            {</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;      assert_decoration(<span class="charliteral">&#39;b&#39;</span>);</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;      <span class="keywordtype">char</span> n;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;      <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(n);</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;      e = n;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00239">unpack()</a>.</p>
+<p class="reference">References <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00245">unpack()</a>.</p>
 
 </div>
 </div>
@@ -319,17 +350,17 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00111">111</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                                                  {</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;      assert_decoration(<span class="charliteral">&#39;J&#39;</span>);</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;      int64_t n;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;      <span class="keywordtype">char</span>* c = <span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(&amp;n);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j=0;j&lt;8;++j) <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(c[j]);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;      e = n;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00117">117</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                                                  {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;      assert_decoration(<span class="charliteral">&#39;J&#39;</span>);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;      int64_t n;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;      <span class="keywordtype">char</span>* c = <span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(&amp;n);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j=0;j&lt;8;++j) <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(c[j]);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;      e = n;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00239">unpack()</a>.</p>
+<p class="reference">References <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00245">unpack()</a>.</p>
 
 </div>
 </div>
@@ -349,15 +380,15 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00189">189</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                                            {</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;      <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> ref = <span class="charliteral">&#39;a&#39;</span>;</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;      in.get(e);</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;      <span class="keywordtype">char</span> t;</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;      in.get(t);</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;      e = (<span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>&amp;<span class="keyword">&gt;</span>(e)-ref) +</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;          ((<span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>&amp;<span class="keyword">&gt;</span>(t)-ref) &lt;&lt; 4);</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00195">195</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                                            {</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;      <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> ref = <span class="charliteral">&#39;a&#39;</span>;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;      in.get(e);</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;      <span class="keywordtype">char</span> t;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;      in.get(t);</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;      e = (<span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>&amp;<span class="keyword">&gt;</span>(e)-ref) +</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;          ((<span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>&amp;<span class="keyword">&gt;</span>(t)-ref) &lt;&lt; 4);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -397,15 +428,15 @@ template&lt;class T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d45/serializing__stream_8hpp_source.html#l00145">145</a> of file <a class="el" href="../../dd/d45/serializing__stream_8hpp_source.html">serializing_stream.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                                              {</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;      <span class="keywordflow">if</span> (debug_) {</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        std::string d;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(d);</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        casadi_assert(d==descr, <span class="stringliteral">&quot;Mismatch: &#39;&quot;</span> + descr + <span class="stringliteral">&quot;&#39; expected, got &#39;&quot;</span> + d + <span class="stringliteral">&quot;&#39;.&quot;</span>);</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;      }</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;      <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(e);</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../dd/d45/serializing__stream_8hpp_source.html#l00147">147</a> of file <a class="el" href="../../dd/d45/serializing__stream_8hpp_source.html">serializing_stream.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                                              {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;      <span class="keywordflow">if</span> (debug_) {</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        std::string d;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(d);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        casadi_assert(d==descr, <span class="stringliteral">&quot;Mismatch: &#39;&quot;</span> + descr + <span class="stringliteral">&quot;&#39; expected, got &#39;&quot;</span> + d + <span class="stringliteral">&quot;&#39;.&quot;</span>);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;      }</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;      <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(e);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -425,14 +456,14 @@ template&lt;class T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00222">222</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                                              {</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;      assert_decoration(<span class="charliteral">&#39;d&#39;</span>);</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;      <span class="keywordtype">char</span>* c = <span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(&amp;e);</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j=0;j&lt;8;++j) <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(c[j]);</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00228">228</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                                              {</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;      assert_decoration(<span class="charliteral">&#39;d&#39;</span>);</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;      <span class="keywordtype">char</span>* c = <span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(&amp;e);</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j=0;j&lt;8;++j) <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(c[j]);</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00239">unpack()</a>.</p>
+<p class="reference">References <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00245">unpack()</a>.</p>
 
 </div>
 </div>
@@ -452,11 +483,11 @@ template&lt;class T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00289">289</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                                           {</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;      assert_decoration(<span class="charliteral">&#39;F&#39;</span>);</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;      shared_unpack&lt;Fmu, FmuInternal&gt;(e);</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00295">295</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                                           {</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;      assert_decoration(<span class="charliteral">&#39;F&#39;</span>);</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;      shared_unpack&lt;Fmu, FmuInternal&gt;(e);</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -476,11 +507,11 @@ template&lt;class T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00259">259</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                                                {</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;      assert_decoration(<span class="charliteral">&#39;F&#39;</span>);</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;      shared_unpack&lt;Function, FunctionInternal&gt;(e);</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00265">265</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                                                {</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;      assert_decoration(<span class="charliteral">&#39;F&#39;</span>);</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;      shared_unpack&lt;Function, FunctionInternal&gt;(e);</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -500,11 +531,11 @@ template&lt;class T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00309">309</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                                                   {</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;      assert_decoration(<span class="charliteral">&#39;G&#39;</span>);</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;      shared_unpack&lt;GenericType, SharedObjectInternal&gt;(e);</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00315">315</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                                                   {</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;      assert_decoration(<span class="charliteral">&#39;G&#39;</span>);</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;      shared_unpack&lt;GenericType, SharedObjectInternal&gt;(e);</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -524,11 +555,11 @@ template&lt;class T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00269">269</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                                                {</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;      assert_decoration(<span class="charliteral">&#39;M&#39;</span>);</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;      shared_unpack&lt;Importer, ImporterInternal&gt;(e);</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00275">275</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                                                {</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;      assert_decoration(<span class="charliteral">&#39;M&#39;</span>);</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;      shared_unpack&lt;Importer, ImporterInternal&gt;(e);</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -548,17 +579,17 @@ template&lt;class T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00143">143</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                                           {</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;      assert_decoration(<span class="charliteral">&#39;i&#39;</span>);</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;      int32_t n;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;      <span class="keywordtype">char</span>* c = <span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(&amp;n);</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j=0;j&lt;4;++j) <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(c[j]);</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;      e = n;</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00149">149</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                                           {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;      assert_decoration(<span class="charliteral">&#39;i&#39;</span>);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;      int32_t n;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;      <span class="keywordtype">char</span>* c = <span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(&amp;n);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j=0;j&lt;4;++j) <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(c[j]);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;      e = n;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00239">unpack()</a>.</p>
+<p class="reference">References <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00245">unpack()</a>.</p>
 
 </div>
 </div>
@@ -578,11 +609,11 @@ template&lt;class T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00299">299</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                                              {</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;      assert_decoration(<span class="charliteral">&#39;L&#39;</span>);</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;      shared_unpack&lt;Linsol, LinsolInternal&gt;(e);</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00305">305</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;                                              {</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;      assert_decoration(<span class="charliteral">&#39;L&#39;</span>);</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;      shared_unpack&lt;Linsol, LinsolInternal&gt;(e);</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -612,10 +643,10 @@ template&lt;class T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d45/serializing__stream_8hpp_source.html#l00092">92</a> of file <a class="el" href="../../dd/d45/serializing__stream_8hpp_source.html">serializing_stream.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                              {</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;      e = <a class="code" href="../../da/d45/classcasadi_1_1Matrix.html#a3e988ebd599c19c8789bf94db19ca554">Matrix&lt;T&gt;::deserialize</a>(*<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../dd/d45/serializing__stream_8hpp_source.html#l00094">94</a> of file <a class="el" href="../../dd/d45/serializing__stream_8hpp_source.html">serializing_stream.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                              {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;      e = <a class="code" href="../../da/d45/classcasadi_1_1Matrix.html#a3e988ebd599c19c8789bf94db19ca554">Matrix&lt;T&gt;::deserialize</a>(*<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    }</div>
 <div class="ttc" id="aclasscasadi_1_1Matrix_html_a3e988ebd599c19c8789bf94db19ca554"><div class="ttname"><a href="../../da/d45/classcasadi_1_1Matrix.html#a3e988ebd599c19c8789bf94db19ca554">casadi::Matrix::deserialize</a></div><div class="ttdeci">static Matrix&lt; Scalar &gt; deserialize(std::istream &amp;stream)</div><div class="ttdoc">Build Sparsity from serialization.</div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#a3e988ebd599c19c8789bf94db19ca554">casadi::Matrix&lt; Scalar &gt;::deserialize()</a>.</p>
@@ -638,11 +669,11 @@ template&lt;class T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00249">249</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                                          {</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;      assert_decoration(<span class="charliteral">&#39;X&#39;</span>);</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;      shared_unpack&lt;MX, MXNode&gt;(e);</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00255">255</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                                          {</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;      assert_decoration(<span class="charliteral">&#39;X&#39;</span>);</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;      shared_unpack&lt;MX, MXNode&gt;(e);</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -662,11 +693,11 @@ template&lt;class T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00279">279</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                                                {</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;      assert_decoration(<span class="charliteral">&#39;R&#39;</span>);</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;      shared_unpack&lt;Resource, ResourceInternal&gt;(e);</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00285">285</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                                                {</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;      assert_decoration(<span class="charliteral">&#39;R&#39;</span>);</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;      shared_unpack&lt;Resource, ResourceInternal&gt;(e);</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -686,17 +717,17 @@ template&lt;class T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00134">134</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                                              {</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;      assert_decoration(<span class="charliteral">&#39;K&#39;</span>);</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;      uint64_t n;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;      <span class="keywordtype">char</span>* c = <span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(&amp;n);</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j=0;j&lt;8;++j) <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(c[j]);</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;      e = n;</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00140">140</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                                              {</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;      assert_decoration(<span class="charliteral">&#39;K&#39;</span>);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;      uint64_t n;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;      <span class="keywordtype">char</span>* c = <span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(&amp;n);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j=0;j&lt;8;++j) <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(c[j]);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;      e = n;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00239">unpack()</a>.</p>
+<p class="reference">References <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00245">unpack()</a>.</p>
 
 </div>
 </div>
@@ -716,11 +747,11 @@ template&lt;class T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00347">347</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                                             {</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;      assert_decoration(<span class="charliteral">&#39;S&#39;</span>);</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;      e = <a class="code" href="../../d0/dec/classcasadi_1_1Slice.html#a9290c5a50c3f898559a2a4624ca42900">Slice::deserialize</a>(*<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00353">353</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;                                             {</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;      assert_decoration(<span class="charliteral">&#39;S&#39;</span>);</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;      e = <a class="code" href="../../d0/dec/classcasadi_1_1Slice.html#a9290c5a50c3f898559a2a4624ca42900">Slice::deserialize</a>(*<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    }</div>
 <div class="ttc" id="aclasscasadi_1_1Slice_html_a9290c5a50c3f898559a2a4624ca42900"><div class="ttname"><a href="../../d0/dec/classcasadi_1_1Slice.html#a9290c5a50c3f898559a2a4624ca42900">casadi::Slice::deserialize</a></div><div class="ttdeci">static Slice deserialize(DeserializingStream &amp;s)</div><div class="ttdoc">Deserialize without type information.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dfb/slice_8cpp_source.html#l00298">slice.cpp:298</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../de/dfb/slice_8cpp_source.html#l00298">casadi::Slice::deserialize()</a>.</p>
@@ -745,13 +776,13 @@ template&lt;class T &gt; </div>
 <p>If the reference is not of the same type as the object encoded in the stream. an error will be raised.</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_al">https://github.com/casadi/casadi/wiki/L_al</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00239">239</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                                                {</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;      assert_decoration(<span class="charliteral">&#39;S&#39;</span>);</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;      shared_unpack&lt;Sparsity, SparsityInternal&gt;(e);</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00245">245</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                                                {</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;      assert_decoration(<span class="charliteral">&#39;S&#39;</span>);</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;      shared_unpack&lt;Sparsity, SparsityInternal&gt;(e);</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../d8/daa/alpaqa__interface_8cpp_source.html#l00293">casadi::AlpaqaInterface::AlpaqaInterface()</a>, <a class="el" href="../../d4/da2/assertion_8cpp_source.html#l00119">casadi::Assertion::Assertion()</a>, <a class="el" href="../../db/da5/binary__mx__impl_8hpp_source.html#l00332">casadi::BinaryMX&lt; ScX, ScY &gt;::BinaryMX()</a>, <a class="el" href="../../de/d62/blazing__spline_8cpp_source.html#l00367">casadi::BlazingSplineFunction::BlazingSplineFunction()</a>, <a class="el" href="../../d7/d74/serializer_8cpp_source.html#l00161">casadi::DeserializerBase::blind_unpack_mx()</a>, <a class="el" href="../../d7/d74/serializer_8cpp_source.html#l00189">casadi::DeserializerBase::blind_unpack_mx_v1()</a>, <a class="el" href="../../d7/d74/serializer_8cpp_source.html#l00175">casadi::DeserializerBase::blind_unpack_mx_vector()</a>, <a class="el" href="../../d7/d74/serializer_8cpp_source.html#l00203">casadi::DeserializerBase::blind_unpack_mx_vector_v1()</a>, <a class="el" href="../../d7/d74/serializer_8cpp_source.html#l00168">casadi::DeserializerBase::blind_unpack_sx()</a>, <a class="el" href="../../d7/d74/serializer_8cpp_source.html#l00196">casadi::DeserializerBase::blind_unpack_sx_v1()</a>, <a class="el" href="../../d7/d74/serializer_8cpp_source.html#l00182">casadi::DeserializerBase::blind_unpack_sx_vector()</a>, <a class="el" href="../../d7/d74/serializer_8cpp_source.html#l00210">casadi::DeserializerBase::blind_unpack_sx_vector_v1()</a>, <a class="el" href="../../d7/daf/blocksqp_8cpp_source.html#l02848">casadi::Blocksqp::Blocksqp()</a>, <a class="el" href="../../d0/d7f/bonmin__interface_8cpp_source.html#l00703">casadi::BonminInterface::BonminInterface()</a>, <a class="el" href="../../d8/da8/bspline_8cpp_source.html#l00148">casadi::BSpline::BSpline()</a>, <a class="el" href="../../d8/da8/bspline_8cpp_source.html#l00131">casadi::BSplineCommon::BSplineCommon()</a>, <a class="el" href="../../d4/d7f/bspline__interpolant_8cpp_source.html#l00221">casadi::BSplineInterpolant::BSplineInterpolant()</a>, <a class="el" href="../../db/dd5/casadi__call_8cpp_source.html#l00250">casadi::Call::Call()</a>, <a class="el" href="../../dc/d65/cbc__interface_8cpp_source.html#l00452">casadi::CbcInterface::CbcInterface()</a>, <a class="el" href="../../d8/d83/clarabel__interface_8cpp_source.html#l00235">casadi::ClarabelInterface::ClarabelInterface()</a>, <a class="el" href="../../d9/dcd/clp__interface_8cpp_source.html#l00459">casadi::ClpInterface::ClpInterface()</a>, <a class="el" href="../../d4/d61/collocation_8cpp_source.html#l00248">casadi::Collocation::Collocation()</a>, <a class="el" href="../../df/d70/conic_8cpp_source.html#l00763">casadi::Conic::Conic()</a>, <a class="el" href="../../d3/db1/constant__mx_8cpp_source.html#l00308">casadi::ConstantDM::ConstantDM()</a>, <a class="el" href="../../d3/db1/constant__mx_8cpp_source.html#l00358">casadi::ConstantFile::ConstantFile()</a>, <a class="el" href="../../d3/db1/constant__mx_8cpp_source.html#l00454">casadi::ConstantPool::ConstantPool()</a>, <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00489">casadi::ConstantSX_deserialize()</a>, <a class="el" href="../../d4/d1d/cplex__interface_8cpp_source.html#l00758">casadi::CplexInterface::CplexInterface()</a>, <a class="el" href="../../da/dad/cvodes__interface_8cpp_source.html#l00759">casadi::CvodesInterface::CvodesInterface()</a>, <a class="el" href="../../de/de6/daqp__interface_8cpp_source.html#l00266">casadi::DaqpInterface::DaqpInterface()</a>, <a class="el" href="../../d8/de5/x__function_8hpp_source.html#l00299">casadi::XFunction&lt; DerivedType, MatType, NodeType &gt;::delayed_deserialize_members()</a>, <a class="el" href="../../db/da5/binary__mx__impl_8hpp_source.html#l00316">casadi::BinaryMX&lt; ScX, ScY &gt;::deserialize()</a>, <a class="el" href="../../d8/da8/bspline_8cpp_source.html#l00030">casadi::BSplineCommon::deserialize()</a>, <a class="el" href="../../de/dfd/call__sx_8hpp_source.html#l00161">casadi::CallSX::deserialize()</a>, <a class="el" href="../../d3/db1/constant__mx_8cpp_source.html#l00323">casadi::ConstantMX::deserialize()</a>, <a class="el" href="../../dd/d97/constant__mx_8hpp_source.html#l00553">casadi::RuntimeConst&lt; T &gt;::deserialize()</a>, <a class="el" href="../../dd/d89/external_8cpp_source.html#l00512">casadi::External::deserialize()</a>, <a class="el" href="../../de/d74/fmu_8cpp_source.html#l01417">casadi::FmuInternal::deserialize()</a>, <a class="el" href="../../de/dea/function_8cpp_source.html#l01294">casadi::Function::deserialize()</a>, <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l04095">casadi::FunctionInternal::deserialize()</a>, <a class="el" href="../../de/ddb/generic__type_8cpp_source.html#l00747">casadi::GenericType::deserialize()</a>, <a class="el" href="../../d8/d66/generic__type__internal_8hpp_source.html#l00057">casadi::GenericTypeInternal&lt; ID, T &gt;::deserialize()</a>, <a class="el" href="../../df/d18/getnonzeros_8cpp_source.html#l00659">casadi::GetNonzeros::deserialize()</a>, <a class="el" href="../../d7/d1f/getnonzeros__param_8cpp_source.html#l00456">casadi::GetNonzerosParam::deserialize()</a>, <a class="el" href="../../d6/db8/importer__internal_8cpp_source.html#l00332">casadi::ImporterInternal::deserialize()</a>, <a class="el" href="../../d9/dd3/map_8cpp_source.html#l00103">casadi::Map::deserialize()</a>, <a class="el" href="../../db/db9/mapsum_8cpp_source.html#l00085">casadi::MapSum::deserialize()</a>, <a class="el" href="../../d0/d48/multiplication_8cpp_source.html#l00178">casadi::Multiplication::deserialize()</a>, <a class="el" href="../../d2/dcf/mx__node_8cpp_source.html#l00540">casadi::MXNode::deserialize()</a>, <a class="el" href="../../db/dfc/output__sx_8hpp_source.html#l00152">casadi::OutputSX::deserialize()</a>, <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00121">casadi::PluginInterface&lt; Derived &gt;::deserialize()</a>, <a class="el" href="../../df/d18/project_8cpp_source.html#l00115">casadi::Project::deserialize()</a>, <a class="el" href="../../dd/d55/resource__internal_8cpp_source.html#l00164">casadi::ResourceInternal::deserialize()</a>, <a class="el" href="../../d0/d67/setnonzeros__impl_8hpp_source.html#l00990">casadi::SetNonzeros&lt; Add &gt;::deserialize()</a>, <a class="el" href="../../d0/d1b/setnonzeros__param__impl_8hpp_source.html#l00693">casadi::SetNonzerosParam&lt; Add &gt;::deserialize()</a>, <a class="el" href="../../de/dfb/slice_8cpp_source.html#l00298">casadi::Slice::deserialize()</a>, <a class="el" href="../../d4/d9e/solve__impl_8hpp_source.html#l00301">casadi::Solve&lt; Tr &gt;::deserialize()</a>, <a class="el" href="../../d4/d9e/solve__impl_8hpp_source.html#l00324">casadi::LinsolCall&lt; Tr &gt;::deserialize()</a>, <a class="el" href="../../d0/d65/sparsity_8cpp_source.html#l01996">casadi::Sparsity::deserialize()</a>, <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00243">casadi::SXNode::deserialize()</a>, <a class="el" href="../../d1/d10/symbolic__sx_8hpp_source.html#l00077">casadi::SymbolicSX::deserialize()</a>, <a class="el" href="../../d1/d9a/transpose_8cpp_source.html#l00046">casadi::Transpose::deserialize()</a>, <a class="el" href="../../dd/d3f/linear__interpolant_8cpp_source.html#l00180">casadi::LinearInterpolant::deserialize()</a>, <a class="el" href="../../d1/d9e/binary__sx_8hpp_source.html#l00143">casadi::BinarySX::deserialize()</a>, <a class="el" href="../../de/d50/unary__sx_8hpp_source.html#l00127">casadi::UnarySX::deserialize()</a>, <a class="el" href="../../d4/d1b/convexify_8cpp_source.html#l00127">casadi::Convexify::deserialize()</a>, <a class="el" href="../../df/d70/conic_8cpp_source.html#l00729">casadi::Conic::deserialize()</a>, <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00047">DeserializingStream()</a>, <a class="el" href="../../dd/d55/resource__internal_8cpp_source.html#l00209">casadi::DirResource::DirResource()</a>, <a class="el" href="../../dd/d89/external_8cpp_source.html#l00529">casadi::External::External()</a>, <a class="el" href="../../dd/df9/fast__newton_8cpp_source.html#l00255">casadi::FastNewton::FastNewton()</a>, <a class="el" href="../../d4/d00/fatrop__interface_8cpp_source.html#l00840">casadi::FatropInterface::FatropInterface()</a>, <a class="el" href="../../da/d41/feasiblesqpmethod_8cpp_source.html#l02340">casadi::Feasiblesqpmethod::Feasiblesqpmethod()</a>, <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l02492">casadi::FixedStepIntegrator::FixedStepIntegrator()</a>, <a class="el" href="../../d5/df8/fmu2_8cpp_source.html#l00474">casadi::Fmu2::Fmu2()</a>, <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l01643">casadi::FmuFunction::FmuFunction()</a>, <a class="el" href="../../de/d74/fmu_8cpp_source.html#l01377">casadi::FmuInternal::FmuInternal()</a>, <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l03979">casadi::FunctionInternal::FunctionInternal()</a>, <a class="el" href="../../d7/d1f/getnonzeros__param_8cpp_source.html#l00430">casadi::GetNonzerosParamSlice::GetNonzerosParamSlice()</a>, <a class="el" href="../../df/d18/getnonzeros_8cpp_source.html#l00639">casadi::GetNonzerosSlice::GetNonzerosSlice()</a>, <a class="el" href="../../df/d18/getnonzeros_8cpp_source.html#l00654">casadi::GetNonzerosSlice2::GetNonzerosSlice2()</a>, <a class="el" href="../../d7/d1f/getnonzeros__param_8cpp_source.html#l00444">casadi::GetNonzerosSliceParam::GetNonzerosSliceParam()</a>, <a class="el" href="../../df/d18/getnonzeros_8cpp_source.html#l00625">casadi::GetNonzerosVector::GetNonzerosVector()</a>, <a class="el" href="../../d5/d0d/gurobi__interface_8cpp_source.html#l00571">casadi::GurobiInterface::GurobiInterface()</a>, <a class="el" href="../../d3/d83/highs__interface_8cpp_source.html#l00320">casadi::HighsInterface::HighsInterface()</a>, <a class="el" href="../../d2/db5/repmat_8cpp_source.html#l00205">casadi::HorzRepmat::HorzRepmat()</a>, <a class="el" href="../../d2/db5/repmat_8cpp_source.html#l00209">casadi::HorzRepsum::HorzRepsum()</a>, <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l01027">casadi::IdasInterface::IdasInterface()</a>, <a class="el" href="../../d6/db8/importer__internal_8cpp_source.html#l00325">casadi::ImporterInternal::ImporterInternal()</a>, <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l02428">casadi::Integrator::Integrator()</a>, <a class="el" href="../../da/d60/interpolant_8cpp_source.html#l00368">casadi::Interpolant::Interpolant()</a>, <a class="el" href="../../d0/d32/io__instruction_8cpp_source.html#l00117">casadi::IOInstruction::IOInstruction()</a>, <a class="el" href="../../d9/d80/ipopt__interface_8cpp_source.html#l00742">casadi::IpoptInterface::IpoptInterface()</a>, <a class="el" href="../../d3/d08/ipqp_8cpp_source.html#l00242">casadi::Ipqp::Ipqp()</a>, <a class="el" href="../../d4/dd3/knitro__interface_8cpp_source.html#l00528">casadi::KnitroInterface::KnitroInterface()</a>, <a class="el" href="../../de/d41/lapack__lu_8cpp_source.html#l00191">casadi::LapackLu::LapackLu()</a>, <a class="el" href="../../d8/d8e/lapack__qr_8cpp_source.html#l00172">casadi::LapackQr::LapackQr()</a>, <a class="el" href="../../dd/d3f/linear__interpolant_8cpp_source.html#l00176">casadi::LinearInterpolant::LinearInterpolant()</a>, <a class="el" href="../../d4/d9e/solve__impl_8hpp_source.html#l00319">casadi::LinsolCall&lt; Tr &gt;::LinsolCall()</a>, <a class="el" href="../../d6/d4e/linsol__internal_8cpp_source.html#l00134">casadi::LinsolInternal::LinsolInternal()</a>, <a class="el" href="../../da/d52/linsol__ldl_8cpp_source.html#l00176">casadi::LinsolLdl::LinsolLdl()</a>, <a class="el" href="../../d6/d7d/linsol__qr_8cpp_source.html#l00220">casadi::LinsolQr::LinsolQr()</a>, <a class="el" href="../../d7/d4c/casadi__low_8cpp_source.html#l00133">casadi::Low::Low()</a>, <a class="el" href="../../d3/d37/madnlp__interface_8cpp_source.html#l00452">casadi::MadnlpInterface::MadnlpInterface()</a>, <a class="el" href="../../d9/dd3/map_8cpp_source.html#l00098">casadi::Map::Map()</a>, <a class="el" href="../../db/db9/mapsum_8cpp_source.html#l00078">casadi::MapSum::MapSum()</a>, <a class="el" href="../../d4/de7/monitor_8cpp_source.html#l00131">casadi::Monitor::Monitor()</a>, <a class="el" href="../../d4/d30/mumps__interface_8cpp_source.html#l00204">casadi::MumpsInterface::MumpsInterface()</a>, <a class="el" href="../../d6/d9b/mx__function_8cpp_source.html#l01825">casadi::MXFunction::MXFunction()</a>, <a class="el" href="../../d2/dcf/mx__node_8cpp_source.html#l00532">casadi::MXNode::MXNode()</a>, <a class="el" href="../../dc/dac/newton_8cpp_source.html#l00285">casadi::Newton::Newton()</a>, <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l01345">casadi::Nlpsol::Nlpsol()</a>, <a class="el" href="../../d4/d08/ooqp__interface_8cpp_source.html#l00512">casadi::OoqpInterface::OoqpInterface()</a>, <a class="el" href="../../d2/dc0/oracle__function_8cpp_source.html#l00597">casadi::OracleFunction::OracleFunction()</a>, <a class="el" href="../../d8/d9e/osqp__interface_8cpp_source.html#l00459">casadi::OsqpInterface::OsqpInterface()</a>, <a class="el" href="../../d4/da0/multiple__output_8cpp_source.html#l00065">casadi::OutputNode::OutputNode()</a>, <a class="el" href="../../d7/d74/serializer_8cpp_source.html#l00135">casadi::DeserializerBase::pop_type()</a>, <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l03888">casadi::ProtoFunction::ProtoFunction()</a>, <a class="el" href="../../d9/db2/proxqp__interface_8cpp_source.html#l00443">casadi::ProxqpInterface::ProxqpInterface()</a>, <a class="el" href="../../de/d94/qpoases__interface_8cpp_source.html#l00940">casadi::QpoasesInterface::QpoasesInterface()</a>, <a class="el" href="../../dc/dfb/qp__to__nlp_8cpp_source.html#l00217">casadi::QpToNlp::QpToNlp()</a>, <a class="el" href="../../d9/d65/qrqp_8cpp_source.html#l00354">casadi::Qrqp::Qrqp()</a>, <a class="el" href="../../dd/d55/resource__internal_8cpp_source.html#l00159">casadi::ResourceInternal::ResourceInternal()</a>, <a class="el" href="../../df/d30/rootfinder_8cpp_source.html#l00596">casadi::Rootfinder::Rootfinder()</a>, <a class="el" href="../../d0/d1b/setnonzeros__param__impl_8hpp_source.html#l00651">casadi::SetNonzerosParamSlice&lt; Add &gt;::SetNonzerosParamSlice()</a>, <a class="el" href="../../d0/d67/setnonzeros__impl_8hpp_source.html#l00960">casadi::SetNonzerosSlice&lt; Add &gt;::SetNonzerosSlice()</a>, <a class="el" href="../../d0/d67/setnonzeros__impl_8hpp_source.html#l00978">casadi::SetNonzerosSlice2&lt; Add &gt;::SetNonzerosSlice2()</a>, <a class="el" href="../../d0/d1b/setnonzeros__param__impl_8hpp_source.html#l00669">casadi::SetNonzerosSliceParam&lt; Add &gt;::SetNonzerosSliceParam()</a>, <a class="el" href="../../d0/d67/setnonzeros__impl_8hpp_source.html#l00943">casadi::SetNonzerosVector&lt; Add &gt;::SetNonzerosVector()</a>, <a class="el" href="../../d5/d12/sleqp__interface_8cpp_source.html#l00602">casadi::SLEQPInterface::SLEQPInterface()</a>, <a class="el" href="../../da/dd7/snopt__interface_8cpp_source.html#l00563">casadi::SnoptInterface::SnoptInterface()</a>, <a class="el" href="../../d4/d59/split_8cpp_source.html#l00033">casadi::Split::Split()</a>, <a class="el" href="../../d8/dfc/sqpmethod_8cpp_source.html#l01538">casadi::Sqpmethod::Sqpmethod()</a>, <a class="el" href="../../df/dac/sundials__interface_8cpp_source.html#l00497">casadi::SundialsInterface::SundialsInterface()</a>, <a class="el" href="../../dd/dab/superscs__interface_8cpp_source.html#l00494">casadi::SuperscsInterface::SuperscsInterface()</a>, <a class="el" href="../../d5/d3e/switch_8cpp_source.html#l00048">casadi::Switch::Switch()</a>, <a class="el" href="../../d1/d7b/sx__function_8cpp_source.html#l01674">casadi::SXFunction::SXFunction()</a>, <a class="el" href="../../d9/d9d/symbolic__mx_8cpp_source.html#l00096">casadi::SymbolicMX::SymbolicMX()</a>, <a class="el" href="../../d0/d37/symbolic__qr_8cpp_source.html#l00230">casadi::SymbolicQr::SymbolicQr()</a>, <a class="el" href="../../db/de4/unary__mx_8cpp_source.html#l00206">casadi::UnaryMX::UnaryMX()</a>, <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00111">unpack()</a>, <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00375">version()</a>, <a class="el" href="../../d6/d5b/worhp__interface_8cpp_source.html#l00595">casadi::WorhpInterface::WorhpInterface()</a>, <a class="el" href="../../d8/de5/x__function_8hpp_source.html#l00291">casadi::XFunction&lt; DerivedType, MatType, NodeType &gt;::XFunction()</a>, <a class="el" href="../../dd/d55/resource__internal_8cpp_source.html#l00200">casadi::ZipMemResource::ZipMemResource()</a>, and <a class="el" href="../../dd/d55/resource__internal_8cpp_source.html#l00194">casadi::ZipResource::ZipResource()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d8/daa/alpaqa__interface_8cpp_source.html#l00293">casadi::AlpaqaInterface::AlpaqaInterface()</a>, <a class="el" href="../../d4/da2/assertion_8cpp_source.html#l00119">casadi::Assertion::Assertion()</a>, <a class="el" href="../../db/da5/binary__mx__impl_8hpp_source.html#l00332">casadi::BinaryMX&lt; ScX, ScY &gt;::BinaryMX()</a>, <a class="el" href="../../de/d62/blazing__spline_8cpp_source.html#l00367">casadi::BlazingSplineFunction::BlazingSplineFunction()</a>, <a class="el" href="../../d7/d74/serializer_8cpp_source.html#l00160">casadi::DeserializerBase::blind_unpack_mx()</a>, <a class="el" href="../../d7/d74/serializer_8cpp_source.html#l00188">casadi::DeserializerBase::blind_unpack_mx_v1()</a>, <a class="el" href="../../d7/d74/serializer_8cpp_source.html#l00174">casadi::DeserializerBase::blind_unpack_mx_vector()</a>, <a class="el" href="../../d7/d74/serializer_8cpp_source.html#l00202">casadi::DeserializerBase::blind_unpack_mx_vector_v1()</a>, <a class="el" href="../../d7/d74/serializer_8cpp_source.html#l00167">casadi::DeserializerBase::blind_unpack_sx()</a>, <a class="el" href="../../d7/d74/serializer_8cpp_source.html#l00195">casadi::DeserializerBase::blind_unpack_sx_v1()</a>, <a class="el" href="../../d7/d74/serializer_8cpp_source.html#l00181">casadi::DeserializerBase::blind_unpack_sx_vector()</a>, <a class="el" href="../../d7/d74/serializer_8cpp_source.html#l00209">casadi::DeserializerBase::blind_unpack_sx_vector_v1()</a>, <a class="el" href="../../d7/daf/blocksqp_8cpp_source.html#l02848">casadi::Blocksqp::Blocksqp()</a>, <a class="el" href="../../d0/d7f/bonmin__interface_8cpp_source.html#l00703">casadi::BonminInterface::BonminInterface()</a>, <a class="el" href="../../d8/da8/bspline_8cpp_source.html#l00148">casadi::BSpline::BSpline()</a>, <a class="el" href="../../d8/da8/bspline_8cpp_source.html#l00131">casadi::BSplineCommon::BSplineCommon()</a>, <a class="el" href="../../d4/d7f/bspline__interpolant_8cpp_source.html#l00221">casadi::BSplineInterpolant::BSplineInterpolant()</a>, <a class="el" href="../../db/dd5/casadi__call_8cpp_source.html#l00250">casadi::Call::Call()</a>, <a class="el" href="../../dc/d65/cbc__interface_8cpp_source.html#l00452">casadi::CbcInterface::CbcInterface()</a>, <a class="el" href="../../d8/d83/clarabel__interface_8cpp_source.html#l00235">casadi::ClarabelInterface::ClarabelInterface()</a>, <a class="el" href="../../d9/dcd/clp__interface_8cpp_source.html#l00459">casadi::ClpInterface::ClpInterface()</a>, <a class="el" href="../../d4/d61/collocation_8cpp_source.html#l00248">casadi::Collocation::Collocation()</a>, <a class="el" href="../../df/d70/conic_8cpp_source.html#l00762">casadi::Conic::Conic()</a>, <a class="el" href="../../d3/db1/constant__mx_8cpp_source.html#l00308">casadi::ConstantDM::ConstantDM()</a>, <a class="el" href="../../d3/db1/constant__mx_8cpp_source.html#l00358">casadi::ConstantFile::ConstantFile()</a>, <a class="el" href="../../d3/db1/constant__mx_8cpp_source.html#l00454">casadi::ConstantPool::ConstantPool()</a>, <a class="el" href="../../d8/dbe/constant__sx_8hpp_source.html#l00489">casadi::ConstantSX_deserialize()</a>, <a class="el" href="../../d4/d1d/cplex__interface_8cpp_source.html#l00758">casadi::CplexInterface::CplexInterface()</a>, <a class="el" href="../../da/dad/cvodes__interface_8cpp_source.html#l00759">casadi::CvodesInterface::CvodesInterface()</a>, <a class="el" href="../../de/de6/daqp__interface_8cpp_source.html#l00266">casadi::DaqpInterface::DaqpInterface()</a>, <a class="el" href="../../d8/de5/x__function_8hpp_source.html#l00299">casadi::XFunction&lt; DerivedType, MatType, NodeType &gt;::delayed_deserialize_members()</a>, <a class="el" href="../../db/da5/binary__mx__impl_8hpp_source.html#l00316">casadi::BinaryMX&lt; ScX, ScY &gt;::deserialize()</a>, <a class="el" href="../../d8/da8/bspline_8cpp_source.html#l00030">casadi::BSplineCommon::deserialize()</a>, <a class="el" href="../../de/dfd/call__sx_8hpp_source.html#l00161">casadi::CallSX::deserialize()</a>, <a class="el" href="../../d3/db1/constant__mx_8cpp_source.html#l00323">casadi::ConstantMX::deserialize()</a>, <a class="el" href="../../dd/d97/constant__mx_8hpp_source.html#l00553">casadi::RuntimeConst&lt; T &gt;::deserialize()</a>, <a class="el" href="../../dd/d89/external_8cpp_source.html#l00512">casadi::External::deserialize()</a>, <a class="el" href="../../de/d74/fmu_8cpp_source.html#l01466">casadi::FmuInternal::deserialize()</a>, <a class="el" href="../../de/dea/function_8cpp_source.html#l01302">casadi::Function::deserialize()</a>, <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l04186">casadi::FunctionInternal::deserialize()</a>, <a class="el" href="../../de/ddb/generic__type_8cpp_source.html#l00747">casadi::GenericType::deserialize()</a>, <a class="el" href="../../d8/d66/generic__type__internal_8hpp_source.html#l00057">casadi::GenericTypeInternal&lt; ID, T &gt;::deserialize()</a>, <a class="el" href="../../df/d18/getnonzeros_8cpp_source.html#l00659">casadi::GetNonzeros::deserialize()</a>, <a class="el" href="../../d7/d1f/getnonzeros__param_8cpp_source.html#l00468">casadi::GetNonzerosParam::deserialize()</a>, <a class="el" href="../../d6/db8/importer__internal_8cpp_source.html#l00334">casadi::ImporterInternal::deserialize()</a>, <a class="el" href="../../d9/dd3/map_8cpp_source.html#l00103">casadi::Map::deserialize()</a>, <a class="el" href="../../db/db9/mapsum_8cpp_source.html#l00085">casadi::MapSum::deserialize()</a>, <a class="el" href="../../d0/d48/multiplication_8cpp_source.html#l00178">casadi::Multiplication::deserialize()</a>, <a class="el" href="../../d2/dcf/mx__node_8cpp_source.html#l00540">casadi::MXNode::deserialize()</a>, <a class="el" href="../../db/dfc/output__sx_8hpp_source.html#l00152">casadi::OutputSX::deserialize()</a>, <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00121">casadi::PluginInterface&lt; Derived &gt;::deserialize()</a>, <a class="el" href="../../df/d18/project_8cpp_source.html#l00115">casadi::Project::deserialize()</a>, <a class="el" href="../../dd/d55/resource__internal_8cpp_source.html#l00166">casadi::ResourceInternal::deserialize()</a>, <a class="el" href="../../d0/d67/setnonzeros__impl_8hpp_source.html#l00990">casadi::SetNonzeros&lt; Add &gt;::deserialize()</a>, <a class="el" href="../../d0/d1b/setnonzeros__param__impl_8hpp_source.html#l00693">casadi::SetNonzerosParam&lt; Add &gt;::deserialize()</a>, <a class="el" href="../../de/dfb/slice_8cpp_source.html#l00298">casadi::Slice::deserialize()</a>, <a class="el" href="../../d4/d9e/solve__impl_8hpp_source.html#l00301">casadi::Solve&lt; Tr &gt;::deserialize()</a>, <a class="el" href="../../d4/d9e/solve__impl_8hpp_source.html#l00324">casadi::LinsolCall&lt; Tr &gt;::deserialize()</a>, <a class="el" href="../../d0/d65/sparsity_8cpp_source.html#l01997">casadi::Sparsity::deserialize()</a>, <a class="el" href="../../d1/d08/sx__node_8cpp_source.html#l00243">casadi::SXNode::deserialize()</a>, <a class="el" href="../../d1/d10/symbolic__sx_8hpp_source.html#l00077">casadi::SymbolicSX::deserialize()</a>, <a class="el" href="../../d1/d9a/transpose_8cpp_source.html#l00046">casadi::Transpose::deserialize()</a>, <a class="el" href="../../dd/d3f/linear__interpolant_8cpp_source.html#l00180">casadi::LinearInterpolant::deserialize()</a>, <a class="el" href="../../d1/d9e/binary__sx_8hpp_source.html#l00143">casadi::BinarySX::deserialize()</a>, <a class="el" href="../../de/d50/unary__sx_8hpp_source.html#l00127">casadi::UnarySX::deserialize()</a>, <a class="el" href="../../d4/d1b/convexify_8cpp_source.html#l00127">casadi::Convexify::deserialize()</a>, <a class="el" href="../../df/d70/conic_8cpp_source.html#l00728">casadi::Conic::deserialize()</a>, <a class="el" href="../../dd/d55/resource__internal_8cpp_source.html#l00211">casadi::DirResource::DirResource()</a>, <a class="el" href="../../dd/d89/external_8cpp_source.html#l00529">casadi::External::External()</a>, <a class="el" href="../../dd/df9/fast__newton_8cpp_source.html#l00255">casadi::FastNewton::FastNewton()</a>, <a class="el" href="../../d4/d00/fatrop__interface_8cpp_source.html#l00840">casadi::FatropInterface::FatropInterface()</a>, <a class="el" href="../../da/d41/feasiblesqpmethod_8cpp_source.html#l02340">casadi::Feasiblesqpmethod::Feasiblesqpmethod()</a>, <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l02492">casadi::FixedStepIntegrator::FixedStepIntegrator()</a>, <a class="el" href="../../d5/df8/fmu2_8cpp_source.html#l00544">casadi::Fmu2::Fmu2()</a>, <a class="el" href="../../d5/dd9/fmu3_8cpp_source.html#l00528">casadi::Fmu3::Fmu3()</a>, <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l01647">casadi::FmuFunction::FmuFunction()</a>, <a class="el" href="../../de/d74/fmu_8cpp_source.html#l01423">casadi::FmuInternal::FmuInternal()</a>, <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l04065">casadi::FunctionInternal::FunctionInternal()</a>, <a class="el" href="../../d7/d1f/getnonzeros__param_8cpp_source.html#l00442">casadi::GetNonzerosParamSlice::GetNonzerosParamSlice()</a>, <a class="el" href="../../df/d18/getnonzeros_8cpp_source.html#l00639">casadi::GetNonzerosSlice::GetNonzerosSlice()</a>, <a class="el" href="../../df/d18/getnonzeros_8cpp_source.html#l00654">casadi::GetNonzerosSlice2::GetNonzerosSlice2()</a>, <a class="el" href="../../d7/d1f/getnonzeros__param_8cpp_source.html#l00456">casadi::GetNonzerosSliceParam::GetNonzerosSliceParam()</a>, <a class="el" href="../../df/d18/getnonzeros_8cpp_source.html#l00625">casadi::GetNonzerosVector::GetNonzerosVector()</a>, <a class="el" href="../../d5/d0d/gurobi__interface_8cpp_source.html#l00571">casadi::GurobiInterface::GurobiInterface()</a>, <a class="el" href="../../d3/d83/highs__interface_8cpp_source.html#l00320">casadi::HighsInterface::HighsInterface()</a>, <a class="el" href="../../d2/db5/repmat_8cpp_source.html#l00205">casadi::HorzRepmat::HorzRepmat()</a>, <a class="el" href="../../d2/db5/repmat_8cpp_source.html#l00209">casadi::HorzRepsum::HorzRepsum()</a>, <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l01027">casadi::IdasInterface::IdasInterface()</a>, <a class="el" href="../../d6/db8/importer__internal_8cpp_source.html#l00327">casadi::ImporterInternal::ImporterInternal()</a>, <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l02428">casadi::Integrator::Integrator()</a>, <a class="el" href="../../da/d60/interpolant_8cpp_source.html#l00368">casadi::Interpolant::Interpolant()</a>, <a class="el" href="../../d0/d32/io__instruction_8cpp_source.html#l00117">casadi::IOInstruction::IOInstruction()</a>, <a class="el" href="../../d9/d80/ipopt__interface_8cpp_source.html#l00742">casadi::IpoptInterface::IpoptInterface()</a>, <a class="el" href="../../d3/d08/ipqp_8cpp_source.html#l00242">casadi::Ipqp::Ipqp()</a>, <a class="el" href="../../d4/dd3/knitro__interface_8cpp_source.html#l00528">casadi::KnitroInterface::KnitroInterface()</a>, <a class="el" href="../../de/d41/lapack__lu_8cpp_source.html#l00191">casadi::LapackLu::LapackLu()</a>, <a class="el" href="../../d8/d8e/lapack__qr_8cpp_source.html#l00172">casadi::LapackQr::LapackQr()</a>, <a class="el" href="../../dd/d3f/linear__interpolant_8cpp_source.html#l00176">casadi::LinearInterpolant::LinearInterpolant()</a>, <a class="el" href="../../d4/d9e/solve__impl_8hpp_source.html#l00319">casadi::LinsolCall&lt; Tr &gt;::LinsolCall()</a>, <a class="el" href="../../d6/d4e/linsol__internal_8cpp_source.html#l00134">casadi::LinsolInternal::LinsolInternal()</a>, <a class="el" href="../../da/d52/linsol__ldl_8cpp_source.html#l00176">casadi::LinsolLdl::LinsolLdl()</a>, <a class="el" href="../../d6/d7d/linsol__qr_8cpp_source.html#l00220">casadi::LinsolQr::LinsolQr()</a>, <a class="el" href="../../d7/d4c/casadi__low_8cpp_source.html#l00133">casadi::Low::Low()</a>, <a class="el" href="../../d3/d37/madnlp__interface_8cpp_source.html#l00452">casadi::MadnlpInterface::MadnlpInterface()</a>, <a class="el" href="../../d9/dd3/map_8cpp_source.html#l00098">casadi::Map::Map()</a>, <a class="el" href="../../db/db9/mapsum_8cpp_source.html#l00078">casadi::MapSum::MapSum()</a>, <a class="el" href="../../d4/de7/monitor_8cpp_source.html#l00119">casadi::Monitor::Monitor()</a>, <a class="el" href="../../d4/d30/mumps__interface_8cpp_source.html#l00204">casadi::MumpsInterface::MumpsInterface()</a>, <a class="el" href="../../d6/d9b/mx__function_8cpp_source.html#l01873">casadi::MXFunction::MXFunction()</a>, <a class="el" href="../../d2/dcf/mx__node_8cpp_source.html#l00532">casadi::MXNode::MXNode()</a>, <a class="el" href="../../dc/dac/newton_8cpp_source.html#l00285">casadi::Newton::Newton()</a>, <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l01345">casadi::Nlpsol::Nlpsol()</a>, <a class="el" href="../../d4/d08/ooqp__interface_8cpp_source.html#l00512">casadi::OoqpInterface::OoqpInterface()</a>, <a class="el" href="../../d2/dc0/oracle__function_8cpp_source.html#l00597">casadi::OracleFunction::OracleFunction()</a>, <a class="el" href="../../d8/d9e/osqp__interface_8cpp_source.html#l00459">casadi::OsqpInterface::OsqpInterface()</a>, <a class="el" href="../../d4/da0/multiple__output_8cpp_source.html#l00065">casadi::OutputNode::OutputNode()</a>, <a class="el" href="../../d7/d74/serializer_8cpp_source.html#l00134">casadi::DeserializerBase::pop_type()</a>, <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l03972">casadi::ProtoFunction::ProtoFunction()</a>, <a class="el" href="../../d9/db2/proxqp__interface_8cpp_source.html#l00443">casadi::ProxqpInterface::ProxqpInterface()</a>, <a class="el" href="../../de/d94/qpoases__interface_8cpp_source.html#l00940">casadi::QpoasesInterface::QpoasesInterface()</a>, <a class="el" href="../../dc/dfb/qp__to__nlp_8cpp_source.html#l00217">casadi::QpToNlp::QpToNlp()</a>, <a class="el" href="../../d9/d65/qrqp_8cpp_source.html#l00354">casadi::Qrqp::Qrqp()</a>, <a class="el" href="../../dd/d55/resource__internal_8cpp_source.html#l00161">casadi::ResourceInternal::ResourceInternal()</a>, <a class="el" href="../../df/d30/rootfinder_8cpp_source.html#l00596">casadi::Rootfinder::Rootfinder()</a>, <a class="el" href="../../d0/d1b/setnonzeros__param__impl_8hpp_source.html#l00651">casadi::SetNonzerosParamSlice&lt; Add &gt;::SetNonzerosParamSlice()</a>, <a class="el" href="../../d0/d67/setnonzeros__impl_8hpp_source.html#l00960">casadi::SetNonzerosSlice&lt; Add &gt;::SetNonzerosSlice()</a>, <a class="el" href="../../d0/d67/setnonzeros__impl_8hpp_source.html#l00978">casadi::SetNonzerosSlice2&lt; Add &gt;::SetNonzerosSlice2()</a>, <a class="el" href="../../d0/d1b/setnonzeros__param__impl_8hpp_source.html#l00669">casadi::SetNonzerosSliceParam&lt; Add &gt;::SetNonzerosSliceParam()</a>, <a class="el" href="../../d0/d67/setnonzeros__impl_8hpp_source.html#l00943">casadi::SetNonzerosVector&lt; Add &gt;::SetNonzerosVector()</a>, <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00056">setup()</a>, <a class="el" href="../../d5/d12/sleqp__interface_8cpp_source.html#l00602">casadi::SLEQPInterface::SLEQPInterface()</a>, <a class="el" href="../../da/dd7/snopt__interface_8cpp_source.html#l00563">casadi::SnoptInterface::SnoptInterface()</a>, <a class="el" href="../../d4/d59/split_8cpp_source.html#l00033">casadi::Split::Split()</a>, <a class="el" href="../../d8/dfc/sqpmethod_8cpp_source.html#l01538">casadi::Sqpmethod::Sqpmethod()</a>, <a class="el" href="../../df/dac/sundials__interface_8cpp_source.html#l00497">casadi::SundialsInterface::SundialsInterface()</a>, <a class="el" href="../../dd/dab/superscs__interface_8cpp_source.html#l00494">casadi::SuperscsInterface::SuperscsInterface()</a>, <a class="el" href="../../d5/d3e/switch_8cpp_source.html#l00048">casadi::Switch::Switch()</a>, <a class="el" href="../../d1/d7b/sx__function_8cpp_source.html#l01824">casadi::SXFunction::SXFunction()</a>, <a class="el" href="../../d9/d9d/symbolic__mx_8cpp_source.html#l00096">casadi::SymbolicMX::SymbolicMX()</a>, <a class="el" href="../../d0/d37/symbolic__qr_8cpp_source.html#l00230">casadi::SymbolicQr::SymbolicQr()</a>, <a class="el" href="../../db/de4/unary__mx_8cpp_source.html#l00206">casadi::UnaryMX::UnaryMX()</a>, <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00117">unpack()</a>, <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00381">version()</a>, <a class="el" href="../../d6/d5b/worhp__interface_8cpp_source.html#l00595">casadi::WorhpInterface::WorhpInterface()</a>, <a class="el" href="../../d8/de5/x__function_8hpp_source.html#l00291">casadi::XFunction&lt; DerivedType, MatType, NodeType &gt;::XFunction()</a>, <a class="el" href="../../dd/d55/resource__internal_8cpp_source.html#l00202">casadi::ZipMemResource::ZipMemResource()</a>, and <a class="el" href="../../dd/d55/resource__internal_8cpp_source.html#l00196">casadi::ZipResource::ZipResource()</a>.</p>
 
 </div>
 </div>
@@ -781,20 +812,20 @@ template&lt;class K , class V &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d45/serializing__stream_8hpp_source.html#l00123">123</a> of file <a class="el" href="../../dd/d45/serializing__stream_8hpp_source.html">serializing_stream.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                                 {</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;      assert_decoration(<span class="charliteral">&#39;D&#39;</span>);</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      casadi_int s;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;      <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(s);</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      e.clear();</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;      <span class="keywordflow">for</span> (casadi_int i=0;i&lt;s;++i) {</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        K k;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        V v;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(k);</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(v);</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        e[k] = v;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;      }</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../dd/d45/serializing__stream_8hpp_source.html#l00125">125</a> of file <a class="el" href="../../dd/d45/serializing__stream_8hpp_source.html">serializing_stream.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                                 {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;      assert_decoration(<span class="charliteral">&#39;D&#39;</span>);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      casadi_int s;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;      <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(s);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;      e.clear();</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;      <span class="keywordflow">for</span> (casadi_int i=0;i&lt;s;++i) {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        K k;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        V v;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(k);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(v);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        e[k] = v;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;      }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -814,19 +845,19 @@ template&lt;class K , class V &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00331">331</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;                                                  {</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;      assert_decoration(<span class="charliteral">&#39;B&#39;</span>);</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;      <span class="keywordtype">size_t</span> len;</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;      <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(len);</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0;i&lt;len;++i) {</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        <span class="keywordtype">char</span> c;</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(c);</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        s.put(c);</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;      }</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00337">337</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                                                  {</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;      assert_decoration(<span class="charliteral">&#39;B&#39;</span>);</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;      <span class="keywordtype">size_t</span> len;</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;      <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(len);</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0;i&lt;len;++i) {</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;        <span class="keywordtype">char</span> c;</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(c);</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        s.put(c);</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;      }</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00239">unpack()</a>.</p>
+<p class="reference">References <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00245">unpack()</a>.</p>
 
 </div>
 </div>
@@ -856,12 +887,12 @@ template&lt;class A , class B &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d45/serializing__stream_8hpp_source.html#l00138">138</a> of file <a class="el" href="../../dd/d45/serializing__stream_8hpp_source.html">serializing_stream.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                                  {</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;      assert_decoration(<span class="charliteral">&#39;p&#39;</span>);</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;      <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(e.first);</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;      <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(e.second);</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../dd/d45/serializing__stream_8hpp_source.html#l00140">140</a> of file <a class="el" href="../../dd/d45/serializing__stream_8hpp_source.html">serializing_stream.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                                  {</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;      assert_decoration(<span class="charliteral">&#39;p&#39;</span>);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;      <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(e.first);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;      <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(e.second);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -881,16 +912,16 @@ template&lt;class A , class B &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00214">214</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                                                 {</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;      assert_decoration(<span class="charliteral">&#39;s&#39;</span>);</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;      <span class="keywordtype">int</span> s;</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;      <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(s);</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;      e.resize(s);</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j=0;j&lt;s;++j) <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(e[j]);</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00220">220</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                                                 {</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;      assert_decoration(<span class="charliteral">&#39;s&#39;</span>);</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;      <span class="keywordtype">int</span> s;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;      <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(s);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;      e.resize(s);</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j=0;j&lt;s;++j) <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(e[j]);</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00239">unpack()</a>.</p>
+<p class="reference">References <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00245">unpack()</a>.</p>
 
 </div>
 </div>
@@ -912,20 +943,20 @@ template&lt;&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00363">363</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                                                     {</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    assert_decoration(<span class="charliteral">&#39;V&#39;</span>);</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    casadi_int s;</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(s);</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    e.resize(s);</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    <span class="keywordflow">for</span> (casadi_int i=0;i&lt;s;++i) {</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;      <span class="keywordtype">bool</span> b;</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;      <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(b);</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;      e[i] = b;</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    }</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00369">369</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;                                                     {</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    assert_decoration(<span class="charliteral">&#39;V&#39;</span>);</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    casadi_int s;</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(s);</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    e.resize(s);</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    <span class="keywordflow">for</span> (casadi_int i=0;i&lt;s;++i) {</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;      <span class="keywordtype">bool</span> b;</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;      <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(b);</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;      e[i] = b;</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    }</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;  }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00239">unpack()</a>.</p>
+<p class="reference">References <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00245">unpack()</a>.</p>
 
 </div>
 </div>
@@ -955,14 +986,14 @@ template&lt;class T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d45/serializing__stream_8hpp_source.html#l00114">114</a> of file <a class="el" href="../../dd/d45/serializing__stream_8hpp_source.html">serializing_stream.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                                 {</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;      assert_decoration(<span class="charliteral">&#39;V&#39;</span>);</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;      casadi_int s;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;      <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(s);</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;      e.resize(s);</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;      <span class="keywordflow">for</span> (T&amp; i : e) <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(i);</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../dd/d45/serializing__stream_8hpp_source.html#l00116">116</a> of file <a class="el" href="../../dd/d45/serializing__stream_8hpp_source.html">serializing_stream.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                                 {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;      assert_decoration(<span class="charliteral">&#39;V&#39;</span>);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;      casadi_int s;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;      <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(s);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;      e.resize(s);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;      <span class="keywordflow">for</span> (T&amp; i : e) <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(i);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">casadi::T</a>.</p>
 
@@ -984,11 +1015,11 @@ template&lt;class T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00357">357</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;                                              {</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;      assert_decoration(<span class="charliteral">&#39;E&#39;</span>);</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;      shared_unpack&lt;SXElem, SXNode&gt;(e);</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00363">363</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                                              {</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;      assert_decoration(<span class="charliteral">&#39;E&#39;</span>);</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;      shared_unpack&lt;SXElem, SXNode&gt;(e);</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1008,14 +1039,14 @@ template&lt;class T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00375">375</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;                                                        {</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    <span class="keywordtype">int</span> load_version;</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(name+<span class="stringliteral">&quot;::serialization::version&quot;</span>, load_version);</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    <span class="keywordflow">return</span> load_version;</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00381">381</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                                                        {</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    <span class="keywordtype">int</span> load_version;</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a37a0db52a1ec953e915fba2905c20384">unpack</a>(name+<span class="stringliteral">&quot;::serialization::version&quot;</span>, load_version);</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    <span class="keywordflow">return</span> load_version;</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;  }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00239">unpack()</a>.</p>
+<p class="reference">References <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00245">unpack()</a>.</p>
 
 </div>
 </div>
@@ -1051,18 +1082,18 @@ template&lt;class T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00381">381</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                                                                          {</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    <span class="keywordtype">int</span> load_version = <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#aee193bd9b72503f0673245e712ec5041">version</a>(name);</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    casadi_assert(load_version&gt;=min &amp;&amp; load_version&lt;=max,</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;      <span class="stringliteral">&quot;DeSerialization of &quot;</span> + name + <span class="stringliteral">&quot; failed. &quot;</span></div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;      <span class="stringliteral">&quot;Object written in version &quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(load_version) +</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;      <span class="stringliteral">&quot; but can only read version &quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(min) + <span class="stringliteral">&quot;...&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(max) + <span class="stringliteral">&quot;.&quot;</span>);</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    <span class="keywordflow">return</span> load_version;</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;  }</div>
-<div class="ttc" id="aclasscasadi_1_1DeserializingStream_html_aee193bd9b72503f0673245e712ec5041"><div class="ttname"><a href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#aee193bd9b72503f0673245e712ec5041">casadi::DeserializingStream::version</a></div><div class="ttdeci">void version(const std::string &amp;name, int v)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d62/serializing__stream_8cpp_source.html#l00390">serializing_stream.cpp:390</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00387">387</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                                                                          {</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    <span class="keywordtype">int</span> load_version = <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#aee193bd9b72503f0673245e712ec5041">version</a>(name);</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    casadi_assert(load_version&gt;=min &amp;&amp; load_version&lt;=max,</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;      <span class="stringliteral">&quot;DeSerialization of &quot;</span> + name + <span class="stringliteral">&quot; failed. &quot;</span></div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;      <span class="stringliteral">&quot;Object written in version &quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(load_version) +</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;      <span class="stringliteral">&quot; but can only read version &quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(min) + <span class="stringliteral">&quot;...&quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(max) + <span class="stringliteral">&quot;.&quot;</span>);</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    <span class="keywordflow">return</span> load_version;</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;  }</div>
+<div class="ttc" id="aclasscasadi_1_1DeserializingStream_html_aee193bd9b72503f0673245e712ec5041"><div class="ttname"><a href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#aee193bd9b72503f0673245e712ec5041">casadi::DeserializingStream::version</a></div><div class="ttdeci">void version(const std::string &amp;name, int v)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d62/serializing__stream_8cpp_source.html#l00396">serializing_stream.cpp:396</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../dc/d59/casadi__common_8hpp_source.html#l00247">casadi::str()</a>, and <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00390">version()</a>.</p>
+<p class="reference">References <a class="el" href="../../dc/d59/casadi__common_8hpp_source.html#l00247">casadi::str()</a>, and <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00396">version()</a>.</p>
 
 </div>
 </div>
@@ -1092,18 +1123,18 @@ template&lt;class T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00390">390</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                                                                {</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    <span class="keywordtype">int</span> load_version = <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#aee193bd9b72503f0673245e712ec5041">version</a>(name);</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    casadi_assert(load_version==v,</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;      <span class="stringliteral">&quot;DeSerialization of &quot;</span> + name + <span class="stringliteral">&quot; failed. &quot;</span></div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;      <span class="stringliteral">&quot;Object written in version &quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(load_version) +</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;      <span class="stringliteral">&quot; but can only read in version &quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(v) + <span class="stringliteral">&quot;.&quot;</span>);</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00396">396</a> of file <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html">serializing_stream.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;                                                                {</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    <span class="keywordtype">int</span> load_version = <a class="code" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#aee193bd9b72503f0673245e712ec5041">version</a>(name);</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    casadi_assert(load_version==v,</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;      <span class="stringliteral">&quot;DeSerialization of &quot;</span> + name + <span class="stringliteral">&quot; failed. &quot;</span></div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;      <span class="stringliteral">&quot;Object written in version &quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(load_version) +</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;      <span class="stringliteral">&quot; but can only read in version &quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(v) + <span class="stringliteral">&quot;.&quot;</span>);</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;  }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../dc/d59/casadi__common_8hpp_source.html#l00247">casadi::str()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d8/daa/alpaqa__interface_8cpp_source.html#l00293">casadi::AlpaqaInterface::AlpaqaInterface()</a>, <a class="el" href="../../de/d62/blazing__spline_8cpp_source.html#l00367">casadi::BlazingSplineFunction::BlazingSplineFunction()</a>, <a class="el" href="../../d7/daf/blocksqp_8cpp_source.html#l02848">casadi::Blocksqp::Blocksqp()</a>, <a class="el" href="../../d0/d7f/bonmin__interface_8cpp_source.html#l00703">casadi::BonminInterface::BonminInterface()</a>, <a class="el" href="../../d4/d7f/bspline__interpolant_8cpp_source.html#l00221">casadi::BSplineInterpolant::BSplineInterpolant()</a>, <a class="el" href="../../dc/d65/cbc__interface_8cpp_source.html#l00452">casadi::CbcInterface::CbcInterface()</a>, <a class="el" href="../../d8/d83/clarabel__interface_8cpp_source.html#l00235">casadi::ClarabelInterface::ClarabelInterface()</a>, <a class="el" href="../../d9/dcd/clp__interface_8cpp_source.html#l00459">casadi::ClpInterface::ClpInterface()</a>, <a class="el" href="../../d4/d61/collocation_8cpp_source.html#l00248">casadi::Collocation::Collocation()</a>, <a class="el" href="../../df/d70/conic_8cpp_source.html#l00763">casadi::Conic::Conic()</a>, <a class="el" href="../../d4/d1d/cplex__interface_8cpp_source.html#l00758">casadi::CplexInterface::CplexInterface()</a>, <a class="el" href="../../da/dad/cvodes__interface_8cpp_source.html#l00759">casadi::CvodesInterface::CvodesInterface()</a>, <a class="el" href="../../de/de6/daqp__interface_8cpp_source.html#l00266">casadi::DaqpInterface::DaqpInterface()</a>, <a class="el" href="../../dd/d89/external_8cpp_source.html#l00512">casadi::External::deserialize()</a>, <a class="el" href="../../dd/d55/resource__internal_8cpp_source.html#l00164">casadi::ResourceInternal::deserialize()</a>, <a class="el" href="../../dd/d3f/linear__interpolant_8cpp_source.html#l00180">casadi::LinearInterpolant::deserialize()</a>, <a class="el" href="../../d4/d1b/convexify_8cpp_source.html#l00127">casadi::Convexify::deserialize()</a>, <a class="el" href="../../dd/d55/resource__internal_8cpp_source.html#l00209">casadi::DirResource::DirResource()</a>, <a class="el" href="../../dd/d89/external_8cpp_source.html#l00529">casadi::External::External()</a>, <a class="el" href="../../dd/df9/fast__newton_8cpp_source.html#l00255">casadi::FastNewton::FastNewton()</a>, <a class="el" href="../../d5/d26/fatrop__conic__interface_8cpp_source.html#l00414">casadi::FatropConicInterface::FatropConicInterface()</a>, <a class="el" href="../../d4/d00/fatrop__interface_8cpp_source.html#l00840">casadi::FatropInterface::FatropInterface()</a>, <a class="el" href="../../da/d41/feasiblesqpmethod_8cpp_source.html#l02340">casadi::Feasiblesqpmethod::Feasiblesqpmethod()</a>, <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l02492">casadi::FixedStepIntegrator::FixedStepIntegrator()</a>, <a class="el" href="../../d5/df8/fmu2_8cpp_source.html#l00474">casadi::Fmu2::Fmu2()</a>, <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l01643">casadi::FmuFunction::FmuFunction()</a>, <a class="el" href="../../de/d74/fmu_8cpp_source.html#l01377">casadi::FmuInternal::FmuInternal()</a>, <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l03979">casadi::FunctionInternal::FunctionInternal()</a>, <a class="el" href="../../d5/d0d/gurobi__interface_8cpp_source.html#l00571">casadi::GurobiInterface::GurobiInterface()</a>, <a class="el" href="../../d3/d83/highs__interface_8cpp_source.html#l00320">casadi::HighsInterface::HighsInterface()</a>, <a class="el" href="../../df/d8d/hpipm__interface_8cpp_source.html#l00830">casadi::HpipmInterface::HpipmInterface()</a>, <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l01027">casadi::IdasInterface::IdasInterface()</a>, <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l02508">casadi::ImplicitFixedStepIntegrator::ImplicitFixedStepIntegrator()</a>, <a class="el" href="../../d6/db8/importer__internal_8cpp_source.html#l00325">casadi::ImporterInternal::ImporterInternal()</a>, <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l02428">casadi::Integrator::Integrator()</a>, <a class="el" href="../../da/d60/interpolant_8cpp_source.html#l00368">casadi::Interpolant::Interpolant()</a>, <a class="el" href="../../d9/d80/ipopt__interface_8cpp_source.html#l00742">casadi::IpoptInterface::IpoptInterface()</a>, <a class="el" href="../../d3/d08/ipqp_8cpp_source.html#l00242">casadi::Ipqp::Ipqp()</a>, <a class="el" href="../../d4/dd3/knitro__interface_8cpp_source.html#l00528">casadi::KnitroInterface::KnitroInterface()</a>, <a class="el" href="../../de/d41/lapack__lu_8cpp_source.html#l00191">casadi::LapackLu::LapackLu()</a>, <a class="el" href="../../da/d52/linsol__ldl_8cpp_source.html#l00176">casadi::LinsolLdl::LinsolLdl()</a>, <a class="el" href="../../d6/d7d/linsol__qr_8cpp_source.html#l00220">casadi::LinsolQr::LinsolQr()</a>, <a class="el" href="../../d3/d37/madnlp__interface_8cpp_source.html#l00452">casadi::MadnlpInterface::MadnlpInterface()</a>, <a class="el" href="../../d4/d30/mumps__interface_8cpp_source.html#l00204">casadi::MumpsInterface::MumpsInterface()</a>, <a class="el" href="../../d6/d9b/mx__function_8cpp_source.html#l01825">casadi::MXFunction::MXFunction()</a>, <a class="el" href="../../dc/dac/newton_8cpp_source.html#l00285">casadi::Newton::Newton()</a>, <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l01345">casadi::Nlpsol::Nlpsol()</a>, <a class="el" href="../../d4/d08/ooqp__interface_8cpp_source.html#l00512">casadi::OoqpInterface::OoqpInterface()</a>, <a class="el" href="../../d2/dc0/oracle__function_8cpp_source.html#l00597">casadi::OracleFunction::OracleFunction()</a>, <a class="el" href="../../d8/d9e/osqp__interface_8cpp_source.html#l00459">casadi::OsqpInterface::OsqpInterface()</a>, <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l03888">casadi::ProtoFunction::ProtoFunction()</a>, <a class="el" href="../../d9/db2/proxqp__interface_8cpp_source.html#l00443">casadi::ProxqpInterface::ProxqpInterface()</a>, <a class="el" href="../../de/d94/qpoases__interface_8cpp_source.html#l00940">casadi::QpoasesInterface::QpoasesInterface()</a>, <a class="el" href="../../dc/dfb/qp__to__nlp_8cpp_source.html#l00217">casadi::QpToNlp::QpToNlp()</a>, <a class="el" href="../../d9/d65/qrqp_8cpp_source.html#l00354">casadi::Qrqp::Qrqp()</a>, <a class="el" href="../../df/d30/rootfinder_8cpp_source.html#l00596">casadi::Rootfinder::Rootfinder()</a>, <a class="el" href="../../de/d88/runge__kutta_8cpp_source.html#l00142">casadi::RungeKutta::RungeKutta()</a>, <a class="el" href="../../d5/d12/sleqp__interface_8cpp_source.html#l00602">casadi::SLEQPInterface::SLEQPInterface()</a>, <a class="el" href="../../da/dd7/snopt__interface_8cpp_source.html#l00563">casadi::SnoptInterface::SnoptInterface()</a>, <a class="el" href="../../d8/dfc/sqpmethod_8cpp_source.html#l01538">casadi::Sqpmethod::Sqpmethod()</a>, <a class="el" href="../../df/dac/sundials__interface_8cpp_source.html#l00497">casadi::SundialsInterface::SundialsInterface()</a>, <a class="el" href="../../dd/dab/superscs__interface_8cpp_source.html#l00494">casadi::SuperscsInterface::SuperscsInterface()</a>, <a class="el" href="../../d5/d3e/switch_8cpp_source.html#l00048">casadi::Switch::Switch()</a>, <a class="el" href="../../d1/d7b/sx__function_8cpp_source.html#l01674">casadi::SXFunction::SXFunction()</a>, <a class="el" href="../../d0/d37/symbolic__qr_8cpp_source.html#l00230">casadi::SymbolicQr::SymbolicQr()</a>, <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00381">version()</a>, <a class="el" href="../../d6/d5b/worhp__interface_8cpp_source.html#l00595">casadi::WorhpInterface::WorhpInterface()</a>, <a class="el" href="../../d8/de5/x__function_8hpp_source.html#l00291">casadi::XFunction&lt; DerivedType, MatType, NodeType &gt;::XFunction()</a>, <a class="el" href="../../dd/d55/resource__internal_8cpp_source.html#l00200">casadi::ZipMemResource::ZipMemResource()</a>, and <a class="el" href="../../dd/d55/resource__internal_8cpp_source.html#l00194">casadi::ZipResource::ZipResource()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d8/daa/alpaqa__interface_8cpp_source.html#l00293">casadi::AlpaqaInterface::AlpaqaInterface()</a>, <a class="el" href="../../de/d62/blazing__spline_8cpp_source.html#l00367">casadi::BlazingSplineFunction::BlazingSplineFunction()</a>, <a class="el" href="../../d7/daf/blocksqp_8cpp_source.html#l02848">casadi::Blocksqp::Blocksqp()</a>, <a class="el" href="../../d0/d7f/bonmin__interface_8cpp_source.html#l00703">casadi::BonminInterface::BonminInterface()</a>, <a class="el" href="../../d4/d7f/bspline__interpolant_8cpp_source.html#l00221">casadi::BSplineInterpolant::BSplineInterpolant()</a>, <a class="el" href="../../dc/d65/cbc__interface_8cpp_source.html#l00452">casadi::CbcInterface::CbcInterface()</a>, <a class="el" href="../../d8/d83/clarabel__interface_8cpp_source.html#l00235">casadi::ClarabelInterface::ClarabelInterface()</a>, <a class="el" href="../../d9/dcd/clp__interface_8cpp_source.html#l00459">casadi::ClpInterface::ClpInterface()</a>, <a class="el" href="../../d4/d61/collocation_8cpp_source.html#l00248">casadi::Collocation::Collocation()</a>, <a class="el" href="../../df/d70/conic_8cpp_source.html#l00762">casadi::Conic::Conic()</a>, <a class="el" href="../../d4/d1d/cplex__interface_8cpp_source.html#l00758">casadi::CplexInterface::CplexInterface()</a>, <a class="el" href="../../da/dad/cvodes__interface_8cpp_source.html#l00759">casadi::CvodesInterface::CvodesInterface()</a>, <a class="el" href="../../de/de6/daqp__interface_8cpp_source.html#l00266">casadi::DaqpInterface::DaqpInterface()</a>, <a class="el" href="../../dd/d89/external_8cpp_source.html#l00512">casadi::External::deserialize()</a>, <a class="el" href="../../dd/d55/resource__internal_8cpp_source.html#l00166">casadi::ResourceInternal::deserialize()</a>, <a class="el" href="../../dd/d3f/linear__interpolant_8cpp_source.html#l00180">casadi::LinearInterpolant::deserialize()</a>, <a class="el" href="../../d4/d1b/convexify_8cpp_source.html#l00127">casadi::Convexify::deserialize()</a>, <a class="el" href="../../dd/d55/resource__internal_8cpp_source.html#l00211">casadi::DirResource::DirResource()</a>, <a class="el" href="../../dd/d89/external_8cpp_source.html#l00529">casadi::External::External()</a>, <a class="el" href="../../dd/df9/fast__newton_8cpp_source.html#l00255">casadi::FastNewton::FastNewton()</a>, <a class="el" href="../../d5/d26/fatrop__conic__interface_8cpp_source.html#l00414">casadi::FatropConicInterface::FatropConicInterface()</a>, <a class="el" href="../../d4/d00/fatrop__interface_8cpp_source.html#l00840">casadi::FatropInterface::FatropInterface()</a>, <a class="el" href="../../da/d41/feasiblesqpmethod_8cpp_source.html#l02340">casadi::Feasiblesqpmethod::Feasiblesqpmethod()</a>, <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l02492">casadi::FixedStepIntegrator::FixedStepIntegrator()</a>, <a class="el" href="../../d5/df8/fmu2_8cpp_source.html#l00544">casadi::Fmu2::Fmu2()</a>, <a class="el" href="../../d5/dd9/fmu3_8cpp_source.html#l00528">casadi::Fmu3::Fmu3()</a>, <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l01647">casadi::FmuFunction::FmuFunction()</a>, <a class="el" href="../../de/d74/fmu_8cpp_source.html#l01423">casadi::FmuInternal::FmuInternal()</a>, <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l04065">casadi::FunctionInternal::FunctionInternal()</a>, <a class="el" href="../../d5/d0d/gurobi__interface_8cpp_source.html#l00571">casadi::GurobiInterface::GurobiInterface()</a>, <a class="el" href="../../d3/d83/highs__interface_8cpp_source.html#l00320">casadi::HighsInterface::HighsInterface()</a>, <a class="el" href="../../df/d8d/hpipm__interface_8cpp_source.html#l00830">casadi::HpipmInterface::HpipmInterface()</a>, <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l01027">casadi::IdasInterface::IdasInterface()</a>, <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l02508">casadi::ImplicitFixedStepIntegrator::ImplicitFixedStepIntegrator()</a>, <a class="el" href="../../d6/db8/importer__internal_8cpp_source.html#l00327">casadi::ImporterInternal::ImporterInternal()</a>, <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l02428">casadi::Integrator::Integrator()</a>, <a class="el" href="../../da/d60/interpolant_8cpp_source.html#l00368">casadi::Interpolant::Interpolant()</a>, <a class="el" href="../../d9/d80/ipopt__interface_8cpp_source.html#l00742">casadi::IpoptInterface::IpoptInterface()</a>, <a class="el" href="../../d3/d08/ipqp_8cpp_source.html#l00242">casadi::Ipqp::Ipqp()</a>, <a class="el" href="../../d4/dd3/knitro__interface_8cpp_source.html#l00528">casadi::KnitroInterface::KnitroInterface()</a>, <a class="el" href="../../de/d41/lapack__lu_8cpp_source.html#l00191">casadi::LapackLu::LapackLu()</a>, <a class="el" href="../../da/d52/linsol__ldl_8cpp_source.html#l00176">casadi::LinsolLdl::LinsolLdl()</a>, <a class="el" href="../../d6/d7d/linsol__qr_8cpp_source.html#l00220">casadi::LinsolQr::LinsolQr()</a>, <a class="el" href="../../d3/d37/madnlp__interface_8cpp_source.html#l00452">casadi::MadnlpInterface::MadnlpInterface()</a>, <a class="el" href="../../d4/d30/mumps__interface_8cpp_source.html#l00204">casadi::MumpsInterface::MumpsInterface()</a>, <a class="el" href="../../d6/d9b/mx__function_8cpp_source.html#l01873">casadi::MXFunction::MXFunction()</a>, <a class="el" href="../../dc/dac/newton_8cpp_source.html#l00285">casadi::Newton::Newton()</a>, <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l01345">casadi::Nlpsol::Nlpsol()</a>, <a class="el" href="../../d4/d08/ooqp__interface_8cpp_source.html#l00512">casadi::OoqpInterface::OoqpInterface()</a>, <a class="el" href="../../d2/dc0/oracle__function_8cpp_source.html#l00597">casadi::OracleFunction::OracleFunction()</a>, <a class="el" href="../../d8/d9e/osqp__interface_8cpp_source.html#l00459">casadi::OsqpInterface::OsqpInterface()</a>, <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l03972">casadi::ProtoFunction::ProtoFunction()</a>, <a class="el" href="../../d9/db2/proxqp__interface_8cpp_source.html#l00443">casadi::ProxqpInterface::ProxqpInterface()</a>, <a class="el" href="../../de/d94/qpoases__interface_8cpp_source.html#l00940">casadi::QpoasesInterface::QpoasesInterface()</a>, <a class="el" href="../../dc/dfb/qp__to__nlp_8cpp_source.html#l00217">casadi::QpToNlp::QpToNlp()</a>, <a class="el" href="../../d9/d65/qrqp_8cpp_source.html#l00354">casadi::Qrqp::Qrqp()</a>, <a class="el" href="../../df/d30/rootfinder_8cpp_source.html#l00596">casadi::Rootfinder::Rootfinder()</a>, <a class="el" href="../../de/d88/runge__kutta_8cpp_source.html#l00142">casadi::RungeKutta::RungeKutta()</a>, <a class="el" href="../../d5/d12/sleqp__interface_8cpp_source.html#l00602">casadi::SLEQPInterface::SLEQPInterface()</a>, <a class="el" href="../../da/dd7/snopt__interface_8cpp_source.html#l00563">casadi::SnoptInterface::SnoptInterface()</a>, <a class="el" href="../../d8/dfc/sqpmethod_8cpp_source.html#l01538">casadi::Sqpmethod::Sqpmethod()</a>, <a class="el" href="../../df/dac/sundials__interface_8cpp_source.html#l00497">casadi::SundialsInterface::SundialsInterface()</a>, <a class="el" href="../../dd/dab/superscs__interface_8cpp_source.html#l00494">casadi::SuperscsInterface::SuperscsInterface()</a>, <a class="el" href="../../d5/d3e/switch_8cpp_source.html#l00048">casadi::Switch::Switch()</a>, <a class="el" href="../../d1/d7b/sx__function_8cpp_source.html#l01824">casadi::SXFunction::SXFunction()</a>, <a class="el" href="../../d0/d37/symbolic__qr_8cpp_source.html#l00230">casadi::SymbolicQr::SymbolicQr()</a>, <a class="el" href="../../da/d62/serializing__stream_8cpp_source.html#l00387">version()</a>, <a class="el" href="../../d6/d5b/worhp__interface_8cpp_source.html#l00595">casadi::WorhpInterface::WorhpInterface()</a>, <a class="el" href="../../d8/de5/x__function_8hpp_source.html#l00291">casadi::XFunction&lt; DerivedType, MatType, NodeType &gt;::XFunction()</a>, <a class="el" href="../../dd/d55/resource__internal_8cpp_source.html#l00202">casadi::ZipMemResource::ZipMemResource()</a>, and <a class="el" href="../../dd/d55/resource__internal_8cpp_source.html#l00196">casadi::ZipResource::ZipResource()</a>.</p>
 
 </div>
 </div>
