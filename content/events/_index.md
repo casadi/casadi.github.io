@@ -8,13 +8,8 @@ This an overview of past and future workshops/courses involving CasADi:
 
 ## Future events
 
-
-## Permanent courses
- * Hands-on CasADi course on optimal control, [self-paced online learning](https://yacoda-training.teachable.com/p/ocp)
- * CasADi master class, [self-paced online learning](https://yacoda-training.teachable.com/p/master)
-
-Keep informed about future events via our <a href="https://forms.gle/9v1HKPYZDHcBYMXNA">newsletter</a>.  You may also [pre-register](https://forms.gle/Pb7dwrwP6uanXeyr5) to a future course to get priority in registration.
-
+ * Hands-on CasADi course on optimal control, [cohort-based online training](https://www.yacoda.com/training/ocbt), October 2026
+ * CasADi master class, [cohort-based online training](https://www.yacoda.com/training/ocat), January 2027
 
 ## Past events
  * CasADi tutorial on dynamic optimization with FMI 3.0 Model Exchange, 16th International Modelica & FMI Conference, Lucerne, Switzerland, 18-20 September 8-10 2025, [course material](http://github.com/casadi/modelica2025)
