@@ -1,5 +1,5 @@
 
-  <p class="caption"><span class="caption-text">Contents:</span></p>
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="#document-intro">1. Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#what-casadi-is-and-what-it-is-not">1.1. What CasADi is and what it is <em>not</em></a></li>
@@ -10,11 +10,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#document-install">2. Obtaining and installing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#document-symbolic">3. Symbolic framework</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#the-sx-symbolics">3.1. The <code class="docutils literal notranslate"><span class="pre">SX</span></code> symbolics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#dm">3.2. <code class="docutils literal notranslate"><span class="pre">DM</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-mx-symbolics">3.3. The <code class="docutils literal notranslate"><span class="pre">MX</span></code> symbolics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#mixing-sx-and-mx">3.4. Mixing <code class="docutils literal notranslate"><span class="pre">SX</span></code> and <code class="docutils literal notranslate"><span class="pre">MX</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-sparsity-class">3.5. The <code class="docutils literal notranslate"><span class="pre">Sparsity</span></code> class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-sx-symbolics">3.1. The <code class="xref py py-class docutils literal notranslate"><span class="pre">SX</span></code> symbolics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dm">3.2. <code class="xref py py-class docutils literal notranslate"><span class="pre">DM</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-mx-symbolics">3.3. The <code class="xref py py-class docutils literal notranslate"><span class="pre">MX</span></code> symbolics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mixing-sx-and-mx">3.4. Mixing <code class="xref py py-class docutils literal notranslate"><span class="pre">SX</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">MX</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-sparsity-class">3.5. The <code class="xref py py-class docutils literal notranslate"><span class="pre">Sparsity</span></code> class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#arithmetic-operations">3.6. Arithmetic operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#querying-properties">3.7. Querying properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#linear-algebra">3.8. Linear algebra</a></li>
@@ -23,7 +23,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#document-function">4. Function objects</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#calling-function-objects">4.1. Calling function objects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#converting-mx-to-sx">4.2. Converting <code class="docutils literal notranslate"><span class="pre">MX</span></code> to <code class="docutils literal notranslate"><span class="pre">SX</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#converting-mx-to-sx">4.2. Converting <code class="xref py py-class docutils literal notranslate"><span class="pre">MX</span></code> to <code class="xref py py-class docutils literal notranslate"><span class="pre">SX</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nonlinear-root-finding-problems">4.3. Nonlinear root-finding problems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#initial-value-problems-and-sensitivity-analysis">4.4. Initial-value problems and sensitivity analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nonlinear-programming">4.5. Nonlinear programming</a></li>
@@ -38,20 +38,23 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#document-custom">6. User-defined function objects</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#subclassing-functioninternal">6.1. Subclassing <code class="docutils literal notranslate"><span class="pre">FunctionInternal</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#subclassing-callback">6.2. Subclassing <code class="docutils literal notranslate"><span class="pre">Callback</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#subclassing-functioninternal">6.1. Subclassing <code class="xref py py-class docutils literal notranslate"><span class="pre">FunctionInternal</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#subclassing-callback">6.2. Subclassing <code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#importing-a-function-with-external">6.3. Importing a function with <code class="docutils literal notranslate"><span class="pre">external</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#just-in-time-compile-a-c-language-string">6.4. Just-in-time compile a C language string</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-lookup-tables">6.5. Using lookup-tables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#derivative-calculation-using-finite-differences">6.6. Derivative calculation using finite differences</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#document-daebuilder">7. The <code class="docutils literal notranslate"><span class="pre">DaeBuilder</span></code> class</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#mathematical-formulation">7.1. Mathematical formulation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#constructing-a-daebuilder-instance">7.2. Constructing a <code class="docutils literal notranslate"><span class="pre">DaeBuilder</span></code> instance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#import-of-ocps-from-modelica">7.3. Import of OCPs from Modelica</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#symbolic-reformulation">7.4. Symbolic reformulation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#function-factory">7.5. Function factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#document-daebuilder">7. The <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> class</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#daebuilder-model-variables-and-their-categorization">7.1. <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> model variables and their categorization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#daebuilder-model-equations">7.2. <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> model equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#constructing-a-daebuilder-instance-symbolically">7.3. Constructing a <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> instance symbolically</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-a-daebuilder-instance-from-modelica-symbolically">7.4. Creating a <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> instance from Modelica, symbolically</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#constructing-a-daebuilder-instance-from-an-fmu">7.5. Constructing a <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code> instance from an FMU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hybrid-modeling-with-daebuilder">7.6. Hybrid modeling with <code class="xref py py-class docutils literal notranslate"><span class="pre">DaeBuilder</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reformulating-a-model">7.7. Reformulating a model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#evaluating-model-equations-function-factory">7.8. Evaluating model equations, function factory</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#document-ocp">8. Optimal control with CasADi</a><ul>
