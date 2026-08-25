@@ -30,21 +30,36 @@ $(document).ready(function() {
     });
   });
 
-  var hash = window.location.hash;
-  if(hash) {
-    var id = hash.substr(1);
-    var card = $('.card[id="+id+"]')[0];
-    if(typeof card !== 'undefined') {
-      $(card).find('a.card-header.collapsed').each(function(i, a) {
-        $(a).removeClass('collapsed');
-        $(a).attr('aria-expanded', 'true');
+  function revealHash(hash, animate) {
+    if(!hash) return;
+    var el = document.getElementById(hash.substr(1));
+    if(!el) return;
+    var card = $(el).closest('.card')[0];
+    if(typeof card === 'undefined') return;
+
+    $(card).find('a.card-header.collapsed').each(function(i, a) {
+      $(a).removeClass('collapsed');
+      $(a).attr('aria-expanded', 'true');
+    });
+    $(card).find('div.collapse').each(function(i, d) {
+      $(d).addClass('show');
+    });
+
+    // if the target is a tab pane, activate its tab
+    if($(el).hasClass('tab-pane')) {
+      var link = $(card).find('a[data-toggle="tab"]').filter(function() {
+        return $(this).attr('href') === hash;
       });
-      $(card).find('div.collapse').each(function(i, d) {
-        $(d).addClass('show');
-      });
-      $('html,body').animate({scrollTop: $(card).offset().top - 70});
+      if(link.length) link.tab('show');
     }
+
+    var top = $(card).offset().top - 70;
+    if(animate) $('html,body').animate({scrollTop: top});
+    else $('html,body').scrollTop(top);
   }
+
+  revealHash(window.location.hash, true);
+  $(window).on('hashchange', function() { revealHash(window.location.hash, true); });
 
 });
 
