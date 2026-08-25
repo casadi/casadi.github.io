@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -125,8 +125,6 @@ $(function() {
 <tr>
 <td>gather_stats</td><td>OT_BOOL</td><td>Deprecated option (ignored): Statistics are now always collected.</td><td>casadi::FunctionInternal </td></tr>
 <tr>
-<td>input_scheme</td><td>OT_STRINGVECTOR</td><td>Deprecated option (ignored)</td><td>casadi::FunctionInternal </td></tr>
-<tr>
 <td>inputs_check</td><td>OT_BOOL</td><td>Throw exceptions when the numerical values of the inputs don't make sense</td><td>casadi::FunctionInternal </td></tr>
 <tr>
 <td>is_diff_in</td><td>OT_BOOLVECTOR</td><td>Indicate for each input if it should be differentiable.</td><td>casadi::FunctionInternal </td></tr>
@@ -154,8 +152,6 @@ $(function() {
 <td>max_num_dir</td><td>OT_INT</td><td>Specify the maximum number of directions for derivative functions. Overrules the builtin optimized_num_dir.</td><td>casadi::FunctionInternal </td></tr>
 <tr>
 <td>never_inline</td><td>OT_BOOL</td><td>Forbid inlining.</td><td>casadi::FunctionInternal </td></tr>
-<tr>
-<td>output_scheme</td><td>OT_STRINGVECTOR</td><td>Deprecated option (ignored)</td><td>casadi::FunctionInternal </td></tr>
 <tr>
 <td>post_expand</td><td>OT_BOOL</td><td>After construction, expand this <a class="el" href="../../da/da4/classcasadi_1_1Function.html" title="Function object.">Function</a>. Default: False</td><td>casadi::FunctionInternal </td></tr>
 <tr>
@@ -223,6 +219,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a96ca8075f8f03e3b6309e42bea486c34"><td class="memItemLeft" align="right" valign="top">casadi_int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/da4/classcasadi_1_1Function.html#a96ca8075f8f03e3b6309e42bea486c34">n_out</a> () const</td></tr>
 <tr class="memdesc:a96ca8075f8f03e3b6309e42bea486c34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of function outputs.  <a href="../../da/da4/classcasadi_1_1Function.html#a96ca8075f8f03e3b6309e42bea486c34">More...</a><br /></td></tr>
 <tr class="separator:a96ca8075f8f03e3b6309e42bea486c34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63db53aa5757c4d8757ea672813c3725"><td class="memItemLeft" align="right" valign="top">std::vector&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/da4/classcasadi_1_1Function.html#a63db53aa5757c4d8757ea672813c3725">activity</a> (const std::vector&lt; bool &gt; &amp;arg) const</td></tr>
+<tr class="memdesc:a63db53aa5757c4d8757ea672813c3725"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../df/da2/classcasadi_1_1Output.html" title="Input instruction.">Output</a> signal activity induced by a given input activity.  <a href="../../da/da4/classcasadi_1_1Function.html#a63db53aa5757c4d8757ea672813c3725">More...</a><br /></td></tr>
+<tr class="separator:a63db53aa5757c4d8757ea672813c3725"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0727e62b1d52ef8c5000e2dc283bbf1b"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/da4/classcasadi_1_1Function.html#a0727e62b1d52ef8c5000e2dc283bbf1b">name_in</a> () const</td></tr>
 <tr class="memdesc:a0727e62b1d52ef8c5000e2dc283bbf1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get input scheme.  <a href="../../da/da4/classcasadi_1_1Function.html#a0727e62b1d52ef8c5000e2dc283bbf1b">More...</a><br /></td></tr>
 <tr class="separator:a0727e62b1d52ef8c5000e2dc283bbf1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -267,12 +266,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a50fe7ef965ffefe33492ef63c949a471"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/da4/classcasadi_1_1Function.html#a50fe7ef965ffefe33492ef63c949a471">oracle</a> () const</td></tr>
 <tr class="memdesc:a50fe7ef965ffefe33492ef63c949a471"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get oracle.  <a href="../../da/da4/classcasadi_1_1Function.html#a50fe7ef965ffefe33492ef63c949a471">More...</a><br /></td></tr>
 <tr class="separator:a50fe7ef965ffefe33492ef63c949a471"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45d9c426808a8d5ee88b8a53fa7cdb1b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/da4/classcasadi_1_1Function.html#a45d9c426808a8d5ee88b8a53fa7cdb1b">wrap</a> () const</td></tr>
-<tr class="memdesc:a45d9c426808a8d5ee88b8a53fa7cdb1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrap in an <a class="el" href="../../da/da4/classcasadi_1_1Function.html" title="Function object.">Function</a> instance consisting of only one <a class="el" href="../../de/d57/classcasadi_1_1MX.html" title="MX - Matrix expression.">MX</a> call.  <a href="../../da/da4/classcasadi_1_1Function.html#a45d9c426808a8d5ee88b8a53fa7cdb1b">More...</a><br /></td></tr>
-<tr class="separator:a45d9c426808a8d5ee88b8a53fa7cdb1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab9827985481c38239422c99b95ecb0ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/da4/classcasadi_1_1Function.html#ab9827985481c38239422c99b95ecb0ba">wrap_as_needed</a> (const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;opts) const</td></tr>
-<tr class="memdesc:ab9827985481c38239422c99b95ecb0ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrap in a <a class="el" href="../../da/da4/classcasadi_1_1Function.html" title="Function object.">Function</a> with options.  <a href="../../da/da4/classcasadi_1_1Function.html#ab9827985481c38239422c99b95ecb0ba">More...</a><br /></td></tr>
-<tr class="separator:ab9827985481c38239422c99b95ecb0ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20bb5297933ef22e3e7ec194b24ef0b4"><td class="memItemLeft" align="right" valign="top">std::vector&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/da4/classcasadi_1_1Function.html#a20bb5297933ef22e3e7ec194b24ef0b4">which_depends</a> (const std::string &amp;s_in, const std::vector&lt; std::string &gt; &amp;s_out, casadi_int order=1, bool tr=false) const</td></tr>
 <tr class="memdesc:a20bb5297933ef22e3e7ec194b24ef0b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Which variables enter with some order.  <a href="../../da/da4/classcasadi_1_1Function.html#a20bb5297933ef22e3e7ec194b24ef0b4">More...</a><br /></td></tr>
 <tr class="separator:a20bb5297933ef22e3e7ec194b24ef0b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -478,6 +471,19 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a5fdeeb41411c42ae6c109026cb4edbaa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expand a function to SX.  <a href="../../da/da4/classcasadi_1_1Function.html#a5fdeeb41411c42ae6c109026cb4edbaa">More...</a><br /></td></tr>
 <tr class="separator:a5fdeeb41411c42ae6c109026cb4edbaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:ab19dd072e7aeebbc0bf3bfa6cefcabcb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/da4/classcasadi_1_1Function.html#ab19dd072e7aeebbc0bf3bfa6cefcabcb">transform</a> (const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;opts=<a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>()) const</td></tr>
+<tr class="memdesc:ab19dd072e7aeebbc0bf3bfa6cefcabcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply transformation passes.  <a href="../../da/da4/classcasadi_1_1Function.html#ab19dd072e7aeebbc0bf3bfa6cefcabcb">More...</a><br /></td></tr>
+<tr class="separator:ab19dd072e7aeebbc0bf3bfa6cefcabcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab53a1b2977928ca3448cf69889d69b38"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/da4/classcasadi_1_1Function.html#ab53a1b2977928ca3448cf69889d69b38">transform</a> (const std::string &amp;fname, const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;opts=<a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>()) const</td></tr>
+<tr class="memdesc:ab53a1b2977928ca3448cf69889d69b38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply transformation passes.  <a href="../../da/da4/classcasadi_1_1Function.html#ab53a1b2977928ca3448cf69889d69b38">More...</a><br /></td></tr>
+<tr class="separator:ab53a1b2977928ca3448cf69889d69b38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae129c7f89caab9cc65849c636ba8cabe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/da4/classcasadi_1_1Function.html#ae129c7f89caab9cc65849c636ba8cabe">transform</a> (const std::vector&lt; std::vector&lt; <a class="el" href="../../d6/d82/classcasadi_1_1GenericType.html">GenericType</a> &gt; &gt; &amp;passes, const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;opts=<a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>()) const</td></tr>
+<tr class="memdesc:ae129c7f89caab9cc65849c636ba8cabe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply transformation passes.  <a href="../../da/da4/classcasadi_1_1Function.html#ae129c7f89caab9cc65849c636ba8cabe">More...</a><br /></td></tr>
+<tr class="separator:ae129c7f89caab9cc65849c636ba8cabe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6b0d264c603c1d3eb00792f731d99d7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/da4/classcasadi_1_1Function.html#ab6b0d264c603c1d3eb00792f731d99d7">transform</a> (const std::string &amp;fname, const std::vector&lt; std::vector&lt; <a class="el" href="../../d6/d82/classcasadi_1_1GenericType.html">GenericType</a> &gt; &gt; &amp;passes, const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;opts=<a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>()) const</td></tr>
+<tr class="memdesc:ab6b0d264c603c1d3eb00792f731d99d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply transformation passes.  <a href="../../da/da4/classcasadi_1_1Function.html#ab6b0d264c603c1d3eb00792f731d99d7">More...</a><br /></td></tr>
+<tr class="separator:ab6b0d264c603c1d3eb00792f731d99d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
 <tr class="memitem:a2dabc612b0a58806ed81468e0877b705"><td class="memItemLeft" align="right" valign="top">casadi_int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/da4/classcasadi_1_1Function.html#a2dabc612b0a58806ed81468e0877b705">size1_in</a> (casadi_int ind) const</td></tr>
 <tr class="memdesc:a2dabc612b0a58806ed81468e0877b705"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get input dimension.  <a href="../../da/da4/classcasadi_1_1Function.html#a2dabc612b0a58806ed81468e0877b705">More...</a><br /></td></tr>
 <tr class="separator:a2dabc612b0a58806ed81468e0877b705"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -582,6 +588,20 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a746b604c2924ba32a10f2397f824ff8d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/da4/classcasadi_1_1Function.html#a746b604c2924ba32a10f2397f824ff8d">is_diff_out</a> () const</td></tr>
 <tr class="memdesc:a746b604c2924ba32a10f2397f824ff8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get differentiability of inputs/output.  <a href="../../da/da4/classcasadi_1_1Function.html#a746b604c2924ba32a10f2397f824ff8d">More...</a><br /></td></tr>
 <tr class="separator:a746b604c2924ba32a10f2397f824ff8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:a45d9c426808a8d5ee88b8a53fa7cdb1b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/da4/classcasadi_1_1Function.html#a45d9c426808a8d5ee88b8a53fa7cdb1b">wrap</a> () const</td></tr>
+<tr class="memdesc:a45d9c426808a8d5ee88b8a53fa7cdb1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrap in an <a class="el" href="../../da/da4/classcasadi_1_1Function.html" title="Function object.">Function</a> instance consisting of only one <a class="el" href="../../de/d57/classcasadi_1_1MX.html" title="MX - Matrix expression.">MX</a> call.  <a href="../../da/da4/classcasadi_1_1Function.html#a45d9c426808a8d5ee88b8a53fa7cdb1b">More...</a><br /></td></tr>
+<tr class="separator:a45d9c426808a8d5ee88b8a53fa7cdb1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa0ae9adac6254796d389dd3828d5a0f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/da4/classcasadi_1_1Function.html#afa0ae9adac6254796d389dd3828d5a0f">wrap</a> (const std::string &amp;<a class="el" href="../../da/da4/classcasadi_1_1Function.html#a1896c329a83d4e5c7faf7cd0b619e10e">name</a>) const</td></tr>
+<tr class="memdesc:afa0ae9adac6254796d389dd3828d5a0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrap in an <a class="el" href="../../da/da4/classcasadi_1_1Function.html" title="Function object.">Function</a> instance consisting of only one <a class="el" href="../../de/d57/classcasadi_1_1MX.html" title="MX - Matrix expression.">MX</a> call.  <a href="../../da/da4/classcasadi_1_1Function.html#afa0ae9adac6254796d389dd3828d5a0f">More...</a><br /></td></tr>
+<tr class="separator:afa0ae9adac6254796d389dd3828d5a0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:ab9827985481c38239422c99b95ecb0ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/da4/classcasadi_1_1Function.html#ab9827985481c38239422c99b95ecb0ba">wrap_as_needed</a> (const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;opts) const</td></tr>
+<tr class="memdesc:ab9827985481c38239422c99b95ecb0ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrap in a <a class="el" href="../../da/da4/classcasadi_1_1Function.html" title="Function object.">Function</a> with options.  <a href="../../da/da4/classcasadi_1_1Function.html#ab9827985481c38239422c99b95ecb0ba">More...</a><br /></td></tr>
+<tr class="separator:ab9827985481c38239422c99b95ecb0ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6760181da714ca7464ced3f115fefcfa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/da4/classcasadi_1_1Function.html#a6760181da714ca7464ced3f115fefcfa">wrap_as_needed</a> (const std::string &amp;<a class="el" href="../../da/da4/classcasadi_1_1Function.html#a1896c329a83d4e5c7faf7cd0b619e10e">name</a>, const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;opts) const</td></tr>
+<tr class="memdesc:a6760181da714ca7464ced3f115fefcfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrap in a <a class="el" href="../../da/da4/classcasadi_1_1Function.html" title="Function object.">Function</a> with options.  <a href="../../da/da4/classcasadi_1_1Function.html#a6760181da714ca7464ced3f115fefcfa">More...</a><br /></td></tr>
+<tr class="separator:a6760181da714ca7464ced3f115fefcfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
 <tr class="memitem:a7c7d8b311176bf79edcf1533323c3157"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html">Sparsity</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/da4/classcasadi_1_1Function.html#a7c7d8b311176bf79edcf1533323c3157">sparsity_jac</a> (casadi_int iind, casadi_int oind, bool compact=false, bool symmetric=false) const</td></tr>
 <tr class="separator:a7c7d8b311176bf79edcf1533323c3157"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -818,7 +838,7 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00404">404</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00447">447</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
 
 </div>
 </div>
@@ -1232,6 +1252,26 @@ Static Public Member Functions</h2></td></tr>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_av">https://github.com/casadi/casadi/wiki/L_av</a> </p>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00123">123</a> of file <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html">generic_shared_impl.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a63db53aa5757c4d8757ea672813c3725"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63db53aa5757c4d8757ea672813c3725">&#9670;&nbsp;</a></span>activity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;bool&gt; casadi::Function::activity </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; bool &gt; &amp;&#160;</td>
+          <td class="paramname"><em>arg</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p><code>arg</code> is a flat activity mask over all input nonzeros (size <a class="el" href="../../da/da4/classcasadi_1_1Function.html#abb0d5ffe092d157d012fd28d0b945f63" title="Get number of input nonzeros.">nnz_in()</a>, true = active = possibly nonzero); the result is the corresponding mask over all output nonzeros (size <a class="el" href="../../da/da4/classcasadi_1_1Function.html#a064a6452fc3dae2ccd1d1fea49af9f22" title="Get number of output nonzeros.">nnz_out()</a>). An output that comes out inactive (false) is guaranteed zero for any value of the active inputs. Unlike sparsity propagation this exploits annihilation: an inactive operand of a multiply kills the product.</p>
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2ih">https://github.com/casadi/casadi/wiki/L_2ih</a> </p>
 
 </div>
 </div>
@@ -2483,10 +2523,11 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">max_depth</td><td>Maximum depth - a negative number indicates no maximum</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">max_depth</td><td>Maximum depth - a negative number indicates no maximum </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>depth-first ordered, unique, list of dependencies</dd></dl>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1y6">https://github.com/casadi/casadi/wiki/L_1y6</a> </p>
 
 </div>
@@ -4384,7 +4425,7 @@ Static Public Member Functions</h2></td></tr>
 <p>There is no guarantee that subsequent calls return unique answers</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1x4">https://github.com/casadi/casadi/wiki/L_1x4</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00960">960</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l01015">1015</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
 
 </div>
 </div>
@@ -4453,7 +4494,7 @@ Static Public Member Functions</h2></td></tr>
 <p>There is no guarantee that subsequent calls return unique answers</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1x5">https://github.com/casadi/casadi/wiki/L_1x5</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00988">988</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l01043">1043</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
 
 </div>
 </div>
@@ -4686,7 +4727,7 @@ Static Public Member Functions</h2></td></tr>
 <p>For a particular input or for all of the inputs</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1vc">https://github.com/casadi/casadi/wiki/L_1vc</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00271">271</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00302">302</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
 
 </div>
 </div>
@@ -4755,7 +4796,7 @@ Static Public Member Functions</h2></td></tr>
 <p>For a particular output or for all of the outputs</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1vd">https://github.com/casadi/casadi/wiki/L_1vd</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00282">282</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00313">313</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
 
 </div>
 </div>
@@ -4862,7 +4903,7 @@ Static Public Member Functions</h2></td></tr>
 <p>For a particular input or for all of the inputs</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1ve">https://github.com/casadi/casadi/wiki/L_1ve</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00293">293</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00336">336</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
 
 </div>
 </div>
@@ -4931,7 +4972,7 @@ Static Public Member Functions</h2></td></tr>
 <p>For a particular output or for all of the outputs</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1vf">https://github.com/casadi/casadi/wiki/L_1vf</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00304">304</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00347">347</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
 
 </div>
 </div>
@@ -5258,7 +5299,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1va">https://github.com/casadi/casadi/wiki/L_1va</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00240">240</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00271">271</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
 
 </div>
 </div>
@@ -5306,7 +5347,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1vb">https://github.com/casadi/casadi/wiki/L_1vb</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00254">254</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00285">285</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
 
 </div>
 </div>
@@ -5354,7 +5395,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1va">https://github.com/casadi/casadi/wiki/L_1va</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00242">242</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00273">273</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
 
 </div>
 </div>
@@ -5402,7 +5443,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1vb">https://github.com/casadi/casadi/wiki/L_1vb</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00256">256</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00287">287</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
 
 </div>
 </div>
@@ -5450,7 +5491,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1va">https://github.com/casadi/casadi/wiki/L_1va</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00244">244</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00275">275</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
 
 </div>
 </div>
@@ -5498,7 +5539,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1vb">https://github.com/casadi/casadi/wiki/L_1vb</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00258">258</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00289">289</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
 
 </div>
 </div>
@@ -5669,7 +5710,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>[DEPRECATED] Get, if necessary generate, the sparsity of a Jacobian block </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00495">495</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00544">544</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
 
 </div>
 </div>
@@ -5720,7 +5761,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>[DEPRECATED] Get, if necessary generate, the sparsity of a Jacobian block </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00491">491</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00540">540</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
 
 </div>
 </div>
@@ -5771,7 +5812,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>[DEPRECATED] Get, if necessary generate, the sparsity of a Jacobian block </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00499">499</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00548">548</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
 
 </div>
 </div>
@@ -5896,7 +5937,7 @@ Static Public Member Functions</h2></td></tr>
 <p>There is no guarantee that subsequent calls return unique answers</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1x4">https://github.com/casadi/casadi/wiki/L_1x4</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00955">955</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l01010">1010</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
 
 </div>
 </div>
@@ -5965,7 +6006,7 @@ Static Public Member Functions</h2></td></tr>
 <p>There is no guarantee that subsequent calls return unique answers</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1x5">https://github.com/casadi/casadi/wiki/L_1x5</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l00983">983</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7c/function_8hpp_source.html#l01038">1038</a> of file <a class="el" href="../../d7/d7c/function_8hpp_source.html">function.hpp</a>.</p>
 
 </div>
 </div>
@@ -6038,6 +6079,158 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1xp">https://github.com/casadi/casadi/wiki/L_1xp</a> </p>
+
+</div>
+</div>
+<a id="ab19dd072e7aeebbc0bf3bfa6cefcabcb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab19dd072e7aeebbc0bf3bfa6cefcabcb">&#9670;&nbsp;</a></span>transform() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a> casadi::Function::transform </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;&#160;</td>
+          <td class="paramname"><em>opts</em> = <code><a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>()</code></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Options:</p><ul>
+<li>passes (OT_VECTORVECTOR): an ordered list of passes. Each pass is a list whose first entry is the verb:<ul>
+<li>{"simplify", task, ...}: graph simplification passes applied in order (cse, ref_count, const_folding, combine_terms, empty_inputs). An integer before a task sets its run count (N&gt;0: N times, 0: until a fixed point); the default is 1.</li>
+<li>{"expand"}: expand to an SXFunction</li>
+<li>{"external", library, operation, opts}: apply an externally defined transform (opts is an optional dict)</li>
+</ul>
+</li>
+<li>boolean shorthands (used only when "passes" is absent): empty_inputs, combine_terms, cse, ref_count, const_folding. These build a single "simplify" pass.</li>
+</ul>
+<p>The dict-only form applies a default simplification flow when empty. The (passes, opts) form runs an explicit pipeline; its opts accepts only "verbose" (the boolean simplify options are rejected there).</p>
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2ig">https://github.com/casadi/casadi/wiki/L_2ig</a> </p>
+
+</div>
+</div>
+<a id="ab53a1b2977928ca3448cf69889d69b38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab53a1b2977928ca3448cf69889d69b38">&#9670;&nbsp;</a></span>transform() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a> casadi::Function::transform </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>fname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;&#160;</td>
+          <td class="paramname"><em>opts</em> = <code><a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Options:</p><ul>
+<li>passes (OT_VECTORVECTOR): an ordered list of passes. Each pass is a list whose first entry is the verb:<ul>
+<li>{"simplify", task, ...}: graph simplification passes applied in order (cse, ref_count, const_folding, combine_terms, empty_inputs). An integer before a task sets its run count (N&gt;0: N times, 0: until a fixed point); the default is 1.</li>
+<li>{"expand"}: expand to an SXFunction</li>
+<li>{"external", library, operation, opts}: apply an externally defined transform (opts is an optional dict)</li>
+</ul>
+</li>
+<li>boolean shorthands (used only when "passes" is absent): empty_inputs, combine_terms, cse, ref_count, const_folding. These build a single "simplify" pass.</li>
+</ul>
+<p>The dict-only form applies a default simplification flow when empty. The (passes, opts) form runs an explicit pipeline; its opts accepts only "verbose" (the boolean simplify options are rejected there).</p>
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2ig">https://github.com/casadi/casadi/wiki/L_2ig</a> </p>
+
+</div>
+</div>
+<a id="ab6b0d264c603c1d3eb00792f731d99d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6b0d264c603c1d3eb00792f731d99d7">&#9670;&nbsp;</a></span>transform() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a> casadi::Function::transform </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>fname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::vector&lt; <a class="el" href="../../d6/d82/classcasadi_1_1GenericType.html">GenericType</a> &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>passes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;&#160;</td>
+          <td class="paramname"><em>opts</em> = <code><a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Options:</p><ul>
+<li>passes (OT_VECTORVECTOR): an ordered list of passes. Each pass is a list whose first entry is the verb:<ul>
+<li>{"simplify", task, ...}: graph simplification passes applied in order (cse, ref_count, const_folding, combine_terms, empty_inputs). An integer before a task sets its run count (N&gt;0: N times, 0: until a fixed point); the default is 1.</li>
+<li>{"expand"}: expand to an SXFunction</li>
+<li>{"external", library, operation, opts}: apply an externally defined transform (opts is an optional dict)</li>
+</ul>
+</li>
+<li>boolean shorthands (used only when "passes" is absent): empty_inputs, combine_terms, cse, ref_count, const_folding. These build a single "simplify" pass.</li>
+</ul>
+<p>The dict-only form applies a default simplification flow when empty. The (passes, opts) form runs an explicit pipeline; its opts accepts only "verbose" (the boolean simplify options are rejected there).</p>
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2ig">https://github.com/casadi/casadi/wiki/L_2ig</a> </p>
+
+</div>
+</div>
+<a id="ae129c7f89caab9cc65849c636ba8cabe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae129c7f89caab9cc65849c636ba8cabe">&#9670;&nbsp;</a></span>transform() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a> casadi::Function::transform </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::vector&lt; <a class="el" href="../../d6/d82/classcasadi_1_1GenericType.html">GenericType</a> &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>passes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;&#160;</td>
+          <td class="paramname"><em>opts</em> = <code><a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Options:</p><ul>
+<li>passes (OT_VECTORVECTOR): an ordered list of passes. Each pass is a list whose first entry is the verb:<ul>
+<li>{"simplify", task, ...}: graph simplification passes applied in order (cse, ref_count, const_folding, combine_terms, empty_inputs). An integer before a task sets its run count (N&gt;0: N times, 0: until a fixed point); the default is 1.</li>
+<li>{"expand"}: expand to an SXFunction</li>
+<li>{"external", library, operation, opts}: apply an externally defined transform (opts is an optional dict)</li>
+</ul>
+</li>
+<li>boolean shorthands (used only when "passes" is absent): empty_inputs, combine_terms, cse, ref_count, const_folding. These build a single "simplify" pass.</li>
+</ul>
+<p>The dict-only form applies a default simplification flow when empty. The (passes, opts) form runs an explicit pipeline; its opts accepts only "verbose" (the boolean simplify options are rejected there).</p>
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2ig">https://github.com/casadi/casadi/wiki/L_2ig</a> </p>
 
 </div>
 </div>
@@ -6136,7 +6329,7 @@ Static Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a id="a45d9c426808a8d5ee88b8a53fa7cdb1b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a45d9c426808a8d5ee88b8a53fa7cdb1b">&#9670;&nbsp;</a></span>wrap()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a45d9c426808a8d5ee88b8a53fa7cdb1b">&#9670;&nbsp;</a></span>wrap() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -6153,8 +6346,27 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="afa0ae9adac6254796d389dd3828d5a0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa0ae9adac6254796d389dd3828d5a0f">&#9670;&nbsp;</a></span>wrap() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a> casadi::Function::wrap </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1vv">https://github.com/casadi/casadi/wiki/L_1vv</a> </p>
+
+</div>
+</div>
 <a id="ab9827985481c38239422c99b95ecb0ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab9827985481c38239422c99b95ecb0ba">&#9670;&nbsp;</a></span>wrap_as_needed()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9827985481c38239422c99b95ecb0ba">&#9670;&nbsp;</a></span>wrap_as_needed() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -6165,6 +6377,35 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramtype">const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;&#160;</td>
           <td class="paramname"><em>opts</em></td><td>)</td>
           <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1vw">https://github.com/casadi/casadi/wiki/L_1vw</a> </p>
+
+</div>
+</div>
+<a id="a6760181da714ca7464ced3f115fefcfa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6760181da714ca7464ced3f115fefcfa">&#9670;&nbsp;</a></span>wrap_as_needed() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../da/da4/classcasadi_1_1Function.html">Function</a> casadi::Function::wrap_as_needed </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;&#160;</td>
+          <td class="paramname"><em>opts</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">

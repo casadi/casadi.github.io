@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -84,7 +84,7 @@ $(function() {
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">#</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"># We demonstrate solving a dense system A.x=b by using different linear solvers.</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">from</span> casadi <span class="keyword">import</span> *</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">import</span> casadi <span class="keyword">as</span> ca</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">from</span> numpy <span class="keyword">import</span> *</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">import</span> time</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
@@ -92,12 +92,12 @@ $(function() {
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment"># We generate $A \in \mathbf{R}^{n \times n}$, $x \in \mathbf{R}^{n}$ with $n=100$</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;A=DM([[cos(i*j)-sin(i) <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(n)] <span class="keywordflow">for</span> j <span class="keywordflow">in</span> range(n)])</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;x=DM([tan(i) <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(n)])</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;A=ca.DM([[cos(i*j)-sin(i) <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(n)] <span class="keywordflow">for</span> j <span class="keywordflow">in</span> range(n)])</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;x=ca.DM([tan(i) <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(n)])</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment"># We generate the b vector:</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;b= mtimes(A,x)</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;b= A @ x</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment"># Commented out pendling completion #1615</span></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>

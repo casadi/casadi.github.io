@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -109,37 +109,38 @@ $(function() {
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">int</span> sp_reverse(bvec_t** arg, bvec_t** res, casadi_int* iw, bvec_t* w) <span class="keyword">const override</span>;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span> eval_mx(<span class="keyword">const</span> std::vector&lt;MX&gt;&amp; arg, std::vector&lt;MX&gt;&amp; res) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">void</span> ad_forward(<span class="keyword">const</span> std::vector&lt;std::vector&lt;MX&gt; &gt;&amp; fseed,</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                         std::vector&lt;std::vector&lt;MX&gt; &gt;&amp; fsens) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">void</span> ad_reverse(<span class="keyword">const</span> std::vector&lt;std::vector&lt;MX&gt; &gt;&amp; aseed,</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                         std::vector&lt;std::vector&lt;MX&gt; &gt;&amp; asens) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">void</span> generate(CodeGenerator&amp; g,</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                  <span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; arg,</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                  <span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; res,</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                  <span class="keyword">const</span> std::vector&lt;bool&gt;&amp; arg_is_ref,</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                  std::vector&lt;bool&gt;&amp; res_is_ref) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    casadi_int n_inplace()<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> 1;}</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    std::string disp(<span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; arg) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    casadi_int op()<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> OP_RANK1;}</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keyword">static</span> MXNode* deserialize(DeserializingStream&amp; s) { <span class="keywordflow">return</span> <span class="keyword">new</span> Rank1(s); }</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;      <span class="keyword">explicit</span> Rank1(DeserializingStream&amp; s) : MXNode(s) {}</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  };</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span> eval_mx(<span class="keyword">const</span> std::vector&lt;MX&gt;&amp; arg, std::vector&lt;MX&gt;&amp; res,</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keyword">const</span> std::vector&lt;bool&gt;&amp; unique={}) <span class="keyword">const</span> <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">void</span> ad_forward(<span class="keyword">const</span> std::vector&lt;std::vector&lt;MX&gt; &gt;&amp; fseed,</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                         std::vector&lt;std::vector&lt;MX&gt; &gt;&amp; fsens) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">void</span> ad_reverse(<span class="keyword">const</span> std::vector&lt;std::vector&lt;MX&gt; &gt;&amp; aseed,</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                         std::vector&lt;std::vector&lt;MX&gt; &gt;&amp; asens) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">void</span> generate(CodeGenerator&amp; g,</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                  <span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; arg,</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                  <span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; res,</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                  <span class="keyword">const</span> std::vector&lt;bool&gt;&amp; arg_is_ref,</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                  std::vector&lt;bool&gt;&amp; res_is_ref) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    casadi_int n_inplace()<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> 1;}</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    std::string disp(<span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; arg) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    casadi_int op()<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> OP_RANK1;}</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keyword">static</span> MXNode* deserialize(DeserializingStream&amp; s) { <span class="keywordflow">return</span> <span class="keyword">new</span> Rank1(s); }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;      <span class="keyword">explicit</span> Rank1(DeserializingStream&amp; s) : MXNode(s) {}</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  };</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;} <span class="comment">// namespace casadi</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_RANK1_HPP</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;} <span class="comment">// namespace casadi</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_RANK1_HPP</span></div>
 <div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/archiver_8hpp_source.html#l00032">archiver.hpp:32</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </body>

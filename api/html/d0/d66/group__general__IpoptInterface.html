@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -157,8 +157,6 @@ $(function() {
 <tr>
 <td>inactive_lam_value</td><td>OT_DOUBLE</td><td>Value used in inactive_lam_strategy (default: 10).</td><td>casadi::IpoptInterface </td></tr>
 <tr>
-<td>input_scheme</td><td>OT_STRINGVECTOR</td><td>Deprecated option (ignored)</td><td>casadi::FunctionInternal </td></tr>
-<tr>
 <td>inputs_check</td><td>OT_BOOL</td><td>Throw exceptions when the numerical values of the inputs don't make sense</td><td>casadi::FunctionInternal </td></tr>
 <tr>
 <td>ipopt</td><td>OT_DICT</td><td>Options to be passed to IPOPT</td><td>casadi::IpoptInterface </td></tr>
@@ -205,9 +203,9 @@ $(function() {
 <tr>
 <td>no_nlp_grad</td><td>OT_BOOL</td><td>Prevent the creation of the 'nlp_grad' function</td><td>casadi::Nlpsol </td></tr>
 <tr>
-<td>oracle_options</td><td>OT_DICT</td><td>Options to be passed to the oracle function</td><td>casadi::Nlpsol </td></tr>
+<td>nonlinear_variables</td><td>OT_BOOLVECTOR</td><td>Which decision variables enter nonlinearly? (detected automatically by default)</td><td>casadi::IpoptInterface </td></tr>
 <tr>
-<td>output_scheme</td><td>OT_STRINGVECTOR</td><td>Deprecated option (ignored)</td><td>casadi::FunctionInternal </td></tr>
+<td>oracle_options</td><td>OT_DICT</td><td>Options to be passed to the oracle function</td><td>casadi::Nlpsol </td></tr>
 <tr>
 <td>pass_nonlinear_variables</td><td>OT_BOOL</td><td>Pass list of variables entering nonlinearly to IPOPT</td><td>casadi::IpoptInterface </td></tr>
 <tr>

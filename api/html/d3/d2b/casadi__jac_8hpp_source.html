@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -76,7 +76,7 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">//    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">//</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">// C-REPLACE &quot;nullptr&quot; &quot;0&quot;</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">// SYMBOL &quot;jac_prob&quot;</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
 <div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="../../d5/df9/structcasadi__jac__prob.html">   23</a></span>&#160;<span class="keyword">struct </span><a class="code" href="../../d5/df9/structcasadi__jac__prob.html">casadi_jac_prob</a> {</div>
@@ -111,9 +111,9 @@ $(function() {
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  p-&gt;<a class="code" href="../../d5/df9/structcasadi__jac__prob.html#a2e81703d450957623848ebdf87c190ea">n_in</a> = sp_ext[1];</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  p-&gt;<a class="code" href="../../d5/df9/structcasadi__jac__prob.html#a94be55569d4a2c6c3653a5e3205459ec">n_color</a> = coloring[1];</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="comment">// The following defaults to null</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  p-&gt;<a class="code" href="../../d5/df9/structcasadi__jac__prob.html#a8f1c552c5b9d149b09ec21d68fd85aab">nom_in</a> = 0;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  p-&gt;<a class="code" href="../../d5/df9/structcasadi__jac__prob.html#abc6e456a757e4764558f99bd150a5126">map_out</a> = 0;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  p-&gt;<a class="code" href="../../d5/df9/structcasadi__jac__prob.html#a1399935e15f314df43838dd929c727ad">map_in</a> = 0;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  p-&gt;<a class="code" href="../../d5/df9/structcasadi__jac__prob.html#a8f1c552c5b9d149b09ec21d68fd85aab">nom_in</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  p-&gt;<a class="code" href="../../d5/df9/structcasadi__jac__prob.html#abc6e456a757e4764558f99bd150a5126">map_out</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  p-&gt;<a class="code" href="../../d5/df9/structcasadi__jac__prob.html#a1399935e15f314df43838dd929c727ad">map_in</a> = <span class="keyword">nullptr</span>;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">// SYMBOL &quot;jac_work&quot;</span></div>
@@ -227,7 +227,7 @@ $(function() {
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  casadi_int nc, r, c, k;</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  <span class="keyword">const</span> casadi_int *colind, *row;</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  <span class="comment">// Quick return if null</span></div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  <span class="keywordflow">if</span> (sub == 0) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  <span class="keywordflow">if</span> (sub == <span class="keyword">nullptr</span>) <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  <span class="comment">// Extract sparsity</span></div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  nc = sp_a[1];</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  colind = sp_a + 2;</div>

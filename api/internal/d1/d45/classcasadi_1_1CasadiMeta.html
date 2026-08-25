@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -116,6 +116,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a294a003886d7209f3f3ff7f09ccdbf02"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d45/classcasadi_1_1CasadiMeta.html#a294a003886d7209f3f3ff7f09ccdbf02">object_file_suffix</a> ()</td></tr>
 <tr class="memdesc:a294a003886d7209f3f3ff7f09ccdbf02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtain object file suffix.  <a href="../../d1/d45/classcasadi_1_1CasadiMeta.html#a294a003886d7209f3f3ff7f09ccdbf02">More...</a><br /></td></tr>
 <tr class="separator:a294a003886d7209f3f3ff7f09ccdbf02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f1f4267634ddb9d270c92950a2344a6"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d45/classcasadi_1_1CasadiMeta.html#a4f1f4267634ddb9d270c92950a2344a6">lapack_libraries</a> ()</td></tr>
+<tr class="memdesc:a4f1f4267634ddb9d270c92950a2344a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">LAPACK link line as configured by the build system.  <a href="../../d1/d45/classcasadi_1_1CasadiMeta.html#a4f1f4267634ddb9d270c92950a2344a6">More...</a><br /></td></tr>
+<tr class="separator:a4f1f4267634ddb9d270c92950a2344a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="aad32568a63a229dd992742c093a7d113"></a>
@@ -353,6 +356,36 @@ Static Public Member Functions</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
+<a id="a4f1f4267634ddb9d270c92950a2344a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f1f4267634ddb9d270c92950a2344a6">&#9670;&nbsp;</a></span>lapack_libraries()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * casadi::CasadiMeta::lapack_libraries </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Semicolon-separated list of full library paths and/or -l flags (CMake's native LAPACK_LIBRARIES form), mirroring whatever <code>find_package(LAPACK)</code> or <code>WITH_BUILD_LAPACK</code> resolved to. Empty when the build was configured with WITH_LAPACK=OFF.</p>
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2gh">https://github.com/casadi/casadi/wiki/L_2gh</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="../../de/d63/casadi__meta_8cpp_source.html#l00058">58</a> of file <a class="el" href="../../de/d63/casadi__meta_8cpp_source.html">casadi_meta.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;{ <span class="keywordflow">return</span> CASADI_LAPACK_LIBRARIES;}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="addeb98f2d1bf1fe295caa205fb4105b2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#addeb98f2d1bf1fe295caa205fb4105b2">&#9670;&nbsp;</a></span>modules()</h2>
 
@@ -467,6 +500,8 @@ Static Public Member Functions</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="../../de/d63/casadi__meta_8cpp_source.html#l00052">52</a> of file <a class="el" href="../../de/d63/casadi__meta_8cpp_source.html">casadi_meta.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;{ <span class="keywordflow">return</span> CASADI_SHARED_LIBRARY_PREFIX;}</div>
 </div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00186">casadi::PluginInterface&lt; Derived &gt;::load_library()</a>.</p>
+
 </div>
 </div>
 <a id="a4c3fecbf115980865c9059cc5b6ea985"></a>
@@ -496,6 +531,8 @@ Static Public Member Functions</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="../../de/d63/casadi__meta_8cpp_source.html#l00054">54</a> of file <a class="el" href="../../de/d63/casadi__meta_8cpp_source.html">casadi_meta.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{ <span class="keywordflow">return</span> CASADI_SHARED_LIBRARY_SUFFIX;}</div>
 </div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="../../d3/d62/tools_8cpp_source.html#l00044">casadi::external_transform()</a>, <a class="el" href="../../dd/d6a/importer_8cpp_source.html#l00034">casadi::Importer::Importer()</a>, and <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00186">casadi::PluginInterface&lt; Derived &gt;::load_library()</a>.</p>
+
 </div>
 </div>
 <a id="a3630446d624df7a5edba448d43f66e56"></a>
@@ -529,7 +566,7 @@ Static Public Member Functions</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="../../de/d63/casadi__meta_8cpp_source.html#l00030">30</a> of file <a class="el" href="../../de/d63/casadi__meta_8cpp_source.html">casadi_meta.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;{ <span class="keywordflow">return</span> CASADI_VERSION_STRING;}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../d3/d62/tools_8cpp_source.html#l00045">casadi::external_transform()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d3/d62/tools_8cpp_source.html#l00044">casadi::external_transform()</a>, and <a class="el" href="../../d6/dad/onnx__export_8cpp_source.html#l00077">casadi::Onnx::load()</a>.</p>
 
 </div>
 </div>

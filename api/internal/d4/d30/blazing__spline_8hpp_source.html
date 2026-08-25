@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -92,11 +92,15 @@ $(function() {
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">const</span> std::vector&lt; std::vector&lt;double&gt; &gt;&amp; knots,</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>&amp; opts=<a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>());</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;} <span class="comment">// namespace casadi</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_BLAZING_SPLINE_FUNCTION_HPP</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  CASADI_EXPORT Function <a class="code" href="../../d7/d23/namespacecasadi.html#a1891698f7929fa60801c69c97ec0e191">blazing_spline</a>(<span class="keyword">const</span> std::string&amp; name,</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">const</span> std::vector&lt;casadi_int&gt;&amp; knot_dims,</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>&amp; opts=<a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>());</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;} <span class="comment">// namespace casadi</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_BLAZING_SPLINE_FUNCTION_HPP</span></div>
 <div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d03/archiver_8cpp_source.html#l00028">archiver.cpp:28</a></div></div>
-<div class="ttc" id="anamespacecasadi_html_a1891698f7929fa60801c69c97ec0e191"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a1891698f7929fa60801c69c97ec0e191">casadi::blazing_spline</a></div><div class="ttdeci">Function blazing_spline(const std::string &amp;name, const std::vector&lt; std::vector&lt; double &gt; &gt; &amp;knots, const Dict &amp;opts)</div><div class="ttdoc">Construct a specialized parametric BSpline.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d62/blazing__spline_8cpp_source.html#l00038">blazing_spline.cpp:38</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_a1891698f7929fa60801c69c97ec0e191"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a1891698f7929fa60801c69c97ec0e191">casadi::blazing_spline</a></div><div class="ttdeci">Function blazing_spline(const std::string &amp;name, const std::vector&lt; std::vector&lt; double &gt; &gt; &amp;knots, const Dict &amp;opts)</div><div class="ttdoc">Construct a specialized parametric BSpline.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d62/blazing__spline_8cpp_source.html#l00175">blazing_spline.cpp:175</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_a8b909f6932a91230738731512b99127e"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">casadi::Dict</a></div><div class="ttdeci">GenericType::Dict Dict</div><div class="ttdoc">C++ equivalent of Python's dict or MATLAB's struct.</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d30/generic__type_8hpp_source.html#l00258">generic_type.hpp:258</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </body>

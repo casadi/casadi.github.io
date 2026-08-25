@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -90,31 +90,26 @@ $(function() {
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="stringliteral">&quot;&gt;List of available options\n&quot;</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="stringliteral">&quot;+--------------------+--------------+--------------------------------------+\n&quot;</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="stringliteral">&quot;|         Id         |     Type     |             Description              |\n&quot;</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="stringliteral">&quot;+====================+==============+======================================+\n&quot;</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="stringliteral">&quot;| convexify_margin   | OT_DOUBLE    | When using a convexification         |\n&quot;</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="stringliteral">&quot;|                    |              | strategy, make sure that the         |\n&quot;</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="stringliteral">&quot;|                    |              | smallest eigenvalue is at least this |\n&quot;</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="stringliteral">&quot;|                    |              | (default: 1e-7).                     |\n&quot;</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="stringliteral">&quot;+--------------------+--------------+--------------------------------------+\n&quot;</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="stringliteral">&quot;| convexify_strategy | OT_STRING    | NONE|regularize|eigen-reflect|eigen- |\n&quot;</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="stringliteral">&quot;|                    |              | clip. Strategy to convexify the      |\n&quot;</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="stringliteral">&quot;|                    |              | Lagrange Hessian before passing it   |\n&quot;</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="stringliteral">&quot;|                    |              | to the solver.                       |\n&quot;</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="stringliteral">&quot;+--------------------+--------------+--------------------------------------+\n&quot;</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="stringliteral">&quot;| madnlp             | OT_DICT      | Options to be passed to madnlp       |\n&quot;</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="stringliteral">&quot;+--------------------+--------------+--------------------------------------+\n&quot;</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="stringliteral">&quot;| ng                 | OT_INTVECTOR | Number of constraints                |\n&quot;</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="stringliteral">&quot;+--------------------+--------------+--------------------------------------+\n&quot;</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="stringliteral">&quot;| nw                 | OT_INTVECTOR | Number of variables                  |\n&quot;</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="stringliteral">&quot;+--------------------+--------------+--------------------------------------+\n&quot;</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;;</div>
-<div class="ttc" id="aclasscasadi_1_1MadnlpInterface_html_acc58b7534bae5cb928f0c983b31b6465"><div class="ttname"><a href="../../d8/d94/classcasadi_1_1MadnlpInterface.html#acc58b7534bae5cb928f0c983b31b6465">casadi::MadnlpInterface::meta_doc</a></div><div class="ttdeci">static const std::string meta_doc</div><div class="ttdoc">A documentation string.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d2d/madnlp__interface_8hpp_source.html#l00118">madnlp_interface.hpp:118</a></div></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="stringliteral">&quot;+--------------------+-----------+-----------------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="stringliteral">&quot;|         Id         |   Type    |               Description               |\n&quot;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="stringliteral">&quot;+====================+===========+=========================================+\n&quot;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="stringliteral">&quot;| convexify_margin   | OT_DOUBLE | When using a convexification strategy,  |\n&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="stringliteral">&quot;|                    |           | make sure that the smallest eigenvalue  |\n&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="stringliteral">&quot;|                    |           | is at least this (default: 1e-7).       |\n&quot;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="stringliteral">&quot;+--------------------+-----------+-----------------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="stringliteral">&quot;| convexify_strategy | OT_STRING | NONE|regularize|eigen-reflect|eigen-    |\n&quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="stringliteral">&quot;|                    |           | clip. Strategy to convexify the         |\n&quot;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="stringliteral">&quot;|                    |           | Lagrange Hessian before passing it to   |\n&quot;</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="stringliteral">&quot;|                    |           | the solver.                             |\n&quot;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="stringliteral">&quot;+--------------------+-----------+-----------------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="stringliteral">&quot;| madnlp             | OT_DICT   | Options to be passed to madnlp          |\n&quot;</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="stringliteral">&quot;+--------------------+-----------+-----------------------------------------+\n&quot;</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;;</div>
+<div class="ttc" id="aclasscasadi_1_1MadnlpInterface_html_acc58b7534bae5cb928f0c983b31b6465"><div class="ttname"><a href="../../d8/d94/classcasadi_1_1MadnlpInterface.html#acc58b7534bae5cb928f0c983b31b6465">casadi::MadnlpInterface::meta_doc</a></div><div class="ttdeci">static const std::string meta_doc</div><div class="ttdoc">A documentation string.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d2d/madnlp__interface_8hpp_source.html#l00111">madnlp_interface.hpp:111</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </body>
 </html>

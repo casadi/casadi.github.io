@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -133,14 +133,14 @@ $(function() {
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">// SYMBOL &quot;highs_init_mem&quot;</span></div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keywordtype">int</span> highs_init_mem(<a class="code" href="../../d3/d4f/structcasadi__highs__data.html">casadi_highs_data&lt;T1&gt;</a>* d) {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keywordtype">int</span> casadi_highs_init_mem(<a class="code" href="../../d3/d4f/structcasadi__highs__data.html">casadi_highs_data&lt;T1&gt;</a>* d) {</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  d-&gt;<a class="code" href="../../d3/d4f/structcasadi__highs__data.html#a93fb1ffc2672cd86705949d004b24fc1">highs</a> = Highs_create();</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">// SYMBOL &quot;highs_free_mem&quot;</span></div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keywordtype">void</span> highs_free_mem(<a class="code" href="../../d3/d4f/structcasadi__highs__data.html">casadi_highs_data&lt;T1&gt;</a>* d) {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keywordtype">void</span> casadi_highs_free_mem(<a class="code" href="../../d3/d4f/structcasadi__highs__data.html">casadi_highs_data&lt;T1&gt;</a>* d) {</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  Highs_destroy(d-&gt;<a class="code" href="../../d3/d4f/structcasadi__highs__data.html#a93fb1ffc2672cd86705949d004b24fc1">highs</a>);</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
@@ -150,9 +150,9 @@ $(function() {
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  casadi_qp_work(p-&gt;<a class="code" href="../../db/d5e/structcasadi__highs__prob.html#aca4d27c255ae91a049b8c6e639e26d69">qp</a>, sz_arg, sz_res, sz_iw, sz_w);</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">// SYMBOL &quot;highs_init&quot;</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">// SYMBOL &quot;highs_set_work&quot;</span></div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keywordtype">void</span> casadi_highs_init(<a class="code" href="../../d3/d4f/structcasadi__highs__data.html">casadi_highs_data&lt;T1&gt;</a>* d, <span class="keyword">const</span> T1*** arg, T1*** res, casadi_int** iw, T1** w) {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keywordtype">void</span> casadi_highs_set_work(<a class="code" href="../../d3/d4f/structcasadi__highs__data.html">casadi_highs_data&lt;T1&gt;</a>* d, <span class="keyword">const</span> T1*** arg, T1*** res, casadi_int** iw, T1** w) {</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  </div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>

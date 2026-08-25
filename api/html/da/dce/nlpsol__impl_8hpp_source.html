@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -207,77 +207,96 @@ $(function() {
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; </div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <span class="keywordtype">void</span> codegen_body_exit(CodeGenerator&amp; g) <span class="keyword">const override</span>;</div>
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <span class="keywordtype">bool</span> uses_output()<span class="keyword"> const override </span>{<span class="keywordflow">return</span> <span class="keyword">true</span>;}</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> get_stats(<span class="keywordtype">void</span>* mem) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keywordtype">bool</span> has_forward(casadi_int nfwd)<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> <span class="keyword">true</span>;}</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    Function get_forward(casadi_int nfwd, <span class="keyword">const</span> std::string&amp; name,</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                         <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; inames,</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                         <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; onames,</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                         <span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>&amp; opts) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="comment">// Plugins that prefer to keep d_nlp/p_nlp/d_oracle storage on their own</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="comment">// per-mem-block data struct (instead of letting codegen_body_enter emit</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="comment">// them as per-call function-scope locals) skip codegen_body_enter and</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <span class="comment">// call these directly with their own lvalues. The default-prefix call</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <span class="comment">// chain through codegen_body_enter / codegen_body_exit is preserved</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <span class="comment">// byte-for-byte for plugins that don&#39;t opt in.</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <span class="comment">//   codegen_setup_constants: emit p_nlp constants + d_nlp &lt;-&gt; p_nlp /</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <span class="comment">//     d_oracle wiring. Runs once -- call from codegen_init_mem.</span></div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    <span class="comment">//   codegen_setup_per_call: emit arg/res-dependent d_nlp wiring +</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    <span class="comment">//     casadi_nlpsol_init + copy_default&#39;s. Runs every call -- call</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="comment">//     from codegen_body.</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="comment">//   codegen_post_solve: emit nlp_grad post-solve + bound consistency +</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="comment">//     final NLPSOL_X/F/G/LAM_* fan-out. Per-call -- call from codegen_body.</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="keywordtype">void</span> codegen_setup_constants(CodeGenerator&amp; g,</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        <span class="keyword">const</span> std::string&amp; d_nlp, <span class="keyword">const</span> std::string&amp; p_nlp,</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        <span class="keyword">const</span> std::string&amp; d_oracle) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    <span class="keywordtype">void</span> codegen_setup_per_call(CodeGenerator&amp; g, <span class="keyword">const</span> std::string&amp; d_nlp) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <span class="keywordtype">void</span> codegen_post_solve(CodeGenerator&amp; g, <span class="keyword">const</span> std::string&amp; d_nlp) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <span class="keywordtype">bool</span> has_reverse(casadi_int nadj)<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> <span class="keyword">true</span>;}</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    Function get_reverse(casadi_int nadj, <span class="keyword">const</span> std::string&amp; name,</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                         <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; inames,</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                         <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; onames,</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                         <span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>&amp; opts) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="comment">// Call the callback function</span></div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <span class="keywordtype">int</span> callback(NlpsolMemory* m) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    <span class="comment">// Get KKT function</span></div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    Function kkt() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <span class="comment">// Make sure primal-dual solution is consistent with bounds</span></div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> bound_consistency(casadi_int n, <span class="keywordtype">double</span>* z, <span class="keywordtype">double</span>* lam,</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                                  <span class="keyword">const</span> <span class="keywordtype">double</span>* lbz, <span class="keyword">const</span> <span class="keywordtype">double</span>* ubz);</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <span class="keywordtype">bool</span> uses_output()<span class="keyword"> const override </span>{<span class="keywordflow">return</span> <span class="keyword">true</span>;}</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> get_stats(<span class="keywordtype">void</span>* mem) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160; </div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <span class="keywordtype">bool</span> has_forward(casadi_int nfwd)<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> <span class="keyword">true</span>;}</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    Function get_forward(casadi_int nfwd, <span class="keyword">const</span> std::string&amp; name,</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                         <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; inames,</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                         <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; onames,</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                         <span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>&amp; opts) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160; </div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    <span class="comment">// Creator function for internal class</span></div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    <span class="keyword">typedef</span> Nlpsol* (*Creator)(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> Function&amp; oracle);</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160; </div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    <span class="comment">// No static functions exposed</span></div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <span class="keyword">struct </span>Exposed{ };</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160; </div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    <span class="keyword">static</span> std::map&lt;std::string, Plugin&gt; solvers_;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <span class="keywordtype">bool</span> has_reverse(casadi_int nadj)<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> <span class="keyword">true</span>;}</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    Function get_reverse(casadi_int nadj, <span class="keyword">const</span> std::string&amp; name,</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                         <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; inames,</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                         <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; onames,</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                         <span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>&amp; opts) <span class="keyword">const override</span>;</div>
 <div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160; </div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="preprocessor">#ifdef CASADI_WITH_THREADSAFE_SYMBOLICS</span></div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <span class="keyword">static</span> std::mutex mutex_solvers_;</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_WITH_THREADSAFE_SYMBOLICS</span></div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160; </div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> std::string infix_;</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160; </div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="keyword">static</span> std::string shortname() { <span class="keywordflow">return</span> <span class="stringliteral">&quot;nlpsol&quot;</span>;}</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    <span class="comment">// Call the callback function</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <span class="keywordtype">int</span> callback(NlpsolMemory* m) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160; </div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <span class="comment">// Get KKT function</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    Function kkt() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160; </div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="comment">// Make sure primal-dual solution is consistent with bounds</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> bound_consistency(casadi_int n, <span class="keywordtype">double</span>* z, <span class="keywordtype">double</span>* lam,</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                                  <span class="keyword">const</span> <span class="keywordtype">double</span>* lbz, <span class="keyword">const</span> <span class="keywordtype">double</span>* ubz);</div>
 <div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160; </div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    std::string class_name()<span class="keyword"> const override </span>{<span class="keywordflow">return</span> <span class="stringliteral">&quot;Nlpsol&quot;</span>;}</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160; </div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <span class="keywordtype">bool</span> is_a(<span class="keyword">const</span> std::string&amp; type, <span class="keywordtype">bool</span> recursive) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160; </div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    <span class="comment">// Get reduced Hessian</span></div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a> getReducedHessian();</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <span class="comment">// Creator function for internal class</span></div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    <span class="keyword">typedef</span> Nlpsol* (*Creator)(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> Function&amp; oracle);</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160; </div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    <span class="comment">// No static functions exposed</span></div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    <span class="keyword">struct </span>Exposed{ };</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160; </div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    <span class="keyword">static</span> std::map&lt;std::string, Plugin&gt; solvers_;</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160; </div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;<span class="preprocessor">#ifdef CASADI_WITH_THREADSAFE_SYMBOLICS</span></div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    <span class="keyword">static</span> std::mutex mutex_solvers_;</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_WITH_THREADSAFE_SYMBOLICS</span></div>
 <div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160; </div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> setOptionsFromFile(<span class="keyword">const</span> std::string &amp; file);</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> std::string infix_;</div>
 <div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160; </div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Type&gt; <span class="keyword">static</span> <span class="keywordtype">void</span> append_to_vec(GenericType&amp; t, <a class="code" href="../../d7/d23/namespacecasadi.html#ae0ba61bfb5742ad7646891d4f89d4c37">Type</a> el) {</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;      std::vector&lt;Type&gt; v = t;</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;      v.push_back(el);</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;      t = v;</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    }</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160; </div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> XType&gt;</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;      <span class="keyword">static</span> Function create_oracle(<span class="keyword">const</span> std::map&lt;std::string, XType&gt;&amp; d,</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                                    <span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>&amp; opts);</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;  <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="keyword">explicit</span> Nlpsol(DeserializingStream&amp; s);</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    <span class="keywordtype">void</span> set_nlpsol_prob();</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;  };</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160; </div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;} <span class="comment">// namespace casadi</span></div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;<span class="comment"></span><span class="preprocessor">#endif </span><span class="comment">// CASADI_NLPSOL_IMPL_HPP</span></div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    <span class="keyword">static</span> std::string shortname() { <span class="keywordflow">return</span> <span class="stringliteral">&quot;nlpsol&quot;</span>;}</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160; </div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    std::string class_name()<span class="keyword"> const override </span>{<span class="keywordflow">return</span> <span class="stringliteral">&quot;Nlpsol&quot;</span>;}</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    <span class="keywordtype">bool</span> is_a(<span class="keyword">const</span> std::string&amp; type, <span class="keywordtype">bool</span> recursive) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160; </div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    <span class="comment">// Get reduced Hessian</span></div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a> getReducedHessian();</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> setOptionsFromFile(<span class="keyword">const</span> std::string &amp; file);</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160; </div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Type&gt; <span class="keyword">static</span> <span class="keywordtype">void</span> append_to_vec(GenericType&amp; t, <a class="code" href="../../d7/d23/namespacecasadi.html#ae0ba61bfb5742ad7646891d4f89d4c37">Type</a> el) {</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;      std::vector&lt;Type&gt; v = t;</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;      v.push_back(el);</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;      t = v;</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    }</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160; </div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> XType&gt;</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;      <span class="keyword">static</span> Function create_oracle(<span class="keyword">const</span> std::map&lt;std::string, XType&gt;&amp; d,</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                                    <span class="keyword">const</span> <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>&amp; opts);</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160; </div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;  <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    <span class="keyword">explicit</span> Nlpsol(DeserializingStream&amp; s);</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    <span class="keywordtype">void</span> set_nlpsol_prob();</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;  };</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160; </div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;} <span class="comment">// namespace casadi</span></div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;<span class="comment"></span><span class="preprocessor">#endif </span><span class="comment">// CASADI_NLPSOL_IMPL_HPP</span></div>
 <div class="ttc" id="agroup__nlpsol_html_ga2c3d2f260e0ed20f8f020ddf66862071"><div class="ttname"><a href="../../d4/d89/group__nlpsol.html#ga2c3d2f260e0ed20f8f020ddf66862071">casadi::nlpsol_in</a></div><div class="ttdeci">CASADI_EXPORT std::vector&lt; std::string &gt; nlpsol_in()</div><div class="ttdoc">Get input scheme of NLP solvers.</div></div>
 <div class="ttc" id="agroup__nlpsol_html_ga98747434b07d500b65e70471ea305b56"><div class="ttname"><a href="../../d4/d89/group__nlpsol.html#ga98747434b07d500b65e70471ea305b56">casadi::nlpsol_out</a></div><div class="ttdeci">CASADI_EXPORT std::vector&lt; std::string &gt; nlpsol_out()</div><div class="ttdoc">Get NLP solver output scheme of NLP solvers.</div></div>
 <div class="ttc" id="agroup__nlpsol_html_gaf8697e5be520fbfcc59b05aeedb5a507"><div class="ttname"><a href="../../d4/d89/group__nlpsol.html#gaf8697e5be520fbfcc59b05aeedb5a507">casadi::nlpsol_default_in</a></div><div class="ttdeci">CASADI_EXPORT double nlpsol_default_in(casadi_int ind)</div><div class="ttdoc">Default input for an NLP solver.</div></div>

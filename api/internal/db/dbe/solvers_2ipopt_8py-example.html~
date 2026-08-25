@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -84,7 +84,7 @@ $(function() {
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"># nlpsol</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"># =====================</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">from</span> casadi <span class="keyword">import</span> *</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">import</span> casadi <span class="keyword">as</span> ca</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">from</span> numpy <span class="keyword">import</span> *</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"># In this example, we will solve a few optimization problems with increasing complexity</span></div>
@@ -96,10 +96,10 @@ $(function() {
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">#</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"># with x scalar</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;x=SX.sym(<span class="stringliteral">&#39;x&#39;</span>)</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;x=ca.SX.sym(<span class="stringliteral">&#39;x&#39;</span>)</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;nlp = {<span class="stringliteral">&#39;x&#39;</span>:x, <span class="stringliteral">&#39;f&#39;</span>:(x-1)**2}</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;solver = <a class="code" href="../../d4/d89/group__nlpsol.html#gaac593497a58a865ab7f150c84fb043c7">nlpsol</a>(<span class="stringliteral">&#39;solver&#39;</span>, <span class="stringliteral">&#39;ipopt&#39;</span>, nlp)</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;solver = ca.nlpsol(<span class="stringliteral">&#39;solver&#39;</span>, <span class="stringliteral">&#39;ipopt&#39;</span>, nlp)</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;sol = solver(lbx=-10, ubx=10)</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment"># The solution is obviously 1:</span></div>
@@ -118,13 +118,13 @@ $(function() {
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;n = 5</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;x=SX.sym(<span class="stringliteral">&#39;x&#39;</span>,n)</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;x=ca.SX.sym(<span class="stringliteral">&#39;x&#39;</span>,n)</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment"># Note how we do not distinguish between equalities and inequalities here</span></div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;nlp = {<span class="stringliteral">&#39;x&#39;</span>:x, <span class="stringliteral">&#39;f&#39;</span>:mtimes((x-1).T,x-1), <span class="stringliteral">&#39;g&#39;</span>:vertcat(x[1]+x[2],x[0])}</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;nlp = {<span class="stringliteral">&#39;x&#39;</span>:x, <span class="stringliteral">&#39;f&#39;</span>:(x-1).T @ (x-1), <span class="stringliteral">&#39;g&#39;</span>:ca.vertcat(x[1]+x[2],x[0])}</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;solver = <a class="code" href="../../d4/d89/group__nlpsol.html#gaac593497a58a865ab7f150c84fb043c7">nlpsol</a>(<span class="stringliteral">&#39;solver&#39;</span>, <span class="stringliteral">&#39;ipopt&#39;</span>, nlp)</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;solver = ca.nlpsol(<span class="stringliteral">&#39;solver&#39;</span>, <span class="stringliteral">&#39;ipopt&#39;</span>, nlp)</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;sol = solver(lbx=-10, ubx=10, lbg=[0,2], ubg=[1,2])</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment"># $ 2 \le x_0 \le 2$ is not really as bad it looks. </span></div>
@@ -144,12 +144,12 @@ $(function() {
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">#</span></div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment"># with x scalar</span></div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;x=SX.sym(<span class="stringliteral">&#39;x&#39;</span>)</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;a=SX.sym(<span class="stringliteral">&#39;a&#39;</span>)</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;x=ca.SX.sym(<span class="stringliteral">&#39;x&#39;</span>)</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;a=ca.SX.sym(<span class="stringliteral">&#39;a&#39;</span>)</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;a_ = 2</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;nlp={<span class="stringliteral">&#39;x&#39;</span>:x, <span class="stringliteral">&#39;p&#39;</span>:a, <span class="stringliteral">&#39;f&#39;</span>:(x-a)**2}</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;solver = <a class="code" href="../../d4/d89/group__nlpsol.html#gaac593497a58a865ab7f150c84fb043c7">nlpsol</a>(<span class="stringliteral">&#39;solver&#39;</span>, <span class="stringliteral">&#39;ipopt&#39;</span>, nlp)</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;solver = ca.nlpsol(<span class="stringliteral">&#39;solver&#39;</span>, <span class="stringliteral">&#39;ipopt&#39;</span>, nlp)</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;sol = solver(lbx=-10, ubx=10, p=a_)</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment"># The solution is obviously a:</span></div>
@@ -165,7 +165,6 @@ $(function() {
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;print(sol[<span class="stringliteral">&#39;x&#39;</span>])</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;assert(abs(sol[<span class="stringliteral">&#39;x&#39;</span>]-2*a_)&lt;1e-9)</div>
-<div class="ttc" id="agroup__nlpsol_html_gaac593497a58a865ab7f150c84fb043c7"><div class="ttname"><a href="../../d4/d89/group__nlpsol.html#gaac593497a58a865ab7f150c84fb043c7">casadi::nlpsol</a></div><div class="ttdeci">Function nlpsol(const std::string &amp;name, const std::string &amp;solver, const SXDict &amp;nlp, const Dict &amp;opts)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d7a/nlpsol_8cpp_source.html#l00195">nlpsol.cpp:195</a></div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </body>
 </html>

@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -140,6 +140,11 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5a5b61de442541498669e71d0efef412"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60dcfd78375e0b3d91d987c4d64af5ea"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a60dcfd78375e0b3d91d987c4d64af5ea">version</a> (const std::string &amp;name, int min, int max)</td></tr>
 <tr class="separator:a60dcfd78375e0b3d91d987c4d64af5ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a152ed7cc607918bbec7abf565162d228"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a152ed7cc607918bbec7abf565162d228">peek_byte</a> ()</td></tr>
+<tr class="separator:a152ed7cc607918bbec7abf565162d228"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb99a58cbe14c0bd5945a30c6619cfe8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#afb99a58cbe14c0bd5945a30c6619cfe8">debug</a> () const</td></tr>
+<tr class="memdesc:afb99a58cbe14c0bd5945a30c6619cfe8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the stream was written in debug-decoration mode.  <a href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#afb99a58cbe14c0bd5945a30c6619cfe8">More...</a><br /></td></tr>
+<tr class="separator:afb99a58cbe14c0bd5945a30c6619cfe8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5a0f2112d11c0a53e3654f63726538d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#af5a0f2112d11c0a53e3654f63726538d">connect</a> (<a class="el" href="../../d1/d00/classcasadi_1_1SerializingStream.html">SerializingStream</a> &amp;s)</td></tr>
 <tr class="separator:af5a0f2112d11c0a53e3654f63726538d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a180f2c72932fc90dbad825ad69c5a7dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dc2/classcasadi_1_1DeserializingStream.html#a180f2c72932fc90dbad825ad69c5a7dc">reset</a> ()</td></tr>
@@ -214,6 +219,61 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="afb99a58cbe14c0bd5945a30c6619cfe8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb99a58cbe14c0bd5945a30c6619cfe8">&#9670;&nbsp;</a></span>debug()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool casadi::DeserializingStream::debug </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d45/serializing__stream_8hpp_source.html#l00167">167</a> of file <a class="el" href="../../dd/d45/serializing__stream_8hpp_source.html">serializing_stream.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a152ed7cc607918bbec7abf565162d228"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a152ed7cc607918bbec7abf565162d228">&#9670;&nbsp;</a></span>peek_byte()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int casadi::DeserializingStream::peek_byte </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Peek the next raw byte on the wire without consuming it. Returns -1 on EOF. Intended for legacy-format detection where the new code must distinguish wire formats whose first byte differs. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d45/serializing__stream_8hpp_source.html#l00164">164</a> of file <a class="el" href="../../dd/d45/serializing__stream_8hpp_source.html">serializing_stream.hpp</a>.</p>
 
 </div>
 </div>

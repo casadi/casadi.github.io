@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -68,7 +68,7 @@ class casadi::RevWeakCache&lt; K, T &gt;</h3>
 
 <p>Key is stored as a weakref Value is stored as regular ref </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d34/generic__shared_8hpp_source.html#l00327">327</a> of file <a class="el" href="../../d0/d34/generic__shared_8hpp_source.html">generic_shared.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d34/generic__shared_8hpp_source.html#l00328">328</a> of file <a class="el" href="../../d0/d34/generic__shared_8hpp_source.html">generic_shared.hpp</a>.</p>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -122,24 +122,24 @@ template&lt;typename K , typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d34/generic__shared_8hpp_source.html#l00364">364</a> of file <a class="el" href="../../d0/d34/generic__shared_8hpp_source.html">generic_shared.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                                                                 {</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;<span class="preprocessor">#ifdef CASADI_WITH_THREADSAFE_SYMBOLICS</span></div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;      <span class="comment">// Safe access to cache_</span></div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;      <a class="code" href="../../de/dac/classcasadi_1_1conditional__lock__guard.html">casadi::conditional_lock_guard&lt;std::mutex&gt;</a> lock(mtx_, needs_lock);</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_WITH_THREADSAFE_SYMBOLICS</span></div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;      <span class="keyword">const</span> <span class="keywordtype">void</span>* k = key.get();</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;      <span class="keyword">auto</span> it = pre_cache_.find(k);</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;      K temp;</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;      <span class="keywordflow">if</span> (it!=pre_cache_.end() &amp;&amp; it-&gt;second.shared_if_alive(temp)) {</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        <span class="keyword">auto</span> it2 = cache_.find(k);</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        f = it2-&gt;second;</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;      } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;      }</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    }</div>
-<div class="ttc" id="aclasscasadi_1_1conditional__lock__guard_html"><div class="ttname"><a href="../../de/dac/classcasadi_1_1conditional__lock__guard.html">casadi::conditional_lock_guard</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d59/casadi__common_8hpp_source.html#l00331">casadi_common.hpp:331</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../d0/d34/generic__shared_8hpp_source.html#l00365">365</a> of file <a class="el" href="../../d0/d34/generic__shared_8hpp_source.html">generic_shared.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                                                                 {</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;<span class="preprocessor">#ifdef CASADI_WITH_THREADSAFE_SYMBOLICS</span></div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;      <span class="comment">// Safe access to cache_</span></div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;      <a class="code" href="../../de/dac/classcasadi_1_1conditional__lock__guard.html">casadi::conditional_lock_guard&lt;std::mutex&gt;</a> lock(mtx_, needs_lock);</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_WITH_THREADSAFE_SYMBOLICS</span></div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;      <span class="keyword">const</span> <span class="keywordtype">void</span>* k = key.get();</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;      <span class="keyword">auto</span> it = pre_cache_.find(k);</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;      K temp;</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;      <span class="keywordflow">if</span> (it!=pre_cache_.end() &amp;&amp; it-&gt;second.shared_if_alive(temp)) {</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        <span class="keyword">auto</span> it2 = cache_.find(k);</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        f = it2-&gt;second;</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;      } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;      }</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    }</div>
+<div class="ttc" id="aclasscasadi_1_1conditional__lock__guard_html"><div class="ttname"><a href="../../de/dac/classcasadi_1_1conditional__lock__guard.html">casadi::conditional_lock_guard</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d59/casadi__common_8hpp_source.html#l00354">casadi_common.hpp:354</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -185,25 +185,25 @@ template&lt;typename K , typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d34/generic__shared_8hpp_source.html#l00329">329</a> of file <a class="el" href="../../d0/d34/generic__shared_8hpp_source.html">generic_shared.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                                                                 {</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;<span class="preprocessor">#ifdef CASADI_WITH_THREADSAFE_SYMBOLICS</span></div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;      <span class="comment">// Safe access to cache_</span></div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;      <a class="code" href="../../de/dac/classcasadi_1_1conditional__lock__guard.html">casadi::conditional_lock_guard&lt;std::mutex&gt;</a> lock(mtx_, needs_lock);</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_WITH_THREADSAFE_SYMBOLICS</span></div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;      <span class="comment">// Add to cache</span></div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;      <span class="keyword">const</span> <span class="keywordtype">void</span>* k = key.get();</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;      pre_cache_.insert(std::make_pair(k, key));</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;      cache_.insert(std::make_pair(k, f));</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;      <span class="comment">// Remove a lost reference, if any, to prevent uncontrolled growth</span></div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = pre_cache_.begin(); it!=pre_cache_.end(); ++it) {</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;        <span class="keywordflow">if</span> (!it-&gt;second.alive()) {</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;          pre_cache_.erase(it);</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;          cache_.erase(it-&gt;first);</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;          <span class="keywordflow">break</span>; <span class="comment">// just one dead reference is enough</span></div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        }</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;      }</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../d0/d34/generic__shared_8hpp_source.html#l00330">330</a> of file <a class="el" href="../../d0/d34/generic__shared_8hpp_source.html">generic_shared.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                                                                 {</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;<span class="preprocessor">#ifdef CASADI_WITH_THREADSAFE_SYMBOLICS</span></div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;      <span class="comment">// Safe access to cache_</span></div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;      <a class="code" href="../../de/dac/classcasadi_1_1conditional__lock__guard.html">casadi::conditional_lock_guard&lt;std::mutex&gt;</a> lock(mtx_, needs_lock);</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_WITH_THREADSAFE_SYMBOLICS</span></div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;      <span class="comment">// Add to cache</span></div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;      <span class="keyword">const</span> <span class="keywordtype">void</span>* k = key.get();</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;      pre_cache_.insert(std::make_pair(k, key));</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;      cache_.insert(std::make_pair(k, f));</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;      <span class="comment">// Remove a lost reference, if any, to prevent uncontrolled growth</span></div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = pre_cache_.begin(); it!=pre_cache_.end(); ++it) {</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;        <span class="keywordflow">if</span> (!it-&gt;second.alive()) {</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;          pre_cache_.erase(it);</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;          cache_.erase(it-&gt;first);</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;          <span class="keywordflow">break</span>; <span class="comment">// just one dead reference is enough</span></div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;        }</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;      }</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -243,18 +243,18 @@ template&lt;typename K , typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d34/generic__shared_8hpp_source.html#l00355">355</a> of file <a class="el" href="../../d0/d34/generic__shared_8hpp_source.html">generic_shared.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                                                {</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;<span class="preprocessor">#ifdef CASADI_WITH_THREADSAFE_SYMBOLICS</span></div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;      <span class="comment">// Safe access to cache_</span></div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;      std::lock_guard&lt;std::mutex&gt; lock(mtx_);</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_WITH_THREADSAFE_SYMBOLICS</span></div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;      <span class="keywordflow">if</span> (!<a class="code" href="../../d5/de2/classcasadi_1_1RevWeakCache.html#ae9cb1cd0ca41eff5ae71de7db8b676d4">incache</a>(key, f, <span class="keyword">false</span>)) {</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;        <a class="code" href="../../d5/de2/classcasadi_1_1RevWeakCache.html#aa73b9960fa0d22084de785297318adc3">tocache</a>(key, f, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;      }</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    }</div>
-<div class="ttc" id="aclasscasadi_1_1RevWeakCache_html_aa73b9960fa0d22084de785297318adc3"><div class="ttname"><a href="../../d5/de2/classcasadi_1_1RevWeakCache.html#aa73b9960fa0d22084de785297318adc3">casadi::RevWeakCache::tocache</a></div><div class="ttdeci">void tocache(const K &amp;key, const T &amp;f, bool needs_lock=true)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d34/generic__shared_8hpp_source.html#l00329">generic_shared.hpp:329</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1RevWeakCache_html_ae9cb1cd0ca41eff5ae71de7db8b676d4"><div class="ttname"><a href="../../d5/de2/classcasadi_1_1RevWeakCache.html#ae9cb1cd0ca41eff5ae71de7db8b676d4">casadi::RevWeakCache::incache</a></div><div class="ttdeci">bool incache(const K &amp;key, T &amp;f, bool needs_lock=true) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d34/generic__shared_8hpp_source.html#l00364">generic_shared.hpp:364</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../d0/d34/generic__shared_8hpp_source.html#l00356">356</a> of file <a class="el" href="../../d0/d34/generic__shared_8hpp_source.html">generic_shared.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;                                                {</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;<span class="preprocessor">#ifdef CASADI_WITH_THREADSAFE_SYMBOLICS</span></div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;      <span class="comment">// Safe access to cache_</span></div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;      std::lock_guard&lt;std::mutex&gt; lock(mtx_);</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_WITH_THREADSAFE_SYMBOLICS</span></div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;      <span class="keywordflow">if</span> (!<a class="code" href="../../d5/de2/classcasadi_1_1RevWeakCache.html#ae9cb1cd0ca41eff5ae71de7db8b676d4">incache</a>(key, f, <span class="keyword">false</span>)) {</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        <a class="code" href="../../d5/de2/classcasadi_1_1RevWeakCache.html#aa73b9960fa0d22084de785297318adc3">tocache</a>(key, f, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;      }</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    }</div>
+<div class="ttc" id="aclasscasadi_1_1RevWeakCache_html_aa73b9960fa0d22084de785297318adc3"><div class="ttname"><a href="../../d5/de2/classcasadi_1_1RevWeakCache.html#aa73b9960fa0d22084de785297318adc3">casadi::RevWeakCache::tocache</a></div><div class="ttdeci">void tocache(const K &amp;key, const T &amp;f, bool needs_lock=true)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d34/generic__shared_8hpp_source.html#l00330">generic_shared.hpp:330</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1RevWeakCache_html_ae9cb1cd0ca41eff5ae71de7db8b676d4"><div class="ttname"><a href="../../d5/de2/classcasadi_1_1RevWeakCache.html#ae9cb1cd0ca41eff5ae71de7db8b676d4">casadi::RevWeakCache::incache</a></div><div class="ttdeci">bool incache(const K &amp;key, T &amp;f, bool needs_lock=true) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d34/generic__shared_8hpp_source.html#l00365">generic_shared.hpp:365</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

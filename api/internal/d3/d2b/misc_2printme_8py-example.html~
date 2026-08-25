@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -56,7 +56,7 @@ $(function() {
 <p>This example looks at the printme method</p>
 <p>View <a href="../../misc/printme.pdf">output (PDF)</a> | <a href="../../misc/printme.py">source (python)</a></p>
 <dl class="section see"><dt>See also</dt><dd><div class="fragment"><div class="line"><a name="a0"></a><a class="code" href="../../d7/d23/namespacecasadi.html#a96a30645b1a6140430d273c0849c876e">casadi::printme</a>();</div>
-<div class="ttc" id="anamespacecasadi_html_a96a30645b1a6140430d273c0849c876e"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a96a30645b1a6140430d273c0849c876e">casadi::printme</a></div><div class="ttdeci">double printme(double x, double y)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d90/calculus_8hpp_source.html#l00273">calculus.hpp:273</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_a96a30645b1a6140430d273c0849c876e"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a96a30645b1a6140430d273c0849c876e">casadi::printme</a></div><div class="ttdeci">double printme(double x, double y)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d90/calculus_8hpp_source.html#l00279">calculus.hpp:279</a></div></div>
 </div><!-- fragment --></dd></dl>
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">#</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">#     This file is part of CasADi.</span></div>
@@ -81,10 +81,10 @@ $(function() {
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">#     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">#</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">from</span> casadi <span class="keyword">import</span> *</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">import</span> casadi <span class="keyword">as</span> ca</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;a = SX.sym(<span class="stringliteral">&quot;a&quot;</span>)</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;b = SX.sym(<span class="stringliteral">&quot;b&quot;</span>)</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;a = ca.SX.sym(<span class="stringliteral">&quot;a&quot;</span>)</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;b = ca.SX.sym(<span class="stringliteral">&quot;b&quot;</span>)</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;c = a+b</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;c = c.printme(13)</div>
@@ -93,7 +93,7 @@ $(function() {
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;print(d)</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;f = Function(<span class="stringliteral">&quot;f&quot;</span>, [a,b],[d])</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;f = ca.Function(<span class="stringliteral">&quot;f&quot;</span>, [a,b],[d])</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment"># When the graph is evaluated, a printout of c will occur (if you have set WITH_PRINTME to ON in CMakeCache.txt)</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment"># Printout reads &#39;|&gt; 13: 7&#39;</span></div>
@@ -101,16 +101,16 @@ $(function() {
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;f(4,3)</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;dd_da = jacobian(d, a)</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;J = Function(<span class="stringliteral">&#39;J&#39;</span>, [a,b], [dd_da])</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;dd_da = ca.jacobian(d, a)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;J = ca.Function(<span class="stringliteral">&#39;J&#39;</span>, [a,b], [dd_da])</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment"># The first derivative still depends on c</span></div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment"># Printout reads &#39;|&gt; 13: 11&#39;</span></div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;J(2,9)</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;d2d_da2 = jacobian(dd_da, a)</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;J = Function(<span class="stringliteral">&#39;J&#39;</span>, [a,b], [d2d_da2])</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;d2d_da2 = ca.jacobian(dd_da, a)</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;J = ca.Function(<span class="stringliteral">&#39;J&#39;</span>, [a,b], [d2d_da2])</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment"># second derivative doesn&#39;t, so we don&#39;t get a printout</span></div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>

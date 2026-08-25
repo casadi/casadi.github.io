@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -142,13 +142,13 @@ $(function() {
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">// SYMBOL &quot;ipopt_init_mem&quot;</span></div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keywordtype">int</span> ipopt_init_mem(<a class="code" href="../../d4/d1e/structcasadi__ipopt__data.html">casadi_ipopt_data&lt;T1&gt;</a>* d) {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keywordtype">int</span> casadi_ipopt_init_mem(<a class="code" href="../../d4/d1e/structcasadi__ipopt__data.html">casadi_ipopt_data&lt;T1&gt;</a>* d) {</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">// SYMBOL &quot;ipopt_free_mem&quot;</span></div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keywordtype">void</span> ipopt_free_mem(<a class="code" href="../../d4/d1e/structcasadi__ipopt__data.html">casadi_ipopt_data&lt;T1&gt;</a>* d) {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keywordtype">void</span> casadi_ipopt_free_mem(<a class="code" href="../../d4/d1e/structcasadi__ipopt__data.html">casadi_ipopt_data&lt;T1&gt;</a>* d) {</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="comment">//Highs_destroy(d-&gt;ipopt);</span></div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  </div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
@@ -162,9 +162,9 @@ $(function() {
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  *sz_w += p-&gt;<a class="code" href="../../d5/da2/structcasadi__ipopt__prob.html#a60a9b4003f9343c6e24352f3138db546">nlp</a>-&gt;nx; <span class="comment">// z_U</span></div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">// SYMBOL &quot;ipopt_init&quot;</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">// SYMBOL &quot;ipopt_set_work&quot;</span></div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="keywordtype">void</span> casadi_ipopt_init(<a class="code" href="../../d4/d1e/structcasadi__ipopt__data.html">casadi_ipopt_data&lt;T1&gt;</a>* d, <span class="keyword">const</span> T1*** arg, T1*** res, casadi_int** iw, T1** w) {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="keywordtype">void</span> casadi_ipopt_set_work(<a class="code" href="../../d4/d1e/structcasadi__ipopt__data.html">casadi_ipopt_data&lt;T1&gt;</a>* d, <span class="keyword">const</span> T1*** arg, T1*** res, casadi_int** iw, T1** w) {</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <span class="comment">// Problem structure</span></div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <span class="keyword">const</span> <a class="code" href="../../d5/da2/structcasadi__ipopt__prob.html">casadi_ipopt_prob&lt;T1&gt;</a>* p = d-&gt;<a class="code" href="../../d4/d1e/structcasadi__ipopt__data.html#a1a0e4029f9c3da5c7c31f475d111e0b1">prob</a>;</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  <span class="keyword">const</span> <a class="code" href="../../da/d37/structcasadi__nlpsol__prob.html">casadi_nlpsol_prob&lt;T1&gt;</a>* p_nlp = p-&gt;<a class="code" href="../../d5/da2/structcasadi__ipopt__prob.html#a60a9b4003f9343c6e24352f3138db546">nlp</a>;</div>

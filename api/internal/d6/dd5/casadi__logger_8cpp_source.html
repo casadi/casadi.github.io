@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -118,53 +118,58 @@ $(function() {
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  void (*<a class="code" href="../../d7/dad/classcasadi_1_1Logger.html#ac8768a0fed4ce7b9181e4a4700828a6b">Logger::flush</a>)(<span class="keywordtype">bool</span> error) =<a class="code" href="../../d7/dad/classcasadi_1_1Logger.html#a696c08b7fce5f22364a6a2d8dc5885f1">Logger::flushDefault</a>;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
 <div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="../../d7/d23/namespacecasadi.html#af24bd1ac16f9be39dd0fbc56646e2115">   61</a></span>&#160;  std::ostream&amp; <a class="code" href="../../d7/d23/namespacecasadi.html#af24bd1ac16f9be39dd0fbc56646e2115">uout</a>() {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="comment">// Singleton pattern, lazily instantiated</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keyword">static</span> <a class="code" href="../../d8/dc9/classcasadi_1_1Logger_1_1Stream.html">Logger::Stream&lt;false&gt;</a> instance;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">return</span> instance;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">   67</a></span>&#160;  std::ostream&amp; <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="comment">// Singleton pattern, lazily instantiated</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">static</span> <a class="code" href="../../d8/dc9/classcasadi_1_1Logger_1_1Stream.html">Logger::Stream&lt;true&gt;</a> instance;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">return</span> instance;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  }</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;} <span class="comment">// namespace casadi</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keywordtype">int</span> casadi_printf(<span class="keyword">const</span> <span class="keywordtype">char</span> *fmt, ...) {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="comment">// Variable number of arguments</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    va_list args;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    va_start(args, fmt);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="comment">// Static &amp; dynamic buffers</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">char</span> buf[256];</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">size_t</span> buf_sz = <span class="keyword">sizeof</span>(buf);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">char</span>* buf_dyn = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="comment">// Try to print with a small buffer</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    casadi_int n = vsnprintf(buf, buf_sz, fmt, args);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment">// Need a larger buffer?</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordflow">if</span> (n&gt;<span class="keyword">static_cast&lt;</span>casadi_int<span class="keyword">&gt;</span>(buf_sz)) {</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      buf_sz = <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(n+1);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      buf_dyn = <span class="keyword">new</span> <span class="keywordtype">char</span>[buf_sz];</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;      n = vsnprintf(buf_dyn, buf_sz, fmt, args);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="comment">// Print buffer content</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">if</span> (n&gt;=0) <a class="code" href="../../d7/d23/namespacecasadi.html#af24bd1ac16f9be39dd0fbc56646e2115">casadi::uout</a>() &lt;&lt; (buf_dyn ? buf_dyn : buf) &lt;&lt; std::flush;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="comment">// Cleanup</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keyword">delete</span>[] buf_dyn;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    va_end(args);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">return</span> n;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  }</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
-<div class="ttc" id="aclasscasadi_1_1Logger_1_1Stream_html"><div class="ttname"><a href="../../d8/dc9/classcasadi_1_1Logger_1_1Stream.html">casadi::Logger::Stream</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/de4/casadi__logger_8hpp_source.html#l00114">casadi_logger.hpp:114</a></div></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="comment">// Thread-local stream: each thread gets its own instance</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="comment">// This prevents data races on stream state (width, fill, flags, etc.)</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment">// while WriteFunThreadSafe still protects actual I/O with mutex</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="comment">// ThreadLocalStorage avoids MinGW thread_local destructor ordering bug</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keyword">static</span> thread_local <a class="code" href="../../d6/df3/classcasadi_1_1ThreadLocalStorage.html">ThreadLocalStorage&lt;Logger::Stream&lt;false&gt;</a>&gt; instance;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">return</span> instance.<a class="code" href="../../d6/df3/classcasadi_1_1ThreadLocalStorage.html#a99767876c694ca3d8e9c0946bd892dcb">get</a>();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">   70</a></span>&#160;  std::ostream&amp; <a class="code" href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">uerr</a>() {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="comment">// Thread-local stream: each thread gets its own instance</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="comment">// ThreadLocalStorage avoids MinGW thread_local destructor ordering bug</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keyword">static</span> thread_local <a class="code" href="../../d6/df3/classcasadi_1_1ThreadLocalStorage.html">ThreadLocalStorage&lt;Logger::Stream&lt;true&gt;</a>&gt; instance;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">return</span> instance.<a class="code" href="../../d6/df3/classcasadi_1_1ThreadLocalStorage.html#a99767876c694ca3d8e9c0946bd892dcb">get</a>();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;} <span class="comment">// namespace casadi</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keywordtype">int</span> casadi_printf(<span class="keyword">const</span> <span class="keywordtype">char</span> *fmt, ...) {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="comment">// Variable number of arguments</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    va_list args;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    va_start(args, fmt);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="comment">// Static &amp; dynamic buffers</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">char</span> buf[256];</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">size_t</span> buf_sz = <span class="keyword">sizeof</span>(buf);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">char</span>* buf_dyn = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="comment">// Try to print with a small buffer</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    casadi_int n = vsnprintf(buf, buf_sz, fmt, args);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="comment">// Need a larger buffer?</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">if</span> (n&gt;<span class="keyword">static_cast&lt;</span>casadi_int<span class="keyword">&gt;</span>(buf_sz)) {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;      buf_sz = <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(n+1);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;      buf_dyn = <span class="keyword">new</span> <span class="keywordtype">char</span>[buf_sz];</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;      n = vsnprintf(buf_dyn, buf_sz, fmt, args);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="comment">// Print buffer content</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">if</span> (n&gt;=0) <a class="code" href="../../d7/d23/namespacecasadi.html#af24bd1ac16f9be39dd0fbc56646e2115">casadi::uout</a>() &lt;&lt; (buf_dyn ? buf_dyn : buf) &lt;&lt; std::flush;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="comment">// Cleanup</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keyword">delete</span>[] buf_dyn;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    va_end(args);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">return</span> n;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;}</div>
 <div class="ttc" id="aclasscasadi_1_1Logger_html_a0b235921a20df5ec0cbb2c5065e11cf7"><div class="ttname"><a href="../../d7/dad/classcasadi_1_1Logger.html#a0b235921a20df5ec0cbb2c5065e11cf7">casadi::Logger::writeFun</a></div><div class="ttdeci">static void(* writeFun)(const char *s, std::streamsize num, bool error)</div><div class="ttdoc">Print warnings, can be redefined.</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/de4/casadi__logger_8hpp_source.html#l00051">casadi_logger.hpp:51</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1Logger_html_a0dcec20132ec660fcc064b276dce4eaa"><div class="ttname"><a href="../../d7/dad/classcasadi_1_1Logger.html#a0dcec20132ec660fcc064b276dce4eaa">casadi::Logger::FlushThreadSafe</a></div><div class="ttdeci">static void FlushThreadSafe(bool error)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dd5/casadi__logger_8cpp_source.html#l00049">casadi_logger.cpp:49</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1Logger_html_a696c08b7fce5f22364a6a2d8dc5885f1"><div class="ttname"><a href="../../d7/dad/classcasadi_1_1Logger.html#a696c08b7fce5f22364a6a2d8dc5885f1">casadi::Logger::flushDefault</a></div><div class="ttdeci">static void flushDefault(bool error)</div><div class="ttdoc">By default, flush std::cout or std::cerr.</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/de4/casadi__logger_8hpp_source.html#l00069">casadi_logger.hpp:69</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1Logger_html_a76f03d491cf598b77ff6e9a6130b6beb"><div class="ttname"><a href="../../d7/dad/classcasadi_1_1Logger.html#a76f03d491cf598b77ff6e9a6130b6beb">casadi::Logger::writeDefault</a></div><div class="ttdeci">static void writeDefault(const char *s, std::streamsize num, bool error)</div><div class="ttdoc">By default, print to std::cout or std::cerr.</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/de4/casadi__logger_8hpp_source.html#l00060">casadi_logger.hpp:60</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1Logger_html_aac8f1ed33d78fe0eef60c39ef782dec9"><div class="ttname"><a href="../../d7/dad/classcasadi_1_1Logger.html#aac8f1ed33d78fe0eef60c39ef782dec9">casadi::Logger::WriteFunThreadSafe</a></div><div class="ttdeci">static void WriteFunThreadSafe(const char *s, std::streamsize num, bool error)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dd5/casadi__logger_8cpp_source.html#l00042">casadi_logger.cpp:42</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1Logger_html_ac8768a0fed4ce7b9181e4a4700828a6b"><div class="ttname"><a href="../../d7/dad/classcasadi_1_1Logger.html#ac8768a0fed4ce7b9181e4a4700828a6b">casadi::Logger::flush</a></div><div class="ttdeci">static void(* flush)(bool error)</div><div class="ttdoc">Flush buffers.</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/de4/casadi__logger_8hpp_source.html#l00054">casadi_logger.hpp:54</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1ThreadLocalStorage_html"><div class="ttname"><a href="../../d6/df3/classcasadi_1_1ThreadLocalStorage.html">casadi::ThreadLocalStorage</a></div><div class="ttdoc">Thread-local storage wrapper that avoids destructor calls.</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d59/casadi__common_8hpp_source.html#l00339">casadi_common.hpp:339</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1ThreadLocalStorage_html_a99767876c694ca3d8e9c0946bd892dcb"><div class="ttname"><a href="../../d6/df3/classcasadi_1_1ThreadLocalStorage.html#a99767876c694ca3d8e9c0946bd892dcb">casadi::ThreadLocalStorage::get</a></div><div class="ttdeci">T &amp; get()</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d59/casadi__common_8hpp_source.html#l00343">casadi_common.hpp:343</a></div></div>
 <div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d03/archiver_8cpp_source.html#l00028">archiver.cpp:28</a></div></div>
-<div class="ttc" id="anamespacecasadi_html_a2374d2cd69297ee44b5ed1ca90e9e5bc"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">casadi::uerr</a></div><div class="ttdeci">std::ostream &amp; uerr()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dd5/casadi__logger_8cpp_source.html#l00067">casadi_logger.cpp:67</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_a2374d2cd69297ee44b5ed1ca90e9e5bc"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a2374d2cd69297ee44b5ed1ca90e9e5bc">casadi::uerr</a></div><div class="ttdeci">std::ostream &amp; uerr()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dd5/casadi__logger_8cpp_source.html#l00070">casadi_logger.cpp:70</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_af24bd1ac16f9be39dd0fbc56646e2115"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#af24bd1ac16f9be39dd0fbc56646e2115">casadi::uout</a></div><div class="ttdeci">std::ostream &amp; uout()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dd5/casadi__logger_8cpp_source.html#l00061">casadi_logger.cpp:61</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </body>

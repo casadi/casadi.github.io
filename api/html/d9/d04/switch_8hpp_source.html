@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -154,15 +154,16 @@ $(function() {
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> info() <span class="keyword">const override</span>;</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="comment">// Get all embedded functions, recursively</span></div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordtype">void</span> find(std::map&lt;FunctionInternal*, Function&gt;&amp; all_fun, casadi_int max_depth) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keyword">explicit</span> Switch(DeserializingStream&amp; s);</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  };</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;} <span class="comment">// namespace casadi</span></div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_SWITCH_HPP</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordtype">void</span> find(std::map&lt;FunctionInternal*, std::pair&lt;Function, size_t&gt; &gt;&amp; all_fun,</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        casadi_int max_depth) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keyword">explicit</span> Switch(DeserializingStream&amp; s);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  };</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;} <span class="comment">// namespace casadi</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_SWITCH_HPP</span></div>
 <div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/archiver_8hpp_source.html#l00032">archiver.hpp:32</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_a8b909f6932a91230738731512b99127e"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">casadi::Dict</a></div><div class="ttdeci">GenericType::Dict Dict</div><div class="ttdoc">C++ equivalent of Python's dict or MATLAB's struct.</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d30/generic__type_8hpp_source.html#l00258">generic_type.hpp:258</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -74,6 +74,7 @@ $(function() {
 <li>lam_g()
 : <a class="el" href="dd/dc6/classcasadi_1_1Opti.html#ae26371c89f364d793bcfcc8efe101f4f">casadi::Opti</a>
 , <a class="el" href="de/dd6/classcasadi_1_1OptiNode.html#ac2992d9a070d1c8b993cdcdfa22dcfd3">casadi::OptiNode</a>
+, <a class="el" href="d4/db8/structcasadi__ccopt__data.html#addb4f33d9f744fe23319d11febe6b2b6">casadi_ccopt_data&lt; T1 &gt;</a>
 , <a class="el" href="d5/daf/structcasadi__madnlp__data.html#adc957e2615ffba35d98f819b3afb547b">casadi_madnlp_data&lt; T1 &gt;</a>
 , <a class="el" href="d8/d47/structcasadi__nlpsol__data.html#ad76ceef7313bcda9e10992b37e0cd3f1">casadi_nlpsol_data&lt; T1 &gt;</a>
 </li>
@@ -120,11 +121,17 @@ $(function() {
 <li>lams
 : <a class="el" href="d1/da5/structcasadi__hpipm__data.html#a382fa572667a7d9c4c0c7d4916149e9d">casadi_hpipm_data&lt; T1 &gt;</a>
 </li>
+<li>lapack_libraries()
+: <a class="el" href="d1/d45/classcasadi_1_1CasadiMeta.html#a6b3dc5abde57c6b716aa91477aab558f">casadi::CasadiMeta</a>
+</li>
 <li>largest_first()
 : <a class="el" href="d5/da8/classcasadi_1_1Sparsity.html#a37069ee28c8ddd725e1f189ccfdb9167">casadi::Sparsity</a>
 </li>
 <li>lb
 : <a class="el" href="dc/d3d/structcasadi_1_1MetaCon.html#a2072e3c879be0c5c0a3818658fc0dca1">casadi::MetaCon</a>
+</li>
+<li>lb_lift
+: <a class="el" href="d4/d8d/structcasadi__socp__data.html#a8cc4046eda3cc91dc9f2c418dadc6dc7">casadi_socp_data&lt; T1 &gt;</a>
 </li>
 <li>lba
 : <a class="el" href="dc/dd5/structcasadi__qp__data.html#a1d5c732450f552e75e5e2fda6989514d">casadi_qp_data&lt; T1 &gt;</a>
@@ -164,12 +171,18 @@ $(function() {
 <li>lg
 : <a class="el" href="d1/da5/structcasadi__hpipm__data.html#afcd0df9725a01450c9ab86f261eff353">casadi_hpipm_data&lt; T1 &gt;</a>
 </li>
+<li>libmad_opts
+: <a class="el" href="d5/daf/structcasadi__madnlp__data.html#a4e08693f1eaeeb0941c43f1a054d246a">casadi_madnlp_data&lt; T1 &gt;</a>
+</li>
 <li>library()
 : <a class="el" href="de/d6f/classcasadi_1_1Importer.html#a064914c381b130ca221d6a7ce69152b7">casadi::Importer</a>
 </li>
 <li>lift()
 : <a class="el" href="d4/db5/classcasadi_1_1DaeBuilder.html#ac739b7eef29c7cc4b1111ae7823da5ba">casadi::DaeBuilder</a>
 , <a class="el" href="d9/dc2/group__expression__tools.html#gacad0fd11bc3c95c1ebc8265555c66443">casadi::MX</a>
+</li>
+<li>lift_start
+: <a class="el" href="d4/d8d/structcasadi__socp__data.html#a23a177bec534959f2bb27572f860efe6">casadi_socp_data&lt; T1 &gt;</a>
 </li>
 <li>lin_beta
 : <a class="el" href="d9/d98/structcasadi__newton__mem.html#a8d07684a6ca2f9d9f9aa9646e69a4984">casadi_newton_mem&lt; T1 &gt;</a>
@@ -192,8 +205,8 @@ $(function() {
 <li>linear_scale
 : <a class="el" href="dc/d3d/structcasadi_1_1MetaCon.html#ad62a4110f81434c1fe0ad20ad073a1ec">casadi::MetaCon</a>
 </li>
-<li>linearize()
-: <a class="el" href="d9/dc2/group__expression__tools.html#ga64e8fa9a56131ef7e4f78ee49ea329b0">casadi::GenericMatrix&lt; MatType &gt;</a>
+<li>linearize
+: <a class="el" href="d9/dc2/group__expression__tools.html#ga71e017db5e7558f57a2d6610f1a458ee">casadi::GenericMatrix&lt; MatType &gt;</a>
 </li>
 <li>Linsol()
 : <a class="el" href="d5/d08/classcasadi_1_1Linsol.html#a4b1aacf4333696b459876ae70de800fd">casadi::Linsol</a>
@@ -219,6 +232,7 @@ $(function() {
 <li>load_plugin()
 : <a class="el" href="de/d6f/classcasadi_1_1Importer.html#a9a687fce073f5044db0b2dde5e9f7d89">casadi::Importer</a>
 , <a class="el" href="d5/d08/classcasadi_1_1Linsol.html#a342c0ef2db8db18a6072329151b00f3d">casadi::Linsol</a>
+, <a class="el" href="d6/de4/classcasadi_1_1ModelicaParser.html#afc79a03a71b2b237c5275c4ab9d07ef3">casadi::ModelicaParser</a>
 , <a class="el" href="d4/d74/classcasadi_1_1XmlFile.html#a487509a6607a0b1eab89592e8b929543">casadi::XmlFile</a>
 </li>
 <li>logsumexp
@@ -229,6 +243,9 @@ $(function() {
 </li>
 <li>lower()
 : <a class="el" href="d5/da8/classcasadi_1_1Sparsity.html#ac1752b8c9239a6419150159d3c54e77d">casadi::Sparsity</a>
+</li>
+<li>lp_status
+: <a class="el" href="d9/d62/structcasadi__xpress__data.html#a0b77c5ff0d44eaa8776e230ab3c44c25">casadi_xpress_data&lt; T1 &gt;</a>
 </li>
 <li>lug
 : <a class="el" href="d4/df6/structcasadi__hpipm__prob.html#a6fc6b25ac7b186422057620f02ce93e0">casadi_hpipm_prob&lt; T1 &gt;</a>

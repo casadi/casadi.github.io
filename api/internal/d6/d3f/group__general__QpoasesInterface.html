@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -161,8 +161,6 @@ $(function() {
 <tr>
 <td>initialStatusBounds</td><td>OT_STRING</td><td>Initial status of bounds at first iteration.</td><td><a class="el" href="../../d5/d43/classcasadi_1_1QpoasesInterface.html" title="&#39;qpoases&#39; plugin for Conic">casadi::QpoasesInterface</a> </td></tr>
 <tr>
-<td>input_scheme</td><td>OT_STRINGVECTOR</td><td>Deprecated option (ignored)</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
-<tr>
 <td>inputs_check</td><td>OT_BOOL</td><td>Throw exceptions when the numerical values of the inputs don't make sense</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
 <td>is_diff_in</td><td>OT_BOOLVECTOR</td><td>Indicate for each input if it should be differentiable.</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
@@ -205,8 +203,6 @@ $(function() {
 <tr>
 <td>numRegularisationSteps</td><td>OT_INT</td><td>Maximum number of successive regularisation steps.</td><td><a class="el" href="../../d5/d43/classcasadi_1_1QpoasesInterface.html" title="&#39;qpoases&#39; plugin for Conic">casadi::QpoasesInterface</a> </td></tr>
 <tr>
-<td>output_scheme</td><td>OT_STRINGVECTOR</td><td>Deprecated option (ignored)</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
-<tr>
 <td>post_expand</td><td>OT_BOOL</td><td>After construction, expand this Function. Default: False</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
 <td>post_expand_options</td><td>OT_DICT</td><td>Options to be passed to post-construction expansion. Default: empty</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
@@ -230,6 +226,8 @@ $(function() {
 <td>reverse_options</td><td>OT_DICT</td><td>Options to be passed to a reverse mode constructor</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
 <td>schur</td><td>OT_BOOL</td><td>Use Schur Complement Approach [false]</td><td><a class="el" href="../../d5/d43/classcasadi_1_1QpoasesInterface.html" title="&#39;qpoases&#39; plugin for Conic">casadi::QpoasesInterface</a> </td></tr>
+<tr>
+<td>solver_version_check</td><td>OT_BOOL</td><td>When the plugin loads an externally supplied solver, check that its version is compatible with the plugin [Default: true]</td><td><a class="el" href="../../df/de0/classcasadi_1_1Conic.html" title="Internal class.">casadi::Conic</a> </td></tr>
 <tr>
 <td>sparse</td><td>OT_BOOL</td><td>Formulate the QP using sparse matrices. [false]</td><td><a class="el" href="../../d5/d43/classcasadi_1_1QpoasesInterface.html" title="&#39;qpoases&#39; plugin for Conic">casadi::QpoasesInterface</a> </td></tr>
 <tr>

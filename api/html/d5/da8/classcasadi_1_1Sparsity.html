@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -211,6 +211,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5dfdafcc96230d922a44f3051b6be75d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html#a5dfdafcc96230d922a44f3051b6be75d">is_reshape</a> (const <a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html">Sparsity</a> &amp;y) const</td></tr>
 <tr class="memdesc:a5dfdafcc96230d922a44f3051b6be75d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the sparsity is a reshape of another.  <a href="../../d5/da8/classcasadi_1_1Sparsity.html#a5dfdafcc96230d922a44f3051b6be75d">More...</a><br /></td></tr>
 <tr class="separator:a5dfdafcc96230d922a44f3051b6be75d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5de2a3991c09619ae5f2cbba745873fd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html#a5de2a3991c09619ae5f2cbba745873fd">is_compactible</a> (std::vector&lt; casadi_int &gt; &amp;<a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html#aa17c397b6b684c569dcdd5a218d39d4a">row</a>, std::vector&lt; casadi_int &gt; &amp;col) const</td></tr>
+<tr class="memdesc:a5de2a3991c09619ae5f2cbba745873fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the nonzero pattern is the Cartesian product of a row and a column subset.  <a href="../../d5/da8/classcasadi_1_1Sparsity.html#a5de2a3991c09619ae5f2cbba745873fd">More...</a><br /></td></tr>
+<tr class="separator:a5de2a3991c09619ae5f2cbba745873fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11de909ead2e2270ae7190f57ddb8aaf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html#a11de909ead2e2270ae7190f57ddb8aaf">is_subset</a> (const <a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html">Sparsity</a> &amp;rhs) const</td></tr>
 <tr class="memdesc:a11de909ead2e2270ae7190f57ddb8aaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is subset?  <a href="../../d5/da8/classcasadi_1_1Sparsity.html#a11de909ead2e2270ae7190f57ddb8aaf">More...</a><br /></td></tr>
 <tr class="separator:a11de909ead2e2270ae7190f57ddb8aaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -325,6 +328,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac77b23f190f0f328129b615719024342"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html">Sparsity</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html#ac77b23f190f0f328129b615719024342">uni_coloring</a> (const <a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html">Sparsity</a> &amp;AT=<a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html">Sparsity</a>(), casadi_int cutoff=std::numeric_limits&lt; casadi_int &gt;::max()) const</td></tr>
 <tr class="memdesc:ac77b23f190f0f328129b615719024342"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform a unidirectional coloring: A greedy distance-2 coloring algorithm.  <a href="../../d5/da8/classcasadi_1_1Sparsity.html#ac77b23f190f0f328129b615719024342">More...</a><br /></td></tr>
 <tr class="separator:ac77b23f190f0f328129b615719024342"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a835366738929b1a4ffc8b0c3175b77e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html">Sparsity</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html#a835366738929b1a4ffc8b0c3175b77e0">star_coloring_new</a> (std::vector&lt; casadi_int &gt; &amp;which_color, const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;opts=<a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>()) const</td></tr>
+<tr class="memdesc:a835366738929b1a4ffc8b0c3175b77e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform a star coloring of a symmetric matrix:  <a href="../../d5/da8/classcasadi_1_1Sparsity.html#a835366738929b1a4ffc8b0c3175b77e0">More...</a><br /></td></tr>
+<tr class="separator:a835366738929b1a4ffc8b0c3175b77e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a38d9243d89622f44cca768ffa4fb9e1f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html">Sparsity</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html#a38d9243d89622f44cca768ffa4fb9e1f">star_coloring</a> (casadi_int ordering=1, casadi_int cutoff=std::numeric_limits&lt; casadi_int &gt;::max()) const</td></tr>
 <tr class="memdesc:a38d9243d89622f44cca768ffa4fb9e1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform a star coloring of a symmetric matrix:  <a href="../../d5/da8/classcasadi_1_1Sparsity.html#a38d9243d89622f44cca768ffa4fb9e1f">More...</a><br /></td></tr>
 <tr class="separator:a38d9243d89622f44cca768ffa4fb9e1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2260,6 +2266,36 @@ banded(n, 1) is tri-diagonal matrix <br  />
 
 </div>
 </div>
+<a id="a5de2a3991c09619ae5f2cbba745873fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5de2a3991c09619ae5f2cbba745873fd">&#9670;&nbsp;</a></span>is_compactible()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool casadi::Sparsity::is_compactible </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; casadi_int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>row</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; casadi_int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>col</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>If true, returns the (sorted) row and column index sets such that nz(i, j) &lt;-&gt; i in row and j in col. The nonzero buffer of a compactible matrix in CCS is laid out exactly as a column-major dense row.size() x col.size() matrix, so it can be consumed by dense kernels without gather/scatter.</p>
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2gf">https://github.com/casadi/casadi/wiki/L_2gf</a> </p>
+
+</div>
+</div>
 <a id="ade09f680deedad39a57d46c1091b58bf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ade09f680deedad39a57d46c1091b58bf">&#9670;&nbsp;</a></span>is_dense()</h2>
 
@@ -3822,6 +3858,36 @@ banded(n, 1) is tri-diagonal matrix <br  />
 
 </div>
 </div>
+<a id="a835366738929b1a4ffc8b0c3175b77e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a835366738929b1a4ffc8b0c3175b77e0">&#9670;&nbsp;</a></span>star_coloring_new()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d5/da8/classcasadi_1_1Sparsity.html">Sparsity</a> casadi::Sparsity::star_coloring_new </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; casadi_int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>which_color</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a> &amp;&#160;</td>
+          <td class="paramname"><em>opts</em> = <code><a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>A greedy distance-2 coloring algorithm Algorithm 4.1 in What Color Is Your Jacobian? Graph Coloring for Computing Derivatives A. H. GEBREMEDHIN, F. MANNE, A. POTHEN SIAM Rev., 47(4), 629–705 (2006) or, alternatively (new_algo = true), NEW ACYCLIC AND STAR COLORING ALGORITHMS WITH APPLICATION TO COMPUTING HESSIANS A. H. GEBREMEDHIN, A. TARAFDAR, F. MANNE, A. POTHEN SIAM J. SCI. COMPUT. Vol. 29, No. 3, pp. 1042–1072 (2007)</p>
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2jz">https://github.com/casadi/casadi/wiki/L_2jz</a> </p>
+
+</div>
+</div>
 <a id="a7f54843dadc9ae43b81050dc7a8bfc3f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7f54843dadc9ae43b81050dc7a8bfc3f">&#9670;&nbsp;</a></span>sub() <span class="overload">[1/2]</span></h2>
 
@@ -4149,7 +4215,7 @@ banded(n, 1) is tri-diagonal matrix <br  />
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/da8/sparsity_8hpp_source.html#l01140">1140</a> of file <a class="el" href="../../da/da8/sparsity_8hpp_source.html">sparsity.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/da8/sparsity_8hpp_source.html#l01199">1199</a> of file <a class="el" href="../../da/da8/sparsity_8hpp_source.html">sparsity.hpp</a>.</p>
 
 </div>
 </div>

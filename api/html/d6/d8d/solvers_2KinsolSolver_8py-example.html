@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -84,7 +84,7 @@ $(function() {
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">from</span> casadi <span class="keyword">import</span> *</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">import</span> casadi <span class="keyword">as</span> ca</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">from</span> numpy <span class="keyword">import</span> *</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">from</span> pylab <span class="keyword">import</span> *</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
@@ -100,17 +100,17 @@ $(function() {
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;eps   = SX.sym(<span class="stringliteral">&quot;eps&quot;</span>)</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;mu    = SX.sym(<span class="stringliteral">&quot;mu&quot;</span>)</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;alpha = SX.sym(<span class="stringliteral">&quot;alpha&quot;</span>)</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;k     = SX.sym(<span class="stringliteral">&quot;k&quot;</span>)</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;sigma = SX.sym(<span class="stringliteral">&quot;sigma&quot;</span>)</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;eps   = ca.SX.sym(<span class="stringliteral">&quot;eps&quot;</span>)</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;mu    = ca.SX.sym(<span class="stringliteral">&quot;mu&quot;</span>)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;alpha = ca.SX.sym(<span class="stringliteral">&quot;alpha&quot;</span>)</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;k     = ca.SX.sym(<span class="stringliteral">&quot;k&quot;</span>)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;sigma = ca.SX.sym(<span class="stringliteral">&quot;sigma&quot;</span>)</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;params = [eps,mu,alpha,k,sigma]</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;a     = SX.sym(<span class="stringliteral">&quot;a&quot;</span>)</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;gamma = SX.sym(<span class="stringliteral">&quot;gamma&quot;</span>)</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;a     = ca.SX.sym(<span class="stringliteral">&quot;a&quot;</span>)</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;gamma = ca.SX.sym(<span class="stringliteral">&quot;gamma&quot;</span>)</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
@@ -126,7 +126,7 @@ $(function() {
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;f=Function(<span class="stringliteral">&quot;f&quot;</span>, [vertcat(a,gamma),vertcat(*params)],[vertcat(res0,res1)])</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;f=ca.Function(<span class="stringliteral">&quot;f&quot;</span>, [ca.vertcat(a,gamma),ca.vertcat(*params)],[ca.vertcat(res0,res1)])</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;opts = {}</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;opts[<span class="stringliteral">&quot;strategy&quot;</span>] = <span class="stringliteral">&quot;linesearch&quot;</span></div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;opts[<span class="stringliteral">&quot;abstol&quot;</span>] = 1e-14</div>
@@ -134,7 +134,7 @@ $(function() {
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;opts[<span class="stringliteral">&quot;constraints&quot;</span>] = [2,-2]</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;s=<a class="code" href="../../d3/d65/group__rootfinder.html#ga34ac5b45bbae27aa55d96610c7d42910">rootfinder</a>(<span class="stringliteral">&quot;s&quot;</span>, <span class="stringliteral">&quot;kinsol&quot;</span>, f, opts)</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;s=ca.rootfinder(<span class="stringliteral">&quot;s&quot;</span>, <span class="stringliteral">&quot;kinsol&quot;</span>, f, opts)</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>

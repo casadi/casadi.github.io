@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -84,73 +84,82 @@ $(function() {
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;function.hpp&quot;</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;iomanip&gt;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">using namespace </span><a class="code" href="../../d7/d23/namespacecasadi.html">casadi</a>;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keywordtype">int</span> eval_dump(<span class="keyword">const</span> std::string&amp; name) {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="comment">// Load function</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="../../da/da4/classcasadi_1_1Function.html">Function</a> f = <a class="code" href="../../da/da4/classcasadi_1_1Function.html#ac16cee71bc5c4c9a223050d023ad7787">Function::load</a>(name+<span class="stringliteral">&quot;.casadi&quot;</span>);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    f.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#aeeefc3add8766ee83d49079f37c863ce">change_option</a>(<span class="stringliteral">&quot;dump_in&quot;</span>, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    f.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#aeeefc3add8766ee83d49079f37c863ce">change_option</a>(<span class="stringliteral">&quot;dump_out&quot;</span>, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="comment">// Helper to format filenames </span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    std::stringstream ss;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    ss &lt;&lt; std::setfill(<span class="charliteral">&#39;0&#39;</span>) &lt;&lt; std::setw(6);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    std::vector&lt;DM&gt; inputs;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">// Loop over all inputs</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0;i&lt;1000000;++i) {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        ss &lt;&lt; i;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            inputs = f.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a0f90482e89b1883b66853ba1a1b33f21">generate_in</a>(name+<span class="stringliteral">&quot;.&quot;</span>+ss.str()+ <span class="stringliteral">&quot;.in.txt&quot;</span>);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        } <span class="keywordflow">catch</span> (<a class="code" href="../../d5/d04/classcasadi_1_1CasadiException.html">CasadiException</a>&amp; ex) {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordflow">if</span> (i==0) {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                casadi_warning(ex.<a class="code" href="../../d5/d04/classcasadi_1_1CasadiException.html#a56212ebd3aea86fff11e15675ae344d9">what</a>());</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                casadi_assert(i&gt;0, <span class="stringliteral">&quot;Could not find a single input file &quot;</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                                 <span class="stringliteral">&quot;with file name &quot;</span> + name + <span class="stringliteral">&quot;.&lt;dddddd&gt;.in.txt&quot;</span>);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            }</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="comment">// No more input files</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        }</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="comment">// Run function</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        std::vector&lt;DM&gt; res = f(inputs);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="comment">// Generate output file</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        f.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#aad11e754b6843e6158e6f312b34e73b6">generate_out</a>(name+<span class="stringliteral">&quot;.&quot;</span>+ss.str()+ <span class="stringliteral">&quot;.out.txt&quot;</span>, res);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        ss.clear();</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keywordtype">int</span> eval_dump_parse(<span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; args) {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    casadi_assert(args.size()&gt;0, <span class="stringliteral">&quot;Name is missing in $ casadi-cli eval_dump name.&quot;</span>);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    std::string name = args[0];</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">return</span> eval_dump(name);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[]) {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="comment">// Retrieve all arguments</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    std::vector&lt;std::string&gt; args(argv + 1, argv + argc);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="comment">// Branch on &#39;command&#39; (first argument)</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    std::set&lt;std::string&gt; commands = {<span class="stringliteral">&quot;eval_dump&quot;</span>};</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    casadi_assert(args.size()&gt;0, <span class="stringliteral">&quot;Must provide a command. Use one of: &quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(commands) + <span class="stringliteral">&quot;.&quot;</span>);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    std::string cmd = args[0];</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">if</span> (cmd==<span class="stringliteral">&quot;eval_dump&quot;</span>) {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">return</span> eval_dump_parse(std::vector&lt;std::string&gt;(args.begin()+1, args.end()));</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        casadi_assert(commands.find(cmd)!=commands.end(),</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="stringliteral">&quot;Unrecognised command &#39;&quot;</span> + cmd + <span class="stringliteral">&quot;&#39;. Use one of: &quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(commands) + <span class="stringliteral">&quot;.&quot;</span>);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">using namespace </span><a class="code" href="../../d7/d23/namespacecasadi.html">casadi</a>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">int</span> eval_dump(<span class="keyword">const</span> std::string&amp; name) {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="comment">// Load function</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="../../da/da4/classcasadi_1_1Function.html">Function</a> f = <a class="code" href="../../da/da4/classcasadi_1_1Function.html#ac16cee71bc5c4c9a223050d023ad7787">Function::load</a>(name+<span class="stringliteral">&quot;.casadi&quot;</span>);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    f.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#aeeefc3add8766ee83d49079f37c863ce">change_option</a>(<span class="stringliteral">&quot;dump_in&quot;</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    f.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#aeeefc3add8766ee83d49079f37c863ce">change_option</a>(<span class="stringliteral">&quot;dump_out&quot;</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment">// Helper to format filenames </span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    std::stringstream ss;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    ss &lt;&lt; std::setfill(<span class="charliteral">&#39;0&#39;</span>) &lt;&lt; std::setw(6);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    std::vector&lt;DM&gt; inputs;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="comment">// Loop over all inputs</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0;i&lt;1000000;++i) {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        ss &lt;&lt; i;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            inputs = f.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a0f90482e89b1883b66853ba1a1b33f21">generate_in</a>(name+<span class="stringliteral">&quot;.&quot;</span>+ss.str()+ <span class="stringliteral">&quot;.in.txt&quot;</span>);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        } <span class="keywordflow">catch</span> (<a class="code" href="../../d5/d04/classcasadi_1_1CasadiException.html">CasadiException</a>&amp; ex) {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keywordflow">if</span> (i==0) {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                casadi_warning(ex.<a class="code" href="../../d5/d04/classcasadi_1_1CasadiException.html#a56212ebd3aea86fff11e15675ae344d9">what</a>());</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                casadi_assert(i&gt;0, <span class="stringliteral">&quot;Could not find a single input file &quot;</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                                 <span class="stringliteral">&quot;with file name &quot;</span> + name + <span class="stringliteral">&quot;.&lt;dddddd&gt;.in.txt&quot;</span>);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="comment">// No more input files</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="comment">// Run function</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        std::vector&lt;DM&gt; res = f(inputs);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="comment">// Generate output file</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        f.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#aad11e754b6843e6158e6f312b34e73b6">generate_out</a>(name+<span class="stringliteral">&quot;.&quot;</span>+ss.str()+ <span class="stringliteral">&quot;.out.txt&quot;</span>, res);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        ss.clear();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keywordtype">int</span> eval_dump_parse(<span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; args) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    casadi_assert(args.size()&gt;0, <span class="stringliteral">&quot;Name is missing in $ casadi-cli eval_dump name.&quot;</span>);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    std::string name = args[0];</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">return</span> eval_dump(name);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[]) {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="comment">// Retrieve all arguments</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    std::vector&lt;std::string&gt; args(argv + 1, argv + argc);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="comment">// Branch on &#39;command&#39; (first argument)</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    std::set&lt;std::string&gt; commands = {<span class="stringliteral">&quot;eval_dump&quot;</span>};</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    casadi_assert(args.size()&gt;0, <span class="stringliteral">&quot;Must provide a command. Use one of: &quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(commands) + <span class="stringliteral">&quot;.&quot;</span>);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    std::string cmd = args[0];</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">if</span> (cmd==<span class="stringliteral">&quot;eval_dump&quot;</span>) {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">return</span> eval_dump_parse(std::vector&lt;std::string&gt;(args.begin()+1, args.end()));</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        casadi_assert(commands.find(cmd)!=commands.end(),</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="stringliteral">&quot;Unrecognised command &#39;&quot;</span> + cmd + <span class="stringliteral">&quot;&#39;. Use one of: &quot;</span> + <a class="code" href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">str</a>(commands) + <span class="stringliteral">&quot;.&quot;</span>);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    std::cerr &lt;&lt; e.what() &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  } <span class="keywordflow">catch</span> (...) {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;Unknown error&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
 <div class="ttc" id="aclasscasadi_1_1CasadiException_html"><div class="ttname"><a href="../../d5/d04/classcasadi_1_1CasadiException.html">casadi::CasadiException</a></div><div class="ttdoc">Casadi exception class.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d1e/exception_8hpp_source.html#l00077">exception.hpp:77</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1CasadiException_html_a56212ebd3aea86fff11e15675ae344d9"><div class="ttname"><a href="../../d5/d04/classcasadi_1_1CasadiException.html#a56212ebd3aea86fff11e15675ae344d9">casadi::CasadiException::what</a></div><div class="ttdeci">const char * what() const override</div><div class="ttdoc">Display error.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d1e/exception_8hpp_source.html#l00090">exception.hpp:90</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1Function_html"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html">casadi::Function</a></div><div class="ttdoc">Function object.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7c/function_8hpp_source.html#l00058">function.hpp:60</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1Function_html_a0f90482e89b1883b66853ba1a1b33f21"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#a0f90482e89b1883b66853ba1a1b33f21">casadi::Function::generate_in</a></div><div class="ttdeci">void generate_in(const std::string &amp;fname, const std::vector&lt; DM &gt; &amp;arg)</div><div class="ttdoc">Export an input file that can be passed to generate C code with a main.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l01211">function.cpp:1211</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1Function_html_aad11e754b6843e6158e6f312b34e73b6"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#aad11e754b6843e6158e6f312b34e73b6">casadi::Function::generate_out</a></div><div class="ttdeci">void generate_out(const std::string &amp;fname, const std::vector&lt; DM &gt; &amp;arg)</div><div class="ttdoc">Export an output file that can be checked with generated C code output.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l01226">function.cpp:1226</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1Function_html_ac16cee71bc5c4c9a223050d023ad7787"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#ac16cee71bc5c4c9a223050d023ad7787">casadi::Function::load</a></div><div class="ttdeci">static Function load(const std::string &amp;filename)</div><div class="ttdoc">Build function from serialization.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l01357">function.cpp:1357</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1Function_html_aeeefc3add8766ee83d49079f37c863ce"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#aeeefc3add8766ee83d49079f37c863ce">casadi::Function::change_option</a></div><div class="ttdeci">void change_option(const std::string &amp;option_name, const GenericType &amp;option_value)</div><div class="ttdoc">Change option after object creation for debugging.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l01172">function.cpp:1172</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1Function_html_a0f90482e89b1883b66853ba1a1b33f21"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#a0f90482e89b1883b66853ba1a1b33f21">casadi::Function::generate_in</a></div><div class="ttdeci">void generate_in(const std::string &amp;fname, const std::vector&lt; DM &gt; &amp;arg)</div><div class="ttdoc">Export an input file that can be passed to generate C code with a main.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l01400">function.cpp:1400</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1Function_html_aad11e754b6843e6158e6f312b34e73b6"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#aad11e754b6843e6158e6f312b34e73b6">casadi::Function::generate_out</a></div><div class="ttdeci">void generate_out(const std::string &amp;fname, const std::vector&lt; DM &gt; &amp;arg)</div><div class="ttdoc">Export an output file that can be checked with generated C code output.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l01415">function.cpp:1415</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1Function_html_ac16cee71bc5c4c9a223050d023ad7787"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#ac16cee71bc5c4c9a223050d023ad7787">casadi::Function::load</a></div><div class="ttdeci">static Function load(const std::string &amp;filename)</div><div class="ttdoc">Build function from serialization.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l01546">function.cpp:1546</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1Function_html_aeeefc3add8766ee83d49079f37c863ce"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#aeeefc3add8766ee83d49079f37c863ce">casadi::Function::change_option</a></div><div class="ttdeci">void change_option(const std::string &amp;option_name, const GenericType &amp;option_value)</div><div class="ttdoc">Change option after object creation for debugging.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l01361">function.cpp:1361</a></div></div>
 <div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d03/archiver_8cpp_source.html#l00028">archiver.cpp:28</a></div></div>
-<div class="ttc" id="anamespacecasadi_html_a88082fbf80560c888949bb765d9ccea0"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">casadi::str</a></div><div class="ttdeci">std::string str(const T &amp;v)</div><div class="ttdoc">String representation, any type.</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d59/casadi__common_8hpp_source.html#l00247">casadi_common.hpp:247</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_a88082fbf80560c888949bb765d9ccea0"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">casadi::str</a></div><div class="ttdeci">std::string str(const T &amp;v)</div><div class="ttdoc">String representation, any type.</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d59/casadi__common_8hpp_source.html#l00248">casadi_common.hpp:248</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </body>
 </html>

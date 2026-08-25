@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -84,23 +84,23 @@ $(function() {
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">from</span> casadi <span class="keyword">import</span> *</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">import</span> casadi <span class="keyword">as</span> ca</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">from</span> casadi.tools <span class="keyword">import</span> *</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;x = SX.sym(<span class="stringliteral">&quot;x&quot;</span>)</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;y = SX.sym(<span class="stringliteral">&quot;y&quot;</span>)</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;x = ca.SX.sym(<span class="stringliteral">&quot;x&quot;</span>)</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;y = ca.SX.sym(<span class="stringliteral">&quot;y&quot;</span>)</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;z = x*y+2*y</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;print(n_nodes(z), <span class="stringliteral">&quot; nodes in &quot;</span>, z)</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;print(ca.n_nodes(z), <span class="stringliteral">&quot; nodes in &quot;</span>, z)</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;dotdraw(z)</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;z += 4*z</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;print(n_nodes(z), <span class="stringliteral">&quot; nodes in &quot;</span>, z)</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;print(ca.n_nodes(z), <span class="stringliteral">&quot; nodes in &quot;</span>, z)</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;dotdraw(z)</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;z *= z+1</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;print(n_nodes(z), <span class="stringliteral">&quot; nodes in &quot;</span>, z)</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;print(ca.n_nodes(z), <span class="stringliteral">&quot; nodes in &quot;</span>, z)</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;dotdraw(z)</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>

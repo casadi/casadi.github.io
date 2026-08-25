@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -79,104 +79,57 @@ $(function() {
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">// SYMBOL &quot;nd_boor_eval&quot;</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keywordtype">void</span> casadi_nd_boor_eval(T1* ret, casadi_int n_dims, <span class="keyword">const</span> T1* all_knots, <span class="keyword">const</span> casadi_int* offset, <span class="keyword">const</span> casadi_int* all_degree, <span class="keyword">const</span> casadi_int* strides, <span class="keyword">const</span> T1* c, casadi_int m, <span class="keyword">const</span> T1* all_x, <span class="keyword">const</span> casadi_int* lookup_mode, casadi_int* iw, T1* w) { <span class="comment">// NOLINT(whitespace/line_length)</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  casadi_int n_iter, k, i, pivot;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  casadi_int *boor_offset, *starts, *index, *coeff_offset;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  T1 *cumprod, *all_boor;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  casadi_int k;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  casadi_int *boor_offset, *starts;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  T1 *all_boor;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  boor_offset = iw; iw+=n_dims+1;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  starts = iw; iw+=n_dims;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  index = iw; iw+=n_dims;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  coeff_offset = iw;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  all_boor = w;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  cumprod = w; w+= n_dims+1;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  all_boor = w;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  boor_offset[0] = 0;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  cumprod[n_dims] = 1;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  coeff_offset[n_dims] = 0;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  n_iter = 1;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keywordflow">for</span> (k=0;k&lt;n_dims;++k) {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    T1 *boor;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">const</span> T1* knots;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    T1 x;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    casadi_int degree, n_knots, n_b, L, start;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    boor = all_boor+boor_offset[k];</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    degree = all_degree[k];</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    knots = all_knots + offset[k];</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    n_knots = offset[k+1]-offset[k];</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    n_b = n_knots-degree-1;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  boor_offset[0] = 0;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keywordflow">for</span> (k=0;k&lt;n_dims;++k) {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    T1 *boor;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">const</span> T1* knots;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    T1 x;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    casadi_int degree, n_knots, n_b, L, start;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    boor = all_boor+boor_offset[k];</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    degree = all_degree[k];</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    knots = all_knots + offset[k];</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    n_knots = offset[k+1]-offset[k];</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    n_b = n_knots-degree-1;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    x = all_x[k];</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    L = casadi_low(x, knots+degree, n_knots-2*degree, lookup_mode[k]);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    start = L;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">if</span> (start&gt;n_b-degree-1) start = n_b-degree-1;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    x = all_x[k];</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    L = casadi_low(x, knots+degree, n_knots-2*degree, lookup_mode[k]);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    start = L;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">if</span> (start&gt;n_b-degree-1) start = n_b-degree-1;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    starts[k] = start;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    casadi_clear(boor, 2*degree+1);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">if</span> (x&gt;=knots[0] &amp;&amp; x&lt;=knots[n_knots-1]) {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      <span class="keywordflow">if</span> (x==knots[1]) {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        casadi_fill(boor, degree+1, 1.0);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (x==knots[n_knots-1]) {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        boor[degree] = 1;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (knots[L+degree]==x) {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        boor[degree-1] = 1;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        boor[degree] = 1;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      }</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    casadi_de_boor(x, knots+start, 2*degree+2, degree, boor);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    boor+= degree+1;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    n_iter*= degree+1;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    boor_offset[k+1] = boor_offset[k] + degree+1;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  casadi_clear_casadi_int(index, n_dims);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="comment">// Prepare cumulative product</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keywordflow">for</span> (pivot=n_dims-1;pivot&gt;=0;--pivot) {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    cumprod[pivot] = (*(all_boor+boor_offset[pivot]))*cumprod[pivot+1];</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    coeff_offset[pivot] = starts[pivot]*strides[pivot]+coeff_offset[pivot+1];</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  }</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keywordflow">for</span> (k=0;k&lt;n_iter;++k) {</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    casadi_int pivot = 0;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="comment">// accumulate result</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">for</span> (i=0;i&lt;m;++i) ret[i] += c[coeff_offset[0]+i]*cumprod[0];</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="comment">// Increment index</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    index[0]++;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="comment">// Handle index overflow</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;      <span class="comment">// increment next index (forward)</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;      <span class="keywordflow">while</span> (index[pivot]==boor_offset[pivot+1]-boor_offset[pivot]) {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        index[pivot] = 0;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordflow">if</span> (pivot==n_dims-1) <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        index[++pivot]++;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;      }</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;      <span class="comment">// update cumulative structures (reverse)</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;      <span class="keywordflow">while</span> (pivot&gt;0) {</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="comment">// Compute product</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        cumprod[pivot] = (*(all_boor+boor_offset[pivot]+index[pivot]))*cumprod[pivot+1];</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="comment">// Compute offset</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        coeff_offset[pivot] = (starts[pivot]+index[pivot])*strides[pivot]+coeff_offset[pivot+1];</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        pivot--;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;      }</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    }</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="comment">// Compute product</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    cumprod[0] = (*(all_boor+index[0]))*cumprod[1];</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="comment">// Compute offset</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    coeff_offset[0] = (starts[0]+index[0])*m+coeff_offset[1];</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  }</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    starts[k] = start;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    casadi_clear(boor, 2*degree+1);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">if</span> (x&gt;=knots[0] &amp;&amp; x&lt;=knots[n_knots-1]) {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      <span class="keywordflow">if</span> (x==knots[1]) {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        casadi_fill(boor, degree+1, 1.0);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (x==knots[n_knots-1]) {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        boor[degree] = 1;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (knots[L+degree]==x) {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        boor[degree-1] = 1;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        boor[degree] = 1;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    casadi_de_boor(x, knots+start, 2*degree+2, degree, boor);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    boor+= degree+1;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    boor_offset[k+1] = boor_offset[k] + degree+1;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  casadi_tensor_ttv(ret, n_dims-1, n_dims, all_boor, boor_offset,</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      starts, strides, c, m, 1.0, 0);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </body>
 </html>

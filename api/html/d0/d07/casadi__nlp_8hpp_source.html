@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -181,9 +181,9 @@ $(function() {
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;}</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment">// SYMBOL &quot;nlpsol_init&quot;</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment">// SYMBOL &quot;nlpsol_set_work&quot;</span></div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="keywordtype">void</span> casadi_nlpsol_init(<a class="code" href="../../d8/d47/structcasadi__nlpsol__data.html">casadi_nlpsol_data&lt;T1&gt;</a>* d, <span class="keyword">const</span> T1*** arg, T1*** res,</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="keywordtype">void</span> casadi_nlpsol_set_work(<a class="code" href="../../d8/d47/structcasadi__nlpsol__data.html">casadi_nlpsol_data&lt;T1&gt;</a>* d, <span class="keyword">const</span> T1*** arg, T1*** res,</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    casadi_int** iw, T1** w) {</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  <span class="comment">// Local variables</span></div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  casadi_int nx, ng;</div>
@@ -214,7 +214,7 @@ $(function() {
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="comment">// SYMBOL &quot;nlpsol_detect_bounds_before&quot;</span></div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="keywordtype">int</span> casadi_detect_bounds_before(<a class="code" href="../../d8/d47/structcasadi__nlpsol__data.html">casadi_nlpsol_data&lt;T1&gt;</a>* d_nlp) {</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="keywordtype">int</span> casadi_nlpsol_detect_bounds_before(<a class="code" href="../../d8/d47/structcasadi__nlpsol__data.html">casadi_nlpsol_data&lt;T1&gt;</a>* d_nlp) {</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  <span class="keyword">const</span> <a class="code" href="../../da/d37/structcasadi__nlpsol__prob.html">casadi_nlpsol_prob&lt;T1&gt;</a>* p_nlp = d_nlp-&gt;<a class="code" href="../../d8/d47/structcasadi__nlpsol__data.html#a3d5e0d2193e3f5b9db82cdbe0b429e8e">prob</a>;</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  <a class="code" href="../../d4/d6e/structcasadi__nlpsol__detect__bounds__data.html">casadi_nlpsol_detect_bounds_data&lt;T1&gt;</a>* d_bounds = &amp;d_nlp-&gt;<a class="code" href="../../d8/d47/structcasadi__nlpsol__data.html#aa5e267879ba57ac5dc7c4e97dda4b5f9">detect_bounds</a>;</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  <span class="keyword">const</span> <a class="code" href="../../d7/d09/structcasadi__nlpsol__detect__bounds__prob.html">casadi_nlpsol_detect_bounds_prob&lt;T1&gt;</a>* p_bounds = &amp;p_nlp-&gt;<a class="code" href="../../da/d37/structcasadi__nlpsol__prob.html#af0d1c8c934be3813bdbf5d5513f89046">detect_bounds</a>;</div>
@@ -301,7 +301,7 @@ $(function() {
 <div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160; </div>
 <div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="comment">// SYMBOL &quot;nlpsol_detect_bounds_after&quot;</span></div>
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="keywordtype">int</span> casadi_detect_bounds_after(<a class="code" href="../../d8/d47/structcasadi__nlpsol__data.html">casadi_nlpsol_data&lt;T1&gt;</a>* d_nlp) {</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="keywordtype">int</span> casadi_nlpsol_detect_bounds_after(<a class="code" href="../../d8/d47/structcasadi__nlpsol__data.html">casadi_nlpsol_data&lt;T1&gt;</a>* d_nlp) {</div>
 <div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;  <span class="keyword">const</span> <a class="code" href="../../da/d37/structcasadi__nlpsol__prob.html">casadi_nlpsol_prob&lt;T1&gt;</a>* p_nlp = d_nlp-&gt;<a class="code" href="../../d8/d47/structcasadi__nlpsol__data.html#a3d5e0d2193e3f5b9db82cdbe0b429e8e">prob</a>;</div>
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;  <a class="code" href="../../d4/d6e/structcasadi__nlpsol__detect__bounds__data.html">casadi_nlpsol_detect_bounds_data&lt;T1&gt;</a>* d_bounds = &amp;d_nlp-&gt;<a class="code" href="../../d8/d47/structcasadi__nlpsol__data.html#aa5e267879ba57ac5dc7c4e97dda4b5f9">detect_bounds</a>;</div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;  <span class="keyword">const</span> <a class="code" href="../../d7/d09/structcasadi__nlpsol__detect__bounds__prob.html">casadi_nlpsol_detect_bounds_prob&lt;T1&gt;</a>* p_bounds = &amp;p_nlp-&gt;<a class="code" href="../../da/d37/structcasadi__nlpsol__prob.html#af0d1c8c934be3813bdbf5d5513f89046">detect_bounds</a>;</div>

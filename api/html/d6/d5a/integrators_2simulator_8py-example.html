@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -84,7 +84,7 @@ $(function() {
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">from</span> casadi <span class="keyword">import</span> *</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">import</span> casadi <span class="keyword">as</span> ca</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">from</span> numpy <span class="keyword">import</span> *</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">from</span> pylab <span class="keyword">import</span> *</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
@@ -92,27 +92,27 @@ $(function() {
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;t = SX.sym(<span class="stringliteral">&#39;t&#39;</span>)</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;t = ca.SX.sym(<span class="stringliteral">&#39;t&#39;</span>)</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;u = SX.sym(<span class="stringliteral">&#39;u&#39;</span>) </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;v = SX.sym(<span class="stringliteral">&#39;v&#39;</span>) </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;states = vertcat(u,v)</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;u = ca.SX.sym(<span class="stringliteral">&#39;u&#39;</span>) </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;v = ca.SX.sym(<span class="stringliteral">&#39;v&#39;</span>) </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;states = ca.vertcat(u,v)</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;eps   = SX.sym(<span class="stringliteral">&#39;eps&#39;</span>)</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;mu    = SX.sym(<span class="stringliteral">&#39;mu&#39;</span>)</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;alpha = SX.sym(<span class="stringliteral">&#39;alpha&#39;</span>)</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;k     = SX.sym(<span class="stringliteral">&#39;k&#39;</span>)</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;sigma = SX.sym(<span class="stringliteral">&#39;sigma&#39;</span>)</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;eps   = ca.SX.sym(<span class="stringliteral">&#39;eps&#39;</span>)</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;mu    = ca.SX.sym(<span class="stringliteral">&#39;mu&#39;</span>)</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;alpha = ca.SX.sym(<span class="stringliteral">&#39;alpha&#39;</span>)</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;k     = ca.SX.sym(<span class="stringliteral">&#39;k&#39;</span>)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;sigma = ca.SX.sym(<span class="stringliteral">&#39;sigma&#39;</span>)</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;Omega = 2 + eps*sigma</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;params = vertcat(eps,mu,alpha,k,sigma)</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;rhs    = vertcat(v,-u-eps*(2*mu*v+alpha*u**3+2*k*u*cos(Omega*t)))</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;params = ca.vertcat(eps,mu,alpha,k,sigma)</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;rhs    = ca.vertcat(v,-u-eps*(2*mu*v+alpha*u**3+2*k*u*cos(Omega*t)))</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;dae={<span class="stringliteral">&#39;x&#39;</span>:states, <span class="stringliteral">&#39;p&#39;</span>:params, <span class="stringliteral">&#39;t&#39;</span>:t, <span class="stringliteral">&#39;ode&#39;</span>:rhs}</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;ts = linspace(0, 50, 1000)</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;integrator = <a class="code" href="../../dd/d1b/group__integrator.html#gaeff67b23fd72e2f42dc41a35fa6a2441">integrator</a>(<span class="stringliteral">&#39;integrator&#39;</span>, <span class="stringliteral">&#39;cvodes&#39;</span>, dae, 0, ts)</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;integrator = ca.integrator(<span class="stringliteral">&#39;integrator&#39;</span>, <span class="stringliteral">&#39;cvodes&#39;</span>, dae, 0, ts)</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;sol = <a class="code" href="../../dd/d1b/group__integrator.html#gaeff67b23fd72e2f42dc41a35fa6a2441">integrator</a>(x0=[1,0], p=[0.1,0.1,0.1,0.3,0.1])</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>

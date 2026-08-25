@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -56,7 +56,7 @@ $(function() {
 <p>This example looks at the expand method</p>
 <p>View <a href="../../Function/expand.pdf">output (PDF)</a> | <a href="../../Function/expand.py">source (python)</a></p>
 <dl class="section see"><dt>See also</dt><dd><div class="fragment"><div class="line"><a name="a0"></a><a class="code" href="../../da/da4/classcasadi_1_1Function.html#a34468000f2cae86388919d3c5c132230">casadi::Function::expand</a>();</div>
-<div class="ttc" id="aclasscasadi_1_1Function_html_a34468000f2cae86388919d3c5c132230"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#a34468000f2cae86388919d3c5c132230">casadi::Function::expand</a></div><div class="ttdeci">Function expand() const</div><div class="ttdoc">Expand a function to SX.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l00308">function.cpp:308</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1Function_html_a34468000f2cae86388919d3c5c132230"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#a34468000f2cae86388919d3c5c132230">casadi::Function::expand</a></div><div class="ttdeci">Function expand() const</div><div class="ttdoc">Expand a function to SX.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l00312">function.cpp:312</a></div></div>
 </div><!-- fragment --></dd></dl>
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
@@ -84,19 +84,19 @@ $(function() {
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">from</span> casadi <span class="keyword">import</span> *</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">import</span> casadi <span class="keyword">as</span> ca</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">import</span> casadi <span class="keyword">as</span> c</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;x = MX.sym(<span class="stringliteral">&quot;x&quot;</span>,2,2)</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;y = MX.sym(<span class="stringliteral">&quot;y&quot;</span>,2,1)</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;x = ca.MX.sym(<span class="stringliteral">&quot;x&quot;</span>,2,2)</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;y = ca.MX.sym(<span class="stringliteral">&quot;y&quot;</span>,2,1)</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;z = mtimes(x,y)</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;z = x @ y</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;f = Function(<span class="stringliteral">&quot;f&quot;</span>, [x,y],[z])</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;f = ca.Function(<span class="stringliteral">&quot;f&quot;</span>, [x,y],[z])</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
@@ -110,9 +110,9 @@ $(function() {
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;linear_solver = Linsol(<span class="stringliteral">&quot;linear_solver&quot;</span>, <span class="stringliteral">&quot;csparse&quot;</span>, x.sparsity())</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;linear_solver = ca.Linsol(<span class="stringliteral">&quot;linear_solver&quot;</span>, <span class="stringliteral">&quot;csparse&quot;</span>, x.sparsity())</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;g = linear_solver.solve(x, y)</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;G = Function(<span class="stringliteral">&quot;G&quot;</span>, [x,y], [g])</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;G = ca.Function(<span class="stringliteral">&quot;G&quot;</span>, [x,y], [g])</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>

@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -64,7 +64,7 @@ p  == P
 
 nx: number of decision variables
 ng: number of constraints
-np: number of parameters</pre><h3><a class="anchor" id="autotoc_md18"></a>
+np: number of parameters</pre><h3><a class="anchor" id="autotoc_md20"></a>
 General information</h3>
 <p><br  />
 </p><dl class="section user"><dt></dt><dd><a class="anchor" id="options"></a><table class="doxtable">
@@ -150,8 +150,6 @@ General information</h3>
 <tr>
 <td>ignore_check_vec</td><td>OT_BOOL</td><td>If set to true, the input shape of F will not be checked.</td><td>casadi::Nlpsol </td></tr>
 <tr>
-<td>input_scheme</td><td>OT_STRINGVECTOR</td><td>Deprecated option (ignored)</td><td>casadi::FunctionInternal </td></tr>
-<tr>
 <td>inputs_check</td><td>OT_BOOL</td><td>Throw exceptions when the numerical values of the inputs don't make sense</td><td>casadi::FunctionInternal </td></tr>
 <tr>
 <td>is_diff_in</td><td>OT_BOOLVECTOR</td><td>Indicate for each input if it should be differentiable.</td><td>casadi::FunctionInternal </td></tr>
@@ -193,8 +191,6 @@ General information</h3>
 <td>no_nlp_grad</td><td>OT_BOOL</td><td>Prevent the creation of the 'nlp_grad' function</td><td>casadi::Nlpsol </td></tr>
 <tr>
 <td>oracle_options</td><td>OT_DICT</td><td>Options to be passed to the oracle function</td><td>casadi::Nlpsol </td></tr>
-<tr>
-<td>output_scheme</td><td>OT_STRINGVECTOR</td><td>Deprecated option (ignored)</td><td>casadi::FunctionInternal </td></tr>
 <tr>
 <td>post_expand</td><td>OT_BOOL</td><td>After construction, expand this <a class="el" href="../../da/da4/classcasadi_1_1Function.html" title="Function object.">Function</a>. Default: False</td><td>casadi::FunctionInternal </td></tr>
 <tr>
@@ -271,16 +267,18 @@ General information</h3>
 <tr>
 <td>NLPSOL_LAM_P</td><td>lam_p</td><td>Lagrange multipliers for bounds on P at the solution (np x 1) </td></tr>
 </table>
-<h3><a class="anchor" id="autotoc_md19"></a>
+<h3><a class="anchor" id="autotoc_md21"></a>
 List of plugins</h3>
 <p>- <a href='#plugin_Nlpsol_ampl'>ampl</a> </p>
 <p>- <a href='#plugin_Nlpsol_blocksqp'>blocksqp</a> </p>
 <p>- <a href='#plugin_Nlpsol_bonmin'>bonmin</a> </p>
+<p>- <a href='#plugin_Nlpsol_ccopt'>ccopt</a> </p>
 <p>- <a href='#plugin_Nlpsol_fatrop'>fatrop</a> </p>
 <p>- <a href='#plugin_Nlpsol_ipopt'>ipopt</a> </p>
 <p>- <a href='#plugin_Nlpsol_knitro'>knitro</a> </p>
 <p>- <a href='#plugin_Nlpsol_madnlp'>madnlp</a> </p>
 <p>- <a href='#plugin_Nlpsol_snopt'>snopt</a> </p>
+<p>- <a href='#plugin_Nlpsol_uno'>uno</a> </p>
 <p>- <a href='#plugin_Nlpsol_worhp'>worhp</a> </p>
 <p>- <a href='#plugin_Nlpsol_feasiblesqpmethod'>feasiblesqpmethod</a> </p>
 <p>- <a href='#plugin_Nlpsol_qrsqp'>qrsqp</a> </p>
@@ -485,6 +483,27 @@ List of plugins</h3>
 </table>
 </dd></dl>
 <hr  />
+  <h4>ccopt <a class="anchor" id="plugin_Nlpsol_ccopt"></a> </h4>
+<p><br  />
+</p><dl class="section user"><dt></dt><dd><a class="anchor" id="options"></a><table class="doxtable">
+<caption>List of available options</caption>
+<tr>
+<th>Id</th><th>Type</th><th>Description </th></tr>
+<tr>
+<td>cc_pairs</td><td>OT_INTVECTORVECTOR</td><td>List of complementary constraints on simple bounds. Pair (i, j) encodes complementarity between the bounds on variable i and variable j. </td></tr>
+<tr>
+<td>cc_types</td><td>OT_INTVECTOR</td><td>Type of cc pairs (default: 0).  </td></tr>
+<tr>
+<td>ccopt</td><td>OT_DICT</td><td>Options to be passed to ccopt relaxation algorithm </td></tr>
+<tr>
+<td>convexify_margin</td><td>OT_DOUBLE</td><td>When using a convexification strategy, make sure that the smallest eigenvalue is at least this (default: 1e-7). </td></tr>
+<tr>
+<td>convexify_strategy</td><td>OT_STRING</td><td>NONE|regularize|eigen-reflect|eigen-clip. Strategy to convexify the Lagrange Hessian before passing it to the solver. </td></tr>
+<tr>
+<td>madnlp</td><td>OT_DICT</td><td>Options to be passed to madnlp </td></tr>
+</table>
+</dd></dl>
+<hr  />
   <h4>fatrop <a class="anchor" id="plugin_Nlpsol_fatrop"></a> </h4>
 <p><br  />
 </p><dl class="section user"><dt></dt><dd><a class="anchor" id="options"></a><table class="doxtable">
@@ -571,6 +590,8 @@ List of plugins</h3>
 <tr>
 <td>max_iter_eig</td><td>OT_DOUBLE</td><td>Maximum number of iterations to compute an eigenvalue decomposition (default: 50). </td></tr>
 <tr>
+<td>nonlinear_variables</td><td>OT_BOOLVECTOR</td><td>Which decision variables enter nonlinearly? (detected automatically by default) </td></tr>
+<tr>
 <td>pass_nonlinear_variables</td><td>OT_BOOL</td><td>Pass list of variables entering nonlinearly to IPOPT </td></tr>
 <tr>
 <td>var_integer_md</td><td>OT_DICT</td><td>Integer metadata (a dictionary with lists of integers) about variables to be passed to IPOPT </td></tr>
@@ -615,10 +636,6 @@ List of plugins</h3>
 <td>convexify_strategy</td><td>OT_STRING</td><td>NONE|regularize|eigen-reflect|eigen-clip. Strategy to convexify the Lagrange Hessian before passing it to the solver. </td></tr>
 <tr>
 <td>madnlp</td><td>OT_DICT</td><td>Options to be passed to madnlp </td></tr>
-<tr>
-<td>ng</td><td>OT_INTVECTOR</td><td>Number of constraints </td></tr>
-<tr>
-<td>nw</td><td>OT_INTVECTOR</td><td>Number of variables </td></tr>
 </table>
 </dd></dl>
 <hr  />
@@ -635,6 +652,19 @@ List of plugins</h3>
 <td>snopt</td><td>OT_DICT</td><td>Options to be passed to SNOPT </td></tr>
 <tr>
 <td>start</td><td>OT_STRING</td><td>Warm-start options for Worhp: cold|warm|hot </td></tr>
+</table>
+</dd></dl>
+<hr  />
+  <h4>uno <a class="anchor" id="plugin_Nlpsol_uno"></a> </h4>
+<dl class="section user"><dt></dt><dd>David Kiessling Uno interface</dd></dl>
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2j2">https://github.com/casadi/casadi/wiki/L_2j2</a></p>
+<p><br  />
+</p><dl class="section user"><dt></dt><dd><a class="anchor" id="options"></a><table class="doxtable">
+<caption>List of available options</caption>
+<tr>
+<th>Id</th><th>Type</th><th>Description </th></tr>
+<tr>
+<td>uno</td><td>OT_DICT</td><td>Options to be passed to UNO </td></tr>
 </table>
 </dd></dl>
 <hr  />

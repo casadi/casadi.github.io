@@ -79,6 +79,12 @@
           
           <li class="nav-item">
           
+            <a class="nav-link" href="/events/">Training/Workshops</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
             <a class="nav-link" href="/source/">Source</a>
           </li>
         
@@ -86,12 +92,6 @@
           <li class="nav-item">
           
             <a class="nav-link" href="/publications/">Publications</a>
-          </li>
-        
-          
-          <li class="nav-item">
-          
-            <a class="nav-link" href="/events/">Training/Workshops</a>
           </li>
         
           
@@ -113,10 +113,10 @@
         <nav class="nav-side">
           <p class="caption"><span class="caption-text">See also:</span></p>
 <ul>
-  <li><a href="https://github.com/casadi/casadi/releases/download/3.7.2/casadi-users_guide-v3.7.2.pdf">PDF version</a></li>
+  <li><a href="https://github.com/casadi/casadi/releases/download/3.8.0/casadi-users_guide-v3.8.0.pdf">PDF version</a></li>
   <li><a href="../api/html/">C++ API</a></li>
   <li><a href="../python-api">Python API</a></li>
-  <li><a href="https://github.com/casadi/casadi/releases/download/3.7.2/casadi-example_pack-v3.7.2.zip">Example pack</a></li>
+  <li><a href="https://github.com/casadi/casadi/releases/download/3.8.0/casadi-example_pack-v3.8.0.zip">Example pack</a></li>
 </ul>  
 </p>
 
@@ -800,7 +800,7 @@ x[0]
 </div>
 </div>
 </div>
-<p>In C++ and Python (but not in MATLAB), the standard multiplication operation (using <code class="docutils literal notranslate"><span class="pre">*</span></code>) is reserved for element-wise multiplication (in MATLAB <code class="docutils literal notranslate"><span class="pre">.*</span></code>). For <strong>matrix multiplication</strong>, use <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">&#64;</span> <span class="pre">B</span></code> or (<code class="docutils literal notranslate"><span class="pre">mtimes(A,B)</span></code> in Python 3.4+):</p>
+<p>In C++ and Python (but not in MATLAB), the standard multiplication operation (using <code class="docutils literal notranslate"><span class="pre">*</span></code>) is reserved for element-wise multiplication (in MATLAB <code class="docutils literal notranslate"><span class="pre">.*</span></code>). For <strong>matrix multiplication</strong>, use <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">&#64;</span> <span class="pre">B</span></code> (in C++: <code class="docutils literal notranslate"><span class="pre">mtimes(A,B)</span></code>):</p>
 <div class="sidebyside-master docutils container">
 <div class="sidebyside docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="o">*</span><span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="nd">@y</span><span class="p">)</span>
@@ -1205,9 +1205,9 @@ For a function <span class="math notranslate nohighlight">\(f: \mathbb{R}^N \rig
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">gradient</span><span class="p">(</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">A</span><span class="p">),</span><span class="n">A</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>[[(A_0+A_0), (A_3+A_3)], 
- [(A_1+A_1), (A_4+A_4)], 
- [(A_2+A_2), (A_5+A_5)]]
+<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>[[(2.*A_0), (2.*A_3)], 
+ [(2.*A_1), (2.*A_4)], 
+ [(2.*A_2), (2.*A_5)]]
 </pre></div>
 </div>
 </div>
@@ -1218,9 +1218,9 @@ For a function <span class="math notranslate nohighlight">\(f: \mathbb{R}^N \rig
 <div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>ans =
 
 
-[[(A_0+A_0), (A_3+A_3)], 
- [(A_1+A_1), (A_4+A_4)], 
- [(A_2+A_2), (A_5+A_5)]]
+[[(2.*A_0), (2.*A_3)], 
+ [(2.*A_1), (2.*A_4)], 
+ [(2.*A_2), (2.*A_5)]]
 
 </pre></div>
 </div>
@@ -1261,11 +1261,11 @@ For a function <span class="math notranslate nohighlight">\(f: \mathbb{R}^N \rig
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">DM</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">8</span><span class="p">]])</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">SX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">v</span> <span class="o">=</span> <span class="n">SX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s1">&#39;v&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">f</span> <span class="o">=</span> <span class="n">mtimes</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">A</span> <span class="o">@</span> <span class="n">x</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">jtimes</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">v</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>[(v_0+(3*v_1)), ((4*v_0)+(7*v_1)), ((2*v_0)+(8*v_1))]
+<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>[(v_0+(3*v_1)), ((4*v_0)+(7*v_1)), ((2.*v_0)+(8*v_1))]
 </pre></div>
 </div>
 </div>
@@ -1279,7 +1279,7 @@ For a function <span class="math notranslate nohighlight">\(f: \mathbb{R}^N \rig
 </div>
 <div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>ans =
 
-[(v_0+(3*v_1)), ((4*v_0)+(7*v_1)), ((2*v_0)+(8*v_1))]
+[(v_0+(3*v_1)), ((4*v_0)+(7*v_1)), ((2.*v_0)+(8*v_1))]
 
 </pre></div>
 </div>
@@ -1289,11 +1289,11 @@ For a function <span class="math notranslate nohighlight">\(f: \mathbb{R}^N \rig
 <div class="sidebyside-master docutils container">
 <div class="sidebyside docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">w</span> <span class="o">=</span> <span class="n">SX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">f</span> <span class="o">=</span> <span class="n">mtimes</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">A</span> <span class="o">@</span> <span class="n">x</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">jtimes</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="kc">True</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>[(((2*w_2)+(4*w_1))+w_0), (((8*w_2)+(7*w_1))+(3*w_0))]
+<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>[(((2.*w_2)+(4*w_1))+w_0), (((8*w_2)+(7*w_1))+(3*w_0))]
 </pre></div>
 </div>
 </div>
@@ -1305,7 +1305,7 @@ For a function <span class="math notranslate nohighlight">\(f: \mathbb{R}^N \rig
 </div>
 <div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>ans =
 
-[(((2*w_2)+(4*w_1))+w_0), (((8*w_2)+(7*w_1))+(3*w_0))]
+[(((2.*w_2)+(4*w_1))+w_0), (((8*w_2)+(7*w_1))+(3*w_0))]
 
 </pre></div>
 </div>
@@ -1741,7 +1741,7 @@ function <code class="docutils literal notranslate"><span class="pre">S</span></
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x_opt: &#39;</span><span class="p">,</span> <span class="n">x_opt</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>This is Ipopt version 3.14.11, running with linear solver MUMPS 5.4.1.
+<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>This is Ipopt version 3.14.19, running with linear solver MUMPS 5.8.2.
 
 Number of nonzeros in equality constraint Jacobian...:        3
 Number of nonzeros in inequality constraint Jacobian.:        0
@@ -1767,19 +1767,19 @@ iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
    6  1.2144815e+00 1.52e+00 1.32e+00  -1.7 3.21e+00  -0.4 1.00e+00 1.00e+00f  1
    7  1.0214718e+00 2.51e-01 1.17e+01  -1.7 1.33e+00   0.9 1.00e+00 1.00e+00h  1
    8  3.1864085e-01 1.04e-03 7.53e-01  -1.7 3.58e-01    -  1.00e+00 1.00e+00f  1
-   9  3.7092062e-66 3.19e-01 2.57e-32  -1.7 5.64e-01    -  1.00e+00 1.00e+00f  1
+   9  1.5557538e-59 3.19e-01 1.17e-28  -1.7 5.64e-01    -  1.00e+00 1.00e+00f  1
 iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
-  10  0.0000000e+00 0.00e+00 0.00e+00  -1.7 3.19e-01    -  1.00e+00 1.00e+00h  1
+  10  2.0266707e-64 0.00e+00 6.65e-33  -1.7 3.19e-01    -  1.00e+00 1.00e+00h  1
 
 Number of Iterations....: 10
 
                                    (scaled)                 (unscaled)
-Objective...............:   0.0000000000000000e+00    0.0000000000000000e+00
-Dual infeasibility......:   0.0000000000000000e+00    0.0000000000000000e+00
+Objective...............:   1.3511137839133354e-64    2.0266706758700031e-64
+Dual infeasibility......:   6.6510923551934811e-33    9.9766385327902217e-33
 Constraint violation....:   0.0000000000000000e+00    0.0000000000000000e+00
 Variable bound violation:   0.0000000000000000e+00    0.0000000000000000e+00
 Complementarity.........:   0.0000000000000000e+00    0.0000000000000000e+00
-Overall NLP error.......:   0.0000000000000000e+00    0.0000000000000000e+00
+Overall NLP error.......:   6.6510923551934811e-33    9.9766385327902217e-33
 
 
 Number of objective function evaluations             = 11
@@ -1789,17 +1789,17 @@ Number of inequality constraint evaluations          = 0
 Number of equality constraint Jacobian evaluations   = 11
 Number of inequality constraint Jacobian evaluations = 0
 Number of Lagrangian Hessian evaluations             = 10
-Total seconds in IPOPT                               = 0.007
+Total seconds in IPOPT                               = 0.024
 
 EXIT: Optimal Solution Found.
            S  :   t_proc      (avg)   t_wall      (avg)    n_eval
-       nlp_f  |  66.00us (  6.00us)  15.75us (  1.43us)        11
-       nlp_g  | 154.00us ( 14.00us)  36.45us (  3.31us)        11
-  nlp_grad_f  |  92.00us (  7.67us)  21.95us (  1.83us)        12
-  nlp_hess_l  |  70.00us (  7.00us)  16.16us (  1.62us)        10
-   nlp_jac_g  |  75.00us (  6.25us)  17.30us (  1.44us)        12
-       total  |  31.32ms ( 31.32ms)   7.84ms (  7.84ms)         1
-x_opt:  [0, 1, 0]
+       nlp_f  |  84.00us (  7.64us)  20.96us (  1.91us)        11
+       nlp_g  | 173.00us ( 15.73us)  39.52us (  3.59us)        11
+  nlp_grad_f  | 107.00us (  8.92us)  27.89us (  2.32us)        12
+  nlp_hess_l  |  88.00us (  8.80us)  21.82us (  2.18us)        10
+   nlp_jac_g  |  94.00us (  7.83us)  23.65us (  1.97us)        12
+       total  |  77.17ms ( 77.17ms)  24.06ms ( 24.06ms)         1
+x_opt:  [1.42328e-32, 1, -3.08149e-35]
 </pre></div>
 </div>
 </div>
@@ -1810,7 +1810,7 @@ x_opt:  [0, 1, 0]
 <span class="nb">disp</span><span class="p">(</span><span class="n">x_opt</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>This is Ipopt version 3.14.11, running with linear solver MUMPS 5.4.1.
+<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>This is Ipopt version 3.14.19, running with linear solver MUMPS 5.8.2.
 
 Number of nonzeros in equality constraint Jacobian...:        3
 Number of nonzeros in inequality constraint Jacobian.:        0
@@ -1836,19 +1836,19 @@ iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
    6  1.2144815e+00 1.52e+00 1.32e+00  -1.7 3.21e+00  -0.4 1.00e+00 1.00e+00f  1
    7  1.0214718e+00 2.51e-01 1.17e+01  -1.7 1.33e+00   0.9 1.00e+00 1.00e+00h  1
    8  3.1864085e-01 1.04e-03 7.53e-01  -1.7 3.58e-01    -  1.00e+00 1.00e+00f  1
-   9  3.7092062e-66 3.19e-01 2.57e-32  -1.7 5.64e-01    -  1.00e+00 1.00e+00f  1
+   9  1.5557538e-59 3.19e-01 1.17e-28  -1.7 5.64e-01    -  1.00e+00 1.00e+00f  1
 iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
-  10  0.0000000e+00 0.00e+00 0.00e+00  -1.7 3.19e-01    -  1.00e+00 1.00e+00h  1
+  10  2.0266707e-64 0.00e+00 6.65e-33  -1.7 3.19e-01    -  1.00e+00 1.00e+00h  1
 
 Number of Iterations....: 10
 
                                    (scaled)                 (unscaled)
-Objective...............:   0.0000000000000000e+00    0.0000000000000000e+00
-Dual infeasibility......:   0.0000000000000000e+00    0.0000000000000000e+00
+Objective...............:   1.3511137839133354e-64    2.0266706758700031e-64
+Dual infeasibility......:   6.6510923551934811e-33    9.9766385327902217e-33
 Constraint violation....:   0.0000000000000000e+00    0.0000000000000000e+00
 Variable bound violation:   0.0000000000000000e+00    0.0000000000000000e+00
 Complementarity.........:   0.0000000000000000e+00    0.0000000000000000e+00
-Overall NLP error.......:   0.0000000000000000e+00    0.0000000000000000e+00
+Overall NLP error.......:   6.6510923551934811e-33    9.9766385327902217e-33
 
 
 Number of objective function evaluations             = 11
@@ -1858,17 +1858,17 @@ Number of inequality constraint evaluations          = 0
 Number of equality constraint Jacobian evaluations   = 11
 Number of inequality constraint Jacobian evaluations = 0
 Number of Lagrangian Hessian evaluations             = 10
-Total seconds in IPOPT                               = 0.008
+Total seconds in IPOPT                               = 0.005
 
 EXIT: Optimal Solution Found.
            S  :   t_proc      (avg)   t_wall      (avg)    n_eval
-       nlp_f  |  66.00us (  6.00us)  16.13us (  1.47us)        11
-       nlp_g  | 151.00us ( 13.73us)  34.66us (  3.15us)        11
-  nlp_grad_f  |  94.00us (  7.83us)  23.38us (  1.95us)        12
-  nlp_hess_l  |  70.00us (  7.00us)  16.90us (  1.69us)        10
-   nlp_jac_g  | 144.00us ( 12.00us)  19.03us (  1.59us)        12
-       total  |  34.78ms ( 34.78ms)   8.77ms (  8.77ms)         1
-[0, 1, 0]
+       nlp_f  |  80.00us (  7.27us)  21.50us (  1.95us)        11
+       nlp_g  | 231.00us ( 21.00us)  37.99us (  3.45us)        11
+  nlp_grad_f  | 116.00us (  9.67us)  30.11us (  2.51us)        12
+  nlp_hess_l  |  89.00us (  8.90us)  23.77us (  2.38us)        10
+   nlp_jac_g  | 102.00us (  8.50us)  25.09us (  2.09us)        12
+       total  |  24.66ms ( 24.66ms)   6.25ms (  6.25ms)         1
+[1.42328e-32, 1, -3.08149e-35]
 </pre></div>
 </div>
 </div>
@@ -2316,7 +2316,7 @@ self-contained C-code for a large subset of function objects.</p>
 <span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;gen.c&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>/* This file was automatically generated by CasADi 3.7.2.
+<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>/* This file was automatically generated by CasADi 3.8.0.
  *  It consists of: 
  *   1) content generated by CasADi runtime: not copyrighted
  *   2) template code copied from CasADi source: permissively licensed (MIT-0)
@@ -2403,17 +2403,6 @@ static int casadi_f0(const casadi_real** arg, casadi_real** res, casadi_int* iw,
 
 CASADI_SYMBOL_EXPORT int f(const casadi_real** arg, casadi_real** res, casadi_int* iw, casadi_real* w, int mem){
   return casadi_f0(arg, res, iw, w, mem);
-}
-
-CASADI_SYMBOL_EXPORT int f_alloc_mem(void) {
-  return 0;
-}
-
-CASADI_SYMBOL_EXPORT int f_init_mem(int mem) {
-  return 0;
-}
-
-CASADI_SYMBOL_EXPORT void f_free_mem(int mem) {
 }
 
 CASADI_SYMBOL_EXPORT int f_checkout(void) {
@@ -2675,8 +2664,6 @@ which invokes the system compiler via the command line:</p>
 </pre></div>
 </div>
 <div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>0.00159265
-CasADi - 2025-09-10 17:20:50 WARNING(&quot;Failed to remove ./tmp_casadi_compiler_shellQUBlnf.so&quot;) [.../casadi/solvers/shell_compiler.cpp:66]
-CasADi - 2025-09-10 17:20:50 WARNING(&quot;Failed to remove ./tmp_casadi_compiler_shellQUBlnf.o&quot;) [.../casadi/solvers/shell_compiler.cpp:67]
 </pre></div>
 </div>
 </div>
@@ -3160,9 +3147,6 @@ where the user simply specifies the source code as a C language string.</p>
 </pre></div>
 </div>
 <div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>f:(x,s)-&gt;(r) JitFunction
-CasADi - 2025-09-10 17:20:51 WARNING(&quot;Failed to remove jit_tmp698lq1.c&quot;) [.../casadi/core/function_internal.cpp:134]
-CasADi - 2025-09-10 17:20:51 WARNING(&quot;Failed to remove ./tmp_casadi_compiler_shellQqTwwm.so&quot;) [.../casadi/solvers/shell_compiler.cpp:66]
-CasADi - 2025-09-10 17:20:51 WARNING(&quot;Failed to remove ./tmp_casadi_compiler_shellQqTwwm.o&quot;) [.../casadi/solvers/shell_compiler.cpp:67]
 </pre></div>
 </div>
 </div>
@@ -3197,9 +3181,6 @@ of the sparsity patterns:</p>
 </pre></div>
 </div>
 <div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>f:(x,s)-&gt;(r) JitFunction
-CasADi - 2025-09-10 17:20:45 WARNING(&quot;Failed to remove jit_tmpawZ5yx.c&quot;) [.../casadi/core/function_internal.cpp:134]
-CasADi - 2025-09-10 17:20:45 WARNING(&quot;Failed to remove ./tmp_casadi_compiler_shell1cAbfa.so&quot;) [.../casadi/solvers/shell_compiler.cpp:66]
-CasADi - 2025-09-10 17:20:45 WARNING(&quot;Failed to remove ./tmp_casadi_compiler_shell1cAbfa.o&quot;) [.../casadi/solvers/shell_compiler.cpp:67]
 </pre></div>
 </div>
 </div>
@@ -3538,7 +3519,7 @@ defined using the Functional Mock-up Interface (FMI) format. It can also be used
 </div>
 <div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>dae =
 
-nx = 0, nz = 0, nq = 0, ny = 0, np = 0, nc = 0, nd = 0, nw = 0, nu = 0
+nt = 0, nx = 0, nz = 0, nq = 0, ny = 0, np = 0, nc = 0, nd = 0, nw = 0, nu = 0
 
 </pre></div>
 </div>
@@ -3578,7 +3559,7 @@ list of functions, see the C++ API documentation for <code class="xref py py-cla
   <span class="p">[</span><span class="n">dae</span><span class="o">.</span><span class="n">reinit</span><span class="p">(</span><span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.8</span><span class="o">*</span><span class="n">dae</span><span class="o">.</span><span class="n">pre</span><span class="p">(</span><span class="n">v</span><span class="p">))])</span>
 </pre></div>
 </div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>CasADi - 2025-09-10 17:20:29 WARNING(&quot;DaeBuilder::pre has not been implemented: Returning identity mapping&quot;) [.../casadi/core/dae_builder.cpp:832]
+<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>CasADi - 2026-08-22 15:34:30 WARNING(&quot;DaeBuilder::pre has not been implemented: Returning identity mapping&quot;) [.../casadi/core/dae_builder.cpp:479]
 </pre></div>
 </div>
 </div>
@@ -3596,9 +3577,9 @@ list of functions, see the C++ API documentation for <code class="xref py py-cla
 </div>
 <div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>dae =
 
-nx = 0, nz = 0, nq = 0, ny = 0, np = 0, nc = 0, nd = 0, nw = 0, nu = 0
+nt = 0, nx = 0, nz = 0, nq = 0, ny = 0, np = 0, nc = 0, nd = 0, nw = 0, nu = 0
 
-CasADi - 2025-09-10 17:20:46 WARNING(&quot;DaeBuilder::pre has not been implemented: Returning identity mapping&quot;) [.../casadi/core/dae_builder.cpp:832]
+CasADi - 2026-08-22 15:34:51 WARNING(&quot;DaeBuilder::pre has not been implemented: Returning identity mapping&quot;) [.../casadi/core/dae_builder.cpp:479]
 </pre></div>
 </div>
 </div>
@@ -4019,7 +4000,7 @@ You may provide initial guesses for decision variables (or simple mappings of de
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sol</span> <span class="o">=</span> <span class="n">opti</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>This is Ipopt version 3.14.11, running with linear solver MUMPS 5.4.1.
+<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>This is Ipopt version 3.14.19, running with linear solver MUMPS 5.8.2.
 
 Number of nonzeros in equality constraint Jacobian...:        2
 Number of nonzeros in inequality constraint Jacobian.:        2
@@ -4058,11 +4039,11 @@ Number of Iterations....: 15
 
                                    (scaled)                 (unscaled)
 Objective...............:   8.8029044107981477e-20    8.8029044107981477e-20
-Dual infeasibility......:   6.4749359014643689e-13    6.4749359014643689e-13
+Dual infeasibility......:   6.4749358954673095e-13    6.4749358954673095e-13
 Constraint violation....:   1.5987211554602254e-14    1.5987211554602254e-14
 Variable bound violation:   0.0000000000000000e+00    0.0000000000000000e+00
-Complementarity.........:   2.5060006300485104e-09    2.5060006300485104e-09
-Overall NLP error.......:   2.5060006300485104e-09    2.5060006300485104e-09
+Complementarity.........:   2.5060006300474834e-09    2.5060006300474834e-09
+Overall NLP error.......:   2.5060006300474834e-09    2.5060006300474834e-09
 
 
 Number of objective function evaluations             = 16
@@ -4072,16 +4053,16 @@ Number of inequality constraint evaluations          = 16
 Number of equality constraint Jacobian evaluations   = 16
 Number of inequality constraint Jacobian evaluations = 16
 Number of Lagrangian Hessian evaluations             = 15
-Total seconds in IPOPT                               = 0.009
+Total seconds in IPOPT                               = 0.006
 
 EXIT: Optimal Solution Found.
       solver  :   t_proc      (avg)   t_wall      (avg)    n_eval
-       nlp_f  | 192.00us ( 12.00us)  48.35us (  3.02us)        16
-       nlp_g  | 283.00us ( 17.69us)  65.94us (  4.12us)        16
-  nlp_grad_f  | 173.00us ( 10.18us)  42.84us (  2.52us)        17
-  nlp_hess_l  | 246.00us ( 16.40us)  61.54us (  4.10us)        15
-   nlp_jac_g  | 219.00us ( 12.88us)  54.20us (  3.19us)        17
-       total  |  39.81ms ( 39.81ms)   9.96ms (  9.96ms)         1
+       nlp_f  | 156.00us (  9.75us)  38.81us (  2.43us)        16
+       nlp_g  | 295.00us ( 18.44us)  71.06us (  4.44us)        16
+  nlp_grad_f  | 205.00us ( 12.06us)  49.77us (  2.93us)        17
+  nlp_hess_l  | 297.00us ( 19.80us)  70.78us (  4.72us)        15
+   nlp_jac_g  | 243.00us ( 14.29us)  84.44us (  4.97us)        17
+       total  |  25.68ms ( 25.68ms)   6.42ms (  6.42ms)         1
 </pre></div>
 </div>
 </div>
@@ -4089,7 +4070,7 @@ EXIT: Optimal Solution Found.
 <div class="highlight-octave notranslate"><div class="highlight"><pre><span></span><span class="n">sol</span> <span class="p">=</span> <span class="n">opti</span><span class="p">.</span><span class="n">solve</span><span class="p">();</span>
 </pre></div>
 </div>
-<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>This is Ipopt version 3.14.11, running with linear solver MUMPS 5.4.1.
+<div class="exec-block-output highlight-none notranslate"><div class="highlight"><pre><span></span>This is Ipopt version 3.14.19, running with linear solver MUMPS 5.8.2.
 
 Number of nonzeros in equality constraint Jacobian...:        2
 Number of nonzeros in inequality constraint Jacobian.:        2
@@ -4128,11 +4109,11 @@ Number of Iterations....: 15
 
                                    (scaled)                 (unscaled)
 Objective...............:   8.8029044107981477e-20    8.8029044107981477e-20
-Dual infeasibility......:   6.4749359014643689e-13    6.4749359014643689e-13
+Dual infeasibility......:   6.4749358954673095e-13    6.4749358954673095e-13
 Constraint violation....:   1.5987211554602254e-14    1.5987211554602254e-14
 Variable bound violation:   0.0000000000000000e+00    0.0000000000000000e+00
-Complementarity.........:   2.5060006300485104e-09    2.5060006300485104e-09
-Overall NLP error.......:   2.5060006300485104e-09    2.5060006300485104e-09
+Complementarity.........:   2.5060006300474834e-09    2.5060006300474834e-09
+Overall NLP error.......:   2.5060006300474834e-09    2.5060006300474834e-09
 
 
 Number of objective function evaluations             = 16
@@ -4142,16 +4123,16 @@ Number of inequality constraint evaluations          = 16
 Number of equality constraint Jacobian evaluations   = 16
 Number of inequality constraint Jacobian evaluations = 16
 Number of Lagrangian Hessian evaluations             = 15
-Total seconds in IPOPT                               = 0.016
+Total seconds in IPOPT                               = 0.007
 
 EXIT: Optimal Solution Found.
       solver  :   t_proc      (avg)   t_wall      (avg)    n_eval
-       nlp_f  | 138.00us (  8.62us)  33.39us (  2.09us)        16
-       nlp_g  | 351.00us ( 21.94us)  67.28us (  4.20us)        16
-  nlp_grad_f  | 171.00us ( 10.06us)  43.95us (  2.59us)        17
-  nlp_hess_l  | 258.00us ( 17.20us)  64.22us (  4.28us)        15
-   nlp_jac_g  | 236.00us ( 13.88us)  58.96us (  3.47us)        17
-       total  |  68.50ms ( 68.50ms)  17.22ms ( 17.22ms)         1
+       nlp_f  | 243.00us ( 15.19us)  41.09us (  2.57us)        16
+       nlp_g  | 293.00us ( 18.31us)  71.19us (  4.45us)        16
+  nlp_grad_f  | 219.00us ( 12.88us)  53.09us (  3.12us)        17
+  nlp_hess_l  | 377.00us ( 25.13us)  96.88us (  6.46us)        15
+   nlp_jac_g  | 280.00us ( 16.47us)  66.77us (  3.93us)        17
+       total  |  32.28ms ( 32.28ms)   8.17ms (  8.17ms)         1
 </pre></div>
 </div>
 </div>
@@ -4557,8 +4538,6 @@ each operation. Further information is available in the API documentation.</p>
 </tr>
 <tr class="row-even"><td><p>Matrix multiplication</p></td>
 <td><div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">@</span> <span class="n">y</span>
-<span class="c1"># or before Py3.4:</span>
-<span class="n">mtimes</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 </td>
@@ -5107,19 +5086,13 @@ each operation. Further information is available in the API documentation.</p>
                 </li>
               
                 <li class="list-inline-item">
-                  <a href="https://twitter.com/casadi_software" title="twitter">
-                    <i class="fa fa-twitter"></i>
-                  </a>
-                </li>
-              
-                <li class="list-inline-item">
                   <a href="https://www.youtube.com/channel/UC3VDpv5Pi3R-a2VkcJN1RLw" title="youtube">
                     <i class="fa fa-youtube"></i>
                   </a>
                 </li>
               
             </ul>
-            <p class="copyright">Copyright 2023.</p>
+            <p class="copyright">Copyright 2026.</p>
           </div>
         </div>
       </div>

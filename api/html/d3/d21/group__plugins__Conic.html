@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -202,6 +202,8 @@ $(function() {
 <tr>
 <td>gurobi</td><td>OT_DICT</td><td>Options to be passed to gurobi. </td></tr>
 <tr>
+<td>lazy_constraints_callback</td><td>OT_FUNCTION</td><td>User callback for adding LazyConstraints at MIPSOL. Input: dict with solution data. Output: dict with lazy constraints. </td></tr>
+<tr>
 <td>sos_groups</td><td>OT_INTVECTORVECTOR</td><td>Definition of SOS groups by indices. </td></tr>
 <tr>
 <td>sos_types</td><td>OT_INTVECTOR</td><td>Specify 1 or 2 for each SOS group. </td></tr>
@@ -313,6 +315,20 @@ $(function() {
 </table>
 </dd></dl>
 <hr  />
+  <h4>mosek <a class="anchor" id="plugin_Conic_mosek"></a> </h4>
+<dl class="section user"><dt></dt><dd></dd></dl>
+<p>Interface to the MOSEK Optimizer for sparse Linear, Quadratic, Mixed-Integer and Second-Order Cone Programs. See <a href="https://www.mosek.com">https://www.mosek.com</a> for details and the MOSEK reference manual for the list of parameters that may be passed via the <code>mosek</code> option dict (e.g. <code>MSK_IPAR_LOG</code>, <code>MSK_DPAR_INTPNT_QO_TOL_REL_GAP</code>).</p>
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_mosek">https://github.com/casadi/casadi/wiki/L_mosek</a></p>
+<p><br  />
+</p><dl class="section user"><dt></dt><dd><a class="anchor" id="options"></a><table class="doxtable">
+<caption>List of available options</caption>
+<tr>
+<th>Id</th><th>Type</th><th>Description </th></tr>
+<tr>
+<td>mosek</td><td>OT_DICT</td><td>Options to be passed to MOSEK. Each entry's key is the MOSEK parameter name (e.g. "MSK_IPAR_LOG", "MSK_DPAR_INTPNT_QO_TOL_REL_GAP"); the value's type must match the parameter's type (int parameters take int, dpar take double, spar take string). </td></tr>
+</table>
+</dd></dl>
+<hr  />
   <h4>ooqp <a class="anchor" id="plugin_Conic_ooqp"></a> </h4>
 <dl class="section user"><dt></dt><dd></dd></dl>
 <p>Interface to the OOQP Solver for quadratic programming The current implementation assumes that OOQP is configured with the MA27 sparse linear solver.</p>
@@ -346,9 +362,22 @@ $(function() {
 <tr>
 <td>osqp</td><td>OT_DICT</td><td>const Options to be passed to osqp. </td></tr>
 <tr>
-<td>warm_start_dual</td><td>OT_BOOL</td><td>Use lam_a0 and lam_x0 input to warmstart [Default: truw]. </td></tr>
+<td>warm_start_dual</td><td>OT_BOOL</td><td>Use lam_a0 and lam_x0 input to warmstart [Default: true]. </td></tr>
 <tr>
 <td>warm_start_primal</td><td>OT_BOOL</td><td>Use x0 input to warmstart [Default: true]. </td></tr>
+</table>
+</dd></dl>
+<hr  />
+  <h4>piqp <a class="anchor" id="plugin_Conic_piqp"></a> </h4>
+<dl class="section user"><dt></dt><dd>Interface to the PIQP Solver for quadratic programming</dd></dl>
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2j1">https://github.com/casadi/casadi/wiki/L_2j1</a></p>
+<p><br  />
+</p><dl class="section user"><dt></dt><dd><a class="anchor" id="options"></a><table class="doxtable">
+<caption>List of available options</caption>
+<tr>
+<th>Id</th><th>Type</th><th>Description </th></tr>
+<tr>
+<td>piqp</td><td>OT_DICT</td><td>const Options to be passed to piqp. </td></tr>
 </table>
 </dd></dl>
 <hr  />
@@ -469,6 +498,32 @@ $(function() {
 <th>Id</th><th>Type</th><th>Description </th></tr>
 <tr>
 <td>superscs</td><td>OT_DICT</td><td>Options to be passed to superscs. </td></tr>
+</table>
+</dd></dl>
+<hr  />
+  <h4>xpress <a class="anchor" id="plugin_Conic_xpress"></a> </h4>
+<dl class="section user"><dt></dt><dd></dd></dl>
+<p>Interface to FICO Xpress Optimizer for sparse Linear, Quadratic and Mixed-Integer Quadratic Programs. See <a href="https://www.fico.com/en/products/fico-xpress-optimization">https://www.fico.com/en/products/fico-xpress-optimization</a> for more information and the Xpress reference manual for the list of controls (options) accepted under the <code>xpress</code> option dict.</p>
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_xpress">https://github.com/casadi/casadi/wiki/L_xpress</a></p>
+<p><br  />
+</p><dl class="section user"><dt></dt><dd><a class="anchor" id="options"></a><table class="doxtable">
+<caption>List of available options</caption>
+<tr>
+<th>Id</th><th>Type</th><th>Description </th></tr>
+<tr>
+<td>compute_iis</td><td>OT_BOOL</td><td>When the problem is infeasible, compute an IIS immediately after the solve and expose it in get_stats() as iis_rows / iis_cols. IIS computation can be expensive; set to false to skip it [Default false]. </td></tr>
+<tr>
+<td>log_file</td><td>OT_STRING</td><td>Write solver log to this file path via XPRSsetlogfile. Useful for capturing output (e.g. warm-start acceptance messages) in automated tests. Empty string (default) disables file logging. </td></tr>
+<tr>
+<td>mip_start</td><td>OT_BOOL</td><td>Pass x0 as an initial integer solution hint to Xpress via XPRSaddmipsol before the MIP solve [Default false]. </td></tr>
+<tr>
+<td>sos_groups</td><td>OT_INTVECTORVECTOR</td><td>Definition of SOS groups by indices. </td></tr>
+<tr>
+<td>sos_types</td><td>OT_INTVECTOR</td><td>Specify 1 or 2 for each SOS group. </td></tr>
+<tr>
+<td>sos_weights</td><td>OT_DOUBLEVECTORVECTOR</td><td>Weights corresponding to SOS entries. </td></tr>
+<tr>
+<td>xpress</td><td>OT_DICT</td><td>Options to be passed to FICO Xpress. Each entry's key is the Xpress control name (e.g. "OUTPUTLOG", "MAXTIME", "MIPRELSTOP"); the value's type must match the control's type (int / double / string). </td></tr>
 </table>
 </dd></dl>
 <hr  />

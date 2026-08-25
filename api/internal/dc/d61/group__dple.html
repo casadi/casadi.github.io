@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -100,7 +100,7 @@ Functions</h2></td></tr>
 V_k in R^n
 </pre><p> provides all of <img class="formulaInl" alt="$P_k$" src="../../form_2.png" width="13" height="13"/> that satisfy: </p><pre class="fragment">P_0 = A_(K-1)*P_(K-1)*A_(K-1)' + V_k
 P_k+1 = A_k*P_k*A_k' + V_k  for k = 1..K-1
-</pre><h3><a class="anchor" id="autotoc_md4"></a>
+</pre><h3><a class="anchor" id="autotoc_md6"></a>
 General information</h3>
 <p><br  />
 </p><dl class="section user"><dt></dt><dd><a class="anchor" id="options"></a><table class="doxtable">
@@ -126,15 +126,15 @@ General information</h3>
 <tr>
 <td>derivative_of</td><td>OT_FUNCTION</td><td>The function is a derivative of another function. The type of derivative (directional derivative, Jacobian) is inferred from the function name.</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
-<td>dump</td><td>OT_BOOL</td><td>Dump function to file upon first evaluation. [false]</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
+<td>dump</td><td>OT_BOOL</td><td><a class="el" href="../../d0/dc1/classcasadi_1_1Dump.html" title="Dump.">Dump</a> function to file upon first evaluation. [false]</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
 <td>dump_dir</td><td>OT_STRING</td><td>Directory to dump inputs/outputs to. Make sure the directory exists [.]</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
 <td>dump_format</td><td>OT_STRING</td><td>Choose file format to dump matrices. See <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e">DM.from_file</a> [mtx]</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
-<td>dump_in</td><td>OT_BOOL</td><td>Dump numerical values of inputs to file (readable with <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e">DM.from_file</a>) [default: false] A counter is used to generate unique names. The counter may be reset using reset_dump_count.</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
+<td>dump_in</td><td>OT_BOOL</td><td><a class="el" href="../../d0/dc1/classcasadi_1_1Dump.html" title="Dump.">Dump</a> numerical values of inputs to file (readable with <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e">DM.from_file</a>) [default: false] A counter is used to generate unique names. The counter may be reset using reset_dump_count.</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
-<td>dump_out</td><td>OT_BOOL</td><td>Dump numerical values of outputs to file (readable with <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e">DM.from_file</a>) [default: false] A counter is used to generate unique names. The counter may be reset using reset_dump_count.</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
+<td>dump_out</td><td>OT_BOOL</td><td><a class="el" href="../../d0/dc1/classcasadi_1_1Dump.html" title="Dump.">Dump</a> numerical values of outputs to file (readable with <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e">DM.from_file</a>) [default: false] A counter is used to generate unique names. The counter may be reset using reset_dump_count.</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
 <td>enable_fd</td><td>OT_BOOL</td><td>Enable derivative calculation by finite differencing. [default: false]]</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
@@ -159,8 +159,6 @@ General information</h3>
 <td>forward_options</td><td>OT_DICT</td><td><a class="el" href="../../db/d35/structcasadi_1_1Options.html" title="Options metadata for a class.">Options</a> to be passed to a forward mode constructor</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
 <td>gather_stats</td><td>OT_BOOL</td><td>Deprecated option (ignored): Statistics are now always collected.</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
-<tr>
-<td>input_scheme</td><td>OT_STRINGVECTOR</td><td>Deprecated option (ignored)</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
 <td>inputs_check</td><td>OT_BOOL</td><td>Throw exceptions when the numerical values of the inputs don't make sense</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
@@ -189,8 +187,6 @@ General information</h3>
 <td>max_num_dir</td><td>OT_INT</td><td>Specify the maximum number of directions for derivative functions. Overrules the builtin optimized_num_dir.</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
 <td>never_inline</td><td>OT_BOOL</td><td>Forbid inlining.</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
-<tr>
-<td>output_scheme</td><td>OT_STRINGVECTOR</td><td>Deprecated option (ignored)</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
 <td>pos_def</td><td>OT_BOOL</td><td>Assume P positive definite</td><td><a class="el" href="../../d0/deb/classcasadi_1_1Dple.html" title="Internal class.">casadi::Dple</a> </td></tr>
 <tr>
@@ -233,7 +229,7 @@ General information</h3>
 <tr>
 <td>DPLE_P</td><td>p</td><td>Lyapunov matrix (horzcat when const_dim, diagcat otherwise) (Cholesky of P if pos_def) [p]. </td></tr>
 </table>
-<h3><a class="anchor" id="autotoc_md5"></a>
+<h3><a class="anchor" id="autotoc_md7"></a>
 List of plugins</h3>
 <p>- <a href='#plugin_Dple_slicot'>slicot</a> </p>
 <p>Note: some of the plugins in this list might not be available on your system.  Also, there might be extra plugins available to you that are not listed here. You can obtain their documentation with <code>Dple.doc("myextraplugin")</code></p>
@@ -282,7 +278,7 @@ List of plugins</h3>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">return</span> Dple::getPlugin(name).doc;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00291">casadi::PluginInterface&lt; Dple &gt;::getPlugin()</a>.</p>
+<p class="reference">References <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00295">casadi::PluginInterface&lt; Dple &gt;::getPlugin()</a>.</p>
 
 </div>
 </div>
@@ -534,12 +530,12 @@ List of plugins</h3>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;      <span class="keywordflow">return</span> diagsplit(f_out[<span class="stringliteral">&quot;p&quot;</span>], f_out[<span class="stringliteral">&quot;p&quot;</span>].size1()/A.size());</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  }</div>
 <div class="ttc" id="agroup__dple_html_ga7557d0973e75b8f44411afc04882437e"><div class="ttname"><a href="../../dc/d61/group__dple.html#ga7557d0973e75b8f44411afc04882437e">casadi::dplesol</a></div><div class="ttdeci">Function dplesol(const std::string &amp;name, const std::string &amp;solver, const SpDict &amp;st, const Dict &amp;opts)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/de2/dple_8cpp_source.html#l00097">dple.cpp:97</a></div></div>
-<div class="ttc" id="anamespacecasadi_html_a88082fbf80560c888949bb765d9ccea0"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">casadi::str</a></div><div class="ttdeci">std::string str(const T &amp;v)</div><div class="ttdoc">String representation, any type.</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d59/casadi__common_8hpp_source.html#l00247">casadi_common.hpp:247</a></div></div>
-<div class="ttc" id="anamespacecasadi_html_aa5cd860c45dcc666cdd317c772c280e7"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#aa5cd860c45dcc666cdd317c772c280e7">casadi::SpDict</a></div><div class="ttdeci">std::map&lt; std::string, Sparsity &gt; SpDict</div><div class="ttdef"><b>Definition:</b> <a href="../../da/da8/sparsity_8hpp_source.html#l01502">sparsity.hpp:1502</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_a88082fbf80560c888949bb765d9ccea0"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">casadi::str</a></div><div class="ttdeci">std::string str(const T &amp;v)</div><div class="ttdoc">String representation, any type.</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d59/casadi__common_8hpp_source.html#l00248">casadi_common.hpp:248</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_aa5cd860c45dcc666cdd317c772c280e7"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#aa5cd860c45dcc666cdd317c772c280e7">casadi::SpDict</a></div><div class="ttdeci">std::map&lt; std::string, Sparsity &gt; SpDict</div><div class="ttdef"><b>Definition:</b> <a href="../../da/da8/sparsity_8hpp_source.html#l01524">sparsity.hpp:1524</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_acf4e4e693df7cfbd8b89ad5ff8aec939"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">casadi::DM</a></div><div class="ttdeci">Matrix&lt; double &gt; DM</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d97/dm__fwd_8hpp_source.html#l00033">dm_fwd.hpp:33</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_af2d143d27ed9c7de6d8486685272fc7b"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#af2d143d27ed9c7de6d8486685272fc7b">casadi::DMDict</a></div><div class="ttdeci">std::map&lt; std::string, DM &gt; DMDict</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d97/dm__fwd_8hpp_source.html#l00036">dm_fwd.hpp:36</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d3/de2/dple_8cpp_source.html#l00043">casadi::dplesol()</a>, <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#a4ce8bb0da046a5f271cec6d15d36d693">casadi::Matrix&lt; Scalar &gt;::sparsity()</a>, and <a class="el" href="../../dc/d59/casadi__common_8hpp_source.html#l00247">casadi::str()</a>.</p>
+<p class="reference">References <a class="el" href="../../d3/de2/dple_8cpp_source.html#l00043">casadi::dplesol()</a>, <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#a4ce8bb0da046a5f271cec6d15d36d693">casadi::Matrix&lt; Scalar &gt;::sparsity()</a>, and <a class="el" href="../../dc/d59/casadi__common_8hpp_source.html#l00248">casadi::str()</a>.</p>
 
 </div>
 </div>
@@ -593,9 +589,9 @@ List of plugins</h3>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="../../d7/d23/namespacecasadi.html#a019f74566993adb049bf3958e4a476ed">MXDict</a> f_out = f(f_in);</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">return</span> f_out[<span class="stringliteral">&quot;p&quot;</span>];</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  }</div>
-<div class="ttc" id="anamespacecasadi_html_a019f74566993adb049bf3958e4a476ed"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a019f74566993adb049bf3958e4a476ed">casadi::MXDict</a></div><div class="ttdeci">std::map&lt; std::string, MX &gt; MXDict</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dc6/mx_8hpp_source.html#l01009">mx.hpp:1009</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_a019f74566993adb049bf3958e4a476ed"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a019f74566993adb049bf3958e4a476ed">casadi::MXDict</a></div><div class="ttdeci">std::map&lt; std::string, MX &gt; MXDict</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dc6/mx_8hpp_source.html#l01110">mx.hpp:1110</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d7/df4/mx_8cpp_source.html#l00592">casadi::MX::sparsity()</a>.</p>
+<p class="reference">References <a class="el" href="../../d7/df4/mx_8cpp_source.html#l00612">casadi::MX::sparsity()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="../../d3/de2/dple_8cpp_source.html#l00055">casadi::dplesol()</a>, <a class="el" href="../../d3/de2/dple_8cpp_source.html#l00240">casadi::Dple::get_forward()</a>, and <a class="el" href="../../d3/de2/dple_8cpp_source.html#l00272">casadi::Dple::get_reverse()</a>.</p>
 
@@ -655,7 +651,7 @@ List of plugins</h3>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      <span class="keywordflow">return</span> diagsplit(ret, ret.size1()/A.size());</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d3/de2/dple_8cpp_source.html#l00043">casadi::dplesol()</a>, <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01323">casadi::GenericMatrix&lt; MatType &gt;::size1()</a>, and <a class="el" href="../../dc/d59/casadi__common_8hpp_source.html#l00247">casadi::str()</a>.</p>
+<p class="reference">References <a class="el" href="../../d3/de2/dple_8cpp_source.html#l00043">casadi::dplesol()</a>, <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01350">casadi::GenericMatrix&lt; MatType &gt;::size1()</a>, and <a class="el" href="../../dc/d59/casadi__common_8hpp_source.html#l00248">casadi::str()</a>.</p>
 
 </div>
 </div>
@@ -702,7 +698,7 @@ List of plugins</h3>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordflow">return</span> Function::create(Dple::instantiate(name, solver, st), opts);</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../de/dea/function_8cpp_source.html#l00336">casadi::Function::create()</a>, and <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00312">casadi::PluginInterface&lt; Dple &gt;::instantiate()</a>.</p>
+<p class="reference">References <a class="el" href="../../de/dea/function_8cpp_source.html#l00488">casadi::Function::create()</a>, and <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00316">casadi::PluginInterface&lt; Dple &gt;::instantiate()</a>.</p>
 
 </div>
 </div>
@@ -727,7 +723,7 @@ List of plugins</h3>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">return</span> Dple::has_plugin(name);</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00131">casadi::PluginInterface&lt; Dple &gt;::has_plugin()</a>.</p>
+<p class="reference">References <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00134">casadi::PluginInterface&lt; Dple &gt;::has_plugin()</a>.</p>
 
 </div>
 </div>
@@ -752,7 +748,7 @@ List of plugins</h3>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    Dple::load_plugin(name);</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00203">casadi::PluginInterface&lt; Dple &gt;::load_plugin()</a>.</p>
+<p class="reference">References <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00207">casadi::PluginInterface&lt; Dple &gt;::load_plugin()</a>.</p>
 
 </div>
 </div>

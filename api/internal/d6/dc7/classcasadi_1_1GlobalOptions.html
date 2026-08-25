@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -105,6 +105,20 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:a9a11dbe17c2ac5ec1da22ca08a1de37a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acded0d4aa22df51595bcfebb560cc78b"><td class="memItemLeft" align="right" valign="top">static casadi_int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#acded0d4aa22df51595bcfebb560cc78b">getCopyElisionMinSize</a> ()</td></tr>
 <tr class="separator:acded0d4aa22df51595bcfebb560cc78b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a212dada40861c32d833072f913bd91c4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a212dada40861c32d833072f913bd91c4">setTempWorkDir</a> (const std::string &amp;dir)</td></tr>
+<tr class="separator:a212dada40861c32d833072f913bd91c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaaab88149f91cd35151348a66c784e5a"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#aaaab88149f91cd35151348a66c784e5a">getTempWorkDir</a> ()</td></tr>
+<tr class="separator:aaaab88149f91cd35151348a66c784e5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64042a6851cec9c628740ae7b580036f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a64042a6851cec9c628740ae7b580036f">setNumpyMode</a> (int mode)</td></tr>
+<tr class="memdesc:a64042a6851cec9c628740ae7b580036f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the numpy interop mode (issue #2959): 1 = casadi-aware.  <a href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a64042a6851cec9c628740ae7b580036f">More...</a><br /></td></tr>
+<tr class="separator:a64042a6851cec9c628740ae7b580036f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae14a82aa25eadf98665a52b265ad0d95"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#ae14a82aa25eadf98665a52b265ad0d95">getNumpyMode</a> ()</td></tr>
+<tr class="memdesc:ae14a82aa25eadf98665a52b265ad0d95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current numpy interop mode. See setNumpyMode.  <a href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#ae14a82aa25eadf98665a52b265ad0d95">More...</a><br /></td></tr>
+<tr class="separator:ae14a82aa25eadf98665a52b265ad0d95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0853ce668853263cd37ae5d24a5d7d62"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a0853ce668853263cd37ae5d24a5d7d62">setDefaultBlas</a> (const std::string &amp;name)</td></tr>
+<tr class="separator:a0853ce668853263cd37ae5d24a5d7d62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a959ec330815157a58cd9a9b8bea5ebf1"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a959ec330815157a58cd9a9b8bea5ebf1">getDefaultBlas</a> ()</td></tr>
+<tr class="separator:a959ec330815157a58cd9a9b8bea5ebf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -125,6 +139,11 @@ Static Public Attributes</h2></td></tr>
 <tr class="separator:a054c23202eaff6bde1581f202b32cc27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3abb8646c495d606e5743d66558aa328"><td class="memItemLeft" align="right" valign="top">static casadi_int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a3abb8646c495d606e5743d66558aa328">copy_elision_min_size</a> = 8</td></tr>
 <tr class="separator:a3abb8646c495d606e5743d66558aa328"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac925691841006df845bf5e432154b2be"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#ac925691841006df845bf5e432154b2be">temp_work_dir</a> = &quot;./&quot;</td></tr>
+<tr class="separator:ac925691841006df845bf5e432154b2be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab482850718b2de545bbec2e4ed278513"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#ab482850718b2de545bbec2e4ed278513">numpy_mode</a> = 0</td></tr>
+<tr class="memdesc:ab482850718b2de545bbec2e4ed278513"><td class="mdescLeft">&#160;</td><td class="mdescRight">numpy interop mode (issue #2959). Controls how an explicit  <a href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#ab482850718b2de545bbec2e4ed278513">More...</a><br /></td></tr>
+<tr class="separator:ab482850718b2de545bbec2e4ed278513"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a38c40e12289e2d1aeac39c8889024800"></a>
@@ -150,8 +169,8 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00090">90</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a4a1bc3c1885573729be854ae333ce633">casadi_include_path</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00117">117</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a4a1bc3c1885573729be854ae333ce633">casadi_include_path</a>; }</div>
 <div class="ttc" id="aclasscasadi_1_1GlobalOptions_html_a4a1bc3c1885573729be854ae333ce633"><div class="ttname"><a href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a4a1bc3c1885573729be854ae333ce633">casadi::GlobalOptions::casadi_include_path</a></div><div class="ttdeci">static std::string casadi_include_path</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dc6/global__options_8hpp_source.html#l00065">global_options.hpp:65</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -179,11 +198,11 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00087">87</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a5f548c2b807ba460960a2284704306b4">casadipath</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00114">114</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a5f548c2b807ba460960a2284704306b4">casadipath</a>; }</div>
 <div class="ttc" id="aclasscasadi_1_1GlobalOptions_html_a5f548c2b807ba460960a2284704306b4"><div class="ttname"><a href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a5f548c2b807ba460960a2284704306b4">casadi::GlobalOptions::casadipath</a></div><div class="ttdeci">static std::string casadipath</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dc6/global__options_8hpp_source.html#l00063">global_options.hpp:63</a></div></div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../d9/d6e/casadi__os_8cpp_source.html#l00067">casadi::get_search_paths()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d9/d6e/casadi__os_8cpp_source.html#l00079">casadi::get_search_paths()</a>.</p>
 
 </div>
 </div>
@@ -210,10 +229,43 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00101">101</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a3abb8646c495d606e5743d66558aa328">copy_elision_min_size</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00128">128</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a3abb8646c495d606e5743d66558aa328">copy_elision_min_size</a>; }</div>
 <div class="ttc" id="aclasscasadi_1_1GlobalOptions_html_a3abb8646c495d606e5743d66558aa328"><div class="ttname"><a href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a3abb8646c495d606e5743d66558aa328">casadi::GlobalOptions::copy_elision_min_size</a></div><div class="ttdeci">static casadi_int copy_elision_min_size</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dc6/global__options_8hpp_source.html#l00075">global_options.hpp:75</a></div></div>
 </div><!-- fragment -->
+</div>
+</div>
+<a id="a959ec330815157a58cd9a9b8bea5ebf1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a959ec330815157a58cd9a9b8bea5ebf1">&#9670;&nbsp;</a></span>getDefaultBlas()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string casadi::GlobalOptions::getDefaultBlas </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d0/de1/global__options_8cpp_source.html#l00061">61</a> of file <a class="el" href="../../d0/de1/global__options_8cpp_source.html">global_options.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                                          {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d1/db4/classcasadi_1_1Blas.html#a18755035d07f7f637f122eceb6c9d496">Blas::getDefault</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  }</div>
+<div class="ttc" id="aclasscasadi_1_1Blas_html_a18755035d07f7f637f122eceb6c9d496"><div class="ttname"><a href="../../d1/db4/classcasadi_1_1Blas.html#a18755035d07f7f637f122eceb6c9d496">casadi::Blas::getDefault</a></div><div class="ttdeci">static std::string getDefault()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d2b/blas_8cpp_source.html#l00279">blas.cpp:279</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../da/d2b/blas_8cpp_source.html#l00279">casadi::Blas::getDefault()</a>.</p>
+
 </div>
 </div>
 <a id="a030705da1f0643eaee9181c5fd4924e0"></a>
@@ -239,8 +291,8 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00084">84</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#ae16b1c8ed580784fe6f98f4b7f13a626">hierarchical_sparsity</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00111">111</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#ae16b1c8ed580784fe6f98f4b7f13a626">hierarchical_sparsity</a>; }</div>
 <div class="ttc" id="aclasscasadi_1_1GlobalOptions_html_ae16b1c8ed580784fe6f98f4b7f13a626"><div class="ttname"><a href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#ae16b1c8ed580784fe6f98f4b7f13a626">casadi::GlobalOptions::hierarchical_sparsity</a></div><div class="ttdeci">static bool hierarchical_sparsity</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dc6/global__options_8hpp_source.html#l00067">global_options.hpp:67</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -268,12 +320,42 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00093">93</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#af0400db03de180f5f8f4c6468c642505">max_num_dir</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00120">120</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#af0400db03de180f5f8f4c6468c642505">max_num_dir</a>; }</div>
 <div class="ttc" id="aclasscasadi_1_1GlobalOptions_html_af0400db03de180f5f8f4c6468c642505"><div class="ttname"><a href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#af0400db03de180f5f8f4c6468c642505">casadi::GlobalOptions::max_num_dir</a></div><div class="ttdeci">static casadi_int max_num_dir</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dc6/global__options_8hpp_source.html#l00069">global_options.hpp:69</a></div></div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l00068">casadi::FunctionInternal::FunctionInternal()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l00069">casadi::FunctionInternal::FunctionInternal()</a>.</p>
 
+</div>
+</div>
+<a id="ae14a82aa25eadf98665a52b265ad0d95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae14a82aa25eadf98665a52b265ad0d95">&#9670;&nbsp;</a></span>getNumpyMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int casadi::GlobalOptions::getNumpyMode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2i2">https://github.com/casadi/casadi/wiki/L_2i2</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00146">146</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#ab482850718b2de545bbec2e4ed278513">numpy_mode</a>; }</div>
+<div class="ttc" id="aclasscasadi_1_1GlobalOptions_html_ab482850718b2de545bbec2e4ed278513"><div class="ttname"><a href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#ab482850718b2de545bbec2e4ed278513">casadi::GlobalOptions::numpy_mode</a></div><div class="ttdeci">static int numpy_mode</div><div class="ttdoc">numpy interop mode (issue #2959). Controls how an explicit</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dc6/global__options_8hpp_source.html#l00102">global_options.hpp:102</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="af223a157a5abe23babd8a8e811f9324c"></a>
@@ -299,10 +381,41 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00080">80</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a1fd4c12f931e8ebe5f1c7a5a3ee402df">simplification_on_the_fly</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00107">107</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a1fd4c12f931e8ebe5f1c7a5a3ee402df">simplification_on_the_fly</a>; }</div>
 <div class="ttc" id="aclasscasadi_1_1GlobalOptions_html_a1fd4c12f931e8ebe5f1c7a5a3ee402df"><div class="ttname"><a href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a1fd4c12f931e8ebe5f1c7a5a3ee402df">casadi::GlobalOptions::simplification_on_the_fly</a></div><div class="ttdeci">static bool simplification_on_the_fly</div><div class="ttdoc">Indicates whether simplifications should be made on the fly.</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dc6/global__options_8hpp_source.html#l00061">global_options.hpp:61</a></div></div>
 </div><!-- fragment -->
+</div>
+</div>
+<a id="aaaab88149f91cd35151348a66c784e5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaaab88149f91cd35151348a66c784e5a">&#9670;&nbsp;</a></span>getTempWorkDir()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static std::string casadi::GlobalOptions::getTempWorkDir </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00131">131</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#ac925691841006df845bf5e432154b2be">temp_work_dir</a>; }</div>
+<div class="ttc" id="aclasscasadi_1_1GlobalOptions_html_ac925691841006df845bf5e432154b2be"><div class="ttname"><a href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#ac925691841006df845bf5e432154b2be">casadi::GlobalOptions::temp_work_dir</a></div><div class="ttdeci">static std::string temp_work_dir</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dc6/global__options_8hpp_source.html#l00077">global_options.hpp:77</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l00710">casadi::FunctionInternal::get_jit_directory()</a>, and <a class="el" href="../../d9/da7/casadi__misc_8cpp_source.html#l00354">casadi::temporary_file()</a>.</p>
+
 </div>
 </div>
 <a id="a560ef78ea7be34ac4ad4eadb9267a7c3"></a>
@@ -329,8 +442,8 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00089">89</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;{ <a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a4a1bc3c1885573729be854ae333ce633">casadi_include_path</a> = <a class="code" href="../../d7/d23/namespacecasadi.html#ae33b1eb2b246bddeb76129f4241ca54a">path</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00116">116</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;{ <a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a4a1bc3c1885573729be854ae333ce633">casadi_include_path</a> = <a class="code" href="../../d7/d23/namespacecasadi.html#ae33b1eb2b246bddeb76129f4241ca54a">path</a>; }</div>
 <div class="ttc" id="anamespacecasadi_html_ae33b1eb2b246bddeb76129f4241ca54a"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#ae33b1eb2b246bddeb76129f4241ca54a">casadi::path</a></div><div class="ttdeci">std::vector&lt; casadi_int &gt; path(const std::vector&lt; casadi_int &gt; &amp;map, casadi_int i_start)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d07/integration__tools_8cpp_source.html#l00793">integration_tools.cpp:793</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../dd/d07/integration__tools_8cpp_source.html#l00793">casadi::path()</a>.</p>
@@ -361,8 +474,8 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00086">86</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;{ <a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a5f548c2b807ba460960a2284704306b4">casadipath</a> = <a class="code" href="../../d7/d23/namespacecasadi.html#ae33b1eb2b246bddeb76129f4241ca54a">path</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00113">113</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;{ <a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a5f548c2b807ba460960a2284704306b4">casadipath</a> = <a class="code" href="../../d7/d23/namespacecasadi.html#ae33b1eb2b246bddeb76129f4241ca54a">path</a>; }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../dd/d07/integration__tools_8cpp_source.html#l00793">casadi::path()</a>.</p>
 
@@ -392,13 +505,44 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00095">95</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                                                       {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a3abb8646c495d606e5743d66558aa328">copy_elision_min_size</a>=sz;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a3abb8646c495d606e5743d66558aa328">copy_elision_min_size</a>!=-1 &amp;&amp; <a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a3abb8646c495d606e5743d66558aa328">copy_elision_min_size</a>&lt;2) {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;          <a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a3abb8646c495d606e5743d66558aa328">copy_elision_min_size</a> = 2;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        }</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;      }</div>
+<p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00122">122</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                                                       {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a3abb8646c495d606e5743d66558aa328">copy_elision_min_size</a>=sz;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a3abb8646c495d606e5743d66558aa328">copy_elision_min_size</a>!=-1 &amp;&amp; <a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a3abb8646c495d606e5743d66558aa328">copy_elision_min_size</a>&lt;2) {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;          <a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a3abb8646c495d606e5743d66558aa328">copy_elision_min_size</a> = 2;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        }</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a0853ce668853263cd37ae5d24a5d7d62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0853ce668853263cd37ae5d24a5d7d62">&#9670;&nbsp;</a></span>setDefaultBlas()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void casadi::GlobalOptions::setDefaultBlas </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d0/de1/global__options_8cpp_source.html#l00057">57</a> of file <a class="el" href="../../d0/de1/global__options_8cpp_source.html">global_options.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                                                          {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    Blas::setDefault(name);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -426,8 +570,8 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00083">83</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;{ <a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#ae16b1c8ed580784fe6f98f4b7f13a626">hierarchical_sparsity</a> = flag; }</div>
+<p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00110">110</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;{ <a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#ae16b1c8ed580784fe6f98f4b7f13a626">hierarchical_sparsity</a> = flag; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -455,8 +599,39 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00092">92</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;{ <a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#af0400db03de180f5f8f4c6468c642505">max_num_dir</a>=ndir; }</div>
+<p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00119">119</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;{ <a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#af0400db03de180f5f8f4c6468c642505">max_num_dir</a>=ndir; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a64042a6851cec9c628740ae7b580036f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64042a6851cec9c628740ae7b580036f">&#9670;&nbsp;</a></span>setNumpyMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void casadi::GlobalOptions::setNumpyMode </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>numpy support, 0 (default) = legacy + FutureWarning, -1 = legacy but silent. See the numpy_mode field. Affects only Python bindings; ignored elsewhere. Probe with hasattr(<a class="el" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html" title="Collects global CasADi options.">casadi.GlobalOptions</a>, "setNumpyMode").</p>
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2i1">https://github.com/casadi/casadi/wiki/L_2i1</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00141">141</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;{ <a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#ab482850718b2de545bbec2e4ed278513">numpy_mode</a> = mode; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -484,9 +659,44 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00079">79</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;{ <a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a1fd4c12f931e8ebe5f1c7a5a3ee402df">simplification_on_the_fly</a> = flag; }</div>
+<p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00106">106</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;{ <a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#a1fd4c12f931e8ebe5f1c7a5a3ee402df">simplification_on_the_fly</a> = flag; }</div>
 </div><!-- fragment -->
+</div>
+</div>
+<a id="a212dada40861c32d833072f913bd91c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a212dada40861c32d833072f913bd91c4">&#9670;&nbsp;</a></span>setTempWorkDir()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void casadi::GlobalOptions::setTempWorkDir </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>dir</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d0/de1/global__options_8cpp_source.html#l00052">52</a> of file <a class="el" href="../../d0/de1/global__options_8cpp_source.html">global_options.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                                                         {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    casadi_assert(!dir.empty(), <span class="stringliteral">&quot;Temporary working directory must be non-empty.&quot;</span>);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html#ac925691841006df845bf5e432154b2be">temp_work_dir</a> = <a class="code" href="../../d3/d82/classcasadi_1_1Filesystem.html#a9c4d88eea19492a459369039784e2bb8">Filesystem::ensure_trailing_slash</a>(dir);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  }</div>
+<div class="ttc" id="aclasscasadi_1_1Filesystem_html_a9c4d88eea19492a459369039784e2bb8"><div class="ttname"><a href="../../d3/d82/classcasadi_1_1Filesystem.html#a9c4d88eea19492a459369039784e2bb8">casadi::Filesystem::ensure_trailing_slash</a></div><div class="ttdeci">static std::string ensure_trailing_slash(const std::string &amp;path)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d8f/filesystem_8cpp_source.html#l00155">filesystem.cpp:155</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../d9/d8f/filesystem_8cpp_source.html#l00155">casadi::Filesystem::ensure_trailing_slash()</a>, and <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00077">temp_work_dir</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -560,7 +770,7 @@ Static Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00075">75</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d1/d92/code__generator_8cpp_source.html#l01967">casadi::CodeGenerator::elide_copy()</a>, and <a class="el" href="../../d1/d7b/sx__function_8cpp_source.html#l00842">casadi::SXFunction::init_copy_elision()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d1/d92/code__generator_8cpp_source.html#l02229">casadi::CodeGenerator::elide_copy()</a>, and <a class="el" href="../../d1/d7b/sx__function_8cpp_source.html#l00843">casadi::SXFunction::init_copy_elision()</a>.</p>
 
 </div>
 </div>
@@ -586,7 +796,7 @@ Static Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00067">67</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l01871">casadi::FunctionInternal::get_jac_sparsity()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l01928">casadi::FunctionInternal::get_jac_sparsity()</a>.</p>
 
 </div>
 </div>
@@ -611,8 +821,6 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00073">73</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="../../d3/d37/madnlp__interface_8cpp_source.html#l00107">casadi::MadnlpInterface::init()</a>.</p>
 
 </div>
 </div>
@@ -640,6 +848,33 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ab482850718b2de545bbec2e4ed278513"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab482850718b2de545bbec2e4ed278513">&#9670;&nbsp;</a></span>numpy_mode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int casadi::GlobalOptions::numpy_mode = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p><code>numpy.foo(M)</code> on a casadi value behaves in the Python bindings: 0 (default): legacy casadi 3.7.2 behaviour + a Python FutureWarning &ndash; a numeric value densifies to a numpy result, a symbolic value returns a casadi value. 1: the casadi-aware numpy support &ndash; <code>numpy.foo(M)</code> returns a python-only numpy-semantics array wrapper (casadi.ArrayInterface) following numpy's shape/axis contract for SX/MX/DM alike. -1: the same legacy behaviour as 0, but silent (no warning) &ndash; exact casadi 3.7.2 semantics. Operator arithmetic (<code>M + x</code>, <code>x * M</code>, ...) always stays casadi- typed and is unaffected. Affects only Python bindings.</p>
+<p>Temporary opt-in mechanism: exists to ease the transition and will be removed once numpy becomes the unconditional default. Process-global and not thread-safe &ndash; it changes the <em>return type</em> of numpy dispatch, so set it once at startup rather than toggling it concurrently with running code. Probe with hasattr(<a class="el" href="../../d6/dc7/classcasadi_1_1GlobalOptions.html" title="Collects global CasADi options.">casadi.GlobalOptions</a>, "setNumpyMode").</p>
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2i0">https://github.com/casadi/casadi/wiki/L_2i0</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00102">102</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
+
+</div>
+</div>
 <a id="a1fd4c12f931e8ebe5f1c7a5a3ee402df"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1fd4c12f931e8ebe5f1c7a5a3ee402df">&#9670;&nbsp;</a></span>simplification_on_the_fly</h2>
 
@@ -664,7 +899,7 @@ Static Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00061">61</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d2/dcf/mx__node_8cpp_source.html#l00843">casadi::MXNode::_get_binary()</a>, <a class="el" href="../../db/da5/binary__mx__impl_8hpp_source.html#l00281">casadi::BinaryMX&lt; ScX, ScY &gt;::_get_binary()</a>, <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00186">casadi::SXElem::binary()</a>, <a class="el" href="../../d2/dcf/mx__node_8cpp_source.html#l01143">casadi::MXNode::get_horzsplit()</a>, <a class="el" href="../../db/de4/unary__mx_8cpp_source.html#l00134">casadi::UnaryMX::get_unary()</a>, <a class="el" href="../../d2/dcf/mx__node_8cpp_source.html#l01209">casadi::MXNode::get_vertsplit()</a>, and <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00408">casadi::SXElem::unary()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d2/dcf/mx__node_8cpp_source.html#l00852">casadi::MXNode::_get_binary()</a>, <a class="el" href="../../db/da5/binary__mx__impl_8hpp_source.html#l00300">casadi::BinaryMX&lt; ScX, ScY &gt;::_get_binary()</a>, <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00189">casadi::SXElem::binary()</a>, <a class="el" href="../../d2/dcf/mx__node_8cpp_source.html#l01190">casadi::MXNode::get_horzsplit()</a>, <a class="el" href="../../d2/dcf/mx__node_8cpp_source.html#l01270">casadi::MXNode::get_vertsplit()</a>, and <a class="el" href="../../d0/d7e/sx__elem_8cpp_source.html#l00237">casadi::SXElem::unary()</a>.</p>
 
 </div>
 </div>
@@ -690,7 +925,33 @@ Static Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00071">71</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d3/db1/optistack__internal_8cpp_source.html#l00210">casadi::OptiNode::g_describe()</a>, <a class="el" href="../../d0/d7f/bonmin__interface_8cpp_source.html#l00132">casadi::BonminInterface::init()</a>, <a class="el" href="../../d4/d00/fatrop__interface_8cpp_source.html#l00084">casadi::report_issue()</a>, <a class="el" href="../../d8/daf/sparsity__internal_8cpp_source.html#l01709">casadi::SparsityInternal::repr_el()</a>, <a class="el" href="../../d3/db1/optistack__internal_8cpp_source.html#l01741">casadi::OptiNode::show_infeasibilities()</a>, and <a class="el" href="../../d3/db1/optistack__internal_8cpp_source.html#l00221">casadi::OptiNode::x_describe()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d3/db1/optistack__internal_8cpp_source.html#l00210">casadi::OptiNode::g_describe()</a>, <a class="el" href="../../d0/d7f/bonmin__interface_8cpp_source.html#l00132">casadi::BonminInterface::init()</a>, <a class="el" href="../../d4/d00/fatrop__interface_8cpp_source.html#l00092">casadi::report_issue()</a>, <a class="el" href="../../d8/daf/sparsity__internal_8cpp_source.html#l01717">casadi::SparsityInternal::repr_el()</a>, <a class="el" href="../../d3/db1/optistack__internal_8cpp_source.html#l01743">casadi::OptiNode::show_infeasibilities()</a>, and <a class="el" href="../../d3/db1/optistack__internal_8cpp_source.html#l00221">casadi::OptiNode::x_describe()</a>.</p>
+
+</div>
+</div>
+<a id="ac925691841006df845bf5e432154b2be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac925691841006df845bf5e432154b2be">&#9670;&nbsp;</a></span>temp_work_dir</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string casadi::GlobalOptions::temp_work_dir = &quot;./&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d1/dc6/global__options_8hpp_source.html#l00077">77</a> of file <a class="el" href="../../d1/dc6/global__options_8hpp_source.html">global_options.hpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../d0/de1/global__options_8cpp_source.html#l00052">setTempWorkDir()</a>.</p>
 
 </div>
 </div>

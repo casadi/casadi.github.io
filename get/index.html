@@ -77,6 +77,12 @@
           
           <li class="nav-item">
           
+            <a class="nav-link" href="/events/">Training/Workshops</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
             <a class="nav-link" href="/source/">Source</a>
           </li>
         
@@ -84,12 +90,6 @@
           <li class="nav-item">
           
             <a class="nav-link" href="/publications/">Publications</a>
-          </li>
-        
-          
-          <li class="nav-item">
-          
-            <a class="nav-link" href="/events/">Training/Workshops</a>
           </li>
         
           
@@ -120,6 +120,438 @@
       
 
       
+      
+
+        
+
+          
+            
+
+            
+
+            
+
+              
+                  
+
+                
+                
+
+                
+                <div class="card text-left border-success mb-2" id="38">
+                
+                  
+                  <a class="card-header bg-white border-success" data-toggle="collapse" href="#body-38" aria-expanded="true" aria-controls="body-38">
+                  
+                    
+                    <h4 class="text-success" style="display: inline-block; margin: 0;">CasADi v3.8.0</h4>
+                    <span class="badge badge-success" style="font-size: 0.5em; vertical-align: top;">latest</span>
+                    
+                    
+                    
+                    
+                    <span class="release-info text-muted">released August 22, 2026</span>
+                  </a>
+                  
+                  <div class="collapse show" id="body-38">
+                  
+
+                    
+                    
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+
+                      
+                        <div class="nav nav-pills card-header justify-content-center" role="tablist">
+                          
+                          <a class="nav-link active" href="#downloadTab-38" role="tab" data-toggle="tab" aria-selected="true">Install</a>
+                          
+                          
+                          
+                          <a class="nav-link" href="#notesTab-38" role="tab" data-toggle="tab" aria-selected="false">Release notes</a>
+                          
+
+                        </div>
+                        <div class="card-body tab-content">
+                          <div id="downloadTab-38" role="tabpanel" class="tab-pane fade active show">
+                            
+                              <p>Grab a binary from the table:</p>
+<table>
+  <tr><th></th><th>Windows</th><th>Linux</th><th>Mac classic (High Sierra or above)</th><th>Mac M1</th></tr>
+  <tr>
+    <th>Matlab</th>
+    <td><a href="https://github.com/casadi/casadi/releases/download/3.8.0/casadi-3.8.0-windows64-matlab2018b.zip">R2018b</a> or later</td>
+    <td><a href="https://github.com/casadi/casadi/releases/download/3.8.0/casadi-3.8.0-linux64-matlab2018b.zip">R2018b</a> or later</td>
+    <td><a href="https://github.com/casadi/casadi/releases/download/3.8.0/casadi-3.8.0-osx64-matlab2018b.zip">R2018b</a> or later</td>
+    <td><a href="https://github.com/casadi/casadi/releases/download/3.8.0/casadi-3.8.0-osx_arm64-matlab2018b.zip">R2023b</a> or later (Apple Silicon)<br/><a href="https://github.com/casadi/casadi/releases/download/3.8.0/casadi-3.8.0-osx64-matlab2018b.zip">R2018b</a> or later (Rosetta)</td>
+  </tr>
+  <tr>
+    <th>Octave</th>
+    <td><a href="https://github.com/casadi/casadi/releases/download/3.8.0/casadi-3.8.0-windows64-octave7.3.0.zip">6.2.0</a> or later</td>
+    <td><a href="https://github.com/casadi/casadi/releases/download/3.8.0/casadi-3.8.0-linux64-octave7.3.0.zip">6.2.0</a> or later</td>
+    <td><a href="https://github.com/casadi/casadi/releases/download/3.8.0/casadi-3.8.0-osx64-octave7.3.0.zip">6.2.0</a> or later</td>
+    <td><a href="https://github.com/casadi/casadi/releases/download/3.8.0/casadi-3.8.0-osx_arm64-octave7.3.0.zip">6.2.0</a> or later</td>
+  </tr>
+  <tr>
+    <th>Python</th>
+    <td colspan="4"><code>pip install casadi</code> (needs <code>pip -V</code>>=8.1) or wheel below.
+Note that we adopted Python Stable ABI, so Python 3.12, 3.13, 3.14, etc should all work with the `cp311-abi3` variant.</td>
+  </tr>
+  <tr>
+    <th>Javascript</th>
+    <td colspan="4"><code>npm install @casadi/casadi-wasm</code></td>
+  </tr>
+</table>
+<p>For Matlab/Octave, unzip in your home directory and adapt the path:</p>
+<pre>
+<code>
+addpath('&lt;yourpath>/casadi-3.8.0-windows64-matlab2018b')
+</code>
+</pre>
+<p>Check your installation:</p>
+<table>
+<tr><th>Matlab/Octave</th><th>Python</th><th>Javascript</th><tr>
+<tr><td>
+<pre>
+<code>
+import casadi.*
+x = MX.sym('x')
+disp(jacobian(sin(x),x))
+</code>
+</pre>
+</td><td>
+<pre>
+<code>
+from casadi import *
+x = MX.sym("x")
+print(jacobian(sin(x),x))
+</code>
+</pre>
+</td><td>
+<pre>
+<code>
+require("@casadi/casadi-wasm")()
+  .then(ca => {
+    const x = ca.MX.sym("x");
+    const J = ca.jacobian(ca.sin(x), x);
+    console.log(J.toString());
+  });
+</code>
+</pre>
+</td>
+</tr>
+</table>
+<p>Get started with the <a href="https://github.com/casadi/casadi/releases/download/3.8.0/casadi-example_pack-v3.8.0.zip">example pack</a>. Onboarding pointers have been gathered by the community at our <a href="https://github.com/casadi/casadi/wiki/Onboarding-Guide">wiki</a>.</p>
+
+                            
+                          </div>
+                          <div id="notesTab-38" role="tabpanel" class="tab-pane fade">
+                            
+                              <h2 id="new-frontends">New frontends</h2>
+<p>CasADi gains two new language front-ends, each with a set of examples under <code>docs/examples</code> shipped in the example pack.
+This is experimental work. Users are encouraged to try it out and post any bugs.</p>
+<h3 id="julia">Julia</h3>
+<p>CasADi can now be driven from Julia without Python intermediary, thanks to an extension of SWIG.
+The example <code>docs/examples/julia/simple_nlp.jl</code> should look fairly familiar to seasoned CasADi Python users:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-julia" data-lang="julia"><span class="line"><span class="cl"><span class="k">import</span> <span class="n">CasADi</span> <span class="n">as</span> <span class="n">ca</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">ca</span><span class="o">.</span><span class="n">SX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#34;x&#34;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">f</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">^</span><span class="mi">2</span>          <span class="c"># objective</span>
+</span></span><span class="line"><span class="cl"><span class="n">g</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="mi">10</span>         <span class="c"># constraint:  x0 + x1 - 10 &gt;= 0</span>
+</span></span><span class="line"><span class="cl"><span class="n">nlp</span> <span class="o">=</span> <span class="kt">Dict</span><span class="p">(</span><span class="s">&#34;x&#34;</span> <span class="o">=&gt;</span> <span class="n">x</span><span class="p">,</span> <span class="s">&#34;f&#34;</span> <span class="o">=&gt;</span> <span class="n">f</span><span class="p">,</span> <span class="s">&#34;g&#34;</span> <span class="o">=&gt;</span> <span class="n">g</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">solver</span> <span class="o">=</span> <span class="n">ca</span><span class="o">.</span><span class="n">nlpsol</span><span class="p">(</span><span class="s">&#34;solver&#34;</span><span class="p">,</span> <span class="s">&#34;ipopt&#34;</span><span class="p">,</span> <span class="n">nlp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sol</span> <span class="o">=</span> <span class="n">solver</span><span class="p">(</span><span class="n">lbg</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">println</span><span class="p">(</span><span class="s">&#34;primal solution = &#34;</span><span class="p">,</span> <span class="n">sol</span><span class="p">[</span><span class="s">&#34;x&#34;</span><span class="p">])</span>
+</span></span></code></pre></div><h3 id="javascript--webassembly">JavaScript / WebAssembly</h3>
+<p>CasADi now runs in the browser and in Node.js as a WebAssembly module (<a href="https://github.com/casadi/casadi/issues/4355">#4355</a>), distributed on <a href="https://www.npmjs.com/package/@casadi/casadi-wasm">npm</a>. As JavaScript has no operator overloading, expressions are built with functional forms such as <code>ca.plus</code>/<code>ca.times</code> (from <code>docs/examples/javascript/simple_nlp.js</code>):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">ca</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;@casadi/casadi-wasm&#34;</span><span class="p">)();</span>   <span class="c1">// load the WebAssembly module
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">ca</span><span class="p">.</span><span class="nx">SX</span><span class="p">.</span><span class="nx">sym</span><span class="p">(</span><span class="s2">&#34;x&#34;</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="p">[</span><span class="nx">x0</span><span class="p">,</span> <span class="nx">x1</span><span class="p">]</span> <span class="o">=</span> <span class="nx">ca</span><span class="p">.</span><span class="nx">vertsplit</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">nlp</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">x</span><span class="o">:</span> <span class="nx">x</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="nx">f</span><span class="o">:</span> <span class="nx">ca</span><span class="p">.</span><span class="nx">plus</span><span class="p">(</span><span class="nx">ca</span><span class="p">.</span><span class="nx">times</span><span class="p">(</span><span class="nx">x0</span><span class="p">,</span> <span class="nx">x0</span><span class="p">),</span> <span class="nx">ca</span><span class="p">.</span><span class="nx">times</span><span class="p">(</span><span class="nx">x1</span><span class="p">,</span> <span class="nx">x1</span><span class="p">)),</span>  <span class="c1">// objective
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>              <span class="nx">g</span><span class="o">:</span> <span class="nx">ca</span><span class="p">.</span><span class="nx">minus</span><span class="p">(</span><span class="nx">ca</span><span class="p">.</span><span class="nx">plus</span><span class="p">(</span><span class="nx">x0</span><span class="p">,</span> <span class="nx">x1</span><span class="p">),</span> <span class="nx">ca</span><span class="p">.</span><span class="nx">SX</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="p">};</span>       <span class="c1">// x0 + x1 - 10 &gt;= 0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">solver</span> <span class="o">=</span> <span class="nx">ca</span><span class="p">.</span><span class="nx">nlpsol</span><span class="p">(</span><span class="s2">&#34;solver&#34;</span><span class="p">,</span> <span class="s2">&#34;ipopt&#34;</span><span class="p">,</span> <span class="nx">nlp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">sol</span> <span class="o">=</span> <span class="nx">solver</span><span class="p">.</span><span class="nx">call</span><span class="p">({</span> <span class="nx">lbg</span><span class="o">:</span> <span class="nx">ca</span><span class="p">.</span><span class="nx">DM</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;primal solution = &#34;</span> <span class="o">+</span> <span class="nx">sol</span><span class="p">[</span><span class="s2">&#34;x&#34;</span><span class="p">]);</span>
+</span></span></code></pre></div><p>The same module loads straight from a CDN (e.g. <code>unpkg.com/@casadi/casadi-wasm</code>), so if you are into vibecoding self-contained HTML pages, you can now drop a full CasADi optimization - IPOPT and all - into a single static <code>.html</code> file with no build step (see <code>docs/examples/javascript/unpkg_demo.html</code>).</p>
+<h2 id="onnx-interoperability">ONNX interoperability</h2>
+<p>CasADi can now bridge to the <a href="https://onnx.ai/">ONNX</a> ecosystem in two complementary ways, so that trained neural networks and other ONNX graphs can participate directly in CasADi computations:</p>
+<ul>
+<li><strong>Black-box evaluation</strong> (<a href="https://github.com/casadi/casadi/issues/4209">#4209</a>): an ONNX model can be loaded and evaluated as a CasADi Function, backed by <a href="https://onnxruntime.ai/">ONNX Runtime</a>. The model is treated as an opaque, dtype-aware box; derivatives are provided through finite differences, or by AD if the ONNX writer augmented the graph with appropriately-named output nodes.</li>
+<li><strong>Symbolic translation</strong> (<a href="https://github.com/casadi/casadi/issues/4246">#4246</a>): an ONNX graph can instead be imported into native CasADi expressions, and CasADi expressions can be exported back to ONNX. Imported this way, a model is differentiated analytically by CasADi like any other expression and takes part in code generation.</li>
+</ul>
+<p>Both modes are driven through a new <code>GraphBuilder</code> class:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Black-box: load an ONNX model and evaluate it as a CasADi Function</span>
+</span></span><span class="line"><span class="cl"><span class="n">f</span> <span class="o">=</span> <span class="n">ca</span><span class="o">.</span><span class="n">GraphBuilder</span><span class="p">(</span><span class="s2">&#34;model.onnx&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">&#34;f&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">ca</span><span class="o">.</span><span class="n">vertcat</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Symbolic: import the model into native, differentiable CasADi expressions ...</span>
+</span></span><span class="line"><span class="cl"><span class="n">g</span> <span class="o">=</span> <span class="n">GraphBuilder</span><span class="p">(</span><span class="s2">&#34;model.onnx&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">&#34;g&#34;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&#34;symbolic&#34;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># ... or export a CasADi Function back to ONNX</span>
+</span></span><span class="line"><span class="cl"><span class="n">GraphBuilder</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">export_onnx</span><span class="p">(</span><span class="s2">&#34;roundtrip.onnx&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>This is a new capability and still evolving. The symbolic translation is available when CasADi is built with <code>WITH_ONNX</code>; the ONNX Runtime black-box backend additionally requires <code>WITH_ONNX_RUNTIME</code> (which forces <code>WITH_ONNX</code>).</p>
+<h2 id="more-efficient-matrix-multiplication">More efficient matrix multiplication</h2>
+<p>CasADi was historically targeted at small/medium heterogeneous dynamic systems, where dense-dense multiplication is typically rare and not a computational bottleneck (though large sparse-sparse products do play an important role). This release closes the remaining gaps so that dense-heavy workloads are no longer penalized:</p>
+<ul>
+<li>The CasADi runtime now has a specialization for dense-dense multiplication (previously only the code generator had one) (<a href="https://github.com/casadi/casadi/issues/4292">#4292</a>).</li>
+<li>The CasADi runtime and code generator now have a specialization for dense-sparse multiplication.</li>
+<li><code>mtimes</code>, in both the runtime and the generated code, now takes an extra &ldquo;BLAS argument&rdquo; that selects which multiplication kernel is used. For dense problems you can choose between the built-in reference kernel, whatever BLAS CasADi was built against, and blasfeo:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">  <span class="n">mtimes</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>                <span class="c1"># default: built-in reference kernel (triple loop)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">mtimes</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="s2">&#34;reference&#34;</span><span class="p">)</span>   <span class="c1"># same -- explicit</span>
+</span></span><span class="line"><span class="cl">  <span class="n">mtimes</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="s2">&#34;classic&#34;</span><span class="p">)</span>     <span class="c1"># whatever was built into CasADi via WITH_LAPACK (typically OpenBLAS)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">mtimes</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="s2">&#34;blasfeo&#34;</span><span class="p">)</span>     <span class="c1"># uses blasfeo</span>
+</span></span></code></pre></div><p>The <code>blas</code> argument is ignored when either operand is sparse.</p>
+<h2 id="symbolic-expressions">Symbolic expressions</h2>
+<ul>
+<li><code>det(A, lsolver)</code> computes a determinant through a linear-solver factorization (e.g. CSparse LU, <code>symbolic_qr</code>) instead of cofactor expansion, making determinants of large, sparse matrices practical (<a href="https://github.com/casadi/casadi/issues/2821">#2821</a>). Thanks @nielsvd (Niels van Duijkeren).</li>
+<li>B-splines now accept symbolic knots: the <code>bspline</code> constructor takes its knots (and coefficients) as <code>MX</code>, so knot positions can be supplied or differentiated at evaluation time rather than baked in at construction.</li>
+<li>The specialized <code>blazing_spline</code> now supports up to five input dimensions and a parametric-knots variant whose knots are a symbolic input.</li>
+<li>A new dump node provides an alternative to <code>monitor</code> for inspecting intermediate values during evaluation
+(<a href="https://github.com/casadi/casadi/issues/4306">#4306</a>).</li>
+<li><code>kron</code> (Kronecker product) is now backed by a dedicated MX node (<a href="https://github.com/casadi/casadi/issues/939">#939</a>).</li>
+<li><strong>breaking</strong>: comparing an <code>SX</code> and an <code>MX</code> with <code>==</code> now raises an error instead of silently returning <code>False</code> (<a href="https://github.com/casadi/casadi/issues/2817">#2817</a>).</li>
+<li>Reverse-mode derivatives of Functions with structurally-sparse (e.g. upper-triangular) inputs now behave consistently between SX and MX (<a href="https://github.com/casadi/casadi/issues/4345">#4345</a>).</li>
+<li>Using <code>linspace</code> with MX symbols as start/end points no longer causes the number of nodes to blow up (<a href="https://github.com/casadi/casadi/issues/3531">#3531</a>).</li>
+<li>Computing the Jacobian of a subset of constraints no longer produces more nodes than the Jacobian of all constraints in certain cases (<a href="https://github.com/casadi/casadi/issues/4354">#4354</a>).</li>
+<li>Multiplying with a complex matrix now raises a <code>TypeError</code> instead of segfaulting (<a href="https://github.com/casadi/casadi/issues/4216">#4216</a>).</li>
+<li>Fixed a zero-by-N inconsistency (<a href="https://github.com/casadi/casadi/issues/3977">#3977</a>) and a non-identity transform issue in <code>eval_mx</code> (<a href="https://github.com/casadi/casadi/issues/2934">#2934</a>).</li>
+<li><code>SX::set_precision</code> is now respected when printing SX (<a href="https://github.com/casadi/casadi/issues/4326">#4326</a>), and
+<code>print_instructions</code> is harmonized across SX and MX (<a href="https://github.com/casadi/casadi/issues/4170">#4170</a>).</li>
+</ul>
+<h2 id="graph-optimization-with-transform">Graph optimization with <code>transform</code></h2>
+<p>Expression and Function graphs can now be optimized through a single, ordered pipeline of passes, exposed as <code>Function.transform</code> (and as a free function <code>transform</code> on expressions). This is the new, consistent entry point for graph simplification, replacing the older per-type <code>simplify</code> methods (<a href="https://github.com/casadi/casadi/issues/4227">#4227</a>); the simplification engine underneath has itself been substantially reworked and extended (<a href="https://github.com/casadi/casadi/issues/2069">#2069</a>, <a href="https://github.com/casadi/casadi/issues/4219">#4219</a>).</p>
+<p>The syntax takes the form of a list of verbs such as <strong>combine_terms</strong> prefixed with &ldquo;simplify&rdquo;.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># on an expression (or list of expressions):</span>
+</span></span><span class="line"><span class="cl"><span class="n">transform</span><span class="p">(</span><span class="mi">8</span><span class="o">*</span><span class="n">y</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">y</span><span class="p">,</span> <span class="p">[[</span><span class="s2">&#34;simplify&#34;</span><span class="p">,</span> <span class="s2">&#34;combine_terms&#34;</span><span class="p">]])</span>   <span class="c1"># -&gt; 5*y</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># on a Function — an explicit pipeline, or the default flow with no arguments:</span>
+</span></span><span class="line"><span class="cl"><span class="n">f</span><span class="o">.</span><span class="n">transform</span><span class="p">([[</span><span class="s2">&#34;simplify&#34;</span><span class="p">,</span> <span class="s2">&#34;combine_terms&#34;</span><span class="p">]])</span>
+</span></span><span class="line"><span class="cl"><span class="n">f</span><span class="o">.</span><span class="n">transform</span><span class="p">()</span>        <span class="c1"># default: cse + ref_count + const_folding + empty_inputs</span>
+</span></span></code></pre></div><p>The currently available verbs are:</p>
+<ul>
+<li><strong>combine_terms</strong>: (old <code>simplify</code>) like terms are collected into a single weighted term:
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">transform</span><span class="p">(</span><span class="mi">8</span><span class="o">*</span><span class="n">y</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">y</span><span class="p">,</span> <span class="p">[[</span><span class="s2">&#34;simplify&#34;</span><span class="p">,</span> <span class="s2">&#34;combine_terms&#34;</span><span class="p">]])</span>   <span class="c1"># -&gt; 5*y</span>
+</span></span><span class="line"><span class="cl"><span class="n">transform</span><span class="p">(</span><span class="mi">8</span><span class="o">*</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">+</span> <span class="p">(</span><span class="mi">12</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">17</span><span class="o">*</span><span class="n">x</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">          <span class="p">[[</span><span class="s2">&#34;simplify&#34;</span><span class="p">,</span> <span class="s2">&#34;combine_terms&#34;</span><span class="p">]])</span>               <span class="c1"># -&gt; 55*x - 9</span>
+</span></span></code></pre></div></li>
+<li><strong>const_folding</strong>: constant subgraphs are evaluated once, at build time. A product of constant matrices collapses to a single constant matrix, leaving only the symbol-dependent work (see the worked example below), and call nodes that invariably evaluated to zero are dropped (<a href="https://github.com/casadi/casadi/issues/172">#172</a>, <a href="https://github.com/casadi/casadi/issues/2574">#2574</a>, <a href="https://github.com/casadi/casadi/issues/3019">#3019</a>):
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">A</span> <span class="o">=</span> <span class="n">MX</span><span class="p">(</span><span class="n">DM</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]))</span>
+</span></span><span class="line"><span class="cl"><span class="n">transform</span><span class="p">(</span><span class="n">A</span> <span class="o">@</span> <span class="n">A</span> <span class="o">@</span> <span class="n">x</span><span class="p">,</span> <span class="p">[[</span><span class="s2">&#34;simplify&#34;</span><span class="p">,</span> <span class="s2">&#34;const_folding&#34;</span><span class="p">]])</span>   <span class="c1"># A@A precomputed to [[4,0],[5,9]]</span>
+</span></span></code></pre></div></li>
+<li><strong>ref_count</strong>: a long-awaited class of simplifications that can make use of reference counting. There have been a great deal of on-the-fly simplifications such <code>a+b-a</code> -&gt; <code>b</code> since a long while in CasADi. These are restricted to situations where the resultant nodes set is unconditionally beneficial. As an example, a transformation <code>-(a-b)</code> -&gt; <code>b-a</code> is only beneficial if <code>a-b</code> is not used somewhere else in the graph. The list of reference-counting aware simplifications is fairly limited for now, but is expected to grow in the future.
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">transform</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">),</span> <span class="p">[[</span><span class="s2">&#34;simplify&#34;</span><span class="p">,</span> <span class="s2">&#34;ref_count&#34;</span><span class="p">]])</span>        <span class="c1"># -&gt; b - a</span>
+</span></span></code></pre></div></li>
+<li><strong>cse</strong>: common subexpression elimination: a repeated subexpression is computed once and shared rather than recomputed per use (also available as <code>cse</code>):
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">transform</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="o">/</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="p">[[</span><span class="s2">&#34;simplify&#34;</span><span class="p">,</span> <span class="s2">&#34;cse&#34;</span><span class="p">]])</span>       <span class="c1"># sin(x) evaluated once, shared</span>
+</span></span></code></pre></div></li>
+<li><strong>empty_inputs</strong>: a Function argument that never reaches an output is replaced by a structurally-empty matrix, flagging it as unused (<a href="https://github.com/casadi/casadi/issues/4214">#4214</a>):
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">f</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s2">&#34;f&#34;</span><span class="p">,</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="p">],</span> <span class="p">[</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">])</span>              <span class="c1"># p never reaches the output</span>
+</span></span><span class="line"><span class="cl"><span class="n">g</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">transform</span><span class="p">([[</span><span class="s2">&#34;simplify&#34;</span><span class="p">,</span> <span class="s2">&#34;empty_inputs&#34;</span><span class="p">]])</span>
+</span></span><span class="line"><span class="cl"><span class="n">g</span><span class="o">.</span><span class="n">nnz_in</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>                                    <span class="c1"># 3 -&gt; 0: input p is now empty</span>
+</span></span></code></pre></div></li>
+</ul>
+<p>Two further pipeline verbs compose with these: <code>expand</code> lowers an MX Function to an <code>SXFunction</code>, and <code>external</code> applies a transform supplied by an external shared library (for plugin-defined optimizations).</p>
+<p>Passes run in the order given; an integer before a task sets how many times it runs - a positive count runs it that many times, and <code>0</code> runs it until a fixed point - so a pipeline can be iterated to convergence.</p>
+<p>For example, the following commands runs an unlimited amount &ldquo;ref_count&rdquo; passes, followed by 2 &ldquo;constant_folding&rdquo; passes.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">f</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s2">&#34;g&#34;</span><span class="p">,</span> <span class="p">[[</span><span class="s2">&#34;simplify&#34;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s2">&#34;ref_count&#34;</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s2">&#34;const_folding&#34;</span><span class="p">]])</span>
+</span></span></code></pre></div><h2 id="function">Function</h2>
+<ul>
+<li>A new <code>Function.activity(mask)</code> propagates an input &ldquo;activity&rdquo; mask (whichinput nonzeros may be nonzero) to the outputs, exploiting annihilation - an inactive operand of a multiplication kills the product - so it is strictly sharper than ordinary sparsity propagation (<a href="https://github.com/casadi/casadi/issues/3019">#3019</a>).</li>
+<li><code>get_function()</code> now raises a clear error instead of crashing when given an unknown name (<a href="https://github.com/casadi/casadi/issues/4238">#4238</a>), and <code>find_functions</code> now descends into the oracle (<a href="https://github.com/casadi/casadi/issues/4033">#4033</a>).</li>
+<li><code>expand</code> now honours the <code>expand</code> option/<code>generate_options</code> (<a href="https://github.com/casadi/casadi/issues/4236">#4236</a>), and the
+<code>detect_simple_bounds</code> helper now observes the <code>expand</code> option (<a href="https://github.com/casadi/casadi/issues/4235">#4235</a>). For example, a Function constructed with &lsquo;print_instructions&rsquo; now still prints the instructions after an <code>.expand()</code> pass.</li>
+</ul>
+<h2 id="code-generation">Code generation</h2>
+<p>It is now thread-safe to evaluate code-generated non-trivial Functions (i.e. those carrying memory objects, such as NLP/QP solvers) from multiple threads at once (<a href="https://github.com/casadi/casadi/issues/2463">#2463</a>). To make a generated Function thread-safe:</p>
+<ul>
+<li>Make sure the consumer of the generated code calls <code>incref</code>/<code>decref</code> from the main thread.</li>
+<li>Pass the <code>thread_safe</code> option as true in the code-generation step. This injects generic mutex facilities into the generated code.</li>
+<li>When compiling, choose one of these compiler definitions to select the threading primitive: <code>-DCASADI_THREAD_TYPE=CASADI_THREAD_TYPE_POSIX</code>, <code>-DCASADI_THREAD_TYPE=CASADI_THREAD_TYPE_C11</code>,  <code>-DCASADI_THREAD_TYPE=CASADI_THREAD_TYPE_OMP</code>, or <code>-DCASADI_THREAD_TYPE=CASADI_THREAD_TYPE_WINDOWS</code>.</li>
+<li>When compiling, specify the maximum number of threads, e.g. <code>-DCASADI_MAX_NUM_THREADS=2</code>.</li>
+</ul>
+<p>Related thread-safety fixes: a memory leak in JIT-compiled Functions that mixed <code>incref</code>/<code>decref</code> (<a href="https://github.com/casadi/casadi/issues/4331">#4331</a>), and a crash of the Windows binaries when thread-mapping a Function with memory objects (<a href="https://github.com/casadi/casadi/issues/4274">#4274</a>).</p>
+<p>Other code-generation changes:</p>
+<ul>
+<li>Code-generated memory handling has been refactored (<a href="https://github.com/casadi/casadi/issues/4250">#4250</a>). <strong>breaking</strong>: the generated C API no longer exposes the legacy <code>alloc_mem</code>/<code>init_mem</code>/<code>free_mem</code> entry points. They were always ignored by <code>external</code> so it is unlikely that any code relied on theire presence. Memory was always managed through <code>checkout</code>/<code>release</code> (<a href="https://github.com/casadi/casadi/issues/4249">#4249</a>, <a href="https://github.com/casadi/casadi/issues/3764">#3764</a>).</li>
+<li>Code-generated subroutines that were missing the <code>CASADI_PREFIX</code> are now correctly prefixed (<a href="https://github.com/casadi/casadi/issues/4245">#4245</a>).</li>
+<li>Sliced get/set/assign of nonzeros now generates efficient code rather than a nested loop (<a href="https://github.com/casadi/casadi/issues/4264">#4264</a>).</li>
+<li><code>dump_in</code> is now implemented in code generation (<a href="https://github.com/casadi/casadi/issues/3971">#3971</a>).</li>
+</ul>
+<h2 id="integrators-and-events">Integrators and events</h2>
+<ul>
+<li>The integrator class now supports events (zero-crossings), making it possible to simulate hybrid systems. A zero-crossing field can be added to the DAE oracle, and an option bounds the maximum number of events for which memory is
+allocated (<a href="https://github.com/casadi/casadi/issues/3682">#3682</a>).</li>
+<li>Finite differences now respect <code>is_diff_in</code> (<a href="https://github.com/casadi/casadi/issues/4278">#4278</a>).</li>
+<li>Fixed a regression in collocation derivatives
+(<a href="https://github.com/casadi/casadi/issues/3371">#3371</a>), sparsity issues in the integrator (<a href="https://github.com/casadi/casadi/issues/3353">#3353</a>), and a multipoint-collocation Jacobian error (<a href="https://github.com/casadi/casadi/issues/3190">#3190</a>).</li>
+</ul>
+<h2 id="daebuilder--fmi-interoperability">DaeBuilder / FMI interoperability</h2>
+<ul>
+<li>The DaeBuilder public API has been streamlined for consistency (<a href="https://github.com/casadi/casadi/issues/4319">#4319</a>): consistent category names (e.g. <code>y</code> for outputs, <code>alg</code> for residual variables), a generalized <code>all</code>, and a single generic <code>outputs(cat)</code> replacing the per-category shorthands (<code>ydef()</code>, <code>wdef()</code>, &hellip;).</li>
+<li><code>DaeBuilder.export_fmu</code> has been streamlined (<a href="https://github.com/casadi/casadi/issues/4165">#4165</a>) and now returns a   dictionary giving the relative path of each generated file, instead of just a list of generated files. Two companion methods close the loop entirely within CasADi: <code>compile_fmu</code> compiles the exported sources into a binary, and <code>pack_fmu</code> packs the file map into a single distributable <code>.fmu</code> archive.</li>
+<li>FMUs exported from CasADi now contain the serialized CasADi expressions that define them, following a so-called FMI Layered Standard (<a href="https://github.com/casadi/casadi/issues/4023">#4023</a>). When such an FMU is imported back into CasADi, a symbolic DaeBuilder instance is created instead
+of a standard (black-box C API) instance.</li>
+<li>DAEs are now supported in FMUs (<a href="https://github.com/casadi/casadi/issues/4307">#4307</a>), quadrature states are detected in standard FMUs (splitting states into <code>x</code> and <code>q</code>, <a href="https://github.com/casadi/casadi/issues/4100">#4100</a>), and a time
+transformation can redesignate the independent variable (<a href="https://github.com/casadi/casadi/issues/4103">#4103</a>).</li>
+<li>FMU options are now mutable (<a href="https://github.com/casadi/casadi/issues/4310">#4310</a>), and resources can be unzipped to a custom temporary directory (<a href="https://github.com/casadi/casadi/issues/4175">#4175</a>).</li>
+<li>Continued work on Base Modelica import (<a href="https://github.com/casadi/casadi/issues/4024">#4024</a>).</li>
+<li>Fixes: incorrect sparsity in generated FMUs (<a href="https://github.com/casadi/casadi/issues/4367">#4367</a>), an FMI model
+structure regression (<a href="https://github.com/casadi/casadi/issues/4210">#4210</a>), and an incorrect FMU resource path under FMI 3    (<a href="https://github.com/casadi/casadi/issues/4309">#4309</a>).</li>
+</ul>
+<h2 id="solvers--plugins">Solvers / plugins</h2>
+<p>New solver interfaces:</p>
+<ul>
+<li>FICO Xpress, a new <code>conic</code> interface for LP/MIP/QP (<a href="https://github.com/casadi/casadi/issues/2797">#2797</a>,
+<a href="https://github.com/casadi/casadi/pull/4360">#4360</a>; contribution by @brunoficoxpress, Bruno Vieira). It can extract an irreducible infeasible set (IIS) - a minimal subset of constraints and bounds that together make a model infeasible - to help diagnose infeasible problems.</li>
+<li>Mosek, a new <code>conic</code> interface.</li>
+<li>PIQP, a new <code>conic</code> interface wrapping the PIQP proximal interior-point QP solver.</li>
+<li><code>ccopt</code>, a new <code>nlpsol</code> plugin for mathematical programs with complementarity constraints (MPCC), built on the madNLP backend. Complementarity pairs (<code>0 &lt;= x ⊥ y &gt;= 0</code>) are declared through the <code>ind_cc</code> option; see <code>docs/examples/cplusplus/basic_mpcc.cpp</code>.</li>
+<li>UNO, a new <code>nlpsol</code> interface (<a href="https://github.com/casadi/casadi/issues/3908">#3908</a>; contribution by
+@david0oo, David Kiessling).</li>
+</ul>
+<p>New capabilities on existing solvers:</p>
+<ul>
+<li>Major upgrade of the madNLP interface (by @apozharski, Anton Edvinovich Pozharskiy).</li>
+<li>The Gurobi interface accepts a user-supplied CasADi Function via a new <code>lazy_constraints_callback</code> option. Gurobi calls it at each new integer-feasible solution (a MIPSOL event) with the current solution, and the function returns lazy constraints that are injected into the branch-and-bound on the fly,  enabling cutting-plane workflows such as subtour elimination (contribution by @aghezz1, Andrea Ghezzi).</li>
+<li>The DAQP interface now supports binary variables (MIQP) (<a href="https://github.com/casadi/casadi/pull/4258">#4258</a>; contribution by
+@aghezz1, Andrea Ghezzi).</li>
+<li>Fixed SLEQP memory issues (<a href="https://github.com/casadi/casadi/issues/3312">#3312</a>), a bonmin malloc error on macOS (<a href="https://github.com/casadi/casadi/issues/4198">#4198</a>), and improved diagnostics when IPOPT cannot be found (<a href="https://github.com/casadi/casadi/issues/3090">#3090</a>).</li>
+</ul>
+<h2 id="opti">Opti</h2>
+<ul>
+<li><strong>breaking</strong> Fix in <code>opti.dual</code> return values (<a href="https://github.com/casadi/casadi/issues/4020">#4020</a>).</li>
+</ul>
+<h2 id="python">Python</h2>
+<h3 id="numpy-interoperability">NumPy interoperability</h3>
+<p>CasADi now works much more naturally alongside NumPy, through two new facilities.</p>
+<p><strong>A numpy-style array view, <code>casadi.array</code> (a.k.a. <code>casadi.ArrayInterface</code>).</strong> This wraps a <code>DM</code>, <code>SX</code> or <code>MX</code> and gives it NumPy semantics: a logical <code>ndim</code>, NumPy-style indexing (so <code>A[0]</code> is the first <em>row</em>, where a plain CasADi <code>M[0]</code> is the first <em>element</em>), axis-aware reductions, and the usual operators. Call <code>.to_casadi()</code> to get the native CasADi value back. This settles the long-standing confusion that CasADi indexing did not match NumPy (<a href="https://github.com/casadi/casadi/issues/2959">#2959</a>):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">casadi</span> <span class="k">as</span> <span class="nn">ca</span>
+</span></span><span class="line"><span class="cl"><span class="n">A</span> <span class="o">=</span> <span class="n">ca</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>   <span class="c1"># ca.array is ca.ArrayInterface</span>
+</span></span><span class="line"><span class="cl"><span class="n">A</span><span class="o">.</span><span class="n">ndim</span>                                 <span class="c1"># 2</span>
+</span></span><span class="line"><span class="cl"><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>                                   <span class="c1"># first row [1, 2, 3]  (NumPy-style)</span>
+</span></span><span class="line"><span class="cl"><span class="n">A</span><span class="o">.</span><span class="n">to_casadi</span><span class="p">()</span>                          <span class="c1"># back to a native DM / SX / MX</span>
+</span></span></code></pre></div><p><strong>Opt-in NumPy dispatch via <code>GlobalOptions.setNumpyMode(1)</code>.</strong></p>
+<p>With this enabled, calling a NumPy function on a CasADi value follows NumPy&rsquo;s shape/axis contract and returns a <code>casadi.array</code>, instead of the old behaviour of silently densifying. A large set of NumPy ufuncs (<code>__array_ufunc__</code>, NEP 13) and array-functions (<code>__array_function__</code>, NEP 18) now dispatch natively on CasADi types — <code>np.concatenate</code>, <code>np.where</code>, <code>np.reshape</code>, <code>np.dot</code>/<code>np.matmul</code>/<code>np.kron</code>, the reductions (<code>np.sum</code>, <code>np.cumsum</code>, <code>np.max</code>, &hellip;), and <code>np.linalg.*</code> (<code>solve</code>, <code>det</code>, <code>inv</code>, <code>cholesky</code>, <code>norm</code>) - including symbolic <code>SX</code>/<code>MX</code> inputs (<a href="https://github.com/casadi/casadi/issues/2626">#2626</a>, partly inspired by aerosandbox, <a href="https://github.com/casadi/casadi/issues/2762">#2762</a>):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">casadi</span> <span class="kn">import</span> <span class="n">SX</span><span class="p">,</span> <span class="n">DM</span><span class="p">,</span> <span class="n">GlobalOptions</span>
+</span></span><span class="line"><span class="cl"><span class="n">GlobalOptions</span><span class="o">.</span><span class="n">setNumpyMode</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>          <span class="c1"># opt in (temporary - becomes the default later)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">SX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s2">&#34;x&#34;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">])</span>                          <span class="c1"># dispatches on a symbolic (NEP 18)</span>
+</span></span><span class="line"><span class="cl"><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">DM</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>            <span class="c1"># [4, 6] — true NumPy axis semantics</span>
+</span></span><span class="line"><span class="cl"><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">DM</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]),</span> <span class="n">DM</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">]))</span>  <span class="c1"># np.linalg.* handled natively -&gt; [1, 2]</span>
+</span></span></code></pre></div><p>The mode is a transitional feature: <code>0</code> (default) keeps the old behaviour but warns, <code>-1</code> keeps it silently, <code>1</code> opts into the new NumPy-aware behaviour. As the mode may disappear in the future, it is best to probe availability with <code>hasattr(casadi.GlobalOptions, &quot;setNumpyMode&quot;)</code>.</p>
+<h3 id="numpy-bug">NumPy bug</h3>
+<p><strong>breaking</strong> The behavior of <code>np.remainder</code>/<code>np.mod</code>/<code>%</code> applied on CasADi types was fixed to be in align with numpy expectations.</p>
+<p>All of the below return <code>1</code> in Python.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">print(np.remainder(3,2))
+</span></span><span class="line"><span class="cl">print(np.mod(3,2))
+</span></span><span class="line"><span class="cl">print(3 % 2)
+</span></span></code></pre></div><p>Now consider the CasADi variants:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">print(np.remainder(ca.DM(3),ca.DM(2)))
+</span></span><span class="line"><span class="cl">print(np.mod(ca.DM(3),ca.DM(2)))
+</span></span><span class="line"><span class="cl">print(ca.DM(3) % np.array(2))
+</span></span></code></pre></div><p>These returned <code>-1</code> in prior CasADi versions, and now return 1.</p>
+<h3 id="other-python-changes">Other Python changes</h3>
+<ul>
+<li>Python wheels now ship with type stubs, and the SWIG bindings are checked with pyright in CI (<a href="https://github.com/casadi/casadi/issues/4315">#4315</a>). Thanks to @ghorn (Greg Horn) for suggesting this.</li>
+<li>Fixed a crash under Python 3.10 (<a href="https://github.com/casadi/casadi/issues/3878">#3878</a>) and dimension-mismatch
+errors that were swallowed under SWIG 4 (<a href="https://github.com/casadi/casadi/issues/2628">#2628</a>).</li>
+</ul>
+<h2 id="matlab--octave">MATLAB / Octave</h2>
+<ul>
+<li>Custom <code>Callback</code> objects work in MATLAB again: a long-standing regression that made MATLAB callbacks segfault has been fixed (<a href="https://github.com/casadi/casadi/issues/1720">#1720</a>).</li>
+<li>Added <code>vcat</code>/<code>hcat</code> and friends for MATLAB (<a href="https://github.com/casadi/casadi/issues/4338">#4338</a>).</li>
+<li>Error messages are no longer clipped in MATLAB (<a href="https://github.com/casadi/casadi/issues/3806">#3806</a>) or Octave (<a href="https://github.com/casadi/casadi/issues/3044">#3044</a>).</li>
+<li>Fixed a missing string typemap for MATLAB (<a href="https://github.com/casadi/casadi/issues/4205">#4205</a>) and issues with the
+Octave 10.2 binary package (<a href="https://github.com/casadi/casadi/issues/4193">#4193</a>).</li>
+</ul>
+<h2 id="building-and-distribution">Building and distribution</h2>
+<ul>
+<li>Plugins can now be located via a new <code>CASADI_PLUGIN_SEARCH_PATH</code> environment variable (<a href="https://github.com/casadi/casadi/issues/4339">#4339</a>), and the Windows DLL search has been refined (<a href="https://github.com/casadi/casadi/issues/4340">#4340</a>).</li>
+<li>The directory CasADi uses for temporary/scratch files (JIT and shell compilation, code generation, FMU unzipping) can now be redirected with <code>GlobalOptions.setTempWorkDir()</code> (<a href="https://github.com/casadi/casadi/issues/4175">#4175</a>).</li>
+<li>The source-build instructions have been updated (<a href="https://github.com/casadi/casadi/issues/3061">#3061</a>).</li>
+<li>Fixed an <code>RTLD_DEEPBIND</code>/<code>environ</code> workaround that corrupted the environment for loaded libraries (<a href="https://github.com/casadi/casadi/issues/4317">#4317</a>), a build bug with <code>-DWITH_BUILD_MUMPS</code> and a missing <code>METIS_DIR</code> (<a href="https://github.com/casadi/casadi/issues/4328">#4328</a>), and a SWIG issue on Apple Silicon (<a href="https://github.com/casadi/casadi/issues/2992">#2992</a>).</li>
+</ul>
+<h2 id="binaries">Binaries</h2>
+<ul>
+<li><strong>breaking</strong>: Support for Python 2.7 and 3.6 is dropped.</li>
+<li>Python binaries for 3.11 and upwards now use <a href="https://peps.python.org/pep-0652/">the Python stable ABI</a> (<a href="https://github.com/casadi/casadi/issues/4289">#4289</a>), so a single wheel keeps working across future Python versions. Thanks to @jackvreeken (Tjerk Vreeken) for suggesting this.</li>
+<li>Python, MATLAB and Octave binaries targeting Linux are now compiled with <code>manylinux_2_28</code> (previously <code>manylinux2014</code>). <code>manylinux2014</code> Python wheels are still supplied in parallel for backwards compatibility.</li>
+<li><strong>breaking</strong>: As a consequence, we no longer build with <code>CXX_USE_CXX11_ABI=0</code> (<a href="https://github.com/casadi/casadi/issues/4222">#4222</a>). C++ code that links against the binaries must now be built with the new
+libstdc++ ABI to match.</li>
+<li><strong>breaking</strong>: Python binaries are no longer distributed as zip files; wheels are now the sole mode of distribution.</li>
+<li>macOS builds switched to macos-14 (<a href="https://github.com/casadi/casadi/issues/4184">#4184</a>), fixing broken wheels on macOS 15.4+ (<a href="https://github.com/casadi/casadi/issues/4189">#4189</a>).</li>
+</ul>
+<h2 id="contributors">Contributors</h2>
+<p>Thanks to everyone who contributed pull requests to this release. Beyond the items credited inline above, this release includes community contributions from @sixpearls (Ben Margolis - Python <code>mtimes</code> dispatch, <a href="https://github.com/casadi/casadi/pull/4268">#4268</a>), @barracuda156 (Sergey Fedorov - PowerPC/Darwin build fixes, <a href="https://github.com/casadi/casadi/pull/4112">#4112</a>,
+<a href="https://github.com/casadi/casadi/pull/4113">#4113</a>), #qbisi (<code>FindMUMPS.cmake</code> fix, <a href="https://github.com/casadi/casadi/pull/3899">#3899</a>), @nim65s (Guilhem Saurel - a missing include, <a href="https://github.com/casadi/casadi/pull/4192">#4192</a>), @jarsarasty (HiGHS v1.13.1 upgrade, <a href="https://github.com/casadi/casadi/pull/4299">#4299</a>), @billtubbs (Bill Tubbs - Python semicolons and asserts, <a href="https://github.com/casadi/casadi/pull/3968">#3968</a>), @adrian-nilsson-fcc (Adrian Nilsson - FMU demo notebook, <a href="https://github.com/casadi/casadi/pull/3900">#3900</a>), and @josipkh (Josip Kir Hromatko - typo fixes, <a href="https://github.com/casadi/casadi/pull/3848">#3848</a>).</p>
+<p>The full list of closed issues for this release is available <a href="https://github.com/casadi/casadi/milestone/23?closed=1">on the 3.8 milestone</a>.</p>
+<h2 id="plugin-versions-used-in-binaries">Plugin versions used in binaries</h2>
+<h3 id="380">3.8.0</h3>
+<ul>
+<li>uno-sourcebuild, Build UNO (BUILD_UNO_VERSION=f311df65f2acd1745175d3b49db4a5bdca15ce16) from downloaded source (BUILD_UNO_GIT_REPO=https://github.com/jgillis/Uno.git).</li>
+<li>piqp-sourcebuild, Build PIQP (BUILD_PIQP_VERSION=v0.6.3) from downloaded source (BUILD_PIQP_GIT_REPO=https://github.com/PREDICT-EPFL/piqp.git).</li>
+<li>highs-sourcebuild, Build HiGHS (BUILD_HIGHS_VERSION=v1.13.1) from downloaded source (BUILD_HIGHS_GIT_REPO=https://github.com/ERGO-Code/HiGHS).</li>
+<li>daqp-sourcebuild, Build DAQP (BUILD_DAQP_VERSION=master) from downloaded source (BUILD_DAQP_GIT_REPO=https://github.com/jgillis/daqp.git).</li>
+<li>proxqp-sourcebuild, Build PROXQP (BUILD_PROXQP_VERSION=v0.7.2) from downloaded source (BUILD_PROXQP_GIT_REPO=https://github.com/Simple-Robotics/proxsuite.git).</li>
+<li>osqp-sourcebuild, Build OSQP (BUILD_OSQP_VERSION=v1.0.0) from downloaded source (BUILD_OSQP_GIT_REPO=https://github.com/osqp/osqp.git).</li>
+<li>superscs-sourcebuild, Build SuperSCS (BUILD_SUPERSCS_VERSION=4d2d1bd03ed4cf93e684a880b233760ce34ca69c) from downloaded source (BUILD_SUPERSCS_GIT_REPO=https://github.com/jgillis/scs.git).</li>
+<li>sleqp-sourcebuild, Build SLEQP (BUILD_SLEQP_VERSION=patch-1) from downloaded source (BUILD_SLEQP_GIT_REPO=https://github.com/jgillis/sleqp.git).</li>
+<li>bonmin-sourcebuild, Build BONMIN (BUILD_BONMIN_VERSION=releases/1.8.9) from downloaded source (BUILD_BONMIN_GIT_REPO=https://github.com/coin-or/Bonmin.git).</li>
+<li>ipopt-sourcebuild, Build IPOPT (BUILD_IPOPT_VERSION=3.14.19.mod) from downloaded source (BUILD_IPOPT_GIT_REPO=https://github.com/jgillis/Ipopt-1.git).</li>
+<li>cbc-sourcebuild, Build CBC (BUILD_CBC_VERSION=releases/2.10.12) from downloaded source.</li>
+<li>clp-sourcebuild, Build CLP (BUILD_CLP_VERSION=releases/1.17.10) from downloaded source (BUILD_CLP_GIT_REPO=https://github.com/coin-or/Clp.git).</li>
+<li>mumps-sourcebuild, Build MUMPS (BUILD_MUMPS_TP_VERSION=gate-unconditional-use-omp-lib) from downloaded source (BUILD_MUMPS_TP_GIT_REPO=https://github.com/jgillis/ThirdParty-Mumps.git).</li>
+<li>spral-sourcebuild, Build SPRAL (BUILD_SPRAL_VERSION=d385d2c9e858366d257cafaaf05760ffa6543e26) from downloaded source (BUILD_SPRAL_GIT_REPO=https://github.com/ralna/spral.git).</li>
+<li>metis-sourcebuild, Build METIS (BUILD_METIS_TP_VERSION=bugfix2) from downloaded source.</li>
+<li>fatrop-sourcebuild, Build FATROP (BUILD_FATROP_VERSION=v1.1.8.mod) from downloaded source (BUILD_FATROP_GIT_REPO=https://github.com/jgillis/fatrop.git).</li>
+<li>hpipm-sourcebuild, Build HPIPM (BUILD_HPIPM_VERSION=5aac723660da0e1c9c47a9b98a0a80c5789aaed4) from downloaded source (BUILD_HPIPM_GIT_REPO=https://github.com/jgillis/hpipm.git).</li>
+<li>trlib-sourcebuild, Build TRLIB (BUILD_TRLIB_VERSION=1599192a02aee4e0cbe47ad1dbb81c7b06ff4f17) from downloaded source (BUILD_TRLIB_GIT_REPO=https://github.com/jgillis/trlib.git).</li>
+<li>blasfeo-sourcebuild, Build BLASFEO (BUILD_BLASFEO_VERSION=fb39d77a8c2d87805d38d41635a1402b5bcb9e18) from downloaded source (BUILD_BLASFEO_GIT_REPO=https://github.com/giaf/blasfeo.git).</li>
+<li>lapack-sourcebuild, Download and install OpenBLAS for LAPACK+BLAS</li>
+<li>eigen3-sourcebuild, Build Eigen (BUILD_EIGEN3_VERSION=3.4.0) from downloaded source (BUILD_EIGEN3_GIT_REPO=https://gitlab.com/libeigen/eigen.git).</li>
+<li>simde-sourcebuild, Build Simde (BUILD_SIMDE_VERSION=v0.7.2) from downloaded source.</li>
+<li>lacemodelica-sourcebuild, Build LaceModelica (BUILD_LACEMODELICA_VERSION=main) from downloaded source (BUILD_LACEMODELICA_GIT_REPO=https://github.com/yacoda/lacemodelica.git).</li>
+<li>onnx-sourcebuild, Build ONNX (BUILD_ONNX_VERSION=v1.18.0) from downloaded source (BUILD_ONNX_GIT_REPO=https://github.com/onnx/onnx).</li>
+<li>protobuf-sourcebuild, Build Protobuf from source</li>
+<li>libzip-sourcebuild, Build LIBZIP (BUILD_LIBZIP_VERSION=v1.11.3) from downloaded source (BUILD_LIBZIP_GIT_REPO=https://github.com/nih-at/libzip).</li>
+<li>zlib-sourcebuild, Build ZLIB (BUILD_ZLIB_VERSION=v1.3.1) from downloaded source (BUILD_ZLIB_GIT_REPO=https://github.com/madler/zlib).</li>
+<li>coinutils-sourcebuild, Build COINUTILS (BUILD_COINUTILS_VERSION=releases/2.11.12) from downloaded source.</li>
+<li>osi-sourcebuild, Build OSI (BUILD_OSI_VERSION=releases/0.108.11) from downloaded source.</li>
+<li>cgl-sourcebuild, Build CGL (BUILD_CGL_VERSION=releases/0.60.9) from downloaded source.</li>
+</ul>
+
+                            
+                          </div>
+                          <div id="installTab-38" role="tabpanel" class="tab-pane fade">
+                            
+                          </div>
+                        </div>
+                      
+                    
+
+                    <div class="card-footer release-info text-muted">
+                      <a href="https://github.com/casadi/casadi/releases/tag/3.8.0" target="_blank" title="Link to the tag published on GitHub">This tag on GitHub</a>
+                    </div>
+                  </div>
+                </div>
+              
+            
+            
+          
+        
       
 
         
@@ -298,14 +730,13 @@
                 
 
                 
-                <div class="card text-left border-success mb-2" id="37">
+                <div class="card text-left border-default mb-2" id="37">
                 
                   
-                  <a class="card-header bg-white border-success" data-toggle="collapse" href="#body-37" aria-expanded="true" aria-controls="body-37">
+                  <a class="card-header bg-white collapsed" data-toggle="collapse" href="#body-37" aria-expanded="false" aria-controls="body-37">
                   
                     
-                    <h4 class="text-success" style="display: inline-block; margin: 0;">CasADi v3.7.2</h4>
-                    <span class="badge badge-success" style="font-size: 0.5em; vertical-align: top;">latest</span>
+                    <h4 class="text-default" style="display: inline-block; margin: 0;">CasADi v3.7.2</h4>
                     
                     
                     
@@ -313,7 +744,7 @@
                     <span class="release-info text-muted">released September 10, 2025</span>
                   </a>
                   
-                  <div class="collapse show" id="body-37">
+                  <div class="collapse" id="body-37">
                   
 
                     
@@ -2568,22 +2999,6 @@ print(jacobian(sin(x),x))
 
         
 
-          
-            
-
-            
-
-            
-
-              
-            
-            
-          
-        
-      
-
-        
-
         
       
 
@@ -2623,19 +3038,13 @@ print(jacobian(sin(x),x))
                 </li>
               
                 <li class="list-inline-item">
-                  <a href="https://twitter.com/casadi_software" title="twitter">
-                    <i class="fa fa-twitter"></i>
-                  </a>
-                </li>
-              
-                <li class="list-inline-item">
                   <a href="https://www.youtube.com/channel/UC3VDpv5Pi3R-a2VkcJN1RLw" title="youtube">
                     <i class="fa fa-youtube"></i>
                   </a>
                 </li>
               
             </ul>
-            <p class="copyright">Copyright 2023.</p>
+            <p class="copyright">Copyright 2026.</p>
           </div>
         </div>
       </div>

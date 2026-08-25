@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -116,6 +116,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ad2b42be1b2260201262dca568bb533ae"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d45/classcasadi_1_1CasadiMeta.html#ad2b42be1b2260201262dca568bb533ae">object_file_suffix</a> ()</td></tr>
 <tr class="memdesc:ad2b42be1b2260201262dca568bb533ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtain object file suffix.  <a href="../../d1/d45/classcasadi_1_1CasadiMeta.html#ad2b42be1b2260201262dca568bb533ae">More...</a><br /></td></tr>
 <tr class="separator:ad2b42be1b2260201262dca568bb533ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b3dc5abde57c6b716aa91477aab558f"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d45/classcasadi_1_1CasadiMeta.html#a6b3dc5abde57c6b716aa91477aab558f">lapack_libraries</a> ()</td></tr>
+<tr class="memdesc:a6b3dc5abde57c6b716aa91477aab558f"><td class="mdescLeft">&#160;</td><td class="mdescRight">LAPACK link line as configured by the build system.  <a href="../../d1/d45/classcasadi_1_1CasadiMeta.html#a6b3dc5abde57c6b716aa91477aab558f">More...</a><br /></td></tr>
+<tr class="separator:a6b3dc5abde57c6b716aa91477aab558f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a69b75f2ccd10e3a0498ba7c482954337"></a>
@@ -326,6 +329,33 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_j9">https://github.com/casadi/casadi/wiki/L_j9</a> </p>
+
+</div>
+</div>
+<a id="a6b3dc5abde57c6b716aa91477aab558f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b3dc5abde57c6b716aa91477aab558f">&#9670;&nbsp;</a></span>lapack_libraries()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static const char* casadi::CasadiMeta::lapack_libraries </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Semicolon-separated list of full library paths and/or -l flags (CMake's native LAPACK_LIBRARIES form), mirroring whatever <code>find_package(LAPACK)</code> or <code>WITH_BUILD_LAPACK</code> resolved to. Empty when the build was configured with WITH_LAPACK=OFF.</p>
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2gh">https://github.com/casadi/casadi/wiki/L_2gh</a> </p>
 
 </div>
 </div>

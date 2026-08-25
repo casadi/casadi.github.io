@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -76,20 +76,23 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">//    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">//</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">// SYMBOL &quot;masked_norm_inf&quot;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;T1 casadi_masked_norm_inf(casadi_int n, <span class="keyword">const</span> T1* x, <span class="keyword">const</span> casadi_int* mask) {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  casadi_int i;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  T1 ret = 0;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">// C-REPLACE &quot;fmax&quot; &quot;casadi_fmax&quot;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;n; ++i) {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">if</span> (mask[i]) {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;      ret = fmax(ret, fabs(x[i]));</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    }</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  }</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">// C-REPLACE &quot;fabs&quot; &quot;casadi_fabs&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">// C-REPLACE &quot;fmax&quot; &quot;casadi_fmax&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">// SYMBOL &quot;masked_norm_inf&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;T1 casadi_masked_norm_inf(casadi_int n, <span class="keyword">const</span> T1* x, <span class="keyword">const</span> casadi_int* mask) {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  casadi_int i;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  T1 ret = 0;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">// C-REPLACE &quot;fmax&quot; &quot;casadi_fmax&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;n; ++i) {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">if</span> (mask[i]) {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;      ret = fmax(ret, fabs(x[i]));</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    }</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  }</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </body>
 </html>

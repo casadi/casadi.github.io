@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/f959d3175a444d763e4eda4aece48f4c5f4a6f90" id="f959d3175a444d763e4eda4aece48f4c5f4a6f90" >revision 3.7.2</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
   </td>
  </tr>
  </tbody>
@@ -75,7 +75,7 @@ der(rq) = gq(rx, rz, rp, x, z, p, t)        Backward quadratures
 
 where we assume that both the forward and backwards integrations are index-1
 (i.e. dfz/dz, dgz/drz are invertible) and furthermore that
-gx, gz and gq have a linear dependency on rx, rz and rp.</pre><h3><a class="anchor" id="autotoc_md12"></a>
+gx, gz and gq have a linear dependency on rx, rz and rp.</pre><h3><a class="anchor" id="autotoc_md14"></a>
 General information</h3>
 <p><br  />
 </p><dl class="section user"><dt></dt><dd><a class="anchor" id="options"></a><table class="doxtable">
@@ -103,15 +103,15 @@ General information</h3>
 <tr>
 <td>derivative_of</td><td>OT_FUNCTION</td><td>The function is a derivative of another function. The type of derivative (directional derivative, Jacobian) is inferred from the function name.</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
-<td>dump</td><td>OT_BOOL</td><td>Dump function to file upon first evaluation. [false]</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
+<td>dump</td><td>OT_BOOL</td><td><a class="el" href="../../d0/dc1/classcasadi_1_1Dump.html" title="Dump.">Dump</a> function to file upon first evaluation. [false]</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
 <td>dump_dir</td><td>OT_STRING</td><td>Directory to dump inputs/outputs to. Make sure the directory exists [.]</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
 <td>dump_format</td><td>OT_STRING</td><td>Choose file format to dump matrices. See <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e">DM.from_file</a> [mtx]</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
-<td>dump_in</td><td>OT_BOOL</td><td>Dump numerical values of inputs to file (readable with <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e">DM.from_file</a>) [default: false] A counter is used to generate unique names. The counter may be reset using reset_dump_count.</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
+<td>dump_in</td><td>OT_BOOL</td><td><a class="el" href="../../d0/dc1/classcasadi_1_1Dump.html" title="Dump.">Dump</a> numerical values of inputs to file (readable with <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e">DM.from_file</a>) [default: false] A counter is used to generate unique names. The counter may be reset using reset_dump_count.</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
-<td>dump_out</td><td>OT_BOOL</td><td>Dump numerical values of outputs to file (readable with <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e">DM.from_file</a>) [default: false] A counter is used to generate unique names. The counter may be reset using reset_dump_count.</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
+<td>dump_out</td><td>OT_BOOL</td><td><a class="el" href="../../d0/dc1/classcasadi_1_1Dump.html" title="Dump.">Dump</a> numerical values of outputs to file (readable with <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e">DM.from_file</a>) [default: false] A counter is used to generate unique names. The counter may be reset using reset_dump_count.</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
 <td>enable_fd</td><td>OT_BOOL</td><td>Enable derivative calculation by finite differencing. [default: false]]</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
@@ -138,8 +138,6 @@ General information</h3>
 <td>gather_stats</td><td>OT_BOOL</td><td>Deprecated option (ignored): Statistics are now always collected.</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
 <td>grid</td><td>OT_DOUBLEVECTOR</td><td>[DEPRECATED] Time grid</td><td><a class="el" href="../../db/d3d/classcasadi_1_1Integrator.html" title="Internal storage for integrator related data.">casadi::Integrator</a> </td></tr>
-<tr>
-<td>input_scheme</td><td>OT_STRINGVECTOR</td><td>Deprecated option (ignored)</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
 <td>inputs_check</td><td>OT_BOOL</td><td>Throw exceptions when the numerical values of the inputs don't make sense</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
@@ -180,8 +178,6 @@ General information</h3>
 <td>nfwd</td><td>OT_INT</td><td>Number of forward sensitivities to be calculated [0]</td><td><a class="el" href="../../db/d3d/classcasadi_1_1Integrator.html" title="Internal storage for integrator related data.">casadi::Integrator</a> </td></tr>
 <tr>
 <td>number_of_finite_elements</td><td>OT_INT</td><td>Target number of finite elements. The actual number may be higher to accommodate all output times</td><td><a class="el" href="../../db/d3d/classcasadi_1_1Integrator.html" title="Internal storage for integrator related data.">casadi::Integrator</a> </td></tr>
-<tr>
-<td>output_scheme</td><td>OT_STRINGVECTOR</td><td>Deprecated option (ignored)</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
 <td>output_t0</td><td>OT_BOOL</td><td>[DEPRECATED] <a class="el" href="../../df/da2/classcasadi_1_1Output.html" title="Input instruction.">Output</a> the state at the initial time</td><td><a class="el" href="../../db/d3d/classcasadi_1_1Integrator.html" title="Internal storage for integrator related data.">casadi::Integrator</a> </td></tr>
 <tr>
@@ -268,7 +264,7 @@ General information</h3>
 <tr>
 <td>INTEGRATOR_ADJ_U</td><td>adj_u</td><td>Adjoint sensitivities corresponding to the control vector. </td></tr>
 </table>
-<h3><a class="anchor" id="autotoc_md13"></a>
+<h3><a class="anchor" id="autotoc_md15"></a>
 List of plugins</h3>
 <p>- <a href='#plugin_Integrator_cvodes'>cvodes</a> </p>
 <p>- <a href='#plugin_Integrator_idas'>idas</a> </p>
