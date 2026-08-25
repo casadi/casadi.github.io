@@ -17,4 +17,4 @@ Both main developers offer professional CasADi-related consulting (e.g. teaching
 Contact us at consulting@casadi.org
 
  * Joris Gillis is registered in Belgium ([Yacoda](http://www.yacoda.com/))
- * Joel Andersson is registered in the United States (JAE ANDERSSON CONSULTING LLC)
+ * Joel Andersson is registered in the United States (JAE ANDERSSON CONSULTING LLC) and Norway ([FMIOPT AS](https://fmiopt.com))
