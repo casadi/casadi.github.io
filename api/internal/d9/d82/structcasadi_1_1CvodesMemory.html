@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/dafc81035257e0e57db5c65b2ac851a6239fb1c4" id="dafc81035257e0e57db5c65b2ac851a6239fb1c4" >revision 3.8.1</a></div>
   </td>
  </tr>
  </tbody>
@@ -311,6 +311,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a98ef4612dce9af7f59389878e6e1ade6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ade05c3df733380a6f69bd7ca6784b7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d76/structcasadi_1_1FunctionMemory.html#a5ade05c3df733380a6f69bd7ca6784b7">stats_available</a></td></tr>
 <tr class="separator:a5ade05c3df733380a6f69bd7ca6784b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33ee17a47d271743a1f98fd37c56822f"><td class="memItemLeft" align="right" valign="top">casadi_int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d76/structcasadi_1_1FunctionMemory.html#a33ee17a47d271743a1f98fd37c56822f">dump_id</a></td></tr>
+<tr class="separator:a33ee17a47d271743a1f98fd37c56822f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37d1f033205f4c123a7a14d159a5d265"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, <a class="el" href="../../d3/ddb/classcasadi_1_1FStats.html">FStats</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/df0/structcasadi_1_1ProtoFunctionMemory.html#a37d1f033205f4c123a7a14d159a5d265">fstats</a></td></tr>
 <tr class="separator:a37d1f033205f4c123a7a14d159a5d265"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29692336b7e59939c68a54e775f3a47b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/ddb/classcasadi_1_1FStats.html">FStats</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/df0/structcasadi_1_1ProtoFunctionMemory.html#a29692336b7e59939c68a54e775f3a47b">t_total</a></td></tr>
@@ -333,13 +335,13 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/dad/cvodes__interface_8cpp_source.html#l00747">747</a> of file <a class="el" href="../../da/dad/cvodes__interface_8cpp_source.html">cvodes_interface.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;                                                   : <span class="keyword">self</span>(s) {</div>
-<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;  this-&gt;<a class="code" href="../../d9/d82/structcasadi_1_1CvodesMemory.html#ac4445f9b92536f0397fd95fc1afc3905">mem</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160; </div>
-<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;  <span class="comment">// Reset checkpoints counter</span></div>
-<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;  this-&gt;<a class="code" href="../../d7/dc4/structcasadi_1_1SundialsMemory.html#a8ad55464aca5118194479879261b5e13">ncheck</a> = 0;</div>
-<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../da/dad/cvodes__interface_8cpp_source.html#l00751">751</a> of file <a class="el" href="../../da/dad/cvodes__interface_8cpp_source.html">cvodes_interface.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;                                                   : <span class="keyword">self</span>(s) {</div>
+<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;  this-&gt;<a class="code" href="../../d9/d82/structcasadi_1_1CvodesMemory.html#ac4445f9b92536f0397fd95fc1afc3905">mem</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160; </div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;  <span class="comment">// Reset checkpoints counter</span></div>
+<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;  this-&gt;<a class="code" href="../../d7/dc4/structcasadi_1_1SundialsMemory.html#a8ad55464aca5118194479879261b5e13">ncheck</a> = 0;</div>
+<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;}</div>
 <div class="ttc" id="astructcasadi_1_1CvodesMemory_html_ac4445f9b92536f0397fd95fc1afc3905"><div class="ttname"><a href="../../d9/d82/structcasadi_1_1CvodesMemory.html#ac4445f9b92536f0397fd95fc1afc3905">casadi::CvodesMemory::mem</a></div><div class="ttdeci">void * mem</div><div class="ttdef"><b>Definition:</b> <a href="../../df/db3/cvodes__interface_8hpp_source.html#l00066">cvodes_interface.hpp:66</a></div></div>
 <div class="ttc" id="astructcasadi_1_1SundialsMemory_html_a8ad55464aca5118194479879261b5e13"><div class="ttname"><a href="../../d7/dc4/structcasadi_1_1SundialsMemory.html#a8ad55464aca5118194479879261b5e13">casadi::SundialsMemory::ncheck</a></div><div class="ttdeci">int ncheck</div><div class="ttdoc">number of checkpoints stored so far</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/daf/sundials__interface_8hpp_source.html#l00076">sundials_interface.hpp:76</a></div></div>
 </div><!-- fragment -->
@@ -362,11 +364,11 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/dad/cvodes__interface_8cpp_source.html#l00754">754</a> of file <a class="el" href="../../da/dad/cvodes__interface_8cpp_source.html">cvodes_interface.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;                            {</div>
-<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;  <span class="keywordflow">if</span> (this-&gt;<a class="code" href="../../d7/dc4/structcasadi_1_1SundialsMemory.html#a88d0e03ba7c3283477023c56b51c90b1">mem_linsolF</a> &gt;= 0) <span class="keyword">self</span>.linsolF_.release(this-&gt;<a class="code" href="../../d7/dc4/structcasadi_1_1SundialsMemory.html#a88d0e03ba7c3283477023c56b51c90b1">mem_linsolF</a>);</div>
-<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;  <span class="keywordflow">if</span> (this-&gt;<a class="code" href="../../d9/d82/structcasadi_1_1CvodesMemory.html#ac4445f9b92536f0397fd95fc1afc3905">mem</a>) CVodeFree(&amp;this-&gt;<a class="code" href="../../d9/d82/structcasadi_1_1CvodesMemory.html#ac4445f9b92536f0397fd95fc1afc3905">mem</a>);</div>
-<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../da/dad/cvodes__interface_8cpp_source.html#l00758">758</a> of file <a class="el" href="../../da/dad/cvodes__interface_8cpp_source.html">cvodes_interface.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;                            {</div>
+<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;  <span class="keywordflow">if</span> (this-&gt;<a class="code" href="../../d7/dc4/structcasadi_1_1SundialsMemory.html#a88d0e03ba7c3283477023c56b51c90b1">mem_linsolF</a> &gt;= 0) <span class="keyword">self</span>.linsolF_.release(this-&gt;<a class="code" href="../../d7/dc4/structcasadi_1_1SundialsMemory.html#a88d0e03ba7c3283477023c56b51c90b1">mem_linsolF</a>);</div>
+<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;  <span class="keywordflow">if</span> (this-&gt;<a class="code" href="../../d9/d82/structcasadi_1_1CvodesMemory.html#ac4445f9b92536f0397fd95fc1afc3905">mem</a>) CVodeFree(&amp;this-&gt;<a class="code" href="../../d9/d82/structcasadi_1_1CvodesMemory.html#ac4445f9b92536f0397fd95fc1afc3905">mem</a>);</div>
+<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;}</div>
 <div class="ttc" id="astructcasadi_1_1SundialsMemory_html_a88d0e03ba7c3283477023c56b51c90b1"><div class="ttname"><a href="../../d7/dc4/structcasadi_1_1SundialsMemory.html#a88d0e03ba7c3283477023c56b51c90b1">casadi::SundialsMemory::mem_linsolF</a></div><div class="ttdeci">int mem_linsolF</div><div class="ttdoc">Linear solver memory objects.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/daf/sundials__interface_8hpp_source.html#l00082">sundials_interface.hpp:82</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../df/db3/cvodes__interface_8hpp_source.html#l00066">mem</a>, and <a class="el" href="../../d4/daf/sundials__interface_8hpp_source.html#l00082">casadi::SundialsMemory::mem_linsolF</a>.</p>
@@ -405,7 +407,7 @@ Public Attributes</h2></td></tr>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
 <div class="ttc" id="astructcasadi_1_1ProtoFunctionMemory_html_a37d1f033205f4c123a7a14d159a5d265"><div class="ttname"><a href="../../d1/df0/structcasadi_1_1ProtoFunctionMemory.html#a37d1f033205f4c123a7a14d159a5d265">casadi::ProtoFunctionMemory::fstats</a></div><div class="ttdeci">std::map&lt; std::string, FStats &gt; fstats</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4f/function__internal_8hpp_source.html#l00068">function_internal.hpp:68</a></div></div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l00864">casadi::ProtoFunction::init_mem()</a>, <a class="el" href="../../d6/d4e/linsol__internal_8cpp_source.html#l00051">casadi::LinsolInternal::init_mem()</a>, <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00692">casadi::Nlpsol::init_mem()</a>, <a class="el" href="../../d2/dc0/oracle__function_8cpp_source.html#l00478">casadi::OracleFunction::init_mem()</a>, <a class="el" href="../../dc/d65/cbc__interface_8cpp_source.html#l00255">casadi::CbcInterface::init_mem()</a>, <a class="el" href="../../d9/dcd/clp__interface_8cpp_source.html#l00261">casadi::ClpInterface::init_mem()</a>, <a class="el" href="../../d5/d26/fatrop__conic__interface_8cpp_source.html#l00341">casadi::FatropConicInterface::init_mem()</a>, <a class="el" href="../../df/d8d/hpipm__interface_8cpp_source.html#l00683">casadi::HpipmInterface::init_mem()</a>, <a class="el" href="../../d8/de4/xpress__interface_8cpp_source.html#l00386">casadi::XpressInterface::init_mem()</a>, <a class="el" href="../../da/d41/feasiblesqpmethod_8cpp_source.html#l00494">casadi::Feasiblesqpmethod::init_mem()</a>, <a class="el" href="../../d8/dfc/sqpmethod_8cpp_source.html#l00383">casadi::Sqpmethod::init_mem()</a>, and <a class="el" href="../../d2/dc0/oracle__function_8cpp_source.html#l00465">casadi::OracleFunction::local_init_mem()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l00921">casadi::ProtoFunction::init_mem()</a>, <a class="el" href="../../d6/d4e/linsol__internal_8cpp_source.html#l00051">casadi::LinsolInternal::init_mem()</a>, <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00692">casadi::Nlpsol::init_mem()</a>, <a class="el" href="../../d2/dc0/oracle__function_8cpp_source.html#l00478">casadi::OracleFunction::init_mem()</a>, <a class="el" href="../../dc/d65/cbc__interface_8cpp_source.html#l00255">casadi::CbcInterface::init_mem()</a>, <a class="el" href="../../d9/dcd/clp__interface_8cpp_source.html#l00261">casadi::ClpInterface::init_mem()</a>, <a class="el" href="../../d5/d26/fatrop__conic__interface_8cpp_source.html#l00343">casadi::FatropConicInterface::init_mem()</a>, <a class="el" href="../../df/d8d/hpipm__interface_8cpp_source.html#l00683">casadi::HpipmInterface::init_mem()</a>, <a class="el" href="../../d8/de4/xpress__interface_8cpp_source.html#l00386">casadi::XpressInterface::init_mem()</a>, <a class="el" href="../../da/d41/feasiblesqpmethod_8cpp_source.html#l00494">casadi::Feasiblesqpmethod::init_mem()</a>, <a class="el" href="../../d8/dfc/sqpmethod_8cpp_source.html#l00383">casadi::Sqpmethod::init_mem()</a>, and <a class="el" href="../../d2/dc0/oracle__function_8cpp_source.html#l00465">casadi::OracleFunction::local_init_mem()</a>.</p>
 
 </div>
 </div>
@@ -581,6 +583,30 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="../../d7/d16/oracle__function_8hpp_source.html#l00068">68</a> of file <a class="el" href="../../d7/d16/oracle__function_8hpp_source.html">oracle_function.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a33ee17a47d271743a1f98fd37c56822f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33ee17a47d271743a1f98fd37c56822f">&#9670;&nbsp;</a></span>dump_id</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">casadi_int casadi::FunctionMemory::dump_id</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d6/d4f/function__internal_8hpp_source.html#l00086">86</a> of file <a class="el" href="../../d6/d4f/function__internal_8hpp_source.html">function_internal.hpp</a>.</p>
 
 </div>
 </div>
@@ -1098,7 +1124,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d4/daf/sundials__interface_8hpp_source.html#l00057">57</a> of file <a class="el" href="../../d4/daf/sundials__interface_8hpp_source.html">sundials_interface.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l00719">casadi::IdasInterface::solve_transposed()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l00728">casadi::IdasInterface::solve_transposed()</a>.</p>
 
 </div>
 </div>
@@ -1142,7 +1168,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/db3/cvodes__interface_8hpp_source.html#l00066">66</a> of file <a class="el" href="../../df/db3/cvodes__interface_8hpp_source.html">cvodes_interface.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../da/dad/cvodes__interface_8cpp_source.html#l00747">CvodesMemory()</a>, and <a class="el" href="../../da/dad/cvodes__interface_8cpp_source.html#l00754">~CvodesMemory()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../da/dad/cvodes__interface_8cpp_source.html#l00751">CvodesMemory()</a>, and <a class="el" href="../../da/dad/cvodes__interface_8cpp_source.html#l00758">~CvodesMemory()</a>.</p>
 
 </div>
 </div>
@@ -1168,7 +1194,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d4/daf/sundials__interface_8hpp_source.html#l00082">82</a> of file <a class="el" href="../../d4/daf/sundials__interface_8hpp_source.html">sundials_interface.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l00719">casadi::IdasInterface::solve_transposed()</a>, <a class="el" href="../../df/dac/sundials__interface_8cpp_source.html#l00412">casadi::SundialsMemory::SundialsMemory()</a>, <a class="el" href="../../da/dad/cvodes__interface_8cpp_source.html#l00754">~CvodesMemory()</a>, and <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l01020">casadi::IdasMemory::~IdasMemory()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l00728">casadi::IdasInterface::solve_transposed()</a>, <a class="el" href="../../df/dac/sundials__interface_8cpp_source.html#l00412">casadi::SundialsMemory::SundialsMemory()</a>, <a class="el" href="../../da/dad/cvodes__interface_8cpp_source.html#l00758">~CvodesMemory()</a>, and <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l01029">casadi::IdasMemory::~IdasMemory()</a>.</p>
 
 </div>
 </div>
@@ -1194,7 +1220,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d4/daf/sundials__interface_8hpp_source.html#l00076">76</a> of file <a class="el" href="../../d4/daf/sundials__interface_8hpp_source.html">sundials_interface.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../da/dad/cvodes__interface_8cpp_source.html#l00747">CvodesMemory()</a>, and <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l01010">casadi::IdasMemory::IdasMemory()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../da/dad/cvodes__interface_8cpp_source.html#l00751">CvodesMemory()</a>, and <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l01019">casadi::IdasMemory::IdasMemory()</a>.</p>
 
 </div>
 </div>
@@ -1962,7 +1988,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d6/d4f/function__internal_8hpp_source.html#l00084">84</a> of file <a class="el" href="../../d6/d4f/function__internal_8hpp_source.html">function_internal.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l00966">casadi::FunctionInternal::eval_gen()</a>, <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l00059">casadi::FmuFunction::init_mem()</a>, and <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l03738">casadi::FunctionInternal::setup()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l01023">casadi::FunctionInternal::eval_gen()</a>, <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l00059">casadi::FmuFunction::init_mem()</a>, and <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l03796">casadi::FunctionInternal::setup()</a>.</p>
 
 </div>
 </div>
@@ -1988,7 +2014,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../de/d57/integrator__impl_8hpp_source.html#l00051">51</a> of file <a class="el" href="../../de/d57/integrator__impl_8hpp_source.html">integrator_impl.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l00532">casadi::Integrator::advance()</a>, <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l02585">casadi::Integrator::calc_edot()</a>, <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l02618">casadi::Integrator::predict_events()</a>, <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l02653">casadi::Integrator::trigger_event()</a>, and <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l00443">casadi::IdasInterface::z_impulseB()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l00532">casadi::Integrator::advance()</a>, <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l02585">casadi::Integrator::calc_edot()</a>, <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l02618">casadi::Integrator::predict_events()</a>, <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l02653">casadi::Integrator::trigger_event()</a>, and <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l00450">casadi::IdasInterface::z_impulseB()</a>.</p>
 
 </div>
 </div>
@@ -2248,7 +2274,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../de/d57/integrator__impl_8hpp_source.html#l00047">47</a> of file <a class="el" href="../../de/d57/integrator__impl_8hpp_source.html">integrator_impl.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l02041">casadi::FixedStepIntegrator::advance_noevent()</a>, <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l02585">casadi::Integrator::calc_edot()</a>, <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l00719">casadi::IdasInterface::solve_transposed()</a>, <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l02653">casadi::Integrator::trigger_event()</a>, and <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l00443">casadi::IdasInterface::z_impulseB()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l02041">casadi::FixedStepIntegrator::advance_noevent()</a>, <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l02585">casadi::Integrator::calc_edot()</a>, <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l00728">casadi::IdasInterface::solve_transposed()</a>, <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l02653">casadi::Integrator::trigger_event()</a>, and <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l00450">casadi::IdasInterface::z_impulseB()</a>.</p>
 
 </div>
 </div>
@@ -2274,7 +2300,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../de/d57/integrator__impl_8hpp_source.html#l00047">47</a> of file <a class="el" href="../../de/d57/integrator__impl_8hpp_source.html">integrator_impl.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l00719">casadi::IdasInterface::solve_transposed()</a>, <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l02653">casadi::Integrator::trigger_event()</a>, and <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l00443">casadi::IdasInterface::z_impulseB()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l00728">casadi::IdasInterface::solve_transposed()</a>, <a class="el" href="../../d6/d01/integrator_8cpp_source.html#l02653">casadi::Integrator::trigger_event()</a>, and <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l00450">casadi::IdasInterface::z_impulseB()</a>.</p>
 
 </div>
 </div>
@@ -2352,7 +2378,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d4/daf/sundials__interface_8hpp_source.html#l00048">48</a> of file <a class="el" href="../../d4/daf/sundials__interface_8hpp_source.html">sundials_interface.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/dac/sundials__interface_8cpp_source.html#l00412">casadi::SundialsMemory::SundialsMemory()</a>, <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l00443">casadi::IdasInterface::z_impulseB()</a>, and <a class="el" href="../../df/dac/sundials__interface_8cpp_source.html#l00422">casadi::SundialsMemory::~SundialsMemory()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/dac/sundials__interface_8cpp_source.html#l00412">casadi::SundialsMemory::SundialsMemory()</a>, <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l00450">casadi::IdasInterface::z_impulseB()</a>, and <a class="el" href="../../df/dac/sundials__interface_8cpp_source.html#l00422">casadi::SundialsMemory::~SundialsMemory()</a>.</p>
 
 </div>
 </div>
@@ -2378,7 +2404,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d4/daf/sundials__interface_8hpp_source.html#l00048">48</a> of file <a class="el" href="../../d4/daf/sundials__interface_8hpp_source.html">sundials_interface.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l01010">casadi::IdasMemory::IdasMemory()</a>, and <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l01020">casadi::IdasMemory::~IdasMemory()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l01019">casadi::IdasMemory::IdasMemory()</a>, and <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l01029">casadi::IdasMemory::~IdasMemory()</a>.</p>
 
 </div>
 </div>
@@ -2430,7 +2456,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d4/daf/sundials__interface_8hpp_source.html#l00045">45</a> of file <a class="el" href="../../d4/daf/sundials__interface_8hpp_source.html">sundials_interface.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/dac/sundials__interface_8cpp_source.html#l00293">casadi::SundialsInterface::init_mem()</a>, <a class="el" href="../../df/dac/sundials__interface_8cpp_source.html#l00412">casadi::SundialsMemory::SundialsMemory()</a>, <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l00443">casadi::IdasInterface::z_impulseB()</a>, and <a class="el" href="../../df/dac/sundials__interface_8cpp_source.html#l00422">casadi::SundialsMemory::~SundialsMemory()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/dac/sundials__interface_8cpp_source.html#l00293">casadi::SundialsInterface::init_mem()</a>, <a class="el" href="../../df/dac/sundials__interface_8cpp_source.html#l00412">casadi::SundialsMemory::SundialsMemory()</a>, <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l00450">casadi::IdasInterface::z_impulseB()</a>, and <a class="el" href="../../df/dac/sundials__interface_8cpp_source.html#l00422">casadi::SundialsMemory::~SundialsMemory()</a>.</p>
 
 </div>
 </div>
@@ -2456,7 +2482,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d4/daf/sundials__interface_8hpp_source.html#l00045">45</a> of file <a class="el" href="../../d4/daf/sundials__interface_8hpp_source.html">sundials_interface.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l01010">casadi::IdasMemory::IdasMemory()</a>, <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l00443">casadi::IdasInterface::z_impulseB()</a>, and <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l01020">casadi::IdasMemory::~IdasMemory()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l01019">casadi::IdasMemory::IdasMemory()</a>, <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l00450">casadi::IdasInterface::z_impulseB()</a>, and <a class="el" href="../../d1/d8a/idas__interface_8cpp_source.html#l01029">casadi::IdasMemory::~IdasMemory()</a>.</p>
 
 </div>
 </div>

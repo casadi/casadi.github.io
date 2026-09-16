@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/dafc81035257e0e57db5c65b2ac851a6239fb1c4" id="dafc81035257e0e57db5c65b2ac851a6239fb1c4" >revision 3.8.1</a></div>
   </td>
  </tr>
  </tbody>
@@ -263,6 +263,10 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d75/classcasadi_1_1AlpaqaProblem.html">AlpaqaProblem</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d9c/structcasadi_1_1ConoptMemory.html">ConoptMemory</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d50/classcasadi_1_1ConoptInterface.html">ConoptInterface</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dad/structcasadi_1_1SLEQPMemory.html">SLEQPMemory</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d97/classcasadi_1_1SLEQPInterface.html">SLEQPInterface</a></td></tr>
@@ -472,6 +476,52 @@ Enumerations</h2></td></tr>
 , <a class="el" href="../../d7/d23/namespacecasadi.html#a6f02ca5c5754c7c718a829c36c8ba654a262f88089655d4275325abdf46cde3ea">OPTI_DOMAIN_INTEGER</a>
  }</td></tr>
 <tr class="separator:a6f02ca5c5754c7c718a829c36c8ba654"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8171fcb8dea7797a66b536cc9dac00e5"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d23/namespacecasadi.html#a8171fcb8dea7797a66b536cc9dac00e5">ConoptModelStatus</a> { <br />
+&#160;&#160;<a class="el" href="../../d7/d23/namespacecasadi.html#a8171fcb8dea7797a66b536cc9dac00e5ac9f88e098f6fe4e4e112eeb05ccb9671">Unset</a> = 0
+, <a class="el" href="../../d7/d23/namespacecasadi.html#a8171fcb8dea7797a66b536cc9dac00e5acb61fef1e5e79e07a80421cb9a073a80">Optimal</a> = 1
+, <a class="el" href="../../d7/d23/namespacecasadi.html#a8171fcb8dea7797a66b536cc9dac00e5a57969e8cdf60b56ed1c87d60271a8c16">LocallyOptimal</a> = 2
+, <a class="el" href="../../d7/d23/namespacecasadi.html#a8171fcb8dea7797a66b536cc9dac00e5a8314de8366ef839bd4826867aa4c5aac">Unbounded</a> = 3
+, <br />
+&#160;&#160;<a class="el" href="../../d7/d23/namespacecasadi.html#a8171fcb8dea7797a66b536cc9dac00e5a54def92f4c562f166a6abbcbceadeb46">Infeasible</a> = 4
+, <a class="el" href="../../d7/d23/namespacecasadi.html#a8171fcb8dea7797a66b536cc9dac00e5a1e8b3e45aa3431dca805b4d9ae5852dd">LocallyInfeasible</a> = 5
+, <a class="el" href="../../d7/d23/namespacecasadi.html#a8171fcb8dea7797a66b536cc9dac00e5a70569d52c6c22cbe7025b4b59f2a43d9">IntermediateInfeas</a> = 6
+, <a class="el" href="../../d7/d23/namespacecasadi.html#a8171fcb8dea7797a66b536cc9dac00e5a23eb18d1d00c604a9ab6a1c4d9b7f37d">IntermediateNonOpt</a> = 7
+, <br />
+&#160;&#160;<a class="el" href="../../d7/d23/namespacecasadi.html#a8171fcb8dea7797a66b536cc9dac00e5abfaef30f1c8011c5cefa38ae470fb7aa">UnknownError</a> = 12
+, <a class="el" href="../../d7/d23/namespacecasadi.html#a8171fcb8dea7797a66b536cc9dac00e5ad81e8aaf9978bb5d6acccc1b7eca5c65">ErrorNoSolution</a> = 13
+<br />
+ }</td></tr>
+<tr class="separator:a8171fcb8dea7797a66b536cc9dac00e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a946923e4c4077084f4d85df81778de43"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d23/namespacecasadi.html#a946923e4c4077084f4d85df81778de43">ConoptRowType</a> { <a class="el" href="../../d7/d23/namespacecasadi.html#a946923e4c4077084f4d85df81778de43a890ebf2ce6beb154deb673b3af2d03d4">Equality</a> = 0
+, <a class="el" href="../../d7/d23/namespacecasadi.html#a946923e4c4077084f4d85df81778de43a758b05d899def79c9eb864ad4f96be1f">GreaterEqual</a> = 1
+, <a class="el" href="../../d7/d23/namespacecasadi.html#a946923e4c4077084f4d85df81778de43ad3e6fdac55bb7b0edd7834c968ba1f38">LessEqual</a> = 2
+, <a class="el" href="../../d7/d23/namespacecasadi.html#a946923e4c4077084f4d85df81778de43ab24ce0cd392a5b0b8dedc66c25213594">Free</a> = 3
+ }</td></tr>
+<tr class="separator:a946923e4c4077084f4d85df81778de43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4bc7f7571919232e1684e525eac0ec4"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d23/namespacecasadi.html#af4bc7f7571919232e1684e525eac0ec4">ConoptBasisStatus</a> { <a class="el" href="../../d7/d23/namespacecasadi.html#af4bc7f7571919232e1684e525eac0ec4aca182151063c1d84522f0a6b8bf974b9">AtLower</a> = 0
+, <a class="el" href="../../d7/d23/namespacecasadi.html#af4bc7f7571919232e1684e525eac0ec4affd094d9668b346a58bb516fbcef4253">AtUpper</a> = 1
+, <a class="el" href="../../d7/d23/namespacecasadi.html#af4bc7f7571919232e1684e525eac0ec4a972e73b7a882d0802a4e3a16946a2f94">Basic</a> = 2
+, <a class="el" href="../../d7/d23/namespacecasadi.html#af4bc7f7571919232e1684e525eac0ec4af410a2273fe6284c5c31a581c418e14f">SuperBasic</a> = 3
+ }</td></tr>
+<tr class="separator:af4bc7f7571919232e1684e525eac0ec4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6332e0d6885766e7e4da99d44c4abe00"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d23/namespacecasadi.html#a6332e0d6885766e7e4da99d44c4abe00">ConoptSolverStatus</a> { <br />
+&#160;&#160;<a class="el" href="../../d7/d23/namespacecasadi.html#a6332e0d6885766e7e4da99d44c4abe00ac9f88e098f6fe4e4e112eeb05ccb9671">Unset</a> = 0
+, <a class="el" href="../../d7/d23/namespacecasadi.html#a6332e0d6885766e7e4da99d44c4abe00abe512db94d357e90e3b00b906963e848">NormalCompletion</a> = 1
+, <a class="el" href="../../d7/d23/namespacecasadi.html#a6332e0d6885766e7e4da99d44c4abe00acd3b6ae6163e0d9229f14e2c17cc0509">IterationLimit</a> = 2
+, <a class="el" href="../../d7/d23/namespacecasadi.html#a6332e0d6885766e7e4da99d44c4abe00a46e1efab6d48c00488271b2f727d1a3d">TimeLimit</a> = 3
+, <br />
+&#160;&#160;<a class="el" href="../../d7/d23/namespacecasadi.html#a6332e0d6885766e7e4da99d44c4abe00ace41424a369a0a478b0c0faba6b5a37e">TerminatedBySolver</a> = 4
+, <a class="el" href="../../d7/d23/namespacecasadi.html#a6332e0d6885766e7e4da99d44c4abe00a7c8762da41f2f861a0b1dbf53e0a5b6f">EvalErrorLimit</a> = 5
+, <a class="el" href="../../d7/d23/namespacecasadi.html#a6332e0d6885766e7e4da99d44c4abe00ac6b8b8d08315fee26e858f7ea14a9479">UserInterrupt</a> = 8
+, <a class="el" href="../../d7/d23/namespacecasadi.html#a6332e0d6885766e7e4da99d44c4abe00a8c8051e06a58ee0faa191816e06d7f77">SetupFailure</a> = 9
+, <br />
+&#160;&#160;<a class="el" href="../../d7/d23/namespacecasadi.html#a6332e0d6885766e7e4da99d44c4abe00a2a2073e9ccf6c856a932e5a9eaec5eeb">MajorSolverError</a> = 10
+, <a class="el" href="../../d7/d23/namespacecasadi.html#a6332e0d6885766e7e4da99d44c4abe00a4fa238632fd658a6c985f8ab7a1baf9a">MajorSolverErrorFeas</a> = 11
+, <a class="el" href="../../d7/d23/namespacecasadi.html#a6332e0d6885766e7e4da99d44c4abe00ab932b91f686c2aa588adfd9a407155ca">SystemError</a> = 13
+, <a class="el" href="../../d7/d23/namespacecasadi.html#a6332e0d6885766e7e4da99d44c4abe00a14bcaf4092f5e55441ffd1442088a637">QuickModeTermination</a> = 15
+<br />
+ }</td></tr>
+<tr class="separator:a6332e0d6885766e7e4da99d44c4abe00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -1498,6 +1548,140 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="af4bc7f7571919232e1684e525eac0ec4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4bc7f7571919232e1684e525eac0ec4">&#9670;&nbsp;</a></span>ConoptBasisStatus</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="../../d7/d23/namespacecasadi.html#af4bc7f7571919232e1684e525eac0ec4">casadi::ConoptBasisStatus</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="af4bc7f7571919232e1684e525eac0ec4aca182151063c1d84522f0a6b8bf974b9"></a>AtLower&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af4bc7f7571919232e1684e525eac0ec4affd094d9668b346a58bb516fbcef4253"></a>AtUpper&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af4bc7f7571919232e1684e525eac0ec4a972e73b7a882d0802a4e3a16946a2f94"></a>Basic&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af4bc7f7571919232e1684e525eac0ec4af410a2273fe6284c5c31a581c418e14f"></a>SuperBasic&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="../../d9/d85/conopt__interface_8hpp_source.html#l00063">63</a> of file <a class="el" href="../../d9/d85/conopt__interface_8hpp_source.html">conopt_interface.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a8171fcb8dea7797a66b536cc9dac00e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8171fcb8dea7797a66b536cc9dac00e5">&#9670;&nbsp;</a></span>ConoptModelStatus</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="../../d7/d23/namespacecasadi.html#a8171fcb8dea7797a66b536cc9dac00e5">casadi::ConoptModelStatus</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a8171fcb8dea7797a66b536cc9dac00e5ac9f88e098f6fe4e4e112eeb05ccb9671"></a>Unset&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8171fcb8dea7797a66b536cc9dac00e5acb61fef1e5e79e07a80421cb9a073a80"></a>Optimal&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8171fcb8dea7797a66b536cc9dac00e5a57969e8cdf60b56ed1c87d60271a8c16"></a>LocallyOptimal&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8171fcb8dea7797a66b536cc9dac00e5a8314de8366ef839bd4826867aa4c5aac"></a>Unbounded&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8171fcb8dea7797a66b536cc9dac00e5a54def92f4c562f166a6abbcbceadeb46"></a>Infeasible&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8171fcb8dea7797a66b536cc9dac00e5a1e8b3e45aa3431dca805b4d9ae5852dd"></a>LocallyInfeasible&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8171fcb8dea7797a66b536cc9dac00e5a70569d52c6c22cbe7025b4b59f2a43d9"></a>IntermediateInfeas&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8171fcb8dea7797a66b536cc9dac00e5a23eb18d1d00c604a9ab6a1c4d9b7f37d"></a>IntermediateNonOpt&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8171fcb8dea7797a66b536cc9dac00e5abfaef30f1c8011c5cefa38ae470fb7aa"></a>UnknownError&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8171fcb8dea7797a66b536cc9dac00e5ad81e8aaf9978bb5d6acccc1b7eca5c65"></a>ErrorNoSolution&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="../../d9/d85/conopt__interface_8hpp_source.html#l00039">39</a> of file <a class="el" href="../../d9/d85/conopt__interface_8hpp_source.html">conopt_interface.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a946923e4c4077084f4d85df81778de43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a946923e4c4077084f4d85df81778de43">&#9670;&nbsp;</a></span>ConoptRowType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="../../d7/d23/namespacecasadi.html#a946923e4c4077084f4d85df81778de43">casadi::ConoptRowType</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a946923e4c4077084f4d85df81778de43a890ebf2ce6beb154deb673b3af2d03d4"></a>Equality&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a946923e4c4077084f4d85df81778de43a758b05d899def79c9eb864ad4f96be1f"></a>GreaterEqual&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a946923e4c4077084f4d85df81778de43ad3e6fdac55bb7b0edd7834c968ba1f38"></a>LessEqual&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a946923e4c4077084f4d85df81778de43ab24ce0cd392a5b0b8dedc66c25213594"></a>Free&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="../../d9/d85/conopt__interface_8hpp_source.html#l00054">54</a> of file <a class="el" href="../../d9/d85/conopt__interface_8hpp_source.html">conopt_interface.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a6332e0d6885766e7e4da99d44c4abe00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6332e0d6885766e7e4da99d44c4abe00">&#9670;&nbsp;</a></span>ConoptSolverStatus</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="../../d7/d23/namespacecasadi.html#a6332e0d6885766e7e4da99d44c4abe00">casadi::ConoptSolverStatus</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a6332e0d6885766e7e4da99d44c4abe00ac9f88e098f6fe4e4e112eeb05ccb9671"></a>Unset&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a6332e0d6885766e7e4da99d44c4abe00abe512db94d357e90e3b00b906963e848"></a>NormalCompletion&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a6332e0d6885766e7e4da99d44c4abe00acd3b6ae6163e0d9229f14e2c17cc0509"></a>IterationLimit&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a6332e0d6885766e7e4da99d44c4abe00a46e1efab6d48c00488271b2f727d1a3d"></a>TimeLimit&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a6332e0d6885766e7e4da99d44c4abe00ace41424a369a0a478b0c0faba6b5a37e"></a>TerminatedBySolver&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a6332e0d6885766e7e4da99d44c4abe00a7c8762da41f2f861a0b1dbf53e0a5b6f"></a>EvalErrorLimit&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a6332e0d6885766e7e4da99d44c4abe00ac6b8b8d08315fee26e858f7ea14a9479"></a>UserInterrupt&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a6332e0d6885766e7e4da99d44c4abe00a8c8051e06a58ee0faa191816e06d7f77"></a>SetupFailure&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a6332e0d6885766e7e4da99d44c4abe00a2a2073e9ccf6c856a932e5a9eaec5eeb"></a>MajorSolverError&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a6332e0d6885766e7e4da99d44c4abe00a4fa238632fd658a6c985f8ab7a1baf9a"></a>MajorSolverErrorFeas&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a6332e0d6885766e7e4da99d44c4abe00ab932b91f686c2aa588adfd9a407155ca"></a>SystemError&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a6332e0d6885766e7e4da99d44c4abe00a14bcaf4092f5e55441ffd1442088a637"></a>QuickModeTermination&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="../../d9/d85/conopt__interface_8hpp_source.html#l00070">70</a> of file <a class="el" href="../../d9/d85/conopt__interface_8hpp_source.html">conopt_interface.hpp</a>.</p>
+
+</div>
+</div>
 <a id="aa240a66e033e468337148192ec5043ce"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa240a66e033e468337148192ec5043ce">&#9670;&nbsp;</a></span>ConstraintType</h2>
 
@@ -1519,7 +1703,7 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="aa240a66e033e468337148192ec5043cead0077e1edbd849c9ff92b526de3d25ad"></a>OPTI_UNKNOWN&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l00487">487</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l00486">486</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
 
 </div>
 </div>
@@ -1571,7 +1755,7 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="a6f02ca5c5754c7c718a829c36c8ba654a262f88089655d4275325abdf46cde3ea"></a>OPTI_DOMAIN_INTEGER&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l00500">500</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l00499">499</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
 
 </div>
 </div>
@@ -1754,7 +1938,7 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="a44d225d62c7971e1f8d9457623e7f2c6a0e4de649e62119b6f50e00c375ae406f"></a>OPTI_DUAL_G&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l00495">495</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l00494">494</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
 
 </div>
 </div>

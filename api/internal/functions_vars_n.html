@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/dafc81035257e0e57db5c65b2ac851a6239fb1c4" id="dafc81035257e0e57db5c65b2ac851a6239fb1c4" >revision 3.8.1</a></div>
   </td>
  </tr>
  </tbody>
@@ -114,11 +114,21 @@ $(function() {
 <li>n_eq
 : <a class="el" href="d6/d63/structcasadi__socp__prob.html#aa9a430e8936824e051f34b6c53749276">casadi_socp_prob&lt; T1 &gt;</a>
 </li>
+<li>n_get_adjoint
+: <a class="el" href="d4/dfa/structcasadi_1_1FmuMemory.html#ac21ab95ac96291a0f99ea7aadfdf2ab2">casadi::FmuMemory</a>
+</li>
+<li>n_get_all
+: <a class="el" href="d4/dfa/structcasadi_1_1FmuMemory.html#a0887db23d594df1f667f5d617eb2d1ef">casadi::FmuMemory</a>
+</li>
+<li>n_get_directional
+: <a class="el" href="d4/dfa/structcasadi_1_1FmuMemory.html#a11261812532412f574f860f88dfb22ac">casadi::FmuMemory</a>
+</li>
 <li>n_hess
 : <a class="el" href="d4/d4d/structcasadi__uno__prob.html#ac8826d45d9275c4e1b8c76fefa7619b9">casadi_uno_prob&lt; T1 &gt;</a>
 </li>
 <li>n_in
 : <a class="el" href="d5/df9/structcasadi__jac__prob.html#a2e81703d450957623848ebdf87c190ea">casadi_jac_prob&lt; T1 &gt;</a>
+, <a class="el" href="d5/d09/structcasadi__onnxruntime__prob.html#a0c75b5efe995de35e5bad6248bc3df85">casadi_onnxruntime_prob</a>
 </li>
 <li>n_in_
 : <a class="el" href="d2/dab/classcasadi_1_1FunctionInternal.html#a7d2ec172fa3fee013cef648f1ce165fa">casadi::FunctionInternal</a>
@@ -138,6 +148,7 @@ $(function() {
 </li>
 <li>n_out
 : <a class="el" href="d5/df9/structcasadi__jac__prob.html#a04686e3d9b84ebc847fb362f108d171e">casadi_jac_prob&lt; T1 &gt;</a>
+, <a class="el" href="d5/d09/structcasadi__onnxruntime__prob.html#a1ca788d6508a7e896b0ff44391c23ceb">casadi_onnxruntime_prob</a>
 </li>
 <li>n_out_
 : <a class="el" href="d2/dab/classcasadi_1_1FunctionInternal.html#a5ac9ebd019509a0f47c18f022227815d">casadi::FunctionInternal</a>
@@ -203,6 +214,9 @@ $(function() {
 <li>nan
 : <a class="el" href="d7/d25/classcasadi_1_1casadi__limits_3_01SXElem_01_4.html#a4c8b46851e9921fcb8b8c9bf3a8a21ca">casadi::casadi_limits&lt; SXElem &gt;</a>
 , <a class="el" href="d1/da2/classcasadi_1_1CodeGenerator.html#a1588b13d770496f5af5ccf679409958d">casadi::CodeGenerator</a>
+</li>
+<li>nan_encountered
+: <a class="el" href="d8/d9c/structcasadi_1_1ConoptMemory.html#a5533fad06c8799af0ce76836d37d0ddf">casadi::ConoptMemory</a>
 </li>
 <li>nb
 : <a class="el" href="da/dad/structcasadi_1_1HpmpcMemory.html#a4a1e4a4fa6b2c1fa6aae6b11e48b7f14">casadi::HpmpcMemory</a>
@@ -325,6 +339,9 @@ $(function() {
 </li>
 <li>ng_
 : <a class="el" href="d8/dc2/classcasadi_1_1Nlpsol.html#a420954cf985cb5dc9c65c8a3f56957e8">casadi::Nlpsol</a>
+</li>
+<li>ng_expanded
+: <a class="el" href="d8/d9c/structcasadi_1_1ConoptMemory.html#a5cda47f882c49fb2f46b6b8ccafc4bfc">casadi::ConoptMemory</a>
 </li>
 <li>ng_total
 : <a class="el" href="d4/df6/structcasadi__hpipm__prob.html#ab7025787a4e24c516aea270e2baa906f">casadi_hpipm_prob&lt; T1 &gt;</a>
@@ -658,6 +675,9 @@ $(function() {
 <li>numel
 : <a class="el" href="dd/d55/structcasadi_1_1OnnxTensorInfo.html#ade1d6da198f4c509c02b909e54609990">casadi::OnnxTensorInfo</a>
 , <a class="el" href="d8/de2/structcasadi_1_1Variable.html#a8e4bbc7a3b51d60a0f564c046cd50869">casadi::Variable</a>
+</li>
+<li>numnz_expanded
+: <a class="el" href="d8/d9c/structcasadi_1_1ConoptMemory.html#adc94a8079ee51eb463b5a2c9f3c0bb56">casadi::ConoptMemory</a>
 </li>
 <li>numpy_mode
 : <a class="el" href="d6/dc7/classcasadi_1_1GlobalOptions.html#ab482850718b2de545bbec2e4ed278513">casadi::GlobalOptions</a>

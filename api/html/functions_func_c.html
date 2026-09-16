@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/dafc81035257e0e57db5c65b2ac851a6239fb1c4" id="dafc81035257e0e57db5c65b2ac851a6239fb1c4" >revision 3.8.1</a></div>
   </td>
  </tr>
  </tbody>
@@ -100,6 +100,42 @@ $(function() {
 <li>causality()
 : <a class="el" href="d4/db5/classcasadi_1_1DaeBuilder.html#a5989031666afdf2e70f6b4a6107982a6">casadi::DaeBuilder</a>
 </li>
+<li>cb_2dlagrstr()
+: <a class="el" href="de/d50/classcasadi_1_1ConoptInterface.html#a3fa411ecb02e9577ec23739a62003f46">casadi::ConoptInterface</a>
+</li>
+<li>cb_2dlagrval()
+: <a class="el" href="de/d50/classcasadi_1_1ConoptInterface.html#ae07e69dc5f81be9c7bb4dfae9734e852">casadi::ConoptInterface</a>
+</li>
+<li>cb_errmsg()
+: <a class="el" href="de/d50/classcasadi_1_1ConoptInterface.html#ae98b4a2432bd631c927db252b1c704a4">casadi::ConoptInterface</a>
+</li>
+<li>cb_fd_eval()
+: <a class="el" href="de/d50/classcasadi_1_1ConoptInterface.html#a08ce91f8040d670585467b6378607386">casadi::ConoptInterface</a>
+</li>
+<li>cb_fdevalend()
+: <a class="el" href="de/d50/classcasadi_1_1ConoptInterface.html#a413c35a476f500a8c60fbc163873cb09">casadi::ConoptInterface</a>
+</li>
+<li>cb_fdevalini()
+: <a class="el" href="de/d50/classcasadi_1_1ConoptInterface.html#a716a5c80633ecb64aeef5d74498603e2">casadi::ConoptInterface</a>
+</li>
+<li>cb_message()
+: <a class="el" href="de/d50/classcasadi_1_1ConoptInterface.html#afb0346b666b747e778af1b7991187027">casadi::ConoptInterface</a>
+</li>
+<li>cb_option()
+: <a class="el" href="de/d50/classcasadi_1_1ConoptInterface.html#a6e06433c2295d316e7334e2d93494d15">casadi::ConoptInterface</a>
+</li>
+<li>cb_progress()
+: <a class="el" href="de/d50/classcasadi_1_1ConoptInterface.html#a3b2d49f8f6ae1275311e6d9523de1809">casadi::ConoptInterface</a>
+</li>
+<li>cb_read_matrix()
+: <a class="el" href="de/d50/classcasadi_1_1ConoptInterface.html#a1be327b1f2f25331d19c7ca2ff2da3ef">casadi::ConoptInterface</a>
+</li>
+<li>cb_solution()
+: <a class="el" href="de/d50/classcasadi_1_1ConoptInterface.html#ae1b8b12826ec43c96d959288ad82bdf7">casadi::ConoptInterface</a>
+</li>
+<li>cb_status()
+: <a class="el" href="de/d50/classcasadi_1_1ConoptInterface.html#aa1bd7ae98ac1f9ad35a9f63e4b1f4000">casadi::ConoptInterface</a>
+</li>
 <li>cdef()
 : <a class="el" href="d4/db5/classcasadi_1_1DaeBuilder.html#a2809459f3099449fce5755013a279757">casadi::DaeBuilder</a>
 </li>
@@ -119,6 +155,7 @@ $(function() {
 <li>class_name()
 : <a class="el" href="d3/dfa/classcasadi_1_1AlpaqaInterface.html#a7b3c4e9b56c70256f9151ff7dc3cf185">casadi::AlpaqaInterface</a>
 , <a class="el" href="df/d13/classcasadi_1_1CallbackInternal.html#ab7b7b0274acaab1c8bded5c173329838">casadi::CallbackInternal</a>
+, <a class="el" href="de/d50/classcasadi_1_1ConoptInterface.html#a5740bc45702987efb031052f596fbd84">casadi::ConoptInterface</a>
 , <a class="el" href="d0/d19/classcasadi_1_1MXNode.html#a0d345027fd227ee234549158e91bf650">casadi::MXNode</a>
 , <a class="el" href="de/dd6/classcasadi_1_1OptiNode.html#a7fda21ac60991b46dfde4069cda35fda">casadi::OptiNode</a>
 , <a class="el" href="d5/d4a/classcasadi_1_1SharedObject.html#a02941134f82aa5eb7c14e83fb475c4c0">casadi::SharedObject</a>
@@ -173,13 +210,19 @@ $(function() {
 : <a class="el" href="d5/da8/classcasadi_1_1Sparsity.html#ae0aaa945ebe8bf450ce4eb2d64f75533">casadi::Sparsity</a>
 </li>
 <li>conditional()
-: <a class="el" href="da/da4/classcasadi_1_1Function.html#a9854ee5db181927babbd692b6903e321">casadi::Function</a>
+: <a class="el" href="da/da4/classcasadi_1_1Function.html#a421c050cb16bbae43db0943014b18a78">casadi::Function</a>
 </li>
 <li>connect()
 : <a class="el" href="d8/d86/classcasadi_1_1DeserializerBase.html#ac8b14ab928754fbb7656014c2d179ef1">casadi::DeserializerBase</a>
 , <a class="el" href="d9/dc2/classcasadi_1_1DeserializingStream.html#af5a0f2112d11c0a53e3654f63726538d">casadi::DeserializingStream</a>
 , <a class="el" href="d5/d36/classcasadi_1_1SerializerBase.html#a148f5701437199bcfe291c1a0ad769e7">casadi::SerializerBase</a>
 , <a class="el" href="d1/d00/classcasadi_1_1SerializingStream.html#ad1964cab7a5b63d11e1ec880647aa905">casadi::SerializingStream</a>
+</li>
+<li>ConoptInterface()
+: <a class="el" href="de/d50/classcasadi_1_1ConoptInterface.html#a724e0350534db9520a17d378ae059b68">casadi::ConoptInterface</a>
+</li>
+<li>ConoptMemory()
+: <a class="el" href="d8/d9c/structcasadi_1_1ConoptMemory.html#abed076ff5ca8b6d0bf31be75379b56d7">casadi::ConoptMemory</a>
 </li>
 <li>constraints()
 : <a class="el" href="d1/dbf/classcasadi_1_1OptiAdvanced.html#a499e53a97320bea43e3701aae1f4d775">casadi::OptiAdvanced</a>
@@ -189,7 +232,7 @@ $(function() {
 : <a class="el" href="d6/dac/classcasadi_1_1Callback.html#a398d11254ab3d7100c6a700475b57996">casadi::Callback</a>
 </li>
 <li>convert_in()
-: <a class="el" href="da/da4/classcasadi_1_1Function.html#a454df766b4663844b261d3526f487412">casadi::Function</a>
+: <a class="el" href="da/da4/classcasadi_1_1Function.html#a7abc00bfa227eeae34d479e1c7acfa36">casadi::Function</a>
 </li>
 <li>convert_out()
 : <a class="el" href="da/da4/classcasadi_1_1Function.html#aa36d021395b53d4c51669f1e4c05eae4">casadi::Function</a>
@@ -211,6 +254,7 @@ $(function() {
 </li>
 <li>creator()
 : <a class="el" href="d3/dfa/classcasadi_1_1AlpaqaInterface.html#ae390a6023e9b73be57a248fbd8f2a8ce">casadi::AlpaqaInterface</a>
+, <a class="el" href="de/d50/classcasadi_1_1ConoptInterface.html#abe5a3f06bbc941d72d657d759688b04c">casadi::ConoptInterface</a>
 , <a class="el" href="d7/d97/classcasadi_1_1SLEQPInterface.html#aca6a063b2fba9e379d470405655da936">casadi::SLEQPInterface</a>
 </li>
 </ul>

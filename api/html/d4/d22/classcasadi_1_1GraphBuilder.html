@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/dafc81035257e0e57db5c65b2ac851a6239fb1c4" id="dafc81035257e0e57db5c65b2ac851a6239fb1c4" >revision 3.8.1</a></div>
   </td>
  </tr>
  </tbody>
@@ -452,7 +452,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2jg">https://github.com/casadi/casadi/wiki/L_2jg</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/dc8/graph__builder_8hpp_source.html#l00127">127</a> of file <a class="el" href="../../d8/dc8/graph__builder_8hpp_source.html">graph_builder.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/dc8/graph__builder_8hpp_source.html#l00138">138</a> of file <a class="el" href="../../d8/dc8/graph__builder_8hpp_source.html">graph_builder.hpp</a>.</p>
 
 </div>
 </div>
@@ -529,6 +529,7 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>For a file f.onnx, black-box derivatives fall back to sibling fwd_f.onnx, adj_f.onnx and jac_f.onnx when the model lacks the corresponding tensors. Forward/reverse siblings use dynamic nfwd/nadj dimensions (fwd_dim/adj_dim). Files are checked on derivative capability queries and loaded on demand. Derivative models use the same rule recursively, e.g. fwd_adj_f.onnx or adj_adj_f.onnx. Repeated AD modes follow CasADi tensor prefixes (adj2_, adj3_, ...; fwd2_, fwd3_, ...) and use seed dimensions nadj2, nadj3, ... or nfwd2, nfwd3, ... (suffixing adj_dim/fwd_dim). Serialized functions retain the absolute source path for derivative lookup; constructed derivative functions embed their model bytes.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">name</td><td>Name assigned to the resulting <a class="el" href="../../da/da4/classcasadi_1_1Function.html" title="Function object.">Function</a> </td></tr>

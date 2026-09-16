@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/dafc81035257e0e57db5c65b2ac851a6239fb1c4" id="dafc81035257e0e57db5c65b2ac851a6239fb1c4" >revision 3.8.1</a></div>
   </td>
  </tr>
  </tbody>
@@ -92,9 +92,30 @@ $(function() {
 <li>cache_stride_
 : <a class="el" href="da/d4c/classcasadi_1_1LinsolQr.html#a8998960eb7cddb1ae5480120745c759b">casadi::LinsolQr</a>
 </li>
+<li>cache_valid
+: <a class="el" href="d8/d9c/structcasadi_1_1ConoptMemory.html#a4ea47442d45813bd105d074599e06e0f">casadi::ConoptMemory</a>
+</li>
+<li>cache_valid_jac
+: <a class="el" href="d8/d9c/structcasadi_1_1ConoptMemory.html#a3af731d115657b160d7994853289b7f4">casadi::ConoptMemory</a>
+</li>
 <li>cached_constants_
 : <a class="el" href="d5/d6f/classcasadi_1_1IntegerSX.html#a05bd19a592f4a7e72a74ba1fe9cd9d83">casadi::IntegerSX</a>
 , <a class="el" href="df/de7/classcasadi_1_1RealtypeSX.html#a10e5befb07eee71b3ac34398bf1be275">casadi::RealtypeSX</a>
+</li>
+<li>cached_f
+: <a class="el" href="d8/d9c/structcasadi_1_1ConoptMemory.html#a9511001930df3c09e070f658eadeb18c">casadi::ConoptMemory</a>
+</li>
+<li>cached_g
+: <a class="el" href="d8/d9c/structcasadi_1_1ConoptMemory.html#a6774cf5974e36d2de941f92739856f3c">casadi::ConoptMemory</a>
+</li>
+<li>cached_grad_f
+: <a class="el" href="d8/d9c/structcasadi_1_1ConoptMemory.html#a3c934a45f73dcd6aa3cc56a2affa3165">casadi::ConoptMemory</a>
+</li>
+<li>cached_jac_g
+: <a class="el" href="d8/d9c/structcasadi_1_1ConoptMemory.html#ae436c07e6bf8bba3856a280ca34635c5">casadi::ConoptMemory</a>
+</li>
+<li>cached_x
+: <a class="el" href="d8/d9c/structcasadi_1_1ConoptMemory.html#abd7f7892024c6db6b4c8c74fe72053a2">casadi::ConoptMemory</a>
 </li>
 <li>calc_f_
 : <a class="el" href="d8/dc2/classcasadi_1_1Nlpsol.html#a93a1a8aad81b5b45bb3a81e393cb79f1">casadi::Nlpsol</a>
@@ -157,6 +178,12 @@ $(function() {
 </li>
 <li>casadi_real_type
 : <a class="el" href="d1/da2/classcasadi_1_1CodeGenerator.html#a30d5f90d5de12e9ffe0394b0c6be5bcb">casadi::CodeGenerator</a>
+</li>
+<li>casadi_to_conopt_lb_row
+: <a class="el" href="d8/d9c/structcasadi_1_1ConoptMemory.html#a1a9c26bd35b7405edd52c92109052ce1">casadi::ConoptMemory</a>
+</li>
+<li>casadi_to_conopt_ub_row
+: <a class="el" href="d8/d9c/structcasadi_1_1ConoptMemory.html#a5d14206d734a1f1271dd3feb4cd41330">casadi::ConoptMemory</a>
 </li>
 <li>casadipath
 : <a class="el" href="d6/dc7/classcasadi_1_1GlobalOptions.html#a5f548c2b807ba460960a2284704306b4">casadi::GlobalOptions</a>
@@ -363,6 +390,9 @@ $(function() {
 <li>cntl
 : <a class="el" href="dd/de6/structcasadi_1_1Ma27Memory.html#aee3790d50b82f60bde58d218d0ddfe3f">casadi::Ma27Memory</a>
 </li>
+<li>cntvect
+: <a class="el" href="d8/d9c/structcasadi_1_1ConoptMemory.html#a9d08daefd3c66bd9bff1a1e0f6da0bfd">casadi::ConoptMemory</a>
+</li>
 <li>co
 : <a class="el" href="d9/dff/structcasadi__ipqp__data.html#ad34a781faa04818baf0876f948ff2573">casadi_ipqp_data&lt; T1 &gt;</a>
 </li>
@@ -395,6 +425,9 @@ $(function() {
 </li>
 <li>codegen_scalars
 : <a class="el" href="d1/da2/classcasadi_1_1CodeGenerator.html#a03c914d1125eb63dae3e91fb5535d715">casadi::CodeGenerator</a>
+</li>
+<li>codegen_sz_w_
+: <a class="el" href="d1/da2/classcasadi_1_1CodeGenerator.html#a900d3c0d29b9c89d4a702265a3457840">casadi::CodeGenerator</a>
 </li>
 <li>coeffs_
 : <a class="el" href="d7/dce/classcasadi_1_1BSpline.html#a754ff56e5df65e184e2349b0ee0ad171">casadi::BSpline</a>
@@ -536,11 +569,23 @@ $(function() {
 <li>config_args_
 : <a class="el" href="d8/db5/classcasadi_1_1External.html#a4e626eb01a66bd1d2698feeac9b0d964">casadi::External</a>
 </li>
+<li>conopt_rhs
+: <a class="el" href="d8/d9c/structcasadi_1_1ConoptMemory.html#a83e1fc5760adba62775ca769d9bb9d9d">casadi::ConoptMemory</a>
+</li>
+<li>conopt_to_casadi
+: <a class="el" href="d8/d9c/structcasadi_1_1ConoptMemory.html#abd79cee7479f622a4b08471467b39663">casadi::ConoptMemory</a>
+</li>
+<li>conopt_type
+: <a class="el" href="d8/d9c/structcasadi_1_1ConoptMemory.html#abbcea3e05c725977f25b8961d37d272d">casadi::ConoptMemory</a>
+</li>
 <li>const_A_
 : <a class="el" href="dc/d20/classcasadi_1_1Expm.html#ace4322b2f5f1bebbe12020057bc93129">casadi::Expm</a>
 </li>
 <li>const_dim_
 : <a class="el" href="d0/deb/classcasadi_1_1Dple.html#a7f1dc65dc8b65a6f789f4d124dfc4536">casadi::Dple</a>
+</li>
+<li>const_jac_vals
+: <a class="el" href="d8/d9c/structcasadi_1_1ConoptMemory.html#a7c8a87b51dded4b5e9a90e526edaded9">casadi::ConoptMemory</a>
 </li>
 <li>constants_
 : <a class="el" href="df/d79/classcasadi_1_1SXFunction.html#a9acf5a3ecd44a150f41309b264c54b37">casadi::SXFunction</a>
@@ -639,6 +684,9 @@ $(function() {
 </li>
 <li>custom_jacobian_
 : <a class="el" href="d2/dab/classcasadi_1_1FunctionInternal.html#a3b5f51e6104f569519ad34f39d1ccd01">casadi::FunctionInternal</a>
+</li>
+<li>custom_options
+: <a class="el" href="d8/d9c/structcasadi_1_1ConoptMemory.html#a668ee4cbcfdbeeba03d26e87b10b848c">casadi::ConoptMemory</a>
 </li>
 </ul>
 </div><!-- contents -->

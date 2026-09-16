@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/dafc81035257e0e57db5c65b2ac851a6239fb1c4" id="dafc81035257e0e57db5c65b2ac851a6239fb1c4" >revision 3.8.1</a></div>
   </td>
  </tr>
  </tbody>
@@ -89,12 +89,12 @@ $(function() {
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;casadi/interfaces/ort/casadi_onnx_ort_export.h&gt;</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;onnxruntime_c_api.h&gt;</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;ort_runtime.h&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;ort_runtime.hpp&quot;</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d7/d23/namespacecasadi.html">casadi</a> {</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keyword">struct </span>OnnxRuntimeMemory : <span class="keyword">public</span> OnnxMemory {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    casadi_onnxruntime_data d{};</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="../../db/d6f/structcasadi__onnxruntime__data.html">casadi_onnxruntime_data</a> d{};</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  };</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keyword">class </span>OnnxRuntimeInterface : <span class="keyword">public</span> OnnxFunction {</div>
@@ -160,7 +160,7 @@ $(function() {
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    std::vector&lt;const char*&gt; in_names_c_, out_names_c_;</div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    std::vector&lt;casadi_int&gt; in_elem_, out_elem_, in_ndim_, out_ndim_;</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    std::vector&lt;casadi_int&gt; in_dims_, out_dims_, in_numel_, out_numel_;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    casadi_onnxruntime_prob prob_;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <a class="code" href="../../d5/d09/structcasadi__onnxruntime__prob.html">casadi_onnxruntime_prob</a> prob_;</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  };</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;} <span class="comment">// namespace casadi</span></div>
@@ -168,6 +168,8 @@ $(function() {
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_ORT_INTERFACE_HPP</span></div>
 <div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/archiver_8hpp_source.html#l00032">archiver.hpp:32</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_a8b909f6932a91230738731512b99127e"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">casadi::Dict</a></div><div class="ttdeci">GenericType::Dict Dict</div><div class="ttdoc">C++ equivalent of Python's dict or MATLAB's struct.</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d30/generic__type_8hpp_source.html#l00258">generic_type.hpp:258</a></div></div>
+<div class="ttc" id="astructcasadi__onnxruntime__data_html"><div class="ttname"><a href="../../db/d6f/structcasadi__onnxruntime__data.html">casadi_onnxruntime_data</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dbf/ort__runtime_8hpp_source.html#l00087">ort_runtime.hpp:87</a></div></div>
+<div class="ttc" id="astructcasadi__onnxruntime__prob_html"><div class="ttname"><a href="../../d5/d09/structcasadi__onnxruntime__prob.html">casadi_onnxruntime_prob</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dbf/ort__runtime_8hpp_source.html#l00061">ort_runtime.hpp:61</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </body>
 </html>

@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/dafc81035257e0e57db5c65b2ac851a6239fb1c4" id="dafc81035257e0e57db5c65b2ac851a6239fb1c4" >revision 3.8.1</a></div>
   </td>
  </tr>
  </tbody>
@@ -77,7 +77,8 @@ Functions</h2></td></tr>
 <p>A model is evaluated by a runtime backend (e.g. ONNX Runtime) selected by name; the graph internals are opaque to CasADi. Construct one through the <a class="el" href="../../d4/d22/classcasadi_1_1GraphBuilder.html" title="A mutable, format-neutral interface to a computational-graph model.">GraphBuilder</a> facade:</p>
 <pre class="fragment">Function f = GraphBuilder("model.onnx").create("net");
 std::vector&lt;DM&gt; res = f(DM(...));
-</pre><p>These free functions query and manage the runtime backend plugin registry.</p>
+</pre><p>Unless is_diff_in is supplied, forward seed inputs or adjoint outputs determine differentiability. Embedded signatures take precedence over sibling files. Without derivative signatures, all inputs are differentiable by default.</p>
+<p>These free functions query and manage the runtime backend plugin registry.</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2j7">https://github.com/casadi/casadi/wiki/L_2j7</a> </p>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="gad7517194e468eb113dcf72afb3161b79"></a>
@@ -97,10 +98,10 @@ std::vector&lt;DM&gt; res = f(DM(...));
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2j8">https://github.com/casadi/casadi/wiki/L_2j8</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d1f/onnx__function_8cpp_source.html#l00031">31</a> of file <a class="el" href="../../d3/d1f/onnx__function_8cpp_source.html">onnx_function.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                                                {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">return</span> OnnxFunction::has_plugin(solver);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d3/d1f/onnx__function_8cpp_source.html#l00038">38</a> of file <a class="el" href="../../d3/d1f/onnx__function_8cpp_source.html">onnx_function.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                                                {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">return</span> OnnxFunction::has_plugin(solver);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00134">casadi::PluginInterface&lt; OnnxFunction &gt;::has_plugin()</a>.</p>
 
@@ -123,10 +124,10 @@ std::vector&lt;DM&gt; res = f(DM(...));
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2j9">https://github.com/casadi/casadi/wiki/L_2j9</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d1f/onnx__function_8cpp_source.html#l00035">35</a> of file <a class="el" href="../../d3/d1f/onnx__function_8cpp_source.html">onnx_function.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                                                 {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    OnnxFunction::load_plugin(solver);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d3/d1f/onnx__function_8cpp_source.html#l00042">42</a> of file <a class="el" href="../../d3/d1f/onnx__function_8cpp_source.html">onnx_function.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                                                 {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    OnnxFunction::load_plugin(solver);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00207">casadi::PluginInterface&lt; OnnxFunction &gt;::load_plugin()</a>.</p>
 
@@ -149,10 +150,10 @@ std::vector&lt;DM&gt; res = f(DM(...));
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2jb">https://github.com/casadi/casadi/wiki/L_2jb</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d1f/onnx__function_8cpp_source.html#l00045">45</a> of file <a class="el" href="../../d3/d1f/onnx__function_8cpp_source.html">onnx_function.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                                                     {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> OnnxFunction::getPlugin(solver).doc;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d3/d1f/onnx__function_8cpp_source.html#l00052">52</a> of file <a class="el" href="../../d3/d1f/onnx__function_8cpp_source.html">onnx_function.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                                                     {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">return</span> OnnxFunction::getPlugin(solver).doc;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../da/d3c/plugin__interface_8hpp_source.html#l00295">casadi::PluginInterface&lt; OnnxFunction &gt;::getPlugin()</a>.</p>
 
@@ -174,12 +175,12 @@ std::vector&lt;DM&gt; res = f(DM(...));
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2ja">https://github.com/casadi/casadi/wiki/L_2ja</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d1f/onnx__function_8cpp_source.html#l00039">39</a> of file <a class="el" href="../../d3/d1f/onnx__function_8cpp_source.html">onnx_function.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                                             {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    std::vector&lt;std::string&gt; ret;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp;&amp; s : OnnxFunction::solvers_) ret.push_back(s.first);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d3/d1f/onnx__function_8cpp_source.html#l00046">46</a> of file <a class="el" href="../../d3/d1f/onnx__function_8cpp_source.html">onnx_function.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                                             {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    std::vector&lt;std::string&gt; ret;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp;&amp; s : OnnxFunction::solvers_) ret.push_back(s.first);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d3/d46/onnx__function__impl_8hpp_source.html#l00161">casadi::OnnxFunction::solvers_</a>.</p>
 

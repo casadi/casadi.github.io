@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/dafc81035257e0e57db5c65b2ac851a6239fb1c4" id="dafc81035257e0e57db5c65b2ac851a6239fb1c4" >revision 3.8.1</a></div>
   </td>
  </tr>
  </tbody>
@@ -200,7 +200,7 @@ Protected Member Functions</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="../../db/dfc/output__sx_8hpp_source.html#l00056">56</a> of file <a class="el" href="../../db/dfc/output__sx_8hpp_source.html">output_sx.hpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                       : <a class="code" href="../../d7/d23/namespacecasadi.html#adb0c8600ea8c444a1ad675845e3dfb2a">GenericWeakRef&lt;SharedSXElem, OutputSX&gt;</a>(<a class="code" href="../../d9/db6/classcasadi_1_1GenericWeakRef.html#a7d89763051bfc5609b4f80baeda53b4f">shared</a>) {</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div>
-<div class="ttc" id="aclasscasadi_1_1GenericWeakRef_html_a7d89763051bfc5609b4f80baeda53b4f"><div class="ttname"><a href="../../d9/db6/classcasadi_1_1GenericWeakRef.html#a7d89763051bfc5609b4f80baeda53b4f">casadi::GenericWeakRef&lt; SharedSXElem, OutputSX &gt;::shared</a></div><div class="ttdeci">SharedSXElem shared() const</div><div class="ttdoc">Get a shared (owning) reference.</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00160">generic_shared_impl.hpp:163</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1GenericWeakRef_html_a7d89763051bfc5609b4f80baeda53b4f"><div class="ttname"><a href="../../d9/db6/classcasadi_1_1GenericWeakRef.html#a7d89763051bfc5609b4f80baeda53b4f">casadi::GenericWeakRef&lt; SharedSXElem, OutputSX &gt;::shared</a></div><div class="ttdeci">SharedSXElem shared() const</div><div class="ttdoc">Get a shared (owning) reference.</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00160">generic_shared_impl.hpp:168</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -257,8 +257,13 @@ Protected Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00165">165</a> of file <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html">generic_shared_impl.hpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                                                     {</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keywordflow">return</span> !<a class="code" href="../../da/d35/classcasadi_1_1GenericShared.html#abd28957366899587b9da638343fe41b5">is_null</a>() &amp;&amp; (*this)-&gt;raw_ != <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  }</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="preprocessor">#ifdef CASADI_WITH_THREADSAFE_SYMBOLICS</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="comment">// Only observe liveness; this does not acquire ownership of the object.</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordflow">return</span> !<a class="code" href="../../da/d35/classcasadi_1_1GenericShared.html#abd28957366899587b9da638343fe41b5">is_null</a>() &amp;&amp; (*this)-&gt;raw_.load(std::memory_order_relaxed) != <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keywordflow">return</span> !<a class="code" href="../../da/d35/classcasadi_1_1GenericShared.html#abd28957366899587b9da638343fe41b5">is_null</a>() &amp;&amp; (*this)-&gt;raw_ != <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_WITH_THREADSAFE_SYMBOLICS</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  }</div>
 <div class="ttc" id="aclasscasadi_1_1GenericShared_html_abd28957366899587b9da638343fe41b5"><div class="ttname"><a href="../../da/d35/classcasadi_1_1GenericShared.html#abd28957366899587b9da638343fe41b5">casadi::GenericShared&lt; SharedSXElem, OutputSX &gt;::is_null</a></div><div class="ttdeci">bool is_null() const</div><div class="ttdoc">Is a null pointer?</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00116">generic_shared_impl.hpp:120</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -411,7 +416,7 @@ Protected Member Functions</h2></td></tr>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&quot;NULL&quot;</span>;</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    }</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  }</div>
-<div class="ttc" id="aclasscasadi_1_1GenericSharedInternal_html_a520748c2cc1f738ea16366dbbcccdb35"><div class="ttname"><a href="../../d7/d8d/classcasadi_1_1GenericSharedInternal.html#a520748c2cc1f738ea16366dbbcccdb35">casadi::GenericSharedInternal::debug_repr</a></div><div class="ttdeci">std::string debug_repr(const Internal *) const</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d30/generic__shared__internal_8hpp_source.html#l00175">generic_shared_internal.hpp:175</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1GenericSharedInternal_html_a520748c2cc1f738ea16366dbbcccdb35"><div class="ttname"><a href="../../d7/d8d/classcasadi_1_1GenericSharedInternal.html#a520748c2cc1f738ea16366dbbcccdb35">casadi::GenericSharedInternal::debug_repr</a></div><div class="ttdeci">std::string debug_repr(const Internal *) const</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d30/generic__shared__internal_8hpp_source.html#l00180">generic_shared_internal.hpp:180</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -518,10 +523,10 @@ Protected Member Functions</h2></td></tr>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_b2">https://github.com/casadi/casadi/wiki/L_b2</a> </p>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00175">175</a> of file <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html">generic_shared_impl.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                                               {</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>GenericWeakRefInternal&lt;Shared, Internal&gt;*<span class="keyword">&gt;</span>(</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;      GenericShared&lt;Shared, Internal&gt;::operator-&gt;());</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  }</div>
+<div class="fragment"><div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                                               {</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>GenericWeakRefInternal&lt;Shared, Internal&gt;*<span class="keyword">&gt;</span>(</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;      GenericShared&lt;Shared, Internal&gt;::operator-&gt;());</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -547,10 +552,10 @@ Protected Member Functions</h2></td></tr>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_b3">https://github.com/casadi/casadi/wiki/L_b3</a> </p>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00180">180</a> of file <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html">generic_shared_impl.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                                                     {</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>GenericWeakRefInternal&lt;Shared, Internal&gt;*<span class="keyword">&gt;</span>(</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;      GenericShared&lt;Shared, Internal&gt;::operator-&gt;());</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;  }</div>
+<div class="fragment"><div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                                                     {</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>GenericWeakRefInternal&lt;Shared, Internal&gt;*<span class="keyword">&gt;</span>(</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;      GenericShared&lt;Shared, Internal&gt;::operator-&gt;());</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -612,13 +617,13 @@ Protected Member Functions</h2></td></tr>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_b0">https://github.com/casadi/casadi/wiki/L_b0</a> </p>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00160">160</a> of file <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html">generic_shared_impl.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                                                        {</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    Shared ret;</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d9/db6/classcasadi_1_1GenericWeakRef.html#a4333d44daa0ff8b73abbb6d42471a744">alive</a>()) {</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;      ret.own((*this)-&gt;raw_);</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    }</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  }</div>
+<div class="fragment"><div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                                                        {</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    Shared ret;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d9/db6/classcasadi_1_1GenericWeakRef.html#a4333d44daa0ff8b73abbb6d42471a744">alive</a>()) {</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;      ret.own((*this)-&gt;raw_);</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    }</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  }</div>
 <div class="ttc" id="aclasscasadi_1_1GenericWeakRef_html_a4333d44daa0ff8b73abbb6d42471a744"><div class="ttname"><a href="../../d9/db6/classcasadi_1_1GenericWeakRef.html#a4333d44daa0ff8b73abbb6d42471a744">casadi::GenericWeakRef&lt; SharedSXElem, OutputSX &gt;::alive</a></div><div class="ttdeci">bool alive() const</div><div class="ttdoc">Check if alive.</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00165">generic_shared_impl.hpp:158</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -649,18 +654,18 @@ Protected Member Functions</h2></td></tr>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_29i">https://github.com/casadi/casadi/wiki/L_29i</a> </p>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00170">170</a> of file <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html">generic_shared_impl.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                                                                             {</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../da/d35/classcasadi_1_1GenericShared.html#abd28957366899587b9da638343fe41b5">is_null</a>()) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="preprocessor">#ifdef CASADI_WITH_THREADSAFE_SYMBOLICS</span></div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="comment">// Safe access to ...</span></div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    std::lock_guard&lt;std::mutex&gt; lock(*(*this)-&gt;mutex_);</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_WITH_THREADSAFE_SYMBOLICS</span></div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d9/db6/classcasadi_1_1GenericWeakRef.html#a4333d44daa0ff8b73abbb6d42471a744">alive</a>()) {</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;      <a class="code" href="../../d9/db6/classcasadi_1_1GenericWeakRef.html#a7d89763051bfc5609b4f80baeda53b4f">shared</a>.<a class="code" href="../../da/d35/classcasadi_1_1GenericShared.html#acc2ff9968cb7446e61f295f4e2ccc378">own</a>((*this)-&gt;raw_);</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    }</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;  }</div>
+<div class="fragment"><div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                                                                             {</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../da/d35/classcasadi_1_1GenericShared.html#abd28957366899587b9da638343fe41b5">is_null</a>()) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="preprocessor">#ifdef CASADI_WITH_THREADSAFE_SYMBOLICS</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <span class="comment">// Safe access to ...</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    std::lock_guard&lt;std::mutex&gt; lock(*(*this)-&gt;mutex_);</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_WITH_THREADSAFE_SYMBOLICS</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d9/db6/classcasadi_1_1GenericWeakRef.html#a4333d44daa0ff8b73abbb6d42471a744">alive</a>()) {</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;      <a class="code" href="../../d9/db6/classcasadi_1_1GenericWeakRef.html#a7d89763051bfc5609b4f80baeda53b4f">shared</a>.<a class="code" href="../../da/d35/classcasadi_1_1GenericShared.html#acc2ff9968cb7446e61f295f4e2ccc378">own</a>((*this)-&gt;raw_);</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    }</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  }</div>
 <div class="ttc" id="aclasscasadi_1_1GenericShared_html_acc2ff9968cb7446e61f295f4e2ccc378"><div class="ttname"><a href="../../da/d35/classcasadi_1_1GenericShared.html#acc2ff9968cb7446e61f295f4e2ccc378">casadi::GenericShared::own</a></div><div class="ttdeci">void own(Internal *node)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00079">generic_shared_impl.hpp:79</a></div></div>
 </div><!-- fragment -->
 </div>

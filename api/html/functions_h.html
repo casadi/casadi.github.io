@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/83b3cec864e42c5b64a07e85d4adf91da71458b1" id="83b3cec864e42c5b64a07e85d4adf91da71458b1" >revision 3.8.0</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/dafc81035257e0e57db5c65b2ac851a6239fb1c4" id="dafc81035257e0e57db5c65b2ac851a6239fb1c4" >revision 3.8.1</a></div>
   </td>
  </tr>
  </tbody>
@@ -119,6 +119,12 @@ $(function() {
 : <a class="el" href="d6/dac/classcasadi_1_1Callback.html#a964dd552d05d4d87ff7687c0e99a8cb4">casadi::Callback</a>
 , <a class="el" href="df/d13/classcasadi_1_1CallbackInternal.html#a1e12455165d34106b718b84ffc40615f">casadi::CallbackInternal</a>
 </li>
+<li>has_linear_gradf_
+: <a class="el" href="de/d50/classcasadi_1_1ConoptInterface.html#afddb0378483a492d41838be25525e6db">casadi::ConoptInterface</a>
+</li>
+<li>has_linear_jac_
+: <a class="el" href="de/d50/classcasadi_1_1ConoptInterface.html#abc08f37de522b2d5329c6c57639e248b">casadi::ConoptInterface</a>
+</li>
 <li>has_meta()
 : <a class="el" href="de/d6f/classcasadi_1_1Importer.html#a8b2c9aeba56b9fa2ada046c8cd8f3303">casadi::Importer</a>
 </li>
@@ -169,11 +175,11 @@ $(function() {
 <li>hash()
 : <a class="el" href="d5/da8/classcasadi_1_1Sparsity.html#ace1c27730e2d0ba873092a6c9ee195f3">casadi::Sparsity</a>
 </li>
-<li>hb
-: <a class="el" href="d1/da5/structcasadi__hpipm__data.html#a5c50e63de90db85e3cf4f966a3f4f9d2">casadi_hpipm_data&lt; T1 &gt;</a>
-</li>
 <li>hB
 : <a class="el" href="d1/da5/structcasadi__hpipm__data.html#a47357d8c18107c548123efd32f2e12bc">casadi_hpipm_data&lt; T1 &gt;</a>
+</li>
+<li>hb
+: <a class="el" href="d1/da5/structcasadi__hpipm__data.html#a5c50e63de90db85e3cf4f966a3f4f9d2">casadi_hpipm_data&lt; T1 &gt;</a>
 </li>
 <li>hC
 : <a class="el" href="d1/da5/structcasadi__hpipm__data.html#abe8d40d46e38cc54abf6d33e18a38c73">casadi_hpipm_data&lt; T1 &gt;</a>
@@ -194,6 +200,9 @@ $(function() {
 : <a class="el" href="d4/db8/structcasadi__ccopt__data.html#aba05675d898580adf626c170b3c9988d">casadi_ccopt_data&lt; T1 &gt;</a>
 , <a class="el" href="d5/daf/structcasadi__madnlp__data.html#abb19e0b8d60b8a6148a36de3297d4794">casadi_madnlp_data&lt; T1 &gt;</a>
 </li>
+<li>hess_lam_g_
+: <a class="el" href="d8/d9c/structcasadi_1_1ConoptMemory.html#a72d631d34856d7ee867266552ac28c46">casadi::ConoptMemory</a>
+</li>
 <li>hess_prod_cb
 : <a class="el" href="d4/d4d/structcasadi__uno__prob.html#a076c0e8d2860f492d29b7aa1a91d3101">casadi_uno_prob&lt; T1 &gt;</a>
 </li>
@@ -205,6 +214,9 @@ $(function() {
 </li>
 <li>hessian_old()
 : <a class="el" href="da/da4/classcasadi_1_1Function.html#a7999200eb4fc819a617c96f100bd6384">casadi::Function</a>
+</li>
+<li>hesslag_sp_
+: <a class="el" href="de/d50/classcasadi_1_1ConoptInterface.html#a3493712f0cf97b16efe55124df9baba9">casadi::ConoptInterface</a>
 </li>
 <li>hI
 : <a class="el" href="d1/da5/structcasadi__hpipm__data.html#aee787edaf57bf15442aa7a02c68cac25">casadi_hpipm_data&lt; T1 &gt;</a>
@@ -245,11 +257,11 @@ $(function() {
 <li>hq
 : <a class="el" href="d1/da5/structcasadi__hpipm__data.html#a45a2f6a8ed97d3e61ab0cbfed74cf761">casadi_hpipm_data&lt; T1 &gt;</a>
 </li>
-<li>hR
-: <a class="el" href="d1/da5/structcasadi__hpipm__data.html#a7b3ff0caaa09a5355488abd931133523">casadi_hpipm_data&lt; T1 &gt;</a>
-</li>
 <li>hr
 : <a class="el" href="d1/da5/structcasadi__hpipm__data.html#abdd98ac31e91a5151af4edd4156dc8c4">casadi_hpipm_data&lt; T1 &gt;</a>
+</li>
+<li>hR
+: <a class="el" href="d1/da5/structcasadi__hpipm__data.html#a7b3ff0caaa09a5355488abd931133523">casadi_hpipm_data&lt; T1 &gt;</a>
 </li>
 <li>Hrsp
 : <a class="el" href="d2/d39/structcasadi__convexify__config.html#a9c62cb203bc89ee10c48dc1c860fabc6">casadi_convexify_config&lt; T1 &gt;</a>
