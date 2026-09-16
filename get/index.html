@@ -391,7 +391,7 @@ The example <code>docs/examples/julia/simple_nlp.jl</code> should look fairly fa
 <li><strong>3.8.1</strong>: A machine-readable <a href="https://github.com/casadi/casadi/releases/download/3.8.1/casadi-serialization_scheme-v3.8.1.json">serialization scheme</a> is supplied with the release (<a href="https://github.com/casadi/casadi/issues/4414">#4414</a>).</li>
 <li><strong>3.8.1</strong>: <code>Function.export_graph(&quot;graph.html&quot;)</code> exports SX/MX instruction graphs for interactive inspection in a browser; Graphviz <code>.dot</code> and JSON <code>.casadi_viz</code> exports are also supported (<a href="https://github.com/casadi/casadi/issues/4412">#4412</a>, <a href="https://github.com/casadi/casadi/issues/747">#747</a>).</li>
 </ul>
-<img width="2440" height="1257" alt="Screenshot from 2026-09-16 09-58-19" src="https://github.com/user-attachments/assets/ebac3147-51c5-4df4-ac37-b4b3bd3209da" />
+<img alt="Screenshot of the graph visualizer" src="https://github.com/user-attachments/assets/ebac3147-51c5-4df4-ac37-b4b3bd3209da" />
 <h2 id="code-generation">Code generation</h2>
 <p>It is now thread-safe to evaluate code-generated non-trivial Functions (i.e. those carrying memory objects, such as NLP/QP solvers) from multiple threads at once (<a href="https://github.com/casadi/casadi/issues/2463">#2463</a>). To make a generated Function thread-safe:</p>
 <ul>
@@ -486,13 +486,13 @@ structure regression (<a href="https://github.com/casadi/casadi/issues/4210">#42
 <h3 id="numpy-bug">NumPy bug</h3>
 <p><strong>breaking</strong> The behavior of <code>np.remainder</code>/<code>np.mod</code>/<code>%</code> applied on CasADi types was fixed to be in align with numpy expectations.</p>
 <p>All of the below return <code>1</code> in Python.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">print(np.remainder(3,2))
-</span></span><span class="line"><span class="cl">print(np.mod(3,2))
-</span></span><span class="line"><span class="cl">print(3 % 2)
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">remainder</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="mi">3</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span>
 </span></span></code></pre></div><p>Now consider the CasADi variants:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">print(np.remainder(ca.DM(3),ca.DM(2)))
-</span></span><span class="line"><span class="cl">print(np.mod(ca.DM(3),ca.DM(2)))
-</span></span><span class="line"><span class="cl">print(ca.DM(3) % np.array(2))
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">remainder</span><span class="p">(</span><span class="n">ca</span><span class="o">.</span><span class="n">DM</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">ca</span><span class="o">.</span><span class="n">DM</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">ca</span><span class="o">.</span><span class="n">DM</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">ca</span><span class="o">.</span><span class="n">DM</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">ca</span><span class="o">.</span><span class="n">DM</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">%</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
 </span></span></code></pre></div><p>These returned <code>-1</code> in prior CasADi versions, and now return 1.</p>
 <h3 id="other-python-changes">Other Python changes</h3>
 <ul>
