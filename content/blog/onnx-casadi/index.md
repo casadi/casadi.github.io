@@ -225,7 +225,3 @@ but I believe our progressive embracing of the ONNX standard will open a lot of 
 As a bonus, all of the above is compatible with CasADi C code generation.
 
 Enjoy!
-
-There is also a Youtube video available discussing this example more in-depth.
-
-
