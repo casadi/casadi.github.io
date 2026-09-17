@@ -135,10 +135,16 @@ vibr = ca.GraphBuilder("vibr.onnx").create("vibr", {"enable_fd": True})
 
 Limited precision and speed, but may get the job done.
 
-Now, Ipopt is happy to solve the shuttle problem. Notably, it was able to construct `nlp_jac_g` using a mixture of CasADi graph AD, and FD on top of the ONNX call.
+Now, Ipopt is happy to solve the shuttle problem in a 8.83ms. Notably, it was able to construct `nlp_jac_g` using a mixture of CasADi graph AD, and FD on top of the ONNX call.
 
 ```
-(show ipopt timings)
+      solver  :   t_proc      (avg)   t_wall      (avg)    n_eval
+       nlp_f  |  16.00us (  1.23us)  13.63us (  1.05us)        13
+       nlp_g  | 348.00us ( 26.77us) 341.86us ( 26.30us)        13
+  nlp_grad_f  |  22.00us (  1.57us)  22.57us (  1.61us)        14
+  nlp_hess_l  |  15.07ms (  1.26ms)   1.05ms ( 87.23us)        12
+   nlp_jac_g  |  57.48ms (  4.11ms)   2.17ms (154.90us)        14
+       total  | 132.05ms (132.05ms)   8.83ms (  8.83ms)         1
 ```
 
 Download code: [step3.py](step3.py)
@@ -170,7 +176,13 @@ vibr = ca.GraphBuilder("vibr.onnx").create("vibr")
 
 IPOPT solves cleanly, and a bit faster:
 ```
-(show timings)
+      solver  :   t_proc      (avg)   t_wall      (avg)    n_eval
+       nlp_f  |  14.00us (  1.08us)  11.99us (921.92ns)        13
+       nlp_g  |  14.36ms (  1.10ms) 357.96us ( 27.54us)        13
+  nlp_grad_f  |  25.00us (  1.79us)  22.10us (  1.58us)        14
+  nlp_hess_l  |  14.76ms (  1.23ms)   1.01ms ( 83.99us)        12
+   nlp_jac_g  |  15.09ms (  1.08ms) 991.62us ( 70.83us)        14
+       total  |  74.67ms ( 74.67ms)   4.95ms (  4.95ms)         1
 ```
 
 Download code: [step5.py](step5.py)
@@ -195,7 +207,13 @@ vibr:(x[2],τ)->(y) MXFunction
 For small Neural Networks that may be more efficient, as CasADi is optimized to work with small/medium scale heterogeneous models, as opposed to AI tools which are optimized for bulky tensor operations.
 
 ```
-(timings)
+      solver  :   t_proc      (avg)   t_wall      (avg)    n_eval
+       nlp_f  |  10.00us (769.23ns)   7.12us (547.92ns)        13
+       nlp_g  |  66.00us (  5.08us)  64.30us (  4.95us)        13
+  nlp_grad_f  |  14.00us (  1.00us)  13.73us (980.71ns)        14
+  nlp_hess_l  |  94.00us (  7.83us)  94.22us (  7.85us)        12
+   nlp_jac_g  | 173.00us ( 12.36us) 173.52us ( 12.39us)        14
+       total  |   2.26ms (  2.26ms)   2.26ms (  2.26ms)         1
 ```
 
 Download code: [step7.py](step7.py)
@@ -205,3 +223,9 @@ Download code: [step7.py](step7.py)
 This new feature of CasADi is still in its infancy,
 but I believe our progressive embracing of the ONNX standard will open a lot of possibilities in the future whilst avoiding vendor lock-in for your team of engineers.
 As a bonus, all of the above is compatible with CasADi C code generation.
+
+Enjoy!
+
+There is also a Youtube video available discussing this example more in-depth.
+
+
