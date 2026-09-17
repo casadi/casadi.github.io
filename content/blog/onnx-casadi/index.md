@@ -4,7 +4,6 @@ author: jg
 tags: onnx NLP
 date: 2026-09-17
 image: adj_vibr_node.png
-draft: true
 ---
 
 # Rationale
