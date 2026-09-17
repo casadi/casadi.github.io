@@ -1,0 +1,317 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+      <title>CasADi - Blog - Neural Networks in constrained optimization via ONNX</title>
+    
+
+    
+    <link href="https://web.casadi.org/_css/font-awesome.min.css" rel="stylesheet">
+
+    
+    <link href="https://web.casadi.org/_css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <link href="https://web.casadi.org/_css/pygments-default.css" rel="stylesheet">
+
+    
+    <link href="https://web.casadi.org/_css/casadi-theme.min.css" rel="stylesheet">
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+          displayMath: [ ['$$','$$'], ['\\[','\\]'] ],
+          processEnvironments: false
+        }
+      });
+    </script>
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+
+  <body>
+
+
+
+<nav class="navbar fixed-top navbar-expand-lg nav-top">
+  <div class="container">
+    <a class="navbar-brand" href="https://web.casadi.org/"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        
+        
+          
+          <li class="nav-item active">
+          
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/get/">Install</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/docs/">Docs</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/support/">Consulting/Support</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/events/">Training/Workshops</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/source/">Source</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/publications/">Publications</a>
+          </li>
+        
+          
+          <li class="nav-item active">
+          
+            <a class="nav-link" href="/blog/">Blog</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div id="main" class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Neural Networks in constrained optimization via ONNX</h1>
+      <span class="reading-time text-muted">Estimated reading time: 6 minutes</span>
+
+      <h1 id="rationale">Rationale</h1>
+<p>Incorporating neural networks in model predictive control has been trending for many years.
+A carefully crafted model of a mechanical device may benefit from a pure data-driven approach to model stick/slip friction.
+Human comfort may best be described by a learned model to be used as path constraints for an indoor climate system.</p>
+<h1 id="solutions">Solutions</h1>
+<p>Machine learning tools (unconstrained optimization) and CasADi (constrained optimization) are natural partners. They all share the language of mathematics, and in particular derivatives.</p>
+<p>Since CasADi flexibly allows embedding any custom Functions in its computational graph,
+many proof-of-concepts have popped up over the years.
+The most mature one is probably <a href="https://github.com/Tim-Salzmann/l4casadi">l4casadi</a>.</p>
+<p>CasADi 3.8 <a href="https://web.casadi.org/get/#notesTab-38">introduces</a> a standardized way to create a seamless coupling.
+We embraced <a href="https://onnx.ai/">ONNX</a>, the AI industry&rsquo;s exchange format for neural networks.</p>
+<p>ONNX is meant for inference (=function evaluation) and encoding of neural networks,
+but it&rsquo;s flexible enough to encode generic computational graphs, or indeed derivatives of neural networks.</p>
+<h1 id="hello-world-onnx">Hello world, ONNX</h1>
+<p>Let&rsquo;s consider a case of a shuttle driving around people on a bumpy road.
+It&rsquo;s an optimal control problem with vibrations as path constraints. The vibration behaviour may be influenced by a parameter $\tau$ describing the wetness of the road:</p>
+<p>$$
+\begin{align}
+\displaystyle \underset{x_0,\ldots,x_N,\,u_0,\ldots,u_{N-1}}
+{\text{minimize}}\quad &amp;\displaystyle \sum_{k=0}^{N-1} u_k^2 \newline
+\text{subject to} \, \quad
+&amp; x_{k+1} = F(x_k,u_k), &amp; k=0,\ldots,N-1 \newline
+&amp; -1 \leq u_k \leq 1, &amp; k=0,\ldots,N-1 \newline
+&amp; 0 \leq v_k \leq 1.5, &amp; k=0,\ldots,N-1 \newline
+&amp; \mathrm{vibr}(x_k,\tau) \leq 0.48, &amp; k=0,\ldots,N-1 \newline
+&amp; x_0 = (0,0)^\top, \quad x_N = (1.8,0)^\top
+\end{align}
+$$</p>
+<p>with state $x_k=(p_k,v_k)^\top$ (position, velocity), control $u_k$ the acceleration, $N=3$ and dynamics $F$.</p>
+<p>Using CasADi Opti, this becomes:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">opti</span> <span class="o">=</span> <span class="n">ca</span><span class="o">.</span><span class="n">Opti</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">τ</span> <span class="o">=</span> <span class="n">opti</span><span class="o">.</span><span class="n">parameter</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">opti</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">τ</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">N</span> <span class="o">=</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl"><span class="n">X</span> <span class="o">=</span> <span class="n">opti</span><span class="o">.</span><span class="n">variable</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">U</span> <span class="o">=</span> <span class="n">opti</span><span class="o">.</span><span class="n">variable</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">opti</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">ca</span><span class="o">.</span><span class="n">sumsqr</span><span class="p">(</span><span class="n">U</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">opti</span><span class="o">.</span><span class="n">subject_to</span><span class="p">(</span>       <span class="n">X</span><span class="p">[:,</span> <span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">F</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="n">k</span><span class="p">],</span> <span class="n">U</span><span class="p">[:,</span> <span class="n">k</span><span class="p">]))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">opti</span><span class="o">.</span><span class="n">subject_to</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="n">U</span><span class="p">[:,</span> <span class="n">k</span><span class="p">]</span>   <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">opti</span><span class="o">.</span><span class="n">subject_to</span><span class="p">(</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span>   <span class="o">&lt;=</span> <span class="mf">1.5</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">opti</span><span class="o">.</span><span class="n">subject_to</span><span class="p">(</span><span class="n">vibr</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="n">k</span><span class="p">],</span> <span class="n">τ</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mf">.48</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">opti</span><span class="o">.</span><span class="n">subject_to</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">opti</span><span class="o">.</span><span class="n">subject_to</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="n">N</span><span class="p">]</span> <span class="o">==</span> <span class="p">[</span><span class="mf">1.8</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">opti</span><span class="o">.</span><span class="n">solver</span><span class="p">(</span><span class="s2">&#34;ipopt&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sol</span> <span class="o">=</span> <span class="n">opti</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+</span></span></code></pre></div><p>Download code: <a href="step1.py">step1.py</a></p>
+<p>We can use torch to train a neural network and export it as onnx:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">torch</span><span class="o">.</span><span class="n">onnx</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                         <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)),</span> <span class="s2">&#34;vibr.onnx&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                  <span class="n">input_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;x&#34;</span><span class="p">,</span> <span class="s2">&#34;τ&#34;</span><span class="p">],</span> <span class="n">output_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;y&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">                  <span class="n">dynamo</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">opset_version</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">external_data</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span></code></pre></div><p>Download code: <a href="step2.py">step2.py</a></p>
+<p>A new CasADi construct, <code>GraphBuilder</code>, allows us to read that ONNX file,
+possibly make some parametric dimensions concrete, and then create a CasADi Function:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">vibr</span> <span class="o">=</span> <span class="n">ca</span><span class="o">.</span><span class="n">GraphBuilder</span><span class="p">(</span><span class="s2">&#34;vibr.onnx&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">&#34;vibr&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">vibr</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">vibr:(x[1x2],τ)-&gt;(y) OnnxRuntimeInterface
+</span></span></code></pre></div><p>This required a little extra setup: download an onnxruntime from <a href="https://github.com/microsoft/onnxruntime/releases">https://github.com/microsoft/onnxruntime/releases</a>, and make it available in the <code>CASADI_ONNXRUNTIME_LIB</code> environment variable:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">CASADI_ONNXRUNTIME_LIB</span><span class="o">=</span>/path/to/onnxruntime-linux-x64-1.22.0/lib/libonnxruntime.so
+</span></span></code></pre></div><p>It&rsquo;s this library that will be in charge of evaluating the ONNX file efficiently, on a CPU or a GPU.</p>
+<p>You can now happily evaluate this graph, just like any other CasADi Function:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">vibr</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="mf">0.0</span><span class="p">))</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">0.130223
+</span></span></code></pre></div><h1 id="jacobians-and-hessians">Jacobians and Hessians</h1>
+<p>How do we get a Jacobian to work?</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">J</span> <span class="o">=</span> <span class="n">ca</span><span class="o">.</span><span class="n">jacobian</span><span class="p">(</span><span class="n">vibr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">τ</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
+</span></span></code></pre></div><p>This results in an error:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Derivatives cannot be calculated for vibr
+</span></span></code></pre></div><h2 id="finite-differences">Finite differences</h2>
+<p>The lazy way is to defer to CasADi&rsquo;s built-in Finite Differences:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">vibr</span> <span class="o">=</span> <span class="n">ca</span><span class="o">.</span><span class="n">GraphBuilder</span><span class="p">(</span><span class="s2">&#34;vibr.onnx&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">&#34;vibr&#34;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&#34;enable_fd&#34;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
+</span></span></code></pre></div><p>Limited precision and speed, but may get the job done.</p>
+<p>Now, Ipopt is happy to solve the shuttle problem in a 8.83ms. Notably, it was able to construct <code>nlp_jac_g</code> using a mixture of CasADi graph AD, and FD on top of the ONNX call.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">      solver  :   t_proc      (avg)   t_wall      (avg)    n_eval
+</span></span><span class="line"><span class="cl">       nlp_f  |  16.00us (  1.23us)  13.63us (  1.05us)        13
+</span></span><span class="line"><span class="cl">       nlp_g  | 348.00us ( 26.77us) 341.86us ( 26.30us)        13
+</span></span><span class="line"><span class="cl">  nlp_grad_f  |  22.00us (  1.57us)  22.57us (  1.61us)        14
+</span></span><span class="line"><span class="cl">  nlp_hess_l  |  15.07ms (  1.26ms)   1.05ms ( 87.23us)        12
+</span></span><span class="line"><span class="cl">   nlp_jac_g  |  57.48ms (  4.11ms)   2.17ms (154.90us)        14
+</span></span><span class="line"><span class="cl">       total  | 132.05ms (132.05ms)   8.83ms (  8.83ms)         1
+</span></span></code></pre></div><p>Download code: <a href="step3.py">step3.py</a></p>
+<h2 id="algorithmic-differentiation">Algorithmic differentiation</h2>
+<p>The more interesting route is to have your machine learning tool perform source-code-transforming algorithmic differentiation on the neural network and make that part of the exported ONNX file. The most efficient way is when you keep <code>vibr.onnx</code> for pure evaluation, and add for example <code>adj_vibr.onnx</code> to do reverse sensitivity sweeps.
+You can now imagine CasADi-generated <code>nlp_g</code> talking with <code>vibr.onnx</code> and <code>nlp_jac_g</code> talking to <code>adj_vibr.onnx</code>.</p>
+<p>This boils down to some sort of convention on top of the ONNX standard, tailored to constrained optimization.</p>
+<p>If you are using torch (and in fact the whole point of the ONNX exchange standard is that you can easily model/train in some environment and load that graph in torch), there is a convenience package <a href="https://github.com/casadi/torch2casadi">torch2casadi</a> (<code>pip install torch2casadi</code>) that does all the required plumbing:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">torch2casadi</span> <span class="kn">import</span> <span class="n">export</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">export</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">       <span class="s2">&#34;.&#34;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&#34;vibr&#34;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">input_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;x&#34;</span><span class="p">,</span> <span class="s2">&#34;τ&#34;</span><span class="p">],</span> <span class="n">is_diff_in</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
+</span></span></code></pre></div><p>This will generate <code>vibr.onnx</code>, <code>adj_vibr.onnx</code>, <code>fwd_adj_vibr.onnx</code>.</p>
+<p>Download code: <a href="step4.py">step4.py</a></p>
+<p>The CasADi Function <code>vibr</code> will now automatically become twice differentiable. No extra options needed:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">vibr</span> <span class="o">=</span> <span class="n">ca</span><span class="o">.</span><span class="n">GraphBuilder</span><span class="p">(</span><span class="s2">&#34;vibr.onnx&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">&#34;vibr&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>IPOPT solves cleanly, and a bit faster:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">      solver  :   t_proc      (avg)   t_wall      (avg)    n_eval
+</span></span><span class="line"><span class="cl">       nlp_f  |  14.00us (  1.08us)  11.99us (921.92ns)        13
+</span></span><span class="line"><span class="cl">       nlp_g  |  14.36ms (  1.10ms) 357.96us ( 27.54us)        13
+</span></span><span class="line"><span class="cl">  nlp_grad_f  |  25.00us (  1.79us)  22.10us (  1.58us)        14
+</span></span><span class="line"><span class="cl">  nlp_hess_l  |  14.76ms (  1.23ms)   1.01ms ( 83.99us)        12
+</span></span><span class="line"><span class="cl">   nlp_jac_g  |  15.09ms (  1.08ms) 991.62us ( 70.83us)        14
+</span></span><span class="line"><span class="cl">       total  |  74.67ms ( 74.67ms)   4.95ms (  4.95ms)         1
+</span></span></code></pre></div><p>Download code: <a href="step5.py">step5.py</a></p>
+<p>If you export the constraint Jacobian graph with <code>ca.export_graph(ca.jacobian(opti.g, X), &quot;step5.html&quot;)</code> and drill down into one of the <code>jac_wrap_vibr</code> calls, you can see <code>adj_vibr.onnx</code> being embedded.</p>
+<figure class=" default">
+  <a href="https://web.casadi.org/blog/onnx-casadi/adj_vibr_node.png" target="_blank">
+  <img src="https://web.casadi.org/blog/onnx-casadi/adj_vibr_node.png"  />
+  </a>
+  <figcaption>
+    <h1>The adj_vibr.onnx call node inside CasADi&#39;s constraint Jacobian</h1>
+  </figcaption>
+</figure>
+<h1 id="a-whitebox-neural-network">A whitebox Neural Network</h1>
+<p>For a subset of the ONNX standard, we also allow to import models symbolically, encoding the neural network flow directly in MX.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">vibr</span> <span class="o">=</span> <span class="n">ca</span><span class="o">.</span><span class="n">GraphBuilder</span><span class="p">(</span><span class="s2">&#34;vibr.onnx&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">&#34;vibr&#34;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&#34;symbolic&#34;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">vibr</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">vibr:(x[2],τ)-&gt;(y) MXFunction
+</span></span></code></pre></div><p>For small Neural Networks that may be more efficient, as CasADi is optimized to work with small/medium scale heterogeneous models, as opposed to AI tools which are optimized for bulky tensor operations.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">      solver  :   t_proc      (avg)   t_wall      (avg)    n_eval
+</span></span><span class="line"><span class="cl">       nlp_f  |  10.00us (769.23ns)   7.12us (547.92ns)        13
+</span></span><span class="line"><span class="cl">       nlp_g  |  66.00us (  5.08us)  64.30us (  4.95us)        13
+</span></span><span class="line"><span class="cl">  nlp_grad_f  |  14.00us (  1.00us)  13.73us (980.71ns)        14
+</span></span><span class="line"><span class="cl">  nlp_hess_l  |  94.00us (  7.83us)  94.22us (  7.85us)        12
+</span></span><span class="line"><span class="cl">   nlp_jac_g  | 173.00us ( 12.36us) 173.52us ( 12.39us)        14
+</span></span><span class="line"><span class="cl">       total  |   2.26ms (  2.26ms)   2.26ms (  2.26ms)         1
+</span></span></code></pre></div><p>Download code: <a href="step7.py">step7.py</a></p>
+<h1 id="wrap-up">Wrap-up</h1>
+<p>This new feature of CasADi is still in its infancy,
+but I believe our progressive embracing of the ONNX standard will open a lot of possibilities in the future whilst avoiding vendor lock-in for your team of engineers.
+As a bonus, all of the above is compatible with CasADi C code generation.</p>
+<p>Enjoy!</p>
+
+    </div>
+  </div>
+</div>
+    
+
+
+<a href="https://www.yacoda.com/training/casadi" target="_blank" id="bottom-banner" class="visible">
+
+
+  <div class="container p-3">
+    <div class="row justify-content-md-center">
+      <div class="col-md-auto text-center">
+        <p>📣Next hands-on CasADi classes: October 2026 (basic) and January 2027 (advanced)</p>
+
+      </div>
+    </div>
+  </div>
+</a>
+
+
+    
+    <footer>
+      <div class="container">
+        <div class="row justify-content-md-center">
+          <div class="col-md-auto text-center">
+            <ul id="social" class="list-inline">
+              
+                <li class="list-inline-item">
+                  <a href="https://github.com/casadi/casadi" title="github">
+                    <i class="fa fa-github"></i>
+                  </a>
+                </li>
+              
+                <li class="list-inline-item">
+                  <a href="https://www.youtube.com/channel/UC3VDpv5Pi3R-a2VkcJN1RLw" title="youtube">
+                    <i class="fa fa-youtube"></i>
+                  </a>
+                </li>
+              
+            </ul>
+            <p class="copyright">Copyright 2026.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    
+    <script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    
+    <script src="https://web.casadi.org/_js/bootstrap.min.js"></script>
+
+    
+    <script src="https://web.casadi.org/_js/scripts.js"></script>
+
+    
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+
+    
+  </body>
+
+</html>
+
