@@ -217,6 +217,62 @@ For small Neural Networks that may be more efficient, as CasADi is optimized to 
 
 Download code: [step7.py](step7.py)
 
+# Adapting weights
+
+Another use-case is to fine-tune or fit the NN weights inside a CasADi optimization.
+There is no technical restriction in the ONNX standard or the CasADi interface to develop such a case.
+In torch, you can promote weights into updatable parameters with:
+
+```python
+class FreeWeights(nn.Module):
+    def __init__(self, model):
+        super().__init__()
+        self.model = model
+        self.names = [n for n, _ in model.named_parameters()]
+
+    def forward(self, *args):
+        n = len(self.names)
+        return torch.func.functional_call(self.model, dict(zip(self.names, args[-n:])), args[:-n])
+
+params = [p.detach() for p in model.parameters()]
+export(FreeWeights(model), (torch.zeros(1, 2, dtype=torch.float64),
+                            torch.zeros(1, 1, dtype=torch.float64), *params), ".",
+       name="vibr", input_names=["x", "τ", "W1", "b1", "W2", "b2"], hessian=False, overwrite=True)
+vibr = ca.GraphBuilder("vibr.onnx").create("vibr")
+print(vibr)
+```
+
+```
+vibr:(x[2],τ,W1[48],b1[16],W2[16],b2)->(y) OnnxRuntimeInterface
+```
+
+The solvers shipped in CasADi are not specifically tailored to NN (they are tailored to constrained optimization), so two caveats apply: avoid using non-smooth activation functions, and avoid using exact Hessians
+(`hessian=False` skips exporting the forward-over-adjoint graph, whose cost grows with the number of weights).
+Other than that, you can just proceed like:
+
+```python
+opti = ca.Opti()
+weights = [opti.variable(p.numel()) for p in params]
+residuals = ca.vertcat(*[vibr(m[:2], m[2], *weights) - y for m, y in zip(meas, y_meas)])
+opti.minimize(ca.sumsqr(residuals)
+              + 1e-2*sum(ca.sumsqr(w-p.reshape(-1).numpy()) for w, p in zip(weights, params)))
+for w, p in zip(weights, params):
+    opti.set_initial(w, p.reshape(-1).numpy())
+opti.solver("ipopt", {}, {"hessian_approximation": "limited-memory",
+                          "limited_memory_max_history": 50})
+sol = opti.solve()
+```
+
+Here, `meas` and `y_meas` are 64 vibration measurements taken on the actual shuttle, which turns out to vibrate a bit more than the pretraining data suggested.
+The fit starts from the pretrained weights and stays close to them:
+
+```
+RMS error before: 0.1536804668330229
+RMS error after:  0.010159448309198394
+```
+
+Download code: [step8.py](step8.py)
+
 # Wrap-up
 
 This new feature of CasADi is still in its infancy,
