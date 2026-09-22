@@ -273,6 +273,10 @@ RMS error after:  0.010159448309198394
 
 Download code: [step8.py](step8.py)
 
+# Future work
+
+It may be interesting to perform source-code-transforming AD on ONNX standalone without a dependency on pytorch. An experimental package can be found at [onnx-ad](https://github.com/yacoda/onnx-ad)
+
 # Wrap-up
 
 This new feature of CasADi is still in its infancy,
