@@ -1,0 +1,881 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Constrained Trajectory Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #03050b;
+  --bg2: #070b16;
+  --edge: rgba(90, 170, 255, 0.16);
+  --edge2: rgba(90, 170, 255, 0.32);
+  --fg: #dbe8ff;
+  --dim: #6d82a6;
+  --cyan: #38f2ff;
+  --mag: #ff2d87;
+  --amber: #ffb347;
+  --lime: #9dff6b;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --sans: 'Space Grotesk', system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--sans); }
+body { overflow-x: hidden; }
+button, input { font: inherit; color: inherit; }
+a { color: var(--cyan); }
+
+#app { display: grid; grid-template-columns: 1fr; }
+body.side #app { grid-template-columns: 1fr 380px; grid-template-rows: auto 1fr auto; height: 100vh; }
+body.side #top, body.side #ad { grid-column: 1 / 3; }
+body.side #dock { grid-template-columns: 1fr; grid-template-areas: "read" "prob" "lim" "tl"; overflow-y: auto; border-left: 1px solid var(--edge); align-content: start; }
+body.side #stage { min-height: 0; }
+
+/* ---------- top bar */
+#top {
+  display: flex; align-items: center; gap: 10px 16px; flex-wrap: wrap;
+  padding: 9px 14px; border-bottom: 1px solid var(--edge);
+  background: linear-gradient(180deg, #081021, #050912);
+}
+.brand { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-right: auto; }
+.brand b { font-weight: 700; letter-spacing: .08em; font-size: 15px; white-space: nowrap; }
+.brand b i { font-style: normal; color: var(--cyan); }
+.brand span { color: var(--dim); font: 11.5px var(--mono); letter-spacing: .04em; }
+.btn {
+  background: rgba(56,242,255,.06); border: 1px solid var(--edge2); border-radius: 8px;
+  padding: 5px 11px; cursor: pointer; font-size: 12.5px; letter-spacing: .03em; transition: all .15s; white-space: nowrap;
+}
+.btn:hover { border-color: var(--cyan); box-shadow: 0 0 12px rgba(56,242,255,.3); }
+
+/* ---------- stage */
+#stage { position: relative; background: var(--bg); overflow: hidden; }
+#cv { display: block; width: 100%; touch-action: none; cursor: crosshair; outline: none; }
+#hint {
+  position: absolute; left: 12px; bottom: 7px; right: 12px; pointer-events: none;
+  font: 11px var(--mono); color: rgba(160, 190, 230, .5); letter-spacing: .03em;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+#banner {
+  position: absolute; left: 50%; top: 14px; transform: translateX(-50%); white-space: nowrap;
+  font: 600 12px var(--mono); letter-spacing: .18em; padding: 7px 16px; border-radius: 6px;
+  color: #fff; background: rgba(255, 45, 135, .18); border: 1px solid var(--mag);
+  box-shadow: 0 0 24px rgba(255,45,135,.45); opacity: 0; transition: opacity .2s; pointer-events: none;
+}
+#banner.show { opacity: 1; }
+#boot {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 5;
+  background: rgba(3, 5, 11, .85); backdrop-filter: blur(3px); transition: opacity .6s;
+}
+#boot.gone { opacity: 0; pointer-events: none; }
+#boot pre {
+  font: 12px/1.55 var(--mono); color: var(--cyan); margin: 0; padding: 18px 22px; width: min(600px, 92%);
+  border: 1px solid var(--edge2); border-radius: 10px; background: rgba(5, 10, 22, .9);
+  box-shadow: 0 0 40px rgba(56,242,255,.12); white-space: pre-wrap;
+}
+#boot pre::after { content: '▋'; animation: blink 1s steps(2) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ---------- dock */
+#dock { display: grid; grid-template-columns: 1fr; grid-template-areas: "read" "prob" "lim" "tl"; gap: 1px; background: var(--edge); }
+#readout { grid-area: read; } #problem { grid-area: prob; } #limits { grid-area: lim; } #timeline { grid-area: tl; }
+@media (min-width: 720px) {
+  body:not(.side) #dock { grid-template-columns: 260px 1fr; grid-template-areas: "read prob" "lim tl"; }
+}
+@media (min-width: 1040px) {
+  body:not(.side) #dock { grid-template-columns: 240px 1.1fr 1fr; grid-template-areas: "read prob lim" "tl tl tl"; }
+}
+.card { background: var(--bg2); padding: 12px 14px; min-width: 0; }
+.card h3 {
+  margin: 0 0 9px; font: 600 10.5px var(--mono); letter-spacing: .16em; color: var(--dim); text-transform: uppercase;
+  display: flex; justify-content: space-between; align-items: center; gap: 6px 8px; flex-wrap: wrap;
+}
+#tstar { font: 600 42px/1 var(--mono); letter-spacing: -.02em; color: #fff; text-shadow: 0 0 22px rgba(56,242,255,.55); }
+#tstar small { font-size: 16px; color: var(--dim); margin-left: 4px; }
+#tdelta { font: 12px var(--mono); height: 16px; margin-top: 4px; color: var(--dim); }
+.stats { margin-top: 6px; display: grid; grid-template-columns: auto 1fr; gap: 3px 12px; font: 11.5px var(--mono); color: var(--dim); }
+.stats b { color: var(--fg); font-weight: 400; text-align: right; }
+#spark { width: 100%; height: 36px; display: block; margin-top: 10px; }
+
+.nlp { font: 12.5px/1.25 var(--mono); display: grid; grid-template-columns: auto 1fr auto; gap: 5px 10px; align-items: baseline; }
+.nlp .row { display: contents; }
+.nlp .k { color: var(--dim); font-size: 11px; }
+.nlp .e sub { font-size: 9px; }
+.nlp .a { font-size: 10.5px; color: var(--dim); text-align: right; white-space: nowrap; transition: color .2s, text-shadow .2s; }
+.nlp .row.on .e { color: #fff; text-shadow: 0 0 10px rgba(255,45,135,.9); }
+.nlp .row.on .a { color: var(--mag); text-shadow: 0 0 8px rgba(255,45,135,.8); }
+.nlp .obj .e { color: var(--cyan); text-shadow: 0 0 10px rgba(56,242,255,.6); }
+
+.lim { margin-bottom: 10px; }
+.lim .row { display: flex; justify-content: space-between; align-items: baseline; font-size: 13px; gap: 8px; }
+.lim .row span.v { font: 12px var(--mono); color: var(--cyan); white-space: nowrap; }
+.lim input[type=range] { width: 100%; margin: 5px 0 3px; accent-color: var(--cyan); }
+.price { display: flex; align-items: center; gap: 8px; font: 11px var(--mono); color: var(--dim); }
+.price .bar { flex: 1; height: 4px; background: rgba(255,255,255,.06); border-radius: 2px; position: relative; overflow: hidden; }
+.price .bar i { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: var(--mag); box-shadow: 0 0 8px var(--mag); transition: width .2s; }
+.price em { font-style: normal; white-space: nowrap; }
+.price.hot em { color: var(--mag); }
+.note { font: 11px/1.45 var(--mono); color: var(--dim); }
+.note a { color: var(--cyan); text-decoration: none; border-bottom: 1px dotted rgba(56,242,255,.6); }
+.note a:hover { border-bottom-style: solid; }
+
+#tl { width: 100%; display: block; cursor: ew-resize; }
+.legend { font: 10.5px var(--mono); color: var(--dim); display: flex; gap: 14px; text-transform: none; letter-spacing: .02em; align-items: center; }
+.legend i { display: inline-block; width: 14px; height: 2px; vertical-align: middle; margin-right: 5px; }
+#log { font: 10.5px/1.5 var(--mono); color: rgba(120, 200, 255, .5); height: 32px; overflow: hidden; margin-top: 6px; white-space: pre; }
+
+/* ---------- training ad */
+#ad {
+  display: flex; align-items: center; gap: 12px 18px; flex-wrap: wrap; justify-content: center;
+  padding: 12px 16px; text-decoration: none; color: var(--fg);
+  border-top: 1px solid rgba(255,179,71,.35);
+  background: linear-gradient(90deg, rgba(255,179,71,.06), rgba(56,242,255,.05) 60%, rgba(255,179,71,.06));
+  transition: background .2s;
+}
+#ad:hover { background: linear-gradient(90deg, rgba(255,179,71,.12), rgba(56,242,255,.09) 60%, rgba(255,179,71,.12)); }
+#ad img { height: 22px; width: auto; display: block; }
+#ad span { font-size: 15px; }
+#ad b {
+  font: 700 12px var(--mono); letter-spacing: .08em; color: #120800; background: var(--amber);
+  padding: 6px 12px; border-radius: 7px; box-shadow: 0 0 18px rgba(255,179,71,.4); white-space: nowrap;
+}
+#ad:hover b { box-shadow: 0 0 26px rgba(255,179,71,.7); }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="top">
+    <div class="brand"><b>CASADI <i>◆</i> WASM</b><span>constrained trajectory lab · runs in your browser</span></div>
+    <button class="btn" id="scramble" title="random obstacle field">⟳ scramble</button>
+    <button class="btn" id="reset">reset</button>
+  </div>
+  <div id="stage">
+    <canvas id="cv"></canvas>
+    <div id="banner">NO FEASIBLE TRAJECTORY</div>
+    <div id="hint">drag obstacles · drag A and B · move the limit sliders · grab the path and pull</div>
+    <div id="boot"><pre id="bootlog">booting</pre></div>
+  </div>
+  <div id="dock">
+    <div class="card" id="readout">
+      <h3>minimum time <span id="stat">—</span></h3>
+      <div id="tstar">—<small>s</small></div>
+      <div id="tdelta"></div>
+      <div class="stats">
+        <span>solve</span><b id="sMs">—</b>
+        <span>iterations</span><b id="sIt">—</b>
+        <span>variables</span><b id="sNw">—</b>
+        <span>constraints</span><b id="sNg">—</b>
+      </div>
+      <canvas id="spark"></canvas>
+    </div>
+    <div class="card" id="problem">
+      <h3>the problem, live <span>at the optimum</span></h3>
+      <div class="nlp" id="nlp">
+        <div class="row obj"><span class="k">minimize</span><span class="e">T</span><span class="a" id="aT"></span></div>
+        <div class="row" data-g="dyn"><span class="k">subject to</span><span class="e">ṗ = v,  v̇ = a</span><span class="a">always</span></div>
+        <div class="row" data-g="speed"><span class="k"></span><span class="e">|v(t)| ≤ v<sub>max</sub></span><span class="a"></span></div>
+        <div class="row" data-g="thrust"><span class="k"></span><span class="e">|a(t)| ≤ a<sub>max</sub></span><span class="a"></span></div>
+        <div class="row" data-g="obs"><span class="k"></span><span class="e">|p(t) − o<sub>j</sub>| ≥ r<sub>j</sub> + δ</span><span class="a"></span></div>
+        <div class="row" data-g="walls"><span class="k"></span><span class="e">p(t) ∈ arena</span><span class="a"></span></div>
+        <div class="row" data-g="bc"><span class="k"></span><span class="e">A → B, at rest at both ends</span><span class="a">always</span></div>
+      </div>
+      <div class="note" style="margin-top:9px">multiple shooting · N = 50 · RK4 · solved by
+        <a href="https://github.com/meco-group/fatrop" target="_blank" rel="noopener">fatrop</a> compiled to WebAssembly</div>
+    </div>
+    <div class="card" id="limits">
+      <h3>limits <span>price ∂T*/∂limit</span></h3>
+      <div id="limbox"></div>
+      <div class="note" id="limnote"></div>
+    </div>
+    <div class="card" id="timeline">
+      <h3>constraint activity over time
+        <span class="legend"><span><i style="background:var(--cyan)"></i>trajectory</span><span><i style="background:var(--mag)"></i>on the bound</span>
+        <button class="btn" id="play" style="padding:1px 8px;font-size:11px">❚❚</button></span></h3>
+      <canvas id="tl"></canvas>
+      <div id="log"></div>
+    </div>
+  </div>
+  <a id="ad" href="https://www.yacoda.com/training/ocbt" target="_blank" rel="noopener">
+    <img src="casadi_logo.svg" alt="CasADi">
+    <span>Learn CasADi and optimal control?</span>
+    <b>JOIN THE OCTOBER COHORT →</b>
+  </a>
+</div>
+
+<script type="module">
+import { W, H, N, M, BODY, P_START, P_GOAL, P_OBS, P_LIM, P_TGT, P_WGT, LIMITS, defaultParams } from './planner.js';
+
+const $ = (id) => document.getElementById(id);
+const embedded = window.self !== window.top;
+const layout = () => document.body.classList.toggle('side', !embedded && innerWidth > 1180 && innerHeight > 700);
+layout();
+
+// ------------------------------------------------------------------ state
+const S = {
+  par: defaultParams(),
+  sol: null,          // current optimal solution
+  solVer: 0,          // bumped on every solver result
+  disp: null, dispFrom: null, dispT0: 0,
+  failed: false, pulling: null,
+  tPlay: 0, playing: true,
+  spark: [], nSolves: 0, lastT: null,
+};
+
+// ------------------------------------------------------------------ worker + scheduling
+let worker, ready = false, busy = false, pending = null, reqId = 0, sentAt = 0, built = false;
+const logLines = [];
+function log(msg) {
+  logLines.push(msg); if (logLines.length > 60) logLines.shift();
+  $('log').textContent = logLines.slice(-2).join('\n');
+  if (!ready) $('bootlog').textContent = logLines.join('\n');
+}
+function startWorker() {
+  ready = false; busy = false;
+  worker = new Worker(new URL('./worker.js', import.meta.url), { type: 'module' });
+  worker.onmessage = (ev) => {
+    const m = ev.data;
+    if (m.type === 'log') log(m.msg);
+    else if (m.type === 'ready') { ready = true; request(true); }
+    else if (m.type === 'fatal') { log('FATAL: ' + m.msg); $('bootlog').textContent += '\n\nFATAL: ' + m.msg; }
+    else if (m.type === 'result') onResult(m);
+  };
+  worker.onerror = (e) => log('worker error: ' + (e.message || e));
+}
+// Only the newest request matters: while the solver is busy, later requests overwrite each other.
+function request(fresh = false) {
+  pending = { par: S.par.slice(), fresh: fresh || (pending && pending.fresh) || false };
+  pump();
+}
+function pump() {
+  if (!ready || busy || !pending) return;
+  const m = pending; pending = null; busy = true; sentAt = performance.now();
+  worker.postMessage({ id: ++reqId, ...m });
+}
+// Watchdog: an interior-point solve that does not come back gets its worker recycled.
+setInterval(() => {
+  if (busy && performance.now() - sentAt > (built ? 4000 : 20000)) {
+    log('watchdog: solver did not return, restarting the WebAssembly core');
+    worker.terminate(); built = false; startWorker();
+    pending = { par: S.par.slice(), fresh: true };
+  }
+}, 250);
+
+function onResult(m) {
+  busy = false; built = true; S.nSolves++; S.solVer++;
+  $('sMs').textContent = `${m.ms.toFixed(1)} ms${m.retried ? ' ↻' : ''}`;
+  $('sIt').textContent = m.iter;
+  $('sNw').textContent = m.meta.nw;
+  $('sNg').textContent = m.meta.ng;
+  S.spark.push({ ms: m.ms, ok: m.ok }); if (S.spark.length > 80) S.spark.shift();
+  drawSpark();
+  if (m.ok) {
+    // morph smoothly between nearby solutions; cut when the path jumps to another corridor
+    // (a linear blend of two corridors would draw paths straight through obstacles)
+    let jump = Infinity;
+    if (S.disp && S.sol && S.disp.length === m.x.length) {
+      const n = m.meta.nx + m.meta.nu;
+      jump = 0;
+      for (let k = 0; k <= N; k++) jump = Math.max(jump, Math.hypot(m.x[n * k] - S.disp[n * k], m.x[n * k + 1] - S.disp[n * k + 1]));
+    }
+    S.dispFrom = jump < 0.8 ? S.disp.slice() : null;
+    S.dispT0 = performance.now();
+    S.sol = m; S.failed = false;
+    updateReadout(m);
+  } else {
+    S.failed = true;
+    $('stat').textContent = 'infeasible';
+    log(`no feasible trajectory (${m.status}${m.error ? ': ' + m.error : ''})`);
+  }
+  $('banner').classList.toggle('show', S.failed);
+  pump();
+}
+
+// ------------------------------------------------------------------ solution access
+function acc(sol, x = sol.x) {
+  const { nx, nu } = sol.meta;
+  const st = (k, i) => x[(nx + nu) * k + i];
+  const u = (k, i) => x[(nx + nu) * Math.min(k, N - 1) + nx + i];
+  return { st, u, T: st(N, 4) };
+}
+const pos = (a, k) => [a.st(k, 0), a.st(k, 1)];
+const vel = (a, k) => [a.st(k, 2), a.st(k, 3)];
+function hermite(p0, v0, p1, v1, dt, s) {
+  const s2 = s * s, s3 = s2 * s;
+  const h00 = 2 * s3 - 3 * s2 + 1, h10 = s3 - 2 * s2 + s, h01 = -2 * s3 + 3 * s2, h11 = s3 - s2;
+  return [h00 * p0[0] + h10 * dt * v0[0] + h01 * p1[0] + h11 * dt * v1[0],
+          h00 * p0[1] + h10 * dt * v0[1] + h01 * p1[1] + h11 * dt * v1[1]];
+}
+const posAt = (a, k, s) => hermite(pos(a, k), vel(a, k), pos(a, k + 1), vel(a, k + 1), a.T / N, s);
+function poseAt(a, t) {
+  const kf = Math.max(0, Math.min(N - 1e-9, t / (a.T / N))), k = Math.floor(kf), s = kf - k;
+  const v0 = vel(a, k), v1 = vel(a, k + 1);
+  return { p: posAt(a, k, s), v: [v0[0] * (1 - s) + v1[0] * s, v0[1] * (1 - s) + v1[1] * s], acc: [a.u(k, 0), a.u(k, 1)] };
+}
+function obstacles() {
+  const out = [];
+  for (let j = 0; j < M; j++) {
+    const o = S.par.slice(P_OBS + 3 * j, P_OBS + 3 * j + 3);
+    if (o[2] > 0) out.push({ j, x: o[0], y: o[1], r: o[2] });
+  }
+  return out;
+}
+const lim = () => ({ vmax: S.par[P_LIM], amax: S.par[P_LIM + 1], delta: S.par[P_LIM + 2] });
+
+// ------------------------------------------------------------------ canvas setup
+// Three layers: a static background (arena, grid), a cached scene (obstacles, trajectory,
+// multipliers, labels) re-rendered only when something changes, and per-frame sprites
+// (glider, spring). Canvas glow (shadowBlur) is expensive at high DPR, so it must
+// not be paid 60 times per second for things that do not move.
+const cv = $('cv'), mainCtx = cv.getContext('2d');
+const bgCv = document.createElement('canvas'), scCv = document.createElement('canvas');
+let ctx = mainCtx;            // current drawing target, swapped while rendering a layer
+let sceneKey = '';
+function renderInto(layer, fn) {
+  const prev = ctx;
+  ctx = layer.getContext('2d');
+  ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, layer.width, layer.height);
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  fn();
+  ctx = prev;
+}
+let dpr = 1, sc = 50, ox = 0, oy = 0, cw = 0, ch = 0;
+const TL_ROWS = 3, TL_ROW = 40, TL_X0 = 92;
+function resize() {
+  layout();
+  dpr = Math.min(2, window.devicePixelRatio || 1);
+  cw = $('stage').clientWidth;
+  ch = document.body.classList.contains('side') ? $('stage').clientHeight : Math.round(cw * (H + 0.8) / (W + 0.6));
+  cv.style.height = ch + 'px';
+  for (const c of [cv, bgCv, scCv]) { c.width = Math.round(cw * dpr); c.height = Math.round(ch * dpr); }
+  sc = Math.min(cw / (W + 0.6), ch / (H + 0.8));
+  ox = (cw - W * sc) / 2; oy = (ch - H * sc) / 2 - 0.1 * sc;
+  renderInto(bgCv, drawArena);
+  sceneKey = ''; tlKey = '';
+  const tl = $('tl'), th = TL_ROWS * TL_ROW + 16;
+  tl.style.height = th + 'px'; tl.width = tl.clientWidth * dpr; tl.height = th * dpr;
+  const sp = $('spark'); sp.width = sp.clientWidth * dpr; sp.height = 36 * dpr;
+  drawSpark();
+}
+const tx = (x) => ox + x * sc, ty = (y) => oy + (H - y) * sc;
+const wx = (px) => (px - ox) / sc, wy = (py) => H - (py - oy) / sc;
+
+// ------------------------------------------------------------------ drawing primitives
+function strokeSegments(segs, color, width, blur, alpha = 1) {
+  ctx.save();
+  ctx.globalAlpha = alpha; ctx.lineCap = 'round';
+  ctx.strokeStyle = ctx.shadowColor = color; ctx.lineWidth = width; ctx.shadowBlur = blur;
+  ctx.beginPath();
+  for (const [p, q] of segs) { ctx.moveTo(tx(p[0]), ty(p[1])); ctx.lineTo(tx(q[0]), ty(q[1])); }
+  ctx.stroke();
+  ctx.restore();
+}
+function glowLine(pts, color, width, blur, alpha = 1) {
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.strokeStyle = color; ctx.lineWidth = width; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+  ctx.shadowColor = color; ctx.shadowBlur = blur;
+  ctx.beginPath();
+  pts.forEach(([x, y], i) => (i ? ctx.lineTo(tx(x), ty(y)) : ctx.moveTo(tx(x), ty(y))));
+  ctx.stroke();
+  ctx.restore();
+}
+function arrow(x0, y0, x1, y1, color, width = 2, head = 8) {
+  const a = Math.atan2(y1 - y0, x1 - x0);
+  ctx.save();
+  ctx.strokeStyle = ctx.fillStyle = color; ctx.lineWidth = width; ctx.shadowColor = color; ctx.shadowBlur = 10;
+  ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(x1, y1);
+  ctx.lineTo(x1 - head * Math.cos(a - 0.45), y1 - head * Math.sin(a - 0.45));
+  ctx.lineTo(x1 - head * Math.cos(a + 0.45), y1 - head * Math.sin(a + 0.45));
+  ctx.closePath(); ctx.fill();
+  ctx.restore();
+}
+function label(text, x, y, color, align = 'left', font = '10.5px JetBrains Mono') {
+  ctx.save();
+  ctx.font = font; ctx.textAlign = align;
+  const w = ctx.measureText(text).width, x0 = align === 'center' ? x - w / 2 : align === 'right' ? x - w : x;
+  ctx.fillStyle = 'rgba(3,5,11,.72)'; ctx.fillRect(x0 - 3, y - 10, w + 6, 14);
+  ctx.fillStyle = color; ctx.fillText(text, x, y);
+  ctx.restore();
+}
+
+// ------------------------------------------------------------------ scene
+function drawArena() {
+  ctx.fillStyle = '#03050b'; ctx.fillRect(0, 0, cw, ch);
+  const g = ctx.createRadialGradient(tx(W / 2), ty(H * 0.55), 0, tx(W / 2), ty(H / 2), W * sc * 0.6);
+  g.addColorStop(0, '#0b1733'); g.addColorStop(1, '#040810');
+  ctx.fillStyle = g; ctx.fillRect(tx(0), ty(H), W * sc, H * sc);
+  ctx.lineWidth = 1;
+  for (let x = 0; x <= W; x += 0.5) {
+    ctx.strokeStyle = x % 2 === 0 ? 'rgba(80,160,255,.12)' : 'rgba(80,160,255,.04)';
+    ctx.beginPath(); ctx.moveTo(tx(x), ty(0)); ctx.lineTo(tx(x), ty(H)); ctx.stroke();
+  }
+  for (let y = 0; y <= H; y += 0.5) {
+    ctx.strokeStyle = y % 2 === 0 ? 'rgba(80,160,255,.12)' : 'rgba(80,160,255,.04)';
+    ctx.beginPath(); ctx.moveTo(tx(0), ty(y)); ctx.lineTo(tx(W), ty(y)); ctx.stroke();
+  }
+  ctx.save();
+  ctx.strokeStyle = 'rgba(56,242,255,.55)'; ctx.lineWidth = 1.5; ctx.shadowColor = '#38f2ff'; ctx.shadowBlur = 12;
+  ctx.strokeRect(tx(0), ty(H), W * sc, H * sc);
+  ctx.restore();
+  ctx.fillStyle = 'rgba(160,190,230,.3)'; ctx.font = '10px JetBrains Mono';
+  ctx.fillText(`${W} m × ${H} m`, tx(0) + 6, ty(H) + 14);
+}
+
+// Obstacle constraint multipliers, summed per obstacle
+function obstacleLambda(sol) {
+  const lam = new Array(M).fill(0);
+  for (const grp of ['obs', 'obsmid']) sol.meta.groups[grp].forEach((gi, n) => { lam[n % M] += Math.max(0, -sol.lam_g[gi]); });
+  return lam;
+}
+
+function drawObstacles(sol) {
+  const lamObs = sol ? obstacleLambda(sol) : null;
+  const pad = BODY + lim().delta;
+  const sens = sol && !S.pulling;
+  for (const o of obstacles()) {
+    const hot = lamObs ? Math.min(1, lamObs[o.j] / 0.12) : 0;
+    const X = tx(o.x), Y = ty(o.y), Rr = o.r * sc;
+    for (let i = 1; i <= 3; i++) {
+      ctx.strokeStyle = `rgba(141,107,255,${0.1 - i * 0.025})`;
+      ctx.beginPath(); ctx.arc(X, Y, Rr + (pad + i * 0.35) * sc, 0, 2 * Math.PI); ctx.stroke();
+    }
+    // safety margin: obstacle radius + glider radius + delta
+    ctx.save();
+    ctx.setLineDash([3, 5]); ctx.strokeStyle = hot > 0.05 ? `rgba(255,45,135,${0.4 + 0.5 * hot})` : 'rgba(141,107,255,.45)';
+    ctx.beginPath(); ctx.arc(X, Y, Rr + pad * sc, 0, 2 * Math.PI); ctx.stroke();
+    ctx.restore();
+    const g = ctx.createRadialGradient(X - Rr * 0.3, Y - Rr * 0.3, Rr * 0.1, X, Y, Rr);
+    g.addColorStop(0, '#1c1640'); g.addColorStop(1, '#0a0820');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(X, Y, Rr, 0, 2 * Math.PI); ctx.fill();
+    ctx.save(); ctx.clip();
+    ctx.strokeStyle = 'rgba(141,107,255,.12)';
+    ctx.beginPath();
+    for (let d = -Rr * 2; d < Rr * 2; d += 7) { ctx.moveTo(X + d - Rr, Y - Rr); ctx.lineTo(X + d + Rr, Y + Rr); }
+    ctx.stroke();
+    ctx.restore();
+    // rim: violet when slack, magenta when the constraint is active
+    ctx.save();
+    ctx.strokeStyle = hot > 0.05 ? `rgba(255,45,135,${0.6 + 0.3 * hot})` : 'rgba(141,107,255,.9)';
+    ctx.lineWidth = 2 + 2 * hot; ctx.shadowColor = hot > 0.05 ? '#ff2d87' : '#8d6bff'; ctx.shadowBlur = 10 + 20 * hot;
+    ctx.beginPath(); ctx.arc(X, Y, Rr, 0, 2 * Math.PI); ctx.stroke();
+    ctx.restore();
+    if (sens) {    // shadow price: which way should this obstacle move to buy time?
+      const lp = sol.lam_p, b = P_OBS + 3 * o.j;
+      const gx = -lp[b], gy = -lp[b + 1], gr = -lp[b + 2];      // dT*/d(ox, oy, r)
+      const mag = Math.hypot(gx, gy);
+      if (mag > 3e-3) {
+        const L = Math.min(2.2, 8 * mag) * sc, dx = -gx / mag, dy = -gy / mag;
+        const x0 = X + dx * Rr * 0.15, y0 = Y - dy * Rr * 0.15, x1 = x0 + dx * L, y1 = y0 - dy * L;
+        arrow(x0, y0, x1, y1, 'rgba(157,255,107,.95)', 2, 9);
+        label(`−${(mag * 1000).toFixed(0)} ms/m`, x1 + dx * 8, y1 - dy * 8 + 4, 'rgba(157,255,107,.95)', dx < -0.3 ? 'right' : dx > 0.3 ? 'left' : 'center');
+      }
+      if (gr > 3e-3) label(`∂T*/∂r +${(gr * 1000).toFixed(0)} ms/m`, X, Y + 4, 'rgba(255,45,135,.95)', 'center');
+    }
+  }
+}
+
+function drawHandle(x, y, name, color) {
+  const X = tx(x), Y = ty(y);
+  ctx.save();
+  ctx.strokeStyle = ctx.fillStyle = color; ctx.shadowColor = color; ctx.shadowBlur = 16; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(X, Y, 13, 0, 2 * Math.PI); ctx.stroke();
+  ctx.beginPath(); ctx.arc(X, Y, 3, 0, 2 * Math.PI); ctx.fill();
+  ctx.font = '600 12px JetBrains Mono'; ctx.fillText(name, X + 15, Y - 12);
+  ctx.restore();
+}
+
+function drawTrajectory(sol, a) {
+  const dense = [], dk = [];
+  for (let k = 0; k < N; k++) for (let s = 0; s < 6; s++) { dense.push(posAt(a, k, s / 6)); dk.push(k + s / 6); }
+  dense.push(pos(a, N)); dk.push(N);
+  S.dense = dense; S.denseK = dk;
+  const fade = S.failed ? 0.3 : 1;
+  glowLine(dense, '#38f2ff', 9, 30, 0.14 * fade);
+  // colour encodes speed: deep blue when slow, white-hot near the limit, magenta when it binds
+  const { vmax } = lim();
+  const speedLam = new Float32Array(N + 1);
+  sol.meta.groups.speed.forEach((gi, k) => { speedLam[k] = -sol.lam_g[gi]; });
+  const buckets = new Map();     // one stroke per colour, not one per segment
+  for (let i = 0; i + 1 < dense.length; i++) {
+    const k = Math.floor(dk[i]), s = dk[i] - k;
+    const v0 = vel(a, k), v1 = vel(a, Math.min(N, k + 1));
+    const sp = Math.min(1, Math.hypot(v0[0] * (1 - s) + v1[0] * s, v0[1] * (1 - s) + v1[1] * s) / vmax);
+    const bind = Math.max(speedLam[k], speedLam[Math.min(N, k + 1)]) > 1e-4 && sp > 0.985;
+    const q = Math.round(sp * 10) / 10;
+    const color = bind ? '#ff2d87' : `rgb(${Math.round(40 + 215 * q ** 3)},${Math.round(140 + 115 * q)},255)`;
+    if (!buckets.has(color)) buckets.set(color, []);
+    buckets.get(color).push([dense[i], dense[i + 1]]);
+  }
+  for (const [color, segs] of buckets) strokeSegments(segs, color, 2.8, color === '#ff2d87' ? 18 : 10, fade);
+  ctx.fillStyle = `rgba(219,232,255,${0.8 * fade})`;
+  for (let k = 0; k <= N; k++) { ctx.beginPath(); ctx.arc(tx(a.st(k, 0)), ty(a.st(k, 1)), 1.7, 0, 2 * Math.PI); ctx.fill(); }
+}
+
+// Lagrange multipliers of the obstacle constraints, drawn as the forces they are
+function drawForces(sol, a) {
+  const obs = obstacles(), rays = [];
+  const collect = (grp, mid) => sol.meta.groups[grp].forEach((gi, n) => {
+    const lam = -sol.lam_g[gi];
+    if (!(lam > 1e-4)) return;
+    const k = Math.floor(n / M), o = obs.find((q) => q.j === n % M);
+    if (o) rays.push({ o, p: mid ? posAt(a, k, 0.5) : pos(a, k), lam });
+  });
+  collect('obs', false); collect('obsmid', true);
+  const lmax = Math.max(0.02, ...rays.map((r) => r.lam));
+  for (const { o, p, lam } of rays) {
+    const d = Math.hypot(p[0] - o.x, p[1] - o.y), ux = (p[0] - o.x) / d, uy = (p[1] - o.y) / d;
+    const w = lam / lmax;
+    const x0 = tx(o.x + ux * o.r), y0 = ty(o.y + uy * o.r), x1 = tx(p[0]), y1 = ty(p[1]);
+    ctx.save();
+    const g = ctx.createLinearGradient(x0, y0, x1, y1);
+    g.addColorStop(0, `rgba(255,45,135,${0.12 + 0.35 * w})`); g.addColorStop(1, `rgba(255,45,135,${0.4 + 0.6 * w})`);
+    ctx.strokeStyle = g; ctx.lineWidth = 1 + 3 * w; ctx.shadowColor = '#ff2d87'; ctx.shadowBlur = 12 * w;
+    ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke();
+    ctx.restore();
+    const L = 8 + 28 * w;
+    arrow(x1, y1, x1 + ux * L, y1 - uy * L, `rgba(255,45,135,${0.45 + 0.55 * w})`, 1 + 1.5 * w, 5 + 4 * w);
+  }
+}
+
+// glider glyph at position p, heading from v (or thrust), exhaust opposite to thrust a
+function drawGlider(p, v, a) {
+  const X = tx(p[0]), Y = ty(p[1]);
+  const an = Math.hypot(a[0], a[1]), { amax } = lim();
+  const ang = Math.hypot(v[0], v[1]) > 0.05 ? Math.atan2(v[1], v[0]) : an > 0.05 ? Math.atan2(a[1], a[0]) : 0;
+  ctx.save();
+  ctx.translate(X, Y);
+  if (an > 0.05) {
+    const th = Math.atan2(a[1], a[0]), L = (an / amax) * 1.0 * sc;
+    const g = ctx.createLinearGradient(0, 0, -Math.cos(th) * L, Math.sin(th) * L);
+    g.addColorStop(0, 'rgba(255,179,71,.95)'); g.addColorStop(1, 'rgba(255,45,135,0)');
+    ctx.strokeStyle = g; ctx.lineWidth = 7; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(-Math.cos(th) * L, Math.sin(th) * L); ctx.stroke();
+  }
+  ctx.rotate(-ang);
+  const r = 0.3 * sc;
+  ctx.shadowColor = '#38f2ff'; ctx.shadowBlur = 18;
+  ctx.fillStyle = '#0a1a2a'; ctx.strokeStyle = '#dbe8ff'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(r * 1.3, 0); ctx.lineTo(-r * 0.8, r * 0.8); ctx.lineTo(-r * 0.4, 0); ctx.lineTo(-r * 0.8, -r * 0.8); ctx.closePath();
+  ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+
+function drawSpring(a) {
+  if (!S.pulling) return;
+  const k = S.pulling.k;
+  const x0 = tx(a.st(k, 0)), y0 = ty(a.st(k, 1)), x1 = S.pulling.px, y1 = S.pulling.py;
+  const d = Math.hypot(x1 - x0, y1 - y0), n = Math.max(6, Math.floor(d / 7));
+  const ux = (x1 - x0) / (d || 1), uy = (y1 - y0) / (d || 1);
+  ctx.save();
+  ctx.strokeStyle = '#ffb347'; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.moveTo(x0, y0);
+  for (let i = 1; i < n; i++) {
+    const s = i / n, side = (i % 2 ? 1 : -1) * 5;
+    ctx.lineTo(x0 + ux * d * s - uy * side, y0 + uy * d * s + ux * side);
+  }
+  ctx.lineTo(x1, y1); ctx.stroke();
+  ctx.beginPath(); ctx.arc(x1, y1, 6, 0, 2 * Math.PI); ctx.stroke();
+  ctx.restore();
+  if (d > 30) label('the constraints push back', x1 + 12, y1 + 18, '#ffb347');
+}
+
+function currentX(now) {
+  if (!S.sol) return null;
+  const target = S.sol.x;
+  if (!S.dispFrom || S.dispFrom.length !== target.length) { S.dispFrom = null; S.disp = target; return target; }
+  const s = Math.min(1, (now - S.dispT0) / 140), e = 1 - Math.pow(1 - s, 3);
+  S.disp = target.map((v, i) => S.dispFrom[i] + (v - S.dispFrom[i]) * e);
+  if (s >= 1) S.dispFrom = null;
+  return S.disp;
+}
+
+// ------------------------------------------------------------------ main loop
+function drawScene(sol, a) {
+  drawObstacles(sol);
+  if (a) {
+    drawTrajectory(sol, a);
+    drawForces(sol, a);
+  }
+  const p = S.par;
+  drawHandle(p[P_START], p[P_START + 1], 'A', '#38f2ff');
+  drawHandle(p[P_GOAL], p[P_GOAL + 1], 'B', '#9dff6b');
+  if (sol && !S.pulling) {      // where should B move to save time?
+    const gx = -sol.lam_p[P_GOAL], gy = -sol.lam_p[P_GOAL + 1], mag = Math.hypot(gx, gy);
+    if (mag > 1e-3) {
+      const X = tx(p[P_GOAL]), Y = ty(p[P_GOAL + 1]), L = Math.min(1.8, 4 * mag) * sc;
+      arrow(X - gx / mag * 16, Y + gy / mag * 16, X - gx / mag * (16 + L), Y + gy / mag * (16 + L), 'rgba(157,255,107,.75)', 1.5, 7);
+    }
+  }
+}
+
+// the pulsing rim of obstacles whose constraint is active (cheap: no blur)
+function drawRimPulse(sol, now) {
+  const lamObs = obstacleLambda(sol), pulse = 0.5 + 0.5 * Math.sin(now / 180);
+  ctx.save();
+  for (const o of obstacles()) {
+    const hot = Math.min(1, lamObs[o.j] / 0.12);
+    if (hot < 0.05) continue;
+    ctx.strokeStyle = `rgba(255,120,180,${0.35 * hot * pulse})`; ctx.lineWidth = 3 + 3 * hot;
+    ctx.beginPath(); ctx.arc(tx(o.x), ty(o.y), o.r * sc, 0, 2 * Math.PI); ctx.stroke();
+  }
+  ctx.restore();
+}
+
+let lastFrame = performance.now();
+function frame(now) {
+  const dtf = Math.min(0.05, (now - lastFrame) / 1000); lastFrame = now;
+  const sol = S.sol, morphing = !!S.dispFrom, x = currentX(now), a = sol && x ? acc(sol, x) : null;
+  // re-render the cached scene only when its inputs changed
+  const key = [S.solVer, S.failed, !!S.pulling, S.par.join()].join('|');
+  if (morphing || key !== sceneKey) {
+    sceneKey = key;
+    renderInto(scCv, () => drawScene(sol, a));
+  }
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.drawImage(bgCv, 0, 0);
+  ctx.drawImage(scCv, 0, 0);
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  if (a) {
+    drawRimPulse(sol, now);
+    if (S.playing) S.tPlay += dtf;
+    if (S.tPlay > a.T + 0.8) S.tPlay = 0;
+    const P = poseAt(a, Math.min(S.tPlay, a.T));
+    drawGlider(P.p, P.v, P.acc);
+    drawSpring(a);
+  }
+  drawTimeline(a, morphing);
+  requestAnimationFrame(frame);
+}
+
+// ------------------------------------------------------------------ timeline: constraint activity
+// The traces are cached; per frame only the playback cursor is drawn on top.
+const tlCv = document.createElement('canvas');
+let tlKey = '', tlTmax = 1;
+function drawTimeline(a, morphing) {
+  const c = $('tl'), g = c.getContext('2d');
+  const w = c.width / dpr;
+  const key = [S.solVer, S.par.join(), w].join('|');
+  if (morphing || key !== tlKey || tlCv.width !== c.width || tlCv.height !== c.height) {
+    tlKey = key;
+    tlCv.width = c.width; tlCv.height = c.height;
+    const cg = tlCv.getContext('2d');
+    cg.setTransform(dpr, 0, 0, dpr, 0, 0);
+    tlTmax = a ? renderTimeline(cg, a, w) : 1;
+  }
+  g.setTransform(1, 0, 0, 1, 0, 0);
+  g.clearRect(0, 0, c.width, c.height);
+  g.drawImage(tlCv, 0, 0);
+  if (!a) return;
+  g.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const x1 = w - 6, X = (t) => TL_X0 + (t / tlTmax) * (x1 - TL_X0), nr = TL_ROWS * TL_ROW;
+  const tp = Math.min(S.tPlay, tlTmax);
+  g.strokeStyle = 'rgba(255,255,255,.7)'; g.lineWidth = 1; g.beginPath(); g.moveTo(X(tp), 0); g.lineTo(X(tp), nr - 6); g.stroke();
+  g.font = '10px JetBrains Mono'; g.textAlign = 'center'; g.fillStyle = '#dbe8ff';
+  g.fillText(`t = ${tp.toFixed(2)} s`, Math.max(TL_X0 + 60, Math.min(x1 - 70, X(tp))), nr + 6); g.textAlign = 'left';
+}
+function renderTimeline(g, a, w) {
+  const { vmax, amax, delta } = lim(), pad = BODY + delta;
+  const obs = obstacles();
+  const clr = (p) => Math.min(2, ...obs.map((o) => Math.hypot(p[0] - o.x, p[1] - o.y) - o.r - pad));
+  const Tmax = a.T;
+  const rows = [
+    { name: 'speed', lo: 0, hi: 1.12, b: [1], node: true, m: (k) => Math.hypot(a.st(k, 2), a.st(k, 3)) / vmax },
+    { name: 'thrust', lo: 0, hi: 1.12, b: [1], node: false, m: (k) => Math.hypot(a.u(k, 0), a.u(k, 1)) / amax },
+    { name: 'clearance', lo: -0.1, hi: 2, b: [0], node: true, m: (k) => clr(pos(a, k)) },
+  ];
+  const x1 = w - 6, X = (t) => TL_X0 + (t / Tmax) * (x1 - TL_X0);
+  rows.forEach((row, r) => {
+    const top = r * TL_ROW + 3, bot = top + TL_ROW - 9;
+    const Y = (v) => bot - ((Math.max(row.lo, Math.min(row.hi, v)) - row.lo) / (row.hi - row.lo)) * (bot - top);
+    g.fillStyle = 'rgba(255,255,255,.025)'; g.fillRect(TL_X0, top, x1 - TL_X0, bot - top);
+    g.font = '10.5px JetBrains Mono'; g.fillStyle = '#6d82a6'; g.fillText(row.name, 0, top + (bot - top) / 2 + 4);
+    for (const b of row.b) {
+      g.strokeStyle = 'rgba(255,45,135,.55)'; g.setLineDash([3, 4]);
+      g.beginPath(); g.moveTo(TL_X0, Y(b)); g.lineTo(x1, Y(b)); g.stroke(); g.setLineDash([]);
+    }
+    const on = (v) => row.b.some((b) => Math.abs(v - b) < 0.012);
+    const pts = [];
+    if (row.node) for (let k = 0; k <= N; k++) pts.push([(k / N) * a.T, row.m(k)]);
+    else for (let k = 0; k < N; k++) { const v = row.m(k); pts.push([(k / N) * a.T, v], [((k + 1) / N) * a.T, v]); }
+    g.save();
+    g.strokeStyle = '#38f2ff'; g.lineWidth = 1.6; g.shadowColor = '#38f2ff'; g.shadowBlur = 6;
+    g.beginPath(); pts.forEach(([t, v], i) => (i ? g.lineTo(X(t), Y(v)) : g.moveTo(X(t), Y(v)))); g.stroke();
+    g.strokeStyle = '#ff2d87'; g.lineWidth = 3.4; g.shadowColor = '#ff2d87'; g.shadowBlur = 12;
+    g.beginPath();      // all on-the-bound stretches in one stroke
+    for (let i = 0; i + 1 < pts.length; i++) {
+      if (on(pts[i][1]) && on(pts[i + 1][1])) { g.moveTo(X(pts[i][0]), Y(pts[i][1])); g.lineTo(X(pts[i + 1][0]), Y(pts[i + 1][1])); }
+    }
+    g.stroke();
+    g.restore();
+  });
+  const nr = rows.length * TL_ROW;
+  g.fillStyle = '#6d82a6'; g.font = '10px JetBrains Mono';
+  g.fillText('0 s', TL_X0, nr + 6); g.textAlign = 'right'; g.fillText(`${Tmax.toFixed(2)} s`, x1, nr + 6); g.textAlign = 'left';
+  return Tmax;
+}
+function drawSpark() {
+  const c = $('spark'), g = c.getContext('2d');
+  const w = c.width / dpr, h = c.height / dpr;
+  g.setTransform(dpr, 0, 0, dpr, 0, 0);
+  g.clearRect(0, 0, w, h);
+  g.fillStyle = 'rgba(255,255,255,.03)'; g.fillRect(0, 0, w, h);
+  const n = 80, bw = w / n, mx = Math.max(50, ...S.spark.map((s) => s.ms));
+  S.spark.forEach((s, i) => {
+    const bh = Math.max(1, (s.ms / mx) * (h - 14));
+    g.fillStyle = s.ok ? 'rgba(56,242,255,.75)' : 'rgba(255,45,135,.9)';
+    g.fillRect((n - S.spark.length + i) * bw, h - bh, Math.max(1, bw - 1), bh);
+  });
+  g.fillStyle = '#6d82a6'; g.font = '9.5px JetBrains Mono';
+  g.fillText(`${S.nSolves} solves · bar max ${mx.toFixed(0)} ms`, 3, 10);
+}
+
+// ------------------------------------------------------------------ readout, live problem, prices
+function updateReadout(m) {
+  $('tstar').innerHTML = `${m.T.toFixed(3)}<small>s</small>`;
+  if (S.lastT !== null) {
+    const d = m.T - S.lastT;
+    if (Math.abs(d) > 5e-4) $('tdelta').innerHTML = d < 0 ? `<span style="color:var(--lime)">▼ ${(-d).toFixed(3)} s</span>` : `<span style="color:var(--mag)">▲ ${d.toFixed(3)} s</span>`;
+  }
+  S.lastT = m.T;
+  $('stat').textContent = m.status;
+  const act = (grps) => grps.reduce((n, grp) => n + m.meta.groups[grp].filter((gi) => -m.lam_g[gi] > 1e-4).length, 0);
+  const counts = { speed: act(['speed']), thrust: act(['thrust']), obs: act(['obs', 'obsmid']) };
+  const { nx, nu } = m.meta;
+  let walls = 0;
+  for (let k = 0; k <= N; k++) {
+    const px = m.x[(nx + nu) * k], py = m.x[(nx + nu) * k + 1];
+    if (Math.min(px - BODY, W - BODY - px, py - BODY, H - BODY - py) < 1e-4) walls++;
+  }
+  counts.walls = walls;
+  for (const row of $('nlp').querySelectorAll('.row[data-g]')) {
+    const grp = row.dataset.g;
+    if (!(grp in counts)) { row.classList.add('on'); continue; }
+    row.classList.toggle('on', counts[grp] > 0);
+    row.querySelector('.a').textContent = counts[grp] ? `${counts[grp]} active` : 'slack';
+  }
+  $('aT').textContent = `T* = ${m.T.toFixed(3)} s`;
+  updatePrices(m);
+}
+function buildSliders() {
+  const box = $('limbox'); box.innerHTML = '';
+  LIMITS.forEach((l, i) => {
+    const d = document.createElement('div'); d.className = 'lim';
+    d.innerHTML = `<div class="row"><span>${l.label}</span><span class="v" id="lv${i}"></span></div>
+      <input type="range" min="${l.min}" max="${l.max}" step="${(l.max - l.min) / 200}" value="${S.par[P_LIM + i]}" id="lr${i}">
+      <div class="price" id="lp${i}"><div class="bar"><i></i></div><em>—</em></div>`;
+    box.appendChild(d);
+    const inp = d.querySelector('input');
+    const show = () => { $('lv' + i).textContent = `${l.name} = ${(+inp.value).toFixed(2)} ${l.unit}`; };
+    show();
+    inp.addEventListener('input', () => { S.par[P_LIM + i] = +inp.value; show(); request(); });
+  });
+  if (S.sol) updatePrices(S.sol);
+}
+function updatePrices(m) {
+  LIMITS.forEach((l, i) => {
+    const el = $('lp' + i); if (!el) return;
+    const d = -m.lam_p[P_LIM + i];        // dT*/dlimit, straight from the multipliers
+    const hot = Math.abs(d) > 1e-3;
+    el.classList.toggle('hot', hot);
+    el.querySelector('em').textContent = hot ? `${d >= 0 ? '+' : '−'}${Math.abs(d).toFixed(3)} s per ${l.unit}` : 'slack · price 0';
+    el.querySelector('i').style.width = `${Math.min(100, Math.abs(d) * 150)}%`;
+  });
+  $('limnote').textContent = S.pulling
+    ? 'spring attached: prices now include the spring energy'
+    : 'read off the Lagrange multipliers of the same solve: no finite differences, no extra solves';
+}
+
+// ------------------------------------------------------------------ interaction
+function pick(px, py) {
+  const p = S.par, near = (x, y, r) => Math.hypot(tx(x) - px, ty(y) - py) < r;
+  if (near(p[P_START], p[P_START + 1], 16)) return { type: 'pt', off: P_START };
+  if (near(p[P_GOAL], p[P_GOAL + 1], 16)) return { type: 'pt', off: P_GOAL };
+  for (const o of obstacles().reverse()) {
+    if (Math.hypot(tx(o.x) - px, ty(o.y) - py) < o.r * sc) return { type: 'obs', j: o.j, dx: wx(px) - o.x, dy: wy(py) - o.y };
+  }
+  if (S.sol && S.dense) {
+    let best = 1e9, bi = -1;
+    S.dense.forEach(([x, y], i) => { const d = Math.hypot(tx(x) - px, ty(y) - py); if (d < best) { best = d; bi = i; } });
+    if (best < 16) return { type: 'path', k: Math.max(1, Math.min(N - 1, Math.round(S.denseK[bi]))) };
+  }
+  return null;
+}
+const clampX = (x) => Math.max(0.4, Math.min(W - 0.4, x)), clampY = (y) => Math.max(0.4, Math.min(H - 0.4, y));
+function setPull(k, x, y) {
+  S.par[P_TGT] = x; S.par[P_TGT + 1] = y;
+  for (let j = 0; j <= N; j++) S.par[P_WGT + j] = k === null ? 0 : 5 * Math.exp(-(((j - k) / 1.6) ** 2));
+}
+const local = (e) => { const r = cv.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
+let drag = null;
+cv.addEventListener('pointerdown', (e) => {
+  if (e.button !== 0) return;
+  const [px, py] = local(e);
+  drag = pick(px, py);
+  if (!drag) return;
+  cv.setPointerCapture(e.pointerId);
+  if (drag.type === 'path') { S.pulling = { k: drag.k, px, py }; setPull(drag.k, wx(px), wy(py)); request(); }
+});
+cv.addEventListener('pointermove', (e) => {
+  const [px, py] = local(e);
+  if (!drag) {
+    const h = pick(px, py);
+    cv.style.cursor = !h ? 'crosshair' : h.type === 'path' ? 'grab' : 'move';
+    return;
+  }
+  const p = S.par, x = wx(px), y = wy(py);
+  if (drag.type === 'pt') { p[drag.off] = clampX(x); p[drag.off + 1] = clampY(y); }
+  else if (drag.type === 'obs') { p[P_OBS + 3 * drag.j] = x - drag.dx; p[P_OBS + 3 * drag.j + 1] = y - drag.dy; }
+  else if (drag.type === 'path') { S.pulling.px = px; S.pulling.py = py; setPull(drag.k, x, y); }
+  request();
+});
+const endDrag = () => {
+  if (drag && drag.type === 'path') { S.pulling = null; setPull(null, 0, 0); request(); }
+  drag = null;
+};
+cv.addEventListener('pointerup', endDrag);
+cv.addEventListener('pointercancel', endDrag);
+
+// timeline scrubbing
+let scrub = false;
+const scrubTo = (e) => {
+  if (!S.sol) return;
+  const r = $('tl').getBoundingClientRect(), x1 = r.width - 6;
+  S.tPlay = Math.max(0, Math.min(1, (e.clientX - r.left - TL_X0) / (x1 - TL_X0))) * S.sol.T;
+};
+$('tl').addEventListener('pointerdown', (e) => { scrub = true; S.playing = false; $('play').textContent = '▶'; $('tl').setPointerCapture(e.pointerId); scrubTo(e); });
+$('tl').addEventListener('pointermove', (e) => scrub && scrubTo(e));
+$('tl').addEventListener('pointerup', () => (scrub = false));
+$('play').addEventListener('click', () => { S.playing = !S.playing; $('play').textContent = S.playing ? '❚❚' : '▶'; });
+
+function hideSlot(j) { S.par.splice(P_OBS + 3 * j, 3, -100 - 10 * j, -100, 0); }
+$('reset').addEventListener('click', () => { S.par = defaultParams(); buildSliders(); request(true); });
+$('scramble').addEventListener('click', () => {
+  const p = S.par, A = [p[P_START], p[P_START + 1]], B = [p[P_GOAL], p[P_GOAL + 1]];
+  const n = 5 + Math.floor(Math.random() * 3), placed = [];
+  for (let j = 0; j < M; j++) hideSlot(j);
+  for (let j = 0, tries = 0; j < n && tries < 500; tries++) {
+    const r = 0.5 + Math.random() * 1.1, x = 2.5 + Math.random() * (W - 5), y = 0.8 + Math.random() * (H - 1.6);
+    if (Math.hypot(x - A[0], y - A[1]) < r + 1.2 || Math.hypot(x - B[0], y - B[1]) < r + 1.2) continue;
+    if (placed.some((q) => Math.hypot(q[0] - x, q[1] - y) < q[2] + r + 0.9)) continue;
+    placed.push([x, y, r]); p.splice(P_OBS + 3 * j, 3, x, y, r); j++;
+  }
+  request(true);
+});
+
+addEventListener('resize', resize);
+document.fonts.ready.then(resize);            // cached layers contain text: redo once web fonts are in
+new ResizeObserver(() => { if ($('stage').clientWidth !== cw) resize(); }).observe($('stage'));
+// tell an embedding page how tall we are
+if (embedded) new ResizeObserver(() => parent.postMessage({ type: 'casadi-lab-height', h: Math.ceil($('app').getBoundingClientRect().height) }, '*')).observe($('app'));
+buildSliders();
+resize();
+startWorker();
+window.__lab = { S, tx, ty };   // handy from the devtools console
+requestAnimationFrame(frame);
+const bootTimer = setInterval(() => { if (S.sol) { $('boot').classList.add('gone'); clearInterval(bootTimer); } }, 100);
+</script>
+</body>
+</html>
