@@ -1,0 +1,266 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+      <title>CasADi - Blog - Constrained optimization, live in your browser</title>
+    
+
+    
+    <link href="https://web.casadi.org/_css/font-awesome.min.css" rel="stylesheet">
+
+    
+    <link href="https://web.casadi.org/_css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <link href="https://web.casadi.org/_css/pygments-default.css" rel="stylesheet">
+
+    
+    <link href="https://web.casadi.org/_css/casadi-theme.min.css" rel="stylesheet">
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+          displayMath: [ ['$$','$$'], ['\\[','\\]'] ],
+          processEnvironments: false
+        }
+      });
+    </script>
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+
+  <body>
+
+
+
+<nav class="navbar fixed-top navbar-expand-lg nav-top">
+  <div class="container">
+    <a class="navbar-brand" href="https://web.casadi.org/"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        
+        
+          
+          <li class="nav-item active">
+          
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/get/">Install</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/docs/">Docs</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/support/">Consulting/Support</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/events/">Training/Workshops</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/source/">Source</a>
+          </li>
+        
+          
+          <li class="nav-item">
+          
+            <a class="nav-link" href="/publications/">Publications</a>
+          </li>
+        
+          
+          <li class="nav-item active">
+          
+            <a class="nav-link" href="/blog/">Blog</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div id="main" class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Constrained optimization, live in your browser</h1>
+      <span class="reading-time text-muted">Estimated reading time: 5 minutes</span>
+
+      <p>For many years, we&rsquo;ve entertained the idea to make CasADi accessible for web development technology: perform optimization live in your browser without any backend server.
+The biggest hurdle was always Ipopt with its Fortran dependencies.</p>
+<p>In CasADi 3.8, this finally landed: an npm package was born <a href="https://www.npmjs.com/package/@casadi/casadi-wasm"><code>@casadi/casadi-wasm</code></a>.
+It contains the full CasADi core compiled to WebAssembly: symbolics, algorithmic differentiation and the <code>nlpsol</code> plugins, including Ipopt and <a href="https://github.com/meco-group/fatrop">fatrop</a>.</p>
+<h1 id="a-demo">A demo</h1>
+<p>Let&rsquo;s put it to use. Below is a glider in a room full of obstacles, flying from A to B as fast as possible.
+Thrust is limited, speed is limited, and it must keep its distance from every obstacle.
+Drag an obstacle, move A or B, change a limit, or grab the trajectory and pull it.
+Every change triggers a fresh nonlinear program, solved inside your browser.</p>
+<iframe id="lab" src="lab.html" style="width:100%;height:1150px;border:0;border-radius:6px;background:#03050b" allow="fullscreen" title="CasADi WebAssembly constrained trajectory lab"></iframe>
+<script>
+window.addEventListener('message', function (e) {
+  if (e.data && e.data.type === 'casadi-lab-height') document.getElementById('lab').style.height = e.data.h + 'px';
+});
+</script>
+<p style="text-align:right"><a href="lab.html">open full screen</a></p>
+<h2 id="the-problem">The problem</h2>
+<p>The optimal control problem being solved is</p>
+<p>$$
+\begin{align}
+\displaystyle \underset{T,\,p(\cdot),\,v(\cdot),\,a(\cdot)}
+{\text{minimize}}\quad &amp; T \newline
+\text{subject to} \, \quad
+&amp; \dot{p} = v, \quad \dot{v} = a \newline
+&amp; \|v(t)\| \leq v_{\max}, \quad \|a(t)\| \leq a_{\max} \newline
+&amp; \|p(t) - o_j\| \geq r_j + \delta, \quad j=1,\ldots,8 \newline
+&amp; p(t) \in \text{arena} \newline
+&amp; p(0) = A,\quad p(T) = B, \quad v(0) = v(T) = 0
+\end{align}
+$$</p>
+<p>It is discretized with multiple shooting over $N=50$ intervals (RK4), giving 355 variables and 1217 constraints.
+Nothing about it is exotic, but it is nonconvex: every obstacle can be passed on either side.</p>
+<p>Minimum-time solutions are bang-bang: at almost every instant <em>some</em> constraint is active, and the trajectory is squeezed against its limits.
+The <em>constraint activity</em> timeline under the arena shows this, with magenta wherever speed, thrust or clearance sits exactly on its bound.</p>
+<h2 id="what-you-are-looking-at">What you are looking at</h2>
+<ul>
+<li><strong>Drag</strong>: move obstacles, A and B, or the limit sliders. Each change triggers a new solve that starts from the previous solution, typically in 20 to 70 ms.</li>
+<li><strong>The problem, live</strong>: the formulation card lights up each constraint family that is active at the optimum, with a count.</li>
+<li><strong>Multipliers as forces</strong>: the Lagrange multipliers of the obstacle constraints are drawn as what they physically are, forces with which the obstacles push the trajectory away.</li>
+<li><strong>Shadow prices</strong>: next to every limit slider you get $\partial T^\star / \partial v_{\max}$, $\partial T^\star / \partial a_{\max}$ and $\partial T^\star / \partial \delta$. The green arrows on the obstacles show which way to move each obstacle to buy the most time. None of this uses finite differences or extra solves.</li>
+<li><strong>Grab the path and pull</strong>: this attaches a spring to the trajectory (an extra objective term with parametric weights). You can drag the solution around while the dynamics and constraints push back. When you let go, the solver snaps to whatever local optimum is nearest; pull it over an obstacle and it settles on the other side.</li>
+</ul>
+<h1 id="using-casadi-from-javascript">Using CasADi from javascript</h1>
+<p>The npm package is written for Node: <code>casadi.js</code> is a CommonJS module that <code>require</code>s its emscripten runtime.
+A browser can still run it unmodified, as long as you give it a ten-line CommonJS sandbox.
+The demo does this in a Web Worker, so solving never blocks the user interface:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">CASADI</span> <span class="o">=</span> <span class="s1">&#39;https://unpkg.com/@casadi/casadi-wasm@3.8.1/&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// casadi.js is a CommonJS module written for Node; evaluate it in a tiny sandbox
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">async</span> <span class="kd">function</span> <span class="nx">evalCjs</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="nx">requireFn</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">src</span> <span class="o">=</span> <span class="kr">await</span> <span class="p">(</span><span class="kr">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">CASADI</span> <span class="o">+</span> <span class="nx">file</span><span class="p">)).</span><span class="nx">text</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">factory</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Function</span><span class="p">(</span><span class="s1">&#39;module&#39;</span><span class="p">,</span> <span class="s1">&#39;exports&#39;</span><span class="p">,</span> <span class="s1">&#39;require&#39;</span><span class="p">,</span> <span class="s1">&#39;__dirname&#39;</span><span class="p">,</span> <span class="s1">&#39;__filename&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">src</span> <span class="o">+</span> <span class="s1">&#39;\n;return module.exports;&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">module</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">exports</span><span class="o">:</span> <span class="p">{}</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">factory</span><span class="p">(</span><span class="nx">module</span><span class="p">,</span> <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">,</span> <span class="nx">requireFn</span><span class="p">,</span> <span class="nx">CASADI</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/\/$/</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span> <span class="nx">CASADI</span> <span class="o">+</span> <span class="nx">file</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">createWasm</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">evalCjs</span><span class="p">(</span><span class="s1">&#39;casadi_wasm.js&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;no require&#39;</span><span class="p">);</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">createcasadi</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">evalCjs</span><span class="p">(</span><span class="s1">&#39;casadi.js&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">endsWith</span><span class="p">(</span><span class="s1">&#39;casadi_wasm.js&#39;</span><span class="p">))</span> <span class="k">return</span> <span class="nx">createWasm</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="nx">p</span> <span class="o">===</span> <span class="s1">&#39;path&#39;</span><span class="p">)</span> <span class="k">return</span> <span class="p">{</span> <span class="nx">join</span><span class="o">:</span> <span class="p">(...</span><span class="nx">a</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">a</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nb">Boolean</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/([^:])\/{2,}/g</span><span class="p">,</span> <span class="s1">&#39;$1/&#39;</span><span class="p">)</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">ca</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">createcasadi</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="kr">await</span> <span class="nx">ca</span><span class="p">.</span><span class="nx">load_nlpsol</span><span class="p">(</span><span class="s1">&#39;fatrop&#39;</span><span class="p">);</span>   <span class="c1">// plugins are fetched on demand
+</span></span></span></code></pre></div><p>The wire payload is about 3.5 MB gzipped: the WebAssembly binary (2.2 MB), its JavaScript runtime (0.9 MB) and the fatrop plugin (0.3 MB).
+unpkg serves everything with permissive CORS headers, so this works from any page.
+After that, it&rsquo;s the CasADi API you know, with JavaScript syntax:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">ca</span><span class="p">.</span><span class="nx">SX</span><span class="p">.</span><span class="nx">sym</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">u</span> <span class="o">=</span> <span class="nx">ca</span><span class="p">.</span><span class="nx">SX</span><span class="p">.</span><span class="nx">sym</span><span class="p">(</span><span class="s1">&#39;u&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">h</span> <span class="o">=</span> <span class="nx">ca</span><span class="p">.</span><span class="nx">SX</span><span class="p">.</span><span class="nx">sym</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="p">[,</span> <span class="p">,</span> <span class="nx">vx</span><span class="p">,</span> <span class="nx">vy</span><span class="p">,</span> <span class="nx">T</span><span class="p">]</span> <span class="o">=</span> <span class="nx">ca</span><span class="p">.</span><span class="nx">vertsplit</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="p">[</span><span class="nx">ax</span><span class="p">,</span> <span class="nx">ay</span><span class="p">]</span> <span class="o">=</span> <span class="nx">ca</span><span class="p">.</span><span class="nx">vertsplit</span><span class="p">(</span><span class="nx">u</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">f</span> <span class="o">=</span> <span class="nx">ca</span><span class="p">.</span><span class="nb">Function</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">x</span><span class="p">,</span> <span class="nx">u</span><span class="p">],</span> <span class="p">[</span><span class="nx">ca</span><span class="p">.</span><span class="nx">vcat</span><span class="p">([</span><span class="nx">vx</span><span class="p">,</span> <span class="nx">vy</span><span class="p">,</span> <span class="nx">ax</span><span class="p">,</span> <span class="nx">ay</span><span class="p">,</span> <span class="nx">ca</span><span class="p">.</span><span class="nx">SX</span><span class="p">(</span><span class="mi">0</span><span class="p">)])]);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// ... RK4 into F(x, u, h), loop over the stages to collect constraints g ...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">solver</span> <span class="o">=</span> <span class="nx">ca</span><span class="p">.</span><span class="nx">nlpsol</span><span class="p">(</span><span class="s1">&#39;planner&#39;</span><span class="p">,</span> <span class="s1">&#39;fatrop&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">x</span><span class="o">:</span> <span class="nx">w</span><span class="p">,</span> <span class="nx">p</span><span class="o">:</span> <span class="nx">P</span><span class="p">,</span> <span class="nx">f</span><span class="o">:</span> <span class="nx">J</span><span class="p">,</span> <span class="nx">g</span><span class="o">:</span> <span class="nx">ca</span><span class="p">.</span><span class="nx">vcat</span><span class="p">(</span><span class="nx">g</span><span class="p">)</span> <span class="p">},</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">structure_detection</span><span class="o">:</span> <span class="s1">&#39;auto&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">fatrop</span><span class="o">:</span> <span class="p">{</span> <span class="nx">print_level</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">tol</span><span class="o">:</span> <span class="mf">1e-6</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">sol</span> <span class="o">=</span> <span class="nx">solver</span><span class="p">.</span><span class="nx">call</span><span class="p">({</span> <span class="nx">x0</span><span class="p">,</span> <span class="nx">p</span><span class="p">,</span> <span class="nx">lbx</span><span class="p">,</span> <span class="nx">ubx</span><span class="p">,</span> <span class="nx">lbg</span><span class="p">,</span> <span class="nx">ubg</span> <span class="p">});</span>
+</span></span></code></pre></div><p>The complete formulation is about 170 lines, plus an A* initial guess: <a href="planner.js">planner.js</a>. The same file runs in Node for testing.</p>
+<h1 id="try-it-yourself">Try it yourself</h1>
+<p>The amount of control engineers comfortable with web technology is probably quite small.
+But with a little AI assistance, it shouldn&rsquo;t be hard to create your technology demonstrators.</p>
+<p>There are many readable examples available in the <a href="https://github.com/casadi/casadi/releases/download/3.8.1/casadi-example_pack-v3.8.1.zip">example pack</a>.</p>
+<p>The demo above is three static files next to this post: <a href="lab.html">lab.html</a>, <a href="worker.js">worker.js</a> and <a href="planner.js">planner.js</a>.
+Save them, serve the folder with <code>python3 -m http.server</code>, and you have a CasADi playground with no build step.</p>
+
+    </div>
+  </div>
+</div>
+    
+
+
+<a href="https://www.yacoda.com/training/casadi" target="_blank" id="bottom-banner" class="visible">
+
+
+  <div class="container p-3">
+    <div class="row justify-content-md-center">
+      <div class="col-md-auto text-center">
+        <p>📣Next hands-on CasADi classes: October 2026 (basic) and January 2027 (advanced)</p>
+
+      </div>
+    </div>
+  </div>
+</a>
+
+
+    
+    <footer>
+      <div class="container">
+        <div class="row justify-content-md-center">
+          <div class="col-md-auto text-center">
+            <ul id="social" class="list-inline">
+              
+                <li class="list-inline-item">
+                  <a href="https://github.com/casadi/casadi" title="github">
+                    <i class="fa fa-github"></i>
+                  </a>
+                </li>
+              
+                <li class="list-inline-item">
+                  <a href="https://www.youtube.com/channel/UC3VDpv5Pi3R-a2VkcJN1RLw" title="youtube">
+                    <i class="fa fa-youtube"></i>
+                  </a>
+                </li>
+              
+            </ul>
+            <p class="copyright">Copyright 2026.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    
+    <script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    
+    <script src="https://web.casadi.org/_js/bootstrap.min.js"></script>
+
+    
+    <script src="https://web.casadi.org/_js/scripts.js"></script>
+
+    
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+
+    
+  </body>
+
+</html>
+
