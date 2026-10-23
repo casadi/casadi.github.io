@@ -51,7 +51,7 @@
         
         
           
-          <li class="nav-item active">
+          <li class="nav-item">
           
             <a class="nav-link" href="/">Home</a>
           </li>
@@ -116,10 +116,103 @@
       
       
       
-
+      
+      
       
 
       
+
+      
+      
+
+        
+
+        
+      
+
+        
+
+        
+      
+
+        
+
+        
+      
+
+        
+
+        
+      
+
+        
+
+        
+      
+
+        
+
+        
+      
+
+        
+
+        
+      
+
+        
+
+        
+      
+
+        
+
+        
+      
+
+        
+
+        
+      
+
+        
+
+        
+      
+
+        
+
+        
+      
+
+        
+
+        
+      
+
+        
+
+        
+      
+
+        
+
+        
+      
+
+        
+
+        
+      
+
+        
+
+        
+      
+
+        
+
+        
       
 
         
@@ -205,6 +298,10 @@
 Note that we adopted Python Stable ABI, so Python 3.12, 3.13, 3.14, etc should all work with the `cp311-abi3` variant.</td>
   </tr>
   <tr>
+    <th>Julia</th>
+    <td colspan="4"><code>] add CasADiNative</code> (Julia 1.10 to 1.13)</td>
+  </tr>
+  <tr>
     <th>Javascript</th>
     <td colspan="4"><code>npm install @casadi/casadi-wasm</code></td>
   </tr>
@@ -217,7 +314,7 @@ addpath('&lt;yourpath>/casadi-3.8.1-windows64-matlab2018b')
 </pre>
 <p>Check your installation:</p>
 <table>
-<tr><th>Matlab/Octave</th><th>Python</th><th>Javascript</th><tr>
+<tr><th>Matlab/Octave</th><th>Python</th><th>Julia</th><th>Javascript</th><tr>
 <tr><td>
 <pre>
 <code>
@@ -235,6 +332,15 @@ print(jacobian(sin(x),x))
 </code>
 </pre>
 </td><td>
+<pre>
+<code>
+import CasADiNative as ca
+x = ca.MX.sym("x")
+println(ca.jacobian(sin(x), x))
+</code>
+</pre>
+</td>
+<td>
 <pre>
 <code>
 require("@casadi/casadi-wasm")()
@@ -260,8 +366,9 @@ require("@casadi/casadi-wasm")()
 This is experimental work. Users are encouraged to try it out and post any bugs.</p>
 <h3 id="julia">Julia</h3>
 <p>CasADi can now be driven from Julia without Python intermediary, thanks to an extension of SWIG.
+Install with <code>] add CasADiNative</code> (<a href="https://github.com/casadi/CasADiNative.jl">CasADiNative.jl</a>); not to be confused with the PythonCall-based <code>CasADi.jl</code>.
 The example <code>docs/examples/julia/simple_nlp.jl</code> should look fairly familiar to seasoned CasADi Python users:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-julia" data-lang="julia"><span class="line"><span class="cl"><span class="k">import</span> <span class="n">CasADi</span> <span class="n">as</span> <span class="n">ca</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-julia" data-lang="julia"><span class="line"><span class="cl"><span class="k">import</span> <span class="n">CasADiNative</span> <span class="n">as</span> <span class="n">ca</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">ca</span><span class="o">.</span><span class="n">SX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#34;x&#34;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="n">f</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">^</span><span class="mi">2</span>          <span class="c"># objective</span>
@@ -2407,592 +2514,6 @@ The change is hidden for Python/Octave/Matlab users, but C++ users may be affect
 
             
 
-            
-            
-          
-        
-      
-
-        
-
-          
-            
-
-            
-
-            
-
-            
-            
-          
-        
-      
-
-        
-
-          
-            
-
-            
-
-            
-
-            
-            
-          
-        
-      
-
-        
-
-          
-            
-
-            
-
-            
-
-            
-            
-          
-        
-      
-
-        
-
-          
-            
-
-            
-
-            
-
-            
-            
-          
-        
-      
-
-        
-
-        
-      
-
-        
-
-          
-            
-
-            
-
-            
-
-              
-                  
-
-                
-                
-
-                
-                <div class="card text-left border-default mb-2" id="33">
-                
-                  
-                  <a class="card-header bg-white collapsed" data-toggle="collapse" href="#body-33" aria-expanded="false" aria-controls="body-33">
-                  
-                    
-                    <h4 class="text-default" style="display: inline-block; margin: 0;">CasADi v3.3.0</h4>
-                    
-                    
-                    
-                    
-                    <span class="release-info text-muted">released November 14, 2017</span>
-                  </a>
-                  
-                  <div class="collapse" id="body-33">
-                  
-
-                    
-                    
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-
-                      
-                        <div class="nav nav-pills card-header justify-content-center" role="tablist">
-                          
-                          <a class="nav-link active" href="#downloadTab-33" role="tab" data-toggle="tab" aria-selected="true">Install</a>
-                          
-                          
-                          <a class="nav-link" href="#installTab-33" role="tab" data-toggle="tab" aria-selected="false">Troubleshooting</a>
-                          
-                          
-                          <a class="nav-link" href="#notesTab-33" role="tab" data-toggle="tab" aria-selected="false">Release notes</a>
-                          
-
-                        </div>
-                        <div class="card-body tab-content">
-                          <div id="downloadTab-33" role="tabpanel" class="tab-pane fade active show">
-                            
-                              <p>Grab a binary from the table (for MATLAB, use the newest compatible version below):</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Windows</th>
-<th>Linux</th>
-<th>Mac</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Matlab</strong></td>
-<td><a href="https://sourceforge.net/projects/casadi/files/CasADi/3.3.0/windows/casadi-matlabR2014b-v3.3.0.zip">R2014b</a> or later,<br /> <a href="https://sourceforge.net/projects/casadi/files/CasADi/3.3.0/windows/casadi-matlabR2014a-v3.3.0.zip">R2014a</a>,<br /> <a href="https://sourceforge.net/projects/casadi/files/CasADi/3.3.0/windows/casadi-matlabR2013a-v3.3.0.zip">R2013a</a> or R2013b</td>
-<td><a href="https://sourceforge.net/projects/casadi/files/CasADi/3.3.0/linux/casadi-matlabR2014b-v3.3.0.tar.gz">R2014b</a> or later,<br /><a href="https://sourceforge.net/projects/casadi/files/CasADi/3.3.0/linux/casadi-matlabR2014a-v3.3.0.tar.gz">R2014a</a></td>
-<td><a href="https://sourceforge.net/projects/casadi/files/CasADi/3.3.0/osx/casadi-matlabR2015a-v3.3.0.tar.gz">R2015a</a> or later,<br /><a href="https://sourceforge.net/projects/casadi/files/CasADi/3.3.0/osx/casadi-matlabR2014b-v3.3.0.tar.gz">R2014b</a>,<br /><a href="https://sourceforge.net/projects/casadi/files/CasADi/3.3.0/osx/casadi-matlabR2014a-v3.3.0.tar.gz">R2014a</a></td>
-</tr>
-<tr>
-<td><strong>Octave</strong></td>
-<td>4.2.1 (<a href="https://sourceforge.net/projects/casadi/files/CasADi/3.3.0/windows/casadi-octave-4.2.1-w32-v3.3.0.zip">32bit</a>  / <a href="https://sourceforge.net/projects/casadi/files/CasADi/3.3.0/windows/casadi-octave-4.2.1-w64-v3.3.0.zip">64bit</a>)</td>
-<td><a href="https://sourceforge.net/projects/casadi/files/CasADi/3.3.0/linux/casadi-octave-v3.3.0.tar.gz">4.2.1</a></td>
-<td><a href="https://sourceforge.net/projects/casadi/files/CasADi/3.3.0/osx/casadi-octave-v3.3.0.tar.gz">4.2.1</a></td>
-</tr>
-<tr>
-<td><strong>Python</strong></td>
-<td>Py27 (<a href="https://sourceforge.net/projects/casadi/files/CasADi/3.3.0/windows/casadi-py27-v3.3.0.zip">32bit</a><sup>1,2</sup> / <a href="https://sourceforge.net/projects/casadi/files/CasADi/3.3.0/windows/casadi-py27-v3.3.0-64bit.zip">64bit</a><sup>2</sup>),<br /> Py35 (<a href="https://sourceforge.net/projects/casadi/files/CasADi/3.3.0/windows/casadi-py35-v3.3.0.zip">32bit</a><sup>2</sup> / <a href="https://sourceforge.net/projects/casadi/files/CasADi/3.3.0/windows/casadi-py35-v3.3.0-64bit.zip">64bit</a><sup>2</sup>),<br /> Py36 (<a href="https://sourceforge.net/projects/casadi/files/CasADi/3.3.0/windows/casadi-py36-v3.3.0.zip">32bit</a><sup>2</sup> / <a href="https://sourceforge.net/projects/casadi/files/CasADi/3.3.0/windows/casadi-py36-v3.3.0-64bit.zip">64bit</a><sup>2</sup>)</td>
-<td><a href="https://sourceforge.net/projects/casadi/files/CasADi/3.3.0/linux/casadi-py27-v3.3.0-64bit.tar.gz">Py27</a>,<br /><a href="https://sourceforge.net/projects/casadi/files/CasADi/3.3.0/linux/casadi-py35-v3.3.0-64bit.tar.gz">Py35</a>,<br /><a href="https://sourceforge.net/projects/casadi/files/CasADi/3.3.0/linux/casadi-py36-v3.3.0-64bit.tar.gz">Py36</a></td>
-<td><a href="https://sourceforge.net/projects/casadi/files/CasADi/3.3.0/osx/casadi-py27-v3.3.0.tar.gz">Py27</a>,<br /><a href="https://sourceforge.net/projects/casadi/files/CasADi/3.3.0/osx/casadi-py35-v3.3.0.tar.gz">Py35</a>,<br /><a href="https://sourceforge.net/projects/casadi/files/CasADi/3.3.0/osx/casadi-py36-v3.3.0.tar.gz">Py36</a></td>
-</tr>
-</tbody>
-</table>
-<p><sup>1</sup> Use this when you have Python(x,y).
-<sup>2</sup> Check your Python console if you need 32bit or 64bit - bitness should be printed at startup.</p>
-<p>Or see the <a href="https://sourceforge.net/projects/casadi/files/CasADi/">download page</a> for more options.</p>
-<p>Unzip in your home directory and adapt the path:</p>
-<table>
-<tr><th>Matlab/Octave</th><th>Python</th><tr>
-<tr><td>
-<pre>
-addpath('.../casadi-matlabR2014a-v3.3.0')
-import casadi.*
-x = MX.sym('x')
-disp(jacobian(sin(x),x))
-</pre>
-</td><td>
-<pre>
-from sys import path
-path.append(r".../casadi-py27-v3.3.0")
-from casadi import *
-x = MX.sym("x")
-print(jacobian(sin(x),x))
-</pre>
-</td></tr>
-</table>
-<p><em>New</em>: install with <code>pip install casadi</code></p>
-<p>Get started with the <a href="https://sourceforge.net/projects/casadi/files/CasADi/3.3.0/casadi-example_pack-v3.3.0.zip">example pack</a>.</p>
-
-                            
-                          </div>
-                          <div id="notesTab-33" role="tabpanel" class="tab-pane fade">
-                            
-                              <h2 id="new-and-improved-features">New and improved features</h2>
-<h3 id="support-for-finite-differences">Support for finite differences</h3>
-<p>CasADi is now able to calculate derivatives using finite differences approximations. To enable this feature, set the &ldquo;enable_fd&rdquo; option to true for a function object. If the function object has built-in derivative support, you can disable it by setting the options <code>enable_forward</code>, <code>enable_reverse</code> and <code>enable_jacobian</code> to false.</p>
-<p>The default algorithm is a central difference scheme with automatic step-size selection based on estimates of truncation errors and roundoff errors. You can change this to a (cheaper, but less accurate) one-sided scheme by setting <code>fd_method</code> to <code>forward</code> or <code>backward</code>. There is also an experimental discontinuity avoiding scheme (suitable if the function is differentiated near nonsmooth points that can be enable by setting <code>fd_method</code> to <code>smoothing</code>.</p>
-<h3 id="new-linear-solvers-with-support-for-c-code-generation">New linear solvers with support for C code generation</h3>
-<p>Two sparse direct linear solvers have been added to CasADi&rsquo;s runtime core: One based on an up-looking QR factorization, calculated using Householder reflections, and one sparse direct LDL method (square-root free variant of Cholesky). These solvers are available for both SX and MX, for MX as the linear solver plugins &ldquo;qr&rdquo; and &ldquo;ldl&rdquo;, for MX as the methods &ldquo;SX::qr_sparse&rdquo; and &ldquo;SX::ldl&rdquo;. They also support for C code generation (with the exception of LDL in MX).</p>
-<h3 id="faster-symbolic-processing-of-mx-graphs">Faster symbolic processing of MX graphs</h3>
-<p>A speed bottleneck, related to the topological sorting of large MX graphs has been identified and resolved. The complexity of the sorting algorithms is now linear in all cases.</p>
-<h3 id="other-improvements">Other improvements</h3>
-<ul>
-<li><code>A\y</code> and <code>y'/A</code> now work in Matlab/Octave</li>
-<li>Matrix power works</li>
-<li>First major release with <a href="http://labs.casadi.org/Opti">Opti</a></li>
-<li><code>shell</code> compiler now works on Windows, allowing to do <code>jit</code> using Visual Studio</li>
-<li>Added introspection methods <code>instruction_*</code> that work for SX/MX Functions. See <code>accessing_mx_algorithm</code> example to see how you can walk an MX <code>graph</code>.</li>
-<li>Experimental feature to export SX/MX functions to pure-Matlab code.</li>
-<li><code>DM::rand</code> creates a matrix with random numbers. <code>DM::rng</code> controls the seeding of the random number generator.</li>
-</ul>
-<h2 id="distributionbuild-system">Distribution/build system</h2>
-<ul>
-<li>Python interface no longer searches for/links to Python libraries (on Linux, OSX)</li>
-<li>Python interface no longer depends on Numpy at compile-time; CasADi works for any numpy version now</li>
-<li>Python binaries and wheels have come a step closer to true <code>manylinux</code>.
-CasADi should now run on CentOS 5.</li>
-</ul>
-<h2 id="api-changes">API changes</h2>
-<h3 id="refactored-printing-of-function-objects">Refactored printing of function objects</h3>
-<p>The default printout of Function instances is now shorter and consistent across different Function derived classes (SX/MX functions, NLP solvers, integrators, etc.). The new syntax is:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">casadi</span> <span class="kn">import</span> <span class="o">*</span>
-</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">SX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="o">=</span> <span class="n">SX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">f</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">],[</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="n">y</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="c1"># f:(x,y[2])-&gt;(r[2]) SXFunction</span>
-</span></span><span class="line"><span class="cl"><span class="n">f</span><span class="o">.</span><span class="n">disp</span><span class="p">()</span> <span class="c1"># Equivalent syntax (MATLAB style)</span>
-</span></span><span class="line"><span class="cl"><span class="n">f</span><span class="o">.</span><span class="n">disp</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># Print algorithm</span>
-</span></span></code></pre></div><p>I.e. you get a list of inputs, with dimension if non-scalar, and a name of the internal class (here SXFunction).
-You can also get the name as a string: <code>str(f)</code> or <code>f.str()</code>. If you want to print the algorithm, pass an optional argument &ldquo;True&rdquo;, i.e. <code>f.str(True)</code> or <code>f.disp(True)</code>.</p>
-<h3 id="changes-to-the-codegen-c-api">Changes to the codegen C API</h3>
-<p>The C API has seen continued improvements, in particular regarding the handling of external functions with memory allocation. See the user guide for the latest API.</p>
-<h3 id="other-changes">Other changes</h3>
-<ul>
-<li><code>inv()</code> is now more efficient for large <code>SX</code>/<code>DM</code> matrices, and is evaluatable for <code>MX</code> (<code>cparse</code> by default).
-The old variant is still available for <code>SX</code>/<code>MX</code> as <code>inv_minor</code>, and for <code>MX</code> as <code>inv_node</code>.</li>
-<li>Linear solver-related defaults are now set to <code>csparse</code> as opposed to <code>symbolicqr</code></li>
-<li>In Matlab, when the CasADi result is a <code>vector&lt;bool&gt;</code>, this gets mapped to a logical matrix. E.g. <code>which_depends</code> is affected by this change.</li>
-<li>The sum-of-squares operator is now called <code>sumsqr</code> instead of <code>sum_square</code>.</li>
-<li>The API of the <code>Linsol</code> class has changed.</li>
-</ul>
-
-                            
-                          </div>
-                          <div id="installTab-33" role="tabpanel" class="tab-pane fade">
-                            
-                              Getting error &ldquo;CasADi is not running from its package context.&rdquo; in Python? Check that you have <code>casadi-py27-v3.3.0/casadi/casadi.py</code>. If you have <code>casadi-py27-v3.3.0/casadi.py</code> instead, that&rsquo;s not good; add an extra <code>casadi</code> folder.
-                            
-                          </div>
-                        </div>
-                      
-                    
-
-                    <div class="card-footer release-info text-muted">
-                      <a href="https://github.com/casadi/casadi/releases/tag/3.3.0" target="_blank" title="Link to the tag published on GitHub">This tag on GitHub</a>
-                    </div>
-                  </div>
-                </div>
-              
-            
-            
-          
-        
-      
-
-        
-
-        
-      
-
-        
-
-        
-      
-
-        
-
-          
-            
-
-            
-
-            
-
-              
-                  
-
-                
-                
-
-                
-                <div class="card text-left border-default mb-2" id="32">
-                
-                  
-                  <a class="card-header bg-white collapsed" data-toggle="collapse" href="#body-32" aria-expanded="false" aria-controls="body-32">
-                  
-                    
-                    <h4 class="text-default" style="display: inline-block; margin: 0;">CasADi v3.2.3</h4>
-                    
-                    
-                    
-                    
-                    <span class="release-info text-muted">released September 11, 2017</span>
-                  </a>
-                  
-                  <div class="collapse" id="body-32">
-                  
-
-                    
-                    
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-
-                      
-                        <div class="nav nav-pills card-header justify-content-center" role="tablist">
-                          
-                          <a class="nav-link active" href="#downloadTab-32" role="tab" data-toggle="tab" aria-selected="true">Install</a>
-                          
-                          
-                          <a class="nav-link" href="#installTab-32" role="tab" data-toggle="tab" aria-selected="false">Troubleshooting</a>
-                          
-                          
-                          <a class="nav-link" href="#notesTab-32" role="tab" data-toggle="tab" aria-selected="false">Release notes</a>
-                          
-
-                        </div>
-                        <div class="card-body tab-content">
-                          <div id="downloadTab-32" role="tabpanel" class="tab-pane fade active show">
-                            
-                              <p>Grab a binary from the table (for MATLAB, use the newest compatible version below):</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Windows 64 bit</th>
-<th>Linux (14.04+)</th>
-<th>Mac</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Matlab</strong></td>
-<td><a href="https://sourceforge.net/projects/casadi/files/CasADi/3.2.3/windows/casadi-matlabR2014b-v3.2.3.zip">R2014b</a> or later</td>
-<td><a href="https://sourceforge.net/projects/casadi/files/CasADi/3.2.3/linux/casadi-matlabR2014b-v3.2.3.tar.gz">R2014b</a> or later</td>
-<td><a href="https://sourceforge.net/projects/casadi/files/CasADi/3.2.3/osx/casadi-matlabR2015a-v3.2.3.tar.gz">R2015a</a> or later</td>
-</tr>
-<tr>
-<td></td>
-<td><a href="https://sourceforge.net/projects/casadi/files/CasADi/3.2.3/windows/casadi-matlabR2014a-v3.2.3.zip">R2014a</a></td>
-<td><a href="https://sourceforge.net/projects/casadi/files/CasADi/3.2.3/linux/casadi-matlabR2014a-v3.2.3.tar.gz">R2014a</a></td>
-<td><a href="https://sourceforge.net/projects/casadi/files/CasADi/3.2.3/osx/casadi-matlabR2014b-v3.2.3.tar.gz">R2014b</a></td>
-</tr>
-<tr>
-<td></td>
-<td><a href="https://sourceforge.net/projects/casadi/files/CasADi/3.2.3/windows/casadi-matlabR2013a-v3.2.3.zip">R2013a</a> or R2013b</td>
-<td></td>
-<td><a href="https://sourceforge.net/projects/casadi/files/CasADi/3.2.3/osx/casadi-matlabR2014a-v3.2.3.tar.gz">R2014a</a></td>
-</tr>
-<tr>
-<td><strong>Octave</strong></td>
-<td>4.2.1 <a href="https://sourceforge.net/projects/casadi/files/CasADi/3.2.3/windows/casadi-octave-4.2.1-w32-v3.2.3.zip">32bit</a>  or <a href="https://sourceforge.net/projects/casadi/files/CasADi/3.2.3/windows/casadi-octave-4.2.1-w64-v3.2.3.zip">64bit</a></td>
-<td><a href="https://sourceforge.net/projects/casadi/files/CasADi/3.2.3/linux/casadi-octave-v3.2.3.tar.gz">4.2.1</a></td>
-<td><a href="https://sourceforge.net/projects/casadi/files/CasADi/3.2.3/osx/casadi-octave-v3.2.3.tar.gz">4.2.1</a></td>
-</tr>
-<tr>
-<td><strong>Python</strong></td>
-<td>Py27 (py <a href="https://sourceforge.net/projects/casadi/files/CasADi/3.2.3/windows/casadi-py27-np1.9.1-v3.2.3.zip" title="Use this when you have Python(x,y). In general: check your Python console. Bitness should be printed at startup.">32bit</a> or py <a href="https://sourceforge.net/projects/casadi/files/CasADi/3.2.3/windows/casadi-py27-np1.9.1-v3.2.3-64bit.zip" title="Check your Python console if you need 64bit. Bitness should be printed at startup.">64bit</a> )</td>
-<td><a href="https://sourceforge.net/projects/casadi/files/CasADi/3.2.3/linux/casadi-py27-np1.9-v3.2.3.tar.gz">Py27</a></td>
-<td><a href="https://sourceforge.net/projects/casadi/files/CasADi/3.2.3/osx/casadi-py27-np1.9-v3.2.3.tar.gz">Py27</a></td>
-</tr>
-<tr>
-<td></td>
-<td>Py35 (py <a href="https://sourceforge.net/projects/casadi/files/CasADi/3.2.3/windows/casadi-py35-np1.9.1-v3.2.3.zip" title="Check your Python console if you need 32bit. Bitness should be printed at startup.">32bit</a> or py <a href="https://sourceforge.net/projects/casadi/files/CasADi/3.2.3/windows/casadi-py35-np1.9.1-v3.2.3-64bit.zip" title="Check your Python console if you need 64bit. Bitness should be printed at startup.">64bit</a>  )</td>
-<td><a href="https://sourceforge.net/projects/casadi/files/CasADi/3.2.3/linux/casadi-py35-np1.9-v3.2.3.tar.gz">Py35</a></td>
-<td><a href="https://sourceforge.net/projects/casadi/files/CasADi/3.2.3/osx/casadi-py35-np1.9-v3.2.3.tar.gz">Py35</a></td>
-</tr>
-<tr>
-<td></td>
-<td>Py36 (py <a href="https://sourceforge.net/projects/casadi/files/CasADi/3.2.3/windows/casadi-py36-np1.9.1-v3.2.3.zip" title="Check your Python console if you need 32bit. Bitness should be printed at startup.">32bit</a> or py <a href="https://sourceforge.net/projects/casadi/files/CasADi/3.2.3/windows/casadi-py36-np1.9.1-v3.2.3-64bit.zip" title="Check your Python console if you need 64bit. Bitness should be printed at startup.">64bit</a>  )</td>
-<td><a href="https://sourceforge.net/projects/casadi/files/CasADi/3.2.3/linux/casadi-py36-np1.11-v3.2.3.tar.gz">Py36</a></td>
-<td><a href="https://sourceforge.net/projects/casadi/files/CasADi/3.2.3/osx/casadi-py36-np1.11-v3.2.3.tar.gz">Py36</a></td>
-</tr>
-</tbody>
-</table>
-<p><em>or see <a href="https://sourceforge.net/projects/casadi/files/CasADi/">download page</a> for more options/versions &hellip;</em></p>
-<p>Unzip in your home directory and adapt the path:</p>
-<table>
-<tr><th>Matlab/Octave</th><th>Python</th><tr>
-<tr><td>
-<pre>
-addpath('.../casadi-matlabR2014a-v3.2.3')
-import casadi.*
-x = MX.sym('x')
-disp(jacobian(sin(x),x))
-</pre>
-</td><td>
-<pre>
-from sys import path
-path.append(r".../casadi-py27-np1.9.1-v3.2.3")
-from casadi import *
-x = MX.sym("x")
-print(jacobian(sin(x),x))
-</pre>
-</td></tr>
-</table>
-<p><em>New</em>: install with <code>pip install casadi</code> (you must have <code>pip --version</code> &gt;= 8.1!)</p>
-
-                            
-                          </div>
-                          <div id="notesTab-32" role="tabpanel" class="tab-pane fade">
-                            
-                              <h2 id="new-features">New features</h2>
-<ul>
-<li>Introduced differentiable exponential matrix node <code>expm</code> (requires slicot)</li>
-<li>Introduced differentiable N-dimensional lookup tables: <code>interpolant</code> with &lsquo;bspline&rsquo; solver.</li>
-</ul>
-<h2 id="bugs-in-the-sundials-interface-fixed">Bugs in the SUNDIALS interface fixed</h2>
-<p>CasADi 3.1 included a refactored support for ODE/DAE sensitivity analysis. While more efficient, this also exposed some bugs that have now been fixed in the CasADi 3.2 release, including:</p>
-<ul>
-<li>A bug affecting second order sensitivity analysis using CVODES was fixed. Cf. <a href="https://github.com/casadi/casadi/issues/1924">#1924</a>.</li>
-<li>Segfault in IDAS Cf. <a href="https://github.com/casadi/casadi/issues/1911">#1911</a>.</li>
-</ul>
-<h2 id="api-changes">API changes</h2>
-<ul>
-<li>The <code>if_else</code> and <code>conditional</code> operations are now non-short-circuiting by default for both SX and MX. This means that <code>if_else(c,x,y)</code> is now equivalent to <code>if_else(c,x,y,False)</code> and not <code>if_else(c,x,y,True)</code> as before. Also note that <code>if_else(c,x,y,True)</code> is only supported for MX. Cf. <a href="https://github.com/casadi/casadi/issues/1968">#1968</a>.</li>
-<li>The functions <code>Function::jacobian</code>, <code>Function::derivative</code> and <code>Function::hessian</code>, which have had an internal character since CasADi 3.0, have been deprecated and will be removed in their current forms in the next release. The user is encouraged to work with expressions (e.g. <code>J = jacobian(f,x)</code> or <code>Jv = jtimes(f,x,v)</code> or <code>[H,g] = hessian(f,x)</code>) or use <code>Function::factory</code> (*). To allow a smooth transition, <code>Function::jacobian</code> and <code>Function::hessian</code> will be available as <code>Function::jacobian_old</code> and <code>Function::hessian_old</code> in this and next release. Cf. <a href="https://github.com/casadi/casadi/issues/1777">#1777</a>.</li>
-</ul>
-<p>(*) example in Matlab:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="n">x</span> <span class="p">=</span> <span class="n">MX</span><span class="p">.</span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="p">=</span> <span class="n">x</span>^<span class="mi">2</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="n">f</span> <span class="p">=</span> <span class="n">Function</span><span class="p">(</span><span class="s">&#39;f&#39;</span><span class="p">,{</span><span class="n">x</span><span class="p">},{</span><span class="n">y</span><span class="p">})</span>
-</span></span><span class="line"><span class="cl"><span class="c">%J = f.jacobian(0,0) replacement:</span>
-</span></span><span class="line"><span class="cl"><span class="n">J</span> <span class="p">=</span> <span class="n">Function</span><span class="p">(</span><span class="s">&#39;J&#39;</span><span class="p">,{</span><span class="n">x</span><span class="p">},{</span><span class="n">jacobian</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">),</span> <span class="n">y</span><span class="p">})</span> <span class="c">% alternative 1</span>
-</span></span><span class="line"><span class="cl"><span class="n">J</span> <span class="p">=</span> <span class="n">f</span><span class="p">.</span><span class="n">factory</span><span class="p">(</span><span class="s">&#39;J&#39;</span><span class="p">,{</span><span class="s">&#39;i0&#39;</span><span class="p">},{</span><span class="s">&#39;jac:o0:i0&#39;</span><span class="p">,</span><span class="s">&#39;o0&#39;</span><span class="p">})</span> <span class="c">% alternative 2</span>
-</span></span><span class="line"><span class="cl"><span class="c">%H = f.hessian(0,0) replacement:</span>
-</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="n">H</span><span class="p">,</span><span class="n">g</span><span class="p">]</span> <span class="p">=</span> <span class="n">hessian</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="n">H</span> <span class="p">=</span> <span class="n">Function</span><span class="p">(</span><span class="s">&#39;H&#39;</span><span class="p">,{</span><span class="n">x</span><span class="p">},{</span><span class="n">H</span><span class="p">,</span><span class="n">g</span><span class="p">})</span> <span class="c">% alternative 1</span>
-</span></span><span class="line"><span class="cl"><span class="n">H</span> <span class="p">=</span> <span class="n">f</span><span class="p">.</span><span class="n">factory</span><span class="p">(</span><span class="s">&#39;H&#39;</span><span class="p">,{</span><span class="s">&#39;i0&#39;</span><span class="p">},{</span><span class="s">&#39;hess:o0:i0:i0&#39;</span><span class="p">,</span><span class="s">&#39;grad:o0:i0&#39;</span><span class="p">})</span> <span class="c">% alternative 2</span>
-</span></span></code></pre></div><h2 id="improvements-to-c-code-generation">Improvements to C code generation</h2>
-<ul>
-<li>The generated code now follows stricter coding standards. It should now be possible to compile the code with the GCC flags <code>-Wall -Werror</code>. Cf. <a href="https://github.com/casadi/casadi/issues/1741">#1741</a>.</li>
-</ul>
-<h2 id="changes-to-the-build-system">Changes to the build system</h2>
-<ul>
-<li>The build system has been refactored and CasADi/C++ can be conveniently compiled with Visual Studio C++ on Windows. The installation now also includes CMake configure files, which makes it convenient to locate and use a CasADi installation in C++ code. Cf. <a href="https://github.com/casadi/casadi/issues/1982">#1982</a>.</li>
-<li>The logic for source builds have changed. Before, the build system would try to locate third-party packages on the system and compile and install the third-party interfaces if this was successful. Now, the logic is that third-party packages are not installed unless the user specifically indicates this <code>e.g. </code>-DWITH_IPOPT=ON`. Cf.
-<a href="https://github.com/casadi/casadi/issues/1989">#1989</a>, <a href="https://github.com/casadi/casadi/issues/1988">#1988</a>.</li>
-<li>The default installation directories for the SWIG interfaces (for Python, Octave and MATLAB) has changed. It is now installed as subdirectories of the <code>CMAKE_INSTALL_PREFIX</code> location by default, but this can be changed by explicitly setting the CMake variables <code>BIN_PREFIX</code>, <code>CMAKE_PREFIX</code>, <code>INCLUDE_PREFIX</code>, <code>LIB_PREFIX</code>, <code>MATLAB_PREFIX</code> and <code>PYTHON_PREFIX</code>. A flat installation directory (without subdirectories) can be obtained by setting the <code>WITH_SELFCONTAINED</code> option. This is the default behavior on Windows. Cf. <a href="https://github.com/casadi/casadi/issues/1991">#1991</a>, <a href="https://github.com/casadi/casadi/issues/1990">#1990</a></li>
-</ul>
-<h2 id="changes-to-precompiled-binaries">Changes to precompiled binaries</h2>
-<p>Python 2.6 (<a href="https://github.com/casadi/casadi/issues/1976">#1976</a>), Python 3.6 (<a href="https://github.com/casadi/casadi/issues/1987">#1987</a>) and Octave 4.2 (<a href="https://github.com/casadi/casadi/issues/2002">#2002</a>, <a href="https://github.com/casadi/casadi/issues/2000">#2000</a>) are now supported.</p>
-
-                            
-                          </div>
-                          <div id="installTab-32" role="tabpanel" class="tab-pane fade">
-                            
-                              <p>Get started with the <a href="https://sourceforge.net/projects/casadi/files/CasADi/3.2.3/casadi-example_pack-v3.2.3.zip">example pack</a>.</p>
-<p>Getting error &ldquo;CasADi is not running from its package context.&rdquo; in Python? Check that you have <code>casadi-py27-np1.9.1-v3.2.3/casadi/casadi.py</code>. If you have <code>casadi-py27-np1.9.1-v3.2.3/casadi.py</code> instead, that&rsquo;s not good; add an extra <code>casadi</code> folder.</p>
-
-                            
-                          </div>
-                        </div>
-                      
-                    
-
-                    <div class="card-footer release-info text-muted">
-                      <a href="https://github.com/casadi/casadi/releases/tag/3.2.3" target="_blank" title="Link to the tag published on GitHub">This tag on GitHub</a>
-                    </div>
-                  </div>
-                </div>
-              
-            
-            
-          
-        
-      
-
-        
-
-          
-            
-
-            
-
-            
-
-            
-            
-          
-        
-      
-
-        
-
-          
-            
-
-            
-
-            
-
-            
-            
-          
-        
-      
-
-        
-
-          
-            
-
-            
-
-            
-
-            
-            
-          
-        
-      
-
-        
-
-        
-      
-
-        
-
-        
-      
-
-        
-
-          
-            
-
-            
-
-            
-
-              
-            
-            
-          
-        
-      
-
-        
-
-          
-            
-
-            
-
-            
-
-              
-            
-            
-          
-        
-      
-
-        
-
-        
-      
-
-        
-
-          
-            
-
-            
-
-            
-
-              
             
             
           

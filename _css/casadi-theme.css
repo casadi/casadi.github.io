@@ -741,3 +741,252 @@ blockquote::before {
   line-height: 60px;
   font-weight: bold;
 }
+
+/* one entry per function/method */
+#main.docs .content dl.py {
+  margin: 0 0 2.5rem 0;
+}
+
+#main.docs .content dl.py dl.py { /* class members */
+  margin: 0 0 2rem 0;
+  padding-left: 1rem;
+  border-left: 2px solid #eee;
+}
+
+#main.docs .content dl.py > dt {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 0.95rem;
+  font-weight: 400;
+  padding: 0.35rem 0.6rem;
+  background-color: #f7f7f7;
+  border-left: 3px solid rgb(220, 0, 0);
+  margin-bottom: 0.6rem;
+  scroll-margin-top: 70px;
+}
+
+#main.docs .content dl.py > dt .sig-name {
+  font-weight: 700;
+}
+
+#main.docs .content dl.py > dt .sig-prename {
+  color: #888;
+}
+
+#main.docs .content dl.py > dt .sig-paren,
+#main.docs .content dl.py > dt .sig-param {
+  color: #888;
+}
+
+#main.docs .content dl.py > dd {
+  margin-left: 0.6rem;
+}
+
+#main.docs .content dl.py > dd > p:first-child { /* brief */
+  font-size: 1.05rem;
+  margin-bottom: 0.6rem;
+}
+
+/* SWIG overload list */
+#main.docs .content .signatures {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  background: transparent;
+  border-left: 2px solid #ddd;
+  padding: 0.2rem 1rem;
+  margin: 0 0 1rem 0;
+  color: #444;
+}
+
+/* Parameters / Returns */
+#main.docs .content dl.field-list {
+  display: grid;
+  grid-template-columns: -webkit-max-content auto;
+  grid-template-columns: max-content auto;
+  -webkit-column-gap: 1rem;
+     -moz-column-gap: 1rem;
+          column-gap: 1rem;
+  row-gap: 0.25rem;
+  margin: 0.5rem 0 1rem 0;
+}
+
+#main.docs .content dl.field-list > dt {
+  font-weight: 600;
+  margin: 0;
+}
+
+#main.docs .content dl.field-list > dd {
+  margin: 0;
+}
+
+#main.docs .content dl.field-list > dd ul.simple {
+  padding-left: 1rem;
+  margin: 0;
+}
+
+#main.docs .content dl.field-list > dd p {
+  margin: 0;
+}
+
+/* doctest examples */
+#main.docs .content div[class^=highlight-] {
+  margin: 0.5rem 0 1rem 0;
+}
+
+#main.docs .content .highlight pre {
+  background-color: #fafafa;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  padding: 0.6rem 0.9rem;
+}
+
+#main.docs .content .highlight .gp { /* >>> prompt */
+  color: rgb(220, 0, 0);
+  font-weight: 600;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+#main.docs .content .highlight .go { /* program output */
+  color: #555;
+}
+
+/* provenance links */
+#main.docs .content .provenance {
+  font-size: 0.75rem;
+  color: #999;
+  margin: 0.25rem 0 0 0;
+}
+
+#main.docs .content .provenance a {
+  color: #999;
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+}
+
+/* no decorative quote glyphs inside API entries */
+#main.docs .content dl.py blockquote {
+  margin: 0.5rem 0 1rem 1rem;
+  padding: 0;
+  background: transparent;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  font-size: inherit;
+}
+
+#main.docs .content dl.py blockquote::before {
+  content: none;
+}
+
+/* section headers */
+#main.docs .content section > h2,
+#main.docs .content section > h3 {
+  margin-top: 2rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid #eee;
+}
+
+#main.docs .content .admonition {
+  padding: 0.5rem 1rem;
+  border-left: 3px solid rgb(220, 0, 0);
+  background: #fff6f6;
+  margin: 0.5rem 0 1rem 0;
+}
+
+#main.docs .content .admonition-title {
+  font-weight: 700;
+  margin: 0;
+}
+
+/* overload list: lighter than a code example */
+#main.docs .content .signatures pre {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+/* overload group header produced from SWIG's merged-overload docstrings */
+#main.docs .content p.overload {
+  margin: 1.2rem 0 0.4rem 0;
+  padding-top: 0.6rem;
+  border-top: 1px dashed #ddd;
+  font-size: 0.9rem;
+}
+
+#main.docs .content p.overload code {
+  background: transparent;
+  padding: 0;
+  font-size: 0.85rem;
+}
+
+/* cross references (See also, ...) as plain links, not code pills */
+#main.docs .content a.reference code.xref {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+#main.docs .content a.reference:hover code.xref {
+  text-decoration: underline;
+}
+
+/* inline literals in prose (\p names, short expressions) */
+#main.docs .content p code.literal,
+#main.docs .content li code.literal {
+  padding: 1px 4px;
+  font-size: 0.88em;
+}
+
+/* long overload signatures wrap instead of being clipped */
+#main.docs .content .signatures pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* example-language switch (Python / MATLAB) at the top of the API sidebar */
+.api-lang-switch {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 1em 1em 1em;
+  border: 1px solid rgb(220, 0, 0);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.api-lang-switch button {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 50%;
+          flex: 1 1 50%;
+  border: none;
+  background: transparent;
+  color: rgb(220, 0, 0);
+  font-size: 0.85rem;
+  padding: 0.3rem 0;
+  cursor: pointer;
+}
+
+.api-lang-switch button[aria-pressed=true] {
+  background: rgb(220, 0, 0);
+  color: #fff;
+}
+
+/* Python mode hides translations; MATLAB mode hides Python examples that have a MATLAB twin
+   (examples with identical syntax have no twin and stay visible). Julia/JS blocks: not yet switchable. */
+html[data-api-lang=python] .doctest-matlab,
+html[data-api-lang=matlab] .doctest-python.has-matlab,
+.doctest-julia, .doctest-javascript {
+  display: none;
+}
+
+/* sidebar: the section being read is highlighted */
+.nav-side a.current {
+  color: rgb(220, 0, 0) !important;
+  font-weight: 600 !important;
+  border-left: 2px solid rgb(220, 0, 0);
+  padding-left: 0.4em !important;
+  margin-left: -0.4em !important;
+}

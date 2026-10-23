@@ -53,7 +53,7 @@
         
         
           
-          <li class="nav-item active">
+          <li class="nav-item">
           
             <a class="nav-link" href="/">Home</a>
           </li>
@@ -65,7 +65,7 @@
           </li>
         
           
-          <li class="nav-item">
+          <li class="nav-item active">
           
             <a class="nav-link" href="/docs/">Docs</a>
           </li>
@@ -111,6 +111,9 @@
     <div class="sidebar">
       <div class="sticky-top sticky-offset">
         <nav class="nav-side">
+          
+
+
           
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
@@ -25007,6 +25010,48 @@ directly</p>
     </div>
   </div>
 </div>
+
+<script>
+(function () {
+  var nav = document.querySelector('.nav-side');
+  if (!nav) return;
+  var links = Array.prototype.filter.call(nav.querySelectorAll('a[href^="#"]'), function (a) {
+    return document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1)));
+  });
+  var targets = links.map(function (a) {
+    return document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1)));
+  });
+  var current = null, ticking = false;
+  function update() {
+    ticking = false;
+    var offset = Math.max(120, window.innerHeight / 4), best = -1;
+    for (var i = 0; i < targets.length; i++) {
+      var r = targets[i].getBoundingClientRect();
+      if (r.height === 0 && r.width === 0) continue;          
+      if (r.top - offset <= 0 && (best < 0 || r.top >= targets[best].getBoundingClientRect().top)) best = i;
+    }
+    var link = best >= 0 ? links[best] : null;
+    if (link === current) return;
+    var old = nav.querySelectorAll('.current, .active-branch');
+    for (var k = 0; k < old.length; k++) old[k].classList.remove('current', 'active-branch');
+    current = link;
+    if (!link) return;
+    link.classList.add('current');
+    for (var li = link.parentElement; li && li !== nav; li = li.parentElement) {
+      if (li.tagName === 'LI') li.classList.add('active-branch');
+    }
+    var box = nav, lr = link.getBoundingClientRect(), br = box.getBoundingClientRect();
+    if (lr.top < br.top + 40 || lr.bottom > br.bottom - 40) {
+      box.scrollTop += lr.top - br.top - box.clientHeight / 3;   
+    }
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+  }, { passive: true });
+  window.addEventListener('load', update);
+  update();
+})();
+</script>
 
     
 
