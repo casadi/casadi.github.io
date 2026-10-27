@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/dafc81035257e0e57db5c65b2ac851a6239fb1c4" id="dafc81035257e0e57db5c65b2ac851a6239fb1c4" >revision 3.8.1</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a5852c23b2100296cee23b81227fcaa3bef43f04" id="a5852c23b2100296cee23b81227fcaa3bef43f04" >revision 3.8.2</a></div>
   </td>
  </tr>
  </tbody>
@@ -398,7 +398,7 @@ Protected Member Functions</h2></td></tr>
 <div class="fragment"><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;{ <a class="code" href="../../d4/df5/classcasadi_1_1GraphBuilderInternal.html#a2b9861b08b692d7f4c53a016e3e65abb">nodes_</a>.push_back(n); }</div>
 <div class="ttc" id="aclasscasadi_1_1GraphBuilderInternal_html_a2b9861b08b692d7f4c53a016e3e65abb"><div class="ttname"><a href="../../d4/df5/classcasadi_1_1GraphBuilderInternal.html#a2b9861b08b692d7f4c53a016e3e65abb">casadi::GraphBuilderInternal::nodes_</a></div><div class="ttdeci">std::vector&lt; Node &gt; nodes_</div><div class="ttdoc">Tensor metadata (inputs followed by outputs)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d01/graph__builder__internal_8hpp_source.html#l00129">graph_builder_internal.hpp:129</a></div></div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../d8/dd3/onnx__model_8cpp_source.html#l00107">casadi::Onnx::fill_metadata()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d8/dd3/onnx__model_8cpp_source.html#l00108">casadi::Onnx::fill_metadata()</a>.</p>
 
 </div>
 </div>
@@ -542,7 +542,7 @@ Protected Member Functions</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="../../de/d01/graph__builder__internal_8hpp_source.html#l00100">100</a> of file <a class="el" href="../../de/d01/graph__builder__internal_8hpp_source.html">graph_builder_internal.hpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;{ <a class="code" href="../../d4/df5/classcasadi_1_1GraphBuilderInternal.html#a2b9861b08b692d7f4c53a016e3e65abb">nodes_</a>.clear(); }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../d8/dd3/onnx__model_8cpp_source.html#l00107">casadi::Onnx::fill_metadata()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d8/dd3/onnx__model_8cpp_source.html#l00108">casadi::Onnx::fill_metadata()</a>.</p>
 
 </div>
 </div>
@@ -610,7 +610,7 @@ Protected Member Functions</h2></td></tr>
 <div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    casadi_assert(!<a class="code" href="../../d4/df5/classcasadi_1_1GraphBuilderInternal.html#adfadad835b907b91960fd5eee0c1d515">model_data_</a>.empty(), <span class="stringliteral">&quot;GraphBuilder: numeric create requires model bytes&quot;</span>);</div>
 <div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d9/dfb/classcasadi_1_1OnnxFunction.html#ab3102ec1a38f8ce1335b11a693f18402">OnnxFunction::create</a>(backend, name, <span class="keyword">this</span>, inputs, outputs, o);</div>
 <div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;  }</div>
-<div class="ttc" id="aclasscasadi_1_1Function_html_a234923b57c6d17af308b700e514cb397"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#a234923b57c6d17af308b700e514cb397">casadi::Function::mx_in</a></div><div class="ttdeci">const MX mx_in(casadi_int ind) const</div><div class="ttdoc">Get symbolic primitives equivalent to the input expressions.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l01781">function.cpp:1781</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1Function_html_a234923b57c6d17af308b700e514cb397"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#a234923b57c6d17af308b700e514cb397">casadi::Function::mx_in</a></div><div class="ttdeci">const MX mx_in(casadi_int ind) const</div><div class="ttdoc">Create fresh symbols with the names and sparsity patterns of the inputs.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l01781">function.cpp:1781</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1GenericShared_html_abd28957366899587b9da638343fe41b5"><div class="ttname"><a href="../../da/d35/classcasadi_1_1GenericShared.html#abd28957366899587b9da638343fe41b5">casadi::GenericShared::is_null</a></div><div class="ttdeci">bool is_null() const</div><div class="ttdoc">Is a null pointer?</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00120">generic_shared_impl.hpp:120</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1GraphModel_html_ad6b1f5907326e312aaee69fa4997546f"><div class="ttname"><a href="../../db/dfb/classcasadi_1_1GraphModel.html#ad6b1f5907326e312aaee69fa4997546f">casadi::GraphModel::import_symbolic</a></div><div class="ttdeci">Function import_symbolic(const GraphBuilderInternal &amp;gb, const std::string &amp;name) const</div><div class="ttdoc">Symbolic import: rebuild the graph as a CasADi Function.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d5e/graph__model_8cpp_source.html#l00056">graph_model.cpp:56</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1OnnxFunction_html_ab3102ec1a38f8ce1335b11a693f18402"><div class="ttname"><a href="../../d9/dfb/classcasadi_1_1OnnxFunction.html#ab3102ec1a38f8ce1335b11a693f18402">casadi::OnnxFunction::create</a></div><div class="ttdeci">static Function create(const std::string &amp;solver, const std::string &amp;name, const GraphBuilderInternal *gb, const std::vector&lt; std::string &gt; &amp;inputs, const std::vector&lt; std::string &gt; &amp;outputs, const Dict &amp;opts)</div><div class="ttdoc">Plugin factory.</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d1f/onnx__function_8cpp_source.html#l00532">onnx_function.cpp:532</a></div></div>
@@ -711,7 +711,7 @@ Protected Member Functions</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="../../de/d01/graph__builder__internal_8hpp_source.html#l00105">105</a> of file <a class="el" href="../../de/d01/graph__builder__internal_8hpp_source.html">graph_builder_internal.hpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="../../d4/df5/classcasadi_1_1GraphBuilderInternal.html#a8b4e4703c20377c97a7b3ba23820a4fb">dim_bindings_</a>; }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../d8/dd3/onnx__model_8cpp_source.html#l00120">casadi::Onnx::import_symbolic()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d8/dd3/onnx__model_8cpp_source.html#l00121">casadi::Onnx::import_symbolic()</a>.</p>
 
 </div>
 </div>

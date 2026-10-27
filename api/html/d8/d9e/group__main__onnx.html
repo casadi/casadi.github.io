@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/dafc81035257e0e57db5c65b2ac851a6239fb1c4" id="dafc81035257e0e57db5c65b2ac851a6239fb1c4" >revision 3.8.1</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a5852c23b2100296cee23b81227fcaa3bef43f04" id="a5852c23b2100296cee23b81227fcaa3bef43f04" >revision 3.8.2</a></div>
   </td>
  </tr>
  </tbody>
@@ -74,10 +74,11 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <dl class="section user"><dt></dt><dd></dd></dl>
 <p>Black-box numerical evaluation of an ONNX model.</p>
-<p>A model is evaluated by a runtime backend (e.g. ONNX Runtime) selected by name; the graph internals are opaque to CasADi. Construct one through the <a class="el" href="../../d4/d22/classcasadi_1_1GraphBuilder.html" title="A mutable, format-neutral interface to a computational-graph model.">GraphBuilder</a> facade:</p>
-<pre class="fragment">Function f = GraphBuilder("model.onnx").create("net");
+<p>A model is evaluated by a runtime backend (e.g. ONNX Runtime) selected by name; the graph internals are opaque to CasADi. Construct one through the <a class="el" href="../../d4/d22/classcasadi_1_1GraphBuilder.html" title="A mutable, format-neutral interface to a computational-graph model.">GraphBuilder</a> facade.</p>
+<p> <div class='lang lang-cpp'>  </p><pre class="fragment">Function f = GraphBuilder("model.onnx").create("net");
 std::vector&lt;DM&gt; res = f(DM(...));
-</pre><p>Unless is_diff_in is supplied, forward seed inputs or adjoint outputs determine differentiability. Embedded signatures take precedence over sibling files. Without derivative signatures, all inputs are differentiable by default.</p>
+</pre><p>  </div> </p>
+<p>Unless is_diff_in is supplied, forward seed inputs or adjoint outputs determine differentiability. Embedded signatures take precedence over sibling files. Without derivative signatures, all inputs are differentiable by default.</p>
 <p>These free functions query and manage the runtime backend plugin registry.</p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2j7">https://github.com/casadi/casadi/wiki/L_2j7</a> </p>
 <h2 class="groupheader">Function Documentation</h2>

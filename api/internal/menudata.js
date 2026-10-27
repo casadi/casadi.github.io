@@ -233,6 +233,7 @@ var menudata={children:[
 {text:"x",url:"namespacemembers_func_x.html#index_x"},
 {text:"z",url:"namespacemembers_func_z.html#index_z"}]},
 {text:"Variables",url:"namespacemembers_vars.html",children:[
+{text:"a",url:"namespacemembers_vars.html#index_a"},
 {text:"b",url:"namespacemembers_vars.html#index_b"},
 {text:"c",url:"namespacemembers_vars.html#index_c"},
 {text:"e",url:"namespacemembers_vars.html#index_e"},

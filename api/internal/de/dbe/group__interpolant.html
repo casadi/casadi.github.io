@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/dafc81035257e0e57db5c65b2ac851a6239fb1c4" id="dafc81035257e0e57db5c65b2ac851a6239fb1c4" >revision 3.8.1</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a5852c23b2100296cee23b81227fcaa3bef43f04" id="a5852c23b2100296cee23b81227fcaa3bef43f04" >revision 3.8.2</a></div>
   </td>
  </tr>
  </tbody>
@@ -91,35 +91,49 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>Syntax 1D </p><pre class="fragment">* # Python
-* xgrid = np.linspace(1,6,6)
-* V = [-1,-1,-2,-3,0,2]
-* LUT = casadi.interpolant("LUT","bspline",[xgrid],V)
-* print(LUT(2.5))
-* </pre> <pre class="fragment">* % Matlab
-* xgrid = 1:6;
-* V = [-1 -1 -2 -3 0 2];
-* LUT = casadi.interpolant('LUT','bspline',{xgrid},V);
-* LUT(2.5)
-* </pre><p>Syntax 2D </p><pre class="fragment">* # Python
-* xgrid = np.linspace(-5,5,11)
-* ygrid = np.linspace(-4,4,9)
-* X,Y = np.meshgrid(xgrid,ygrid,indexing='ij')
-* R = np.sqrt(5*X**2 + Y**2)+ 1
-* data = np.sin(R)/R
-* data_flat = data.ravel(order='F')
-* LUT = casadi.interpolant('name','bspline',[xgrid,ygrid],data_flat)
-* print(LUT([0.5,1]))
-* \enverbatim
-* \verbatim
-* % Matlab
-* xgrid = -5:1:5;
-* ygrid = -4:1:4;
-* R = sqrt(5*X.^2 + Y.^2)+ 1;
-* V = sin(R)./(R);
-* LUT = interpolant('LUT','bspline',{xgrid, ygrid},V(:));
-* LUT([0.5 1])
-* </pre><h3><a class="anchor" id="autotoc_md16"></a>
+<p>Examples in 1D and 2D; the values of a 2D grid are flattened in column-major order.</p>
+<p> <div class='lang lang-python'>   <div class='doctest'> </p><pre class="fragment">* &gt;&gt;&gt; xgrid = np.linspace(1, 6, 6)
+* &gt;&gt;&gt; V = [-1, -1, -2, -3, 0, 2]
+* &gt;&gt;&gt; LUT = interpolant("LUT", "bspline", [xgrid], V)
+* &gt;&gt;&gt; print(LUT(2.5))
+* -1.35
+* &gt;&gt;&gt; xgrid = np.linspace(-5, 5, 11)
+* &gt;&gt;&gt; ygrid = np.linspace(-4, 4, 9)
+* &gt;&gt;&gt; X, Y = np.meshgrid(xgrid, ygrid, indexing="ij")
+* &gt;&gt;&gt; R = np.sqrt(5*X**2 + Y**2) + 1
+* &gt;&gt;&gt; V = np.sin(R)/R
+* &gt;&gt;&gt; LUT = interpolant("LUT", "bspline", [xgrid, ygrid], V.ravel(order="F"))
+* &gt;&gt;&gt; print(LUT([0.5, 1]))
+* 0.245507
+* </pre><p> </div>   </div> </p>
+<p> <div class='lang lang-matlab'>   <div class='doctest'> </p><pre class="fragment">* &gt;&gt; xgrid = 1:6;
+* &gt;&gt; V = [-1 -1 -2 -3 0 2];
+* &gt;&gt; LUT = interpolant('LUT', 'bspline', {xgrid}, V);
+* &gt;&gt; LUT(2.5)
+* -1.35
+* &gt;&gt; xgrid = -5:5;
+* &gt;&gt; ygrid = -4:4;
+* &gt;&gt; [X, Y] = ndgrid(xgrid, ygrid);
+* &gt;&gt; R = sqrt(5*X.^2 + Y.^2) + 1;
+* &gt;&gt; V = sin(R)./R;
+* &gt;&gt; LUT = interpolant('LUT', 'bspline', {xgrid, ygrid}, V(:));
+* &gt;&gt; LUT([0.5 1])
+* 0.245507
+* </pre><p> </div>   </div> </p>
+<p> <div class='lang lang-julia'>   <div class='doctest'> </p><pre class="fragment">* julia&gt; xgrid = collect(1.0:6.0);
+* julia&gt; V = [-1, -1, -2, -3, 0, 2];
+* julia&gt; LUT = ca.interpolant("LUT", "bspline", [xgrid], V);
+* julia&gt; LUT(2.5)
+* DM(-1.35)
+* julia&gt; xgrid = collect(-5.0:5.0);
+* julia&gt; ygrid = collect(-4.0:4.0);
+* julia&gt; R = [sqrt(5x^2 + y^2) + 1 for x in xgrid, y in ygrid];
+* julia&gt; V = sin.(R) ./ R;
+* julia&gt; LUT = ca.interpolant("LUT", "bspline", [xgrid, ygrid], vec(V));
+* julia&gt; LUT([0.5, 1])
+* DM(0.245507)
+* </pre><p> </div>   </div> </p>
+<h3><a class="anchor" id="autotoc_md16"></a>
 General information</h3>
 <p><br  />
 </p><dl class="section user"><dt></dt><dd><a class="anchor" id="options"></a><table class="doxtable">
@@ -137,6 +151,8 @@ General information</h3>
 <tr>
 <td>cache</td><td>OT_DICT</td><td>Prepopulate the function cache. Default: empty</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
+<td>codegen_options</td><td>OT_DICT</td><td><a class="el" href="../../db/d35/structcasadi_1_1Options.html" title="Options metadata for a class.">Options</a> to be passed to the code generator of jit, e.g. {"stats": true} to record statistics inside the compiled code. Default: none</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
+<tr>
 <td>compiler</td><td>OT_STRING</td><td>Just-in-time compiler plugin to be used.</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
 <td>custom_jacobian</td><td>OT_FUNCTION</td><td>Override CasADi's AD. Use together with 'jac_penalty': 0. Note: Highly experimental. Syntax may break often.</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
@@ -149,11 +165,11 @@ General information</h3>
 <tr>
 <td>dump_dir</td><td>OT_STRING</td><td>Directory to dump inputs/outputs and traces to. Make sure the directory exists [.]</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
-<td>dump_format</td><td>OT_STRING</td><td>Choose file format to dump matrices. See <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e">DM.from_file</a> [mtx]</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
+<td>dump_format</td><td>OT_STRING</td><td>Choose file format to dump matrices. See <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e" title="Read a numerical matrix from a text file written by to_file (DM only)">DM.from_file</a> [mtx]</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
-<td>dump_in</td><td>OT_BOOL</td><td><a class="el" href="../../d0/dc1/classcasadi_1_1Dump.html" title="Dump.">Dump</a> numerical values of inputs to file (readable with <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e">DM.from_file</a>) [default: false] A counter is used to generate unique names. The counter may be reset using reset_dump_count.</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
+<td>dump_in</td><td>OT_BOOL</td><td><a class="el" href="../../d0/dc1/classcasadi_1_1Dump.html" title="Dump.">Dump</a> numerical values of inputs to file (readable with <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e" title="Read a numerical matrix from a text file written by to_file (DM only)">DM.from_file</a>) [default: false] A counter is used to generate unique names. The counter may be reset using reset_dump_count.</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
-<td>dump_out</td><td>OT_BOOL</td><td><a class="el" href="../../d0/dc1/classcasadi_1_1Dump.html" title="Dump.">Dump</a> numerical values of outputs to file (readable with <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e">DM.from_file</a>) [default: false] A counter is used to generate unique names. The counter may be reset using reset_dump_count.</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
+<td>dump_out</td><td>OT_BOOL</td><td><a class="el" href="../../d0/dc1/classcasadi_1_1Dump.html" title="Dump.">Dump</a> numerical values of outputs to file (readable with <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e" title="Read a numerical matrix from a text file written by to_file (DM only)">DM.from_file</a>) [default: false] A counter is used to generate unique names. The counter may be reset using reset_dump_count.</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
 <td>enable_fd</td><td>OT_BOOL</td><td>Enable derivative calculation by finite differencing. [default: false]]</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
@@ -376,9 +392,9 @@ List of plugins</h3>
 <div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;      <span class="keywordflow">return</span> Interpolant::construct(solver, name, std::vector&lt;double&gt;{},</div>
 <div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        <a class="code" href="../../d7/d23/namespacecasadi.html#ac35d8cfc663a98f70754ef7163153c7a">cumsum0</a>(grid_dims), std::vector&lt;double&gt;{}, m, opts);</div>
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;  }</div>
-<div class="ttc" id="anamespacecasadi_html_ac35d8cfc663a98f70754ef7163153c7a"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#ac35d8cfc663a98f70754ef7163153c7a">casadi::cumsum0</a></div><div class="ttdeci">std::vector&lt; T &gt; cumsum0(const std::vector&lt; T &gt; &amp;values)</div><div class="ttdoc">cumulative sum, starting with zero</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d18/casadi__misc_8hpp_source.html#l00959">casadi_misc.hpp:959</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_ac35d8cfc663a98f70754ef7163153c7a"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#ac35d8cfc663a98f70754ef7163153c7a">casadi::cumsum0</a></div><div class="ttdeci">std::vector&lt; T &gt; cumsum0(const std::vector&lt; T &gt; &amp;values)</div><div class="ttdoc">cumulative sum, starting with zero</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d18/casadi__misc_8hpp_source.html#l00963">casadi_misc.hpp:963</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../da/d60/interpolant_8cpp_source.html#l00061">casadi::Interpolant::check_grid()</a>, <a class="el" href="../../da/d60/interpolant_8cpp_source.html#l00149">casadi::Interpolant::construct()</a>, and <a class="el" href="../../dc/d18/casadi__misc_8hpp_source.html#l00959">casadi::cumsum0()</a>.</p>
+<p class="reference">References <a class="el" href="../../da/d60/interpolant_8cpp_source.html#l00061">casadi::Interpolant::check_grid()</a>, <a class="el" href="../../da/d60/interpolant_8cpp_source.html#l00149">casadi::Interpolant::construct()</a>, and <a class="el" href="../../dc/d18/casadi__misc_8hpp_source.html#l00963">casadi::cumsum0()</a>.</p>
 
 </div>
 </div>
@@ -443,10 +459,10 @@ List of plugins</h3>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;      <span class="keywordflow">return</span> Interpolant::construct(solver, name, std::vector&lt;double&gt;{},</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        <a class="code" href="../../d7/d23/namespacecasadi.html#ac35d8cfc663a98f70754ef7163153c7a">cumsum0</a>(grid_dims), values, m, opts);</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  }</div>
-<div class="ttc" id="anamespacecasadi_html_a0cb0d5e06335c8bdf20f01542280d603"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a0cb0d5e06335c8bdf20f01542280d603">casadi::product</a></div><div class="ttdeci">T product(const std::vector&lt; T &gt; &amp;values)</div><div class="ttdoc">product</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d18/casadi__misc_8hpp_source.html#l00934">casadi_misc.hpp:934</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_a0cb0d5e06335c8bdf20f01542280d603"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a0cb0d5e06335c8bdf20f01542280d603">casadi::product</a></div><div class="ttdeci">T product(const std::vector&lt; T &gt; &amp;values)</div><div class="ttdoc">product</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d18/casadi__misc_8hpp_source.html#l00938">casadi_misc.hpp:938</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_a88082fbf80560c888949bb765d9ccea0"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a88082fbf80560c888949bb765d9ccea0">casadi::str</a></div><div class="ttdeci">std::string str(const T &amp;v)</div><div class="ttdoc">String representation, any type.</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d59/casadi__common_8hpp_source.html#l00264">casadi_common.hpp:264</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../da/d60/interpolant_8cpp_source.html#l00061">casadi::Interpolant::check_grid()</a>, <a class="el" href="../../da/d60/interpolant_8cpp_source.html#l00149">casadi::Interpolant::construct()</a>, <a class="el" href="../../dc/d18/casadi__misc_8hpp_source.html#l00959">casadi::cumsum0()</a>, <a class="el" href="../../dc/d18/casadi__misc_8hpp_source.html#l00934">casadi::product()</a>, and <a class="el" href="../../dc/d59/casadi__common_8hpp_source.html#l00264">casadi::str()</a>.</p>
+<p class="reference">References <a class="el" href="../../da/d60/interpolant_8cpp_source.html#l00061">casadi::Interpolant::check_grid()</a>, <a class="el" href="../../da/d60/interpolant_8cpp_source.html#l00149">casadi::Interpolant::construct()</a>, <a class="el" href="../../dc/d18/casadi__misc_8hpp_source.html#l00963">casadi::cumsum0()</a>, <a class="el" href="../../dc/d18/casadi__misc_8hpp_source.html#l00938">casadi::product()</a>, and <a class="el" href="../../dc/d59/casadi__common_8hpp_source.html#l00264">casadi::str()</a>.</p>
 
 </div>
 </div>

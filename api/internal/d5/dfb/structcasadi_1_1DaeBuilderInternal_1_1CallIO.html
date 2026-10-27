@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/dafc81035257e0e57db5c65b2ac851a6239fb1c4" id="dafc81035257e0e57db5c65b2ac851a6239fb1c4" >revision 3.8.1</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a5852c23b2100296cee23b81227fcaa3bef43f04" id="a5852c23b2100296cee23b81227fcaa3bef43f04" >revision 3.8.2</a></div>
   </td>
  </tr>
  </tbody>
@@ -140,37 +140,37 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02757">2757</a> of file <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html">dae_builder_internal.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l02757"></a><span class="lineno"> 2757</span>&#160;                                         {</div>
-<div class="line"><a name="l02758"></a><span class="lineno"> 2758</span>&#160;  <span class="comment">// Consistency checks</span></div>
-<div class="line"><a name="l02759"></a><span class="lineno"> 2759</span>&#160;  <span class="keywordflow">for</span> (casadi_int i = 0; i &lt; this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a283cdff18216bce4dec4ee9bc193dc9f">f</a>.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a9a0767200ca463d43d8f8abdd81cc31e">n_in</a>(); ++i) {</div>
-<div class="line"><a name="l02760"></a><span class="lineno"> 2760</span>&#160;    casadi_assert(this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a283cdff18216bce4dec4ee9bc193dc9f">f</a>.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#ad2870e7eabcb971e9bb43b8a2960aaed">size_in</a>(i) == this-&gt;arg.at(i).size(), <span class="stringliteral">&quot;Call input not provided&quot;</span>);</div>
-<div class="line"><a name="l02761"></a><span class="lineno"> 2761</span>&#160;  }</div>
-<div class="line"><a name="l02762"></a><span class="lineno"> 2762</span>&#160;  casadi_assert(this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a157a71419a8b2047b0e85ff32d136689">adj1_arg</a>.size() == this-&gt;res.size(), <span class="stringliteral">&quot;Input &#39;lam_vdef&#39; not provided&quot;</span>);</div>
-<div class="line"><a name="l02763"></a><span class="lineno"> 2763</span>&#160;  <span class="keywordflow">for</span> (casadi_int i = 0; i &lt; this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a283cdff18216bce4dec4ee9bc193dc9f">f</a>.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a96ca8075f8f03e3b6309e42bea486c34">n_out</a>(); ++i) {</div>
-<div class="line"><a name="l02764"></a><span class="lineno"> 2764</span>&#160;    casadi_assert(this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a283cdff18216bce4dec4ee9bc193dc9f">f</a>.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a7f477a5654c0cf282922dd1994f1836b">size_out</a>(i) == this-&gt;res.at(i).size(), <span class="stringliteral">&quot;Call output not provided&quot;</span>);</div>
-<div class="line"><a name="l02765"></a><span class="lineno"> 2765</span>&#160;    casadi_assert(this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a157a71419a8b2047b0e85ff32d136689">adj1_arg</a>.at(i).size() == this-&gt;res.at(i).size(),</div>
-<div class="line"><a name="l02766"></a><span class="lineno"> 2766</span>&#160;      <span class="stringliteral">&quot;Call adjoint seed not provided&quot;</span>);</div>
-<div class="line"><a name="l02767"></a><span class="lineno"> 2767</span>&#160;  }</div>
-<div class="line"><a name="l02768"></a><span class="lineno"> 2768</span>&#160;  <span class="comment">// We should make use of the Jacobian blocks here, if available</span></div>
-<div class="line"><a name="l02769"></a><span class="lineno"> 2769</span>&#160;  <span class="keywordflow">if</span> (!this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#ae4e13c3d8e56bba37773aa0878b6cd76">jac_res</a>.empty())</div>
-<div class="line"><a name="l02770"></a><span class="lineno"> 2770</span>&#160;    casadi_warning(<span class="stringliteral">&quot;Jacobian blocks currently not reused for gradient calculation&quot;</span>);</div>
-<div class="line"><a name="l02771"></a><span class="lineno"> 2771</span>&#160;  <span class="comment">// Get/generate the (cached) adjoint function</span></div>
-<div class="line"><a name="l02772"></a><span class="lineno"> 2772</span>&#160;  <span class="comment">// casadi_message(&quot;Retrieving the gradient of &quot; + str(this-&gt;f));</span></div>
-<div class="line"><a name="l02773"></a><span class="lineno"> 2773</span>&#160;  this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#aa6c189e5b8046555fdd1e3003cd0d74b">adj1_f</a> = this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a283cdff18216bce4dec4ee9bc193dc9f">f</a>.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a4b9f3f8cc13ab7cded12302d29948595">reverse</a>(1);</div>
-<div class="line"><a name="l02774"></a><span class="lineno"> 2774</span>&#160;  <span class="comment">// casadi_message(&quot;Retrieving the gradient of &quot; + str(this-&gt;f) + &quot; done&quot;);</span></div>
-<div class="line"><a name="l02775"></a><span class="lineno"> 2775</span>&#160;  <span class="comment">// Input expressions for the call to adj1_f</span></div>
-<div class="line"><a name="l02776"></a><span class="lineno"> 2776</span>&#160;  std::vector&lt;MX&gt; call_in = this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a9be6ca27cfa090e3f64e1ac38f8bc955">arg</a>;</div>
-<div class="line"><a name="l02777"></a><span class="lineno"> 2777</span>&#160;  call_in.insert(call_in.end(), this-&gt;res.begin(), this-&gt;res.end());</div>
-<div class="line"><a name="l02778"></a><span class="lineno"> 2778</span>&#160;  call_in.insert(call_in.end(), this-&gt;adj1_arg.begin(), this-&gt;adj1_arg.end());</div>
-<div class="line"><a name="l02779"></a><span class="lineno"> 2779</span>&#160;  <span class="comment">// Create expressions for adjoint sweep and save to struct</span></div>
-<div class="line"><a name="l02780"></a><span class="lineno"> 2780</span>&#160;  this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#af099139af5715f2031036f46d57cd105">adj1_res</a> = this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#aa6c189e5b8046555fdd1e3003cd0d74b">adj1_f</a>(call_in);</div>
-<div class="line"><a name="l02781"></a><span class="lineno"> 2781</span>&#160;}</div>
-<div class="ttc" id="aclasscasadi_1_1Function_html_a4b9f3f8cc13ab7cded12302d29948595"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#a4b9f3f8cc13ab7cded12302d29948595">casadi::Function::reverse</a></div><div class="ttdeci">Function reverse(casadi_int nadj) const</div><div class="ttdoc">Get a function that calculates nadj adjoint derivatives.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l01332">function.cpp:1332</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1Function_html_a7f477a5654c0cf282922dd1994f1836b"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#a7f477a5654c0cf282922dd1994f1836b">casadi::Function::size_out</a></div><div class="ttdeci">std::pair&lt; casadi_int, casadi_int &gt; size_out(casadi_int ind) const</div><div class="ttdoc">Get output dimension.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l00999">function.cpp:999</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02760">2760</a> of file <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html">dae_builder_internal.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l02760"></a><span class="lineno"> 2760</span>&#160;                                         {</div>
+<div class="line"><a name="l02761"></a><span class="lineno"> 2761</span>&#160;  <span class="comment">// Consistency checks</span></div>
+<div class="line"><a name="l02762"></a><span class="lineno"> 2762</span>&#160;  <span class="keywordflow">for</span> (casadi_int i = 0; i &lt; this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a283cdff18216bce4dec4ee9bc193dc9f">f</a>.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a9a0767200ca463d43d8f8abdd81cc31e">n_in</a>(); ++i) {</div>
+<div class="line"><a name="l02763"></a><span class="lineno"> 2763</span>&#160;    casadi_assert(this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a283cdff18216bce4dec4ee9bc193dc9f">f</a>.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#ad2870e7eabcb971e9bb43b8a2960aaed">size_in</a>(i) == this-&gt;arg.at(i).size(), <span class="stringliteral">&quot;Call input not provided&quot;</span>);</div>
+<div class="line"><a name="l02764"></a><span class="lineno"> 2764</span>&#160;  }</div>
+<div class="line"><a name="l02765"></a><span class="lineno"> 2765</span>&#160;  casadi_assert(this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a157a71419a8b2047b0e85ff32d136689">adj1_arg</a>.size() == this-&gt;res.size(), <span class="stringliteral">&quot;Input &#39;lam_vdef&#39; not provided&quot;</span>);</div>
+<div class="line"><a name="l02766"></a><span class="lineno"> 2766</span>&#160;  <span class="keywordflow">for</span> (casadi_int i = 0; i &lt; this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a283cdff18216bce4dec4ee9bc193dc9f">f</a>.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a96ca8075f8f03e3b6309e42bea486c34">n_out</a>(); ++i) {</div>
+<div class="line"><a name="l02767"></a><span class="lineno"> 2767</span>&#160;    casadi_assert(this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a283cdff18216bce4dec4ee9bc193dc9f">f</a>.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a7f477a5654c0cf282922dd1994f1836b">size_out</a>(i) == this-&gt;res.at(i).size(), <span class="stringliteral">&quot;Call output not provided&quot;</span>);</div>
+<div class="line"><a name="l02768"></a><span class="lineno"> 2768</span>&#160;    casadi_assert(this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a157a71419a8b2047b0e85ff32d136689">adj1_arg</a>.at(i).size() == this-&gt;res.at(i).size(),</div>
+<div class="line"><a name="l02769"></a><span class="lineno"> 2769</span>&#160;      <span class="stringliteral">&quot;Call adjoint seed not provided&quot;</span>);</div>
+<div class="line"><a name="l02770"></a><span class="lineno"> 2770</span>&#160;  }</div>
+<div class="line"><a name="l02771"></a><span class="lineno"> 2771</span>&#160;  <span class="comment">// We should make use of the Jacobian blocks here, if available</span></div>
+<div class="line"><a name="l02772"></a><span class="lineno"> 2772</span>&#160;  <span class="keywordflow">if</span> (!this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#ae4e13c3d8e56bba37773aa0878b6cd76">jac_res</a>.empty())</div>
+<div class="line"><a name="l02773"></a><span class="lineno"> 2773</span>&#160;    casadi_warning(<span class="stringliteral">&quot;Jacobian blocks currently not reused for gradient calculation&quot;</span>);</div>
+<div class="line"><a name="l02774"></a><span class="lineno"> 2774</span>&#160;  <span class="comment">// Get/generate the (cached) adjoint function</span></div>
+<div class="line"><a name="l02775"></a><span class="lineno"> 2775</span>&#160;  <span class="comment">// casadi_message(&quot;Retrieving the gradient of &quot; + str(this-&gt;f));</span></div>
+<div class="line"><a name="l02776"></a><span class="lineno"> 2776</span>&#160;  this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#aa6c189e5b8046555fdd1e3003cd0d74b">adj1_f</a> = this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a283cdff18216bce4dec4ee9bc193dc9f">f</a>.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a4b9f3f8cc13ab7cded12302d29948595">reverse</a>(1);</div>
+<div class="line"><a name="l02777"></a><span class="lineno"> 2777</span>&#160;  <span class="comment">// casadi_message(&quot;Retrieving the gradient of &quot; + str(this-&gt;f) + &quot; done&quot;);</span></div>
+<div class="line"><a name="l02778"></a><span class="lineno"> 2778</span>&#160;  <span class="comment">// Input expressions for the call to adj1_f</span></div>
+<div class="line"><a name="l02779"></a><span class="lineno"> 2779</span>&#160;  std::vector&lt;MX&gt; call_in = this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a9be6ca27cfa090e3f64e1ac38f8bc955">arg</a>;</div>
+<div class="line"><a name="l02780"></a><span class="lineno"> 2780</span>&#160;  call_in.insert(call_in.end(), this-&gt;res.begin(), this-&gt;res.end());</div>
+<div class="line"><a name="l02781"></a><span class="lineno"> 2781</span>&#160;  call_in.insert(call_in.end(), this-&gt;adj1_arg.begin(), this-&gt;adj1_arg.end());</div>
+<div class="line"><a name="l02782"></a><span class="lineno"> 2782</span>&#160;  <span class="comment">// Create expressions for adjoint sweep and save to struct</span></div>
+<div class="line"><a name="l02783"></a><span class="lineno"> 2783</span>&#160;  this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#af099139af5715f2031036f46d57cd105">adj1_res</a> = this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#aa6c189e5b8046555fdd1e3003cd0d74b">adj1_f</a>(call_in);</div>
+<div class="line"><a name="l02784"></a><span class="lineno"> 2784</span>&#160;}</div>
+<div class="ttc" id="aclasscasadi_1_1Function_html_a4b9f3f8cc13ab7cded12302d29948595"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#a4b9f3f8cc13ab7cded12302d29948595">casadi::Function::reverse</a></div><div class="ttdeci">Function reverse(casadi_int nadj) const</div><div class="ttdoc">Get a function computing nadj reverse (adjoint) directional derivatives.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l01332">function.cpp:1332</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1Function_html_a7f477a5654c0cf282922dd1994f1836b"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#a7f477a5654c0cf282922dd1994f1836b">casadi::Function::size_out</a></div><div class="ttdeci">std::pair&lt; casadi_int, casadi_int &gt; size_out(casadi_int ind) const</div><div class="ttdoc">Get the shape of an output: rows, columns or both.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l00999">function.cpp:999</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1Function_html_a96ca8075f8f03e3b6309e42bea486c34"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#a96ca8075f8f03e3b6309e42bea486c34">casadi::Function::n_out</a></div><div class="ttdeci">casadi_int n_out() const</div><div class="ttdoc">Get the number of function outputs.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l00975">function.cpp:975</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1Function_html_a9a0767200ca463d43d8f8abdd81cc31e"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#a9a0767200ca463d43d8f8abdd81cc31e">casadi::Function::n_in</a></div><div class="ttdeci">casadi_int n_in() const</div><div class="ttdoc">Get the number of function inputs.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l00971">function.cpp:971</a></div></div>
-<div class="ttc" id="aclasscasadi_1_1Function_html_ad2870e7eabcb971e9bb43b8a2960aaed"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#ad2870e7eabcb971e9bb43b8a2960aaed">casadi::Function::size_in</a></div><div class="ttdeci">std::pair&lt; casadi_int, casadi_int &gt; size_in(casadi_int ind) const</div><div class="ttdoc">Get input dimension.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l00995">function.cpp:995</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1Function_html_ad2870e7eabcb971e9bb43b8a2960aaed"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#ad2870e7eabcb971e9bb43b8a2960aaed">casadi::Function::size_in</a></div><div class="ttdeci">std::pair&lt; casadi_int, casadi_int &gt; size_in(casadi_int ind) const</div><div class="ttdoc">Get the shape of an input: rows, columns or both.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l00995">function.cpp:995</a></div></div>
 <div class="ttc" id="astructcasadi_1_1DaeBuilderInternal_1_1CallIO_html_a157a71419a8b2047b0e85ff32d136689"><div class="ttname"><a href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a157a71419a8b2047b0e85ff32d136689">casadi::DaeBuilderInternal::CallIO::adj1_arg</a></div><div class="ttdeci">std::vector&lt; MX &gt; adj1_arg</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d68/dae__builder__internal_8hpp_source.html#l00779">dae_builder_internal.hpp:779</a></div></div>
 <div class="ttc" id="astructcasadi_1_1DaeBuilderInternal_1_1CallIO_html_a283cdff18216bce4dec4ee9bc193dc9f"><div class="ttname"><a href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a283cdff18216bce4dec4ee9bc193dc9f">casadi::DaeBuilderInternal::CallIO::f</a></div><div class="ttdeci">Function f</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d68/dae__builder__internal_8hpp_source.html#l00769">dae_builder_internal.hpp:769</a></div></div>
 <div class="ttc" id="astructcasadi_1_1DaeBuilderInternal_1_1CallIO_html_a9be6ca27cfa090e3f64e1ac38f8bc955"><div class="ttname"><a href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a9be6ca27cfa090e3f64e1ac38f8bc955">casadi::DaeBuilderInternal::CallIO::arg</a></div><div class="ttdeci">std::vector&lt; MX &gt; arg</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d68/dae__builder__internal_8hpp_source.html#l00773">dae_builder_internal.hpp:773</a></div></div>
@@ -195,26 +195,26 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02783">2783</a> of file <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html">dae_builder_internal.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l02783"></a><span class="lineno"> 2783</span>&#160;                                         {</div>
-<div class="line"><a name="l02784"></a><span class="lineno"> 2784</span>&#160;  <span class="comment">// Calculate gradient, if needed</span></div>
-<div class="line"><a name="l02785"></a><span class="lineno"> 2785</span>&#160;  <span class="keywordflow">if</span> (this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#aa6c189e5b8046555fdd1e3003cd0d74b">adj1_f</a>.<a class="code" href="../../da/d35/classcasadi_1_1GenericShared.html#abd28957366899587b9da638343fe41b5">is_null</a>()) <a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#abbb50d36289fd8e6797036564da74be9">calc_grad</a>();</div>
-<div class="line"><a name="l02786"></a><span class="lineno"> 2786</span>&#160;  <span class="comment">// Get/generate the (cached) Hessian function</span></div>
-<div class="line"><a name="l02787"></a><span class="lineno"> 2787</span>&#160;  <span class="comment">// casadi_message(&quot;Retrieving the Hessian of &quot; + str(this-&gt;f));</span></div>
-<div class="line"><a name="l02788"></a><span class="lineno"> 2788</span>&#160;  this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#adcc1d9ec56d69f80152bb2232589819c">H</a> = this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#aa6c189e5b8046555fdd1e3003cd0d74b">adj1_f</a>.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a59fba50329cfedc302bd31209c4b6e36">jacobian</a>();</div>
-<div class="line"><a name="l02789"></a><span class="lineno"> 2789</span>&#160;  <span class="comment">// casadi_message(&quot;Retrieving the Hessian of &quot; + str(this-&gt;f) + &quot; done&quot;);</span></div>
-<div class="line"><a name="l02790"></a><span class="lineno"> 2790</span>&#160;  <span class="comment">// Input expressions for the call to H</span></div>
-<div class="line"><a name="l02791"></a><span class="lineno"> 2791</span>&#160;  std::vector&lt;MX&gt; call_in = this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a9be6ca27cfa090e3f64e1ac38f8bc955">arg</a>;</div>
-<div class="line"><a name="l02792"></a><span class="lineno"> 2792</span>&#160;  call_in.insert(call_in.end(), this-&gt;res.begin(), this-&gt;res.end());</div>
-<div class="line"><a name="l02793"></a><span class="lineno"> 2793</span>&#160;  call_in.insert(call_in.end(), this-&gt;adj1_arg.begin(), this-&gt;adj1_arg.end());</div>
-<div class="line"><a name="l02794"></a><span class="lineno"> 2794</span>&#160;  call_in.insert(call_in.end(), this-&gt;adj1_res.begin(), this-&gt;adj1_res.end());</div>
-<div class="line"><a name="l02795"></a><span class="lineno"> 2795</span>&#160;  <span class="comment">// Create expressions for Hessian blocks and save to struct</span></div>
-<div class="line"><a name="l02796"></a><span class="lineno"> 2796</span>&#160;  this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a804daf080a69689d3fb31318b5a23014">hess_res</a> = this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#adcc1d9ec56d69f80152bb2232589819c">H</a>(call_in);</div>
-<div class="line"><a name="l02797"></a><span class="lineno"> 2797</span>&#160;}</div>
-<div class="ttc" id="aclasscasadi_1_1Function_html_a59fba50329cfedc302bd31209c4b6e36"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#a59fba50329cfedc302bd31209c4b6e36">casadi::Function::jacobian</a></div><div class="ttdeci">Function jacobian() const</div><div class="ttdoc">Calculate all Jacobian blocks.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l01068">function.cpp:1068</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02786">2786</a> of file <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html">dae_builder_internal.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l02786"></a><span class="lineno"> 2786</span>&#160;                                         {</div>
+<div class="line"><a name="l02787"></a><span class="lineno"> 2787</span>&#160;  <span class="comment">// Calculate gradient, if needed</span></div>
+<div class="line"><a name="l02788"></a><span class="lineno"> 2788</span>&#160;  <span class="keywordflow">if</span> (this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#aa6c189e5b8046555fdd1e3003cd0d74b">adj1_f</a>.<a class="code" href="../../da/d35/classcasadi_1_1GenericShared.html#abd28957366899587b9da638343fe41b5">is_null</a>()) <a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#abbb50d36289fd8e6797036564da74be9">calc_grad</a>();</div>
+<div class="line"><a name="l02789"></a><span class="lineno"> 2789</span>&#160;  <span class="comment">// Get/generate the (cached) Hessian function</span></div>
+<div class="line"><a name="l02790"></a><span class="lineno"> 2790</span>&#160;  <span class="comment">// casadi_message(&quot;Retrieving the Hessian of &quot; + str(this-&gt;f));</span></div>
+<div class="line"><a name="l02791"></a><span class="lineno"> 2791</span>&#160;  this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#adcc1d9ec56d69f80152bb2232589819c">H</a> = this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#aa6c189e5b8046555fdd1e3003cd0d74b">adj1_f</a>.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a59fba50329cfedc302bd31209c4b6e36">jacobian</a>();</div>
+<div class="line"><a name="l02792"></a><span class="lineno"> 2792</span>&#160;  <span class="comment">// casadi_message(&quot;Retrieving the Hessian of &quot; + str(this-&gt;f) + &quot; done&quot;);</span></div>
+<div class="line"><a name="l02793"></a><span class="lineno"> 2793</span>&#160;  <span class="comment">// Input expressions for the call to H</span></div>
+<div class="line"><a name="l02794"></a><span class="lineno"> 2794</span>&#160;  std::vector&lt;MX&gt; call_in = this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a9be6ca27cfa090e3f64e1ac38f8bc955">arg</a>;</div>
+<div class="line"><a name="l02795"></a><span class="lineno"> 2795</span>&#160;  call_in.insert(call_in.end(), this-&gt;res.begin(), this-&gt;res.end());</div>
+<div class="line"><a name="l02796"></a><span class="lineno"> 2796</span>&#160;  call_in.insert(call_in.end(), this-&gt;adj1_arg.begin(), this-&gt;adj1_arg.end());</div>
+<div class="line"><a name="l02797"></a><span class="lineno"> 2797</span>&#160;  call_in.insert(call_in.end(), this-&gt;adj1_res.begin(), this-&gt;adj1_res.end());</div>
+<div class="line"><a name="l02798"></a><span class="lineno"> 2798</span>&#160;  <span class="comment">// Create expressions for Hessian blocks and save to struct</span></div>
+<div class="line"><a name="l02799"></a><span class="lineno"> 2799</span>&#160;  this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a804daf080a69689d3fb31318b5a23014">hess_res</a> = this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#adcc1d9ec56d69f80152bb2232589819c">H</a>(call_in);</div>
+<div class="line"><a name="l02800"></a><span class="lineno"> 2800</span>&#160;}</div>
+<div class="ttc" id="aclasscasadi_1_1Function_html_a59fba50329cfedc302bd31209c4b6e36"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#a59fba50329cfedc302bd31209c4b6e36">casadi::Function::jacobian</a></div><div class="ttdeci">Function jacobian() const</div><div class="ttdoc">Get a function computing all Jacobian blocks at once.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dea/function_8cpp_source.html#l01068">function.cpp:1068</a></div></div>
 <div class="ttc" id="aclasscasadi_1_1GenericShared_html_abd28957366899587b9da638343fe41b5"><div class="ttname"><a href="../../da/d35/classcasadi_1_1GenericShared.html#abd28957366899587b9da638343fe41b5">casadi::GenericShared::is_null</a></div><div class="ttdeci">bool is_null() const</div><div class="ttdoc">Is a null pointer?</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00120">generic_shared_impl.hpp:120</a></div></div>
 <div class="ttc" id="astructcasadi_1_1DaeBuilderInternal_1_1CallIO_html_a804daf080a69689d3fb31318b5a23014"><div class="ttname"><a href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a804daf080a69689d3fb31318b5a23014">casadi::DaeBuilderInternal::CallIO::hess_res</a></div><div class="ttdeci">std::vector&lt; MX &gt; hess_res</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d68/dae__builder__internal_8hpp_source.html#l00783">dae_builder_internal.hpp:783</a></div></div>
-<div class="ttc" id="astructcasadi_1_1DaeBuilderInternal_1_1CallIO_html_abbb50d36289fd8e6797036564da74be9"><div class="ttname"><a href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#abbb50d36289fd8e6797036564da74be9">casadi::DaeBuilderInternal::CallIO::calc_grad</a></div><div class="ttdeci">void calc_grad()</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02757">dae_builder_internal.cpp:2757</a></div></div>
+<div class="ttc" id="astructcasadi_1_1DaeBuilderInternal_1_1CallIO_html_abbb50d36289fd8e6797036564da74be9"><div class="ttname"><a href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#abbb50d36289fd8e6797036564da74be9">casadi::DaeBuilderInternal::CallIO::calc_grad</a></div><div class="ttdeci">void calc_grad()</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02760">dae_builder_internal.cpp:2760</a></div></div>
 <div class="ttc" id="astructcasadi_1_1DaeBuilderInternal_1_1CallIO_html_adcc1d9ec56d69f80152bb2232589819c"><div class="ttname"><a href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#adcc1d9ec56d69f80152bb2232589819c">casadi::DaeBuilderInternal::CallIO::H</a></div><div class="ttdeci">Function H</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d68/dae__builder__internal_8hpp_source.html#l00769">dae_builder_internal.hpp:769</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -234,25 +234,25 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02738">2738</a> of file <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html">dae_builder_internal.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l02738"></a><span class="lineno"> 2738</span>&#160;                                        {</div>
-<div class="line"><a name="l02739"></a><span class="lineno"> 2739</span>&#160;  <span class="comment">// Consistency checks</span></div>
-<div class="line"><a name="l02740"></a><span class="lineno"> 2740</span>&#160;  <span class="keywordflow">for</span> (casadi_int i = 0; i &lt; this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a283cdff18216bce4dec4ee9bc193dc9f">f</a>.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a9a0767200ca463d43d8f8abdd81cc31e">n_in</a>(); ++i) {</div>
-<div class="line"><a name="l02741"></a><span class="lineno"> 2741</span>&#160;    casadi_assert(this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a283cdff18216bce4dec4ee9bc193dc9f">f</a>.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#ad2870e7eabcb971e9bb43b8a2960aaed">size_in</a>(i) == this-&gt;arg.at(i).size(), <span class="stringliteral">&quot;Call input not provided&quot;</span>);</div>
-<div class="line"><a name="l02742"></a><span class="lineno"> 2742</span>&#160;  }</div>
-<div class="line"><a name="l02743"></a><span class="lineno"> 2743</span>&#160;  <span class="keywordflow">for</span> (casadi_int i = 0; i &lt; this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a283cdff18216bce4dec4ee9bc193dc9f">f</a>.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a96ca8075f8f03e3b6309e42bea486c34">n_out</a>(); ++i) {</div>
-<div class="line"><a name="l02744"></a><span class="lineno"> 2744</span>&#160;    casadi_assert(this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a283cdff18216bce4dec4ee9bc193dc9f">f</a>.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a7f477a5654c0cf282922dd1994f1836b">size_out</a>(i) == this-&gt;res.at(i).size(), <span class="stringliteral">&quot;Call output not provided&quot;</span>);</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02741">2741</a> of file <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html">dae_builder_internal.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l02741"></a><span class="lineno"> 2741</span>&#160;                                        {</div>
+<div class="line"><a name="l02742"></a><span class="lineno"> 2742</span>&#160;  <span class="comment">// Consistency checks</span></div>
+<div class="line"><a name="l02743"></a><span class="lineno"> 2743</span>&#160;  <span class="keywordflow">for</span> (casadi_int i = 0; i &lt; this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a283cdff18216bce4dec4ee9bc193dc9f">f</a>.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a9a0767200ca463d43d8f8abdd81cc31e">n_in</a>(); ++i) {</div>
+<div class="line"><a name="l02744"></a><span class="lineno"> 2744</span>&#160;    casadi_assert(this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a283cdff18216bce4dec4ee9bc193dc9f">f</a>.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#ad2870e7eabcb971e9bb43b8a2960aaed">size_in</a>(i) == this-&gt;arg.at(i).size(), <span class="stringliteral">&quot;Call input not provided&quot;</span>);</div>
 <div class="line"><a name="l02745"></a><span class="lineno"> 2745</span>&#160;  }</div>
-<div class="line"><a name="l02746"></a><span class="lineno"> 2746</span>&#160;  <span class="comment">// Get/generate the (cached) Jacobian function</span></div>
-<div class="line"><a name="l02747"></a><span class="lineno"> 2747</span>&#160;  <span class="comment">// casadi_message(&quot;Retrieving the Jacobian of &quot; + str(this-&gt;f));</span></div>
-<div class="line"><a name="l02748"></a><span class="lineno"> 2748</span>&#160;  this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a70164ec896bb172c1c31b281ae2ef87c">J</a> = this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a283cdff18216bce4dec4ee9bc193dc9f">f</a>.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a59fba50329cfedc302bd31209c4b6e36">jacobian</a>();</div>
-<div class="line"><a name="l02749"></a><span class="lineno"> 2749</span>&#160;  <span class="comment">// casadi_message(&quot;Retrieving the Jacobian of &quot; + str(this-&gt;f) + &quot; done&quot;);</span></div>
-<div class="line"><a name="l02750"></a><span class="lineno"> 2750</span>&#160;  <span class="comment">// Input expressions for the call to J</span></div>
-<div class="line"><a name="l02751"></a><span class="lineno"> 2751</span>&#160;  std::vector&lt;MX&gt; call_in = this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a9be6ca27cfa090e3f64e1ac38f8bc955">arg</a>;</div>
-<div class="line"><a name="l02752"></a><span class="lineno"> 2752</span>&#160;  call_in.insert(call_in.end(), this-&gt;res.begin(), this-&gt;res.end());</div>
-<div class="line"><a name="l02753"></a><span class="lineno"> 2753</span>&#160;  <span class="comment">// Create expressions for Jacobian blocks and save to struct</span></div>
-<div class="line"><a name="l02754"></a><span class="lineno"> 2754</span>&#160;  this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#ae4e13c3d8e56bba37773aa0878b6cd76">jac_res</a> = this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a70164ec896bb172c1c31b281ae2ef87c">J</a>(call_in);</div>
-<div class="line"><a name="l02755"></a><span class="lineno"> 2755</span>&#160;}</div>
+<div class="line"><a name="l02746"></a><span class="lineno"> 2746</span>&#160;  <span class="keywordflow">for</span> (casadi_int i = 0; i &lt; this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a283cdff18216bce4dec4ee9bc193dc9f">f</a>.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a96ca8075f8f03e3b6309e42bea486c34">n_out</a>(); ++i) {</div>
+<div class="line"><a name="l02747"></a><span class="lineno"> 2747</span>&#160;    casadi_assert(this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a283cdff18216bce4dec4ee9bc193dc9f">f</a>.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a7f477a5654c0cf282922dd1994f1836b">size_out</a>(i) == this-&gt;res.at(i).size(), <span class="stringliteral">&quot;Call output not provided&quot;</span>);</div>
+<div class="line"><a name="l02748"></a><span class="lineno"> 2748</span>&#160;  }</div>
+<div class="line"><a name="l02749"></a><span class="lineno"> 2749</span>&#160;  <span class="comment">// Get/generate the (cached) Jacobian function</span></div>
+<div class="line"><a name="l02750"></a><span class="lineno"> 2750</span>&#160;  <span class="comment">// casadi_message(&quot;Retrieving the Jacobian of &quot; + str(this-&gt;f));</span></div>
+<div class="line"><a name="l02751"></a><span class="lineno"> 2751</span>&#160;  this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a70164ec896bb172c1c31b281ae2ef87c">J</a> = this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a283cdff18216bce4dec4ee9bc193dc9f">f</a>.<a class="code" href="../../da/da4/classcasadi_1_1Function.html#a59fba50329cfedc302bd31209c4b6e36">jacobian</a>();</div>
+<div class="line"><a name="l02752"></a><span class="lineno"> 2752</span>&#160;  <span class="comment">// casadi_message(&quot;Retrieving the Jacobian of &quot; + str(this-&gt;f) + &quot; done&quot;);</span></div>
+<div class="line"><a name="l02753"></a><span class="lineno"> 2753</span>&#160;  <span class="comment">// Input expressions for the call to J</span></div>
+<div class="line"><a name="l02754"></a><span class="lineno"> 2754</span>&#160;  std::vector&lt;MX&gt; call_in = this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a9be6ca27cfa090e3f64e1ac38f8bc955">arg</a>;</div>
+<div class="line"><a name="l02755"></a><span class="lineno"> 2755</span>&#160;  call_in.insert(call_in.end(), this-&gt;res.begin(), this-&gt;res.end());</div>
+<div class="line"><a name="l02756"></a><span class="lineno"> 2756</span>&#160;  <span class="comment">// Create expressions for Jacobian blocks and save to struct</span></div>
+<div class="line"><a name="l02757"></a><span class="lineno"> 2757</span>&#160;  this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#ae4e13c3d8e56bba37773aa0878b6cd76">jac_res</a> = this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a70164ec896bb172c1c31b281ae2ef87c">J</a>(call_in);</div>
+<div class="line"><a name="l02758"></a><span class="lineno"> 2758</span>&#160;}</div>
 <div class="ttc" id="astructcasadi_1_1DaeBuilderInternal_1_1CallIO_html_a70164ec896bb172c1c31b281ae2ef87c"><div class="ttname"><a href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a70164ec896bb172c1c31b281ae2ef87c">casadi::DaeBuilderInternal::CallIO::J</a></div><div class="ttdeci">Function J</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d68/dae__builder__internal_8hpp_source.html#l00769">dae_builder_internal.hpp:769</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../dd/d68/dae__builder__internal_8hpp_source.html#l00773">arg</a>, <a class="el" href="../../dd/d68/dae__builder__internal_8hpp_source.html#l00769">f</a>, <a class="el" href="../../dd/d68/dae__builder__internal_8hpp_source.html#l00769">J</a>, <a class="el" href="../../dd/d68/dae__builder__internal_8hpp_source.html#l00777">jac_res</a>, <a class="el" href="../../de/dea/function_8cpp_source.html#l01068">casadi::Function::jacobian()</a>, <a class="el" href="../../de/dea/function_8cpp_source.html#l00971">casadi::Function::n_in()</a>, <a class="el" href="../../de/dea/function_8cpp_source.html#l00975">casadi::Function::n_out()</a>, <a class="el" href="../../de/dea/function_8cpp_source.html#l00995">casadi::Function::size_in()</a>, and <a class="el" href="../../de/dea/function_8cpp_source.html#l00999">casadi::Function::size_out()</a>.</p>
@@ -285,15 +285,15 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02806">2806</a> of file <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html">dae_builder_internal.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l02806"></a><span class="lineno"> 2806</span>&#160;                                                                                 {</div>
-<div class="line"><a name="l02807"></a><span class="lineno"> 2807</span>&#160;  <span class="comment">// Flat index</span></div>
-<div class="line"><a name="l02808"></a><span class="lineno"> 2808</span>&#160;  casadi_int ind = iind1 + iind1 * this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a157a71419a8b2047b0e85ff32d136689">adj1_arg</a>.size();</div>
-<div class="line"><a name="l02809"></a><span class="lineno"> 2809</span>&#160;  <span class="comment">// Return reference</span></div>
-<div class="line"><a name="l02810"></a><span class="lineno"> 2810</span>&#160;  <span class="keywordflow">return</span> this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a804daf080a69689d3fb31318b5a23014">hess_res</a>.at(ind);</div>
-<div class="line"><a name="l02811"></a><span class="lineno"> 2811</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02809">2809</a> of file <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html">dae_builder_internal.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l02809"></a><span class="lineno"> 2809</span>&#160;                                                                                 {</div>
+<div class="line"><a name="l02810"></a><span class="lineno"> 2810</span>&#160;  <span class="comment">// Flat index</span></div>
+<div class="line"><a name="l02811"></a><span class="lineno"> 2811</span>&#160;  casadi_int ind = iind1 + iind1 * this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a157a71419a8b2047b0e85ff32d136689">adj1_arg</a>.size();</div>
+<div class="line"><a name="l02812"></a><span class="lineno"> 2812</span>&#160;  <span class="comment">// Return reference</span></div>
+<div class="line"><a name="l02813"></a><span class="lineno"> 2813</span>&#160;  <span class="keywordflow">return</span> this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a804daf080a69689d3fb31318b5a23014">hess_res</a>.at(ind);</div>
+<div class="line"><a name="l02814"></a><span class="lineno"> 2814</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01360">casadi::GenericMatrix&lt; MatType &gt;::size()</a>.</p>
+<p class="reference">References <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l05264">casadi::GenericMatrix&lt; MatType &gt;::size()</a>.</p>
 
 </div>
 </div>
@@ -323,15 +323,15 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02799">2799</a> of file <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html">dae_builder_internal.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l02799"></a><span class="lineno"> 2799</span>&#160;                                                                              {</div>
-<div class="line"><a name="l02800"></a><span class="lineno"> 2800</span>&#160;  <span class="comment">// Flat index</span></div>
-<div class="line"><a name="l02801"></a><span class="lineno"> 2801</span>&#160;  casadi_int ind = iind + oind * this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a9be6ca27cfa090e3f64e1ac38f8bc955">arg</a>.size();</div>
-<div class="line"><a name="l02802"></a><span class="lineno"> 2802</span>&#160;  <span class="comment">// Return reference</span></div>
-<div class="line"><a name="l02803"></a><span class="lineno"> 2803</span>&#160;  <span class="keywordflow">return</span> this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#ae4e13c3d8e56bba37773aa0878b6cd76">jac_res</a>.at(ind);</div>
-<div class="line"><a name="l02804"></a><span class="lineno"> 2804</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02802">2802</a> of file <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html">dae_builder_internal.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l02802"></a><span class="lineno"> 2802</span>&#160;                                                                              {</div>
+<div class="line"><a name="l02803"></a><span class="lineno"> 2803</span>&#160;  <span class="comment">// Flat index</span></div>
+<div class="line"><a name="l02804"></a><span class="lineno"> 2804</span>&#160;  casadi_int ind = iind + oind * this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#a9be6ca27cfa090e3f64e1ac38f8bc955">arg</a>.size();</div>
+<div class="line"><a name="l02805"></a><span class="lineno"> 2805</span>&#160;  <span class="comment">// Return reference</span></div>
+<div class="line"><a name="l02806"></a><span class="lineno"> 2806</span>&#160;  <span class="keywordflow">return</span> this-&gt;<a class="code" href="../../d5/dfb/structcasadi_1_1DaeBuilderInternal_1_1CallIO.html#ae4e13c3d8e56bba37773aa0878b6cd76">jac_res</a>.at(ind);</div>
+<div class="line"><a name="l02807"></a><span class="lineno"> 2807</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l01360">casadi::GenericMatrix&lt; MatType &gt;::size()</a>.</p>
+<p class="reference">References <a class="el" href="../../d7/d90/generic__matrix_8hpp_source.html#l05264">casadi::GenericMatrix&lt; MatType &gt;::size()</a>.</p>
 
 </div>
 </div>
@@ -350,7 +350,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../dd/d68/dae__builder__internal_8hpp_source.html#l00779">779</a> of file <a class="el" href="../../dd/d68/dae__builder__internal_8hpp_source.html">dae_builder_internal.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02329">casadi::DaeBuilderInternal::create()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02332">casadi::DaeBuilderInternal::create()</a>.</p>
 
 </div>
 </div>
@@ -400,7 +400,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../dd/d68/dae__builder__internal_8hpp_source.html#l00773">773</a> of file <a class="el" href="../../dd/d68/dae__builder__internal_8hpp_source.html">dae_builder_internal.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02738">calc_jac()</a>, and <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02329">casadi::DaeBuilderInternal::create()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02741">calc_jac()</a>, and <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02332">casadi::DaeBuilderInternal::create()</a>.</p>
 
 </div>
 </div>
@@ -418,7 +418,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../dd/d68/dae__builder__internal_8hpp_source.html#l00769">769</a> of file <a class="el" href="../../dd/d68/dae__builder__internal_8hpp_source.html">dae_builder_internal.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02738">calc_jac()</a>, and <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02329">casadi::DaeBuilderInternal::create()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02741">calc_jac()</a>, and <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02332">casadi::DaeBuilderInternal::create()</a>.</p>
 
 </div>
 </div>
@@ -468,7 +468,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../dd/d68/dae__builder__internal_8hpp_source.html#l00769">769</a> of file <a class="el" href="../../dd/d68/dae__builder__internal_8hpp_source.html">dae_builder_internal.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02738">calc_jac()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02741">calc_jac()</a>.</p>
 
 </div>
 </div>
@@ -486,7 +486,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../dd/d68/dae__builder__internal_8hpp_source.html#l00777">777</a> of file <a class="el" href="../../dd/d68/dae__builder__internal_8hpp_source.html">dae_builder_internal.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02738">calc_jac()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02741">calc_jac()</a>.</p>
 
 </div>
 </div>
@@ -504,7 +504,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../dd/d68/dae__builder__internal_8hpp_source.html#l00775">775</a> of file <a class="el" href="../../dd/d68/dae__builder__internal_8hpp_source.html">dae_builder_internal.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02329">casadi::DaeBuilderInternal::create()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02332">casadi::DaeBuilderInternal::create()</a>.</p>
 
 </div>
 </div>
@@ -522,7 +522,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../dd/d68/dae__builder__internal_8hpp_source.html#l00771">771</a> of file <a class="el" href="../../dd/d68/dae__builder__internal_8hpp_source.html">dae_builder_internal.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02329">casadi::DaeBuilderInternal::create()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02332">casadi::DaeBuilderInternal::create()</a>.</p>
 
 </div>
 </div>
@@ -540,7 +540,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../dd/d68/dae__builder__internal_8hpp_source.html#l00771">771</a> of file <a class="el" href="../../dd/d68/dae__builder__internal_8hpp_source.html">dae_builder_internal.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02329">casadi::DaeBuilderInternal::create()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l02332">casadi::DaeBuilderInternal::create()</a>.</p>
 
 </div>
 </div>

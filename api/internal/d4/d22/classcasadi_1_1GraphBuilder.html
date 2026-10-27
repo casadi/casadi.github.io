@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/dafc81035257e0e57db5c65b2ac851a6239fb1c4" id="dafc81035257e0e57db5c65b2ac851a6239fb1c4" >revision 3.8.1</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a5852c23b2100296cee23b81227fcaa3bef43f04" id="a5852c23b2100296cee23b81227fcaa3bef43f04" >revision 3.8.2</a></div>
   </td>
  </tr>
  </tbody>
@@ -69,13 +69,14 @@ $(function() {
 <p><code>#include &lt;<a class="el" href="../../d8/dc8/graph__builder_8hpp_source.html">graph_builder.hpp</a>&gt;</code></p>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Two-stage workflow: explore and configure a model (introspection, dynamic-dimension binding) with <a class="el" href="../../d4/d22/classcasadi_1_1GraphBuilder.html" title="A mutable, format-neutral interface to a computational-graph model.">GraphBuilder</a>, then freeze it into an immutable, evaluable <a class="el" href="../../da/da4/classcasadi_1_1Function.html" title="Function object.">Function</a>.</p>
-<pre class="fragment">GraphBuilder b("model.onnx");
+<p> <div class='lang lang-cpp'>  </p><pre class="fragment">GraphBuilder b("model.onnx");
 b.bind_dim("batch", 4);
 Function f = b.create("net");
-</pre><dl class="section date"><dt>Date</dt><dd>2026</dd></dl>
+</pre><p>  </div> </p>
+<dl class="section date"><dt>Date</dt><dd>2026</dd></dl>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2jd">https://github.com/casadi/casadi/wiki/L_2jd</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/dc8/graph__builder_8hpp_source.html#l00049">49</a> of file <a class="el" href="../../d8/dc8/graph__builder_8hpp_source.html">graph_builder.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/dc8/graph__builder_8hpp_source.html#l00051">51</a> of file <a class="el" href="../../d8/dc8/graph__builder_8hpp_source.html">graph_builder.hpp</a>.</p>
 </div><div class="dynheader">
 Inheritance diagram for casadi::GraphBuilder:</div>
 <div class="dyncontent">
@@ -603,7 +604,7 @@ Protected Member Functions</h2></td></tr>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">return</span> (*this)-&gt;class_name();</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l00051">casadi::FmuFunction::check_mem_count()</a>, <a class="el" href="../../d6/d9b/mx__function_8cpp_source.html#l01654">casadi::MXFunction::export_code_body()</a>, and <a class="el" href="../../de/d62/blazing__spline_8cpp_source.html#l00819">casadi::BlazingSplineFunction::merge()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d8/d23/fmu__function_8cpp_source.html#l00055">casadi::FmuFunction::check_mem_count()</a>, <a class="el" href="../../d6/d9b/mx__function_8cpp_source.html#l01654">casadi::MXFunction::export_code_body()</a>, and <a class="el" href="../../de/d62/blazing__spline_8cpp_source.html#l00819">casadi::BlazingSplineFunction::merge()</a>.</p>
 
 </div>
 </div>
@@ -718,13 +719,13 @@ Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2jg">https://github.com/casadi/casadi/wiki/L_2jg</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/dc8/graph__builder_8hpp_source.html#l00138">138</a> of file <a class="el" href="../../d8/dc8/graph__builder_8hpp_source.html">graph_builder.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="../../d4/d22/classcasadi_1_1GraphBuilder.html#a811c1f66c4f1915756db17213b03020a">create</a>(<a class="code" href="../../d4/d22/classcasadi_1_1GraphBuilder.html#acb7f516ee0e084a921c9617fc1ad4612">name</a>() + <span class="stringliteral">&quot;_graph&quot;</span>); }</div>
-<div class="ttc" id="aclasscasadi_1_1GraphBuilder_html_a811c1f66c4f1915756db17213b03020a"><div class="ttname"><a href="../../d4/d22/classcasadi_1_1GraphBuilder.html#a811c1f66c4f1915756db17213b03020a">casadi::GraphBuilder::create</a></div><div class="ttdeci">Function create() const</div><div class="ttdoc">Freeze into an evaluable Function, default naming.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dc8/graph__builder_8hpp_source.html#l00138">graph_builder.hpp:138</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../d8/dc8/graph__builder_8hpp_source.html#l00140">140</a> of file <a class="el" href="../../d8/dc8/graph__builder_8hpp_source.html">graph_builder.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="../../d4/d22/classcasadi_1_1GraphBuilder.html#a811c1f66c4f1915756db17213b03020a">create</a>(<a class="code" href="../../d4/d22/classcasadi_1_1GraphBuilder.html#acb7f516ee0e084a921c9617fc1ad4612">name</a>() + <span class="stringliteral">&quot;_graph&quot;</span>); }</div>
+<div class="ttc" id="aclasscasadi_1_1GraphBuilder_html_a811c1f66c4f1915756db17213b03020a"><div class="ttname"><a href="../../d4/d22/classcasadi_1_1GraphBuilder.html#a811c1f66c4f1915756db17213b03020a">casadi::GraphBuilder::create</a></div><div class="ttdeci">Function create() const</div><div class="ttdoc">Freeze into an evaluable Function, default naming.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dc8/graph__builder_8hpp_source.html#l00140">graph_builder.hpp:140</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d8/dc8/graph__builder_8hpp_source.html#l00138">create()</a>.</p>
+<p class="reference">References <a class="el" href="../../d8/dc8/graph__builder_8hpp_source.html#l00140">create()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d8/dc8/graph__builder_8hpp_source.html#l00138">create()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d8/dc8/graph__builder_8hpp_source.html#l00140">create()</a>.</p>
 
 </div>
 </div>
@@ -828,8 +829,6 @@ Protected Member Functions</h2></td></tr>
 <div class="ttc" id="aclasscasadi_1_1GraphBuilder_html_ad87dcf3dbfa79bb655857fa8e92c768c"><div class="ttname"><a href="../../d4/d22/classcasadi_1_1GraphBuilder.html#ad87dcf3dbfa79bb655857fa8e92c768c">casadi::GraphBuilder::name_out</a></div><div class="ttdeci">std::vector&lt; std::string &gt; name_out() const</div><div class="ttdoc">Declared shape of a tensor (input or output) by name; -1 for dynamic dimensions.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d25/graph__builder_8cpp_source.html#l00105">graph_builder.cpp:105</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d4/d25/graph__builder_8cpp_source.html#l00097">name()</a>, <a class="el" href="../../d4/d25/graph__builder_8cpp_source.html#l00104">name_in()</a>, and <a class="el" href="../../d4/d25/graph__builder_8cpp_source.html#l00105">name_out()</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="../../d8/d23/dae__builder__internal_8cpp_source.html#l00702">casadi::DaeBuilderInternal::load_fmi_description()</a>.</p>
 
 </div>
 </div>
@@ -961,7 +960,7 @@ Protected Member Functions</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00120">casadi::GenericShared&lt; SharedObject, SharedObjectInternal &gt;::is_null()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d1/d38/shared__object_8cpp_source.html#l00047">casadi::WeakRefInternal::disp()</a>, <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00931">casadi::Nlpsol::disp_more()</a>, and <a class="el" href="../../dd/d3c/csparse__interface_8cpp_source.html#l00103">casadi::CsparseInterface::nfact()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d1/d38/shared__object_8cpp_source.html#l00047">casadi::WeakRefInternal::disp()</a>, <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00943">casadi::Nlpsol::disp_more()</a>, and <a class="el" href="../../dd/d3c/csparse__interface_8cpp_source.html#l00103">casadi::CsparseInterface::nfact()</a>.</p>
 
 </div>
 </div>
@@ -1073,7 +1072,7 @@ Protected Member Functions</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d9/d7e/generic__shared__impl_8hpp_source.html#l00115">casadi::GenericShared&lt; SharedObject, SharedObjectInternal &gt;::get()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d3/d1f/onnx__function_8cpp_source.html#l00540">casadi::OnnxFunction::from_model_data()</a>, <a class="el" href="../../d3/d1f/onnx__function_8cpp_source.html#l00243">casadi::OnnxFunction::init()</a>, and <a class="el" href="../../d3/d1f/onnx__function_8cpp_source.html#l00326">casadi::OnnxFunction::wrap_derivative()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d3/d1f/onnx__function_8cpp_source.html#l00243">casadi::OnnxFunction::init()</a>.</p>
 
 </div>
 </div>
@@ -1519,8 +1518,8 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/dc8/graph__builder_8hpp_source.html#l00054">54</a> of file <a class="el" href="../../d8/dc8/graph__builder_8hpp_source.html">graph_builder.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{ <span class="keywordflow">return</span> <span class="stringliteral">&quot;GraphBuilder&quot;</span>; }</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/dc8/graph__builder_8hpp_source.html#l00056">56</a> of file <a class="el" href="../../d8/dc8/graph__builder_8hpp_source.html">graph_builder.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;{ <span class="keywordflow">return</span> <span class="stringliteral">&quot;GraphBuilder&quot;</span>; }</div>
 </div><!-- fragment -->
 </div>
 </div>

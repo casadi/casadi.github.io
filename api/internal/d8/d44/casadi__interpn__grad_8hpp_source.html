@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/dafc81035257e0e57db5c65b2ac851a6239fb1c4" id="dafc81035257e0e57db5c65b2ac851a6239fb1c4" >revision 3.8.1</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a5852c23b2100296cee23b81227fcaa3bef43f04" id="a5852c23b2100296cee23b81227fcaa3bef43f04" >revision 3.8.2</a></div>
   </td>
  </tr>
  </tbody>
@@ -79,13 +79,13 @@ $(function() {
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">// SYMBOL &quot;interpn_grad&quot;</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keywordtype">void</span> casadi_interpn_grad(T1* grad, casadi_int ndim, <span class="keyword">const</span> T1* grid, <span class="keyword">const</span> casadi_int* offset, <span class="keyword">const</span> T1* values, <span class="keyword">const</span> T1* x, <span class="keyword">const</span> casadi_int* lookup_mode, casadi_int m, casadi_int* iw, T1* w) { <span class="comment">// NOLINT(whitespace/line_length)</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  T1 *alpha, *coeff, *v;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  T1 *<a class="code" href="../../d5/d58/namespacecasadi_1_1rosenbrock__tableau.html#a03fb16e2a073621c2448e67fa2ffc66f">alpha</a>, *coeff, *v;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  casadi_int *index, *corner;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  casadi_int i;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="comment">// Quick return</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="keywordflow">if</span> (!grad) <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="comment">// Work vectors</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  alpha = w; w += ndim;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <a class="code" href="../../d5/d58/namespacecasadi_1_1rosenbrock__tableau.html#a03fb16e2a073621c2448e67fa2ffc66f">alpha</a> = w; w += ndim;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  coeff = w; w += ndim;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  v = w; w+= m;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  index = iw; iw += ndim;</div>
@@ -107,12 +107,12 @@ $(function() {
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;      <span class="keywordflow">if</span> (corner[i]) {</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordflow">for</span> (j=0; j&lt;m; ++j) {</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;          grad[i*m+j] += v[j]*coeff[i];</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;          v[j] *= alpha[i];</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;          v[j] *= <a class="code" href="../../d5/d58/namespacecasadi_1_1rosenbrock__tableau.html#a03fb16e2a073621c2448e67fa2ffc66f">alpha</a>[i];</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        }</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">for</span> (j=0; j&lt;m; ++j) {</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;          grad[i*m+j] -= v[j]*coeff[i];</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;          v[j] *= 1-alpha[i];</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;          v[j] *= 1-<a class="code" href="../../d5/d58/namespacecasadi_1_1rosenbrock__tableau.html#a03fb16e2a073621c2448e67fa2ffc66f">alpha</a>[i];</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        }</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      }</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    }</div>
@@ -129,6 +129,7 @@ $(function() {
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    grad += m;</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  }</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
+<div class="ttc" id="anamespacecasadi_1_1rosenbrock__tableau_html_a03fb16e2a073621c2448e67fa2ffc66f"><div class="ttname"><a href="../../d5/d58/namespacecasadi_1_1rosenbrock__tableau.html#a03fb16e2a073621c2448e67fa2ffc66f">casadi::rosenbrock_tableau::alpha</a></div><div class="ttdeci">const long double alpha[8][8]</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dd7/rosenbrock__tableau_8hpp_source.html#l00043">rosenbrock_tableau.hpp:43</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_a4ba9d1db85194ca8bf943b36ceecc294"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a4ba9d1db85194ca8bf943b36ceecc294">casadi::casadi_clear_casadi_int</a></div><div class="ttdeci">void casadi_clear_casadi_int(casadi_int *x, casadi_int n)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d38/casadi__runtime_8hpp_source.html#l00336">casadi_runtime.hpp:336</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </body>

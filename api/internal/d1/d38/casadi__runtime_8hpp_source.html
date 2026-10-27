@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/dafc81035257e0e57db5c65b2ac851a6239fb1c4" id="dafc81035257e0e57db5c65b2ac851a6239fb1c4" >revision 3.8.1</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a5852c23b2100296cee23b81227fcaa3bef43f04" id="a5852c23b2100296cee23b81227fcaa3bef43f04" >revision 3.8.2</a></div>
   </td>
  </tr>
  </tbody>
@@ -441,30 +441,35 @@ $(function() {
 <div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;<span class="preprocessor">  #include &quot;casadi_qrqp.hpp&quot;</span></div>
 <div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;<span class="preprocessor">  #include &quot;casadi_kkt.hpp&quot;</span></div>
 <div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;<span class="preprocessor">  #include &quot;casadi_ipqp.hpp&quot;</span></div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;<span class="preprocessor">  #include &quot;casadi_oracle.hpp&quot;</span></div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;<span class="preprocessor">  #include &quot;casadi_nlp.hpp&quot;</span></div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;<span class="preprocessor">  #include &quot;casadi_sqpmethod.hpp&quot;</span></div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;<span class="preprocessor">  #include &quot;casadi_feasiblesqpmethod.hpp&quot;</span></div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;<span class="preprocessor">  #include &quot;casadi_bfgs.hpp&quot;</span></div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;<span class="preprocessor">  #include &quot;casadi_regularize.hpp&quot;</span></div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;<span class="preprocessor">  #include &quot;casadi_newton.hpp&quot;</span></div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;<span class="preprocessor">  #include &quot;casadi_bound_consistency.hpp&quot;</span></div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;<span class="preprocessor">  #include &quot;casadi_lsqr.hpp&quot;</span></div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;<span class="preprocessor">  #include &quot;casadi_dense_lsqr.hpp&quot;</span></div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;<span class="preprocessor">  #include &quot;casadi_cache.hpp&quot;</span></div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;<span class="preprocessor">  #include &quot;casadi_convexify.hpp&quot;</span></div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;<span class="preprocessor">  #include &quot;casadi_socp.hpp&quot;</span></div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;<span class="preprocessor">  #include &quot;casadi_logsumexp.hpp&quot;</span></div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;<span class="preprocessor">  #include &quot;casadi_sum.hpp&quot;</span></div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;<span class="preprocessor">  #include &quot;casadi_sparsity.hpp&quot;</span></div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;<span class="preprocessor">  #include &quot;casadi_jac.hpp&quot;</span></div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;<span class="preprocessor">  #include &quot;casadi_oracle_callback.hpp&quot;</span></div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;<span class="preprocessor">  #include &quot;casadi_ocp_block.hpp&quot;</span></div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;<span class="preprocessor">  #include &quot;casadi_scaled_copy.hpp&quot;</span></div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;} <span class="comment">// namespace casadi</span></div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160; </div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160; </div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_CASADI_RUNTIME_HPP</span></div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;<span class="preprocessor">  #include &quot;casadi_ivp.hpp&quot;</span></div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;<span class="preprocessor">  #include &quot;casadi_ivp_adapt.hpp&quot;</span></div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;<span class="preprocessor">  #include &quot;casadi_ivp_event.hpp&quot;</span></div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;<span class="preprocessor">  #include &quot;casadi_rosenbrock.hpp&quot;</span></div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;<span class="preprocessor">  #include &quot;casadi_erk.hpp&quot;</span></div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;<span class="preprocessor">  #include &quot;casadi_oracle.hpp&quot;</span></div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;<span class="preprocessor">  #include &quot;casadi_nlp.hpp&quot;</span></div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;<span class="preprocessor">  #include &quot;casadi_sqpmethod.hpp&quot;</span></div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;<span class="preprocessor">  #include &quot;casadi_feasiblesqpmethod.hpp&quot;</span></div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;<span class="preprocessor">  #include &quot;casadi_bfgs.hpp&quot;</span></div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;<span class="preprocessor">  #include &quot;casadi_regularize.hpp&quot;</span></div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;<span class="preprocessor">  #include &quot;casadi_newton.hpp&quot;</span></div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;<span class="preprocessor">  #include &quot;casadi_bound_consistency.hpp&quot;</span></div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;<span class="preprocessor">  #include &quot;casadi_lsqr.hpp&quot;</span></div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;<span class="preprocessor">  #include &quot;casadi_dense_lsqr.hpp&quot;</span></div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;<span class="preprocessor">  #include &quot;casadi_cache.hpp&quot;</span></div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;<span class="preprocessor">  #include &quot;casadi_convexify.hpp&quot;</span></div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;<span class="preprocessor">  #include &quot;casadi_socp.hpp&quot;</span></div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;<span class="preprocessor">  #include &quot;casadi_logsumexp.hpp&quot;</span></div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;<span class="preprocessor">  #include &quot;casadi_sum.hpp&quot;</span></div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;<span class="preprocessor">  #include &quot;casadi_sparsity.hpp&quot;</span></div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;<span class="preprocessor">  #include &quot;casadi_jac.hpp&quot;</span></div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;<span class="preprocessor">  #include &quot;casadi_oracle_callback.hpp&quot;</span></div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;<span class="preprocessor">  #include &quot;casadi_ocp_block.hpp&quot;</span></div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;<span class="preprocessor">  #include &quot;casadi_scaled_copy.hpp&quot;</span></div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;} <span class="comment">// namespace casadi</span></div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160; </div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160; </div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_CASADI_RUNTIME_HPP</span></div>
 <div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d03/archiver_8cpp_source.html#l00028">archiver.cpp:28</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_a022572521d657f455495d30da47fc745"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a022572521d657f455495d30da47fc745">casadi::casadi_max_viol</a></div><div class="ttdeci">T1 casadi_max_viol(casadi_int n, const T1 *x, const T1 *lb, const T1 *ub)</div><div class="ttdoc">Largest bound violation.</div></div>
 <div class="ttc" id="anamespacecasadi_html_a0b76c112645ed4389fc1bc7a52ea2285"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a0b76c112645ed4389fc1bc7a52ea2285">casadi::casadi_kron_contract_inner</a></div><div class="ttdeci">void casadi_kron_contract_inner(const T1 *m, const casadi_int *sp_m, const T1 *b, const casadi_int *sp_b, T1 *y, const casadi_int *sp_y, T1 *w)</div></div>

@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/dafc81035257e0e57db5c65b2ac851a6239fb1c4" id="dafc81035257e0e57db5c65b2ac851a6239fb1c4" >revision 3.8.1</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a5852c23b2100296cee23b81227fcaa3bef43f04" id="a5852c23b2100296cee23b81227fcaa3bef43f04" >revision 3.8.2</a></div>
   </td>
  </tr>
  </tbody>
@@ -68,6 +68,8 @@ $(function() {
 <td>always_inline</td><td>OT_BOOL</td><td>Force inlining.</td><td>casadi::FunctionInternal </td></tr>
 <tr>
 <td>cache</td><td>OT_DICT</td><td>Prepopulate the function cache. Default: empty</td><td>casadi::FunctionInternal </td></tr>
+<tr>
+<td>codegen_options</td><td>OT_DICT</td><td>Options to be passed to the code generator of jit, e.g. {"stats": true} to record statistics inside the compiled code. Default: none</td><td>casadi::FunctionInternal </td></tr>
 <tr>
 <td>compiler</td><td>OT_STRING</td><td>Just-in-time compiler plugin to be used.</td><td>casadi::FunctionInternal </td></tr>
 <tr>
@@ -168,6 +170,14 @@ $(function() {
 <td>regularity_check</td><td>OT_BOOL</td><td>Throw exceptions when NaN or Inf appears during evaluation</td><td>casadi::ProtoFunction </td></tr>
 <tr>
 <td>reverse_options</td><td>OT_DICT</td><td>Options to be passed to a reverse mode constructor</td><td>casadi::FunctionInternal </td></tr>
+<tr>
+<td>sens_force_equality</td><td>OT_BOOL</td><td>Treat constraints with equal bounds as active in parametric sensitivities, regardless of the multiplier, see issue #2545 [false].</td><td>casadi::Conic </td></tr>
+<tr>
+<td>sens_linsol</td><td>OT_STRING</td><td>Linear solver used for parametric sensitivities (default 'qr').</td><td>casadi::Conic </td></tr>
+<tr>
+<td>sens_linsol_options</td><td>OT_DICT</td><td>Linear solver options used for parametric sensitivities.</td><td>casadi::Conic </td></tr>
+<tr>
+<td>sens_min_lam</td><td>OT_DOUBLE</td><td>Minimum multiplier value for a constraint to be considered active in parametric sensitivities [0].</td><td>casadi::Conic </td></tr>
 <tr>
 <td>solver_version_check</td><td>OT_BOOL</td><td>When the plugin loads an externally supplied solver, check that its version is compatible with the plugin [Default: true]</td><td>casadi::Conic </td></tr>
 <tr>

@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/dafc81035257e0e57db5c65b2ac851a6239fb1c4" id="dafc81035257e0e57db5c65b2ac851a6239fb1c4" >revision 3.8.1</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a5852c23b2100296cee23b81227fcaa3bef43f04" id="a5852c23b2100296cee23b81227fcaa3bef43f04" >revision 3.8.2</a></div>
   </td>
  </tr>
  </tbody>
@@ -61,10 +61,15 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Base class of iteration callbacks for <a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html" title="A simplified interface for NLP modeling/solving.">Opti</a>.  
+ <a href="../../db/d91/classcasadi_1_1OptiCallback.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>&gt;</code></p>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l00537">537</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
+<div class="textblock"><p>Subclass and override call(i), then register with <a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#a3014aef6d138e304d7a04fb7423fc60f" title="Helper methods for callback()">Opti::callback_class</a>. In Python and MATLAB, Opti::callback(fh) does this for a plain callable.</p>
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2my">https://github.com/casadi/casadi/wiki/L_2my</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l02764">2764</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -73,6 +78,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af31a1455b9b9794b8ad31b7b08b6c8e0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d91/classcasadi_1_1OptiCallback.html#af31a1455b9b9794b8ad31b7b08b6c8e0">OptiCallback</a> (const <a class="el" href="../../db/d91/classcasadi_1_1OptiCallback.html">OptiCallback</a> &amp;obj)</td></tr>
 <tr class="separator:af31a1455b9b9794b8ad31b7b08b6c8e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5035863b13d841dadaab068b32c4d91"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d91/classcasadi_1_1OptiCallback.html#aa5035863b13d841dadaab068b32c4d91">call</a> (casadi_int i)</td></tr>
+<tr class="memdesc:aa5035863b13d841dadaab068b32c4d91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called after every solver iteration with the iteration number.  <a href="../../db/d91/classcasadi_1_1OptiCallback.html#aa5035863b13d841dadaab068b32c4d91">More...</a><br /></td></tr>
 <tr class="separator:aa5035863b13d841dadaab068b32c4d91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64543e0887cf6bf6961be0d219c24da0"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d91/classcasadi_1_1OptiCallback.html#a64543e0887cf6bf6961be0d219c24da0">~OptiCallback</a> ()</td></tr>
 <tr class="separator:a64543e0887cf6bf6961be0d219c24da0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -101,7 +107,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l00539">539</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l02766">2766</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
 
 </div>
 </div>
@@ -129,7 +135,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l00541">541</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l02768">2768</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
 
 </div>
 </div>
@@ -156,7 +162,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l00547">547</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l02775">2775</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
 
 </div>
 </div>
@@ -185,7 +191,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l00544">544</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l02772">2772</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
 
 </div>
 </div>

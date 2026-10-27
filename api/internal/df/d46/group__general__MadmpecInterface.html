@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/dafc81035257e0e57db5c65b2ac851a6239fb1c4" id="dafc81035257e0e57db5c65b2ac851a6239fb1c4" >revision 3.8.1</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a5852c23b2100296cee23b81227fcaa3bef43f04" id="a5852c23b2100296cee23b81227fcaa3bef43f04" >revision 3.8.2</a></div>
   </td>
  </tr>
  </tbody>
@@ -84,6 +84,8 @@ $(function() {
 <td>cc_types</td><td>OT_INTVECTOR</td><td>Type of cc pairs (default: 0). </td><td><a class="el" href="../../d4/d36/classcasadi_1_1MadmpecInterface.html" title="&#39;ccopt&#39; plugin for Nlpsol">casadi::MadmpecInterface</a> </td></tr>
 <tr>
 <td>ccopt</td><td>OT_DICT</td><td>Options to be passed to ccopt relaxation algorithm</td><td><a class="el" href="../../d4/d36/classcasadi_1_1MadmpecInterface.html" title="&#39;ccopt&#39; plugin for Nlpsol">casadi::MadmpecInterface</a> </td></tr>
+<tr>
+<td>codegen_options</td><td>OT_DICT</td><td>Options to be passed to the code generator of jit, e.g. {"stats": true} to record statistics inside the compiled code. Default: none</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
 <tr>
 <td>common_options</td><td>OT_DICT</td><td>Options for auto-generated functions</td><td><a class="el" href="../../d2/df9/classcasadi_1_1OracleFunction.html" title="Base class for functions that perform calculation with an oracle.">casadi::OracleFunction</a> </td></tr>
 <tr>
@@ -210,6 +212,8 @@ $(function() {
 <td>regularity_check</td><td>OT_BOOL</td><td>Throw exceptions when NaN or Inf appears during evaluation</td><td><a class="el" href="../../db/da0/classcasadi_1_1ProtoFunction.html" title="Base class for FunctionInternal and LinsolInternal.">casadi::ProtoFunction</a> </td></tr>
 <tr>
 <td>reverse_options</td><td>OT_DICT</td><td>Options to be passed to a reverse mode constructor</td><td><a class="el" href="../../d2/dab/classcasadi_1_1FunctionInternal.html" title="Internal class for Function.">casadi::FunctionInternal</a> </td></tr>
+<tr>
+<td>sens_force_equality</td><td>OT_BOOL</td><td>Treat constraints with equal bounds as active in parametric sensitivities, regardless of the multiplier, see issue #2545 [false].</td><td><a class="el" href="../../d8/dc2/classcasadi_1_1Nlpsol.html" title="NLP solver storage class.">casadi::Nlpsol</a> </td></tr>
 <tr>
 <td>sens_linsol</td><td>OT_STRING</td><td>Linear solver used for parametric sensitivities (default 'qr').</td><td><a class="el" href="../../d8/dc2/classcasadi_1_1Nlpsol.html" title="NLP solver storage class.">casadi::Nlpsol</a> </td></tr>
 <tr>

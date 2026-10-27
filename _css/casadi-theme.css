@@ -946,7 +946,7 @@ blockquote::before {
   word-break: break-word;
 }
 
-/* example-language switch (Python / MATLAB) at the top of the API sidebar */
+/* example-language switch (Python / MATLAB / Julia) at the top of the API sidebar */
 .api-lang-switch {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -959,8 +959,8 @@ blockquote::before {
 
 .api-lang-switch button {
   -webkit-box-flex: 1;
-      -ms-flex: 1 1 50%;
-          flex: 1 1 50%;
+      -ms-flex: 1 1 33%;
+          flex: 1 1 33%;
   border: none;
   background: transparent;
   color: rgb(220, 0, 0);
@@ -974,11 +974,15 @@ blockquote::before {
   color: #fff;
 }
 
-/* Python mode hides translations; MATLAB mode hides Python examples that have a MATLAB twin
-   (examples with identical syntax have no twin and stay visible). Julia/JS blocks: not yet switchable. */
+/* Each mode hides the other translations and the Python examples that have a twin in its language
+   (examples with identical syntax have no twin and stay visible). JS blocks: not yet switchable. */
 html[data-api-lang=python] .doctest-matlab,
+html[data-api-lang=python] .doctest-julia,
+html[data-api-lang=matlab] .doctest-julia,
 html[data-api-lang=matlab] .doctest-python.has-matlab,
-.doctest-julia, .doctest-javascript {
+html[data-api-lang=julia] .doctest-matlab,
+html[data-api-lang=julia] .doctest-python.has-julia,
+.doctest-javascript {
   display: none;
 }
 

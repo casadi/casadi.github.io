@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/dafc81035257e0e57db5c65b2ac851a6239fb1c4" id="dafc81035257e0e57db5c65b2ac851a6239fb1c4" >revision 3.8.1</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a5852c23b2100296cee23b81227fcaa3bef43f04" id="a5852c23b2100296cee23b81227fcaa3bef43f04" >revision 3.8.2</a></div>
   </td>
  </tr>
  </tbody>
@@ -804,7 +804,7 @@ $(function() {
 <div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;      std::vector&lt;MatType&gt; v(nfwd);</div>
 <div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;      <span class="keywordflow">for</span> (casadi_int i=0; i&lt;n_in_; ++i) {</div>
 <div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;        <span class="keywordflow">for</span> (casadi_int d=0; d&lt;nfwd; ++d) v[d] = fseed[d][i];</div>
-<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;        ret_in.at(n_in_ + n_out_ + i) = horzcat(v);</div>
+<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;        ret_in.at(n_in_ + n_out_ + i) = nfwd&gt;0 ? horzcat(v) : MatType(size1_in(i), 0);</div>
 <div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;      }</div>
 <div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160; </div>
 <div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;      <span class="comment">// All outputs of the return function</span></div>
@@ -851,7 +851,7 @@ $(function() {
 <div class="line"><a name="l00909"></a><span class="lineno">  909</span>&#160;      std::vector&lt;MatType&gt; v(nadj);</div>
 <div class="line"><a name="l00910"></a><span class="lineno">  910</span>&#160;      <span class="keywordflow">for</span> (casadi_int i=0; i&lt;n_out_; ++i) {</div>
 <div class="line"><a name="l00911"></a><span class="lineno">  911</span>&#160;        <span class="keywordflow">for</span> (casadi_int d=0; d&lt;nadj; ++d) v[d] = aseed[d][i];</div>
-<div class="line"><a name="l00912"></a><span class="lineno">  912</span>&#160;        ret_in.at(n_in_ + n_out_ + i)  = horzcat(v);</div>
+<div class="line"><a name="l00912"></a><span class="lineno">  912</span>&#160;        ret_in.at(n_in_ + n_out_ + i)  = nadj&gt;0 ? horzcat(v) : MatType(size1_out(i), 0);</div>
 <div class="line"><a name="l00913"></a><span class="lineno">  913</span>&#160;      }</div>
 <div class="line"><a name="l00914"></a><span class="lineno">  914</span>&#160; </div>
 <div class="line"><a name="l00915"></a><span class="lineno">  915</span>&#160;      <span class="comment">// All outputs of the return function</span></div>
@@ -1349,7 +1349,7 @@ $(function() {
 <div class="line"><a name="l01408"></a><span class="lineno"> 1408</span>&#160;<span class="comment"></span><span class="preprocessor">#undef CASADI_THROW_ERROR</span></div>
 <div class="line"><a name="l01409"></a><span class="lineno"> 1409</span>&#160; </div>
 <div class="line"><a name="l01410"></a><span class="lineno"> 1410</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_X_FUNCTION_HPP</span></div>
-<div class="ttc" id="aclasscasadi_1_1Function_html_ae2cf81e9230d66a90c413b5c680d49d8"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#ae2cf81e9230d66a90c413b5c680d49d8">casadi::Function::AuxOut</a></div><div class="ttdeci">std::map&lt; std::string, std::vector&lt; std::string &gt; &gt; AuxOut</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7c/function_8hpp_source.html#l00447">function.hpp:447</a></div></div>
+<div class="ttc" id="aclasscasadi_1_1Function_html_ae2cf81e9230d66a90c413b5c680d49d8"><div class="ttname"><a href="../../da/da4/classcasadi_1_1Function.html#ae2cf81e9230d66a90c413b5c680d49d8">casadi::Function::AuxOut</a></div><div class="ttdeci">std::map&lt; std::string, std::vector&lt; std::string &gt; &gt; AuxOut</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7c/function_8hpp_source.html#l01546">function.hpp:1546</a></div></div>
 <div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/archiver_8hpp_source.html#l00032">archiver.hpp:32</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_a8b909f6932a91230738731512b99127e"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">casadi::Dict</a></div><div class="ttdeci">GenericType::Dict Dict</div><div class="ttdoc">C++ equivalent of Python's dict or MATLAB's struct.</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d30/generic__type_8hpp_source.html#l00258">generic_type.hpp:258</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5ab9ece18c950afbfa6b0fdbfa4ff731d3">casadi::Category::T</a></div><div class="ttdeci">@ T</div></div>

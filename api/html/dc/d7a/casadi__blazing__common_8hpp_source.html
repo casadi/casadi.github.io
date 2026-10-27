@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/dafc81035257e0e57db5c65b2ac851a6239fb1c4" id="dafc81035257e0e57db5c65b2ac851a6239fb1c4" >revision 3.8.1</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a5852c23b2100296cee23b81227fcaa3bef43f04" id="a5852c23b2100296cee23b81227fcaa3bef43f04" >revision 3.8.2</a></div>
   </td>
  </tr>
  </tbody>
@@ -308,324 +308,331 @@ $(function() {
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="comment">//                    boor_H = blazing_boor_der(shift_left(inner), s1)</span></div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="comment">//   where s2[j] = 2/(t[j+start+3]-t[j+start+1])</span></div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;simde__m256d casadi_blazing_boor_der(simde__m256d boor, simde__m256d scale) {</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    simde__m256d sb = simde_mm256_mul_pd(boor, scale);</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    simde__m256d shifted = simde_mm256_permute4x64_pd(sb, SIMDE_MM_SHUFFLE(2, 1, 0, 0));</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    shifted = simde_mm256_blend_pd(simde_mm256_setzero_pd(), shifted, 0xE);</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="keywordflow">return</span> simde_mm256_sub_pd(shifted, sb);</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;}</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160; </div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="comment">// SYMBOL &quot;blazing_shift_left&quot;</span></div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="comment">// Shift AVX vector one position to the left, filling position 3 with zero.</span></div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="comment">// [a, b, c, d] -&gt; [b, c, d, 0]</span></div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;simde__m256d casadi_blazing_shift_left(simde__m256d v) {</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    simde__m256d shifted = simde_mm256_permute4x64_pd(v, SIMDE_MM_SHUFFLE(3, 3, 2, 1));</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <span class="keywordflow">return</span> simde_mm256_blend_pd(shifted, simde_mm256_setzero_pd(), 0x8);</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;}</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160; </div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="comment">// SYMBOL &quot;blazing_knot_scale&quot;</span></div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="comment">// Compute knot scale with safe division: degree/(t_hi - t_lo), returning 0 where span is 0.</span></div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="comment">// This avoids NaN from 0/0 at knot boundaries where both the basis function and</span></div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="comment">// the knot span are zero.</span></div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;simde__m256d casadi_blazing_knot_scale(simde__m256d degree, simde__m256d t_hi, simde__m256d t_lo) {</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    simde__m256d zero = simde_mm256_setzero_pd();</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    simde__m256d denom = simde_mm256_sub_pd(t_hi, t_lo);</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    simde__m256d denom_mask = simde_mm256_cmp_pd(denom, zero, SIMDE_CMP_EQ_OQ);</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    simde__m256d scale = simde_mm256_div_pd(degree, denom);</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <span class="keywordflow">return</span> simde_mm256_blendv_pd(scale, zero, denom_mask);</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;}</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160; </div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;<span class="comment">// SYMBOL &quot;blazing_boor_init&quot;</span></div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="comment">// Per-dimension de Boor setup: knot lookup, boundary-case init, and de Boor evaluation.</span></div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="comment">// Returns the start index and fills d0, d1, d2 with basis function intermediates.</span></div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="comment">// dim_cache points at THIS dimension&#39;s slice of the global cache (or NULL).</span></div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="comment">// The caller is responsible for advancing the pointer between dims.</span></div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="comment">// Per-dimension cache layout (always emitted unconditionally when the cache</span></div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="comment">// is present, even when lookup_mode != 1):</span></div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;<span class="comment">//     [intercept, slope, inv1[n_k], inv2[n_k], inv3[n_k]]</span></div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;<span class="comment">// where slope     = (ng-1) / (grid[ng-1] - grid[0])</span></div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;<span class="comment">//       intercept = -grid[0] * slope</span></div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;<span class="comment">// and ng = n_k - 2*degree. The first two entries feed &#39;exact&#39; lookup as a</span></div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<span class="comment">// single FMA; the inv1/inv2/inv3 spans feed the de Boor recurrence.</span></div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;<span class="comment">// If inv2_out/inv3_out are non-NULL, they receive pre-positioned derivative</span></div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;<span class="comment">// base pointers that can be passed directly to dbasis/d2basis.</span></div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;casadi_int casadi_blazing_boor_init(</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    T1 x, <span class="keyword">const</span> T1* all_knots, <span class="keyword">const</span> T1* dim_cache,</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    casadi_int knot_offset, casadi_int knot_offset_next,</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    casadi_int lookup_mode,</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    simde__m256d* d0, simde__m256d* d1, simde__m256d* d2,</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <span class="keyword">const</span> T1** inv2_out, <span class="keyword">const</span> T1** inv3_out) {</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    casadi_int degree = 3;</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    <span class="keyword">const</span> T1* knots = all_knots + knot_offset;</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    casadi_int n_knots = knot_offset_next - knot_offset;</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    casadi_int n_b = n_knots - degree - 1;</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    <span class="comment">// First two entries of dim_cache are {intercept, slope} for &#39;exact&#39; lookup.</span></div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="keyword">const</span> T1* grid_inv = dim_cache;</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    casadi_int L = casadi_blazing_low&lt;T1&gt;(x, knots + degree,</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;                                          n_knots - 2*degree,</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                                          lookup_mode, grid_inv);</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    casadi_int start = L;</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <span class="keywordflow">if</span> (start &gt; n_b - degree - 1) start = n_b - degree - 1;</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160; </div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    simde__m256d d3 = simde_mm256_setzero_pd();</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    <span class="keywordflow">if</span> (x &gt;= knots[0] &amp;&amp; x &lt;= knots[n_knots-1]) {</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;      <span class="keywordflow">if</span> (x == knots[1]) {</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        d3 = simde_mm256_set1_pd(1.0);</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (x == knots[n_knots-1]) {</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        d3 = simde_mm256_set_pd(1.0, 0.0, 0.0, 0.0);</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (knots[L+degree] == x) {</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        d3 = simde_mm256_set_pd(0.0, 1.0, 0.0, 0.0);</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;      } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        d3 = simde_mm256_set_pd(1.0, 0.0, 0.0, 0.0);</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;      }</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    }</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    <span class="keyword">const</span> T1 *inv1 = 0, *inv2 = 0, *inv3 = 0;</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    <span class="keywordflow">if</span> (dim_cache) {</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;      <span class="comment">// Skip the {intercept, slope} prefix to reach the inv1/inv2/inv3 spans.</span></div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;      <span class="keyword">const</span> T1* inv_base = dim_cache + 2;</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;      inv1 = inv_base + start;</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;      inv2 = inv_base + n_knots + start;</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;      inv3 = inv_base + 2*n_knots + start;</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;      <span class="keywordflow">if</span> (inv2_out) *inv2_out = inv_base + n_knots + start + 1;</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;      <span class="keywordflow">if</span> (inv3_out) *inv3_out = inv_base + 2*n_knots + start + 1;</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;      <span class="keywordflow">if</span> (inv2_out) *inv2_out = 0;</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;      <span class="keywordflow">if</span> (inv3_out) *inv3_out = 0;</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    }</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    casadi_blazing_de_boor(x, knots + start, inv1, inv2, inv3, d0, d1, d2, &amp;d3);</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    <span class="keywordflow">return</span> start;</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;}</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160; </div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;<span class="comment">// SYMBOL &quot;blazing_dbasis&quot;</span></div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;<span class="comment">// Compute 1st-derivative basis functions for one dimension.</span></div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;<span class="comment">// t points to knots at starts[i] for this dimension.</span></div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;<span class="comment">// inv3 can be 0 (NULL) to use the division path; otherwise 1/(t[k+3]-t[k]).</span></div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;simde__m256d casadi_blazing_dbasis(simde__m256d boor_d1, <span class="keyword">const</span> T1* t, <span class="keyword">const</span> T1* inv3) {</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    simde__m256d three = simde_mm256_set1_pd(3.0);</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    simde__m256d s1;</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    <span class="keywordflow">if</span> (inv3) {</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;      s1 = simde_mm256_mul_pd(three, simde_mm256_loadu_pd(inv3));</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;      s1 = casadi_blazing_knot_scale&lt;T1&gt;(three,</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;          simde_mm256_loadu_pd(t + 4), simde_mm256_loadu_pd(t + 1));</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    }</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    <span class="keywordflow">return</span> casadi_blazing_boor_der&lt;T1&gt;(</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;        casadi_blazing_shift_left&lt;T1&gt;(boor_d1), s1);</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;}</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160; </div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;<span class="comment">// SYMBOL &quot;blazing_d2basis&quot;</span></div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;<span class="comment">// Compute 2nd-derivative basis functions for one dimension.</span></div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;<span class="comment">// t points to knots at starts[i] for this dimension.</span></div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;<span class="comment">// inv2, inv3 can be 0 (NULL) to use the division path;</span></div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;<span class="comment">// otherwise 1/(t[k+2]-t[k]) and 1/(t[k+3]-t[k]).</span></div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;simde__m256d casadi_blazing_d2basis(simde__m256d boor_d2, <span class="keyword">const</span> T1* t, <span class="keyword">const</span> T1* inv2, <span class="keyword">const</span> T1* inv3) {<span class="comment">// NOLINT(whitespace/line_length)</span></div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    simde__m256d three = simde_mm256_set1_pd(3.0);</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    simde__m256d two = simde_mm256_set1_pd(2.0);</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    simde__m256d s1, s2;</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    <span class="keywordflow">if</span> (inv3) {</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;      s1 = simde_mm256_mul_pd(three, simde_mm256_loadu_pd(inv3));</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;      s2 = simde_mm256_mul_pd(two, simde_mm256_loadu_pd(inv2));</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;      s1 = casadi_blazing_knot_scale&lt;T1&gt;(three,</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;          simde_mm256_loadu_pd(t + 4), simde_mm256_loadu_pd(t + 1));</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;      s2 = casadi_blazing_knot_scale&lt;T1&gt;(two,</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;          simde_mm256_loadu_pd(t + 3), simde_mm256_loadu_pd(t + 1));</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    }</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    simde__m256d inner = casadi_blazing_boor_der&lt;T1&gt;(</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        casadi_blazing_shift_left&lt;T1&gt;(boor_d2), s2);</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    <span class="keywordflow">return</span> casadi_blazing_boor_der&lt;T1&gt;(</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        casadi_blazing_shift_left&lt;T1&gt;(inner), s1);</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;}</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160; </div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;<span class="comment">// ===== Tensor-times-vector contractions =====</span></div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160; </div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;<span class="comment">// AVX2 horizontal sum: reduce 4-wide __m256d to scalar double</span></div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;<span class="comment">// SYMBOL &quot;blazing_hsum&quot;</span></div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;T1 casadi_blazing_hsum(simde__m256d r) {</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;  simde__m128d r0 = simde_mm256_castpd256_pd128(r);</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;  simde__m128d r1 = simde_mm256_extractf128_pd(r, 1);</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;  r0 = simde_mm_add_pd(r0, r1);</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;  <span class="keywordflow">return</span> simde_mm_cvtsd_f64(simde_mm_add_sd(r0, simde_mm_unpackhi_pd(r0, r0)));</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;}</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160; </div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;<span class="comment">// AVX2 tensor-times-vector for 2D cubic B-splines (degree 3, m=1).</span></div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;<span class="comment">//   result = sum_{i,j} a[i] * b[j] * C[j][i]</span></div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;<span class="comment">// where a[i] are in AVX lanes, b[j] are in AVX lanes (broadcast internally),</span></div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;<span class="comment">// and C[4] holds coefficient vectors (4 doubles along dim 0 each).</span></div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;<span class="comment">// SYMBOL &quot;blazing_tensor_ttv2&quot;</span></div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;T1 casadi_blazing_tensor_ttv2(<span class="keyword">const</span> simde__m256d C[4],</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    simde__m256d a, simde__m256d b) {</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;  simde__m256d r;</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;  <span class="comment">// Broadcast dim 1 weights and form outer product with dim 0</span></div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;  simde__m256d ab0 = simde_mm256_mul_pd(a,</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;      simde_mm256_permute4x64_pd(b, SIMDE_MM_SHUFFLE(0, 0, 0, 0)));</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;  simde__m256d ab1 = simde_mm256_mul_pd(a,</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;      simde_mm256_permute4x64_pd(b, SIMDE_MM_SHUFFLE(1, 1, 1, 1)));</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;  simde__m256d ab2 = simde_mm256_mul_pd(a,</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;      simde_mm256_permute4x64_pd(b, SIMDE_MM_SHUFFLE(2, 2, 2, 2)));</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;  simde__m256d ab3 = simde_mm256_mul_pd(a,</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;      simde_mm256_permute4x64_pd(b, SIMDE_MM_SHUFFLE(3, 3, 3, 3)));</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;  <span class="comment">// Contract dim 1: r = sum_j ab[j] * C[j]</span></div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;  r = simde_mm256_mul_pd(ab0, C[0]);</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;  r = simde_mm256_fmadd_pd(ab1, C[1], r);</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;  r = simde_mm256_fmadd_pd(ab2, C[2], r);</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;  r = simde_mm256_fmadd_pd(ab3, C[3], r);</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;  <span class="comment">// Horizontal sum contracts dim 0</span></div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;  <span class="keywordflow">return</span> casadi_blazing_hsum&lt;T1&gt;(r);</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;}</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160; </div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;<span class="comment">// AVX2 tensor-times-vector for 3D cubic B-splines (degree 3, m=1).</span></div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;<span class="comment">//   result = sum_{i,j,k} a[i] * b[j] * c[k] * C[j + 4*k][i]</span></div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;<span class="comment">// where a[i] are in AVX lanes, b and c hold 4 weights each (broadcast internally),</span></div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;<span class="comment">// and C[16] holds 4x4 coefficient vectors (4 doubles along dim 0 each).</span></div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;<span class="comment">// SYMBOL &quot;blazing_tensor_ttv3&quot;</span></div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;T1 casadi_blazing_tensor_ttv3(<span class="keyword">const</span> simde__m256d C[16],</div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;    simde__m256d a, simde__m256d b, simde__m256d c) {</div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;  simde__m256d ab[4], cab[4], r;</div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;  <span class="keywordtype">int</span> i;</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;  <span class="comment">// Broadcast dim 1 weights and form outer product with dim 0</span></div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;  simde__m256d b0 = simde_mm256_permute4x64_pd(b, SIMDE_MM_SHUFFLE(0, 0, 0, 0));</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;  simde__m256d b1 = simde_mm256_permute4x64_pd(b, SIMDE_MM_SHUFFLE(1, 1, 1, 1));</div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;  simde__m256d b2 = simde_mm256_permute4x64_pd(b, SIMDE_MM_SHUFFLE(2, 2, 2, 2));</div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;  simde__m256d b3 = simde_mm256_permute4x64_pd(b, SIMDE_MM_SHUFFLE(3, 3, 3, 3));</div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;  ab[0] = simde_mm256_mul_pd(a, b0);</div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;  ab[1] = simde_mm256_mul_pd(a, b1);</div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;  ab[2] = simde_mm256_mul_pd(a, b2);</div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;  ab[3] = simde_mm256_mul_pd(a, b3);</div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;  <span class="comment">// Contract dim 1: cab[k] = sum_j ab[j] * C[j + 4*k]</span></div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;  <span class="keywordflow">for</span> (i = 0; i &lt; 4; ++i) {</div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;    cab[i] = simde_mm256_mul_pd(ab[0], C[4*i+0]);</div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    cab[i] = simde_mm256_fmadd_pd(ab[1], C[4*i+1], cab[i]);</div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;    cab[i] = simde_mm256_fmadd_pd(ab[2], C[4*i+2], cab[i]);</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;    cab[i] = simde_mm256_fmadd_pd(ab[3], C[4*i+3], cab[i]);</div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;  }</div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;  <span class="comment">// Broadcast dim 2 weights and contract: r = sum_k cab[k] * c_k</span></div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;  r = simde_mm256_mul_pd(cab[0],</div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;      simde_mm256_permute4x64_pd(c, SIMDE_MM_SHUFFLE(0, 0, 0, 0)));</div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;  r = simde_mm256_fmadd_pd(cab[1],</div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;      simde_mm256_permute4x64_pd(c, SIMDE_MM_SHUFFLE(1, 1, 1, 1)), r);</div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;  r = simde_mm256_fmadd_pd(cab[2],</div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;      simde_mm256_permute4x64_pd(c, SIMDE_MM_SHUFFLE(2, 2, 2, 2)), r);</div>
-<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;  r = simde_mm256_fmadd_pd(cab[3],</div>
-<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;      simde_mm256_permute4x64_pd(c, SIMDE_MM_SHUFFLE(3, 3, 3, 3)), r);</div>
-<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;  <span class="comment">// Horizontal sum contracts dim 0</span></div>
-<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;  <span class="keywordflow">return</span> casadi_blazing_hsum&lt;T1&gt;(r);</div>
-<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;}</div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160; </div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;<span class="comment">// AVX2 tensor-times-vector for 4D cubic B-splines (degree 3, m=1).</span></div>
-<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;<span class="comment">//   result = sum_{i,j,k,l} a[i] * b[j] * c[k] * d[l]</span></div>
-<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;<span class="comment">//            * coeffs[i + s1*j + s2*k + s3*l]</span></div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;<span class="comment">// Contracts dim 3 from memory into C[16] registers, then delegates to ttv3.</span></div>
-<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;<span class="comment">// a[i] in AVX lanes (dim 0), b/c/d hold 4 weights each.</span></div>
-<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;<span class="comment">// coeffs points to the base of the 4x4x4x4 sub-tensor, with strides s1, s2, s3.</span></div>
-<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;<span class="comment">// SYMBOL &quot;blazing_tensor_ttv4&quot;</span></div>
-<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
-<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;T1 casadi_blazing_tensor_ttv4(<span class="keyword">const</span> T1* coeffs,</div>
-<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;    casadi_int s1, casadi_int s2, casadi_int s3,</div>
-<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;    simde__m256d a, simde__m256d b, simde__m256d c, simde__m256d d) {</div>
-<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;  simde__m256d <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5a0d61f8370cad1d412f80b84d143e1257">C</a>[16];</div>
-<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;  <span class="keywordtype">int</span> j, k, l;</div>
-<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;  <span class="comment">// Broadcast dim 3 weights into an array indexable by l.</span></div>
-<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;  simde__m256d dbr[4] = {</div>
-<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;    simde_mm256_permute4x64_pd(d, SIMDE_MM_SHUFFLE(0, 0, 0, 0)),</div>
-<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;    simde_mm256_permute4x64_pd(d, SIMDE_MM_SHUFFLE(1, 1, 1, 1)),</div>
-<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;    simde_mm256_permute4x64_pd(d, SIMDE_MM_SHUFFLE(2, 2, 2, 2)),</div>
-<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;    simde_mm256_permute4x64_pd(d, SIMDE_MM_SHUFFLE(3, 3, 3, 3))</div>
-<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;  };</div>
-<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;  <span class="comment">// Contract dim 3 from memory: C[j+4*k] = sum_l d[l] * coeffs[... + s3*l]</span></div>
-<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;  <span class="comment">// Loop order: large stride s3 outer, so the 4x4 (j,k) gather stays in</span></div>
-<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;  <span class="comment">// L1d; reversed order conflict-thrashes when s3 is a power-of-2 stride.</span></div>
-<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> idx = 0; idx &lt; 16; ++idx) C[idx] = simde_mm256_setzero_pd();</div>
-<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;  <span class="keywordflow">for</span> (l = 0; l &lt; 4; ++l) {</div>
-<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;    <span class="keyword">const</span> T1* base = coeffs + s3*l;</div>
-<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;    simde__m256d dl = dbr[l];</div>
-<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;    <span class="keywordflow">for</span> (j = 0; j &lt; 4; ++j) {</div>
-<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;      <span class="keywordflow">for</span> (k = 0; k &lt; 4; ++k) {</div>
-<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;        <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5a0d61f8370cad1d412f80b84d143e1257">C</a>[j+4*k] = simde_mm256_fmadd_pd(</div>
-<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;            simde_mm256_loadu_pd(base + s1*j + s2*k), dl, C[j+4*k]);</div>
-<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;      }</div>
-<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;    }</div>
-<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;  }</div>
-<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;  <span class="comment">// Dims 0-2 handled by ttv3</span></div>
-<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;  <span class="keywordflow">return</span> casadi_blazing_tensor_ttv3&lt;T1&gt;(C, a, b, c);</div>
-<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;}</div>
-<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160; </div>
-<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;<span class="comment">// AVX2 tensor-times-vector for 5D cubic B-splines (degree 3, m=1).</span></div>
-<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;<span class="comment">//   result = sum_{i,j,k,l,m} a[i] * b[j] * c[k] * d[l] * e[m]</span></div>
-<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;<span class="comment">//            * coeffs[i + s1*j + s2*k + s3*l + s4*m]</span></div>
-<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;<span class="comment">// Contracts dims 3+4 fused from memory into C[16] registers,</span></div>
-<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;<span class="comment">// then delegates to ttv3. a[i] in AVX lanes (dim 0),</span></div>
-<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;<span class="comment">// b/c/d/e hold 4 weights each.</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="keywordtype">void</span> casadi_blazing_boor_der(simde__m256d* out, <span class="keyword">const</span> simde__m256d* boor,</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <span class="keyword">const</span> simde__m256d* scale) {</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    simde__m256d sb = simde_mm256_mul_pd(*boor, *scale);</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    simde__m256d shifted = simde_mm256_permute4x64_pd(sb, SIMDE_MM_SHUFFLE(2, 1, 0, 0));</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    shifted = simde_mm256_blend_pd(simde_mm256_setzero_pd(), shifted, 0xE);</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    *out = simde_mm256_sub_pd(shifted, sb);</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;}</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="comment">// SYMBOL &quot;blazing_shift_left&quot;</span></div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="comment">// Shift AVX vector one position to the left, filling position 3 with zero.</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="comment">// [a, b, c, d] -&gt; [b, c, d, 0]</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="keywordtype">void</span> casadi_blazing_shift_left(simde__m256d* out, <span class="keyword">const</span> simde__m256d* v) {</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    simde__m256d shifted = simde_mm256_permute4x64_pd(*v, SIMDE_MM_SHUFFLE(3, 3, 2, 1));</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    *out = simde_mm256_blend_pd(shifted, simde_mm256_setzero_pd(), 0x8);</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;}</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="comment">// SYMBOL &quot;blazing_knot_scale&quot;</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="comment">// Compute knot scale with safe division: degree/(t_hi - t_lo), returning 0 where span is 0.</span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="comment">// This avoids NaN from 0/0 at knot boundaries where both the basis function and</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="comment">// the knot span are zero.</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="keywordtype">void</span> casadi_blazing_knot_scale(simde__m256d* out, <span class="keyword">const</span> simde__m256d* degree,</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <span class="keyword">const</span> simde__m256d* t_hi, <span class="keyword">const</span> simde__m256d* t_lo) {</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    simde__m256d zero = simde_mm256_setzero_pd();</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    simde__m256d denom = simde_mm256_sub_pd(*t_hi, *t_lo);</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    simde__m256d denom_mask = simde_mm256_cmp_pd(denom, zero, SIMDE_CMP_EQ_OQ);</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    simde__m256d scale = simde_mm256_div_pd(*degree, denom);</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    *out = simde_mm256_blendv_pd(scale, zero, denom_mask);</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;}</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="comment">// SYMBOL &quot;blazing_boor_init&quot;</span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="comment">// Per-dimension de Boor setup: knot lookup, boundary-case init, and de Boor evaluation.</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="comment">// Returns the start index and fills d0, d1, d2 with basis function intermediates.</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="comment">// dim_cache points at THIS dimension&#39;s slice of the global cache (or NULL).</span></div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="comment">// The caller is responsible for advancing the pointer between dims.</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;<span class="comment">// Per-dimension cache layout (always emitted unconditionally when the cache</span></div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;<span class="comment">// is present, even when lookup_mode != 1):</span></div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;<span class="comment">//     [intercept, slope, inv1[n_k], inv2[n_k], inv3[n_k]]</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;<span class="comment">// where slope     = (ng-1) / (grid[ng-1] - grid[0])</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<span class="comment">//       intercept = -grid[0] * slope</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;<span class="comment">// and ng = n_k - 2*degree. The first two entries feed &#39;exact&#39; lookup as a</span></div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;<span class="comment">// single FMA; the inv1/inv2/inv3 spans feed the de Boor recurrence.</span></div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;<span class="comment">// If inv2_out/inv3_out are non-NULL, they receive pre-positioned derivative</span></div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;<span class="comment">// base pointers that can be passed directly to dbasis/d2basis.</span></div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;casadi_int casadi_blazing_boor_init(</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    T1 x, <span class="keyword">const</span> T1* all_knots, <span class="keyword">const</span> T1* dim_cache,</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    casadi_int knot_offset, casadi_int knot_offset_next,</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    casadi_int lookup_mode,</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    simde__m256d* d0, simde__m256d* d1, simde__m256d* d2,</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    <span class="keyword">const</span> T1** inv2_out, <span class="keyword">const</span> T1** inv3_out) {</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    casadi_int degree = 3;</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    <span class="keyword">const</span> T1* knots = all_knots + knot_offset;</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    casadi_int n_knots = knot_offset_next - knot_offset;</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    casadi_int n_b = n_knots - degree - 1;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <span class="comment">// First two entries of dim_cache are {intercept, slope} for &#39;exact&#39; lookup.</span></div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    <span class="keyword">const</span> T1* grid_inv = dim_cache;</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    casadi_int L = casadi_blazing_low&lt;T1&gt;(x, knots + degree,</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                                          n_knots - 2*degree,</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                                          lookup_mode, grid_inv);</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    casadi_int start = L;</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    <span class="keywordflow">if</span> (start &gt; n_b - degree - 1) start = n_b - degree - 1;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160; </div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    simde__m256d d3 = simde_mm256_setzero_pd();</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    <span class="keywordflow">if</span> (x &gt;= knots[0] &amp;&amp; x &lt;= knots[n_knots-1]) {</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;      <span class="keywordflow">if</span> (x == knots[1]) {</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        d3 = simde_mm256_set1_pd(1.0);</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (x == knots[n_knots-1]) {</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        d3 = simde_mm256_set_pd(1.0, 0.0, 0.0, 0.0);</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (knots[L+degree] == x) {</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        d3 = simde_mm256_set_pd(0.0, 1.0, 0.0, 0.0);</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;      } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        d3 = simde_mm256_set_pd(1.0, 0.0, 0.0, 0.0);</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;      }</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    }</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <span class="keyword">const</span> T1 *inv1 = 0, *inv2 = 0, *inv3 = 0;</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    <span class="keywordflow">if</span> (dim_cache) {</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;      <span class="comment">// Skip the {intercept, slope} prefix to reach the inv1/inv2/inv3 spans.</span></div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;      <span class="keyword">const</span> T1* inv_base = dim_cache + 2;</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;      inv1 = inv_base + start;</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;      inv2 = inv_base + n_knots + start;</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;      inv3 = inv_base + 2*n_knots + start;</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;      <span class="keywordflow">if</span> (inv2_out) *inv2_out = inv_base + n_knots + start + 1;</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;      <span class="keywordflow">if</span> (inv3_out) *inv3_out = inv_base + 2*n_knots + start + 1;</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;      <span class="keywordflow">if</span> (inv2_out) *inv2_out = 0;</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;      <span class="keywordflow">if</span> (inv3_out) *inv3_out = 0;</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    }</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    casadi_blazing_de_boor(x, knots + start, inv1, inv2, inv3, d0, d1, d2, &amp;d3);</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    <span class="keywordflow">return</span> start;</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;}</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160; </div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;<span class="comment">// SYMBOL &quot;blazing_dbasis&quot;</span></div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;<span class="comment">// Compute 1st-derivative basis functions for one dimension.</span></div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;<span class="comment">// t points to knots at starts[i] for this dimension.</span></div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="comment">// inv3 can be 0 (NULL) to use the division path; otherwise 1/(t[k+3]-t[k]).</span></div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;<span class="keywordtype">void</span> casadi_blazing_dbasis(simde__m256d* out, <span class="keyword">const</span> simde__m256d* boor_d1,</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    <span class="keyword">const</span> T1* t, <span class="keyword">const</span> T1* inv3) {</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    simde__m256d three = simde_mm256_set1_pd(3.0);</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    simde__m256d s1, t_hi, t_lo, shifted;</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    <span class="keywordflow">if</span> (inv3) {</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;      s1 = simde_mm256_mul_pd(three, simde_mm256_loadu_pd(inv3));</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;      t_hi = simde_mm256_loadu_pd(t + 4);</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;      t_lo = simde_mm256_loadu_pd(t + 1);</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;      casadi_blazing_knot_scale&lt;T1&gt;(&amp;s1, &amp;three, &amp;t_hi, &amp;t_lo);</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    }</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    casadi_blazing_shift_left&lt;T1&gt;(&amp;shifted, boor_d1);</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    casadi_blazing_boor_der&lt;T1&gt;(out, &amp;shifted, &amp;s1);</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;}</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160; </div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;<span class="comment">// SYMBOL &quot;blazing_d2basis&quot;</span></div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;<span class="comment">// Compute 2nd-derivative basis functions for one dimension.</span></div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;<span class="comment">// t points to knots at starts[i] for this dimension.</span></div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="comment">// inv2, inv3 can be 0 (NULL) to use the division path;</span></div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;<span class="comment">// otherwise 1/(t[k+2]-t[k]) and 1/(t[k+3]-t[k]).</span></div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;<span class="keywordtype">void</span> casadi_blazing_d2basis(simde__m256d* out, <span class="keyword">const</span> simde__m256d* boor_d2,</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    <span class="keyword">const</span> T1* t, <span class="keyword">const</span> T1* inv2, <span class="keyword">const</span> T1* inv3) {</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    simde__m256d three = simde_mm256_set1_pd(3.0);</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    simde__m256d two = simde_mm256_set1_pd(2.0);</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    simde__m256d s1, s2, t_hi, t_lo, shifted, inner;</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    <span class="keywordflow">if</span> (inv3) {</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;      s1 = simde_mm256_mul_pd(three, simde_mm256_loadu_pd(inv3));</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;      s2 = simde_mm256_mul_pd(two, simde_mm256_loadu_pd(inv2));</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;      t_lo = simde_mm256_loadu_pd(t + 1);</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;      t_hi = simde_mm256_loadu_pd(t + 4);</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;      casadi_blazing_knot_scale&lt;T1&gt;(&amp;s1, &amp;three, &amp;t_hi, &amp;t_lo);</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;      t_hi = simde_mm256_loadu_pd(t + 3);</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;      casadi_blazing_knot_scale&lt;T1&gt;(&amp;s2, &amp;two, &amp;t_hi, &amp;t_lo);</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    }</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    casadi_blazing_shift_left&lt;T1&gt;(&amp;shifted, boor_d2);</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    casadi_blazing_boor_der&lt;T1&gt;(&amp;inner, &amp;shifted, &amp;s2);</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    casadi_blazing_shift_left&lt;T1&gt;(&amp;shifted, &amp;inner);</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    casadi_blazing_boor_der&lt;T1&gt;(out, &amp;shifted, &amp;s1);</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;}</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160; </div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;<span class="comment">// ===== Tensor-times-vector contractions =====</span></div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160; </div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;<span class="comment">// AVX2 horizontal sum: reduce 4-wide __m256d to scalar double</span></div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;<span class="comment">// SYMBOL &quot;blazing_hsum&quot;</span></div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;T1 casadi_blazing_hsum(<span class="keyword">const</span> simde__m256d* r) {</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;  simde__m128d r0 = simde_mm256_castpd256_pd128(*r);</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;  simde__m128d r1 = simde_mm256_extractf128_pd(*r, 1);</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;  r0 = simde_mm_add_pd(r0, r1);</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;  <span class="keywordflow">return</span> simde_mm_cvtsd_f64(simde_mm_add_sd(r0, simde_mm_unpackhi_pd(r0, r0)));</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;}</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160; </div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;<span class="comment">// AVX2 tensor-times-vector for 2D cubic B-splines (degree 3, m=1).</span></div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;<span class="comment">//   result = sum_{i,j} a[i] * b[j] * C[j][i]</span></div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;<span class="comment">// where a[i] are in AVX lanes, b[j] are in AVX lanes (broadcast internally),</span></div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;<span class="comment">// and C[4] holds coefficient vectors (4 doubles along dim 0 each).</span></div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;<span class="comment">// SYMBOL &quot;blazing_tensor_ttv2&quot;</span></div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;T1 casadi_blazing_tensor_ttv2(<span class="keyword">const</span> simde__m256d C[4],</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;    <span class="keyword">const</span> simde__m256d* a, <span class="keyword">const</span> simde__m256d* b) {</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;  simde__m256d r;</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;  <span class="comment">// Broadcast dim 1 weights and form outer product with dim 0</span></div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;  simde__m256d ab0 = simde_mm256_mul_pd(*a,</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;      simde_mm256_permute4x64_pd(*b, SIMDE_MM_SHUFFLE(0, 0, 0, 0)));</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;  simde__m256d ab1 = simde_mm256_mul_pd(*a,</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;      simde_mm256_permute4x64_pd(*b, SIMDE_MM_SHUFFLE(1, 1, 1, 1)));</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;  simde__m256d ab2 = simde_mm256_mul_pd(*a,</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;      simde_mm256_permute4x64_pd(*b, SIMDE_MM_SHUFFLE(2, 2, 2, 2)));</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;  simde__m256d ab3 = simde_mm256_mul_pd(*a,</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;      simde_mm256_permute4x64_pd(*b, SIMDE_MM_SHUFFLE(3, 3, 3, 3)));</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;  <span class="comment">// Contract dim 1: r = sum_j ab[j] * C[j]</span></div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;  r = simde_mm256_mul_pd(ab0, C[0]);</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;  r = simde_mm256_fmadd_pd(ab1, C[1], r);</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;  r = simde_mm256_fmadd_pd(ab2, C[2], r);</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;  r = simde_mm256_fmadd_pd(ab3, C[3], r);</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;  <span class="comment">// Horizontal sum contracts dim 0</span></div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;  <span class="keywordflow">return</span> casadi_blazing_hsum&lt;T1&gt;(&amp;r);</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;}</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160; </div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;<span class="comment">// AVX2 tensor-times-vector for 3D cubic B-splines (degree 3, m=1).</span></div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;<span class="comment">//   result = sum_{i,j,k} a[i] * b[j] * c[k] * C[j + 4*k][i]</span></div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;<span class="comment">// where a[i] are in AVX lanes, b and c hold 4 weights each (broadcast internally),</span></div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;<span class="comment">// and C[16] holds 4x4 coefficient vectors (4 doubles along dim 0 each).</span></div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;<span class="comment">// SYMBOL &quot;blazing_tensor_ttv3&quot;</span></div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;T1 casadi_blazing_tensor_ttv3(<span class="keyword">const</span> simde__m256d C[16],</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    <span class="keyword">const</span> simde__m256d* a, <span class="keyword">const</span> simde__m256d* b, <span class="keyword">const</span> simde__m256d* c) {</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;  simde__m256d ab[4], cab[4], r;</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;  <span class="keywordtype">int</span> i;</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;  <span class="comment">// Broadcast dim 1 weights and form outer product with dim 0</span></div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;  simde__m256d b0 = simde_mm256_permute4x64_pd(*b, SIMDE_MM_SHUFFLE(0, 0, 0, 0));</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;  simde__m256d b1 = simde_mm256_permute4x64_pd(*b, SIMDE_MM_SHUFFLE(1, 1, 1, 1));</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;  simde__m256d b2 = simde_mm256_permute4x64_pd(*b, SIMDE_MM_SHUFFLE(2, 2, 2, 2));</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;  simde__m256d b3 = simde_mm256_permute4x64_pd(*b, SIMDE_MM_SHUFFLE(3, 3, 3, 3));</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;  ab[0] = simde_mm256_mul_pd(*a, b0);</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;  ab[1] = simde_mm256_mul_pd(*a, b1);</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;  ab[2] = simde_mm256_mul_pd(*a, b2);</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;  ab[3] = simde_mm256_mul_pd(*a, b3);</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;  <span class="comment">// Contract dim 1: cab[k] = sum_j ab[j] * C[j + 4*k]</span></div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;  <span class="keywordflow">for</span> (i = 0; i &lt; 4; ++i) {</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    cab[i] = simde_mm256_mul_pd(ab[0], C[4*i+0]);</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;    cab[i] = simde_mm256_fmadd_pd(ab[1], C[4*i+1], cab[i]);</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    cab[i] = simde_mm256_fmadd_pd(ab[2], C[4*i+2], cab[i]);</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;    cab[i] = simde_mm256_fmadd_pd(ab[3], C[4*i+3], cab[i]);</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;  }</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;  <span class="comment">// Broadcast dim 2 weights and contract: r = sum_k cab[k] * c_k</span></div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;  r = simde_mm256_mul_pd(cab[0],</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;      simde_mm256_permute4x64_pd(*c, SIMDE_MM_SHUFFLE(0, 0, 0, 0)));</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;  r = simde_mm256_fmadd_pd(cab[1],</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;      simde_mm256_permute4x64_pd(*c, SIMDE_MM_SHUFFLE(1, 1, 1, 1)), r);</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;  r = simde_mm256_fmadd_pd(cab[2],</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;      simde_mm256_permute4x64_pd(*c, SIMDE_MM_SHUFFLE(2, 2, 2, 2)), r);</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;  r = simde_mm256_fmadd_pd(cab[3],</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;      simde_mm256_permute4x64_pd(*c, SIMDE_MM_SHUFFLE(3, 3, 3, 3)), r);</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;  <span class="comment">// Horizontal sum contracts dim 0</span></div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;  <span class="keywordflow">return</span> casadi_blazing_hsum&lt;T1&gt;(&amp;r);</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;}</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160; </div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;<span class="comment">// AVX2 tensor-times-vector for 4D cubic B-splines (degree 3, m=1).</span></div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;<span class="comment">//   result = sum_{i,j,k,l} a[i] * b[j] * c[k] * d[l]</span></div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;<span class="comment">//            * coeffs[i + s1*j + s2*k + s3*l]</span></div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;<span class="comment">// Contracts dim 3 from memory into C[16] registers, then delegates to ttv3.</span></div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;<span class="comment">// a[i] in AVX lanes (dim 0), b/c/d hold 4 weights each.</span></div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;<span class="comment">// coeffs points to the base of the 4x4x4x4 sub-tensor, with strides s1, s2, s3.</span></div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;<span class="comment">// SYMBOL &quot;blazing_tensor_ttv4&quot;</span></div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;T1 casadi_blazing_tensor_ttv4(<span class="keyword">const</span> T1* coeffs,</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;    casadi_int s1, casadi_int s2, casadi_int s3,</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;    <span class="keyword">const</span> simde__m256d* a, <span class="keyword">const</span> simde__m256d* b, <span class="keyword">const</span> simde__m256d* c,</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;    <span class="keyword">const</span> simde__m256d* d) {</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;  simde__m256d <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5a0d61f8370cad1d412f80b84d143e1257">C</a>[16];</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;  <span class="keywordtype">int</span> j, k, l;</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;  <span class="comment">// Broadcast dim 3 weights into an array indexable by l.</span></div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;  simde__m256d dbr[4] = {</div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;    simde_mm256_permute4x64_pd(*d, SIMDE_MM_SHUFFLE(0, 0, 0, 0)),</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;    simde_mm256_permute4x64_pd(*d, SIMDE_MM_SHUFFLE(1, 1, 1, 1)),</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;    simde_mm256_permute4x64_pd(*d, SIMDE_MM_SHUFFLE(2, 2, 2, 2)),</div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;    simde_mm256_permute4x64_pd(*d, SIMDE_MM_SHUFFLE(3, 3, 3, 3))</div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;  };</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;  <span class="comment">// Contract dim 3 from memory: C[j+4*k] = sum_l d[l] * coeffs[... + s3*l]</span></div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;  <span class="comment">// Loop order: large stride s3 outer, so the 4x4 (j,k) gather stays in</span></div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;  <span class="comment">// L1d; reversed order conflict-thrashes when s3 is a power-of-2 stride.</span></div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> idx = 0; idx &lt; 16; ++idx) C[idx] = simde_mm256_setzero_pd();</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;  <span class="keywordflow">for</span> (l = 0; l &lt; 4; ++l) {</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;    <span class="keyword">const</span> T1* base = coeffs + s3*l;</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;    simde__m256d dl = dbr[l];</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;    <span class="keywordflow">for</span> (j = 0; j &lt; 4; ++j) {</div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;      <span class="keywordflow">for</span> (k = 0; k &lt; 4; ++k) {</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;        <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5a0d61f8370cad1d412f80b84d143e1257">C</a>[j+4*k] = simde_mm256_fmadd_pd(</div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;            simde_mm256_loadu_pd(base + s1*j + s2*k), dl, C[j+4*k]);</div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;      }</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;    }</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;  }</div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;  <span class="comment">// Dims 0-2 handled by ttv3</span></div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;  <span class="keywordflow">return</span> casadi_blazing_tensor_ttv3&lt;T1&gt;(C, a, b, c);</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;}</div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160; </div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;<span class="comment">// AVX2 tensor-times-vector for 5D cubic B-splines (degree 3, m=1).</span></div>
 <div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;<span class="comment">// SYMBOL &quot;blazing_tensor_ttv5&quot;</span></div>
-<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
-<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;T1 casadi_blazing_tensor_ttv5(<span class="keyword">const</span> T1* coeffs,</div>
-<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;    casadi_int s1, casadi_int s2, casadi_int s3, casadi_int s4,</div>
-<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;    simde__m256d a, simde__m256d b, simde__m256d c,</div>
-<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;    simde__m256d d, simde__m256d e) {</div>
-<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;  simde__m256d <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5a0d61f8370cad1d412f80b84d143e1257">C</a>[16];</div>
-<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;  simde__m256d de[16];</div>
-<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;  <span class="keywordtype">int</span> j, k, l, m;</div>
-<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;  <span class="comment">// Pre-broadcast dim 3 and dim 4 weights (compile-time constant immediates)</span></div>
-<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;  simde__m256d dbr[4] = {</div>
-<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;    simde_mm256_permute4x64_pd(d, SIMDE_MM_SHUFFLE(0, 0, 0, 0)),</div>
-<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;    simde_mm256_permute4x64_pd(d, SIMDE_MM_SHUFFLE(1, 1, 1, 1)),</div>
-<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;    simde_mm256_permute4x64_pd(d, SIMDE_MM_SHUFFLE(2, 2, 2, 2)),</div>
-<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;    simde_mm256_permute4x64_pd(d, SIMDE_MM_SHUFFLE(3, 3, 3, 3))</div>
-<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;  };</div>
-<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;  simde__m256d ebr[4] = {</div>
-<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;    simde_mm256_permute4x64_pd(e, SIMDE_MM_SHUFFLE(0, 0, 0, 0)),</div>
-<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;    simde_mm256_permute4x64_pd(e, SIMDE_MM_SHUFFLE(1, 1, 1, 1)),</div>
-<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;    simde_mm256_permute4x64_pd(e, SIMDE_MM_SHUFFLE(2, 2, 2, 2)),</div>
-<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;    simde_mm256_permute4x64_pd(e, SIMDE_MM_SHUFFLE(3, 3, 3, 3))</div>
-<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;  };</div>
-<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;  <span class="comment">// Precompute outer product d x e (16 broadcast weights)</span></div>
-<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;  <span class="keywordflow">for</span> (l = 0; l &lt; 4; ++l) {</div>
-<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;    <span class="keywordflow">for</span> (m = 0; m &lt; 4; ++m) {</div>
-<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;      de[l+4*m] = simde_mm256_mul_pd(dbr[l], ebr[m]);</div>
-<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;    }</div>
-<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;  }</div>
-<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;  <span class="comment">// Contract dims 3+4 from memory: C[j+4*k] = sum_{l,m} de[l+4*m] * coeffs[...]</span></div>
-<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;  <span class="comment">// Loop order: large strides s3, s4 outer, so the 4x4 (j,k) gather stays</span></div>
-<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;  <span class="comment">// in L1d; reversed order conflict-thrashes on power-of-2 strides.</span></div>
-<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> idx = 0; idx &lt; 16; ++idx) C[idx] = simde_mm256_setzero_pd();</div>
-<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;  <span class="keywordflow">for</span> (l = 0; l &lt; 4; ++l) {</div>
-<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;    <span class="keywordflow">for</span> (m = 0; m &lt; 4; ++m) {</div>
-<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;      <span class="keyword">const</span> T1* base = coeffs + s3*l + s4*m;</div>
-<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;      simde__m256d delm = de[l+4*m];</div>
-<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;      <span class="keywordflow">for</span> (j = 0; j &lt; 4; ++j) {</div>
-<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;        <span class="keywordflow">for</span> (k = 0; k &lt; 4; ++k) {</div>
-<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;          <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5a0d61f8370cad1d412f80b84d143e1257">C</a>[j+4*k] = simde_mm256_fmadd_pd(</div>
-<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;              simde_mm256_loadu_pd(base + s1*j + s2*k),</div>
-<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;              delm, C[j+4*k]);</div>
-<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;        }</div>
-<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;      }</div>
-<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;    }</div>
-<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;  }</div>
-<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;  <span class="comment">// Dims 0-2 handled by ttv3</span></div>
-<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;  <span class="keywordflow">return</span> casadi_blazing_tensor_ttv3&lt;T1&gt;(C, a, b, c);</div>
-<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;}</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;<span class="comment">//   result = sum_{i,j,k,l,m} a[i] * b[j] * c[k] * d[l] * e[m]</span></div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;<span class="comment">//            * coeffs[i + s1*j + s2*k + s3*l + s4*m]</span></div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;<span class="comment">// Contracts dims 3+4 fused from memory into C[16] registers,</span></div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;<span class="comment">// then delegates to ttv3. a[i] in AVX lanes (dim 0),</span></div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;<span class="comment">// b/c/d/e hold 4 weights each.</span></div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;<span class="comment">// SYMBOL &quot;blazing_tensor_ttv5&quot;</span></div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;T1 casadi_blazing_tensor_ttv5(<span class="keyword">const</span> T1* coeffs,</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;    casadi_int s1, casadi_int s2, casadi_int s3, casadi_int s4,</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;    <span class="keyword">const</span> simde__m256d* a, <span class="keyword">const</span> simde__m256d* b, <span class="keyword">const</span> simde__m256d* c,</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;    <span class="keyword">const</span> simde__m256d* d, <span class="keyword">const</span> simde__m256d* e) {</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;  simde__m256d <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5a0d61f8370cad1d412f80b84d143e1257">C</a>[16];</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;  simde__m256d de[16];</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;  <span class="keywordtype">int</span> j, k, l, m;</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;  <span class="comment">// Pre-broadcast dim 3 and dim 4 weights (compile-time constant immediates)</span></div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;  simde__m256d dbr[4] = {</div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;    simde_mm256_permute4x64_pd(*d, SIMDE_MM_SHUFFLE(0, 0, 0, 0)),</div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;    simde_mm256_permute4x64_pd(*d, SIMDE_MM_SHUFFLE(1, 1, 1, 1)),</div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;    simde_mm256_permute4x64_pd(*d, SIMDE_MM_SHUFFLE(2, 2, 2, 2)),</div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;    simde_mm256_permute4x64_pd(*d, SIMDE_MM_SHUFFLE(3, 3, 3, 3))</div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;  };</div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;  simde__m256d ebr[4] = {</div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;    simde_mm256_permute4x64_pd(*e, SIMDE_MM_SHUFFLE(0, 0, 0, 0)),</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;    simde_mm256_permute4x64_pd(*e, SIMDE_MM_SHUFFLE(1, 1, 1, 1)),</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;    simde_mm256_permute4x64_pd(*e, SIMDE_MM_SHUFFLE(2, 2, 2, 2)),</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;    simde_mm256_permute4x64_pd(*e, SIMDE_MM_SHUFFLE(3, 3, 3, 3))</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;  };</div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;  <span class="comment">// Precompute outer product d x e (16 broadcast weights)</span></div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;  <span class="keywordflow">for</span> (l = 0; l &lt; 4; ++l) {</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;    <span class="keywordflow">for</span> (m = 0; m &lt; 4; ++m) {</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;      de[l+4*m] = simde_mm256_mul_pd(dbr[l], ebr[m]);</div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;    }</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;  }</div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;  <span class="comment">// Contract dims 3+4 from memory: C[j+4*k] = sum_{l,m} de[l+4*m] * coeffs[...]</span></div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;  <span class="comment">// Loop order: large strides s3, s4 outer, so the 4x4 (j,k) gather stays</span></div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;  <span class="comment">// in L1d; reversed order conflict-thrashes on power-of-2 strides.</span></div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> idx = 0; idx &lt; 16; ++idx) C[idx] = simde_mm256_setzero_pd();</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;  <span class="keywordflow">for</span> (l = 0; l &lt; 4; ++l) {</div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;    <span class="keywordflow">for</span> (m = 0; m &lt; 4; ++m) {</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;      <span class="keyword">const</span> T1* base = coeffs + s3*l + s4*m;</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;      simde__m256d delm = de[l+4*m];</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;      <span class="keywordflow">for</span> (j = 0; j &lt; 4; ++j) {</div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;        <span class="keywordflow">for</span> (k = 0; k &lt; 4; ++k) {</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;          <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5a0d61f8370cad1d412f80b84d143e1257">C</a>[j+4*k] = simde_mm256_fmadd_pd(</div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;              simde_mm256_loadu_pd(base + s1*j + s2*k),</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;              delm, C[j+4*k]);</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;        }</div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;      }</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;    }</div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;  }</div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;  <span class="comment">// Dims 0-2 handled by ttv3</span></div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;  <span class="keywordflow">return</span> casadi_blazing_tensor_ttv3&lt;T1&gt;(C, a, b, c);</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;}</div>
 <div class="ttc" id="anamespacecasadi_html_aa64898f5cc9589e1fd4ed7684d96d7a5a0d61f8370cad1d412f80b84d143e1257"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5a0d61f8370cad1d412f80b84d143e1257">casadi::Category::C</a></div><div class="ttdeci">@ C</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </body>

@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/dafc81035257e0e57db5c65b2ac851a6239fb1c4" id="dafc81035257e0e57db5c65b2ac851a6239fb1c4" >revision 3.8.1</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a5852c23b2100296cee23b81227fcaa3bef43f04" id="a5852c23b2100296cee23b81227fcaa3bef43f04" >revision 3.8.2</a></div>
   </td>
  </tr>
  </tbody>
@@ -64,35 +64,49 @@ $(function() {
   </table>
   </dd>
 </dl>
-<p>Syntax 1D </p><pre class="fragment">* # Python
-* xgrid = np.linspace(1,6,6)
-* V = [-1,-1,-2,-3,0,2]
-* LUT = casadi.interpolant("LUT","bspline",[xgrid],V)
-* print(LUT(2.5))
-* </pre> <pre class="fragment">* % Matlab
-* xgrid = 1:6;
-* V = [-1 -1 -2 -3 0 2];
-* LUT = casadi.interpolant('LUT','bspline',{xgrid},V);
-* LUT(2.5)
-* </pre><p>Syntax 2D </p><pre class="fragment">* # Python
-* xgrid = np.linspace(-5,5,11)
-* ygrid = np.linspace(-4,4,9)
-* X,Y = np.meshgrid(xgrid,ygrid,indexing='ij')
-* R = np.sqrt(5*X**2 + Y**2)+ 1
-* data = np.sin(R)/R
-* data_flat = data.ravel(order='F')
-* LUT = casadi.interpolant('name','bspline',[xgrid,ygrid],data_flat)
-* print(LUT([0.5,1]))
-* \enverbatim
-* \verbatim
-* % Matlab
-* xgrid = -5:1:5;
-* ygrid = -4:1:4;
-* R = sqrt(5*X.^2 + Y.^2)+ 1;
-* V = sin(R)./(R);
-* LUT = interpolant('LUT','bspline',{xgrid, ygrid},V(:));
-* LUT([0.5 1])
-* </pre><h3><a class="anchor" id="autotoc_md16"></a>
+<p>Examples in 1D and 2D; the values of a 2D grid are flattened in column-major order.</p>
+<p> <div class='lang lang-python'>   <div class='doctest'> </p><pre class="fragment">* &gt;&gt;&gt; xgrid = np.linspace(1, 6, 6)
+* &gt;&gt;&gt; V = [-1, -1, -2, -3, 0, 2]
+* &gt;&gt;&gt; LUT = interpolant("LUT", "bspline", [xgrid], V)
+* &gt;&gt;&gt; print(LUT(2.5))
+* -1.35
+* &gt;&gt;&gt; xgrid = np.linspace(-5, 5, 11)
+* &gt;&gt;&gt; ygrid = np.linspace(-4, 4, 9)
+* &gt;&gt;&gt; X, Y = np.meshgrid(xgrid, ygrid, indexing="ij")
+* &gt;&gt;&gt; R = np.sqrt(5*X**2 + Y**2) + 1
+* &gt;&gt;&gt; V = np.sin(R)/R
+* &gt;&gt;&gt; LUT = interpolant("LUT", "bspline", [xgrid, ygrid], V.ravel(order="F"))
+* &gt;&gt;&gt; print(LUT([0.5, 1]))
+* 0.245507
+* </pre><p> </div>   </div> </p>
+<p> <div class='lang lang-matlab'>   <div class='doctest'> </p><pre class="fragment">* &gt;&gt; xgrid = 1:6;
+* &gt;&gt; V = [-1 -1 -2 -3 0 2];
+* &gt;&gt; LUT = interpolant('LUT', 'bspline', {xgrid}, V);
+* &gt;&gt; LUT(2.5)
+* -1.35
+* &gt;&gt; xgrid = -5:5;
+* &gt;&gt; ygrid = -4:4;
+* &gt;&gt; [X, Y] = ndgrid(xgrid, ygrid);
+* &gt;&gt; R = sqrt(5*X.^2 + Y.^2) + 1;
+* &gt;&gt; V = sin(R)./R;
+* &gt;&gt; LUT = interpolant('LUT', 'bspline', {xgrid, ygrid}, V(:));
+* &gt;&gt; LUT([0.5 1])
+* 0.245507
+* </pre><p> </div>   </div> </p>
+<p> <div class='lang lang-julia'>   <div class='doctest'> </p><pre class="fragment">* julia&gt; xgrid = collect(1.0:6.0);
+* julia&gt; V = [-1, -1, -2, -3, 0, 2];
+* julia&gt; LUT = ca.interpolant("LUT", "bspline", [xgrid], V);
+* julia&gt; LUT(2.5)
+* DM(-1.35)
+* julia&gt; xgrid = collect(-5.0:5.0);
+* julia&gt; ygrid = collect(-4.0:4.0);
+* julia&gt; R = [sqrt(5x^2 + y^2) + 1 for x in xgrid, y in ygrid];
+* julia&gt; V = sin.(R) ./ R;
+* julia&gt; LUT = ca.interpolant("LUT", "bspline", [xgrid, ygrid], vec(V));
+* julia&gt; LUT([0.5, 1])
+* DM(0.245507)
+* </pre><p> </div>   </div> </p>
+<h3><a class="anchor" id="autotoc_md16"></a>
 General information</h3>
 <p><br  />
 </p><dl class="section user"><dt></dt><dd><a class="anchor" id="options"></a><table class="doxtable">
@@ -110,6 +124,8 @@ General information</h3>
 <tr>
 <td>cache</td><td>OT_DICT</td><td>Prepopulate the function cache. Default: empty</td><td>casadi::FunctionInternal </td></tr>
 <tr>
+<td>codegen_options</td><td>OT_DICT</td><td>Options to be passed to the code generator of jit, e.g. {"stats": true} to record statistics inside the compiled code. Default: none</td><td>casadi::FunctionInternal </td></tr>
+<tr>
 <td>compiler</td><td>OT_STRING</td><td>Just-in-time compiler plugin to be used.</td><td>casadi::FunctionInternal </td></tr>
 <tr>
 <td>custom_jacobian</td><td>OT_FUNCTION</td><td>Override CasADi's AD. Use together with 'jac_penalty': 0. Note: Highly experimental. Syntax may break often.</td><td>casadi::FunctionInternal </td></tr>
@@ -122,11 +138,11 @@ General information</h3>
 <tr>
 <td>dump_dir</td><td>OT_STRING</td><td>Directory to dump inputs/outputs and traces to. Make sure the directory exists [.]</td><td>casadi::FunctionInternal </td></tr>
 <tr>
-<td>dump_format</td><td>OT_STRING</td><td>Choose file format to dump matrices. See <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e">DM.from_file</a> [mtx]</td><td>casadi::FunctionInternal </td></tr>
+<td>dump_format</td><td>OT_STRING</td><td>Choose file format to dump matrices. See <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e" title="Read a numerical matrix from a text file written by to_file (DM only)">DM.from_file</a> [mtx]</td><td>casadi::FunctionInternal </td></tr>
 <tr>
-<td>dump_in</td><td>OT_BOOL</td><td>Dump numerical values of inputs to file (readable with <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e">DM.from_file</a>) [default: false] A counter is used to generate unique names. The counter may be reset using reset_dump_count.</td><td>casadi::FunctionInternal </td></tr>
+<td>dump_in</td><td>OT_BOOL</td><td>Dump numerical values of inputs to file (readable with <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e" title="Read a numerical matrix from a text file written by to_file (DM only)">DM.from_file</a>) [default: false] A counter is used to generate unique names. The counter may be reset using reset_dump_count.</td><td>casadi::FunctionInternal </td></tr>
 <tr>
-<td>dump_out</td><td>OT_BOOL</td><td>Dump numerical values of outputs to file (readable with <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e">DM.from_file</a>) [default: false] A counter is used to generate unique names. The counter may be reset using reset_dump_count.</td><td>casadi::FunctionInternal </td></tr>
+<td>dump_out</td><td>OT_BOOL</td><td>Dump numerical values of outputs to file (readable with <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html#ab2064decec05ac73098d1b2b20a1c77e" title="Read a numerical matrix from a text file written by to_file (DM only)">DM.from_file</a>) [default: false] A counter is used to generate unique names. The counter may be reset using reset_dump_count.</td><td>casadi::FunctionInternal </td></tr>
 <tr>
 <td>enable_fd</td><td>OT_BOOL</td><td>Enable derivative calculation by finite differencing. [default: false]]</td><td>casadi::FunctionInternal </td></tr>
 <tr>

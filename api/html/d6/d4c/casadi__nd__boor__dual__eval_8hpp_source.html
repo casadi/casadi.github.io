@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/dafc81035257e0e57db5c65b2ac851a6239fb1c4" id="dafc81035257e0e57db5c65b2ac851a6239fb1c4" >revision 3.8.1</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a5852c23b2100296cee23b81227fcaa3bef43f04" id="a5852c23b2100296cee23b81227fcaa3bef43f04" >revision 3.8.2</a></div>
   </td>
  </tr>
  </tbody>
@@ -124,7 +124,7 @@ $(function() {
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        casadi_fill(boor, degree+1, 1.0);</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (x==knots[n_knots-1]) {</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        boor[degree] = 1;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (knots[L+degree]==x) {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (knots[L+degree]==x &amp;&amp; knots[L+degree-1]&lt;x) {</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        boor[degree-1] = 1;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        boor[degree] = 1;</div>

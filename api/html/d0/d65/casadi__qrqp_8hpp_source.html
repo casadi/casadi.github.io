@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/dafc81035257e0e57db5c65b2ac851a6239fb1c4" id="dafc81035257e0e57db5c65b2ac851a6239fb1c4" >revision 3.8.1</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a5852c23b2100296cee23b81227fcaa3bef43f04" id="a5852c23b2100296cee23b81227fcaa3bef43f04" >revision 3.8.2</a></div>
   </td>
  </tr>
  </tbody>
@@ -1212,7 +1212,7 @@ $(function() {
 <div class="line"><a name="l01153"></a><span class="lineno"> 1153</span>&#160;<span class="keywordtype">int</span> casadi_qrqp_print_colcomb(<a class="code" href="../../d3/d8d/structcasadi__qrqp__data.html">casadi_qrqp_data&lt;T1&gt;</a>* d, <span class="keywordtype">char</span>* buf, <span class="keywordtype">size_t</span> buf_sz, casadi_int j) {</div>
 <div class="line"><a name="l01154"></a><span class="lineno"> 1154</span>&#160;<span class="preprocessor">#ifdef CASADI_SNPRINTF</span></div>
 <div class="line"><a name="l01155"></a><span class="lineno"> 1155</span>&#160;  casadi_int num_size, n_print, i, k, buf_offset, val;</div>
-<div class="line"><a name="l01156"></a><span class="lineno"> 1156</span>&#160;  <span class="keywordtype">size_t</span> b;</div>
+<div class="line"><a name="l01156"></a><span class="lineno"> 1156</span>&#160;  <span class="keywordtype">size_t</span> <a class="code" href="../../d5/d58/namespacecasadi_1_1rosenbrock__tableau.html#a8550bc0cc30fc720bb004d3f711b1045">b</a>;</div>
 <div class="line"><a name="l01157"></a><span class="lineno"> 1157</span>&#160;  <span class="keyword">const</span> <a class="code" href="../../d2/d08/structcasadi__qrqp__prob.html">casadi_qrqp_prob&lt;T1&gt;</a>* p = d-&gt;<a class="code" href="../../d3/d8d/structcasadi__qrqp__data.html#afa37f60bb3b42b6aaf49cbbed8803ae4">prob</a>;</div>
 <div class="line"><a name="l01158"></a><span class="lineno"> 1158</span>&#160;  casadi_qr_colcomb(d-&gt;<a class="code" href="../../d3/d8d/structcasadi__qrqp__data.html#adac680aa4758450b51c8352ac9d075cd">dlam</a>, d-&gt;<a class="code" href="../../d3/d8d/structcasadi__qrqp__data.html#a6f694e73c8aaa1108d65c582485e04ca">nz_r</a>, p-&gt;<a class="code" href="../../d2/d08/structcasadi__qrqp__prob.html#a9899cb38659c8c07e2788d78b1b1e5f5">sp_r</a>, p-&gt;<a class="code" href="../../d2/d08/structcasadi__qrqp__prob.html#afd10003b4ea29aec0af2c4eeeb7d76c4">pc</a>, 1e-12, j);</div>
 <div class="line"><a name="l01159"></a><span class="lineno"> 1159</span>&#160; </div>
@@ -1232,7 +1232,7 @@ $(function() {
 <div class="line"><a name="l01173"></a><span class="lineno"> 1173</span>&#160;  n_print = (buf_sz-4)/num_size;</div>
 <div class="line"><a name="l01174"></a><span class="lineno"> 1174</span>&#160; </div>
 <div class="line"><a name="l01175"></a><span class="lineno"> 1175</span>&#160;  <span class="comment">// Clear buffer</span></div>
-<div class="line"><a name="l01176"></a><span class="lineno"> 1176</span>&#160;  <span class="keywordflow">for</span> (b=0;b&lt;buf_sz;++b) buf[b]=<span class="charliteral">&#39; &#39;</span>;</div>
+<div class="line"><a name="l01176"></a><span class="lineno"> 1176</span>&#160;  <span class="keywordflow">for</span> (b=0;<a class="code" href="../../d5/d58/namespacecasadi_1_1rosenbrock__tableau.html#a8550bc0cc30fc720bb004d3f711b1045">b</a>&lt;buf_sz;++<a class="code" href="../../d5/d58/namespacecasadi_1_1rosenbrock__tableau.html#a8550bc0cc30fc720bb004d3f711b1045">b</a>) buf[b]=<span class="charliteral">&#39; &#39;</span>;</div>
 <div class="line"><a name="l01177"></a><span class="lineno"> 1177</span>&#160; </div>
 <div class="line"><a name="l01178"></a><span class="lineno"> 1178</span>&#160;  buf_offset = 0;</div>
 <div class="line"><a name="l01179"></a><span class="lineno"> 1179</span>&#160;  <span class="keywordflow">for</span> (i=0;i&lt;p-&gt;<a class="code" href="../../d2/d08/structcasadi__qrqp__prob.html#a0b24ddb0137e658020e14f6d012f4475">qp</a>-&gt;nz;++i) {</div>
@@ -1299,6 +1299,7 @@ $(function() {
 <div class="line"><a name="l01240"></a><span class="lineno"> 1240</span>&#160;  <span class="comment">// Successful return</span></div>
 <div class="line"><a name="l01241"></a><span class="lineno"> 1241</span>&#160;  <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l01242"></a><span class="lineno"> 1242</span>&#160;}</div>
+<div class="ttc" id="anamespacecasadi_1_1rosenbrock__tableau_html_a8550bc0cc30fc720bb004d3f711b1045"><div class="ttname"><a href="../../d5/d58/namespacecasadi_1_1rosenbrock__tableau.html#a8550bc0cc30fc720bb004d3f711b1045">casadi::rosenbrock_tableau::b</a></div><div class="ttdeci">const long double b[8]</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dd7/rosenbrock__tableau_8hpp_source.html#l00109">rosenbrock_tableau.hpp:109</a></div></div>
 <div class="ttc" id="astructcasadi__qp__data_html"><div class="ttname"><a href="../../dc/dd5/structcasadi__qp__data.html">casadi_qp_data</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/d63/casadi__qp_8hpp_source.html#l00053">casadi_qp.hpp:53</a></div></div>
 <div class="ttc" id="astructcasadi__qp__prob_html"><div class="ttname"><a href="../../d9/d73/structcasadi__qp__prob.html">casadi_qp_prob</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/d63/casadi__qp_8hpp_source.html#l00029">casadi_qp.hpp:29</a></div></div>
 <div class="ttc" id="astructcasadi__qrqp__data_html"><div class="ttname"><a href="../../d3/d8d/structcasadi__qrqp__data.html">casadi_qrqp_data</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d65/casadi__qrqp_8hpp_source.html#l00073">casadi_qrqp.hpp:73</a></div></div>

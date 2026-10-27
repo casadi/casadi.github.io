@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/dafc81035257e0e57db5c65b2ac851a6239fb1c4" id="dafc81035257e0e57db5c65b2ac851a6239fb1c4" >revision 3.8.1</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a5852c23b2100296cee23b81227fcaa3bef43f04" id="a5852c23b2100296cee23b81227fcaa3bef43f04" >revision 3.8.2</a></div>
   </td>
  </tr>
  </tbody>
@@ -255,18 +255,42 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>This class is intended for advanced users that want to circumvent the restrictions of standard pickling/matlab save load, ie no raw SX/MX symbols allowed.</p>
-<pre class="fragment">x = SX.sym('x');
-s = StringSerializer();
-s.pack(x);
-s.pack(sin(x));
- 
-data = s.encode();
-
-s = StringDeserializer(data);
-a = s.unpack();
-b = s.unpack();
-</pre><p>Note: Saving SX/MX objects individually has a substantial overhead (both time and length of encoded string). You are encouraged to use the vector/list variants of 'save' for SX/MX to reduce the overhead.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../da/da4/classcasadi_1_1Function.html#a167d099dcbd138626aa08261401a91a8" title="Save Function to a file.">Function::save</a>, <a class="el" href="../../da/da4/classcasadi_1_1Function.html#a97e44e0f6d845322afb54db829a3bea5" title="Serialize.">Function::serialize</a>, <a class="el" href="../../da/d83/classcasadi_1_1StringDeserializer.html">StringDeserializer</a>, <a class="el" href="../../d2/d83/classcasadi_1_1FileSerializer.html">FileSerializer</a></dd></dl>
+<p> <div class='lang lang-python'>   <div class='doctest'> </p><pre class="fragment">* &gt;&gt;&gt; x = SX.sym('x')
+* &gt;&gt;&gt; s = StringSerializer()
+* &gt;&gt;&gt; s.pack(x)
+* &gt;&gt;&gt; s.pack(sin(x))
+* &gt;&gt;&gt; data = s.encode()
+* &gt;&gt;&gt; s = StringDeserializer(data)
+* &gt;&gt;&gt; a = s.unpack()
+* &gt;&gt;&gt; b = s.unpack()
+* &gt;&gt;&gt; a, b
+* (SX(x), SX(sin(x)))
+* </pre><p> </div>   </div> </p>
+<p> <div class='lang lang-matlab'>   <div class='doctest'> </p><pre class="fragment">* &gt;&gt; x = SX.sym('x');
+* &gt;&gt; s = StringSerializer();
+* &gt;&gt; s.pack(x);
+* &gt;&gt; s.pack(sin(x));
+* &gt;&gt; data = s.encode();
+* &gt;&gt; s = StringDeserializer(data);
+* &gt;&gt; a = s.unpack();
+* &gt;&gt; b = s.unpack();
+* &gt;&gt; a, b
+* x
+* sin(x)
+* </pre><p> </div>   </div> </p>
+<p> <div class='lang lang-julia'>   <div class='doctest'> </p><pre class="fragment">* julia&gt; x = ca.SX.sym("x");
+* julia&gt; s = ca.StringSerializer();
+* julia&gt; ca.pack(s, x)
+* julia&gt; ca.pack(s, sin(x))
+* julia&gt; data = ca.encode(s);
+* julia&gt; s = ca.StringDeserializer(data);
+* julia&gt; a = ca.unpack(s);
+* julia&gt; b = ca.unpack(s);
+* julia&gt; a, b
+* (x, sin(x))
+* </pre><p> </div>   </div> </p>
+<p>Note: Saving SX/MX objects individually has a substantial overhead (both time and length of encoded string). You are encouraged to use the vector/list variants of 'save' for SX/MX to reduce the overhead.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../da/da4/classcasadi_1_1Function.html#a167d099dcbd138626aa08261401a91a8" title="Save the function to a file that load reads back.">Function::save</a>, <a class="el" href="../../da/da4/classcasadi_1_1Function.html#a97e44e0f6d845322afb54db829a3bea5" title="Serialize to a string that deserialize turns back into an equal function.">Function::serialize</a>, <a class="el" href="../../da/d83/classcasadi_1_1StringDeserializer.html">StringDeserializer</a>, <a class="el" href="../../d2/d83/classcasadi_1_1FileSerializer.html">FileSerializer</a></dd></dl>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_7o">https://github.com/casadi/casadi/wiki/L_7o</a> </p>
 
 </div>

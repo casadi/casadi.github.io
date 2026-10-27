@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/dafc81035257e0e57db5c65b2ac851a6239fb1c4" id="dafc81035257e0e57db5c65b2ac851a6239fb1c4" >revision 3.8.1</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a5852c23b2100296cee23b81227fcaa3bef43f04" id="a5852c23b2100296cee23b81227fcaa3bef43f04" >revision 3.8.2</a></div>
   </td>
  </tr>
  </tbody>
@@ -64,23 +64,57 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>A simplified interface for NLP modeling/solving.  
+<p>Snapshot of an <a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html" title="A simplified interface for NLP modeling/solving.">Opti</a> problem and its solution.  
  <a href="../../d3/dbf/classcasadi_1_1OptiSol.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>&gt;</code></p>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This class offers a view with solution retrieval facilities The API is guaranteed to be stable.</p>
+<div class="textblock"><p>Returned by <a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#ad71861c0756c941c4228d606f598cda2" title="Solve the problem.">Opti::solve</a> and <a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#af8ebc3dcbf1319627962fed34c023a24" title="Solve the problem, accepting a limit as outcome.">Opti::solve_limited</a>. It is a deep copy made at that moment: later set_value/set_initial/subject_to calls on the <a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html" title="A simplified interface for NLP modeling/solving.">Opti</a> do not change what <a class="el" href="../../d3/dbf/classcasadi_1_1OptiSol.html#a61b1ac0b4a4c151a976321a75d039bc9" title="Evaluate an expression at the solution.">value()</a> returns, so several <a class="el" href="../../d3/dbf/classcasadi_1_1OptiSol.html" title="Snapshot of an Opti problem and its solution.">OptiSol</a> objects can be kept and compared. The API is guaranteed to be stable.</p>
+<p> <div class='lang lang-python'>   <div class='doctest'> </p><pre class="fragment">&gt;&gt;&gt; opti = Opti()
+&gt;&gt;&gt; x = opti.variable()
+&gt;&gt;&gt; p = opti.parameter()
+&gt;&gt;&gt; opti.minimize((x-p)**2)
+&gt;&gt;&gt; opti.solver("ipopt", {"print_time": False}, {"print_level": 0, "sb": "yes"})
+&gt;&gt;&gt; opti.set_value(p, 1)
+&gt;&gt;&gt; sol1 = opti.solve()
+&gt;&gt;&gt; opti.set_value(p, 2)
+&gt;&gt;&gt; sol2 = opti.solve()
+&gt;&gt;&gt; sol1.value(x), sol2.value(x)
+(1.0, 2.0)
+</pre><p> </div>   </div> </p>
+<p> <div class='lang lang-matlab'>   <div class='doctest'> </p><pre class="fragment">&gt;&gt; opti = Opti(); x = opti.variable(); p = opti.parameter();
+&gt;&gt; opti.minimize((x-p)^2);
+&gt;&gt; opti.solver('ipopt', struct('print_time', false), struct('print_level', 0, 'sb', 'yes'));
+&gt;&gt; opti.set_value(p, 1); sol1 = opti.solve();
+&gt;&gt; opti.set_value(p, 2); sol2 = opti.solve();
+&gt;&gt; sol1.value(x), sol2.value(x)
+1
+2
+</pre><p> </div>   </div> </p>
+<p> <div class='lang lang-julia'>   <div class='doctest'> </p><pre class="fragment">julia&gt; opti = ca.Opti();
+julia&gt; x = ca.variable(opti);
+julia&gt; p = ca.parameter(opti);
+julia&gt; ca.minimize(opti, (x - p)^2)
+julia&gt; ca.solver(opti, "ipopt", Dict("print_time" =&gt; false),
+                  Dict("print_level" =&gt; 0, "sb" =&gt; "yes"))
+julia&gt; ca.set_value(opti, p, 1)
+julia&gt; sol1 = ca.solve(opti);
+julia&gt; ca.set_value(opti, p, 2)
+julia&gt; sol2 = ca.solve(opti);
+julia&gt; ca.value(sol1, x), ca.value(sol2, x)
+(1.0, 2.0)
+</pre><p> </div>   </div> </p>
 <dl class="section date"><dt>Date</dt><dd>2017 </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Joris Gillis, Erik Lambrechts</dd></dl>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1v">https://github.com/casadi/casadi/wiki/L_1v</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l00661">661</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l03563">3563</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
 </div><div class="dynheader">
 Inheritance diagram for casadi::OptiSol:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d7/d0e/classcasadi_1_1OptiSol__inherit__graph.png" border="0" usemap="#acasadi_1_1OptiSol_inherit__map" alt="Inheritance graph"/></div>
 <map name="acasadi_1_1OptiSol_inherit__map" id="acasadi_1_1OptiSol_inherit__map">
-<area shape="rect" title="A simplified interface for NLP modeling/solving." alt="" coords="181,80,300,107"/>
+<area shape="rect" title="Snapshot of an Opti problem and its solution." alt="" coords="181,80,300,107"/>
 <area shape="rect" title=" " alt="" coords="5,5,236,32"/>
 <area shape="rect" title=" " alt="" coords="260,5,461,32"/>
 </map>
@@ -95,21 +129,25 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0014655779e6274dd765fd4ae621e911"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dbf/classcasadi_1_1OptiSol.html#a0014655779e6274dd765fd4ae621e911">get_str</a> (bool more=false) const</td></tr>
 <tr class="separator:a0014655779e6274dd765fd4ae621e911"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab462f9fc1e5130b0f21b9a05295431c0"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dbf/classcasadi_1_1OptiSol.html#ab462f9fc1e5130b0f21b9a05295431c0">value_variables</a> () const</td></tr>
-<tr class="memdesc:ab462f9fc1e5130b0f21b9a05295431c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">get assignment expressions for the optimal solution  <a href="../../d3/dbf/classcasadi_1_1OptiSol.html#ab462f9fc1e5130b0f21b9a05295431c0">More...</a><br /></td></tr>
+<tr class="memdesc:ab462f9fc1e5130b0f21b9a05295431c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get assignment expressions for the optimal solution.  <a href="../../d3/dbf/classcasadi_1_1OptiSol.html#ab462f9fc1e5130b0f21b9a05295431c0">More...</a><br /></td></tr>
 <tr class="separator:ab462f9fc1e5130b0f21b9a05295431c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a188abcfbd2148944446f415f44a29cd2"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dbf/classcasadi_1_1OptiSol.html#a188abcfbd2148944446f415f44a29cd2">value_parameters</a> () const</td></tr>
 <tr class="separator:a188abcfbd2148944446f415f44a29cd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e7e84eef3e953fb3885cd10f4b192b2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">Dict</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dbf/classcasadi_1_1OptiSol.html#a2e7e84eef3e953fb3885cd10f4b192b2">stats</a> () const</td></tr>
-<tr class="memdesc:a2e7e84eef3e953fb3885cd10f4b192b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get statistics.  <a href="../../d3/dbf/classcasadi_1_1OptiSol.html#a2e7e84eef3e953fb3885cd10f4b192b2">More...</a><br /></td></tr>
+<tr class="memdesc:a2e7e84eef3e953fb3885cd10f4b192b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the solver statistics of this solve.  <a href="../../d3/dbf/classcasadi_1_1OptiSol.html#a2e7e84eef3e953fb3885cd10f4b192b2">More...</a><br /></td></tr>
 <tr class="separator:a2e7e84eef3e953fb3885cd10f4b192b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c06b224f580e2152087335fed518d2f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html">Opti</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dbf/classcasadi_1_1OptiSol.html#a4c06b224f580e2152087335fed518d2f">opti</a> () const</td></tr>
+<tr class="memdesc:a4c06b224f580e2152087335fed518d2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the <a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html" title="A simplified interface for NLP modeling/solving.">Opti</a> copy this solution belongs to.  <a href="../../d3/dbf/classcasadi_1_1OptiSol.html#a4c06b224f580e2152087335fed518d2f">More...</a><br /></td></tr>
 <tr class="separator:a4c06b224f580e2152087335fed518d2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
 <tr class="memitem:a61b1ac0b4a4c151a976321a75d039bc9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d23/namespacecasadi.html#a95dbe520c1aae05731638df85ea93d64">native_DM</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dbf/classcasadi_1_1OptiSol.html#a61b1ac0b4a4c151a976321a75d039bc9">value</a> (const <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &amp;x, const std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt; &amp;values=std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt;()) const</td></tr>
+<tr class="memdesc:a61b1ac0b4a4c151a976321a75d039bc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate an expression at the solution.  <a href="../../d3/dbf/classcasadi_1_1OptiSol.html#a61b1ac0b4a4c151a976321a75d039bc9">More...</a><br /></td></tr>
 <tr class="separator:a61b1ac0b4a4c151a976321a75d039bc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2147fc608f3457e4ae43e912661519b2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d23/namespacecasadi.html#a95dbe520c1aae05731638df85ea93d64">native_DM</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dbf/classcasadi_1_1OptiSol.html#a2147fc608f3457e4ae43e912661519b2">value</a> (const <a class="el" href="../../d7/d23/namespacecasadi.html#acf4e4e693df7cfbd8b89ad5ff8aec939">DM</a> &amp;x, const std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt; &amp;values=std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt;()) const</td></tr>
+<tr class="memdesc:a2147fc608f3457e4ae43e912661519b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate an expression at the solution.  <a href="../../d3/dbf/classcasadi_1_1OptiSol.html#a2147fc608f3457e4ae43e912661519b2">More...</a><br /></td></tr>
 <tr class="separator:a2147fc608f3457e4ae43e912661519b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76ecb0218a71fe37d84262f840dda89e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d23/namespacecasadi.html#a95dbe520c1aae05731638df85ea93d64">native_DM</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dbf/classcasadi_1_1OptiSol.html#a76ecb0218a71fe37d84262f840dda89e">value</a> (const <a class="el" href="../../d7/d23/namespacecasadi.html#a77ea10c3c8f78d7a80e15b83af5b7a82">SX</a> &amp;x, const std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt; &amp;values=std::vector&lt; <a class="el" href="../../de/d57/classcasadi_1_1MX.html">MX</a> &gt;()) const</td></tr>
+<tr class="memdesc:a76ecb0218a71fe37d84262f840dda89e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate an expression at the solution.  <a href="../../d3/dbf/classcasadi_1_1OptiSol.html#a76ecb0218a71fe37d84262f840dda89e">More...</a><br /></td></tr>
 <tr class="separator:a76ecb0218a71fe37d84262f840dda89e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
@@ -223,8 +261,34 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>An <a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html" title="A simplified interface for NLP modeling/solving.">Opti</a> holding the state at the time of the solve; opti.debug on it gives the <a class="el" href="../../d1/dbf/classcasadi_1_1OptiAdvanced.html" title="Opti with debugging and low-level access.">OptiAdvanced</a> accessors. In Python this is a read-only property.</p>
+<p> <div class='lang lang-python'>   <div class='doctest'> </p><pre class="fragment">&gt;&gt;&gt; opti = Opti()
+&gt;&gt;&gt; x = opti.variable()
+&gt;&gt;&gt; opti.minimize((x-1)**2)
+&gt;&gt;&gt; opti.solver("ipopt", {"print_time": False}, {"print_level": 0, "sb": "yes"})
+&gt;&gt;&gt; sol = opti.solve()
+&gt;&gt;&gt; sol.opti.return_status(), sol.opti.debug.value(x)
+('Solve_Succeeded', 1.0)
+</pre><p> </div>   </div> </p>
+<p> <div class='lang lang-matlab'>   <div class='doctest'> </p><pre class="fragment">&gt;&gt; opti = Opti(); x = opti.variable(); opti.minimize((x-1)^2);
+&gt;&gt; opti.solver('ipopt', struct('print_time', false), struct('print_level', 0, 'sb', 'yes'));
+&gt;&gt; sol = opti.solve(); o = sol.opti;
+&gt;&gt; o.return_status(), o.debug.value(x)
+Solve_Succeeded
+1
+</pre><p> </div>   </div> </p>
+<p> <div class='lang lang-julia'>   <div class='doctest'> </p><pre class="fragment">julia&gt; opti = ca.Opti();
+julia&gt; x = ca.variable(opti);
+julia&gt; ca.minimize(opti, (x - 1)^2)
+julia&gt; ca.solver(opti, "ipopt", Dict("print_time" =&gt; false),
+                  Dict("print_level" =&gt; 0, "sb" =&gt; "yes"))
+julia&gt; sol = ca.solve(opti);
+julia&gt; ca.return_status(ca.opti(sol)), ca.value(ca.debug(ca.opti(sol)), x)
+("Solve_Succeeded", 1.0)
+</pre><p> </div>   </div> </p>
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2nf">https://github.com/casadi/casadi/wiki/L_2nf</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l00693">693</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l03799">3799</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
 
 </div>
 </div>
@@ -242,7 +306,30 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>nlpsol stats are passed as-is. No stability can be guaranteed about this part of the API</p>
+<p>The dict returned by the nlpsol/qpsol plugin, passed as-is ("success", "return_status", "iter_count", ...). No stability is guaranteed for the entries.</p>
+<p> <div class='lang lang-python'>   <div class='doctest'> </p><pre class="fragment">&gt;&gt;&gt; opti = Opti()
+&gt;&gt;&gt; x = opti.variable()
+&gt;&gt;&gt; opti.minimize((x-1)**2)
+&gt;&gt;&gt; opti.solver("ipopt", {"print_time": False}, {"print_level": 0, "sb": "yes"})
+&gt;&gt;&gt; sol = opti.solve()
+&gt;&gt;&gt; sol.stats()["success"], sol.stats()["return_status"]
+(True, 'Solve_Succeeded')
+</pre><p> </div>   </div> </p>
+<p> <div class='lang lang-matlab'>   <div class='doctest'> </p><pre class="fragment">&gt;&gt; opti = Opti(); x = opti.variable(); opti.minimize((x-1)^2);
+&gt;&gt; opti.solver('ipopt', struct('print_time', false), struct('print_level', 0, 'sb', 'yes'));
+&gt;&gt; sol = opti.solve(); s = sol.stats(); disp(s.success), disp(s.return_status)
+1
+Solve_Succeeded
+</pre><p> </div>   </div> </p>
+<p> <div class='lang lang-julia'>   <div class='doctest'> </p><pre class="fragment">julia&gt; opti = ca.Opti();
+julia&gt; x = ca.variable(opti);
+julia&gt; ca.minimize(opti, (x - 1)^2)
+julia&gt; ca.solver(opti, "ipopt", Dict("print_time" =&gt; false),
+                  Dict("print_level" =&gt; 0, "sb" =&gt; "yes"))
+julia&gt; sol = ca.solve(opti);
+julia&gt; ca.stats(sol)["success"], ca.stats(sol)["return_status"]
+(true, "Solve_Succeeded")
+</pre><p> </div>   </div> </p>
 <p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_1w">https://github.com/casadi/casadi/wiki/L_1w</a> </p>
 
 </div>
@@ -270,7 +357,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l00664">664</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l03566">3566</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
 
 </div>
 </div>
@@ -299,14 +386,67 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Obtain value of expression at the current value</p>
-<p>In regular mode, teh current value is the converged solution In debug mode, the value can be non-converged</p>
+<p>Same as <a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#a026c0b2c131fcda9eb3be22042e12209" title="Evaluate an expression at the current values.">Opti::value</a> on the snapshot: variables take their optimal values, parameters the values used for the solve, dual variables the multipliers. <code>values</code> overrules individual symbols for this evaluation only, e.g. opti.initial() to evaluate at the initial guess.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">values</td><td>Optional assignment expressions (e.g. x==3) to overrule the current value </td></tr>
+    <tr><td class="paramname">x</td><td>Expression (<a class="el" href="../../de/d57/classcasadi_1_1MX.html" title="MX - Matrix expression.">MX</a>) in the symbols of the <a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html" title="A simplified interface for NLP modeling/solving.">Opti</a>; a DM is returned as is </td></tr>
+    <tr><td class="paramname">values</td><td>Optional list of assignments var==value</td></tr>
   </table>
   </dd>
 </dl>
+<p> <div class='lang lang-python'>  A scalar becomes a float, a dense matrix a numpy array and a sparse matrix a scipy sparse matrix.</p>
+<p> <div class='doctest'> </p><pre class="fragment">&gt;&gt;&gt; opti = Opti()
+&gt;&gt;&gt; x = opti.variable()
+&gt;&gt;&gt; y = opti.variable()
+&gt;&gt;&gt; opti.minimize((y-x**2)**2)
+&gt;&gt;&gt; opti.subject_to(x**2+y**2==1)
+&gt;&gt;&gt; opti.subject_to(x+y&gt;=1)
+&gt;&gt;&gt; opti.solver("ipopt", {"print_time": False}, {"print_level": 0, "sb": "yes"})
+&gt;&gt;&gt; sol = opti.solve()
+&gt;&gt;&gt; sol.value(x), sol.value(vertcat(x, y)).shape
+(0.7862, (2,))
+&gt;&gt;&gt; sol.value(opti.f, [y==2])
+1.9098
+&gt;&gt;&gt; sol.value(x**2+y, opti.initial())
+0.0
+&gt;&gt;&gt; sol.value(jacobian(opti.g, opti.x)).shape
+(2, 2)
+</pre><p> </div>   </div> </p>
+<p> <div class='lang lang-matlab'>  The value is a double matrix, sparse when the expression is sparse.</p>
+<p> <div class='doctest'> </p><pre class="fragment">&gt;&gt; opti = Opti(); x = opti.variable(); y = opti.variable();
+&gt;&gt; opti.minimize((y-x^2)^2); opti.subject_to(x^2+y^2==1); opti.subject_to(x+y&gt;=1);
+&gt;&gt; opti.solver('ipopt', struct('print_time', false), struct('print_level', 0, 'sb', 'yes'));
+&gt;&gt; sol = opti.solve();
+&gt;&gt; sol.value(x), size(sol.value(vertcat(x, y)))
+0.7862
+2 1
+&gt;&gt; sol.value(opti.f, {y==2})
+1.9098
+&gt;&gt; sol.value(x^2+y, opti.initial())
+0
+&gt;&gt; size(sol.value(jacobian(opti.g, opti.x)))
+2 2
+</pre><p> </div>   </div> </p>
+<p> <div class='lang lang-julia'>  A scalar becomes a Float64, any other value a dense <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html" title="Sparse matrix class. SX and DM are specializations.">Matrix</a>{Float64}.</p>
+<p> <div class='doctest'> </p><pre class="fragment">julia&gt; opti = ca.Opti();
+julia&gt; x = ca.variable(opti);
+julia&gt; y = ca.variable(opti);
+julia&gt; ca.minimize(opti, (y - x^2)^2)
+julia&gt; ca.subject_to(opti, x^2 + y^2 == 1)
+julia&gt; ca.subject_to(opti, x + y &gt;= 1)
+julia&gt; ca.solver(opti, "ipopt", Dict("print_time" =&gt; false),
+                  Dict("print_level" =&gt; 0, "sb" =&gt; "yes"))
+julia&gt; sol = ca.solve(opti);
+julia&gt; ca.value(sol, x), size(ca.value(sol, [x; y]))
+(0.7862, (2,))
+julia&gt; sol.value(ca.f(opti), [y == 2])
+1.9098
+julia&gt; sol.value(x^2 + y, ca.initial(opti))
+0.0
+julia&gt; size(ca.value(sol, ca.jacobian(ca.g(opti), ca.x(opti))))
+(2, 2)
+</pre><p> </div>   </div> </p>
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2nd">https://github.com/casadi/casadi/wiki/L_2nd</a> </p>
 
 </div>
 </div>
@@ -335,14 +475,67 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Obtain value of expression at the current value</p>
-<p>In regular mode, teh current value is the converged solution In debug mode, the value can be non-converged</p>
+<p>Same as <a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#a026c0b2c131fcda9eb3be22042e12209" title="Evaluate an expression at the current values.">Opti::value</a> on the snapshot: variables take their optimal values, parameters the values used for the solve, dual variables the multipliers. <code>values</code> overrules individual symbols for this evaluation only, e.g. opti.initial() to evaluate at the initial guess.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">values</td><td>Optional assignment expressions (e.g. x==3) to overrule the current value </td></tr>
+    <tr><td class="paramname">x</td><td>Expression (<a class="el" href="../../de/d57/classcasadi_1_1MX.html" title="MX - Matrix expression.">MX</a>) in the symbols of the <a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html" title="A simplified interface for NLP modeling/solving.">Opti</a>; a DM is returned as is </td></tr>
+    <tr><td class="paramname">values</td><td>Optional list of assignments var==value</td></tr>
   </table>
   </dd>
 </dl>
+<p> <div class='lang lang-python'>  A scalar becomes a float, a dense matrix a numpy array and a sparse matrix a scipy sparse matrix.</p>
+<p> <div class='doctest'> </p><pre class="fragment">&gt;&gt;&gt; opti = Opti()
+&gt;&gt;&gt; x = opti.variable()
+&gt;&gt;&gt; y = opti.variable()
+&gt;&gt;&gt; opti.minimize((y-x**2)**2)
+&gt;&gt;&gt; opti.subject_to(x**2+y**2==1)
+&gt;&gt;&gt; opti.subject_to(x+y&gt;=1)
+&gt;&gt;&gt; opti.solver("ipopt", {"print_time": False}, {"print_level": 0, "sb": "yes"})
+&gt;&gt;&gt; sol = opti.solve()
+&gt;&gt;&gt; sol.value(x), sol.value(vertcat(x, y)).shape
+(0.7862, (2,))
+&gt;&gt;&gt; sol.value(opti.f, [y==2])
+1.9098
+&gt;&gt;&gt; sol.value(x**2+y, opti.initial())
+0.0
+&gt;&gt;&gt; sol.value(jacobian(opti.g, opti.x)).shape
+(2, 2)
+</pre><p> </div>   </div> </p>
+<p> <div class='lang lang-matlab'>  The value is a double matrix, sparse when the expression is sparse.</p>
+<p> <div class='doctest'> </p><pre class="fragment">&gt;&gt; opti = Opti(); x = opti.variable(); y = opti.variable();
+&gt;&gt; opti.minimize((y-x^2)^2); opti.subject_to(x^2+y^2==1); opti.subject_to(x+y&gt;=1);
+&gt;&gt; opti.solver('ipopt', struct('print_time', false), struct('print_level', 0, 'sb', 'yes'));
+&gt;&gt; sol = opti.solve();
+&gt;&gt; sol.value(x), size(sol.value(vertcat(x, y)))
+0.7862
+2 1
+&gt;&gt; sol.value(opti.f, {y==2})
+1.9098
+&gt;&gt; sol.value(x^2+y, opti.initial())
+0
+&gt;&gt; size(sol.value(jacobian(opti.g, opti.x)))
+2 2
+</pre><p> </div>   </div> </p>
+<p> <div class='lang lang-julia'>  A scalar becomes a Float64, any other value a dense <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html" title="Sparse matrix class. SX and DM are specializations.">Matrix</a>{Float64}.</p>
+<p> <div class='doctest'> </p><pre class="fragment">julia&gt; opti = ca.Opti();
+julia&gt; x = ca.variable(opti);
+julia&gt; y = ca.variable(opti);
+julia&gt; ca.minimize(opti, (y - x^2)^2)
+julia&gt; ca.subject_to(opti, x^2 + y^2 == 1)
+julia&gt; ca.subject_to(opti, x + y &gt;= 1)
+julia&gt; ca.solver(opti, "ipopt", Dict("print_time" =&gt; false),
+                  Dict("print_level" =&gt; 0, "sb" =&gt; "yes"))
+julia&gt; sol = ca.solve(opti);
+julia&gt; ca.value(sol, x), size(ca.value(sol, [x; y]))
+(0.7862, (2,))
+julia&gt; sol.value(ca.f(opti), [y == 2])
+1.9098
+julia&gt; sol.value(x^2 + y, ca.initial(opti))
+0.0
+julia&gt; size(ca.value(sol, ca.jacobian(ca.g(opti), ca.x(opti))))
+(2, 2)
+</pre><p> </div>   </div> </p>
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2nd">https://github.com/casadi/casadi/wiki/L_2nd</a> </p>
 
 </div>
 </div>
@@ -371,14 +564,67 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Obtain value of expression at the current value</p>
-<p>In regular mode, teh current value is the converged solution In debug mode, the value can be non-converged</p>
+<p>Same as <a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#a026c0b2c131fcda9eb3be22042e12209" title="Evaluate an expression at the current values.">Opti::value</a> on the snapshot: variables take their optimal values, parameters the values used for the solve, dual variables the multipliers. <code>values</code> overrules individual symbols for this evaluation only, e.g. opti.initial() to evaluate at the initial guess.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">values</td><td>Optional assignment expressions (e.g. x==3) to overrule the current value </td></tr>
+    <tr><td class="paramname">x</td><td>Expression (<a class="el" href="../../de/d57/classcasadi_1_1MX.html" title="MX - Matrix expression.">MX</a>) in the symbols of the <a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html" title="A simplified interface for NLP modeling/solving.">Opti</a>; a DM is returned as is </td></tr>
+    <tr><td class="paramname">values</td><td>Optional list of assignments var==value</td></tr>
   </table>
   </dd>
 </dl>
+<p> <div class='lang lang-python'>  A scalar becomes a float, a dense matrix a numpy array and a sparse matrix a scipy sparse matrix.</p>
+<p> <div class='doctest'> </p><pre class="fragment">&gt;&gt;&gt; opti = Opti()
+&gt;&gt;&gt; x = opti.variable()
+&gt;&gt;&gt; y = opti.variable()
+&gt;&gt;&gt; opti.minimize((y-x**2)**2)
+&gt;&gt;&gt; opti.subject_to(x**2+y**2==1)
+&gt;&gt;&gt; opti.subject_to(x+y&gt;=1)
+&gt;&gt;&gt; opti.solver("ipopt", {"print_time": False}, {"print_level": 0, "sb": "yes"})
+&gt;&gt;&gt; sol = opti.solve()
+&gt;&gt;&gt; sol.value(x), sol.value(vertcat(x, y)).shape
+(0.7862, (2,))
+&gt;&gt;&gt; sol.value(opti.f, [y==2])
+1.9098
+&gt;&gt;&gt; sol.value(x**2+y, opti.initial())
+0.0
+&gt;&gt;&gt; sol.value(jacobian(opti.g, opti.x)).shape
+(2, 2)
+</pre><p> </div>   </div> </p>
+<p> <div class='lang lang-matlab'>  The value is a double matrix, sparse when the expression is sparse.</p>
+<p> <div class='doctest'> </p><pre class="fragment">&gt;&gt; opti = Opti(); x = opti.variable(); y = opti.variable();
+&gt;&gt; opti.minimize((y-x^2)^2); opti.subject_to(x^2+y^2==1); opti.subject_to(x+y&gt;=1);
+&gt;&gt; opti.solver('ipopt', struct('print_time', false), struct('print_level', 0, 'sb', 'yes'));
+&gt;&gt; sol = opti.solve();
+&gt;&gt; sol.value(x), size(sol.value(vertcat(x, y)))
+0.7862
+2 1
+&gt;&gt; sol.value(opti.f, {y==2})
+1.9098
+&gt;&gt; sol.value(x^2+y, opti.initial())
+0
+&gt;&gt; size(sol.value(jacobian(opti.g, opti.x)))
+2 2
+</pre><p> </div>   </div> </p>
+<p> <div class='lang lang-julia'>  A scalar becomes a Float64, any other value a dense <a class="el" href="../../da/d45/classcasadi_1_1Matrix.html" title="Sparse matrix class. SX and DM are specializations.">Matrix</a>{Float64}.</p>
+<p> <div class='doctest'> </p><pre class="fragment">julia&gt; opti = ca.Opti();
+julia&gt; x = ca.variable(opti);
+julia&gt; y = ca.variable(opti);
+julia&gt; ca.minimize(opti, (y - x^2)^2)
+julia&gt; ca.subject_to(opti, x^2 + y^2 == 1)
+julia&gt; ca.subject_to(opti, x + y &gt;= 1)
+julia&gt; ca.solver(opti, "ipopt", Dict("print_time" =&gt; false),
+                  Dict("print_level" =&gt; 0, "sb" =&gt; "yes"))
+julia&gt; sol = ca.solve(opti);
+julia&gt; ca.value(sol, x), size(ca.value(sol, [x; y]))
+(0.7862, (2,))
+julia&gt; sol.value(ca.f(opti), [y == 2])
+1.9098
+julia&gt; sol.value(x^2 + y, ca.initial(opti))
+0.0
+julia&gt; size(ca.value(sol, ca.jacobian(ca.g(opti), ca.x(opti))))
+(2, 2)
+</pre><p> </div>   </div> </p>
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2nd">https://github.com/casadi/casadi/wiki/L_2nd</a> </p>
 
 </div>
 </div>
@@ -413,6 +659,46 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p><a class="el" href="../../d3/dbf/classcasadi_1_1OptiSol.html#ab462f9fc1e5130b0f21b9a05295431c0" title="Get assignment expressions for the optimal solution.">value_variables()</a> gives value==var for every variable, <a class="el" href="../../d3/dbf/classcasadi_1_1OptiSol.html#a188abcfbd2148944446f415f44a29cd2">value_parameters()</a> value==par for every parameter. Pass them to <a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#ad39fec82fcdea67f33a5299bc46c6113" title="Set the initial guess of decision variables or dual variables.">Opti::set_initial</a> / <a class="el" href="../../dd/dc6/classcasadi_1_1Opti.html#a9aeff3d95982967d06de3a50a116a2c0" title="Set the value of a parameter.">Opti::set_value</a> to warm start the next solve.</p>
+<p> <div class='lang lang-python'>   <div class='doctest'> </p><pre class="fragment">&gt;&gt;&gt; opti = Opti()
+&gt;&gt;&gt; x = opti.variable()
+&gt;&gt;&gt; p = opti.parameter()
+&gt;&gt;&gt; opti.minimize((x-p)**2)
+&gt;&gt;&gt; opti.set_value(p, 2)
+&gt;&gt;&gt; opti.solver("ipopt", {"print_time": False}, {"print_level": 0, "sb": "yes"})
+&gt;&gt;&gt; sol = opti.solve()
+&gt;&gt;&gt; print(sol.value_variables(), sol.value_parameters())
+[MX((2==opti..._x_1))] [MX((2==opti..._p_1))]
+&gt;&gt;&gt; opti.set_initial(sol.value_variables())
+&gt;&gt;&gt; opti.solve().stats()["iter_count"]
+0
+</pre><p> </div>   </div> </p>
+<p> <div class='lang lang-matlab'>   <div class='doctest'> </p><pre class="fragment">&gt;&gt; opti = Opti(); x = opti.variable(); p = opti.parameter();
+&gt;&gt; opti.minimize((x-p)^2); opti.set_value(p, 2);
+&gt;&gt; opti.solver('ipopt', struct('print_time', false), struct('print_level', 0, 'sb', 'yes'));
+&gt;&gt; sol = opti.solve();
+&gt;&gt; vv = sol.value_variables(); vp = sol.value_parameters(); disp(vv{1}), disp(vp{1})
+(2==opti..._x_1)
+(2==opti..._p_1)
+&gt;&gt; opti.set_initial(sol.value_variables()); sol2 = opti.solve();
+&gt;&gt; s = sol2.stats(); disp(s.iter_count)
+0
+</pre><p> </div>   </div> </p>
+<p> <div class='lang lang-julia'>   <div class='doctest'> </p><pre class="fragment">julia&gt; opti = ca.Opti();
+julia&gt; x = ca.variable(opti);
+julia&gt; p = ca.parameter(opti);
+julia&gt; ca.minimize(opti, (x - p)^2)
+julia&gt; ca.set_value(opti, p, 2)
+julia&gt; ca.solver(opti, "ipopt", Dict("print_time" =&gt; false),
+                  Dict("print_level" =&gt; 0, "sb" =&gt; "yes"))
+julia&gt; sol = ca.solve(opti);
+julia&gt; print(ca.value_variables(sol), " ", ca.value_parameters(sol))
+MX[(2==opti..._x_1)] MX[(2==opti..._p_1)]
+julia&gt; opti.set_initial(ca.value_variables(sol))
+julia&gt; ca.stats(ca.solve(opti))["iter_count"]
+0
+</pre><p> </div>   </div> </p>
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2ne">https://github.com/casadi/casadi/wiki/L_2ne</a> </p>
 
 </div>
 </div>
@@ -437,7 +723,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l00662">662</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l03564">3564</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
 
 </div>
 </div>
@@ -462,7 +748,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l00697">697</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/d4f/optistack_8hpp_source.html#l03803">3803</a> of file <a class="el" href="../../da/d4f/optistack_8hpp_source.html">optistack.hpp</a>.</p>
 
 </div>
 </div>

@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/dafc81035257e0e57db5c65b2ac851a6239fb1c4" id="dafc81035257e0e57db5c65b2ac851a6239fb1c4" >revision 3.8.1</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a5852c23b2100296cee23b81227fcaa3bef43f04" id="a5852c23b2100296cee23b81227fcaa3bef43f04" >revision 3.8.2</a></div>
   </td>
  </tr>
  </tbody>
@@ -80,6 +80,8 @@ $(function() {
 <td>calc_lam_x</td><td>OT_BOOL</td><td>Calculate 'lam_x' in the Nlpsol base class</td><td>casadi::Nlpsol </td></tr>
 <tr>
 <td>calc_multipliers</td><td>OT_BOOL</td><td>Calculate Lagrange multipliers in the Nlpsol base class</td><td>casadi::Nlpsol </td></tr>
+<tr>
+<td>codegen_options</td><td>OT_DICT</td><td>Options to be passed to the code generator of jit, e.g. {"stats": true} to record statistics inside the compiled code. Default: none</td><td>casadi::FunctionInternal </td></tr>
 <tr>
 <td>common_options</td><td>OT_DICT</td><td>Options for auto-generated functions</td><td>casadi::OracleFunction </td></tr>
 <tr>
@@ -200,6 +202,8 @@ $(function() {
 <td>regularity_check</td><td>OT_BOOL</td><td>Throw exceptions when NaN or Inf appears during evaluation</td><td>casadi::ProtoFunction </td></tr>
 <tr>
 <td>reverse_options</td><td>OT_DICT</td><td>Options to be passed to a reverse mode constructor</td><td>casadi::FunctionInternal </td></tr>
+<tr>
+<td>sens_force_equality</td><td>OT_BOOL</td><td>Treat constraints with equal bounds as active in parametric sensitivities, regardless of the multiplier, see issue #2545 [false].</td><td>casadi::Nlpsol </td></tr>
 <tr>
 <td>sens_linsol</td><td>OT_STRING</td><td>Linear solver used for parametric sensitivities (default 'qr').</td><td>casadi::Nlpsol </td></tr>
 <tr>

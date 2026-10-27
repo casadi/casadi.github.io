@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/dafc81035257e0e57db5c65b2ac851a6239fb1c4" id="dafc81035257e0e57db5c65b2ac851a6239fb1c4" >revision 3.8.1</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a5852c23b2100296cee23b81227fcaa3bef43f04" id="a5852c23b2100296cee23b81227fcaa3bef43f04" >revision 3.8.2</a></div>
   </td>
  </tr>
  </tbody>
@@ -64,11 +64,11 @@ $(function() {
 <tr>
 <td>NLPSOL_G</td><td>g</td><td>Constraints function at the optimal solution (ng x 1) </td></tr>
 <tr>
-<td>NLPSOL_LAM_X</td><td>lam_x</td><td>Lagrange multipliers for bounds on X at the solution (nx x 1) </td></tr>
+<td>NLPSOL_LAM_X</td><td>lam_x</td><td>Lagrange multipliers for bounds on X at the solution (nx x 1); negative for an active lower bound, positive for an active upper bound </td></tr>
 <tr>
-<td>NLPSOL_LAM_G</td><td>lam_g</td><td>Lagrange multipliers for bounds on G at the solution (ng x 1) </td></tr>
+<td>NLPSOL_LAM_G</td><td>lam_g</td><td>Lagrange multipliers for bounds on G at the solution (ng x 1); same sign convention. </td></tr>
 <tr>
-<td>NLPSOL_LAM_P</td><td>lam_p</td><td>Lagrange multipliers for bounds on P at the solution (np x 1) </td></tr>
+<td>NLPSOL_LAM_P</td><td>lam_p</td><td>Lagrange multipliers for p == P at the solution (np x 1): minus the gradient of the optimal cost with respect to p </td></tr>
 </table>
 </div><!-- contents -->
 </body>

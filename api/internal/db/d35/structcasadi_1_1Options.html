@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/dafc81035257e0e57db5c65b2ac851a6239fb1c4" id="dafc81035257e0e57db5c65b2ac851a6239fb1c4" >revision 3.8.1</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/api/html/casadi.png" alt="CasADi" height="55px"/></a>&#160;<span>internal API<sup style="font-size:30%">(<a href="../../../html/index.html">switch to public</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a5852c23b2100296cee23b81227fcaa3bef43f04" id="a5852c23b2100296cee23b81227fcaa3bef43f04" >revision 3.8.2</a></div>
   </td>
  </tr>
  </tbody>
@@ -159,7 +159,7 @@ Public Attributes</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../db/d95/options_8hpp_source.html#l00055">entries</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d70/conic_8cpp_source.html#l00579">casadi::conic_options()</a>, <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00919">casadi::nlpsol_options()</a>, and <a class="el" href="../../df/d30/rootfinder_8cpp_source.html#l00087">casadi::rootfinder_options()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d70/conic_8cpp_source.html#l00604">casadi::conic_options()</a>, <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00931">casadi::nlpsol_options()</a>, and <a class="el" href="../../df/d30/rootfinder_8cpp_source.html#l00087">casadi::rootfinder_options()</a>.</p>
 
 </div>
 </div>
@@ -194,7 +194,7 @@ Public Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                                                                                 {</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="comment">// Iterate over bases</span></div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp;&amp; b : <a class="code" href="../../db/d35/structcasadi_1_1Options.html#a18b38a7d7886c7bcc6cb8a7cb9410777">bases</a>) {</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;      b-&gt;best_matches(word, best);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;      <a class="code" href="../../d5/d58/namespacecasadi_1_1rosenbrock__tableau.html#a8550bc0cc30fc720bb004d3f711b1045">b</a>-&gt;best_matches(word, best);</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    }</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="comment">// Worst match so far</span></div>
@@ -213,6 +213,7 @@ Public Attributes</h2></td></tr>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;      }</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    }</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  }</div>
+<div class="ttc" id="anamespacecasadi_1_1rosenbrock__tableau_html_a8550bc0cc30fc720bb004d3f711b1045"><div class="ttname"><a href="../../d5/d58/namespacecasadi_1_1rosenbrock__tableau.html#a8550bc0cc30fc720bb004d3f711b1045">casadi::rosenbrock_tableau::b</a></div><div class="ttdeci">const long double b[8]</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dd7/rosenbrock__tableau_8hpp_source.html#l00109">rosenbrock_tableau.hpp:109</a></div></div>
 <div class="ttc" id="astructcasadi_1_1Options_html_a18b38a7d7886c7bcc6cb8a7cb9410777"><div class="ttname"><a href="../../db/d35/structcasadi_1_1Options.html#a18b38a7d7886c7bcc6cb8a7cb9410777">casadi::Options::bases</a></div><div class="ttdeci">std::vector&lt; const Options * &gt; bases</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d95/options_8hpp_source.html#l00043">options.hpp:43</a></div></div>
 <div class="ttc" id="astructcasadi_1_1Options_html_a5e9eb6c4bb0499324d53455b68f024b5"><div class="ttname"><a href="../../db/d35/structcasadi_1_1Options.html#a5e9eb6c4bb0499324d53455b68f024b5">casadi::Options::word_distance</a></div><div class="ttdeci">static double word_distance(const std::string &amp;a, const std::string &amp;b)</div><div class="ttdoc">A distance metric between two words.</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d1e/options_8cpp_source.html#l00069">options.cpp:69</a></div></div>
 </div><!-- fragment -->
@@ -297,7 +298,7 @@ Public Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                                             {</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="comment">// Print bases</span></div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp;&amp; b : <a class="code" href="../../db/d35/structcasadi_1_1Options.html#a18b38a7d7886c7bcc6cb8a7cb9410777">bases</a>) {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      b-&gt;disp(stream);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      <a class="code" href="../../d5/d58/namespacecasadi_1_1rosenbrock__tableau.html#a8550bc0cc30fc720bb004d3f711b1045">b</a>-&gt;disp(stream);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="comment">// Print all entries</span></div>
@@ -332,7 +333,7 @@ Public Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                                                               {</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="comment">// Check if in one of the bases</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp;&amp; b : <a class="code" href="../../db/d35/structcasadi_1_1Options.html#a18b38a7d7886c7bcc6cb8a7cb9410777">bases</a>) {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;      <span class="keyword">const</span> Options::Entry* entry = b-&gt;find(name);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;      <span class="keyword">const</span> Options::Entry* entry = <a class="code" href="../../d5/d58/namespacecasadi_1_1rosenbrock__tableau.html#a8550bc0cc30fc720bb004d3f711b1045">b</a>-&gt;find(name);</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;      <span class="keywordflow">if</span> (entry) <span class="keywordflow">return</span> entry;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    }</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
@@ -347,7 +348,7 @@ Public Attributes</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../db/d95/options_8hpp_source.html#l00043">bases</a>, and <a class="el" href="../../db/d95/options_8hpp_source.html#l00055">entries</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d5/d1e/options_8cpp_source.html#l00240">check()</a>, <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l01113">casadi::ProtoFunction::has_option()</a>, <a class="el" href="../../d5/d1e/options_8cpp_source.html#l00295">info()</a>, <a class="el" href="../../d5/d1e/options_8cpp_source.html#l00274">print_one()</a>, and <a class="el" href="../../d5/d1e/options_8cpp_source.html#l00289">type()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d5/d1e/options_8cpp_source.html#l00240">check()</a>, <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l01120">casadi::ProtoFunction::has_option()</a>, <a class="el" href="../../d5/d1e/options_8cpp_source.html#l00295">info()</a>, <a class="el" href="../../d5/d1e/options_8cpp_source.html#l00274">print_one()</a>, and <a class="el" href="../../d5/d1e/options_8cpp_source.html#l00289">type()</a>.</p>
 
 </div>
 </div>
@@ -453,7 +454,7 @@ Public Attributes</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../db/d95/options_8hpp_source.html#l00048">casadi::Options::Entry::description</a>, and <a class="el" href="../../d5/d1e/options_8cpp_source.html#l00032">find()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d70/conic_8cpp_source.html#l00587">casadi::conic_option_info()</a>, <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00927">casadi::nlpsol_option_info()</a>, and <a class="el" href="../../df/d30/rootfinder_8cpp_source.html#l00095">casadi::rootfinder_option_info()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d70/conic_8cpp_source.html#l00612">casadi::conic_option_info()</a>, <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00939">casadi::nlpsol_option_info()</a>, and <a class="el" href="../../df/d30/rootfinder_8cpp_source.html#l00095">casadi::rootfinder_option_info()</a>.</p>
 
 </div>
 </div>
@@ -520,7 +521,7 @@ Public Attributes</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d5/d1e/options_8cpp_source.html#l00057">disp()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l01105">casadi::ProtoFunction::print_options()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l01112">casadi::ProtoFunction::print_options()</a>.</p>
 
 </div>
 </div>
@@ -563,7 +564,7 @@ Public Attributes</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d5/d1e/options_8cpp_source.html#l00048">casadi::Options::Entry::disp()</a>, and <a class="el" href="../../d5/d1e/options_8cpp_source.html#l00032">find()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d5/d1e/options_8cpp_source.html#l00240">check()</a>, and <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l01109">casadi::ProtoFunction::print_option()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d5/d1e/options_8cpp_source.html#l00240">check()</a>, and <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l01116">casadi::ProtoFunction::print_option()</a>.</p>
 
 </div>
 </div>
@@ -669,12 +670,12 @@ Public Attributes</h2></td></tr>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="keywordflow">return</span> opts;</div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;  }</div>
 <div class="ttc" id="anamespacecasadi_html_a8b909f6932a91230738731512b99127e"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#a8b909f6932a91230738731512b99127e">casadi::Dict</a></div><div class="ttdeci">GenericType::Dict Dict</div><div class="ttdoc">C++ equivalent of Python's dict or MATLAB's struct.</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d30/generic__type_8hpp_source.html#l00258">generic_type.hpp:258</a></div></div>
-<div class="ttc" id="anamespacecasadi_html_aa9be61ca38a2e38328aacc4d7301c3a0"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#aa9be61ca38a2e38328aacc4d7301c3a0">casadi::update_dict</a></div><div class="ttdeci">void update_dict(Dict &amp;target, const Dict &amp;source, bool recurse)</div><div class="ttdoc">Update the target dictionary in place with source elements.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/ddb/generic__type_8cpp_source.html#l00835">generic_type.cpp:835</a></div></div>
+<div class="ttc" id="anamespacecasadi_html_aa9be61ca38a2e38328aacc4d7301c3a0"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#aa9be61ca38a2e38328aacc4d7301c3a0">casadi::update_dict</a></div><div class="ttdeci">void update_dict(Dict &amp;target, const Dict &amp;source, bool recurse)</div><div class="ttdoc">Update the target dictionary in place with source elements.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/ddb/generic__type_8cpp_source.html#l00837">generic_type.cpp:837</a></div></div>
 <div class="ttc" id="astructcasadi_1_1Options_html_a6600b92251afbdaf28ba2f340b7b9904"><div class="ttname"><a href="../../db/d35/structcasadi_1_1Options.html#a6600b92251afbdaf28ba2f340b7b9904">casadi::Options::sanitize</a></div><div class="ttdeci">static Dict sanitize(const Dict &amp;opts, bool top_level=true)</div><div class="ttdoc">Sanitize a options dictionary.</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d1e/options_8cpp_source.html#l00173">options.cpp:173</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d5/d1e/options_8cpp_source.html#l00151">has_dot()</a>, <a class="el" href="../../d5/d1e/options_8cpp_source.html#l00162">has_null()</a>, <a class="el" href="../../de/ddb/generic__type_8cpp_source.html#l00236">casadi::GenericType::is_dict()</a>, and <a class="el" href="../../de/ddb/generic__type_8cpp_source.html#l00835">casadi::update_dict()</a>.</p>
+<p class="reference">References <a class="el" href="../../d5/d1e/options_8cpp_source.html#l00151">has_dot()</a>, <a class="el" href="../../d5/d1e/options_8cpp_source.html#l00162">has_null()</a>, <a class="el" href="../../de/ddb/generic__type_8cpp_source.html#l00236">casadi::GenericType::is_dict()</a>, and <a class="el" href="../../de/ddb/generic__type_8cpp_source.html#l00837">casadi::update_dict()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d9/d80/ipopt__interface_8cpp_source.html#l00930">casadi::IpoptInterface::codegen_body()</a>, <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l00141">casadi::ProtoFunction::construct()</a>, <a class="el" href="../../d6/db8/importer__internal_8cpp_source.html#l00057">casadi::ImporterInternal::construct()</a>, <a class="el" href="../../d8/daa/alpaqa__interface_8cpp_source.html#l00068">casadi::AlpaqaInterface::init()</a>, <a class="el" href="../../d9/d80/ipopt__interface_8cpp_source.html#l00267">casadi::IpoptInterface::init_mem()</a>, and <a class="el" href="../../d9/d36/uno__interface_8cpp_source.html#l00172">casadi::insert_casadi_options()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d9/d80/ipopt__interface_8cpp_source.html#l00930">casadi::IpoptInterface::codegen_body()</a>, <a class="el" href="../../d7/db4/function__internal_8cpp_source.html#l00141">casadi::ProtoFunction::construct()</a>, <a class="el" href="../../d6/db8/importer__internal_8cpp_source.html#l00057">casadi::ImporterInternal::construct()</a>, <a class="el" href="../../d8/daa/alpaqa__interface_8cpp_source.html#l00068">casadi::AlpaqaInterface::init()</a>, <a class="el" href="../../d9/d80/ipopt__interface_8cpp_source.html#l00268">casadi::IpoptInterface::init_mem()</a>, and <a class="el" href="../../d9/d36/uno__interface_8cpp_source.html#l00172">casadi::insert_casadi_options()</a>.</p>
 
 </div>
 </div>
@@ -761,7 +762,7 @@ Public Attributes</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d5/d1e/options_8cpp_source.html#l00032">find()</a>, <a class="el" href="../../de/ddb/generic__type_8cpp_source.html#l00122">casadi::GenericType::get_type_description()</a>, and <a class="el" href="../../db/d95/options_8hpp_source.html#l00047">casadi::Options::Entry::type</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d70/conic_8cpp_source.html#l00583">casadi::conic_option_type()</a>, <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00923">casadi::nlpsol_option_type()</a>, and <a class="el" href="../../df/d30/rootfinder_8cpp_source.html#l00091">casadi::rootfinder_option_type()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d70/conic_8cpp_source.html#l00608">casadi::conic_option_type()</a>, <a class="el" href="../../d4/d7a/nlpsol_8cpp_source.html#l00935">casadi::nlpsol_option_type()</a>, and <a class="el" href="../../df/d30/rootfinder_8cpp_source.html#l00091">casadi::rootfinder_option_type()</a>.</p>
 
 </div>
 </div>
@@ -805,7 +806,7 @@ Public Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                                                                      {</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">if</span> (a == b) <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    casadi_int na = a.size();</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    casadi_int nb = b.size();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    casadi_int nb = <a class="code" href="../../d5/d58/namespacecasadi_1_1rosenbrock__tableau.html#a8550bc0cc30fc720bb004d3f711b1045">b</a>.size();</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">if</span> (na == 0) <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(nb);</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">if</span> (nb == 0) <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(na);</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>

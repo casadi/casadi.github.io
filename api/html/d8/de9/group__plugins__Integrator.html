@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/dafc81035257e0e57db5c65b2ac851a6239fb1c4" id="dafc81035257e0e57db5c65b2ac851a6239fb1c4" >revision 3.8.1</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a5852c23b2100296cee23b81227fcaa3bef43f04" id="a5852c23b2100296cee23b81227fcaa3bef43f04" >revision 3.8.2</a></div>
   </td>
  </tr>
  </tbody>
@@ -218,6 +218,80 @@ $(function() {
 <td>simplify</td><td>OT_BOOL</td><td>Implement as MX Function (codegeneratable/serializable) default: false </td></tr>
 <tr>
 <td>simplify_options</td><td>OT_DICT</td><td>Any options to pass to simplified form Function constructor </td></tr>
+</table>
+</dd></dl>
+<hr  />
+  <h4>erk <a class="anchor" id="plugin_Integrator_erk"></a> </h4>
+<dl class="section user"><dt></dt><dd></dd></dl>
+<p>Explicit Runge-Kutta integrator for ODEs: a pair of order 5(4) with adaptive or fixed steps, or the classical method of order 4 with fixed steps.</p>
+<p>Steps are independent of the output times. Adaptive steps are chosen by error control on the nominal states; with fixed steps, each run of steps over a control group (or up to the end) is divided into equal steps of at most step_size. Outputs inside a step come from a dense output (order 4 and 3 respectively) at no extra cost. Forward sensitivities are the exact derivatives of the discrete solution and adjoint sensitivities are the exact discrete adjoint of the taped steps. With fixed steps the tape has a known bound, so adjoints can be code-generated; with adaptive steps, set max_tape_steps.</p>
+<p>Zero-crossing events (DAE output zero, option transition) are located on the dense output of the step in which a function becomes negative; integration restarts from the state after the transition. Sensitivities, forward, adjoint and forward-over-adjoint, include those of the event times.</p>
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2kb">https://github.com/casadi/casadi/wiki/L_2kb</a></p>
+<p><br  />
+</p><dl class="section user"><dt></dt><dd><a class="anchor" id="options"></a><table class="doxtable">
+<caption>List of available options</caption>
+<tr>
+<th>Id</th><th>Type</th><th>Description </th></tr>
+<tr>
+<td>abstol</td><td>OT_DOUBLE</td><td>Absolute tolerance [1e-8] </td></tr>
+<tr>
+<td>control_group_size</td><td>OT_INTVECTOR</td><td>Number of output intervals in each control group, over which the controls, one column each, are constant: a run of steps [default: 1 for each output interval] </td></tr>
+<tr>
+<td>max_num_steps</td><td>OT_INT</td><td>Adaptive steps: maximum number of steps per output interval [10000] </td></tr>
+<tr>
+<td>max_step_size</td><td>OT_DOUBLE</td><td>Adaptive steps: maximum step size [default: unbounded] </td></tr>
+<tr>
+<td>max_tape_steps</td><td>OT_INT</td><td>Adaptive steps: capacity, in steps, of a tape in the work vector, for adjoint sensitivities; needed for code generation [0: tape of unbounded size]. With fixed steps, the tape is sized exactly. </td></tr>
+<tr>
+<td>method</td><td>OT_STRING</td><td>Runge-Kutta method: 'rk45' (pair of order 5(4), adaptive unless step_size is set) or 'rk4' (classical, order 4, fixed steps only; default step_size (tf - t0)/20) [rk45] </td></tr>
+<tr>
+<td>min_step_size</td><td>OT_DOUBLE</td><td>Adaptive steps: minimum step size [1e-14] </td></tr>
+<tr>
+<td>quad_err_con</td><td>OT_BOOL</td><td>Adaptive steps: include the quadratures in the error control [true] </td></tr>
+<tr>
+<td>reltol</td><td>OT_DOUBLE</td><td>Relative tolerance [1e-6] </td></tr>
+<tr>
+<td>step0</td><td>OT_DOUBLE</td><td>Adaptive steps: initial step size [default: estimated] </td></tr>
+<tr>
+<td>step_size</td><td>OT_DOUBLE</td><td>Fixed steps: each run of steps, over a control group or up to the end without controls, is divided into equal steps of at most step_size [0: adaptive steps] </td></tr>
+</table>
+</dd></dl>
+<hr  />
+  <h4>rosenbrock <a class="anchor" id="plugin_Integrator_rosenbrock"></a> </h4>
+<dl class="section user"><dt></dt><dd></dd></dl>
+<p>Rosenbrock-Wanner integrator for stiff ODEs and semi-explicit index-1 DAEs, with adaptive or fixed steps.</p>
+<p>An 8-stage, stiffly accurate, L-stable method of order 5 with an embedded method of order 4. Each step needs one Jacobian and one sparse QR factorization; the method is linearly implicit, without Newton iterations. Steps cross the output times within a control group, which are interpolated by a dense output of order 4. Step sizes are chosen from the nominal solution only, so forward sensitivities are the exact derivatives of the discrete solution (internal numerical differentiation) and adjoint sensitivities are the exact discrete adjoint of the taped steps. With step_size, each run of steps over a control group is divided into equal steps instead, and the tape has a known bound.</p>
+<p>Zero-crossing events (DAE output zero, option transition) are located on the dense output of the step in which a function becomes negative; integration restarts from the state after the transition. Sensitivities, forward, adjoint and forward-over-adjoint, include those of the event times.</p>
+<p>Extra doc: <a href="https://github.com/casadi/casadi/wiki/L_2ka">https://github.com/casadi/casadi/wiki/L_2ka</a></p>
+<p><br  />
+</p><dl class="section user"><dt></dt><dd><a class="anchor" id="options"></a><table class="doxtable">
+<caption>List of available options</caption>
+<tr>
+<th>Id</th><th>Type</th><th>Description </th></tr>
+<tr>
+<td>abstol</td><td>OT_DOUBLE</td><td>Absolute tolerance [1e-8] </td></tr>
+<tr>
+<td>control_group_size</td><td>OT_INTVECTOR</td><td>Number of output intervals in each control group, over which the controls, one column each, are constant: a run of steps [default: 1 for each output interval] </td></tr>
+<tr>
+<td>init_max_iter</td><td>OT_INT</td><td>Maximum number of Newton iterations for consistent algebraic states [20] </td></tr>
+<tr>
+<td>init_tol</td><td>OT_DOUBLE</td><td>Tolerance on the scaled Newton step when making the algebraic states consistent [1e-3] </td></tr>
+<tr>
+<td>max_num_steps</td><td>OT_INT</td><td>Adaptive steps: maximum number of steps per output interval [10000] </td></tr>
+<tr>
+<td>max_step_size</td><td>OT_DOUBLE</td><td>Adaptive steps: maximum step size [default: unbounded] </td></tr>
+<tr>
+<td>max_tape_steps</td><td>OT_INT</td><td>Adaptive steps: capacity, in steps, of a tape in the work vector, for adjoint sensitivities; needed for code generation [0: tape of unbounded size]. With fixed steps, the tape is sized exactly. </td></tr>
+<tr>
+<td>min_step_size</td><td>OT_DOUBLE</td><td>Adaptive steps: minimum step size [1e-14] </td></tr>
+<tr>
+<td>quad_err_con</td><td>OT_BOOL</td><td>Adaptive steps: include the quadratures in the error control [true] </td></tr>
+<tr>
+<td>reltol</td><td>OT_DOUBLE</td><td>Relative tolerance [1e-6] </td></tr>
+<tr>
+<td>step0</td><td>OT_DOUBLE</td><td>Adaptive steps: initial step size [default: estimated] </td></tr>
+<tr>
+<td>step_size</td><td>OT_DOUBLE</td><td>Fixed steps: each run of steps, over a control group or up to the end without controls, is divided into equal steps of at most step_size [0: adaptive steps] </td></tr>
 </table>
 </dd></dl>
 <hr  />

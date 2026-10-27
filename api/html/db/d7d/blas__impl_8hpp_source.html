@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/dafc81035257e0e57db5c65b2ac851a6239fb1c4" id="dafc81035257e0e57db5c65b2ac851a6239fb1c4" >revision 3.8.1</a></div>
+   <div id="projectname"><a href="http://casadi.org"><img src="/_img/logo_2017_horizontal.png" alt="CasADi" height="55px"/></a>&#160;<span>public API<sup style="font-size: 30%">(<a href="../../../internal/index.html">switch to internal</a>)</sup></span> - <a href="https://github.com/casadi/casadi/tree/a5852c23b2100296cee23b81227fcaa3bef43f04" id="a5852c23b2100296cee23b81227fcaa3bef43f04" >revision 3.8.2</a></div>
   </td>
  </tr>
  </tbody>
@@ -106,7 +106,7 @@ $(function() {
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="comment">/* \brief CBLAS-style dgemm: C := alpha*op(A)*op(B) + beta*C; column-major */</span></div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">typedef</span> void (* Dgemm)(<span class="keywordtype">int</span> transa, <span class="keywordtype">int</span> transb,</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                           casadi_int m, casadi_int n, casadi_int k,</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                           <span class="keywordtype">double</span> alpha,</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                           <span class="keywordtype">double</span> <a class="code" href="../../d5/d58/namespacecasadi_1_1rosenbrock__tableau.html#a03fb16e2a073621c2448e67fa2ffc66f">alpha</a>,</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                           <span class="keyword">const</span> <span class="keywordtype">double</span>* A, casadi_int lda,</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                           <span class="keyword">const</span> <span class="keywordtype">double</span>* B, casadi_int ldb,</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                           <span class="keywordtype">double</span> beta,</div>
@@ -120,9 +120,9 @@ $(function() {
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                                   <span class="keyword">const</span> std::string&amp; <a class="code" href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5a0d61f8370cad1d412f80b84d143e1257">C</a>);</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="comment">/* \brief L1 runtime hook signatures (double-only; templates handle other T) */</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">typedef</span> void   (* Daxpy)(casadi_int n, <span class="keywordtype">double</span> alpha, <span class="keyword">const</span> <span class="keywordtype">double</span>* x, <span class="keywordtype">double</span>* y);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">typedef</span> void   (* Daxpy)(casadi_int n, <span class="keywordtype">double</span> <a class="code" href="../../d5/d58/namespacecasadi_1_1rosenbrock__tableau.html#a03fb16e2a073621c2448e67fa2ffc66f">alpha</a>, <span class="keyword">const</span> <span class="keywordtype">double</span>* x, <span class="keywordtype">double</span>* y);</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">typedef</span> double (* Ddot )(casadi_int n, <span class="keyword">const</span> <span class="keywordtype">double</span>* x, <span class="keyword">const</span> <span class="keywordtype">double</span>* y);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keyword">typedef</span> void   (* Dscal)(casadi_int n, <span class="keywordtype">double</span> alpha, <span class="keywordtype">double</span>* x);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keyword">typedef</span> void   (* Dscal)(casadi_int n, <span class="keywordtype">double</span> <a class="code" href="../../d5/d58/namespacecasadi_1_1rosenbrock__tableau.html#a03fb16e2a073621c2448e67fa2ffc66f">alpha</a>, <span class="keywordtype">double</span>* x);</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">typedef</span> double (* Dnrm2)(casadi_int n, <span class="keyword">const</span> <span class="keywordtype">double</span>* x);</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keyword">typedef</span> double (* Dasum)(casadi_int n, <span class="keyword">const</span> <span class="keywordtype">double</span>* x);</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keyword">typedef</span> void   (* Dcopy)(<span class="keyword">const</span> <span class="keywordtype">double</span>* x, casadi_int n, <span class="keywordtype">double</span>* y);</div>
@@ -241,6 +241,7 @@ $(function() {
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CASADI_BLAS_IMPL_HPP</span></div>
+<div class="ttc" id="anamespacecasadi_1_1rosenbrock__tableau_html_a03fb16e2a073621c2448e67fa2ffc66f"><div class="ttname"><a href="../../d5/d58/namespacecasadi_1_1rosenbrock__tableau.html#a03fb16e2a073621c2448e67fa2ffc66f">casadi::rosenbrock_tableau::alpha</a></div><div class="ttdeci">const long double alpha[8][8]</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dd7/rosenbrock__tableau_8hpp_source.html#l00043">rosenbrock_tableau.hpp:43</a></div></div>
 <div class="ttc" id="anamespacecasadi_html"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html">casadi</a></div><div class="ttdoc">The casadi namespace.</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/archiver_8hpp_source.html#l00032">archiver.hpp:32</a></div></div>
 <div class="ttc" id="anamespacecasadi_html_aa64898f5cc9589e1fd4ed7684d96d7a5a0d61f8370cad1d412f80b84d143e1257"><div class="ttname"><a href="../../d7/d23/namespacecasadi.html#aa64898f5cc9589e1fd4ed7684d96d7a5a0d61f8370cad1d412f80b84d143e1257">casadi::Category::C</a></div><div class="ttdeci">@ C</div></div>
 </div><!-- fragment --></div><!-- contents -->
